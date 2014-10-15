@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'fira-sans-bold';
+    src: url('../fonts/fira-sans/FiraSans-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-semibold';
+    src: url('../fonts/fira-sans/FiraSans-SemiBold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-medium';
+    src: url('../fonts/fira-sans/FiraSans-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-regular';
+    src: url('../fonts/fira-sans/FiraSans-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-book';
+    src: url('../fonts/fira-sans/FiraSans-Book.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-light';
+    src: url('../fonts/fira-sans/FiraSans-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira-sans-xlight';
+    src: url('../fonts/fira-sans/FiraSans-ExtraLight.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin fira-sans-bold {
+  font-family: 'fira-sans-bold', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-semibold {
+  font-family: 'fira-sans-semibold', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-medium {
+  font-family: 'fira-sans-medium', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-regular {
+  font-family: 'fira-sans-regular', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-book {
+  font-family: 'fira-sans-book', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-light {
+  font-family: 'fira-sans-light', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin fira-sans-xlight {
+  font-family: 'fira-sans-xlight', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}

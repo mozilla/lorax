@@ -1,0 +1,132 @@
+// example 1
+.example-bar-chart {
+  margin: 0 0 40px;
+}
+.example-bar-chart > div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px 0;
+  color: white;
+}
+
+// svg example 2
+.example-bar-chart-svg {
+  height: 120px;
+  margin: 40px 0;
+  width: 100%;
+}
+
+.example-bar-chart-svg rect {
+  fill: steelblue;
+}
+
+.example-bar-chart-svg text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+// svg example 3
+.example-bar-chart-vertical {
+  height: 500px;
+  margin: 40px 0;
+  width: 100%;
+
+  rect {
+    fill: steelblue;
+  }
+
+  text {
+    fill: black;
+    font: 10px sans-serif;
+    text-anchor: middle;
+  }
+
+  .bar {
+    fill: steelblue;
+
+    &:hover {
+      fill: red;
+    }
+  }
+
+  .axis text {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .x.axis path {
+    display: none;
+  }
+}
+
+// line graph
+.line-graph {
+  height: 500px;
+  margin: 40px 0;
+  width: 100%;
+
+  path {
+    fill: none;
+    stroke: #c00;
+    stroke-width: 3px;
+  }
+
+  line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  text {
+    fill: black;
+    font: 10px sans-serif;
+  }
+
+  .axis {
+    path {
+      stroke: #000;
+      stroke-width: 1px;
+    }
+  }
+}
+
+.map-test {
+  margin: 40px 0;
+
+  .state {
+    //fill: #d3d3d3;
+    stroke: #fff;
+    stroke-width: 0.75;
+    stroke-opacity: 1;
+  }
+}
+
+.internet-penetration {
+  margin: 40px 0;
+
+  .label {
+    rect {
+      fill: #ccc;
+    }
+  }
+
+  .label__country {
+    fill: #ccc;
+    font: 10px sans-serif;
+    text-transform: uppercase;
+  }
+
+  .label__value {
+    fill: red;
+    font: 20px sans-serif;
+  }
+}

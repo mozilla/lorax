@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Base styles - Scaffolding
+   ========================================================================== */
+
+
+/* Reset the box-sizing
+   ========================================================================== */
+
+* {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: 62.5%;
+  min-height: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  width: 100%;
+}
+
+body {
+  background-color: $body-bg;
+  color: $text-color;
+  @include fira-sans-regular;
+  @include font-size(1.2);
+  line-height: 16px;
+  -webkit-overflow-scrolling: touch;
+  text-rendering: optimizeLegibility;
+  @include transition(background-color 0.3s ease-in-out);
+
+  &.is-stop {
+    background-color: $stop;
+  }
+
+  &.is-wait {
+    background-color: $wait;
+  }
+
+  &.is-go {
+    background-color: $go;
+  }
+}
+
+
+/* Links
+   ========================================================================== */
+
+a {
+  color: $link-color;
+  outline: none;
+  text-decoration: none;
+
+  .no-touch &:hover {
+    //text-decoration: underline;
+  }
+
+  &:focus {
+    //outline: none;
+    //text-decoration: underline;
+  }
+}
+
+.link-underline {
+  @include link-underline;
+}
+
+.btn {
+  border: 2px solid $white;
+  color: $white;
+  display: inline-block;
+  @include fira-sans-semibold;
+  @include font-size(1.1);
+  line-height: 36px;
+  padding: 0 30px;
+  text-transform: uppercase;
+
+  .no-touch &:hover,
+  &:focus {
+    color: $white;
+  }
+}
+
+/* Images
+   ========================================================================== */
+
+img {
+  max-width: 100%;
+}
+
+
+/* Links
+   ========================================================================== */
+
+
+/* Clearfix
+   ========================================================================== */
+
+.cf {
+  @include clearfix();
+}

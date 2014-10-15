@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.banner {
+  height: 238px;
+  position: relative;
+}
+
+.banner-logo {
+  margin: 0;
+
+  > a {
+    background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
+    display: block;
+    height: 149px;
+    left: 13px;
+    position: absolute;
+    text-indent: -9999px;
+    top: 30px;
+    width: 107px;
+  }
+}
+
+.banner__nav {
+  height: 80px;
+}
+
+.banner-nav {
+  @include reset-list;
+  margin: 0 auto;
+  max-width: 680px;
+  width: 60%;
+
+  .flexbox & {
+    @include display-flex;
+    @include justify-content(space-around);
+    padding-left: 16px;
+  }
+
+  > li {
+    .no-flexbox & {
+      float: left;
+      width: 25%;
+    }
+  }
+}
+
+.banner-nav__link {
+  color: $extra-dark-grey;
+  color: transparentize($extra-dark-grey, 0.5);
+  display: block;
+  //@include fira-sans-regular;
+  @include font-size(1.3);
+  height: 80px;
+  letter-spacing: 1px;
+  line-height: 80px;
+  text-align: center;
+  text-transform: uppercase;
+  @include transition(all 0.1s ease-in-out);
+
+  .no-touch &:hover,
+  &:focus {
+    color: $white;
+  }
+
+  &.is-active {
+    color: $white;
+    @include font-size(1.6);
+    letter-spacing: 2px;
+
+    .no-touch &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}

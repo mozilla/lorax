@@ -1,0 +1,426 @@
+/* ========================================================================== Variables ========================================================================== */
+/* Global Values ========================================================================== */
+/* Colors ========================================================================== */
+/* z-index ========================================================================== */
+/* Scaffolding ========================================================================== */
+/* ========================================================================== Mixins ========================================================================== */
+/* Clearfix ========================================================================== */
+/* Display ========================================================================== */
+/* Text ========================================================================== */
+/* Misc ========================================================================== */
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+/* ========================================================================== HTML5 display definitions ========================================================================== */
+/** Correct `block` display not defined in IE 8/9. */
+/* line 11, ../styles/_normalize.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
+
+/** Correct `inline-block` display not defined in IE 8/9. */
+/* line 30, ../styles/_normalize.scss */
+audio, canvas, video { display: inline-block; }
+
+/** Prevent modern browsers from displaying `audio` without controls. Remove excess height in iOS 5 devices. */
+/* line 41, ../styles/_normalize.scss */
+audio:not([controls]) { display: none; height: 0; }
+
+/** Address `[hidden]` styling not present in IE 8/9. Hide the `template` element in IE, Safari, and Firefox < 22. */
+/* line 51, ../styles/_normalize.scss */
+[hidden], template { display: none; }
+
+/* ========================================================================== Base ========================================================================== */
+/** 1. Set default font family to sans-serif. 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
+/* line 66, ../styles/_normalize.scss */
+html { font-family: sans-serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
+
+/** Remove default margin. */
+/* line 76, ../styles/_normalize.scss */
+body { margin: 0; }
+
+/* ========================================================================== Links ========================================================================== */
+/** Remove the gray background color from active links in IE 10. */
+/* line 88, ../styles/_normalize.scss */
+a { background: transparent; }
+
+/** Address `outline` inconsistency between Chrome and other browsers. */
+/* line 96, ../styles/_normalize.scss */
+a:focus { outline: thin dotted; }
+
+/** Improve readability when focused and also mouse hovered in all browsers. */
+/* line 104, ../styles/_normalize.scss */
+a:active, a:hover { outline: 0; }
+
+/* ========================================================================== Typography ========================================================================== */
+/** Address variable `h1` font-size and margin within `section` and `article` contexts in Firefox 4+, Safari 5, and Chrome. */
+/* line 118, ../styles/_normalize.scss */
+h1 { font-size: 2em; margin: 0.67em 0; }
+
+/** Address styling not present in IE 8/9, Safari 5, and Chrome. */
+/* line 127, ../styles/_normalize.scss */
+abbr[title] { border-bottom: 1px dotted; }
+
+/** Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+/* line 135, ../styles/_normalize.scss */
+b, strong { font-weight: bold; }
+
+/** Address styling not present in Safari 5 and Chrome. */
+/* line 144, ../styles/_normalize.scss */
+dfn { font-style: italic; }
+
+/** Address differences between Firefox and other browsers. */
+/* line 152, ../styles/_normalize.scss */
+hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
+
+/** Address styling not present in IE 8/9. */
+/* line 162, ../styles/_normalize.scss */
+mark { background: #ff0; color: #000; }
+
+/** Correct font family set oddly in Safari 5 and Chrome. */
+/* line 171, ../styles/_normalize.scss */
+code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+
+/** Improve readability of pre-formatted text in all browsers. */
+/* line 183, ../styles/_normalize.scss */
+pre { white-space: pre-wrap; }
+
+/** Set consistent quote types. */
+/* line 191, ../styles/_normalize.scss */
+q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+/** Address inconsistent and variable font size in all browsers. */
+/* line 199, ../styles/_normalize.scss */
+small { font-size: 80%; }
+
+/** Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+/* line 207, ../styles/_normalize.scss */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+
+/* line 215, ../styles/_normalize.scss */
+sup { top: -0.5em; }
+
+/* line 219, ../styles/_normalize.scss */
+sub { bottom: -0.25em; }
+
+/* ========================================================================== Embedded content ========================================================================== */
+/** Remove border when inside `a` element in IE 8/9. */
+/* line 231, ../styles/_normalize.scss */
+img { border: 0; }
+
+/** Correct overflow displayed oddly in IE 9. */
+/* line 239, ../styles/_normalize.scss */
+svg:not(:root) { overflow: hidden; }
+
+/* ========================================================================== Figures ========================================================================== */
+/** Address margin not present in IE 8/9 and Safari 5. */
+/* line 251, ../styles/_normalize.scss */
+figure { margin: 0; }
+
+/* ========================================================================== Forms ========================================================================== */
+/** Define consistent border, margin, and padding. */
+/* line 263, ../styles/_normalize.scss */
+fieldset { border: 1px solid #c0c0c0; margin: 0 2px; padding: 0.35em 0.625em 0.75em; }
+
+/** 1. Correct `color` not being inherited in IE 8/9. 2. Remove padding so people aren't caught out if they zero out fieldsets. */
+/* line 274, ../styles/_normalize.scss */
+legend { border: 0; /* 1 */ padding: 0; /* 2 */ }
+
+/** 1. Correct font family not being inherited in all browsers. 2. Correct font size not being inherited in all browsers. 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome. */
+/* line 285, ../styles/_normalize.scss */
+button, input, select, textarea { font-family: inherit; /* 1 */ font-size: 100%; /* 2 */ margin: 0; /* 3 */ }
+
+/** Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet. */
+/* line 299, ../styles/_normalize.scss */
+button, input { line-height: normal; }
+
+/** Address inconsistent `text-transform` inheritance for `button` and `select`. All other form control elements do not inherit `text-transform` values. Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+. Correct `select` style inheritance in Firefox 4+ and Opera. */
+/* line 311, ../styles/_normalize.scss */
+button, select { text-transform: none; }
+
+/** 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls. 2. Correct inability to style clickable `input` types in iOS. 3. Improve usability and consistency of cursor style between image-type `input` and others. */
+/* line 324, ../styles/_normalize.scss */
+button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button; /* 2 */ cursor: pointer; /* 3 */ }
+
+/** Re-set default cursor for disabled elements. */
+/* line 336, ../styles/_normalize.scss */
+button[disabled], html input[disabled] { cursor: default; }
+
+/** 1. Address box sizing set to `content-box` in IE 8/9/10. 2. Remove excess padding in IE 8/9/10. */
+/* line 346, ../styles/_normalize.scss */
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; /* 1 */ padding: 0; /* 2 */ }
+
+/** 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome. 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome (include `-moz` to future-proof). */
+/* line 358, ../styles/_normalize.scss */
+input[type="search"] { -webkit-appearance: textfield; /* 1 */ -moz-box-sizing: content-box; -webkit-box-sizing: content-box; /* 2 */ box-sizing: content-box; }
+
+/** Remove inner padding and search cancel button in Safari 5 and Chrome on OS X. */
+/* line 370, ../styles/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/** Remove inner padding and border in Firefox 4+. */
+/* line 379, ../styles/_normalize.scss */
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/** 1. Remove default vertical scrollbar in IE 8/9. 2. Improve readability and alignment in all browsers. */
+/* line 390, ../styles/_normalize.scss */
+textarea { overflow: auto; /* 1 */ vertical-align: top; /* 2 */ }
+
+/* ========================================================================== Tables ========================================================================== */
+/** Remove most spacing between table cells. */
+/* line 403, ../styles/_normalize.scss */
+table { border-collapse: collapse; border-spacing: 0; }
+
+@font-face { font-family: 'fira-sans-bold'; src: url("../fonts/fira-sans/FiraSans-Bold.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-semibold'; src: url("../fonts/fira-sans/FiraSans-SemiBold.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-medium'; src: url("../fonts/fira-sans/FiraSans-Medium.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-regular'; src: url("../fonts/fira-sans/FiraSans-Regular.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-book'; src: url("../fonts/fira-sans/FiraSans-Book.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-light'; src: url("../fonts/fira-sans/FiraSans-Light.otf") format("opentype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'fira-sans-xlight'; src: url("../fonts/fira-sans/FiraSans-ExtraLight.otf") format("opentype"); font-weight: normal; font-style: normal; }
+/* ========================================================================== Base styles - Scaffolding ========================================================================== */
+/* Reset the box-sizing ========================================================================== */
+/* line 9, ../styles/base/_scaffolding.scss */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* line 13, ../styles/base/_scaffolding.scss */
+html { font-size: 62.5%; min-height: 100%; -webkit-tap-highlight-color: transparent; width: 100%; }
+
+/* line 20, ../styles/base/_scaffolding.scss */
+body { background-color: #F4F2EF; color: #FFF; font-family: 'fira-sans-regular', sans-serif; font-weight: normal; font-style: normal; font-size: 12px; font-size: 1.2rem; line-height: 16px; -webkit-overflow-scrolling: touch; text-rendering: optimizeLegibility; -moz-transition: background-color 0.3s ease-in-out; -o-transition: background-color 0.3s ease-in-out; -webkit-transition: background-color 0.3s ease-in-out; transition: background-color 0.3s ease-in-out; }
+/* line 30, ../styles/base/_scaffolding.scss */
+body.is-stop { background-color: #E11313; }
+/* line 34, ../styles/base/_scaffolding.scss */
+body.is-wait { background-color: #FFCC00; }
+/* line 38, ../styles/base/_scaffolding.scss */
+body.is-go { background-color: #00AE7B; }
+
+/* Links ========================================================================== */
+/* line 47, ../styles/base/_scaffolding.scss */
+a { color: #222; outline: none; text-decoration: none; }
+
+/* line 62, ../styles/base/_scaffolding.scss */
+.link-underline { text-decoration: underline; }
+/* line 58, ../styles/_mixins.scss */
+.no-touch .link-underline:hover { text-decoration: none; }
+
+/* line 66, ../styles/base/_scaffolding.scss */
+.btn { border: 2px solid #FFF; color: #FFF; display: inline-block; font-family: 'fira-sans-semibold', sans-serif; font-weight: normal; font-style: normal; font-size: 11px; font-size: 1.1rem; line-height: 36px; padding: 0 30px; text-transform: uppercase; }
+/* line 76, ../styles/base/_scaffolding.scss */
+.no-touch .btn:hover, .btn:focus { color: #FFF; }
+
+/* Images ========================================================================== */
+/* line 85, ../styles/base/_scaffolding.scss */
+img { max-width: 100%; }
+
+/* Links ========================================================================== */
+/* Clearfix ========================================================================== */
+/* line 9, ../styles/_mixins.scss */
+.cf:after { clear: both; content: ''; display: table; }
+
+/* ========================================================================== Header ========================================================================== */
+/* line 5, ../styles/modules/_header.scss */
+.banner { height: 238px; position: relative; }
+
+/* line 10, ../styles/modules/_header.scss */
+.banner-logo { margin: 0; }
+/* line 13, ../styles/modules/_header.scss */
+.banner-logo > a { background: url("/images/open-internet-project.png") no-repeat 0 0 transparent; display: block; height: 149px; left: 13px; position: absolute; text-indent: -9999px; top: 30px; width: 107px; }
+
+/* line 25, ../styles/modules/_header.scss */
+.banner__nav { height: 80px; }
+
+/* line 29, ../styles/modules/_header.scss */
+.banner-nav { list-style: none; margin: 0; padding: 0; margin: 0 auto; max-width: 680px; width: 60%; }
+/* line 35, ../styles/modules/_header.scss */
+.flexbox .banner-nav { display: -webkit-flex; display: flex; -webkit-justify-content: space-around; justify-content: space-around; padding-left: 16px; }
+/* line 42, ../styles/modules/_header.scss */
+.no-flexbox .banner-nav > li { float: left; width: 25%; }
+
+/* line 49, ../styles/modules/_header.scss */
+.banner-nav__link { color: #222; color: rgba(34, 34, 34, 0.5); display: block; font-size: 13px; font-size: 1.3rem; height: 80px; letter-spacing: 1px; line-height: 80px; text-align: center; text-transform: uppercase; -moz-transition: all 0.1s ease-in-out; -o-transition: all 0.1s ease-in-out; -webkit-transition: all 0.1s ease-in-out; transition: all 0.1s ease-in-out; }
+/* line 62, ../styles/modules/_header.scss */
+.no-touch .banner-nav__link:hover, .banner-nav__link:focus { color: #FFF; }
+/* line 67, ../styles/modules/_header.scss */
+.banner-nav__link.is-active { color: #FFF; font-size: 16px; font-size: 1.6rem; letter-spacing: 2px; }
+/* line 72, ../styles/modules/_header.scss */
+.no-touch .banner-nav__link.is-active:hover, .banner-nav__link.is-active:focus { text-decoration: none; }
+
+/* ========================================================================== Detail page, modules ========================================================================== */
+/* line 5, ../styles/modules/_detail.scss */
+.detail { margin-bottom: 275px; }
+
+/* line 10, ../styles/modules/_detail.scss */
+.detail__header > h1 { color: #FFF; font-family: 'fira-sans-xlight', sans-serif; font-weight: normal; font-style: normal; font-size: 48px; font-size: 4.8rem; line-height: 70px; margin: 0 0 48px; }
+
+/* line 19, ../styles/modules/_detail.scss */
+.detail__main { float: left; padding-left: 162px; width: 60%; }
+
+/* line 25, ../styles/modules/_detail.scss */
+.detail__infographic { float: right; width: 38%; }
+
+/* Detail Main ========================================================================== */
+/* line 37, ../styles/modules/_detail.scss */
+.detail-main__copy { font-size: 16px; font-size: 1.6rem; line-height: 30px; margin: 0 0 30px; }
+
+/* line 47, ../styles/modules/_detail.scss */
+.detail-links { list-style: none; margin: 0; padding: 0; }
+/* line 50, ../styles/modules/_detail.scss */
+.detail-links > li { float: left; width: 50%; }
+
+/* line 56, ../styles/modules/_detail.scss */
+.detail-link { margin: 0 20px 0 0; max-width: 200px; }
+
+/* line 62, ../styles/modules/_detail.scss */
+.detail-link__header > h1 { font-family: 'fira-sans-medium', sans-serif; font-weight: normal; font-style: normal; font-size: 12px; font-size: 1.2rem; line-height: 20px; margin: 8px 0; text-transform: uppercase; }
+
+/* line 71, ../styles/modules/_detail.scss */
+.detail-link__copy { color: #222; font-size: 12px; font-size: 1.2rem; line-height: 22px; margin: 0 0 22px; }
+
+/* ========================================================================== Infographic Section ========================================================================== */
+/* line 10, ../styles/modules/_infographic.scss */
+.infographic__header > h1 { font-family: 'fira-sans-book', sans-serif; font-weight: normal; font-style: normal; font-size: 22px; font-size: 2.2rem; line-height: 26px; margin: 0 0 36px; }
+/* line 16, ../styles/modules/_infographic.scss */
+.infographic__header > h1 > span { color: #222; display: block; font-size: 16px; font-size: 1.6rem; font-style: italic; line-height: 22px; }
+
+/* ========================================================================== Detail Page Infographics ========================================================================== */
+/* Top 5 Internet Companies by Revenue ========================================================================== */
+/* line 7, ../styles/modules/_infographics.scss */
+.internet-company { margin: 0 0 24px; position: relative; }
+
+/* line 12, ../styles/modules/_infographics.scss */
+.internet-company__revenue { color: #222; float: left; font-family: 'fira-sans-light', sans-serif; font-weight: normal; font-style: normal; font-size: 28px; font-size: 2.8rem; line-height: 40px; margin-right: 13px; }
+
+/* line 21, ../styles/modules/_infographics.scss */
+.internet-company__title { float: left; font-size: 14px; font-size: 1.4rem; line-height: 20px; padding-top: 13px; }
+
+/* line 28, ../styles/modules/_infographics.scss */
+.internet-company__diff { font-size: 10px; font-size: 1rem; left: 64%; line-height: 20px; position: absolute; top: 13px; }
+
+/* line 36, ../styles/modules/_infographics.scss */
+.internet-company__max-rev { bottom: 0; color: #222; font-size: 10px; font-size: 1rem; line-height: 10px; position: absolute; right: 0; }
+
+/* line 45, ../styles/modules/_infographics.scss */
+.internet-company__scale { clear: both; height: 5px; margin-right: 30px; }
+
+/* line 51, ../styles/modules/_infographics.scss */
+.internet-company__scale--actual { background: #222; }
+
+/* line 55, ../styles/modules/_infographics.scss */
+.internet-company__scale--full { background: url("/images/slash-pattern.png") repeat-x 0 0 transparent; margin-left: 5px; }
+
+/* line 60, ../styles/modules/_infographics.scss */
+.internet-company__scale--marker { border-right: 1px solid #FFF; bottom: 5px; left: 0; position: absolute; }
+
+/* Length of Terms & Conditions ========================================================================== */
+/* line 74, ../styles/modules/_infographics.scss */
+.terms-company { float: left; width: 20%; }
+
+/* line 79, ../styles/modules/_infographics.scss */
+.terms-company__length { color: #222; font-family: 'fira-sans-light', sans-serif; font-weight: normal; font-style: normal; font-size: 28px; font-size: 2.8rem; line-height: 32px; }
+
+/* line 86, ../styles/modules/_infographics.scss */
+.terms-company__title { font-size: 14px; font-size: 1.4rem; height: 32px; line-height: 16px; margin-bottom: 8px; width: 50px; }
+
+/* line 94, ../styles/modules/_infographics.scss */
+.terms-company__stacks { width: 44px; }
+
+/* line 98, ../styles/modules/_infographics.scss */
+.stacks-item { background: #222; height: 3px; margin-bottom: 2px; }
+/* line 103, ../styles/modules/_infographics.scss */
+.stacks-item:nth-of-type(14n+1), .stacks-item:nth-of-type(14n+3), .stacks-item:nth-of-type(14n+7), .stacks-item:nth-of-type(14n+9) { width: 40px; }
+/* line 110, ../styles/modules/_infographics.scss */
+.stacks-item:nth-of-type(14n+2), .stacks-item:nth-of-type(14n+4), .stacks-item:nth-of-type(14n+8), .stacks-item:nth-of-type(14n+10) { width: 31px; }
+/* line 117, ../styles/modules/_infographics.scss */
+.stacks-item:nth-of-type(14n+6), .stacks-item:nth-of-type(14n+12), .stacks-item:nth-of-type(14n+14) { width: 41px; }
+
+/* Common spoken and internet languages ========================================================================== */
+/* line 127, ../styles/modules/_infographics.scss */
+.common-languages { width: 100%; }
+/* line 135, ../styles/modules/_infographics.scss */
+.common-languages th { font-family: 'fira-sans-medium', sans-serif; font-weight: normal; font-style: normal; font-size: 14px; font-size: 1.4rem; height: 60px; text-align: center; text-transform: uppercase; vertical-align: top; }
+/* line 143, ../styles/modules/_infographics.scss */
+.common-languages th:first-child { color: #222; }
+/* line 147, ../styles/modules/_infographics.scss */
+.common-languages th:nth-of-type(2) { font-size: 10px; font-size: 1rem; text-transform: lowercase; }
+/* line 153, ../styles/modules/_infographics.scss */
+.common-languages td { font-size: 12px; font-size: 1.2rem; height: 32px; padding: 0; vertical-align: middle; }
+/* line 159, ../styles/modules/_infographics.scss */
+.common-languages td:first-child { color: #222; }
+/* line 163, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(2) { color: #222; width: 22.5%; }
+/* line 168, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(3) { color: #222; font-family: 'fira-sans-medium', sans-serif; font-weight: normal; font-style: normal; text-align: right; }
+/* line 174, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(4) { text-align: center; font-family: 'fira-sans-medium', sans-serif; font-weight: normal; font-style: normal; width: 10%; }
+/* line 180, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(5) { font-family: 'fira-sans-medium', sans-serif; font-weight: normal; font-style: normal; }
+/* line 184, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(6) { width: 22.5%; }
+/* line 188, ../styles/modules/_infographics.scss */
+.common-languages td:nth-of-type(7) { text-align: right; }
+
+/* line 194, ../styles/modules/_infographics.scss */
+.common-languages-bar { border-bottom: 1px solid rgba(34, 34, 34, 0.2); }
+
+/* line 198, ../styles/modules/_infographics.scss */
+.common-languages-bar__inner { background: #222; height: 4px; }
+
+/* line 203, ../styles/modules/_infographics.scss */
+.common-languages-bar__inner--spoken { background: #222; float: right; }
+
+/* line 208, ../styles/modules/_infographics.scss */
+.common-languages-bar__inner--internet { background: #FFF; }
+
+/* line 2, ../styles/modules/_tests.scss */
+.example-bar-chart { margin: 0 0 40px; }
+
+/* line 5, ../styles/modules/_tests.scss */
+.example-bar-chart > div { font: 10px sans-serif; background-color: steelblue; text-align: right; padding: 3px; margin: 1px 0; color: white; }
+
+/* line 15, ../styles/modules/_tests.scss */
+.example-bar-chart-svg { height: 120px; margin: 40px 0; width: 100%; }
+
+/* line 21, ../styles/modules/_tests.scss */
+.example-bar-chart-svg rect { fill: steelblue; }
+
+/* line 25, ../styles/modules/_tests.scss */
+.example-bar-chart-svg text { fill: white; font: 10px sans-serif; text-anchor: end; }
+
+/* line 32, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical { height: 500px; margin: 40px 0; width: 100%; }
+/* line 37, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical rect { fill: steelblue; }
+/* line 41, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical text { fill: black; font: 10px sans-serif; text-anchor: middle; }
+/* line 47, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical .bar { fill: steelblue; }
+/* line 50, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical .bar:hover { fill: red; }
+/* line 55, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical .axis text { font: 10px sans-serif; }
+/* line 59, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical .axis path, .example-bar-chart-vertical .axis line { fill: none; stroke: #000; shape-rendering: crispEdges; }
+/* line 66, ../styles/modules/_tests.scss */
+.example-bar-chart-vertical .x.axis path { display: none; }
+
+/* line 72, ../styles/modules/_tests.scss */
+.line-graph { height: 500px; margin: 40px 0; width: 100%; }
+/* line 77, ../styles/modules/_tests.scss */
+.line-graph path { fill: none; stroke: #c00; stroke-width: 3px; }
+/* line 83, ../styles/modules/_tests.scss */
+.line-graph line { fill: none; stroke: #000; shape-rendering: crispEdges; }
+/* line 89, ../styles/modules/_tests.scss */
+.line-graph text { fill: black; font: 10px sans-serif; }
+/* line 95, ../styles/modules/_tests.scss */
+.line-graph .axis path { stroke: #000; stroke-width: 1px; }
+
+/* line 102, ../styles/modules/_tests.scss */
+.map-test { margin: 40px 0; }
+/* line 105, ../styles/modules/_tests.scss */
+.map-test .state { stroke: #fff; stroke-width: 0.75; stroke-opacity: 1; }
+
+/* line 113, ../styles/modules/_tests.scss */
+.internet-penetration { margin: 40px 0; }
+/* line 117, ../styles/modules/_tests.scss */
+.internet-penetration .label rect { fill: #ccc; }
+/* line 122, ../styles/modules/_tests.scss */
+.internet-penetration .label__country { fill: #ccc; font: 10px sans-serif; text-transform: uppercase; }
+/* line 128, ../styles/modules/_tests.scss */
+.internet-penetration .label__value { fill: red; font: 20px sans-serif; }

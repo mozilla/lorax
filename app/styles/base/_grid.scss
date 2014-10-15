@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Grid by Susy
+   ========================================================================== */
+
+$total-columns: 6;
+$column-width: 39px;
+$gutter-width: 10px;
+$grid-padding: 18px;
+$container-style: fluid;
+
+$med: 551px;
+$lg: 1025px;
+$bp-medium: $med 12;
+$bp-large: $lg 12;
+
+$medium-cols: 12;
+$medium-column-width: 42px;
+$medium-gutter-width: 20px;
+$medium-grid-padding: 22px;
+
+$large-cols: 12;
+$large-column-width: 82px;
+$large-gutter-width: 20px;
+$large-grid-padding: 22px;
+
+@mixin at-medium() {
+  @if $fix-mqs {
+    @if $fix-mqs >= $med {
+      @include with-grid-settings($medium-cols, $medium-column-width, $medium-gutter-width, $medium-grid-padding) {
+        @content;
+      }
+    }
+  }
+  @else {
+    @include at-breakpoint($bp-medium) {
+      @include with-grid-settings($medium-cols, $medium-column-width, $medium-gutter-width, $medium-grid-padding) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin at-large() {
+  @if $fix-mqs {
+    @if $fix-mqs >= $lg {
+      @include with-grid-settings($large-cols, $large-column-width, $large-gutter-width, $large-grid-padding) {
+        @content;
+      }
+    }
+  }
+  @else {
+    @include at-breakpoint($bp-large) {
+      @include with-grid-settings($large-cols, $large-column-width, $large-gutter-width, $large-grid-padding) {
+        @content;
+      }
+    }
+  }
+}
+
+/* Container
+   ========================================================================== */
+
+.wrap {
+  @include container;
+
+  @include at-medium {
+    @include container;
+  }
+
+  @include at-large {
+    max-width: 1292px; // max-width of content is 1292-(22*2) = 1248px
+    @include container;
+  }
+}

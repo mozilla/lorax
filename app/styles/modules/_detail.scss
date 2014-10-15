@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Detail page, modules
+   ========================================================================== */
+
+.detail {
+  margin-bottom: 275px;
+}
+
+.detail__header {
+  > h1 {
+    color: $white;
+    @include fira-sans-xlight;
+    @include font-size(4.8);
+    line-height: 70px;
+    margin: 0 0 48px;
+  }
+}
+
+.detail__main {
+  float: left;
+  padding-left: 162px;
+  width: 60%;
+}
+
+.detail__infographic {
+  float: right;
+  width: 38%;
+}
+
+
+/* Detail Main
+   ========================================================================== */
+.detail-main {
+
+}
+
+.detail-main__copy {
+  @include font-size(1.6);
+  line-height: 30px;
+  margin: 0 0 30px;
+}
+
+.detail-main__detail-links {
+
+}
+
+.detail-links {
+  @include reset-list;
+
+  > li {
+    float: left;
+    width: 50%;
+  }
+}
+
+.detail-link {
+  margin: 0 20px 0 0;
+  max-width: 200px;
+}
+
+.detail-link__header {
+  > h1 {
+    @include fira-sans-medium;
+    @include font-size(1.2);
+    line-height: 20px;
+    margin: 8px 0;
+    text-transform: uppercase;
+  }
+}
+
+.detail-link__copy {
+  color: $extra-dark-grey;
+  @include font-size(1.2);
+  line-height: 22px;
+  margin: 0 0 22px;
+}
+
