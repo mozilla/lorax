@@ -6,15 +6,15 @@
   margin-bottom: 76px;
   position: relative;
 
-  /*@include at-large {
+  .at-xlarge({
     height: 238px;
-  }*/
+    margin: 0;
+  });
 }
 
 .banner-logo {
   margin: 0;
   padding-right: 20px;
-  text-align: right;
 
   > a {
     background: url('/images/open-internet-cloud.png') no-repeat 10px 50% transparent;
@@ -24,18 +24,19 @@
     .font-size(1.8);
     height: 64px;
     line-height: 64px;
+    text-align: right;
     text-transform: uppercase;
 
-    /* large
-    background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
-    display: block;
-    height: 149px;
-    left: 13px;
-    position: absolute;
-    text-indent: -9999px;
-    top: 30px;
-    width: 107px;
-    */
+    .at-xlarge({
+      background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
+      height: 149px;
+      left: 13px;
+      position: absolute;
+      text-align: left;
+      text-indent: -9999px;
+      top: 30px;
+      width: 107px;
+    });
   }
 }
 
@@ -43,19 +44,20 @@
   height: 40px;
   padding: 0 20px;
 
-  /* large
-  height: 80px;
-  */
+  .at-xlarge({
+    height: 80px;
+    padding: 0;
+  });
 }
 
 .banner-nav {
   .reset-list;
 
-  /* large
-  margin: 0 auto;
-  max-width: 680px;
-  width: 60%;
-  */
+  .at-xlarge({
+    margin: 0 auto;
+    max-width: 680px;
+    width: 60%;
+  });
 
   .flexbox & {
     .flexbox;
@@ -86,10 +88,10 @@
   text-transform: uppercase;
   .transition(all 0.1s ease-in-out);
 
-  /* large
-  .font-size(1.3);
-  height: 80px;
-  */
+  .at-xlarge({
+    .font-size(1.3);
+    height: 80px;
+  });
 
   .no-touch &:hover,
   &:focus {
@@ -100,10 +102,10 @@
     color: @white;
     .font-size(1.2);
 
-    /* large
-    .font-size(1.6);
-    letter-spacing: 2px;
-    */
+    .at-xlarge({
+      .font-size(1.6);
+      letter-spacing: 2px;
+    });
 
     .no-touch &:hover,
     &:focus {
