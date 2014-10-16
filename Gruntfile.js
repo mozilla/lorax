@@ -15,7 +15,7 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
-    compass: {
+    /*compass: {
       options: {
         //require: ['susy'],
         sassDir: '<%= config.app %>/styles',
@@ -25,6 +25,17 @@ module.exports = function (grunt) {
         options: {
           debugInfo: false,
           outputStyle: 'compact'
+        }
+      }
+    },*/
+
+    less: {
+      development: {
+        options: {
+          paths: ['<%= config.app %>/styles']
+        },
+        files: {
+          '<%= config.app %>/css/main.css': '<%= config.app %>/styles/main.less'
         }
       }
     },
@@ -65,11 +76,15 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      compass: {
-        files: ['<%= config.app %>/styles/{,*/}*.scss'],
-        tasks: [
-          'compass:server'
-        ]
+      //compass: {
+      //  files: ['<%= config.app %>/styles/{,*/}*.scss'],
+      //  tasks: [
+      //    'compass:server'
+      //  ]
+      //},
+      styles: {
+        files: ['<%= config.app %>/styles/**/*.less'],
+        tasks: ['less']
       },
       jshint: {
         files: ['<%= jshint.all %>'],
@@ -81,7 +96,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= config.app %>/*.html', // Core pages
-          '<%= config.app %>/styles/{,*/}*.scss', // Styles
+          '<%= config.app %>/styles/**/*.less', // Styles
           '<%= config.app %>/scripts/{,*/}*.js', // Global scripts
           '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
         ]
@@ -93,7 +108,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('server', function () {
     grunt.task.run([
-      'compass:server',
+      'less',
       'connect:livereload',
       'watch'
     ]);

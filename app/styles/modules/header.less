@@ -3,14 +3,30 @@
    ========================================================================== */
 
 .banner {
-  height: 238px;
+  margin-bottom: 76px;
   position: relative;
+
+  /*@include at-large {
+    height: 238px;
+  }*/
 }
 
 .banner-logo {
   margin: 0;
+  padding-right: 20px;
+  text-align: right;
 
   > a {
+    background: url('/images/open-internet-cloud.png') no-repeat 10px 50% transparent;
+    color: @black;
+    display: block;
+    .din-condensed-medium;
+    .font-size(1.8);
+    height: 64px;
+    line-height: 64px;
+    text-transform: uppercase;
+
+    /* large
     background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
     display: block;
     height: 149px;
@@ -19,23 +35,35 @@
     text-indent: -9999px;
     top: 30px;
     width: 107px;
+    */
   }
 }
 
 .banner__nav {
+  height: 40px;
+  padding: 0 20px;
+
+  /* large
   height: 80px;
+  */
 }
 
 .banner-nav {
-  @include reset-list;
+  .reset-list;
+
+  /* large
   margin: 0 auto;
   max-width: 680px;
   width: 60%;
+  */
 
   .flexbox & {
-    @include display-flex;
-    @include justify-content(space-around);
-    padding-left: 16px;
+    .flexbox;
+    .justify-content(space-between);
+  }
+
+  .no-flexbox & {
+    .clearfix;
   }
 
   > li {
@@ -47,27 +75,35 @@
 }
 
 .banner-nav__link {
-  color: $extra-dark-grey;
-  color: transparentize($extra-dark-grey, 0.5);
+  color: @extra-dark-grey;
+  color: fade(@extra-dark-grey, 50%);
   display: block;
-  //@include fira-sans-regular;
-  @include font-size(1.3);
-  height: 80px;
+  .font-size(1);
+  height: 40px;
   letter-spacing: 1px;
-  line-height: 80px;
+  line-height: 40px;
   text-align: center;
   text-transform: uppercase;
-  @include transition(all 0.1s ease-in-out);
+  .transition(all 0.1s ease-in-out);
+
+  /* large
+  .font-size(1.3);
+  height: 80px;
+  */
 
   .no-touch &:hover,
   &:focus {
-    color: $white;
+    color: @white;
   }
 
   &.is-active {
-    color: $white;
-    @include font-size(1.6);
+    color: @white;
+    .font-size(1.2);
+
+    /* large
+    .font-size(1.6);
     letter-spacing: 2px;
+    */
 
     .no-touch &:hover,
     &:focus {

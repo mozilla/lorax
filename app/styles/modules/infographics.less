@@ -10,33 +10,33 @@
 }
 
 .internet-company__revenue {
-  color: $extra-dark-grey;
+  color: @extra-dark-grey;
   float: left;
-  @include fira-sans-light;
-  @include font-size(2.8);
+  .fira-sans-light;
+  .font-size(2.8);
   line-height: 40px;
   margin-right: 13px;
 }
 
 .internet-company__title {
   float: left;
-  @include font-size(1.4);
+  .font-size(1.4);
   line-height: 20px;
   padding-top: 13px;
 }
 
 .internet-company__diff {
-  @include font-size(1.0);
-  left: 64%;
+  .font-size(1.0);
   line-height: 20px;
   position: absolute;
+  right: 30%;
   top: 13px;
 }
 
 .internet-company__max-rev {
   bottom: 0;
-  color: $extra-dark-grey;
-  @include font-size(1.0);
+  color: @extra-dark-grey;
+  .font-size(1.0);
   line-height: 10px;
   position: absolute;
   right: 0;
@@ -49,7 +49,7 @@
 }
 
 .internet-company__scale--actual {
-  background: $extra-dark-grey;
+  background: @extra-dark-grey;
 }
 
 .internet-company__scale--full {
@@ -77,14 +77,14 @@
 }
 
 .terms-company__length {
-  color: $extra-dark-grey;
-  @include fira-sans-light;
-  @include font-size(2.8);
+  color: @extra-dark-grey;
+  .fira-sans-light;
+  .font-size(2.8);
   line-height: 32px;
 }
 
 .terms-company__title {
-  @include font-size(1.4);
+  .font-size(1.4);
   height: 32px;
   line-height: 16px;
   margin-bottom: 8px;
@@ -96,7 +96,7 @@
 }
 
 .stacks-item {
-  background: $extra-dark-grey;
+  background: @extra-dark-grey;
   height: 3px;
   margin-bottom: 2px;
 
@@ -133,52 +133,52 @@
   }
 
   th {
-    @include fira-sans-medium;
-    @include font-size(1.4);
+    .fira-sans-medium;
+    .font-size(1.4);
     height: 60px;
     text-align: center;
     text-transform: uppercase;
     vertical-align: top;
 
     &:first-child {
-      color: $extra-dark-grey;
+      color: @extra-dark-grey;
     }
 
     &:nth-of-type(2) {
-      @include font-size(1);
+      .font-size(1);
       text-transform: lowercase;
     }
   }
 
   td {
-    @include font-size(1.2);
+    .font-size(1.2);
     height: 32px;
     padding: 0;
     vertical-align: middle;
 
     &:first-child {
-      color: $extra-dark-grey;
+      color: @extra-dark-grey;
     }
 
     &:nth-of-type(2) {
-      color: $extra-dark-grey;
+      color: @extra-dark-grey;
       width: 22.5%;
     }
 
     &:nth-of-type(3) {
-      color: $extra-dark-grey;
-      @include fira-sans-medium;
+      color: @extra-dark-grey;
+      .fira-sans-medium;
       text-align: right;
     }
 
     &:nth-of-type(4) {
       text-align: center;
-      @include fira-sans-medium;
+      .fira-sans-medium;
       width: 10%;
     }
 
     &:nth-of-type(5) {
-      @include fira-sans-medium;
+      .fira-sans-medium;
     }
 
     &:nth-of-type(6) {
@@ -192,19 +192,20 @@
 }
 
 .common-languages-bar {
-  border-bottom: 1px solid transparentize($extra-dark-grey, 0.8);
+  border-bottom: @light-grey;
+  border-bottom: 1px solid fade(@extra-dark-grey, 20%);
 }
 
 .common-languages-bar__inner {
-  background: $extra-dark-grey;
+  background: @extra-dark-grey;
   height: 4px;
 }
 
 .common-languages-bar__inner--spoken {
-  background: $extra-dark-grey;
+  background: @extra-dark-grey;
   float: right;
 }
 
 .common-languages-bar__inner--internet {
-  background: $white;
+  background: @white;
 }
