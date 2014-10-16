@@ -155,4 +155,41 @@ require(['jquery', 'd3'], function ($, d3) {
         return d.internet.pct + '%';
       });
   });
+
+
+
+  // switch body background color depending on current issue
+  // TODO: needs work, especially timing of transition relative to scroll
+  var $win = $(window);
+  var $body = $('body');
+
+  var getBodyBgColor = function () {
+    var windowTop = $win.scrollTop();
+    var windowHeight = $win.height();
+    var bodyOffset = $('.main--detail').position().top;
+
+    $('.detail').each(function (i) {
+      var $this = $(this);
+      var status = $this.attr('data-status');
+      var bodyClass = 'is-' + status;
+      var height = $this.height();
+      var top = $this.position().top - bodyOffset;
+      var on = top - (windowHeight / 2);
+      var off = on + height;
+
+      //console.log(i, top, on, off);
+
+      if (windowTop > off) {
+        $body.removeClass(bodyClass);
+      } else if (windowTop > on) {
+        $body.addClass(bodyClass);
+      }
+    });
+  };
+
+  // init
+  getBodyBgColor();
+
+  // scroll handler
+  $win.on('scroll', getBodyBgColor);
 });

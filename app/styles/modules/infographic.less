@@ -4,10 +4,30 @@
 
 .infographic {
   padding: 0 20px;
+
+  .at-medium({
+    padding: 0 60px;
+  });
+
+  .at-large({
+    .detail--inverted & {
+      padding: 0 20px;
+    }
+  });
+
+  .at-xlarge({
+    .detail--inverted & {
+      padding: 0 0 0 220px;
+    }
+  });
 }
 
 .infographic--overflow {
   padding: 0 0 0 20px;
+
+  .at-medium({
+    padding: 0 0 0 60px;
+  });
 }
 
 .infographic__header {
@@ -17,9 +37,12 @@
     line-height: 20px;
     margin: 0 0 24px;
 
+    .at-medium({
+      line-height: 26px;
+    });
+
     .at-xlarge({
       .font-size(2.2);
-      line-height: 26px;
       margin: 0 0 36px;
     });
 
@@ -30,10 +53,22 @@
       font-style: italic;
       line-height: 18px;
 
+      .at-medium({
+        .font-size(1.4);
+        line-height: 22px;
+      });
+
       .at-xlarge({
         .font-size(1.6);
-        line-height: 22px;
       });
     }
   }
+}
+
+.infographic__wrapper {
+  .at-large({
+    .detail--inverted & {
+      //padding: 0 0 0 20px;
+    }
+  });
 }

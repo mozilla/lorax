@@ -16,6 +16,10 @@
   margin: 0;
   padding-right: 20px;
 
+  .at-medium({
+    padding: 0 15px;
+  });
+
   > a {
     background: url('/images/open-internet-cloud.png') no-repeat 10px 50% transparent;
     color: @black;
@@ -26,6 +30,13 @@
     line-height: 64px;
     text-align: right;
     text-transform: uppercase;
+
+    .at-medium({
+      background: none;
+      height: 46px;
+      line-height: 46px;
+      text-align: left;
+    });
 
     .at-xlarge({
       background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
@@ -40,23 +51,77 @@
   }
 }
 
+.banner-mozilla {
+  color: @extra-dark-grey;
+  display: none;
+  .font-size(1.2);
+  margin: 0;
+
+  .at-medium({
+    display: block;
+    height: 46px;
+    line-height: 46px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+  });
+
+  .at-xlarge({
+    height: 80px;
+    line-height: 80px;
+    right: 30px;
+  });
+
+  > span {
+    .fira-sans-bold;
+  }
+}
+
+.banner-info {
+  background: url('/images/icon-info.png') no-repeat 0 0 transparent;
+  display: none;
+  height: 30px;
+  text-indent: -9999px;
+  width: 30px;
+
+  .at-medium({
+    display: block;
+    left: 15px;
+    position: absolute;
+    top: 51px;
+  });
+
+  .at-xlarge({
+    left: 30px;
+    top: 200px;
+  });
+}
+
 .banner__nav {
   height: 40px;
   padding: 0 20px;
 
+  .at-medium({
+    padding: 0;
+  });
+
   .at-xlarge({
     height: 80px;
-    padding: 0;
   });
 }
 
 .banner-nav {
   .reset-list;
 
-  .at-xlarge({
+  .at-medium({
     margin: 0 auto;
-    max-width: 680px;
+    max-width: 460px;
+    min-width: 360px;
     width: 60%;
+  });
+
+  .at-large({
+    max-width: 520px;
   });
 
   .flexbox & {
@@ -88,9 +153,13 @@
   text-transform: uppercase;
   .transition(all 0.1s ease-in-out);
 
-  .at-xlarge({
+  .at-medium({
     .font-size(1.3);
+  });
+
+  .at-xlarge({
     height: 80px;
+    line-height: 80px;
   });
 
   .no-touch &:hover,
@@ -102,7 +171,7 @@
     color: @white;
     .font-size(1.2);
 
-    .at-xlarge({
+    .at-medium({
       .font-size(1.6);
       letter-spacing: 2px;
     });
