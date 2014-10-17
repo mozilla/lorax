@@ -80,9 +80,9 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         '<%= config.app %>/**/*.js',
-        'src/scripts/{,*/}*.js',
-        '!src/scripts/utils.js',
-        '!src/bower_components/{,*/}*.js',
+        '<%= config.src %>/scripts/{,*/}*.js',
+        '!<%= config.src %>/scripts/utils.js',
+        '!<%= config.src %>/bower_components/{,*/}*.js',
         '!node_modules/{,*/}*.js'
       ]
     },
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
 
     watch: {
       styles: {
-        files: ['<%= config.app %>/styles/**/*.less'],
+        files: ['<%= config.src %>/styles/**/*.less'],
         tasks: [
           'less',
           'notify:less'
@@ -117,9 +117,9 @@ module.exports = function (grunt) {
           livereload: true
         },
         files: [
-          'src/*.html', // Core pages
-          'src/styles/**/*.less', // Styles
-          'src/scripts/{,*/}*.js', // Global scripts
+          '<%= config.src %>/*.html', // Core pages
+          '<%= config.src %>/styles/**/*.less', // Styles
+          '<%= config.src %>/scripts/{,*/}*.js', // Global scripts
           '<%= config.app %>/{,**/}*.{js,html}', // ng JS and templates
           '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
         ]
