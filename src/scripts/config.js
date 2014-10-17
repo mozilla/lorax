@@ -11,6 +11,7 @@
       'angular-route': '../bower_components/angular-route/angular-route',
       'jquery': '../bower_components/jquery/dist/jquery',
       'modernizr': '../scripts/modernizr',
+      'd3': '../bower_components/d3/d3',
       'pubsub': '../bower_components/jquery-tiny-pubsub/src/tiny-pubsub',
       'utils': '../scripts/utils'
     },

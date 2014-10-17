@@ -29,6 +29,26 @@ define(function () {
         templateUrl: '/app/lorax/templates/detail.tpl.html'
       })
 
+      .when('/detail/availability', {
+        controller: 'DetailCtrl',
+        templateUrl: '/app/lorax/templates/detail.tpl.html'
+      })
+
+      .when('/detail/control', {
+        controller: 'DetailCtrl',
+        templateUrl: '/app/lorax/templates/detail.tpl.html'
+      })
+
+      .when('/detail/safety', {
+        controller: 'DetailCtrl',
+        templateUrl: '/app/lorax/templates/detail.tpl.html'
+      })
+
+      .when('/detail/fairness', {
+        controller: 'DetailCtrl',
+        templateUrl: '/app/lorax/templates/detail.tpl.html'
+      })
+
       /* -------------------- Error -------------------- */
 
       .when('/error', {

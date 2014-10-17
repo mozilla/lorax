@@ -9,10 +9,21 @@ define([
   'lorax/config/routes',
   //'core/config/http',
 
+  // controller
   'lorax/controllers/core',
   'lorax/controllers/explore',
   'lorax/controllers/detail',
 
+  // directives
+  'lorax/directives/window',
+  'lorax/directives/detail-section',
+  'lorax/directives/detail-scroll',
+  'lorax/directives/chart-top-internet-companies',
+  'lorax/directives/chart-terms-and-conditions',
+  'lorax/directives/chart-common-languages',
+  'lorax/directives/chart-lobbying-costs',
+
+  // services
   'lorax/services/window',
   'lorax/services/scroll',
   'lorax/services/pubsub',
@@ -30,13 +41,25 @@ define([
   RouteConfig,
   //HTTPConfig,
 
+  // controllers
   CoreCtrl,
   ExploreCtrl,
   DetailCtrl,
 
+  // directives
+  WindowDirective,
+  DetailSectionDirective,
+  DetailScrollDirective,
+  ChartTopInternetCompaniesDirective,
+  ChartTermsAndConditionsDirective,
+  ChartCommonLanguagesDirective,
+  ChartLobbyingCostsDirective,
+
+  // services
   windowService,
   scrollService,
   pubSubService,
+
   //ResourceBundle,
 
   angular
@@ -67,43 +90,89 @@ define([
 
     /**
      * Injects {@link lorax/controllers/CoreCtrl} as 'CoreCtrl'
-     * @method lorax/vxCoreApp~controller
+     * @method lorax/loraxApp~controller
      */
     .controller('CoreCtrl', CoreCtrl)
 
     /**
      * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
-     * @method lorax/vxCoreApp~controller
+     * @method lorax/loraxApp~controller
      */
     .controller('ExploreCtrl', CoreCtrl)
 
     /**
      * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
-     * @method lorax/vxCoreApp~controller
+     * @method lorax/loraxApp~controller
      */
     .controller('DetailCtrl', DetailCtrl)
 
     /**
+     * Injects {@link lorax/directives/WindowDirective} as 'WindowDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxWindow', WindowDirective)
+
+    /**
+     * Injects {@link lorax/directives/DetailDirective} as 'DetailDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxDetailSection', DetailSectionDirective)
+
+    /**
+     * Injects {@link lorax/directives/DetailScrollDirective} as 'DetailScrollDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxDetailScroll', DetailScrollDirective)
+
+    /**
+     * Injects {@link lorax/directives/ChartTopInternetCompaniesDirective}
+     * as 'ChartTopInternetCompaniesDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxChartTopInternetCompanies', ChartTopInternetCompaniesDirective)
+
+    /**
+     * Injects {@link lorax/directives/ChartTermsAndConditionsDirective}
+     * as 'ChartTermsAndConditionsDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxChartTermsAndConditions', ChartTermsAndConditionsDirective)
+
+    /**
+     * Injects {@link lorax/directives/ChartCommonLanguagesDirective}
+     * as 'ChartCommonLanguagesDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxChartCommonLanguages', ChartCommonLanguagesDirective)
+
+    /**
+     * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
+     * as 'ChartLobbyingCostsDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxChartLobbyingCosts', ChartLobbyingCostsDirective)
+
+    /**
      * Inject {@link lorax/services/locationService} as 'locationService'
-     * @method lorax/vxCoreApp~service
+     * @method lorax/loraxApp~service
      */
     //.service('locationService', locationService)
 
     /**
      * Inject {@link lorax/services/windowService} as 'windowService'
-     * @method lorax/vxCoreApp~service
+     * @method lorax/loraxApp~service
      */
     .service('windowService', windowService)
 
     /**
      * Inject {@link lorax/services/scrollService} as 'scrollService'
-     * @method lorax/vxCoreApp~service
+     * @method lorax/loraxApp~service
      */
     .service('scrollService', scrollService)
 
     /**
      * Inject {@link lorax/services/pubSubService} as 'pubSubService'
-     * @method lorax/vxCoreApp~factory
+     * @method lorax/loraxApp~factory
      */
     .factory('pubSubService', pubSubService);
 

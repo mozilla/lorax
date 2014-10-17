@@ -80,13 +80,20 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
 
     function getDeviceWindowHeight() {
       // Get zoom level of mobile Safari
-      // Note, that such zoom detection might not work correctly in other browsers
       // We use width, instead of height, because there are no vertical toolbars :)
       var zoomLevel = document.documentElement.clientWidth / window.innerWidth;
 
       // window.innerHeight returns height of the visible area.
       // We multiply it by zoom and get out real height.
       return window.innerHeight * zoomLevel;
+    }
+
+    /**
+     * @method core/services/windowService~setBreakpoint
+     * @param newBreakpoint {String} Current breakpoint after change.
+     */
+    function setTrafficLightMode(newMode) {
+      pubSubService.publish('windowService.trafficLightMode', [newMode]);
     }
 
     return {
@@ -99,7 +106,8 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
       subscribe: subscribe,
       unsubscribe: unsubscribe,
       mq: matchMedia,
-      getDeviceWindowHeight: getDeviceWindowHeight
+      getDeviceWindowHeight: getDeviceWindowHeight,
+      setTrafficLightMode: setTrafficLightMode
     };
   };
 

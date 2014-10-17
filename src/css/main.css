@@ -447,13 +447,13 @@ body {
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
-body.is-stop {
+body[data-bg-mode="stop"] {
   background-color: #e11313;
 }
-body.is-wait {
+body[data-bg-mode="wait"] {
   background-color: #ffcc00;
 }
-body.is-go {
+body[data-bg-mode="go"] {
   background-color: #00ae52;
 }
 .container {
