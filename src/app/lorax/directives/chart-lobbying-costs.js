@@ -45,6 +45,7 @@ define(['jquery', 'd3'], function ($, d3) {
    * @param {object} controller Controller reference.
    */
   var ChartLobbyingCostsLinkFn = function () {
+    console.log(d3);
     /*
     var margin = {top: 48, right: 12, bottom: 88, left: 24};
     var width = 600 - margin.left - margin.right;

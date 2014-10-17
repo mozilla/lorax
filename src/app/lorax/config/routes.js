@@ -17,36 +17,29 @@ define(function () {
       /* --------- Explore -------- */
 
       .when('/', {
-        controller: 'ExploreCtrl',
-        templateUrl: '/app/lorax/templates/explore.tpl.html',
-        reloadOnSearch: false
+        templateUrl: '/app/lorax/templates/explore.tpl.html'
       })
 
       /* -------------------- Detail -------------------- */
 
       .when('/detail', {
-        controller: 'DetailCtrl',
-        templateUrl: '/app/lorax/templates/detail.tpl.html'
+        redirectTo: '/detail/availability'
       })
 
       .when('/detail/availability', {
-        controller: 'DetailCtrl',
-        templateUrl: '/app/lorax/templates/detail.tpl.html'
+        templateUrl: '/app/lorax/templates/detail-availability.tpl.html'
       })
 
       .when('/detail/control', {
-        controller: 'DetailCtrl',
-        templateUrl: '/app/lorax/templates/detail.tpl.html'
+        templateUrl: '/app/lorax/templates/detail-control.tpl.html'
       })
 
       .when('/detail/safety', {
-        controller: 'DetailCtrl',
-        templateUrl: '/app/lorax/templates/detail.tpl.html'
+        templateUrl: '/app/lorax/templates/detail-safety.tpl.html'
       })
 
       .when('/detail/fairness', {
-        controller: 'DetailCtrl',
-        templateUrl: '/app/lorax/templates/detail.tpl.html'
+        templateUrl: '/app/lorax/templates/detail-fairness.tpl.html'
       })
 
       /* -------------------- Error -------------------- */
