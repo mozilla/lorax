@@ -7,7 +7,37 @@ module.exports = function (grunt) {
 
   // Configurable paths
   var config = {
-    app: 'app'
+    src: 'src',
+    app: 'src/app'
+  };
+
+  var modRewrite = require('connect-modrewrite');
+
+  var connectMiddleware = function (connect, options) {
+    var middlewares = [];
+
+    // Mod-rewrite for
+    middlewares.push(modRewrite([
+      '!api(.*)|cms(.*)|\/status(.*)|' +
+      '\\.html|\\.js|\\.css|\\.jpg|\\.ico|\\.json|' +
+      '\\.png|\\.gif|\\.pdf|\\.xml$ /index.html [L]'
+    ]));
+
+    // Add base directories to middleware array
+    var directory = options.directory || options.base[options.base.length - 1];
+    if (!Array.isArray(options.base)) {
+      options.base = [options.base];
+    }
+
+    options.base.forEach(function (base) {
+      // Serve static files.
+      middlewares.push(connect.static(base));
+    });
+
+    // Make directory browse-able.
+    middlewares.push(connect.directory(directory));
+
+    return middlewares;
   };
 
   grunt.initConfig({
@@ -15,27 +45,13 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
-    /*compass: {
-      options: {
-        //require: ['susy'],
-        sassDir: '<%= config.app %>/styles',
-        cssDir: '<%= config.app %>/css'
-      },
-      server: {
-        options: {
-          debugInfo: false,
-          outputStyle: 'compact'
-        }
-      }
-    },*/
-
     less: {
       development: {
         options: {
-          paths: ['<%= config.app %>/styles']
+          paths: ['<%= config.src %>/styles']
         },
         files: {
-          '<%= config.app %>/css/main.css': '<%= config.app %>/styles/main.less'
+          '<%= config.src %>/css/main.css': '<%= config.src %>/styles/main.less'
         }
       }
     },
@@ -48,15 +64,11 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
-      livereload: {
+      server: {
         options: {
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
-            ];
-          }
+          open: 'http://localhost:<%= connect.options.port%>',
+          middleware: connectMiddleware,
+          base: ['src']
         }
       }
     },
@@ -67,24 +79,34 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'app/**/*.js',
-        'app/scripts/{,*/}*.js',
-        '!app/scripts/libs/{,*/}*.js',
-        '!bower_components/{,*/}*.js',
+        '<%= config.app %>/**/*.js',
+        'src/scripts/{,*/}*.js',
+        '!src/scripts/utils.js',
+        '!src/bower_components/{,*/}*.js',
         '!node_modules/{,*/}*.js'
       ]
     },
 
+    notify: {
+      less: {
+        options: {
+          message: 'Less refresh complete'
+        }
+      },
+      server: {
+        options: {
+          message: 'Server started'
+        }
+      }
+    },
+
     watch: {
-      //compass: {
-      //  files: ['<%= config.app %>/styles/{,*/}*.scss'],
-      //  tasks: [
-      //    'compass:server'
-      //  ]
-      //},
       styles: {
         files: ['<%= config.app %>/styles/**/*.less'],
-        tasks: ['less']
+        tasks: [
+          'less',
+          'notify:less'
+        ]
       },
       jshint: {
         files: ['<%= jshint.all %>'],
@@ -92,12 +114,13 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: true
         },
         files: [
-          '<%= config.app %>/*.html', // Core pages
-          '<%= config.app %>/styles/**/*.less', // Styles
-          '<%= config.app %>/scripts/{,*/}*.js', // Global scripts
+          'src/*.html', // Core pages
+          'src/styles/**/*.less', // Styles
+          'src/scripts/{,*/}*.js', // Global scripts
+          '<%= config.app %>/{,**/}*.{js,html}', // ng JS and templates
           '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
         ]
       }
@@ -109,7 +132,8 @@ module.exports = function (grunt) {
   grunt.registerTask('server', function () {
     grunt.task.run([
       'less',
-      'connect:livereload',
+      'connect:server',
+      'notify:server',
       'watch'
     ]);
   });
