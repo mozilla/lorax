@@ -16,6 +16,7 @@ define([
 
   // directives
   'lorax/directives/window',
+  'lorax/directives/prevent-default',
   'lorax/directives/detail-section',
   'lorax/directives/detail-scroll',
   'lorax/directives/chart-top-internet-companies',
@@ -48,6 +49,7 @@ define([
 
   // directives
   WindowDirective,
+  PreventDefaultDirective,
   DetailSectionDirective,
   DetailScrollDirective,
   ChartTopInternetCompaniesDirective,
@@ -111,6 +113,12 @@ define([
      * @method lorax/loraxApp~directive
      */
     .directive('loraxWindow', WindowDirective)
+
+    /**
+     * Injects {@link lorax/directives/WindowDirective} as 'WindowDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxPreventDefault', PreventDefaultDirective)
 
     /**
      * Injects {@link lorax/directives/DetailDirective} as 'DetailDirective'

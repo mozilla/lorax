@@ -14,7 +14,8 @@ define([], function () {
       replace: true,
       transclude: true,
       scope: {
-        'inverted': '@'
+        'inverted': '@',
+        'issueStatus': '@'
       },
       controller: DetailSectionController,
       link: DetailSectionLinkFn,
@@ -33,7 +34,8 @@ define([], function () {
     this._$scope = $scope;
 
     this._$scope.detailSection = {
-      inverted: $scope.inverted
+      inverted: $scope.inverted,
+      status: $scope.issueStatus
     };
   };
 

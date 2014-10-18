@@ -81,6 +81,7 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= config.app %>/**/*.js',
         '<%= config.src %>/scripts/{,*/}*.js',
+        '!<%= config.src %>/scripts/libs/{,*/}*.js',
         '!<%= config.src %>/scripts/utils.js',
         '!<%= config.src %>/bower_components/{,*/}*.js',
         '!node_modules/{,*/}*.js'

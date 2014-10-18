@@ -12,6 +12,7 @@ define([], function () {
   ) {
 
     this._$scope = $scope;
+
   };
 
   DetailCtrl.$inject = [

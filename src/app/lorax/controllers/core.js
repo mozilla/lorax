@@ -26,6 +26,7 @@ define(['jquery', 'angular'], function ($, angular) {
     //};
 
     $scope.$on('$locationChangeSuccess', function () {
+      console.log('go');
       scrollService.go('top',  { duration: 0 });
     });
   };
