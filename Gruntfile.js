@@ -8,7 +8,8 @@ module.exports = function (grunt) {
   // Configurable paths
   var config = {
     src: 'src',
-    app: 'src/app'
+    dist: 'dist',
+    temp: '.tmp'
   };
 
   var modRewrite = require('connect-modrewrite');
@@ -42,17 +43,46 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
 
-    // Project settings
     config: config,
 
-    less: {
-      development: {
+    bower: {
+      install: {
         options: {
-          paths: ['<%= config.src %>/styles']
-        },
-        files: {
-          '<%= config.src %>/css/main.css': '<%= config.src %>/styles/main.less'
+          cleanup: true,
+          copy: true,
+          install: true,
+          targetDir: '<%= config.src %>/bower_components'
         }
+      }
+    },
+
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.temp %>',
+            '<%= config.dist %>/*',
+            '!<%= config.dist %>/.git*'
+          ]
+        }]
+      },
+      'dist-cleanup': [
+        '<%= config.dist %>/bower_components'
+      ]
+    },
+
+    concat: {
+      /*styles: {
+        src: ['<%= config.temp %>/styles/main.css'],
+        dest: '<%= config.dist %>/styles/main.css'
+      },*/
+      headScripts: {
+        src: [
+          '<%= config.src %>/bower_components/modernizr/modernizr.js'/*,
+          '<%= config.src %>/scripts/grunticon.js'*/
+        ],
+        dest: '<%= config.dist %>/scripts/lorax-head.min.js'
       }
     },
 
@@ -73,19 +103,61 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.src %>',
+          dest: '<%= config.dist %>',
+          src: [
+            '*.{ico,png,txt}',
+            '.htaccess',
+            'robots.txt',
+            //'sitemap.xml',
+            'scripts/data/{,*/}*.{js,json}',
+            'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
+            'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',
+            '**/*.tpl.html',
+            'index.html'
+          ]
+        }]
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
       },
       all: [
         'Gruntfile.js',
-        '<%= config.app %>/**/*.js',
+        'app/**/*.js',
         '<%= config.src %>/scripts/{,*/}*.js',
         '!<%= config.src %>/scripts/libs/{,*/}*.js',
         '!<%= config.src %>/scripts/utils.js',
         '!<%= config.src %>/bower_components/{,*/}*.js',
         '!node_modules/{,*/}*.js'
       ]
+    },
+
+    less: {
+      server: {
+        options: {
+          paths: ['<%= config.src %>/styles']
+        },
+        files: {
+          '<%= config.src %>/css/main.css': '<%= config.src %>/styles/main.less'
+        }
+      },
+      dist: {
+        options: {
+          cleancss: true,
+          paths: ['<%= config.src %>/styles']
+        },
+        files: {
+          '<%= config.dist %>/css/main.css': '<%= config.src %>/styles/main.less'
+        }
+      }
     },
 
     notify: {
@@ -101,11 +173,54 @@ module.exports = function (grunt) {
       }
     },
 
+    requirejs: {
+      dist: {
+        options: {
+          baseUrl: '<%= config.src %>/app',
+          mainConfigFile: '<%= config.src %>/scripts/config.js',
+          normalizeDirDefines: 'all',
+          out: '<%= config.temp %>/scripts/lorax.js',
+          preserveLicenseComments: false
+        }
+      }
+    },
+
+    uglify: {
+      options: {
+        compress: {
+          /*jshint camelcase: false */
+          drop_console: true
+        }
+      },
+      dist: {
+        files: {
+          '<%= config.dist %>/scripts/lorax.min.js': [
+            '<%= config.temp %>/scripts/lorax.js'
+          ]
+        }
+      }
+    },
+
+    usemin: {
+      html: ['<%= config.dist %>/{,*/}*.html'],
+      //css: ['<%= config.temp %>/styles/{,*/}*.css'],
+      options: {
+        dirs: ['<%= config.dist %>']
+      }
+    },
+
+    useminPrepare: {
+      html: '<%= config.src %>/index.html',
+      options: {
+        dest: '<%= config.dist %>'
+      }
+    },
+
     watch: {
       styles: {
         files: ['<%= config.src %>/styles/**/*.less'],
         tasks: [
-          'less',
+          'less:server',
           'notify:less'
         ]
       },
@@ -121,8 +236,8 @@ module.exports = function (grunt) {
           '<%= config.src %>/*.html', // Core pages
           '<%= config.src %>/styles/**/*.less', // Styles
           '<%= config.src %>/scripts/{,*/}*.js', // Global scripts
-          '<%= config.app %>/{,**/}*.{js,html}', // ng JS and templates
-          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
+          'app/{,**/}*.{js,html}', // ng JS and templates
+          'app/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
         ]
       }
     }
@@ -130,12 +245,28 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', []);
 
+  // Dev
   grunt.registerTask('server', function () {
     grunt.task.run([
-      'less',
+      'less:server',
       'connect:server',
       'notify:server',
       'watch'
+    ]);
+  });
+
+  // Build
+  grunt.registerTask('build', function () {
+    grunt.task.run([
+      'clean:dist',
+      'useminPrepare',
+      'bower:install',
+      'less:dist',
+      'copy:dist',
+      'requirejs',
+      'concat',
+      'uglify:dist',
+      'usemin'
     ]);
   });
 };

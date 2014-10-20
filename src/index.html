@@ -7,9 +7,12 @@
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/favicon.ico">
 
-        <link rel="stylesheet" href="/css/main.css">
+        <!-- styles -->
+        <link rel="stylesheet" href="./css/main.css">
 
+        <!-- build:js ./scripts/lorax-head.min.js -->
         <script src="/bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
     </head>
 
     <body ng-controller="CoreCtrl" data-lorax-window>
@@ -30,6 +33,8 @@
         <div class="container" data-ng-view data-ng-cloak></div>
     </body>
 
+    <!-- build:js ./scripts/lorax.min.js -->
     <script src="/bower_components/requirejs/require.js"></script>
     <script src="/scripts/config.js"></script>
+    <!-- endbuild -->
 </html>

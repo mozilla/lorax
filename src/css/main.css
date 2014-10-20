@@ -527,7 +527,7 @@ img {
   }
 }
 .banner-logo > a {
-  background: url('/images/open-internet-cloud.png') no-repeat 10px 50% transparent;
+  background: url('../images/open-internet-cloud.png') no-repeat 10px 50% transparent;
   color: #000000;
   display: block;
   font-family: 'din-condensed-medium', sans-serif;
@@ -550,7 +550,7 @@ img {
 }
 @media screen and (min-width: 1360px) {
   .banner-logo > a {
-    background: url('/images/open-internet-project.png') no-repeat 0 0 transparent;
+    background: url('../images/open-internet-project.png') no-repeat 0 0 transparent;
     height: 149px;
     left: 13px;
     position: absolute;
@@ -590,7 +590,7 @@ img {
   font-style: normal;
 }
 .banner-info {
-  background: url('/images/icon-info.png') no-repeat 0 0 transparent;
+  background: url('../images/icon-info.png') no-repeat 0 0 transparent;
   display: none;
   height: 30px;
   text-indent: -9999px;
@@ -1146,7 +1146,7 @@ img {
   background: #222222;
 }
 .internet-company__scale--full {
-  background: url('/images/slash-pattern.png') repeat-x 0 0 transparent;
+  background: url('../images/slash-pattern.png') repeat-x 0 0 transparent;
   margin-left: 5px;
 }
 .internet-company__scale--marker {
