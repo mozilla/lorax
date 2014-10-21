@@ -187,12 +187,19 @@ define([
   Explore.prototype._updatePositions = function () {
     var i;
 
+    var localPosition = this._stage.getMousePosition().clone();
+    localPosition.x -= this._topicsContainer.x;
+    localPosition.y -= this._topicsContainer.y;
     for (i = 0; i < this._topics.length; i ++) {
-      this._topics[i].update();
+      this._topics[i].update(localPosition);
     }
 
     for (i = 0; i < this._tags.length; i ++) {
-      this._tags[i].update();
+      //this._tags[i].update();
+    }
+
+    for (i = 0; i < this._fakes.length; i ++) {
+      //this._fakes[i].update();
     }
   };
 

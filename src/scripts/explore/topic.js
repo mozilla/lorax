@@ -20,8 +20,17 @@ define(['explore/circle'], function (Circle) {
   };
 
   Topic.prototype._superUpdate = Topic.prototype.update;
-  Topic.prototype.update = function () {
+  Topic.prototype.update = function (mousePosition) {
     this._superUpdate();
+
+    if (this.isOver) {
+      this.elm.x = mousePosition.x;
+      this.elm.y = mousePosition.y;
+
+      if (Math.abs(this.elm.x - this.x0) > 40 || Math.abs(this.elm.y - this.y0) > 40) {
+        this.isOver = false;
+      }
+    }
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
   };
 

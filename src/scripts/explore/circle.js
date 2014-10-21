@@ -20,11 +20,17 @@ define(['pixi'], function (PIXI) {
     this.x0 = x;
     this.y0 = y;
     this.aX = (Math.random() * 5) + 4;
-    this.pX = (Math.random() * 1) + 0.5;
-    this.tX = Math.random() * 5;
+    this.pX = (Math.random() * Math.PI / 2);
+    this.tX = Math.random() * 100;
     this.aY = (Math.random() * 5) + 4;
-    this.pY = (Math.random() * 1) + 0.5;
-    this.tY = Math.random() * 5;
+    this.pY = (Math.random() * Math.PI / 2);
+    this.tY = Math.random() * 100;
+    this.pA = Math.random() + 0.1;
+    this.tA = Math.random() * 100;
+    this.x1 = x;
+    this.y1 = y;
+    this.x2 = x;
+    this.y2 = y;
   };
 
   /**
@@ -47,9 +53,14 @@ define(['pixi'], function (PIXI) {
   Circle.prototype.update = function () {
     this.tX += this.pX;
     this.tY += this.pY;
-    this.elm.x = this.x0 + Math.sin(this.tX * Math.PI / 180) * this.aX;
-    this.elm.y = this.y0 + Math.sin(this.tY * Math.PI / 180) * this.aY;
-    var scaleFactor = 1.0 - (0.1 * Math.sin(this.tX * Math.PI / 180));
+    this.tA += this.pA;
+    this.x1 += (this.x0 + Math.sin(this.tX * Math.PI / 180) * this.aX - this.x1) / 2;
+    this.y1 += (this.y0 + Math.sin(this.tY * Math.PI / 180) * this.aY - this.y1) / 2;
+    this.x2 += (this.x1 - this.elm.x) * 0.2;
+    this.y2 += (this.y1 - this.elm.y) * 0.2;
+    this.elm.x += (this.x2 - this.elm.x) / 5;
+    this.elm.y += (this.y2 - this.elm.y) / 5;
+    var scaleFactor = 1.0 - (0.05 * (Math.sin(this.tA * Math.PI / 180) + Math.sin(this.tA * Math.PI / 60)));
     this._circle.scale = new PIXI.Point(scaleFactor, scaleFactor);
   };
 
