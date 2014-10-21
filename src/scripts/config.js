@@ -17,7 +17,8 @@
       'utils': '../scripts/utils',
       'lodash': '../bower_components/lodash/dist/lodash.min',
       'pixi': '../bower_components/pixi/bin/pixi',
-      'stats': '../bower_components/stats.js/build/stats.min'
+      'stats': '../bower_components/stats.js/build/stats.min',
+      'explore': '../scripts/explore'
     },
 
     include: ['lorax/lorax-app'],
