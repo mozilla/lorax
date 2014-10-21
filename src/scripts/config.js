@@ -15,7 +15,9 @@
       'd3': '../bower_components/d3/d3',
       'pubsub': '../bower_components/jquery-tiny-pubsub/src/tiny-pubsub',
       'utils': '../scripts/utils',
-      'lodash': '../bower_components/lodash/dist/lodash.min'
+      'lodash': '../bower_components/lodash/dist/lodash.min',
+      'pixi': '../bower_components/pixi/bin/pixi',
+      'stats': '../bower_components/stats.js/build/stats.min'
     },
 
     include: ['lorax/lorax-app'],
@@ -38,6 +40,9 @@
       },
       'modernizr': {
         exports: ['Modernizr']
+      },
+      'stats': {
+        exports: 'Stats'
       }
     },
 
