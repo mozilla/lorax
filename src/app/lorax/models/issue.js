@@ -47,6 +47,13 @@ define([
     return this._tags;
   };
   
+  IssueModel.prototype.getRelated = function () {
+    return _.uniq(_.reduce(this._tags, function (result, tag) {
+      result = result.concat(tag.getIssues());
+      return result;
+    }, []));
+  };
+  
   IssueModel.prototype.getStatus = function () {
     return this._status;
   };

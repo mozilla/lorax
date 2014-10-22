@@ -4,23 +4,23 @@
       "issues": {
         "available": {
           "status": 0,
-          "tags": [ "google", "facebook" ]
+          "tags": [ "google", "facebook", "amazon" ]
         },
         "affordable": {
           "status": 1,
-          "tags": [ "facebook" ]
+          "tags": [ "facebook", "china", "ebay" ]
         },
         "speaksMyLanguage": {
           "status": 1,
-          "tags": []
+          "tags": [ "china", "brazil" ]
         },
         "accessible": {
           "status": 1,
-          "tags": []
+          "tags": [ "google", "china", "youtube" ]
         },
         "infrastructure": {
           "status": 1,
-          "tags": []
+          "tags": [ "google", "amazon", "akamai" ]
         }
       }
     },
@@ -28,35 +28,35 @@
       "issues": {
         "contentCreation": {
           "status": 2,
-          "tags": []
+          "tags": [ "google", "youtube", "facebook" ]
         },
         "identityControl": {
           "status": 1,
-          "tags": []
+          "tags": [ "google", "facebook" ]
         },
         "surveillance": {
           "status": 2,
-          "tags": []
+          "tags": [ "google", "amazon", "nsa", "cia" ]
         },
         "corporateTracking": {
           "status": 2,
-          "tags": []
+          "tags": [ "google", "nsa" ]
         },
         "gorvernmentSnooping": {
           "status": 2,
-          "tags": []
+          "tags": [ "nsa", "cia" ]
         },
         "transparency": {
           "status": 2,
-          "tags": []
+          "tags": [ "facebook", "google" ]
         },
         "decentralization": {
           "status": 2,
-          "tags": []
+          "tags": [ "mozilla", "google" ]
         },
         "censorship": {
           "status": 2,
-          "tags": []
+          "tags": [ "nsa", "cia" ]
         }
       }
     },
@@ -64,19 +64,19 @@
       "issues": {
         "cyberThreats": {
           "status": 1,
-          "tags": []
+          "tags": [ "china", "nsa" ]
         },
         "cyberBullying": {
           "status": 1,
-          "tags": []
+          "tags": [ "china", "nsa" ]
         },
         "controlPoints": {
           "status": 1,
-          "tags": []
+          "tags": [ "mozilla", "google", "youtube" ]
         },
         "storageSecurity": {
           "status": 2,
-          "tags": []
+          "tags": [ "amazon", "akamai", "google" ]
         }
       }
     },
@@ -84,15 +84,15 @@
       "issues": {
         "netNeutrality": {
           "status": 2,
-          "tags": []
+          "tags": [ "akamai", "mozilla" ]
         },
         "interopelability": {
           "status": 1,
-          "tags": []
+          "tags": [ "mozilla", "china" ]
         },
         "distributionOfPower": {
           "status": 2,
-          "tags": []
+          "tags": [ "china", "brazil", "mozilla" ]
         }
       }
     }
