@@ -23,7 +23,8 @@
     "angular-route": "~1.3.0",
     "lodash": "~2.4.1",
     "pixi": "~1.6.1",
-    "stats.js": "*"
+    "stats.js": "*",
+    "TweenJS": "*"
   },
   "devDependencies": {
     "almond": "~0.3.0",

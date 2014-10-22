@@ -18,6 +18,7 @@
       'lodash': '../bower_components/lodash/dist/lodash.min',
       'pixi': '../bower_components/pixi/bin/pixi',
       'stats': '../bower_components/stats.js/build/stats.min',
+      'createjs': '../bower_components/TweenJS/lib/tweenjs-0.5.1.min',
       'explore': '../scripts/explore'
     },
 
@@ -44,6 +45,9 @@
       },
       'stats': {
         exports: 'Stats'
+      },
+      'createjs': {
+        exports: 'createjs'
       }
     },
 

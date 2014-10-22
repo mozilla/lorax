@@ -1,11 +1,13 @@
 define([
   'pixi',
   'stats',
+  'createjs',
   'explore/issue',
   'explore/circle'
 ], function (
   PIXI,
   Stats,
+  createjs,
   Issue,
   Circle
 ) {
@@ -32,6 +34,7 @@ define([
     this._fakes = [];
     this._issueData;
     this._tagData;
+    this._lastTick = 0;
   };
 
   Explore.prototype.setIssues = function (data) {
@@ -195,7 +198,7 @@ define([
   };
 
   Explore.prototype._onMouseOutIssue = function (event) {
-    this._issues[event.target.index].isOver = false;
+    // this._issues[event.target.index].isOver = false;
   };
 
   Explore.prototype._updatePositions = function () {
@@ -217,10 +220,13 @@ define([
     }
   };
 
-  Explore.prototype._animate = function () {
+  Explore.prototype._animate = function (tick) {
     if (this._stats) {
       this._stats.begin();
     }
+
+    createjs.Tween.tick(tick - this._lastTick);
+    this._lastTick = tick;
 
     this._updatePositions();
     // this._drawLines();

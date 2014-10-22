@@ -1,4 +1,4 @@
-define(['pixi'], function (PIXI) {
+define(['pixi', 'createjs'], function (PIXI, createjs) {
   'use strict';
 
   var Circle = function () {
@@ -13,24 +13,20 @@ define(['pixi'], function (PIXI) {
 
     this.elm.x = x;
     this.elm.y = y;
+    this._x0 = x;
+    this._y0 = y;
 
-    // t = time
-    // p = phase
-    // a = amplitude
-    this.x0 = x;
-    this.y0 = y;
-    this.aX = (Math.random() * 5) + 4;
-    this.pX = (Math.random() * Math.PI / 2);
-    this.tX = Math.random() * 100;
-    this.aY = (Math.random() * 5) + 4;
-    this.pY = (Math.random() * Math.PI / 2);
-    this.tY = Math.random() * 100;
-    this.pA = Math.random() + 0.1;
-    this.tA = Math.random() * 100;
-    this.x1 = x;
-    this.y1 = y;
-    this.x2 = x;
-    this.y2 = y;
+    this._scaleStaticTween = createjs.Tween.get(this.elm.scale, {loop: true})
+      .wait(Math.random() * 1000)
+      .to({x:1.2, y:1.2}, 500, createjs.Ease.bounceOut)
+      .to({x:1, y:1}, 500, createjs.Ease.linear);
+
+    this._posStaticTween = createjs.Tween.get(this.elm, {loop: true})
+      .to({x: x - 10 + Math.random() * 20, y: y - 10 + Math.random() * 20}, 1000 + Math.random() * 500, createjs.sineInOut)
+      .to({x: x - 10 + Math.random() * 20, y: y - 10 + Math.random() * 20}, 1000 + Math.random() * 500, createjs.sineInOut)
+      .to({x: x - 10 + Math.random() * 20, y: y - 10 + Math.random() * 20}, 1000 + Math.random() * 500, createjs.sineInOut)
+      .to({x: x - 10 + Math.random() * 20, y: y - 10 + Math.random() * 20}, 1000 + Math.random() * 500, createjs.sineInOut)
+      .to({x: x, y: y}, 1000 + Math.random() * 500, createjs.sineInOut);
   };
 
   /**
@@ -48,20 +44,6 @@ define(['pixi'], function (PIXI) {
     circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
     circle.cacheAsBitmap = true;
     return circle;
-  };
-
-  Circle.prototype.update = function () {
-    this.tX += this.pX;
-    this.tY += this.pY;
-    this.tA += this.pA;
-    this.x1 += (this.x0 + Math.sin(this.tX * Math.PI / 180) * this.aX - this.x1) / 2;
-    this.y1 += (this.y0 + Math.sin(this.tY * Math.PI / 180) * this.aY - this.y1) / 2;
-    this.x2 += (this.x1 - this.elm.x) * 0.2;
-    this.y2 += (this.y1 - this.elm.y) * 0.2;
-    this.elm.x += (this.x2 - this.elm.x) / 5;
-    this.elm.y += (this.y2 - this.elm.y) / 5;
-    var scaleFactor = 1.0 - (0.05 * (Math.sin(this.tA * Math.PI / 180) + Math.sin(this.tA * Math.PI / 60)));
-    this._circle.scale = new PIXI.Point(scaleFactor, scaleFactor);
   };
 
   return Circle;
