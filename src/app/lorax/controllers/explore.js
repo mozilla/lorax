@@ -9,16 +9,18 @@ define([], function () {
 
   /*jshint unused: false */
   var ExploreCtrl = function (
-    $scope
+    $scope,
+    dataService
   ) {
 
     this._$scope = $scope;
-
+    
     console.log('load explore ctrl');
   };
 
   ExploreCtrl.$inject = [
-    '$scope'
+    '$scope',
+    'dataService'
   ];
 
   return ExploreCtrl;

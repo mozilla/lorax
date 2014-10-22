@@ -10,20 +10,17 @@ define(['jquery', 'angular'], function ($, angular) {
   /*jshint unused: false */
   var CoreCtrl = function (
     $scope,
-    scrollService
+    scrollService,
+    dataService
   ) {
 
     this._$scope = $scope;
 
-    /**
-     * Instance reference to $modal provider
-     * @type {Object}
-     */
-    //this._$modal = $modal;
-
-    //$scope.core = {
-    //
-    //};
+    dataService.getMain().then(function(model) {
+      debugger;
+      console.log(model);
+      console.log(model.getIssues());
+    });
 
     $scope.$on('$locationChangeSuccess', function () {
       console.log('go');
@@ -33,7 +30,8 @@ define(['jquery', 'angular'], function ($, angular) {
 
   CoreCtrl.$inject = [
     '$scope',
-    'scrollService'
+    'scrollService',
+    'dataService'
   ];
 
   return CoreCtrl;

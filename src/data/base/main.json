@@ -1,0 +1,100 @@
+{
+  "topics": {
+    "availability": {
+      "issues": {
+        "available": {
+          "status": 0,
+          "tags": [ "google", "facebook" ]
+        },
+        "affordable": {
+          "status": 1,
+          "tags": [ "facebook" ]
+        },
+        "speaksMyLanguage": {
+          "status": 1,
+          "tags": []
+        },
+        "accessible": {
+          "status": 1,
+          "tags": []
+        },
+        "infrastructure": {
+          "status": 1,
+          "tags": []
+        }
+      }
+    },
+    "control": {
+      "issues": {
+        "contentCreation": {
+          "status": 2,
+          "tags": []
+        },
+        "identityControl": {
+          "status": 1,
+          "tags": []
+        },
+        "surveillance": {
+          "status": 2,
+          "tags": []
+        },
+        "corporateTracking": {
+          "status": 2,
+          "tags": []
+        },
+        "gorvernmentSnooping": {
+          "status": 2,
+          "tags": []
+        },
+        "transparency": {
+          "status": 2,
+          "tags": []
+        },
+        "decentralization": {
+          "status": 2,
+          "tags": []
+        },
+        "censorship": {
+          "status": 2,
+          "tags": []
+        }
+      }
+    },
+    "safety": {
+      "issues": {
+        "cyberThreats": {
+          "status": 1,
+          "tags": []
+        },
+        "cyberBullying": {
+          "status": 1,
+          "tags": []
+        },
+        "controlPoints": {
+          "status": 1,
+          "tags": []
+        },
+        "storageSecurity": {
+          "status": 2,
+          "tags": []
+        }
+      }
+    },
+    "fairness": {
+      "issues": {
+        "netNeutrality": {
+          "status": 2,
+          "tags": []
+        },
+        "interopelability": {
+          "status": 1,
+          "tags": []
+        },
+        "distributionOfPower": {
+          "status": 2,
+          "tags": []
+        }
+      }
+    }
+  }
+}

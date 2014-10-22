@@ -28,6 +28,7 @@ define([
   'lorax/services/window',
   'lorax/services/scroll',
   'lorax/services/pubsub',
+  'lorax/services/data',
 
   //'core/constants/resource-bundle',
 
@@ -61,6 +62,7 @@ define([
   windowService,
   scrollService,
   pubSubService,
+  dataService,
 
   //ResourceBundle,
 
@@ -182,7 +184,13 @@ define([
      * Inject {@link lorax/services/pubSubService} as 'pubSubService'
      * @method lorax/loraxApp~factory
      */
-    .factory('pubSubService', pubSubService);
+    .factory('pubSubService', pubSubService)
+
+    /**
+     * Inject {@link lorax/services/dataService} as 'dataService'
+     * @method lorax/loraxApp~factory
+     */
+    .factory('dataService', dataService);
 
   /**
    * Bootstrap the application
