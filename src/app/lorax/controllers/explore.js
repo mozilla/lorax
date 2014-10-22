@@ -14,8 +14,6 @@ define([], function () {
   ) {
 
     this._$scope = $scope;
-    
-    console.log('load explore ctrl');
   };
 
   ExploreCtrl.$inject = [

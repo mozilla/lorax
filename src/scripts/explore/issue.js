@@ -1,16 +1,16 @@
 define(['explore/circle'], function (Circle) {
   'use strict';
 
-  var Topic = function (index) {
+  var Issue = function (index) {
     this._index = index;
 
     return this;
   };
 
-  Topic.prototype = new Circle();
+  Issue.prototype = new Circle();
 
-  Topic.prototype._superDraw = Topic.prototype.draw;
-  Topic.prototype.draw = function (radius, x, y) {
+  Issue.prototype._superDraw = Issue.prototype.draw;
+  Issue.prototype.draw = function (radius, x, y) {
     this._superDraw(radius, x, y);
     this.elm.interactive = true;
     this.elm.buttonMode = true;
@@ -19,8 +19,8 @@ define(['explore/circle'], function (Circle) {
     this.related = [Math.floor(Math.random() * 30)];
   };
 
-  Topic.prototype._superUpdate = Topic.prototype.update;
-  Topic.prototype.update = function (mousePosition) {
+  Issue.prototype._superUpdate = Issue.prototype.update;
+  Issue.prototype.update = function (mousePosition) {
     this._superUpdate();
 
     if (this.isOver) {
@@ -34,5 +34,5 @@ define(['explore/circle'], function (Circle) {
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
   };
 
-  return Topic;
+  return Issue;
 });

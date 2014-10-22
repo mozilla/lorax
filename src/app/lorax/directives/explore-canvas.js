@@ -23,13 +23,19 @@ define(['explore/explore'], function (Explore) {
    * @constructor
    */
   var ExploreCanvasController = function (
-    $scope
+    $scope,
+    dataService
     )
   {
     this._$scope = $scope;
 
-    this._explore = new Explore();
-    this._explore.init(true);
+    dataService.getMain().then(function(model) {
+      this._explore = new Explore();
+      this._explore.setIssues(model.getIssues());
+      this._explore.setTags(model.getTags());
+      this._explore.init();
+      this._explore.setContainer(this._container);
+    }.bind(this));
   };
 
   /**
@@ -37,7 +43,8 @@ define(['explore/explore'], function (Explore) {
    * @type {Array}
    */
   ExploreCanvasController.$inject = [
-    '$scope'
+    '$scope',
+    'dataService'
   ];
 
   /**
@@ -48,7 +55,7 @@ define(['explore/explore'], function (Explore) {
    * @param {object} controller Controller reference.
    */
   var ExploreCanvasLinkFn = function (scope, iElem, iAttrs, controller) {
-    controller._explore.setContainer(iElem);
+    controller._container = iElem;
   };
 
   return ExploreCanvasDirective;

@@ -16,14 +16,7 @@ define(['jquery', 'angular'], function ($, angular) {
 
     this._$scope = $scope;
 
-    dataService.getMain().then(function(model) {
-      debugger;
-      console.log(model);
-      console.log(model.getIssues());
-    });
-
     $scope.$on('$locationChangeSuccess', function () {
-      console.log('go');
       scrollService.go('top',  { duration: 0 });
     });
   };
