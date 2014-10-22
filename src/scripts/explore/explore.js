@@ -39,6 +39,7 @@ define([
 
   Explore.prototype.setIssues = function (data) {
     this._issueData = data;
+    console.log(data);
   };
 
   Explore.prototype.setTags = function (data) {
@@ -98,13 +99,13 @@ define([
   */
   Explore.prototype._drawFakes = function () {
     var seed, rSeed;
-    for (var i = 0; i < 80; i ++) {
+    for (var i = 0; i < 200; i ++) {
       seed = Math.random() * Math.PI * 2;
       rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
       var circle = new Circle();
-      circle.draw(3, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-      circle.elm.alpha = 0.5;
+      circle.draw(1.5, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+      circle.elm.alpha = 0.3;
 
       this._fakes.push(circle);
       this._issuesContainer.addChild(circle.elm);
@@ -116,9 +117,9 @@ define([
   */
   Explore.prototype._drawTags = function () {
     var seed, rSeed;
-    for (var i = 0; i < this._tagData.length; i ++) {
+    for (var i = 0; i < this._tagData.length * 8; i ++) {
       seed = Math.random() * Math.PI * 2;
-      rSeed = this._exploreRadius + (Math.random() * 10);
+      rSeed = this._exploreRadius + (Math.random() * 5);
 
       var tag = new Circle();
       tag.data = this._tagData[i];
@@ -165,30 +166,48 @@ define([
   */
   Explore.prototype._drawLines = function () {
     this._linesContainer.clear();
-    var alpha = 0.3;
     var isOver = false;
     var issue;
     var related;
+    var tags;
+    var relatedItem;
     for (var i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
+      related = this._issues[i].data.getRelated();
+      tags = this._issues[i].data.getTags();
 
-      for (var j = 0; j < issue.related.length; j ++) {
-        related = this._issues[issue.related[j]];
+      for (var j = 0; j < related.length; j ++) {
+        relatedItem = this._getElementFromId(related[j]._id);
 
-        if (i !== j) {
-          isOver = (issue.isOver || related.isOver);
+        isOver = (issue.isOver || relatedItem.isOver);
+        this._linesContainer.lineStyle(1, 0x000000,  isOver ? 0.3 : 0.05);
 
-          if (alpha !== 0.3 && isOver) {
-            alpha = 0.3;
-            this._linesContainer.lineStyle(1, 0x000000,  alpha);
-          } else if (alpha === 0.3 && !isOver) {
-            alpha = 0.05;
-            this._linesContainer.lineStyle(1, 0x000000,  alpha);
-          }
+        this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+        this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+      }
 
-          this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-          this._linesContainer.lineTo(related.elm.x, related.elm.y);
-        }
+      for (var j = 0; j < tags.length; j ++) {
+        relatedItem = this._getElementFromId(tags[j]._id);
+
+        isOver = (issue.isOver || relatedItem.isOver);
+        this._linesContainer.lineStyle(1, 0x000000,  isOver ? 0.3 : 0.05);
+
+        this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+        this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+      }
+    }
+  };
+
+  Explore.prototype._getElementFromId = function (id) {
+    for (var i = 0; i < this._issues.length; i ++) {
+      if (this._issues[i].data._id === id) {
+        return this._issues[i];
+      }
+    }
+
+    for (i = 0; i < this._tags.length; i ++) {
+      if (this._tags[i].data._id === id) {
+        return this._tags[i];
       }
     }
   };
@@ -229,7 +248,7 @@ define([
     this._lastTick = tick;
 
     this._updatePositions();
-    // this._drawLines();
+    this._drawLines();
     this._renderer.render(this._stage);
 
     if (this._stats) {
