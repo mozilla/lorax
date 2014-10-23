@@ -42,11 +42,11 @@ define(['explore/explore'], function (Explore) {
 
   ExploreCanvasController.prototype.switchView = function (view) {
     if (view === 'explore') {
-
+      this._explore.showExplore();
     } else if (view === 'topics') {
       this._explore.showTopics();
     } else if (view === 'issues') {
-
+      this._explore.showIssues();
     }
   };
 

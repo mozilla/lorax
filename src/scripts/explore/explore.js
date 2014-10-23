@@ -18,7 +18,9 @@ define([
       setContainer: this.setContainer.bind(this),
       init: this.init.bind(this),
       setData: this.setData.bind(this),
-      showTopics: this.showTopics.bind(this)
+      showExplore: this.showExplore.bind(this),
+      showTopics: this.showTopics.bind(this),
+      showIssues: this.showIssues.bind(this)
     };
   };
 
@@ -44,11 +46,67 @@ define([
     this._topicsData = data.getTopics();
   };
 
+  Explore.prototype.showExplore = function () {
+    createjs.Tween.get(this._linesContainer)
+      .to({alpha:0}, 300, createjs.Ease.easeOut)
+      .wait(200)
+      .to({alpha:1}, 300, createjs.Ease.easeIn);
+
+    setTimeout(function () {
+      this._mode = 'explore';
+    }.bind(this), 500);
+
+    var i, issue;
+    for (i = 0; i < this._issues.length; i ++) {
+      issue = this._issues[i];
+      issue.moveTo(issue.exploreX, issue.exploreY)
+        .call(issue._resumeStaticAnimation.bind(issue));
+    }
+
+    for (i = 0; i < this._tags.length; i ++) {
+      this._tags[i].implode();
+    }
+
+    for (i = 0; i < this._fakes.length; i ++) {
+      this._fakes[i].implode();
+    }
+  };
+
+  Explore.prototype.showIssues = function () {
+    createjs.Tween.get(this._linesContainer)
+      .to({alpha:0}, 300, createjs.Ease.easeOut)
+      .wait(200)
+      .to({alpha:1}, 300, createjs.Ease.easeIn);
+
+    setTimeout(function () {
+      this._mode = 'issues';
+    }.bind(this), 500);
+
+    var i, j;
+
+    for (i = 0; i < this._tags.length; i ++) {
+      this._tags[i].explode();
+    }
+
+    for (i = 0; i < this._fakes.length; i ++) {
+      this._fakes[i].explode();
+    }
+
+    var issue;
+    for(i = 0; i < this._issues.length; i ++) {
+      issue = this._issues[i];
+      issue.stopMoving();
+      issue.moveTo(
+        -(this._renderer.width / 2) + 150,
+        -(this._renderer.height / 2) + 50 + 80 * i);
+    }
+  };
+
   Explore.prototype.showTopics = function () {
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 500, createjs.Ease.easeOut)
-      .wait(500)
-      .to({alpha:1}, 500, createjs.Ease.easeIn);
+      .to({alpha:0}, 300, createjs.Ease.easeOut)
+      .wait(200)
+      .to({alpha:1}, 300, createjs.Ease.easeIn);
 
     setTimeout(function () {
       this._mode = 'topics';
@@ -86,7 +144,8 @@ define([
         issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
         issue.moveTo(
           centerX + (Math.random() * radius * 2) - radius,
-          centerY + (Math.random() * radius * 2) - radius);
+          centerY + (Math.random() * radius * 2) - radius)
+          .call(issue._resumeStaticAnimation.bind(issue));
       }
     }
   };
@@ -102,7 +161,8 @@ define([
       issue = this._getElementFromId(issues[i]._id);
       issue.moveTo(
         area.x - this._issuesContainer.x,
-        area.y - this._issuesContainer.y + (dist * i) - (dist * issues.length / 2));
+        area.y - this._issuesContainer.y + (dist * i) - (dist * issues.length / 2))
+        .call(issue._resumeStaticAnimation.bind(issue));
     }
 
     var lineWidth = 60;
@@ -127,7 +187,8 @@ define([
         issue = this._getElementFromId(issues[i]._id);
         issue.moveTo(
           area.x - this._issuesContainer.x + (Math.random() * radius * 2) - radius,
-          area.y - this._issuesContainer.y + (Math.random() * radius * 2) - radius);
+          area.y - this._issuesContainer.y + (Math.random() * radius * 2) - radius)
+          .call(issue._resumeStaticAnimation.bind(issue));
       }
     }.bind(this);
   };
@@ -267,11 +328,31 @@ define([
       related = this._issues[i].data.getRelated();
       tags = this._issues[i].data.getTags();
 
-      for (j = 0; j < related.length; j ++) {
-        relatedItem = this._getElementFromId(related[j]._id);
+      if (this._mode === 'explore' || this._mode === 'topics') {
+        for (j = 0; j < related.length; j ++) {
+          relatedItem = this._getElementFromId(related[j]._id);
 
-        if (this._mode === 'explore' ||
+          // only show related on same topic if on topics
+          if (this._mode === 'explore' ||
             issue.data._parent._id === relatedItem.data._parent._id) {
+            isOver = (issue.isOver || relatedItem.isOver);
+            if (isOver) {
+              lineColor = issue.isOver ? issue.color : relatedItem.color;
+              this._linesContainer.lineStyle(1, lineColor,  0.3);
+            } else {
+              this._linesContainer.lineStyle(1, 0x000000, 0.05);
+            }
+
+            this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+            this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+          }
+        }
+      }
+
+      // connect to tags on explore
+      if (this._mode === 'explore') {
+        for (j = 0; j < tags.length; j ++) {
+          relatedItem = this._getElementFromId(tags[j]._id);
 
           isOver = (issue.isOver || relatedItem.isOver);
           if (isOver) {
@@ -286,21 +367,12 @@ define([
         }
       }
 
-      if (this._mode === 'explore') {
-        for (j = 0; j < tags.length; j ++) {
-          relatedItem = this._getElementFromId(tags[j]._id);
-
-          isOver = (issue.isOver || relatedItem.isOver);
-          if (isOver) {
-            lineColor = issue.isOver ? issue.color : relatedItem.color;
-            this._linesContainer.lineStyle(1, lineColor,  0.3);
-          } else {
-            this._linesContainer.lineStyle(1, 0x000000,  0.05);
-          }
-
-          this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-          this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-        }
+      // connect to next in line on issues
+      if (this._mode === 'issues' && i < this._issues.length - 1) {
+        relatedItem = this._issues[i + 1];
+        this._linesContainer.lineStyle(1, 0x000000, 0.1);
+        this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+        this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
       }
     }
   };
