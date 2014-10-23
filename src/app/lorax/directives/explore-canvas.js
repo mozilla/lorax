@@ -35,7 +35,7 @@ define(['explore/explore'], function (Explore) {
     dataService.getMain().then(function(model) {
       this._explore = new Explore();
       this._explore.setData(model);
-      this._explore.init();
+      this._explore.init(true);
       this._explore.setContainer(this._container);
     }.bind(this));
   };
@@ -44,7 +44,7 @@ define(['explore/explore'], function (Explore) {
     if (view === 'explore') {
 
     } else if (view === 'topics') {
-      this._explore.showTopics(true);
+      this._explore.showTopics();
     } else if (view === 'issues') {
 
     }

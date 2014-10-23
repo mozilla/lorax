@@ -29,7 +29,11 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
       .to({x:1.2, y:1.2}, 500, createjs.Ease.bounceOut)
       .to({x:1, y:1}, 500, createjs.Ease.linear);
 
-    this._tween = createjs.Tween.get(this.elm, {loop: true, override: true})
+    this._resumeStaticAnimation();
+  };
+
+  Circle.prototype._resumeStaticAnimation = function () {
+    this._staticTween = createjs.Tween.get(this.elm, {loop: true, override: true})
       .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
         1000 + Math.random() * 500,
         createjs.sineInOut)
@@ -89,11 +93,11 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._x0 = x;
     this._y0 = y;
 
-    this._tween.setPaused(true);
+    this._staticTween.setPaused(true);
 
     createjs.Tween.get(this.elm, {override: true})
-      .to({x:x, y:y}, (Math.random() * 300) + 500, createjs.Ease.getBackOut(1.5))
-      .call(this._doStaticAnimation.bind(this));
+      .to({x:x, y:y}, (Math.random() * 100) + 500, createjs.Ease.getBackOut(1.5))
+      .call(this._resumeStaticAnimation.bind(this));
   };
 
   return Circle;

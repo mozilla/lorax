@@ -65,7 +65,7 @@ define([
     }
 
     var topicArea;
-    var radius = 50;
+    var radius = 70;
     var issue, centerX, centerY;
     for(i = 0; i < this._topicsData.length; i ++) {
       centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
@@ -122,7 +122,7 @@ define([
       this._stage.removeChild(lineArea);
       this._stage.addChild(area);
 
-      var radius = 50;
+      var radius = 70;
       for(var i = 0; i < issues.length; i ++) {
         issue = this._getElementFromId(issues[i]._id);
         issue.moveTo(

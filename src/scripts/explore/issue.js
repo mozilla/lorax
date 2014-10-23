@@ -13,7 +13,7 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
   Issue.prototype.setData = function (data) {
     this._superSetData.bind(this)(data);
 
-    var colors = [0x00ff00, 0xffff00, 0xff0000];
+    var colors = [0x00ae52, 0xffcc00, 0xe11313];
     this.color = colors[this.data._status];
   };
 
@@ -45,7 +45,7 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
         this.isOver = false;
         createjs.Tween.get(this.elm, {override: true})
         .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
-        .call(this._doStaticAnimation.bind(this));
+        .call(this._resumeStaticAnimation.bind(this));
       }
     }
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
