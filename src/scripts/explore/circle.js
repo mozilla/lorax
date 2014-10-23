@@ -12,7 +12,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._circle = this._drawCircle(radius, x, y);
     this.elm.addChild(this._circle);
 
-    if (this.data) this._drawTitle();
+    if (this.data) {
+      this._drawTitle();
+    }
 
     this.elm.x = x;
     this.elm.y = y;

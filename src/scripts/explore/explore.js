@@ -126,6 +126,8 @@ define([
     var i, issue;
     for (i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
+      issue.setTextAlwaysVisible(false);
+      issue.setIsInteractive(true);
       issue.moveTo(issue.exploreX, issue.exploreY)
         .call(issue._resumeStaticAnimation.bind(issue));
     }
@@ -168,9 +170,11 @@ define([
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.stopMoving();
+      issue.setTextAlwaysVisible(true);
+      issue.setIsInteractive(false);
       issue.moveTo(
         -(this._renderer.width / 2) + 150,
-        -(this._renderer.height / 2) + 50 + 80 * i);
+        -(this._renderer.height / 2) + 50 + 60 * i);
     }
   };
 
@@ -220,6 +224,8 @@ define([
 
       for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
         issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
+        issue.setTextAlwaysVisible(false);
+        issue.setIsInteractive(false);
         issue.moveTo(
           centerX + (Math.random() * radius * 2) - radius,
           centerY + (Math.random() * radius * 2) - radius)
