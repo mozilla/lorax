@@ -75,12 +75,26 @@ define([
     this._issuesContainer.y = this._renderer.height / 2;
     this._stage.addChild(this._issuesContainer);
 
+    // topics hover areas
+    this._topicsContainer = new PIXI.DisplayObjectContainer();
+    this._topicsContainer.x = this._issuesContainer.x;
+    this._topicsContainer.y = this._issuesContainer.y;
+    this._stage.addChild(this._topicsContainer);
+
     this._drawFakes();
     this._drawIssues();
     this._drawTags();
 
     // start animation
     requestAnimationFrame(this._animate.bind(this));
+  };
+
+  Explore.prototype._clearTopics = function () {
+    this._stage.removeChild(this._topicsContainer);
+    this._topicsContainer = new PIXI.DisplayObjectContainer();
+    this._topicsContainer.x = this._issuesContainer.x;
+    this._topicsContainer.y = this._issuesContainer.y;
+    this._stage.addChild(this._topicsContainer);
   };
 
   /**
@@ -98,6 +112,8 @@ define([
   * Go to explore mode
   */
   Explore.prototype.showExplore = function () {
+    this._clearTopics();
+
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
       .wait(200)
@@ -127,6 +143,8 @@ define([
   * Go to issues mode
   */
   Explore.prototype.showIssues = function () {
+    this._clearTopics();
+
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
       .wait(200)
@@ -136,7 +154,7 @@ define([
       this._mode = 'issues';
     }.bind(this), 500);
 
-    var i, j;
+    var i;
 
     for (i = 0; i < this._tags.length; i ++) {
       this._tags[i].explode();
@@ -160,6 +178,8 @@ define([
   * Go to topics mode
   */
   Explore.prototype.showTopics = function () {
+    this._clearTopics();
+
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
       .wait(200)
@@ -179,6 +199,7 @@ define([
       this._fakes[i].explode();
     }
 
+
     var topicArea;
     var radius = 70;
     var issue, centerX, centerY;
@@ -189,12 +210,12 @@ define([
 
       topicArea = new PIXI.Graphics();
       topicArea.i = i;
-      topicArea.x = centerX + this._issuesContainer.x;
-      topicArea.y = centerY + this._issuesContainer.y;
+      topicArea.x = centerX;
+      topicArea.y = centerY;
       topicArea.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
       topicArea.interactive = true;
       topicArea.buttonMode = true;
-      this._stage.addChild(topicArea);
+      this._topicsContainer.addChild(topicArea);
       topicArea.mouseover = topicArea.touchstart = this._onMouseOverTopic.bind(this);
 
       for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
@@ -212,16 +233,14 @@ define([
   */
   Explore.prototype._onMouseOverTopic = function (event) {
     var area = event.target;
-    this._stage.removeChild(area);
+    this._topicsContainer.removeChild(area);
     var issues = this._topicsData[area.i]._issues;
 
     var dist = 40;
     var issue;
     for(var i = 0; i < issues.length; i ++) {
       issue = this._getElementFromId(issues[i]._id);
-      issue.moveTo(
-        area.x - this._issuesContainer.x,
-        area.y - this._issuesContainer.y + (dist * i) - (dist * issues.length / 2))
+      issue.moveTo(area.x, area.y + (dist * i) - (dist * issues.length / 2))
         .call(issue._resumeStaticAnimation.bind(issue));
     }
 
@@ -236,18 +255,18 @@ define([
       -dist * issues.length / 2,
       lineWidth,
       dist * issues.length);
-    this._stage.addChild(lineArea);
+    this._topicsContainer.addChild(lineArea);
 
     lineArea.mouseout = lineArea.touchend = function () {
-      this._stage.removeChild(lineArea);
-      this._stage.addChild(area);
+      this._topicsContainer.removeChild(lineArea);
+      this._topicsContainer.addChild(area);
 
       var radius = 70;
       for(var i = 0; i < issues.length; i ++) {
         issue = this._getElementFromId(issues[i]._id);
         issue.moveTo(
-          area.x - this._issuesContainer.x + (Math.random() * radius * 2) - radius,
-          area.y - this._issuesContainer.y + (Math.random() * radius * 2) - radius)
+          area.x + (Math.random() * radius * 2) - radius,
+          area.y + (Math.random() * radius * 2) - radius)
           .call(issue._resumeStaticAnimation.bind(issue));
       }
     }.bind(this);

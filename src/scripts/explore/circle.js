@@ -33,7 +33,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
    */
   Circle.prototype._resumeStaticAnimation = function () {
     var d = this.radius / 10; // displace quocient
-    this._staticScaleTween = createjs.Tween.get(this.elm.scale, {loop: true, override: true})
+    this._staticScaleTween = createjs.Tween.get(
+      this.elm.scale,
+      {loop: true, override: true})
       .wait(Math.random() * 1000)
       .to({x:1 + (0.2 * d), y:1 + (0.2 * d)}, 500, createjs.Ease.bounceOut)
       .to({x:1, y:1}, 500, createjs.Ease.linear);
@@ -91,7 +93,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
    * Moves elements away from center
    */
   Circle.prototype.explode = function () {
-    if (this.elm.alpha === 0) return;
+    if (this.elm.alpha === 0) {
+      return;
+    }
     this.implodeAlpha = this.elm.alpha;
 
     var angle = Math.atan2(this._y0, this._x0);
