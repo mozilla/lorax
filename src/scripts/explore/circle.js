@@ -12,6 +12,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._circle = this._drawCircle(radius, x, y);
     this.elm.addChild(this._circle);
 
+    if (this.data) this._drawTitle();
+
     this.elm.x = x;
     this.elm.y = y;
     this._x0 = x;
@@ -34,7 +36,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   Circle.prototype._resumeStaticAnimation = function () {
     var d = this.radius / 10; // displace quocient
     this._staticScaleTween = createjs.Tween.get(
-      this.elm.scale,
+      this._circle.scale,
       {loop: true, override: true})
       .wait(Math.random() * 1000)
       .to({x:1 + (0.2 * d), y:1 + (0.2 * d)}, 500, createjs.Ease.bounceOut)
@@ -87,6 +89,15 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     // circle.width = circle.height = radius * 2;
     // circle.x = circle.y = -radius;
     // return circle;
+  };
+
+  Circle.prototype._drawTitle = function () {
+    var style = {
+      font: '14px "fira-sans-regular", sans-serif'
+    };
+
+    this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
+    this._title.x = this._title.y = 5;
   };
 
   /**

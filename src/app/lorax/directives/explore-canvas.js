@@ -35,7 +35,7 @@ define(['explore/explore'], function (Explore) {
     dataService.getMain().then(function(model) {
       this._explore = new Explore();
       this._explore.setData(model);
-      this._explore.init(true);
+      this._explore.init();
       this._explore.setContainer(this._container);
     }.bind(this));
   };

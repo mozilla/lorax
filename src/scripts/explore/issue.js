@@ -39,6 +39,7 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
    */
   Issue.prototype.mouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
+    this.elm.addChild(this._title);
     this._circle.tint = this.color;
     createjs.Tween.get(this._circle).to({tint: 0xFF0000});
   };
@@ -55,6 +56,7 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
       var stickyRadius = 50;
       if (Math.abs(this.elm.x - this._x0) > stickyRadius ||
           Math.abs(this.elm.y - this._y0) > stickyRadius) {
+        this.elm.removeChild(this._title);
         this.isOver = false;
         createjs.Tween.get(this.elm, {override: true})
         .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))

@@ -55,7 +55,7 @@ define([
     this._renderer = new PIXI.CanvasRenderer(
       container.width(),
       container.height(),
-      null, true, true);
+      null, true, false);
     this._stage = new PIXI.Stage();
     this._stage.interactive = true;
     container.append(this._renderer.view);
