@@ -70,7 +70,7 @@ define([
     for(i = 0; i < this._topicsData.length; i ++) {
       centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
       centerX -= ((this._renderer.width - 400) / 2);
-      centerY = 150;
+      centerY = 0;
 
       topicArea = new PIXI.Graphics();
       topicArea.i = i;
