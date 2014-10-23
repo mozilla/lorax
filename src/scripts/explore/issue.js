@@ -26,9 +26,9 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
 
       if (Math.abs(this.elm.x - this._x0) > 50 || Math.abs(this.elm.y - this._y0) > 50) {
         this.isOver = false;
-        this._posStaticTween.pause();
-        createjs.Tween.get(this.elm)
-        .to({x: this._x0, y: this._y0}, 500, createjs.Ease.elasticOut);
+        createjs.Tween.get(this.elm, {override: true})
+        .to({x: this._x0, y: this._y0}, 500, createjs.Ease.elasticOut)
+        .call(this._doStaticAnimation.bind(this));
       }
     }
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
