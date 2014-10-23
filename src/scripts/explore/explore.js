@@ -96,13 +96,40 @@ define([
     this._stage.removeChild(area);
     var issues = this._topicsData[area.i]._issues;
 
+    var dist = 40;
     var issue;
     for(var i = 0; i < issues.length; i ++) {
       issue = this._getElementFromId(issues[i]._id);
       issue.moveTo(
         area.x - this._issuesContainer.x,
-        area.y - this._issuesContainer.y + (50 * i) - ((50 * issues.length) / 2));
+        area.y - this._issuesContainer.y + (dist * i) - (dist * issues.length / 2));
     }
+
+    var lineWidth = 60;
+    var lineArea = new PIXI.Graphics();
+    lineArea.x = area.x;
+    lineArea.y = area.y;
+    lineArea.interactive = true;
+    lineArea.buttonMode = true;
+    lineArea.hitArea = new PIXI.Rectangle(
+      -lineWidth / 2,
+      -dist * issues.length / 2,
+      lineWidth,
+      dist * issues.length);
+    this._stage.addChild(lineArea);
+
+    lineArea.mouseout = lineArea.touchend = function () {
+      this._stage.removeChild(lineArea);
+      this._stage.addChild(area);
+
+      var radius = 50;
+      for(var i = 0; i < issues.length; i ++) {
+        issue = this._getElementFromId(issues[i]._id);
+        issue.moveTo(
+          area.x - this._issuesContainer.x + (Math.random() * radius * 2) - radius,
+          area.y - this._issuesContainer.y + (Math.random() * radius * 2) - radius);
+      }
+    }.bind(this);
   };
 
   /**
@@ -251,7 +278,7 @@ define([
             lineColor = issue.isOver ? issue.color : relatedItem.color;
             this._linesContainer.lineStyle(1, lineColor,  0.3);
           } else {
-            this._linesContainer.lineStyle(1, 0x000000, 0.1);
+            this._linesContainer.lineStyle(1, 0x000000, 0.05);
           }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
@@ -268,7 +295,7 @@ define([
             lineColor = issue.isOver ? issue.color : relatedItem.color;
             this._linesContainer.lineStyle(1, lineColor,  0.3);
           } else {
-            this._linesContainer.lineStyle(1, 0x000000,  0.1);
+            this._linesContainer.lineStyle(1, 0x000000,  0.05);
           }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);

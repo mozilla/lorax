@@ -39,7 +39,9 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
       this.elm.x = mousePosition.x;
       this.elm.y = mousePosition.y;
 
-      if (Math.abs(this.elm.x - this._x0) > 50 || Math.abs(this.elm.y - this._y0) > 50) {
+      var stickyRadius = 50;
+      if (Math.abs(this.elm.x - this._x0) > stickyRadius ||
+          Math.abs(this.elm.y - this._y0) > stickyRadius) {
         this.isOver = false;
         createjs.Tween.get(this.elm, {override: true})
         .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
