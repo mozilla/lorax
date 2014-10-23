@@ -64,18 +64,44 @@ define([
       this._fakes[i].explode();
     }
 
-    var topicRadius = 100;
+    var topicArea;
+    var radius = 50;
     var issue, centerX, centerY;
     for(i = 0; i < this._topicsData.length; i ++) {
       centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
       centerX -= ((this._renderer.width - 400) / 2);
       centerY = 150;
+
+      topicArea = new PIXI.Graphics();
+      topicArea.i = i;
+      topicArea.x = centerX + this._issuesContainer.x;
+      topicArea.y = centerY + this._issuesContainer.y;
+      topicArea.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
+      topicArea.interactive = true;
+      topicArea.buttonMode = true;
+      this._stage.addChild(topicArea);
+      topicArea.mouseover = topicArea.touchstart = this._onMouseOverTopic.bind(this);
+
       for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
         issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
         issue.moveTo(
-          centerX + (Math.random() * topicRadius) - (topicRadius / 2),
-          centerY + (Math.random() * topicRadius) - (topicRadius / 2));
+          centerX + (Math.random() * radius * 2) - radius,
+          centerY + (Math.random() * radius * 2) - radius);
       }
+    }
+  };
+
+  Explore.prototype._onMouseOverTopic = function (event) {
+    var area = event.target;
+    this._stage.removeChild(area);
+    var issues = this._topicsData[area.i]._issues;
+
+    var issue;
+    for(var i = 0; i < issues.length; i ++) {
+      issue = this._getElementFromId(issues[i]._id);
+      issue.moveTo(
+        area.x - this._issuesContainer.x,
+        area.y - this._issuesContainer.y + (50 * i) - ((50 * issues.length) / 2));
     }
   };
 
@@ -93,6 +119,12 @@ define([
     this._stage.interactive = true;
     container.append(this._renderer.view);
 
+    // lines
+    this._linesContainer = new PIXI.Graphics();
+    this._linesContainer.x = this._renderer.width / 2;
+    this._linesContainer.y = this._renderer.height / 2;
+    this._stage.addChild(this._linesContainer);
+
     // circles
     var smallerDimension = Math.min(container.width(), container.height());
     this._exploreRadius = smallerDimension / 1.8;
@@ -101,12 +133,6 @@ define([
     this._issuesContainer.x = this._renderer.width / 2;
     this._issuesContainer.y = this._renderer.height / 2;
     this._stage.addChild(this._issuesContainer);
-
-    // lines
-    this._linesContainer = new PIXI.Graphics();
-    this._linesContainer.x = this._issuesContainer.x;
-    this._linesContainer.y = this._issuesContainer.y;
-    this._stage.addChild(this._linesContainer);
 
     this._drawFakes();
     this._drawIssues();
@@ -155,7 +181,7 @@ define([
       rSeed = this._exploreRadius + (Math.random() * 5);
 
       var tag = new Circle();
-      tag.data = this._tagData[i];
+      tag.setData(this._tagData[i]);
       tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
 
       this._tags.push(tag);
@@ -173,7 +199,7 @@ define([
       rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
       var issue = new Issue(i);
-      issue.data = this._issueData[i];
+      issue.setData(this._issueData[i]);
       issue.draw(
         10 - rSeed / this._exploreRadius * 5,
         Math.sin(seed) * rSeed,
@@ -208,6 +234,7 @@ define([
     var tags;
     var relatedItem;
     var i, j;
+    var lineColor;
     for (i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       related = this._issues[i].data.getRelated();
@@ -220,7 +247,12 @@ define([
             issue.data._parent._id === relatedItem.data._parent._id) {
 
           isOver = (issue.isOver || relatedItem.isOver);
-          this._linesContainer.lineStyle(1, 0x000000,  isOver ? 0.3 : 0.1);
+          if (isOver) {
+            lineColor = issue.isOver ? issue.color : relatedItem.color;
+            this._linesContainer.lineStyle(1, lineColor,  0.3);
+          } else {
+            this._linesContainer.lineStyle(1, 0x000000, 0.1);
+          }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
           this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
@@ -232,7 +264,12 @@ define([
           relatedItem = this._getElementFromId(tags[j]._id);
 
           isOver = (issue.isOver || relatedItem.isOver);
-          this._linesContainer.lineStyle(1, 0x000000,  isOver ? 0.3 : 0.05);
+          if (isOver) {
+            lineColor = issue.isOver ? issue.color : relatedItem.color;
+            this._linesContainer.lineStyle(1, lineColor,  0.3);
+          } else {
+            this._linesContainer.lineStyle(1, 0x000000,  0.1);
+          }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
           this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
@@ -256,7 +293,7 @@ define([
   };
 
   Explore.prototype._onMouseOverIssue = function (event) {
-    this._issues[event.target.index].isOver = true;
+    this._issues[event.target.index].mouseOver();
   };
 
   Explore.prototype._onMouseOutIssue = function () {

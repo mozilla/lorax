@@ -19,26 +19,30 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._doStaticAnimation();
   };
 
+  Circle.prototype.setData = function (data) {
+    this.data = data;
+  };
+
   Circle.prototype._doStaticAnimation = function () {
     createjs.Tween.get(this.elm.scale, {loop: true, override: true})
       .wait(Math.random() * 1000)
       .to({x:1.2, y:1.2}, 500, createjs.Ease.bounceOut)
       .to({x:1, y:1}, 500, createjs.Ease.linear);
 
-    createjs.Tween.get(this.elm, {loop: true, override: true})
-      .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
-        1000 + Math.random() * 500,
-        createjs.sineInOut)
-      .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
-        1000 + Math.random() * 500,
-        createjs.sineInOut)
-      .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
-        1000 + Math.random() * 500,
-        createjs.sineInOut)
-      .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
-        1000 + Math.random() * 500,
-        createjs.sineInOut)
-      .to({x: this._x0, y: this._y0}, 1000 + Math.random() * 500, createjs.sineInOut);
+    // createjs.Tween.get(this.elm, {loop: true, override: true})
+    //   .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
+    //     1000 + Math.random() * 500,
+    //     createjs.sineInOut)
+    //   .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
+    //     1000 + Math.random() * 500,
+    //     createjs.sineInOut)
+    //   .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
+    //     1000 + Math.random() * 500,
+    //     createjs.sineInOut)
+    //   .to({x: this._x0 - 10 + Math.random() * 20, y: this._y0 - 10 + Math.random() * 20},
+    //     1000 + Math.random() * 500,
+    //     createjs.sineInOut)
+    //   .to({x: this._x0, y: this._y0}, 1000 + Math.random() * 500, createjs.sineInOut);
   };
 
   /**
@@ -49,12 +53,16 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   * @return {DisplayObject} actual element
   */
   Circle.prototype._drawCircle = function (radius) {
-    var circle = new PIXI.Graphics();
-    circle.beginFill(0x000000);
-    circle.drawCircle(0, 0, radius);
-    circle.endFill();
-    circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
-    circle.cacheAsBitmap = true;
+    // var circle = new PIXI.Graphics();
+    // circle.beginFill(0x000000);
+    // circle.drawCircle(0, 0, radius);
+    // circle.endFill();
+    // circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
+    // circle.cacheAsBitmap = true;
+    // return circle;
+    var circle = PIXI.Sprite.fromImage('images/circle.png');
+    circle.width = circle.height = radius * 2;
+    circle.x = circle.y = -radius;
     return circle;
   };
 
@@ -69,13 +77,20 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         createjs.easeOut);
   };
 
+  Circle.prototype.mouseOver = function () {
+    this.isOver = true;
+  };
+
+  Circle.prototype.mouseOut = function () {
+    this.isOver = false;
+  };
+
   Circle.prototype.moveTo = function (x, y) {
     this._x0 = x;
     this._y0 = y;
 
     createjs.Tween.get(this.elm, {override: true})
-      .wait(Math.random() * 200)
-      .to({x:x, y:y}, (Math.random() * 500) + 500, createjs.Ease.easeOut)
+      .to({x:x, y:y}, (Math.random() * 300) + 500, createjs.Ease.getBackOut(1.5))
       .call(this._doStaticAnimation.bind(this));
   };
 

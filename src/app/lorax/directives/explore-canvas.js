@@ -44,7 +44,7 @@ define(['explore/explore'], function (Explore) {
     if (view === 'explore') {
 
     } else if (view === 'topics') {
-      this._explore.showTopics();
+      this._explore.showTopics(true);
     } else if (view === 'issues') {
 
     }
