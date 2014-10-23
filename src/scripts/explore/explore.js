@@ -46,6 +46,57 @@ define([
     this._topicsData = data.getTopics();
   };
 
+  /**
+  * Sets HTML element for PIXI container
+  * @param  {object} DOM object
+  */
+  Explore.prototype.setContainer = function (container) {
+    // create pixijs renderer and stage
+    this._renderer = new PIXI.CanvasRenderer(
+      container.width(),
+      container.height(),
+      null, true, true);
+    this._stage = new PIXI.Stage();
+    this._stage.interactive = true;
+    container.append(this._renderer.view);
+
+    // lines
+    this._linesContainer = new PIXI.Graphics();
+    this._linesContainer.x = this._renderer.width / 2;
+    this._linesContainer.y = this._renderer.height / 2;
+    this._stage.addChild(this._linesContainer);
+
+    // circles
+    var dimension = Math.min(container.width(), container.height());
+    this._exploreRadius = dimension / 2;
+    this._issuesContainer = new PIXI.DisplayObjectContainer();
+    this._issuesContainer.interactive = true;
+    this._issuesContainer.x = this._renderer.width / 2;
+    this._issuesContainer.y = this._renderer.height / 2;
+    this._stage.addChild(this._issuesContainer);
+
+    this._drawFakes();
+    this._drawIssues();
+    this._drawTags();
+
+    // start animation
+    requestAnimationFrame(this._animate.bind(this));
+  };
+
+  /**
+  * Shows FPS count
+  */
+  Explore.prototype._showStats = function () {
+    this._stats.setMode(0);
+    this._stats.domElement.style.position = 'absolute';
+    this._stats.domElement.style.left = '0px';
+    this._stats.domElement.style.top = '0px';
+    document.body.appendChild(this._stats.domElement);
+  };
+
+  /**
+  * Go to explore mode
+  */
   Explore.prototype.showExplore = function () {
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
@@ -72,6 +123,9 @@ define([
     }
   };
 
+  /**
+  * Go to issues mode
+  */
   Explore.prototype.showIssues = function () {
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
@@ -102,6 +156,9 @@ define([
     }
   };
 
+  /**
+  * Go to topics mode
+  */
   Explore.prototype.showTopics = function () {
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
@@ -150,6 +207,9 @@ define([
     }
   };
 
+  /**
+  * When hovering a topic
+  */
   Explore.prototype._onMouseOverTopic = function (event) {
     var area = event.target;
     this._stage.removeChild(area);
@@ -191,54 +251,6 @@ define([
           .call(issue._resumeStaticAnimation.bind(issue));
       }
     }.bind(this);
-  };
-
-  /**
-  * Sets HTML element for PIXI container
-  * @param  {object} DOM object
-  */
-  Explore.prototype.setContainer = function (container) {
-    // create pixijs renderer and stage
-    this._renderer = new PIXI.CanvasRenderer(
-      container.width(),
-      container.height(),
-      null, true, true);
-    this._stage = new PIXI.Stage();
-    this._stage.interactive = true;
-    container.append(this._renderer.view);
-
-    // lines
-    this._linesContainer = new PIXI.Graphics();
-    this._linesContainer.x = this._renderer.width / 2;
-    this._linesContainer.y = this._renderer.height / 2;
-    this._stage.addChild(this._linesContainer);
-
-    // circles
-    var smallerDimension = Math.min(container.width(), container.height());
-    this._exploreRadius = smallerDimension / 1.8;
-    this._issuesContainer = new PIXI.DisplayObjectContainer();
-    this._issuesContainer.interactive = true;
-    this._issuesContainer.x = this._renderer.width / 2;
-    this._issuesContainer.y = this._renderer.height / 2;
-    this._stage.addChild(this._issuesContainer);
-
-    this._drawFakes();
-    this._drawIssues();
-    this._drawTags();
-
-    // start animation
-    requestAnimationFrame(this._animate.bind(this));
-  };
-
-  /**
-  * Shows FPS count
-  */
-  Explore.prototype._showStats = function () {
-    this._stats.setMode(0);
-    this._stats.domElement.style.position = 'absolute';
-    this._stats.domElement.style.left = '0px';
-    this._stats.domElement.style.top = '0px';
-    document.body.appendChild(this._stats.domElement);
   };
 
   /**
@@ -300,14 +312,7 @@ define([
       this._issues.push(issue);
       this._issuesContainer.addChild(issue.elm);
 
-      issue.elm.mouseover =
-        issue.elm.touchstart =
-        this._onMouseOverIssue.bind(this);
-
-      issue.elm.mouseout =
-        issue.elm.touchend =
-        issue.elm.touchendoutside =
-        this._onMouseOutIssue.bind(this);
+      issue.elm.mouseover = issue.elm.touchstart = issue.mouseOver.bind(issue);
     }
   };
 
@@ -377,6 +382,9 @@ define([
     }
   };
 
+  /**
+  * Get visual element from id
+  */
   Explore.prototype._getElementFromId = function (id) {
     for (var i = 0; i < this._issues.length; i ++) {
       if (this._issues[i].data._id === id) {
@@ -391,14 +399,9 @@ define([
     }
   };
 
-  Explore.prototype._onMouseOverIssue = function (event) {
-    this._issues[event.target.index].mouseOver();
-  };
-
-  Explore.prototype._onMouseOutIssue = function () {
-    // this._issues[event.target.index].isOver = false;
-  };
-
+  /**
+   * update issue positions
+   */
   Explore.prototype._updatePositions = function () {
     var i;
 
@@ -419,6 +422,9 @@ define([
     // }
   };
 
+  /**
+   * do animation cycle
+   */
   Explore.prototype._animate = function (tick) {
     if (this._stats) {
       this._stats.begin();

@@ -20,10 +20,17 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._resumeStaticAnimation();
   };
 
+  /**
+   * setup data
+   * @param {object} data
+   */
   Circle.prototype.setData = function (data) {
     this.data = data;
   };
 
+  /**
+   * Enables static (explore) animation mode
+   */
   Circle.prototype._resumeStaticAnimation = function () {
     var d = this.radius / 10; // displace quocient
     this._staticScaleTween = createjs.Tween.get(this.elm.scale, {loop: true, override: true})
@@ -80,6 +87,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     // return circle;
   };
 
+  /**
+   * Moves elements away from center
+   */
   Circle.prototype.explode = function () {
     if (this.elm.alpha === 0) return;
     this.implodeAlpha = this.elm.alpha;
@@ -95,6 +105,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         createjs.easeOut);
   };
 
+  /**
+   * Recovers from explode()
+   */
   Circle.prototype.implode = function () {
     this._staticPositionTween.setPaused(true);
     createjs.Tween.get(this.elm, {override: true})
@@ -104,14 +117,26 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
       .call(this._resumeStaticAnimation.bind(this));
   };
 
+  /**
+   * Sets mouse over
+   */
   Circle.prototype.mouseOver = function () {
     this.isOver = true;
   };
 
+  /**
+   * Sets mouse out
+   */
   Circle.prototype.mouseOut = function () {
     this.isOver = false;
   };
 
+  /**
+   * Stops static animation and moves element with a bouncy effect
+   * @param  {number} x desired x position
+   * @param  {number} y desired y position
+   * @return {object} Tween for chaining
+   */
   Circle.prototype.moveTo = function (x, y) {
     this._x0 = x;
     this._y0 = y;
@@ -122,6 +147,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
       .to({x:x, y:y}, (Math.random() * 100) + 500, createjs.Ease.getBackOut(1.5));
   };
 
+  /**
+   * Stops static movement
+   */
   Circle.prototype.stopMoving = function () {
     this._staticScaleTween.setPaused(true);
     this._staticPositionTween.setPaused(true);

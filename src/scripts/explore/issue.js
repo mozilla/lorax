@@ -18,6 +18,12 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
   };
 
   Issue.prototype._superDraw = Issue.prototype.draw;
+  /**
+   * Draws an issue circle
+   * @param  {number} radius desired radius
+   * @param  {number} x x position
+   * @param  {number} y y position
+   */
   Issue.prototype.draw = function (radius, x, y) {
     this._superDraw.bind(this)(radius, x, y);
     this.elm.interactive = true;
@@ -28,12 +34,19 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
   };
 
   Issue.prototype._superMouseOver = Issue.prototype.mouseOver;
+  /**
+   * Sets mouse over
+   */
   Issue.prototype.mouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
     this._circle.tint = this.color;
-    //createjs.Tween.get(this._circle).to({tint: 0xFF0000});
+    createjs.Tween.get(this._circle).to({tint: 0xFF0000});
   };
 
+  /**
+   * animation tick
+   * @param  {Point} mousePosition current mouse position
+   */
   Issue.prototype.update = function (mousePosition) {
     if (this.isOver) {
       this.elm.x = mousePosition.x;
