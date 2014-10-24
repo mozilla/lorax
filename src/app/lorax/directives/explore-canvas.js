@@ -24,30 +24,19 @@ define(['explore/explore'], function (Explore) {
    */
   var ExploreCanvasController = function (
     $scope,
-    dataService
+    dataService,
+    exploreService
     )
   {
     this._$scope = $scope;
-    this._$scope.explore = {
-      switchView: this.switchView.bind(this)
-    };
 
     dataService.getMain().then(function(model) {
       this._explore = new Explore();
       this._explore.setData(model);
       this._explore.init();
       this._explore.setContainer(this._container);
+      exploreService.setCanvas(this._explore);
     }.bind(this));
-  };
-
-  ExploreCanvasController.prototype.switchView = function (view) {
-    if (view === 'explore') {
-      this._explore.showExplore();
-    } else if (view === 'topics') {
-      this._explore.showTopics();
-    } else if (view === 'issues') {
-      this._explore.showIssues();
-    }
   };
 
   /**
@@ -56,7 +45,8 @@ define(['explore/explore'], function (Explore) {
    */
   ExploreCanvasController.$inject = [
     '$scope',
-    'dataService'
+    'dataService',
+    'exploreService'
   ];
 
   /**
@@ -67,7 +57,7 @@ define(['explore/explore'], function (Explore) {
    * @param {object} controller Controller reference.
    */
   var ExploreCanvasLinkFn = function (scope, iElem, iAttrs, controller) {
-    controller._container = iElem.children('#explore');
+    controller._container = iElem;
   };
 
   return ExploreCanvasDirective;

@@ -30,6 +30,7 @@ define([
   'lorax/services/scroll',
   'lorax/services/pubsub',
   'lorax/services/data',
+  'lorax/services/explore',
 
   //'core/constants/resource-bundle',
 
@@ -65,6 +66,7 @@ define([
   scrollService,
   pubSubService,
   dataService,
+  exploreService,
 
   //ResourceBundle,
 
@@ -104,7 +106,7 @@ define([
      * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
      * @method lorax/loraxApp~controller
      */
-    .controller('ExploreCtrl', CoreCtrl)
+    .controller('ExploreCtrl', ExploreCtrl)
 
     /**
      * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
@@ -188,6 +190,12 @@ define([
      * @method lorax/loraxApp~service
      */
     .service('scrollService', scrollService)
+
+    /**
+     * Inject {@link lorax/services/dataService} as 'dataService'
+     * @method lorax/loraxApp~factory
+     */
+    .service('exploreService', exploreService)
 
     /**
      * Inject {@link lorax/services/pubSubService} as 'pubSubService'

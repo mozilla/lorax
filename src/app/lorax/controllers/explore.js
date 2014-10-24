@@ -10,16 +10,25 @@ define([], function () {
   /*jshint unused: false */
   var ExploreCtrl = function (
     $scope,
-    dataService
+    exploreService
   ) {
 
     this._$scope = $scope;
+    this._$scope.explore = {
+      switchView: this.switchView.bind(this)
+    };
+
+    this._exploreService = exploreService;
   };
 
   ExploreCtrl.$inject = [
     '$scope',
-    'dataService'
+    'exploreService'
   ];
+
+  ExploreCtrl.prototype.switchView = function (view) {
+    this._exploreService.switchView(view);
+  };
 
   return ExploreCtrl;
 });
