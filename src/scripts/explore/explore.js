@@ -151,13 +151,12 @@ define([
     this._clearTopics();
 
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 300, createjs.Ease.easeOut)
-      .wait(200)
-      .to({alpha:1}, 300, createjs.Ease.easeIn);
+      .to({alpha:0}, 400, createjs.Ease.easeOut)
+      .to({alpha:1}, 400, createjs.Ease.easeIn);
 
     setTimeout(function () {
       this._mode = 'issues';
-    }.bind(this), 500);
+    }.bind(this), 400);
 
     var i;
     for (i = 0; i < this._tags.length; i ++) {
@@ -187,13 +186,12 @@ define([
     this._clearTopics();
 
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 300, createjs.Ease.easeOut)
-      .wait(200)
-      .to({alpha:1}, 300, createjs.Ease.easeIn);
+      .to({alpha:0}, 400, createjs.Ease.easeOut)
+      .to({alpha:1}, 400, createjs.Ease.easeIn);
 
     setTimeout(function () {
       this._mode = 'topics';
-    }.bind(this), 500);
+    }.bind(this), 400);
 
     var i, j;
 

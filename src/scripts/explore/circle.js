@@ -134,7 +134,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._staticPositionTween.setPaused(true);
     createjs.Tween.get(this.elm, {override: true})
       .to({alpha: this.implodeAlpha, x: this._x0, y: this._y0},
-        (Math.random() * 150) + 300,
+        (Math.random() * 100) + 200,
         createjs.easeIn)
       .call(this._resumeStaticAnimation.bind(this));
   };
@@ -166,7 +166,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this._staticPositionTween.setPaused(true);
 
     return createjs.Tween.get(this.elm, {override: true})
-      .to({x:x, y:y}, (Math.random() * 100) + 500, createjs.Ease.getBackOut(1.5));
+      .to({x:x, y:y}, (Math.random() * 100) + 600, createjs.Ease.getBackOut(1.5));
   };
 
   /**
