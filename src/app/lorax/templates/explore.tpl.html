@@ -1,9 +1,7 @@
 <div ng-controller="ExploreCtrl">
-    <div class="explore-menu">
-      <ul>
-        <li><a href="#" ng-click="explore.switchView('explore');">Explore</a></li>
-        <li><a href="#" ng-click="explore.switchView('topics');">Topics</a></li>
-        <li><a href="#" ng-click="explore.switchView('issues');">Issues</a></li>
-      </ul>
-    </div>
+    <ul class="explore-menu">
+      <li><a class="explore-menu__link" href="#" ng-click="explore.switchView('explore');"><span class="icon-circle-empty"></span> Explore</a></li>
+      <li><a class="explore-menu__link" href="#" ng-click="explore.switchView('topics');"><span class="icon-th"></span> Topics</a></li>
+      <li><a class="explore-menu__link" href="#" ng-click="explore.switchView('issues');"><span class="icon-menu"></span> Issues</a></li>
+    </ul>
 </div>

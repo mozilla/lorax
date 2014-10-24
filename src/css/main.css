@@ -730,6 +730,122 @@ img {
   height: 100%;
   position: fixed;
 }
+.explore-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+@media screen and (min-width: 560px) {
+  .explore-menu {
+    bottom: 80px;
+    margin: 0 auto;
+  }
+  .flexbox .explore-menu {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+  }
+  .no-flexbox .explore-menu:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+.explore-menu > li {
+  min-height: 50px;
+}
+@media screen and (min-width: 560px) {
+  .no-flexbox .explore-menu > li {
+    float: left;
+    width: 33%;
+  }
+  .explore-menu > li:first-child a {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .explore-menu > li:last-child a {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+.explore-menu__link {
+  background-color: #ffffff;
+  color: #222222;
+  font-family: 'fira-sans-medium', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  font-size: 1.1rem;
+  padding: 15px 35px;
+  text-transform: uppercase;
+  display: inline-block;
+  width: 100%;
+}
+@media screen and (min-width: 560px) {
+  .explore-menu__link {
+    margin-right: 1px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+.no-touch .explore-menu__link:hover,
+.explore-menu__link:focus,
+.explore-menu__link.is-active {
+  color: #ffffff;
+  background-color: #222222;
+}
+.no-touch .explore-menu__link:hover .icon-circle-empty:before,
+.explore-menu__link:focus .icon-circle-empty:before,
+.explore-menu__link.is-active .icon-circle-empty:before {
+  background-position: 0 100%;
+}
+.no-touch .explore-menu__link:hover .icon-th:before,
+.explore-menu__link:focus .icon-th:before,
+.explore-menu__link.is-active .icon-th:before {
+  background-position: 50% 100%;
+}
+.no-touch .explore-menu__link:hover .icon-menu:before,
+.explore-menu__link:focus .icon-menu:before,
+.explore-menu__link.is-active .icon-menu:before {
+  background-position: 100% 100%;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../images/explore-buttons.png') 0 0 no-repeat;
+  content: ' ';
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.icon-circle-empty:before {
+  background-position: 0 0;
+}
+.icon-th:before {
+  background-position: 50% 0;
+}
+.icon-menu:before {
+  background-position: 100% 0;
+}
 /* ==========================================================================
    Detail page, modules
    ========================================================================== */

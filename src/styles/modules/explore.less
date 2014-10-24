@@ -7,3 +7,102 @@
   height: 100%;
   position: fixed;
 }
+
+.explore-menu {
+  .reset-list;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
+  .at-medium({
+    bottom: 80px;
+    margin: 0 auto;
+
+    .flexbox & {
+      .flexbox;
+      .justify-content(center);
+    }
+
+    .no-flexbox & {
+      .clearfix;
+    }
+  });
+
+  > li {
+    min-height: 50px;
+
+    .at-medium({
+      .no-flexbox & {
+        float: left;
+        width: 33%;
+      }
+
+      &:first-child a {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+
+      &:last-child a {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    });
+  }
+}
+
+.explore-menu__link {
+  background-color: @white;
+  color: @extra-dark-grey;
+  .fira-sans-medium;
+  .font-size(1.1);
+  padding: 15px 35px;
+  text-transform: uppercase;
+  display: inline-block;
+  width: 100%;
+
+  .at-medium({
+    margin-right: 1px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+  });
+
+  .no-touch &:hover,
+  &:focus,
+  &.is-active {
+    color: @white;
+    background-color: @extra-dark-grey;
+
+    .icon-circle-empty:before {
+      background-position: 0 100%;
+    }
+
+    .icon-th:before {
+      background-position: 50% 100%;
+    }
+
+    .icon-menu:before {
+      background-position: 100% 100%;
+    }
+  }
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../images/explore-buttons.png') 0 0 no-repeat;
+  content: ' ';
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.icon-circle-empty:before {
+  background-position: 0 0;
+}
+
+.icon-th:before {
+  background-position: 50% 0;
+}
+
+.icon-menu:before {
+  background-position: 100% 0;
+}

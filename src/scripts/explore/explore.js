@@ -158,9 +158,8 @@ define([
     setTimeout(function () {
       this._mode = 'issues';
     }.bind(this), 500);
-    console.log(this._exploreRadius);
-    var i;
 
+    var i;
     for (i = 0; i < this._tags.length; i ++) {
       this._tags[i].explode(this._exploreRadius);
     }
@@ -445,14 +444,6 @@ define([
     for (i = 0; i < this._issues.length; i ++) {
       this._issues[i].update(localPosition);
     }
-
-    // for (i = 0; i < this._tags.length; i ++) {
-    //   this._tags[i].update();
-    // }
-
-    // for (i = 0; i < this._fakes.length; i ++) {
-    //   this._fakes[i].update();
-    // }
   };
 
   /**
