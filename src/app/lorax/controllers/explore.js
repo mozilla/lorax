@@ -15,7 +15,8 @@ define([], function () {
 
     this._$scope = $scope;
     this._$scope.explore = {
-      switchView: this.switchView.bind(this)
+      switchView: this.switchView.bind(this),
+      currentView: 'explore'
     };
 
     this._exploreService = exploreService;
@@ -27,6 +28,7 @@ define([], function () {
   ];
 
   ExploreCtrl.prototype.switchView = function (view) {
+    this._$scope.explore.currentView = view;
     this._exploreService.switchView(view);
   };
 
