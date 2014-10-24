@@ -337,8 +337,13 @@ define([
       this._issues.push(issue);
       this._issuesContainer.addChild(issue.elm);
 
-      issue.elm.mouseover = issue.elm.touchstart = issue.mouseOver.bind(issue);
+      issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
     }
+  };
+
+  Explore.prototype._onIssueOver = function (event) {
+    var issue = this._issues[event.target.index];
+    issue.mouseOver.bind(issue)();
   };
 
   /**
