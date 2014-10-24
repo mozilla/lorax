@@ -34,10 +34,14 @@ define([
     this._issues = [];
     this._tags = [];
     this._fakes = [];
+
     this._issueData;
     this._tagData;
+
     this._lastTick = 0;
     this._mode = 'explore';
+
+    this._topicRadius = 70;
   };
 
   Explore.prototype.setData = function (data) {
@@ -116,12 +120,11 @@ define([
 
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.easeOut)
-      .wait(200)
       .to({alpha:1}, 300, createjs.Ease.easeIn);
 
     setTimeout(function () {
       this._mode = 'explore';
-    }.bind(this), 500);
+    }.bind(this), 300);
 
     var i, issue;
     for (i = 0; i < this._issues.length; i ++) {
@@ -155,15 +158,15 @@ define([
     setTimeout(function () {
       this._mode = 'issues';
     }.bind(this), 500);
-
+    console.log(this._exploreRadius);
     var i;
 
     for (i = 0; i < this._tags.length; i ++) {
-      this._tags[i].explode();
+      this._tags[i].explode(this._exploreRadius);
     }
 
     for (i = 0; i < this._fakes.length; i ++) {
-      this._fakes[i].explode();
+      this._fakes[i].explode(this._exploreRadius);
     }
 
     var issue;
@@ -174,7 +177,7 @@ define([
       issue.setIsInteractive(false);
       issue.moveTo(
         -(this._renderer.width / 2) + 150,
-        -(this._renderer.height / 2) + 50 + 60 * i);
+        -(this._renderer.height / 2) + 150 + 60 * i);
     }
   };
 
@@ -196,16 +199,16 @@ define([
     var i, j;
 
     for (i = 0; i < this._tags.length; i ++) {
-      this._tags[i].explode();
+      this._tags[i].explode(this._exploreRadius);
     }
 
     for (i = 0; i < this._fakes.length; i ++) {
-      this._fakes[i].explode();
+      this._fakes[i].explode(this._exploreRadius);
     }
 
 
     var topicArea;
-    var radius = 70;
+    var radius = this._topicRadius;
     var issue, centerX, centerY;
     for(i = 0; i < this._topicsData.length; i ++) {
       centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
@@ -267,7 +270,7 @@ define([
       this._topicsContainer.removeChild(lineArea);
       this._topicsContainer.addChild(area);
 
-      var radius = 70;
+      var radius = this._topicRadius;
       for(var i = 0; i < issues.length; i ++) {
         issue = this._getElementFromId(issues[i]._id);
         issue.moveTo(

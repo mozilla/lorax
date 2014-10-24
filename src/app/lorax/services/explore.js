@@ -10,7 +10,6 @@ define(['jquery'], function ($) {
   };
 
   ExploreService.prototype.switchView = function (view) {
-    console.log(this._canvas, view);
     if (view === 'explore') {
       this._canvas.showExplore();
     } else if (view === 'topics') {

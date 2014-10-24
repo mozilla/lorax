@@ -105,7 +105,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   /**
    * Moves elements away from center
    */
-  Circle.prototype.explode = function () {
+  Circle.prototype.explode = function (radius) {
     if (this.elm.alpha === 0) {
       return;
     }
@@ -117,7 +117,12 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this.stopMoving();
     createjs.Tween.get(this.elm, {override: true})
       .wait(Math.random() * 200)
-      .to({alpha: 0, x: Math.cos(angle) * 500, y: Math.sin(angle) * 500},
+      .to(
+        {
+          alpha: 0,
+          x: Math.cos(angle) * (radius + 200),
+          y: Math.sin(angle) * (radius + 200)
+        },
         (Math.random() * 150) + 300,
         createjs.easeOut);
   };
