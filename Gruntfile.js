@@ -21,7 +21,7 @@ module.exports = function (grunt) {
     middlewares.push(modRewrite([
       '!api(.*)|cms(.*)|\/status(.*)|' +
       '\\.html|\\.js|\\.css|\\.jpg|\\.ico|\\.json|' +
-      '\\.png|\\.gif|\\.pdf|\\.xml$ /index.html [L]'
+      '\\.png|\\.gif|\\.pdf|\\.ttf|\\.otf|\\.xml$ /index.html [L]'
     ]));
 
     // Add base directories to middleware array
@@ -118,6 +118,7 @@ module.exports = function (grunt) {
             'scripts/data/{,*/}*.{js,json}',
             'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
             'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',
+            'data/**/*.json',
             '**/*.tpl.html',
             'index.html'
           ]
