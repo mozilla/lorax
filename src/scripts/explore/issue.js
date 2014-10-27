@@ -1,4 +1,4 @@
-define(['explore/circle', 'createjs'], function (Circle, createjs) {
+define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs) {
   'use strict';
 
   var Issue = function (index) {
@@ -29,13 +29,19 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
   Issue.prototype.draw = function (radius, x, y) {
     x = Math.round(x);
     y = Math.round(y);
+
     this._superDraw.bind(this)(radius, x, y);
     this.elm.interactive = true;
     this.elm.buttonMode = true;
     this.isInteractive = true;
     this.elm.index = this._index;
 
-    this.related = [Math.floor(Math.random() * 30)];
+    this._overCircle = new PIXI.Graphics();
+    this._overCircle.cacheAsBitmap = true;
+    this._overCircle.lineStyle(2, this.color);
+    this._overCircle.drawCircle(0, 0, radius + 5);
+    this._overCircle.scale = {x:0, y:0};
+    this.elm.addChildAt(this._overCircle, 0);
   };
 
   Issue.prototype.setTextAlwaysVisible = function (isVisible) {
@@ -73,8 +79,16 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
       createjs.Tween.get(this._title).to({alpha: 1}, 200, createjs.Ease.easeIn);
     }
 
-    this._circle.tint = this.color;
-    createjs.Tween.get(this._circle).to({tint: 0xFF0000});
+    // this._circle.tint = this.color;
+    // createjs.Tween.get(this._circle).to({tint: 0xFF0000});
+
+    this._drawCircle(this.color);
+
+    createjs.Tween.get(this._overCircle.scale).to(
+      {x:1, y:1},
+      300,
+      createjs.Ease.getBackOut(2.5)
+    );
   };
 
   Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
@@ -92,6 +106,14 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
         }
       }.bind(this));
     }
+
+    this._drawCircle();
+
+    createjs.Tween.get(this._overCircle.scale).to(
+      {x:0, y:0},
+      300,
+      createjs.Ease.easeOut
+    );
   };
 
   /**

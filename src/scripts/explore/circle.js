@@ -9,8 +9,11 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this.elm = new PIXI.DisplayObjectContainer();
     this.radius = radius;
 
-    this._circle = this._drawCircle(radius, x, y);
+    this._circle = new PIXI.Graphics();
     this.elm.addChild(this._circle);
+    this._drawCircle();
+    this._circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
+    this._circle.cacheAsBitmap = true;
 
     if (this.data) {
       this._drawTitle();
@@ -86,18 +89,15 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   * @param  {number} y initial position on y axis
   * @return {DisplayObject} actual element
   */
-  Circle.prototype._drawCircle = function (radius) {
-    var circle = new PIXI.Graphics();
-    circle.beginFill(0x000000);
-    circle.drawCircle(0, 0, radius);
-    circle.endFill();
-    circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
-    circle.cacheAsBitmap = true;
-    return circle;
-    // var circle = PIXI.Sprite.fromImage('images/circle.png');
-    // circle.width = circle.height = radius * 2;
-    // circle.x = circle.y = -radius;
-    // return circle;
+  Circle.prototype._drawCircle = function (color) {
+    if (!color) {
+      color = 0x000000;
+    }
+
+    this._circle.clear();
+    this._circle.beginFill(color);
+    this._circle.drawCircle(0, 0, this.radius);
+    this._circle.endFill();
   };
 
   Circle.prototype._drawTitle = function () {
@@ -106,7 +106,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     };
 
     this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
-    this._title.x = this._title.y = 5;
+    this._title.x = this._title.y = 10;
   };
 
   /**

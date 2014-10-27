@@ -84,6 +84,7 @@ define([
     this._topicsContainer = new PIXI.DisplayObjectContainer();
     this._topicsContainer.x = this._linesContainer.x;
     this._topicsContainer.y = this._linesContainer.y;
+    this._stage.addChild(this._topicsContainer);
 
     this._drawFakes();
     this._drawIssues();
@@ -289,12 +290,20 @@ define([
       this._issuesContainer.addChild(issue.elm);
 
       issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
+      issue.elm.mouseout = issue.elm.touchend = this._onIssueOut.bind(this);
     }
   };
 
   Explore.prototype._onIssueOver = function (event) {
     var issue = this._issues[event.target.index];
     issue.mouseOver.bind(issue)();
+  };
+
+  Explore.prototype._onIssueOut = function (event) {
+    var issue = this._issues[event.target.index];
+    if (!issue.isInteractive) {
+      issue.mouseOut.bind(issue)();
+    }
   };
 
   /**
