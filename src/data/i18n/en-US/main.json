@@ -2,19 +2,19 @@
   "topics": {
     "availability": {
       "name": "Availability",
-      "tagline": "An Internet where everyone can play"
+      "tagline": "An Internet where\n everyone can play"
     },
     "control": {
       "name": "Control",
-      "tagline": "An Internet where individuals are in the driver seat"
+      "tagline": "An Internet where individuals\n are in the driver seat"
     },
     "safety": {
       "name": "Safety",
-      "tagline": "An Internet that has our back"
+      "tagline": "An Internet that\n has our back"
     },
     "fairness": {
       "name": "Fairness",
-      "tagline": "An internet with a level-playing field"
+      "tagline": "An internet with\n a level-playing field"
     }
   },
   "issues": {

@@ -34,6 +34,7 @@ define([
     this._issues = [];
     this._tags = [];
     this._fakes = [];
+    this._topics = [];
 
     this._issueData;
     this._tagData;
@@ -203,76 +204,152 @@ define([
       this._fakes[i].explode(this._exploreRadius);
     }
 
-
-    var topicArea;
-    var radius = this._topicRadius;
+    var topicArea, topicTitle, topicDesc;
     var issue, centerX, centerY;
+    var radius = this._topicRadius;
+
     for(i = 0; i < this._topicsData.length; i ++) {
-      centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
-      centerX -= ((this._renderer.width - 400) / 2);
-      centerY = 0;
+      if (!this._topics[i]) {
+        this._topics[i] = this._setupTopic(i);
+      }
 
-      topicArea = new PIXI.Graphics();
-      topicArea.i = i;
-      topicArea.x = centerX;
-      topicArea.y = centerY;
-      topicArea.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
-      topicArea.interactive = true;
-      topicArea.buttonMode = true;
-      this._topicsContainer.addChild(topicArea);
-      topicArea.mouseover = topicArea.touchstart = this._onMouseOverTopic.bind(this);
+      centerX = this._topics[i].centerX;
+      centerY = this._topics[i].centerY;
 
-      for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
-        issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
+      topicArea = this._topics[i].topicArea;
+      topicTitle = this._topics[i].topicTitle;
+      topicDesc = this._topics[i].topicDesc;
+
+      for(j = 0; j < this._topics[i].issues.length; j ++) {
+        issue = this._topics[i].issues[j];
         issue.setTextAlwaysVisible(false);
         issue.setIsInteractive(false);
-        issue.moveTo(
-          centerX + (Math.random() * radius * 2) - radius,
-          centerY + (Math.random() * radius * 2) - radius)
+        issue.moveTo(issue.topicX, issue.topicY)
           .call(issue._resumeStaticAnimation.bind(issue));
       }
     }
+  };
+
+  Explore.prototype._setupTopic = function (i) {
+    var topicArea, topicTitle, topicDesc, linearArea;
+    var centerX, centerY;
+    var radius = this._topicRadius;
+    var topic = {};
+
+    topic.linearDist = 40;
+    topic.linearWidth = 100;
+
+    centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
+    centerX -= ((this._renderer.width - 400) / 2);
+    centerY = 0;
+
+    // topic center
+    topic.centerX = centerX;
+    topic.centerY = centerY;
+
+    // topic mouse over
+    topicArea = new PIXI.Graphics();
+    topicArea.i = i;
+    topicArea.x = centerX;
+    topicArea.y = centerY;
+    topicArea.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
+    topicArea.interactive = true;
+    topicArea.buttonMode = true;
+    this._topicsContainer.addChild(topicArea);
+    topicArea.mouseover = topicArea.touchstart = this._onMouseOverTopic.bind(this);
+    topic.topicArea = topicArea;
+
+    // topic mouse out area
+    var issueCount = this._topicsData[i]._issues.length;
+    linearArea = new PIXI.Graphics();
+    linearArea.x = centerX;
+    linearArea.y = centerY;
+    linearArea.interactive = true;
+    linearArea.buttonMode = true;
+    linearArea.hitArea = new PIXI.Rectangle(
+      -topic.linearWidth / 2,
+      -topic.linearDist * issueCount / 2,
+      topic.linearWidth,
+      topic.linearDist * issueCount);
+    topic.linearArea = linearArea;
+
+    // title
+    topicTitle = new PIXI.Text(this._topicsData[i].getName().toUpperCase(),
+      {font: '22px "fira-sans-regular", sans-serif'});
+    this._topicsContainer.addChild(topicTitle);
+    topicTitle.x = topicArea.x - (topicTitle.width / 2);
+    topicTitle.y = topicArea.y - (topicTitle.height / 2);
+    topic.topicTitle = topicTitle;
+
+    // description
+    topicDesc = new PIXI.Text(this._topicsData[i].getTagline(),
+      {
+        font: '14px "fira-sans-regular", sans-serif',
+        fill: '#666666',
+        wordWrap: true,
+        wordWrapWidth: 200,
+        align: 'center'
+    });
+    this._topicsContainer.addChild(topicDesc);
+    topicDesc.x = topicArea.x - (topicDesc.width / 2);
+    topicDesc.y = topicArea.y + radius + 50;
+    topic.topicDesc = topicDesc;
+
+    // topic issue elements
+    topic.issues = [];
+    var issue;
+    for(var j = 0; j < this._topicsData[i]._issues.length; j ++) {
+      issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
+      issue.setTextAlwaysVisible(false);
+      issue.setIsInteractive(false);
+      topic.issues.push(issue);
+      issue.topicX = centerX + (Math.random() * radius * 2) - radius;
+      issue.topicY = centerY + (Math.random() * radius * 2) - radius;
+    }
+
+    return topic;
   };
 
   /**
   * When hovering a topic
   */
   Explore.prototype._onMouseOverTopic = function (event) {
-    var area = event.target;
-    this._topicsContainer.removeChild(area);
-    var issues = this._topicsData[area.i]._issues;
+    var topic = this._topics[event.target.i];
+    this._topicsContainer.removeChild(topic.topicArea);
+    this._topicsContainer.addChild(topic.linearArea);
 
-    var dist = 40;
+    // move issues to a linear position
     var issue;
-    for(var i = 0; i < issues.length; i ++) {
-      issue = this._getElementFromId(issues[i]._id);
-      issue.moveTo(area.x, area.y + (dist * i) - (dist * issues.length / 2))
+    for(var i = 0; i < topic.issues.length; i ++) {
+      issue = topic.issues[i];
+      issue.moveTo(topic.topicArea.x,
+        topic.topicArea.y + (topic.linearDist * i)
+          - (topic.linearDist * topic.issues.length / 2))
         .call(issue._resumeStaticAnimation.bind(issue));
     }
 
-    var lineWidth = 60;
-    var lineArea = new PIXI.Graphics();
-    lineArea.x = area.x;
-    lineArea.y = area.y;
-    lineArea.interactive = true;
-    lineArea.buttonMode = true;
-    lineArea.hitArea = new PIXI.Rectangle(
-      -lineWidth / 2,
-      -dist * issues.length / 2,
-      lineWidth,
-      dist * issues.length);
-    this._topicsContainer.addChild(lineArea);
+    // move selected title and desc
+    var posY = topic.centerY;
+    posY -= topic.linearDist * topic.issues.length / 2;
+    posY -= topic.topicTitle.height + 20;
+    createjs.Tween.get(topic.topicTitle, {override: true})
+      .to({y: posY},300, createjs.Ease.easeIn);
+    createjs.Tween.get(topic.topicDesc, {override: true})
+      .to({alpha: 0}, 300, createjs.Ease.easeIn);
 
-    lineArea.mouseout = lineArea.touchend = function () {
-      this._topicsContainer.removeChild(lineArea);
-      this._topicsContainer.addChild(area);
+    topic.linearArea.mouseout = topic.linearArea.touchend = function () {
+      this._topicsContainer.removeChild(topic.linearArea);
+      this._topicsContainer.addChild(topic.topicArea);
 
-      var radius = this._topicRadius;
-      for(var i = 0; i < issues.length; i ++) {
-        issue = this._getElementFromId(issues[i]._id);
-        issue.moveTo(
-          area.x + (Math.random() * radius * 2) - radius,
-          area.y + (Math.random() * radius * 2) - radius)
+      // move selected title and desc
+      createjs.Tween.get(topic.topicTitle, {override: true})
+        .to({y: topic.centerY - (topic.topicTitle.height / 2)}, 300, createjs.Ease.easeOut);
+      createjs.Tween.get(topic.topicDesc, {override: true})
+        .to({alpha: 1}, 300, createjs.Ease.easeOut);
+
+      for(var i = 0; i < topic.issues.length; i ++) {
+        issue = topic.issues[i];
+        issue.moveTo(issue.topicX, issue.topicY)
           .call(issue._resumeStaticAnimation.bind(issue));
       }
     }.bind(this);
