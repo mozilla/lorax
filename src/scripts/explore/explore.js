@@ -3,13 +3,15 @@ define([
   'stats',
   'createjs',
   'explore/issue',
-  'explore/circle'
+  'explore/circle',
+  'explore/topic'
 ], function (
   PIXI,
   Stats,
   createjs,
   Issue,
-  Circle
+  Circle,
+  Topic
 ) {
   'use strict';
 
@@ -41,8 +43,6 @@ define([
 
     this._lastTick = 0;
     this._mode = 'explore';
-
-    this._topicRadius = 70;
   };
 
   Explore.prototype.setData = function (data) {
@@ -194,7 +194,7 @@ define([
 
     this._stage.addChild(this._topicsContainer);
 
-    var i, j;
+    var i, j, issue;
 
     for (i = 0; i < this._tags.length; i ++) {
       this._tags[i].explode(this._exploreRadius);
@@ -204,198 +204,28 @@ define([
       this._fakes[i].explode(this._exploreRadius);
     }
 
-    var topicArea, topicTitle, topicDesc;
-    var issue, centerX, centerY;
-
     for(i = 0; i < this._topicsData.length; i ++) {
       if (!this._topics[i]) {
-        this._topics[i] = this._setupTopic(i);
-      }
-
-      centerX = this._topics[i].centerX;
-      centerY = this._topics[i].centerY;
-
-      topicArea = this._topics[i].topicArea;
-      topicTitle = this._topics[i].topicTitle;
-      topicDesc = this._topics[i].topicDesc;
-
-      for(j = 0; j < this._topics[i].issues.length; j ++) {
-        issue = this._topics[i].issues[j];
-        issue.setTextAlwaysVisible(false);
-        issue.setIsInteractive(false);
-        issue.moveTo(issue.topicX, issue.topicY)
-          .call(issue._resumeStaticAnimation.bind(issue));
-      }
-    }
-  };
-
-  Explore.prototype._setupTopic = function (i) {
-    var topicArea, topicTitle, topicDesc, linearArea;
-    var centerX, centerY;
-    var radius = this._topicRadius;
-    var topic = {};
-
-    topic.linearDist = 40;
-    topic.linearWidth = 100;
-
-    centerX = (this._renderer.width - 400) / (this._topicsData.length - 1) * i;
-    centerX -= ((this._renderer.width - 400) / 2);
-    centerY = 0;
-
-    centerX = Math.round(centerX);
-
-    // topic center
-    topic.centerX = centerX;
-    topic.centerY = centerY;
-
-    // topic mouse over
-    topicArea = new PIXI.Graphics();
-    topicArea.i = i;
-    topicArea.x = centerX;
-    topicArea.y = centerY;
-    topicArea.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
-    topicArea.interactive = true;
-    topicArea.buttonMode = true;
-    this._topicsContainer.addChild(topicArea);
-    topicArea.mouseover = topicArea.touchstart = this._onMouseOverTopic.bind(this);
-    topic.topicArea = topicArea;
-
-    // topic mouse out area
-    var issueCount = this._topicsData[i]._issues.length;
-    linearArea = new PIXI.Graphics();
-    linearArea.i = i;
-    linearArea.x = centerX - 100;
-    linearArea.y = centerY;
-    linearArea.interactive = true;
-    linearArea.buttonMode = true;
-    linearArea.hitArea = new PIXI.Rectangle(
-      -topic.linearWidth / 2,
-      -topic.linearDist * issueCount / 2,
-      topic.linearWidth + 100,
-      topic.linearDist * issueCount);
-    topic.linearArea = linearArea;
-
-    // title
-    topicTitle = new PIXI.Text(this._topicsData[i].getName().toUpperCase(),
-      {font: '22px "fira-sans-regular", sans-serif'});
-    this._topicsContainer.addChild(topicTitle);
-    topicTitle.x = topicArea.x - (topicTitle.width / 2);
-    topicTitle.y = topicArea.y - (topicTitle.height / 2);
-    topic.topicTitle = topicTitle;
-
-    // description
-    topicDesc = new PIXI.Text(this._topicsData[i].getTagline(),
-      {
-        font: '14px "fira-sans-regular", sans-serif',
-        fill: '#666666',
-        wordWrap: true,
-        wordWrapWidth: 200,
-        align: 'center'
-    });
-    this._topicsContainer.addChild(topicDesc);
-    topicDesc.x = topicArea.x - (topicDesc.width / 2);
-    topicDesc.y = topicArea.y + radius + 50;
-    topic.topicDesc = topicDesc;
-
-    // topic issue elements
-    topic.issues = [];
-    var issue;
-    for(var j = 0; j < this._topicsData[i]._issues.length; j ++) {
-      issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
-      issue.setTextAlwaysVisible(false);
-      issue.setIsInteractive(false);
-      topic.issues.push(issue);
-      issue.topicX = topic.centerX + (Math.random() * radius * 2) - radius;
-      issue.topicY = topic.centerY + (Math.random() * radius * 2) - radius;
-    }
-
-    return topic;
-  };
-
-  /**
-  * When hovering a topic
-  */
-  Explore.prototype._onMouseOverTopic = function (event) {
-    var topicIndex = event.target.i;
-    var topic = this._topics[topicIndex];
-    this._topicsContainer.removeChild(topic.topicArea);
-    this._topicsContainer.addChild(topic.linearArea);
-
-    var i, j;
-
-    // move issues to a linear position
-    var issue;
-    for(i = 0; i < topic.issues.length; i ++) {
-      issue = topic.issues[i];
-      issue.moveTo(topic.linearArea.x,
-        topic.linearArea.y + ((topic.linearDist * i) -
-          (topic.linearDist * topic.issues.length / 2)))
-        .call(issue._resumeStaticAnimation.bind(issue));
-    }
-
-    // move selected title and desc
-    var posY = topic.centerY;
-    posY -= topic.linearDist * topic.issues.length / 2;
-    posY -= topic.topicTitle.height + 20;
-    createjs.Tween.get(topic.topicTitle, {override: true})
-      .to({y: posY}, 300, createjs.Ease.easeIn);
-    createjs.Tween.get(topic.topicDesc, {override: true})
-      .to({alpha: 0}, 300, createjs.Ease.easeIn);
-
-    // tone down other topics
-    for(i = 0; i < this._topics.length ; i ++) {
-      if (i !== event.target.i) {
-        createjs.Tween.get(this._topics[i].topicTitle, {override: true})
-          .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-        createjs.Tween.get(this._topics[i].topicDesc, {override: true})
-          .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-
-        for(j = 0; j < this._topics[i].issues.length; j ++) {
-          createjs.Tween.get(this._topics[i].issues[j].elm, {override: true})
-            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        // get issue elements for topic
+        var issues = [];
+        for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
+          issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
+          issues.push(issue);
         }
+
+        this._topics[i] = new Topic(this._topicsData[i], i, issues);
+        this._topicsContainer.addChild(this._topics[i].elm);
+        this._topics[i].elm.x = (this._renderer.width - 400);
+        this._topics[i].elm.x /= (this._topicsData.length - 1) / i;
+        this._topics[i].elm.x -= ((this._renderer.width - 400) / 2);
+        this._topics[i].elm.y = 0;
+
+        this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
+
+        this._topics[i].setup();
       }
-    }
 
-    topic.linearArea.mouseout = topic.linearArea.touchend = this._onMouseOutTopic.bind(this);
-  };
-
-  /**
-  * When the mouse leaves a topic
-  */
-  Explore.prototype._onMouseOutTopic = function (event) {
-    var topicIndex = event.target.i;
-    var topic = this._topics[topicIndex];
-
-    this._topicsContainer.removeChild(topic.linearArea);
-    this._topicsContainer.addChild(topic.topicArea);
-
-    // move selected title and desc
-    createjs.Tween.get(topic.topicTitle, {override: true})
-      .to({y: topic.centerY - (topic.topicTitle.height / 2)}, 300, createjs.Ease.easeOut);
-    createjs.Tween.get(topic.topicDesc, {override: true})
-      .to({alpha: 1}, 300, createjs.Ease.easeOut);
-
-    // tone down other topics
-    var i, j, issue;
-    for(i = 0; i < this._topics.length; i ++) {
-      if (i !== topicIndex) {
-        createjs.Tween.get(this._topics[i].topicTitle, {override: true})
-          .to({alpha: 1}, 300, createjs.Ease.easeIn);
-        createjs.Tween.get(this._topics[i].topicDesc, {override: true})
-          .to({alpha: 1}, 300, createjs.Ease.easeIn);
-
-        for(j = 0; j < this._topics[i].issues.length; j ++) {
-          createjs.Tween.get(this._topics[i].issues[j].elm, {override: true})
-            .to({alpha: 1}, 300, createjs.Ease.easeIn);
-        }
-      }
-    }
-
-    for(i = 0; i < topic.issues.length; i ++) {
-      issue = topic.issues[i];
-      issue.moveTo(issue.topicX, issue.topicY)
-        .call(issue._resumeStaticAnimation.bind(issue));
+      this._topics[i].show();
     }
   };
 
