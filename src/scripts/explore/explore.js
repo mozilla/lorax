@@ -84,7 +84,6 @@ define([
     this._topicsContainer = new PIXI.DisplayObjectContainer();
     this._topicsContainer.x = this._issuesContainer.x;
     this._topicsContainer.y = this._issuesContainer.y;
-    this._stage.addChild(this._topicsContainer);
 
     this._drawFakes();
     this._drawIssues();
@@ -96,10 +95,6 @@ define([
 
   Explore.prototype._clearTopics = function () {
     this._stage.removeChild(this._topicsContainer);
-    this._topicsContainer = new PIXI.DisplayObjectContainer();
-    this._topicsContainer.x = this._issuesContainer.x;
-    this._topicsContainer.y = this._issuesContainer.y;
-    this._stage.addChild(this._topicsContainer);
   };
 
   /**
@@ -184,8 +179,6 @@ define([
   * Go to topics mode
   */
   Explore.prototype.showTopics = function () {
-    this._clearTopics();
-
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 400, createjs.Ease.easeOut)
       .to({alpha:1}, 400, createjs.Ease.easeIn);
@@ -193,6 +186,8 @@ define([
     setTimeout(function () {
       this._mode = 'topics';
     }.bind(this), 400);
+
+    this._stage.addChild(this._topicsContainer);
 
     var i, j;
 
@@ -262,6 +257,7 @@ define([
     // topic mouse out area
     var issueCount = this._topicsData[i]._issues.length;
     linearArea = new PIXI.Graphics();
+    linearArea.i = i;
     linearArea.x = centerX;
     linearArea.y = centerY;
     linearArea.interactive = true;
@@ -314,17 +310,20 @@ define([
   * When hovering a topic
   */
   Explore.prototype._onMouseOverTopic = function (event) {
-    var topic = this._topics[event.target.i];
+    var topicIndex = event.target.i;
+    var topic = this._topics[topicIndex];
     this._topicsContainer.removeChild(topic.topicArea);
     this._topicsContainer.addChild(topic.linearArea);
 
+    var i, j;
+
     // move issues to a linear position
     var issue;
-    for(var i = 0; i < topic.issues.length; i ++) {
+    for(i = 0; i < topic.issues.length; i ++) {
       issue = topic.issues[i];
       issue.moveTo(topic.topicArea.x,
-        topic.topicArea.y + (topic.linearDist * i)
-          - (topic.linearDist * topic.issues.length / 2))
+        topic.topicArea.y + ((topic.linearDist * i) -
+          (topic.linearDist * topic.issues.length / 2)))
         .call(issue._resumeStaticAnimation.bind(issue));
     }
 
@@ -333,26 +332,65 @@ define([
     posY -= topic.linearDist * topic.issues.length / 2;
     posY -= topic.topicTitle.height + 20;
     createjs.Tween.get(topic.topicTitle, {override: true})
-      .to({y: posY},300, createjs.Ease.easeIn);
+      .to({y: posY}, 300, createjs.Ease.easeIn);
     createjs.Tween.get(topic.topicDesc, {override: true})
       .to({alpha: 0}, 300, createjs.Ease.easeIn);
 
-    topic.linearArea.mouseout = topic.linearArea.touchend = function () {
-      this._topicsContainer.removeChild(topic.linearArea);
-      this._topicsContainer.addChild(topic.topicArea);
+    // tone down other topics
+    for(i = 0; i < this._topics.length ; i ++) {
+      if (i !== event.target.i) {
+        createjs.Tween.get(this._topics[i].topicTitle, {override: true})
+          .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        createjs.Tween.get(this._topics[i].topicDesc, {override: true})
+          .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
 
-      // move selected title and desc
-      createjs.Tween.get(topic.topicTitle, {override: true})
-        .to({y: topic.centerY - (topic.topicTitle.height / 2)}, 300, createjs.Ease.easeOut);
-      createjs.Tween.get(topic.topicDesc, {override: true})
-        .to({alpha: 1}, 300, createjs.Ease.easeOut);
-
-      for(var i = 0; i < topic.issues.length; i ++) {
-        issue = topic.issues[i];
-        issue.moveTo(issue.topicX, issue.topicY)
-          .call(issue._resumeStaticAnimation.bind(issue));
+        for(j = 0; j < this._topics[i].issues.length; j ++) {
+          createjs.Tween.get(this._topics[i].issues[j].elm, {override: true})
+            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        }
       }
-    }.bind(this);
+    }
+
+    topic.linearArea.mouseout = topic.linearArea.touchend = this._onMouseOutTopic.bind(this);
+  };
+
+  /**
+  * When the mouse leaves a topic
+  */
+  Explore.prototype._onMouseOutTopic = function (event) {
+    var topicIndex = event.target.i;
+    var topic = this._topics[topicIndex];
+
+    this._topicsContainer.removeChild(topic.linearArea);
+    this._topicsContainer.addChild(topic.topicArea);
+
+    // move selected title and desc
+    createjs.Tween.get(topic.topicTitle, {override: true})
+      .to({y: topic.centerY - (topic.topicTitle.height / 2)}, 300, createjs.Ease.easeOut);
+    createjs.Tween.get(topic.topicDesc, {override: true})
+      .to({alpha: 1}, 300, createjs.Ease.easeOut);
+
+    // tone down other topics
+    var i, j, issue;
+    for(i = 0; i < this._topics.length; i ++) {
+      if (i !== topicIndex) {
+        createjs.Tween.get(this._topics[i].topicTitle, {override: true})
+          .to({alpha: 1}, 300, createjs.Ease.easeIn);
+        createjs.Tween.get(this._topics[i].topicDesc, {override: true})
+          .to({alpha: 1}, 300, createjs.Ease.easeIn);
+
+        for(j = 0; j < this._topics[i].issues.length; j ++) {
+          createjs.Tween.get(this._topics[i].issues[j].elm, {override: true})
+            .to({alpha: 1}, 300, createjs.Ease.easeIn);
+        }
+      }
+    }
+
+    for(i = 0; i < topic.issues.length; i ++) {
+      issue = topic.issues[i];
+      issue.moveTo(issue.topicX, issue.topicY)
+        .call(issue._resumeStaticAnimation.bind(issue));
+    }
   };
 
   /**
