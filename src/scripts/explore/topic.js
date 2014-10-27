@@ -76,12 +76,17 @@ define([
 
     // topic issue elements
     var issue;
+    var tH = (this._topicTitle.height / 2) + 5; // half title height
     for(var i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.setTextAlwaysVisible(false);
       issue.setIsInteractive(false);
+
       issue.topicX = this.elm.x + (Math.random() * this._radius * 2) - this._radius;
-      issue.topicY = this.elm.y + (Math.random() * this._radius * 2) - this._radius;
+       // from -(radius - tH / 2) to (radius - tH / 2)
+      issue.topicY = (Math.random() * (this._radius - tH) * 2) - (this._radius - tH);
+      // dont go between -tH/2 and tH/2 (the title area)
+      issue.topicY += this.elm.y + (tH * (issue.topicY > 0 ? 1 : -1));
     }
 
     return this;
