@@ -37,14 +37,21 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
    */
   Circle.prototype._resumeStaticAnimation = function () {
     var d = this.radius / 10; // displace quocient
+
+    if (this._staticScaleTween) {
+      this._staticScaleTween.setPaused(true);
+    }
     this._staticScaleTween = createjs.Tween.get(
       this._circle.scale,
-      {loop: true, override: true})
+      {loop: true})
       .wait(Math.random() * 1000)
       .to({x:1 + (0.2 * d), y:1 + (0.2 * d)}, 500, createjs.Ease.bounceOut)
       .to({x:1, y:1}, 500, createjs.Ease.linear);
 
-    this._staticPositionTween = createjs.Tween.get(this.elm, {loop: true, override: true})
+    if (this._staticPositionTween) {
+      this._staticPositionTween.setPaused(true);
+    }
+    this._staticPositionTween = createjs.Tween.get(this.elm, {loop: true})
       .to({
           x: this._x0 + (-10 + Math.random() * 20) * d,
           y: this._y0 + (-10 + Math.random() * 20) * d

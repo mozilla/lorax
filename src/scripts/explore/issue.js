@@ -64,6 +64,7 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
   Issue.prototype.mouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
 
+    this.stopMoving();
     if (!this._textAlwaysVisible) {
       this.elm.addChild(this._title);
       this._title.alpha = 0;
