@@ -27,6 +27,8 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
    * @param  {number} y y position
    */
   Issue.prototype.draw = function (radius, x, y) {
+    x = Math.round(x);
+    y = Math.round(y);
     this._superDraw.bind(this)(radius, x, y);
     this.elm.interactive = true;
     this.elm.buttonMode = true;
@@ -98,8 +100,8 @@ define(['explore/circle', 'createjs'], function (Circle, createjs) {
    */
   Issue.prototype.update = function (mousePosition) {
     if (this.isOver && this.isInteractive) {
-      this.elm.x = mousePosition.x;
-      this.elm.y = mousePosition.y;
+      this.elm.x = Math.round(mousePosition.x);
+      this.elm.y = Math.round(mousePosition.y);
 
       var stickyRadius = 30;
       if (Math.abs(this.elm.x - this._x0) > stickyRadius ||

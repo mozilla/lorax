@@ -67,8 +67,8 @@ define([
 
     // lines
     this._linesContainer = new PIXI.Graphics();
-    this._linesContainer.x = this._renderer.width / 2;
-    this._linesContainer.y = this._renderer.height / 2;
+    this._linesContainer.x = Math.round(this._renderer.width / 2);
+    this._linesContainer.y = Math.round(this._renderer.height / 2);
     this._stage.addChild(this._linesContainer);
 
     // circles
@@ -76,14 +76,14 @@ define([
     this._exploreRadius = dimension / 2;
     this._issuesContainer = new PIXI.DisplayObjectContainer();
     this._issuesContainer.interactive = true;
-    this._issuesContainer.x = this._renderer.width / 2;
-    this._issuesContainer.y = this._renderer.height / 2;
+    this._issuesContainer.x = this._linesContainer.x;
+    this._issuesContainer.y = this._linesContainer.y;
     this._stage.addChild(this._issuesContainer);
 
     // topics hover areas
     this._topicsContainer = new PIXI.DisplayObjectContainer();
-    this._topicsContainer.x = this._issuesContainer.x;
-    this._topicsContainer.y = this._issuesContainer.y;
+    this._topicsContainer.x = this._linesContainer.x;
+    this._topicsContainer.y = this._linesContainer.y;
 
     this._drawFakes();
     this._drawIssues();
@@ -95,6 +95,11 @@ define([
 
   Explore.prototype._clearTopics = function () {
     this._stage.removeChild(this._topicsContainer);
+
+    for(var i = 0; i < this._issues.length; i ++) {
+      createjs.Tween.get(this._issues[i].elm, {override: true})
+        .to({alpha: 1}, 300, createjs.Ease.easeIn);
+    }
   };
 
   /**
@@ -201,7 +206,6 @@ define([
 
     var topicArea, topicTitle, topicDesc;
     var issue, centerX, centerY;
-    var radius = this._topicRadius;
 
     for(i = 0; i < this._topicsData.length; i ++) {
       if (!this._topics[i]) {
@@ -238,6 +242,8 @@ define([
     centerX -= ((this._renderer.width - 400) / 2);
     centerY = 0;
 
+    centerX = Math.round(centerX);
+
     // topic center
     topic.centerX = centerX;
     topic.centerY = centerY;
@@ -258,14 +264,14 @@ define([
     var issueCount = this._topicsData[i]._issues.length;
     linearArea = new PIXI.Graphics();
     linearArea.i = i;
-    linearArea.x = centerX;
+    linearArea.x = centerX - 100;
     linearArea.y = centerY;
     linearArea.interactive = true;
     linearArea.buttonMode = true;
     linearArea.hitArea = new PIXI.Rectangle(
       -topic.linearWidth / 2,
       -topic.linearDist * issueCount / 2,
-      topic.linearWidth,
+      topic.linearWidth + 100,
       topic.linearDist * issueCount);
     topic.linearArea = linearArea;
 
@@ -299,8 +305,8 @@ define([
       issue.setTextAlwaysVisible(false);
       issue.setIsInteractive(false);
       topic.issues.push(issue);
-      issue.topicX = centerX + (Math.random() * radius * 2) - radius;
-      issue.topicY = centerY + (Math.random() * radius * 2) - radius;
+      issue.topicX = topic.centerX + (Math.random() * radius * 2) - radius;
+      issue.topicY = topic.centerY + (Math.random() * radius * 2) - radius;
     }
 
     return topic;
@@ -321,8 +327,8 @@ define([
     var issue;
     for(i = 0; i < topic.issues.length; i ++) {
       issue = topic.issues[i];
-      issue.moveTo(topic.topicArea.x,
-        topic.topicArea.y + ((topic.linearDist * i) -
+      issue.moveTo(topic.linearArea.x,
+        topic.linearArea.y + ((topic.linearDist * i) -
           (topic.linearDist * topic.issues.length / 2)))
         .call(issue._resumeStaticAnimation.bind(issue));
     }
