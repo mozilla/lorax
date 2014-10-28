@@ -46,7 +46,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     }
     this._staticScaleTween = createjs.Tween.get(
       this._circle.scale,
-      {loop: true})
+      {loop: true, override: true})
       .wait(Math.random() * 1000)
       .to({x:1 + (0.2 * d), y:1 + (0.2 * d)}, 500, createjs.Ease.bounceOut)
       .to({x:1, y:1}, 500, createjs.Ease.linear);
@@ -54,7 +54,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     if (this._staticPositionTween) {
       this._staticPositionTween.setPaused(true);
     }
-    this._staticPositionTween = createjs.Tween.get(this.elm, {loop: true})
+    this._staticPositionTween = createjs.Tween.get(this.elm, {loop: true, override: true})
       .to({
           x: this._x0 + (-10 + Math.random() * 20) * d,
           y: this._y0 + (-10 + Math.random() * 20) * d

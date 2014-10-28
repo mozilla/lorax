@@ -296,15 +296,19 @@ define([
 
   Explore.prototype._onIssueOver = function (event) {
     var issue = this._issues[event.target.index];
-    var related;
+    var related, relatedIssue;
 
     if (this._mode !== 'issues') {
       issue.mouseOver.bind(issue)();
 
       related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
-        issue = this._getElementFromId(related[i]._id);
-        issue.lightUp();
+        relatedIssue = this._getElementFromId(related[i]._id);
+        if (issue.data.getStatus() === relatedIssue.data.getStatus()) {
+          relatedIssue.lightUp();
+        } else {
+          relatedIssue.lightDown();
+        }
       }
     } else {
       issue.issueModeMouseOver.bind(issue)();
@@ -313,7 +317,7 @@ define([
 
   Explore.prototype._onIssueOut = function (event) {
     var issue = this._issues[event.target.index];
-    var related;
+    var related, relatedIssue;
 
     if (this._mode !== 'issues') {
       if (!issue.isInteractive) {
@@ -322,8 +326,8 @@ define([
 
       related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
-        issue = this._getElementFromId(related[i]._id);
-        issue.lightDown();
+        relatedIssue = this._getElementFromId(related[i]._id);
+        relatedIssue.lightDown();
       }
     } else {
       issue.issueModeMouseOut.bind(issue)();
@@ -335,7 +339,7 @@ define([
   */
   Explore.prototype._drawLines = function () {
     this._linesContainer.clear();
-    var isOver, isSameTopic;
+    var isOver, isSameTopic, isSameStatus, isTopicOver;
     var issue;
     var related;
     var tags;
@@ -353,14 +357,18 @@ define([
 
           isOver = (issue.isOver || relatedItem.isOver);
           isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
-          isSameTopic = isSameTopic || (this._mode === 'topics' && isOver);
+          isSameStatus = issue.data.getStatus() === relatedItem.data.getStatus();
+          isTopicOver = (this._mode === 'topics' && isOver);
           // only show related on same topic if on topics
-          if (this._mode === 'explore' || isSameTopic) {
+          if (this._mode === 'explore' || isSameTopic || isTopicOver) {
             if (isOver) {
               lineColor = issue.isOver ? issue.color : relatedItem.color;
+              if (!isSameStatus) {
+                lineColor = 0x000000;
+              }
               this._linesContainer.lineStyle(1, lineColor,  0.3);
             } else {
-              this._linesContainer.lineStyle(1, 0x000000, 0.05);
+              this._linesContainer.lineStyle(1, 0x000000, 0.02);
             }
 
             this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
@@ -379,7 +387,7 @@ define([
             lineColor = issue.isOver ? issue.color : relatedItem.color;
             this._linesContainer.lineStyle(1, lineColor,  0.3);
           } else {
-            this._linesContainer.lineStyle(1, 0x000000, 0.05);
+            this._linesContainer.lineStyle(1, 0x000000, 0.02);
           }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
