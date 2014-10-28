@@ -9,6 +9,11 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   Issue.prototype = new Circle();
 
+  Issue.MODE_EXPLORE = 'explore';
+  Issue.MODE_TOPICS = 'topics';
+  Issue.MODE_ISSUES = 'issues';
+  Issue.MODES = [Issue.MODE_EXPLORE, Issue.MODE_TOPICS, Issue.MODE_ISSUES];
+
   Issue.prototype._superSetData = Issue.prototype.setData;
   Issue.prototype.setData = function (data) {
     this._superSetData.bind(this)(data);

@@ -42,7 +42,7 @@ define([
     this._tagData;
 
     this._lastTick = 0;
-    this._mode = 'explore';
+    this._mode = Issue.MODE_EXPLORE;
   };
 
   Explore.prototype.setData = function (data) {
@@ -127,7 +127,7 @@ define([
       .to({alpha:1}, 300, createjs.Ease.easeIn);
 
     setTimeout(function () {
-      this._mode = 'explore';
+      this._mode = Issue.MODE_EXPLORE;
     }.bind(this), 300);
 
     var i, issue;
@@ -155,12 +155,12 @@ define([
     this._clearTopics();
 
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 400, createjs.Ease.easeOut)
-      .to({alpha:1}, 400, createjs.Ease.easeIn);
+      .to({alpha:0}, 300, createjs.Ease.easeOut)
+      .to({alpha:1}, 300, createjs.Ease.easeIn);
 
     setTimeout(function () {
-      this._mode = 'issues';
-    }.bind(this), 400);
+      this._mode = Issue.MODE_ISSUES;
+    }.bind(this), 300);
 
     var i;
     for (i = 0; i < this._tags.length; i ++) {
@@ -171,6 +171,13 @@ define([
       this._fakes[i].explode(this._exploreRadius);
     }
 
+    var issueMargin = 100;
+    var scrollArea = new PIXI.Rectangle(
+      -((this._renderer.width - 300) / 2),
+      -((this._renderer.height - 300) / 2),
+      this._renderer.width - 300,
+      this._renderer.height - 300
+    );
     var issue;
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
@@ -178,8 +185,9 @@ define([
       issue.setTextAlwaysVisible(true);
       issue.setIsInteractive(false);
       issue.moveTo(
-        -(this._renderer.width / 2) + 150,
-        -(this._renderer.height / 2) + 150 + 60 * i);
+        scrollArea.x,
+        scrollArea.y + (issueMargin * i)
+      );
     }
   };
 
@@ -192,7 +200,7 @@ define([
       .to({alpha:1}, 400, createjs.Ease.easeIn);
 
     setTimeout(function () {
-      this._mode = 'topics';
+      this._mode = Issue.MODE_TOPICS;
     }.bind(this), 400);
 
     this._stage.addChild(this._topicsContainer);
@@ -300,7 +308,7 @@ define([
     var issue = this._issues[event.target.index];
     var related, relatedIssue;
 
-    if (this._mode !== 'issues') {
+    if (this._mode !== Issue.MODE_ISSUES) {
       issue.mouseOver.bind(issue)();
 
       related = issue.data.getRelated();
@@ -321,7 +329,7 @@ define([
     var issue = this._issues[event.target.index];
     var related, relatedIssue;
 
-    if (this._mode !== 'issues') {
+    if (this._mode !== Issue.MODE_ISSUES) {
       if (!issue.isInteractive) {
         issue.mouseOut.bind(issue)();
       }
@@ -353,16 +361,16 @@ define([
       related = this._issues[i].data.getRelated();
       tags = this._issues[i].data.getTags();
 
-      if (this._mode === 'explore' || this._mode === 'topics') {
+      if (this._mode === Issue.MODE_EXPLORE || this._mode === Issue.MODE_TOPICS) {
         for (j = 0; j < related.length; j ++) {
           relatedItem = this._getElementFromId(related[j]._id);
 
           isOver = (issue.isOver || relatedItem.isOver);
           isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
           isSameStatus = issue.data.getStatus() === relatedItem.data.getStatus();
-          isTopicOver = (this._mode === 'topics' && isOver);
+          isTopicOver = (this._mode === Issue.MODE_TOPICS && isOver);
           // only show related on same topic if on topics
-          if (this._mode === 'explore' || isSameTopic || isTopicOver) {
+          if (this._mode === Issue.MODE_EXPLORE || isSameTopic || isTopicOver) {
             if (isOver) {
               lineColor = issue.isOver ? issue.color : relatedItem.color;
               if (!isSameStatus) {
@@ -380,7 +388,7 @@ define([
       }
 
       // connect to tags on explore
-      if (this._mode === 'explore') {
+      if (this._mode === Issue.MODE_EXPLORE) {
         for (j = 0; j < tags.length; j ++) {
           relatedItem = this._getElementFromId(tags[j]._id);
 
@@ -398,7 +406,7 @@ define([
       }
 
       // connect to next in line on issues
-      if (this._mode === 'issues' && i < this._issues.length - 1) {
+      if (this._mode === Issue.MODE_ISSUES && i < this._issues.length - 1) {
         relatedItem = this._issues[i + 1];
         this._linesContainer.lineStyle(1, 0x000000, 0.15);
         this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
@@ -457,7 +465,7 @@ define([
 
     this._updatePositions(mousePosition);
 
-    if (this._mode === 'topics') {
+    if (this._mode === Issue.MODE_TOPICS) {
       this._updateTopics(mousePosition);
     }
 
