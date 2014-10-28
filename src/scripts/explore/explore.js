@@ -329,7 +329,7 @@ define([
   */
   Explore.prototype._drawLines = function () {
     this._linesContainer.clear();
-    var isOver = false;
+    var isOver, isSameTopic;
     var issue;
     var related;
     var tags;
@@ -345,10 +345,11 @@ define([
         for (j = 0; j < related.length; j ++) {
           relatedItem = this._getElementFromId(related[j]._id);
 
+          isOver = (issue.isOver || relatedItem.isOver);
+          isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
+          isSameTopic = isSameTopic || (this._mode === 'topics' && isOver);
           // only show related on same topic if on topics
-          if (this._mode === 'explore' ||
-            issue.data._parent._id === relatedItem.data._parent._id) {
-            isOver = (issue.isOver || relatedItem.isOver);
+          if (this._mode === 'explore' || isSameTopic) {
             if (isOver) {
               lineColor = issue.isOver ? issue.color : relatedItem.color;
               this._linesContainer.lineStyle(1, lineColor,  0.3);

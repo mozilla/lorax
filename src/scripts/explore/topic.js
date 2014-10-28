@@ -191,6 +191,7 @@ define([
 
   Topic.prototype.update = function (mousePosition) {
     if (this.isOver) {
+      // check for mouse out
       var x0 = this.elm.x + this._linearArea.x + this._linearArea.hitArea.x;
       var x1 = x0 + this._linearArea.hitArea.width;
       var y0 = this.elm.y + this._linearArea.y + this._linearArea.hitArea.y;
