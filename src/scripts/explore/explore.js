@@ -296,31 +296,37 @@ define([
 
   Explore.prototype._onIssueOver = function (event) {
     var issue = this._issues[event.target.index];
-    issue.mouseOver.bind(issue)();
+    var related;
 
     if (this._mode !== 'issues') {
-      var related = issue.data.getRelated();
-      var issue;
+      issue.mouseOver.bind(issue)();
+
+      related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
         issue = this._getElementFromId(related[i]._id);
         issue.lightUp();
       }
+    } else {
+      issue.issueModeMouseOver.bind(issue)();
     }
   };
 
   Explore.prototype._onIssueOut = function (event) {
     var issue = this._issues[event.target.index];
-    if (!issue.isInteractive) {
-      issue.mouseOut.bind(issue)();
-    }
+    var related;
 
     if (this._mode !== 'issues') {
-      var related = issue.data.getRelated();
-      var issue;
+      if (!issue.isInteractive) {
+        issue.mouseOut.bind(issue)();
+      }
+
+      related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
         issue = this._getElementFromId(related[i]._id);
         issue.lightDown();
       }
+    } else {
+      issue.issueModeMouseOut.bind(issue)();
     }
   };
 

@@ -107,6 +107,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
     this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
     this._title.x = this._title.y = 10;
+    this._title.alpha = 0;
   };
 
   /**

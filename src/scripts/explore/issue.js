@@ -77,7 +77,6 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this.stopMoving();
     if (!this._textAlwaysVisible) {
       this.elm.addChild(this._title);
-      this._title.alpha = 0;
       createjs.Tween.get(this._title, {override: true})
         .to({alpha: 1}, 200, createjs.Ease.easeIn);
     }
@@ -89,6 +88,10 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       300,
       createjs.Ease.getBackOut(2.5)
     );
+  };
+
+  Issue.prototype.issueModeMouseOver = function () {
+    Issue.prototype._superMouseOver.bind(this)();
   };
 
   Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
@@ -115,6 +118,10 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       300,
       createjs.Ease.easeOut
     );
+  };
+
+  Issue.prototype.issueModeMouseOut = function () {
+    Issue.prototype._superMouseOut.bind(this)();
   };
 
   /**
