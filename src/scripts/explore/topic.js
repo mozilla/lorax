@@ -1,9 +1,11 @@
 define([
   'pixi',
-  'createjs'
+  'createjs',
+  'explore/issue'
 ], function (
   PIXI,
-  createjs
+  createjs,
+  Issue
 ) {
   'use strict';
 
@@ -98,8 +100,7 @@ define([
     var issue;
     for(var i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
-      issue.setTextAlwaysVisible(false);
-      issue.setIsInteractive(false);
+      issue.setMode(Issue.MODE_TOPICS);
       issue.moveTo(issue.topicX, issue.topicY)
         .call(issue._resumeStaticAnimation.bind(issue));
     }

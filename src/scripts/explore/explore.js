@@ -133,8 +133,7 @@ define([
     var i, issue;
     for (i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
-      issue.setTextAlwaysVisible(false);
-      issue.setIsInteractive(true);
+      issue.setMode(Issue.MODE_EXPLORE);
       issue.moveTo(issue.exploreX, issue.exploreY)
         .call(issue._resumeStaticAnimation.bind(issue));
     }
@@ -181,9 +180,7 @@ define([
     var issue;
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
-      issue.stopMoving();
-      issue.setTextAlwaysVisible(true);
-      issue.setIsInteractive(false);
+      issue.setMode(Issue.MODE_ISSUES);
       issue.moveTo(
         scrollArea.x,
         scrollArea.y + (issueMargin * i)

@@ -16,6 +16,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   Issue.prototype._superSetData = Issue.prototype.setData;
   Issue.prototype.setData = function (data) {
+    this.mode = Issue.MODE_EXPLORE;
     this._superSetData.bind(this)(data);
 
     var colors = [0x00ae52, 0xffcc00, 0xe11313];
@@ -47,6 +48,22 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._overCircle.drawCircle(0, 0, radius + 5);
     this._overCircle.scale = {x:0, y:0};
     this.elm.addChildAt(this._overCircle, 0);
+  };
+
+  Issue.prototype.setMode = function (mode) {
+    this.mode = mode;
+
+    if (mode === Issue.MODE_EXPLORE) {
+      this.setTextAlwaysVisible(false);
+      this.setIsInteractive(true);
+    } else if (mode === Issue.MODE_TOPICS) {
+      this.setTextAlwaysVisible(false);
+      this.setIsInteractive(false);
+    } else if (mode === Issue.MODE_ISSUES) {
+      this.stopMoving();
+      this.setTextAlwaysVisible(true);
+      this.setIsInteractive(false);
+    }
   };
 
   Issue.prototype.setTextAlwaysVisible = function (isVisible) {
