@@ -253,7 +253,7 @@ define([
   */
   Explore.prototype._drawTags = function () {
     var seed, rSeed;
-    for (var i = 0; i < this._tagData.length * 8; i ++) {
+    for (var i = 0; i < this._tagData.length; i ++) {
       seed = Math.random() * Math.PI * 2;
       rSeed = this._exploreRadius + (Math.random() * 5);
 
@@ -366,9 +366,9 @@ define([
               if (!isSameStatus) {
                 lineColor = 0x000000;
               }
-              this._linesContainer.lineStyle(1, lineColor,  0.3);
+              this._linesContainer.lineStyle(1, lineColor,  0.15);
             } else {
-              this._linesContainer.lineStyle(1, 0x000000, 0.02);
+              this._linesContainer.lineStyle(1, 0x000000, 0.03);
             }
 
             this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
@@ -385,9 +385,9 @@ define([
           isOver = (issue.isOver || relatedItem.isOver);
           if (isOver) {
             lineColor = issue.isOver ? issue.color : relatedItem.color;
-            this._linesContainer.lineStyle(1, lineColor,  0.3);
+            this._linesContainer.lineStyle(1, lineColor,  0.15);
           } else {
-            this._linesContainer.lineStyle(1, 0x000000, 0.02);
+            this._linesContainer.lineStyle(1, 0x000000, 0.03);
           }
 
           this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
@@ -398,7 +398,7 @@ define([
       // connect to next in line on issues
       if (this._mode === 'issues' && i < this._issues.length - 1) {
         relatedItem = this._issues[i + 1];
-        this._linesContainer.lineStyle(1, 0x000000, 0.1);
+        this._linesContainer.lineStyle(1, 0x000000, 0.15);
         this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
         this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
       }
