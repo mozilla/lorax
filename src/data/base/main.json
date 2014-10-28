@@ -1,98 +1,211 @@
 {
-  "topics": {
-    "availability": {
-      "issues": {
-        "available": {
-          "status": 0,
-          "tags": [ "google", "facebook", "amazon" ]
+  "topics":{
+    "availability":{
+      "issues":{
+        "available":{
+          "status":0,
+          "tags":[
+            "Target Corporation",
+            "Citigroup Inc",
+            "Intel Corporation",
+            "Bank of America Corporation",
+            "The Dow Chemical Company"
+          ]
         },
-        "affordable": {
-          "status": 1,
-          "tags": [ "facebook", "china", "ebay" ]
+        "affordable":{
+          "status":1,
+          "tags":[
+            "Bank of America Corporation",
+            "Procter &amp;amp; Gamble Co",
+            "SYSCO Corporation",
+            "Morgan Stanley",
+            "Sears Holdings Corporation",
+            "United Technologies Corporation"
+          ]
         },
-        "speaksMyLanguage": {
-          "status": 1,
-          "tags": [ "china", "brazil" ]
+        "speaksMyLanguage":{
+          "status":1,
+          "tags":[
+            "Morgan Stanley",
+            "Amerada Hess Corporation",
+            "Hewlett-Packard Company",
+            "Northrop Grumman Corporation",
+            "General Dynamics Corporation"
+          ]
         },
-        "accessible": {
-          "status": 1,
-          "tags": [ "google", "china", "youtube" ]
+        "accessible":{
+          "status":1,
+          "tags":[
+            "Medco Health Solutions Inc",
+            "Wells Fargo &amp;amp; Company",
+            "International Business Machines Corporation",
+            "United Parcel Service of America, Inc",
+            "The Coca-Cola Company",
+            "Humana Inc."
+          ]
         },
-        "infrastructure": {
-          "status": 1,
-          "tags": [ "google", "amazon", "akamai" ]
+        "infrastructure":{
+          "status":1,
+          "tags":[
+            "Cisco Systems, Inc.",
+            "Abbott Laboratories",
+            "General Electric Company",
+            "General Dynamics Corporation",
+            "Wal-Mart Stores, Inc.",
+            "PepsiCo, Inc.",
+            "Wal-Mart Stores, Inc."
+          ]
         }
       }
     },
-    "control": {
-      "issues": {
-        "contentCreation": {
-          "status": 2,
-          "tags": [ "google", "youtube", "facebook" ]
+    "control":{
+      "issues":{
+        "contentCreation":{
+          "status":2,
+          "tags":[
+            "McKesson Corporation",
+            "Sprint",
+            "Hewlett-Packard Company",
+            "CVS Caremark"
+          ]
         },
-        "identityControl": {
-          "status": 1,
-          "tags": [ "google", "facebook" ]
+        "identityControl":{
+          "status":1,
+          "tags":[
+            "Lockheed Martin Corporation",
+            "Walgreen Company",
+            "McKesson Corporation",
+            "Intel Corporation"
+          ]
         },
-        "surveillance": {
-          "status": 2,
-          "tags": [ "google", "amazon", "nsa", "cia" ]
+        "surveillance":{
+          "status":2,
+          "tags":[
+            "ChevronTexaco Corporation",
+            "The Dow Chemical Company",
+            "The Coca-Cola Company",
+            "International Business Machines Corporation",
+            "General Motors Corporation"
+          ]
         },
-        "corporateTracking": {
-          "status": 2,
-          "tags": [ "google", "nsa" ]
+        "corporateTracking":{
+          "status":2,
+          "tags":[
+            "J.P. Morgan Chase &amp;amp; Co",
+            "J.P. Morgan Chase &amp;amp; Co",
+            "International Business Machines Corporation"
+          ]
         },
-        "gorvernmentSnooping": {
-          "status": 2,
-          "tags": [ "nsa", "cia" ]
+        "gorvernmentSnooping":{
+          "status":2,
+          "tags":[
+            "FedEx Corporation",
+            "General Motors Corporation",
+            "Amerada Hess Corporation"
+          ]
         },
-        "transparency": {
-          "status": 2,
-          "tags": [ "facebook", "google" ]
+        "transparency":{
+          "status":2,
+          "tags":[
+            "Goldman Sachs Group",
+            "Bank of America Corporation",
+            "Costco Wholesale Corp.",
+            "Sears Holdings Corporation",
+            "SYSCO Corporation"
+          ]
         },
-        "decentralization": {
-          "status": 2,
-          "tags": [ "mozilla", "google" ]
+        "decentralization":{
+          "status":2,
+          "tags":[
+            "General Dynamics Corporation",
+            "Cisco Systems, Inc.",
+            "General Motors Corporation",
+            "Medco Health Solutions Inc"
+          ]
         },
-        "censorship": {
-          "status": 2,
-          "tags": [ "nsa", "cia" ]
+        "censorship":{
+          "status":2,
+          "tags":[
+            "Apple Computer, Inc",
+            "FedEx Corporation",
+            "Target Corporation",
+            "MetLife, Inc."
+          ]
         }
       }
     },
-    "safety": {
-      "issues": {
-        "cyberThreats": {
-          "status": 1,
-          "tags": [ "china", "nsa" ]
+    "safety":{
+      "issues":{
+        "cyberThreats":{
+          "status":1,
+          "tags":[
+            "General Dynamics Corporation",
+            "The Dow Chemical Company",
+            "Marathon Oil Corp.",
+            "McKesson Corporation"
+          ]
         },
-        "cyberBullying": {
-          "status": 1,
-          "tags": [ "china", "nsa" ]
+        "cyberBullying":{
+          "status":1,
+          "tags":[
+            "Dell, Inc",
+            "Sprint",
+            "American International Group",
+            "SYSCO Corporation"
+          ]
         },
-        "controlPoints": {
-          "status": 1,
-          "tags": [ "mozilla", "google", "youtube" ]
+        "controlPoints":{
+          "status":1,
+          "tags":[
+            "News Corp",
+            "State Farm Insurance",
+            "Apple Computer, Inc",
+            "Sunoco Inc"
+          ]
         },
-        "storageSecurity": {
-          "status": 2,
-          "tags": [ "amazon", "akamai", "google" ]
+        "storageSecurity":{
+          "status":2,
+          "tags":[
+            "The Dow Chemical Company",
+            "Procter &amp;amp; Gamble Co",
+            "CVS Caremark",
+            "FedEx Corporation",
+            "Honeywell International",
+            "Wal-Mart Stores, Inc."
+          ]
         }
       }
     },
-    "fairness": {
-      "issues": {
-        "netNeutrality": {
-          "status": 2,
-          "tags": [ "akamai", "mozilla" ]
+    "fairness":{
+      "issues":{
+        "netNeutrality":{
+          "status":2,
+          "tags":[
+            "Honeywell International",
+            "Northrop Grumman Corporation",
+            "PepsiCo, Inc.",
+            "AT&amp;amp;T Corp"
+          ]
         },
-        "interopelability": {
-          "status": 1,
-          "tags": [ "mozilla", "china" ]
+        "interopelability":{
+          "status":1,
+          "tags":[
+            "Dell, Inc",
+            "Prudential Financial, Inc",
+            "International Assets Holding",
+            "Sunoco Inc"
+          ]
         },
-        "distributionOfPower": {
-          "status": 2,
-          "tags": [ "china", "brazil", "mozilla" ]
+        "distributionOfPower":{
+          "status":2,
+          "tags":[
+            "Berkshire Hathaway",
+            "General Dynamics Corporation",
+            "Sears Holdings Corporation",
+            "State Farm Insurance",
+            "United Technologies Corporation",
+            "Microsoft Corporation"
+          ]
         }
       }
     }
