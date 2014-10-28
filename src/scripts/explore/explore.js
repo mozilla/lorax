@@ -95,7 +95,9 @@ define([
   };
 
   Explore.prototype._clearTopics = function () {
-    this._stage.removeChild(this._topicsContainer);
+    if (this._topicsContainer.parent) {
+      this._stage.removeChild(this._topicsContainer);
+    }
 
     for(var i = 0; i < this._issues.length; i ++) {
       createjs.Tween.get(this._issues[i].elm, {override: true})
