@@ -79,10 +79,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       createjs.Tween.get(this._title).to({alpha: 1}, 200, createjs.Ease.easeIn);
     }
 
-    // this._circle.tint = this.color;
-    // createjs.Tween.get(this._circle).to({tint: 0xFF0000});
-
-    this._drawCircle(this.color);
+    this.lightDown();
 
     createjs.Tween.get(this._overCircle.scale).to(
       {x:1, y:1},
@@ -107,7 +104,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       }.bind(this));
     }
 
-    this._drawCircle();
+    this.lightUp();
 
     createjs.Tween.get(this._overCircle.scale).to(
       {x:0, y:0},

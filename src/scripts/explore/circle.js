@@ -160,6 +160,14 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this.isOver = false;
   };
 
+  Circle.prototype.lightUp = function () {
+    this._drawCircle(this.color);
+  };
+
+  Circle.prototype.lightDown = function () {
+    this._drawCircle();
+  };
+
   /**
    * Stops static animation and moves element with a bouncy effect
    * @param  {number} x desired x position

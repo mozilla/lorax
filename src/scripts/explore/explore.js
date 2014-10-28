@@ -297,12 +297,30 @@ define([
   Explore.prototype._onIssueOver = function (event) {
     var issue = this._issues[event.target.index];
     issue.mouseOver.bind(issue)();
+
+    if (this._mode !== 'issues') {
+      var related = issue.data.getRelated();
+      var issue;
+      for(var i = 0; i < related.length; i ++) {
+        issue = this._getElementFromId(related[i]._id);
+        issue.lightUp();
+      }
+    }
   };
 
   Explore.prototype._onIssueOut = function (event) {
     var issue = this._issues[event.target.index];
     if (!issue.isInteractive) {
       issue.mouseOut.bind(issue)();
+    }
+
+    if (this._mode !== 'issues') {
+      var related = issue.data.getRelated();
+      var issue;
+      for(var i = 0; i < related.length; i ++) {
+        issue = this._getElementFromId(related[i]._id);
+        issue.lightDown();
+      }
     }
   };
 
