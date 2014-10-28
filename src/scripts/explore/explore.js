@@ -410,15 +410,15 @@ define([
   /**
    * update issue positions
    */
-  Explore.prototype._updatePositions = function () {
-    var i;
+  Explore.prototype._updatePositions = function (mousePosition) {
+    for (var i = 0; i < this._issues.length; i ++) {
+      this._issues[i].update(mousePosition);
+    }
+  };
 
-    var localPosition = this._stage.getMousePosition().clone();
-    localPosition.x -= this._issuesContainer.x;
-    localPosition.y -= this._issuesContainer.y;
-
-    for (i = 0; i < this._issues.length; i ++) {
-      this._issues[i].update(localPosition);
+  Explore.prototype._updateTopics = function (mousePosition) {
+    for (var i = 0; i < this._topics.length; i ++) {
+      this._topics[i].update(mousePosition);
     }
   };
 
@@ -433,7 +433,17 @@ define([
     createjs.Tween.tick(tick - this._lastTick);
     this._lastTick = tick;
 
-    this._updatePositions();
+    // mouse position relative to issues container
+    var mousePosition = this._stage.getMousePosition().clone();
+    mousePosition.x -= this._issuesContainer.x;
+    mousePosition.y -= this._issuesContainer.y;
+
+    this._updatePositions(mousePosition);
+
+    if (this._mode === 'topics') {
+      this._updateTopics(mousePosition);
+    }
+
     this._drawLines();
     this._renderer.render(this._stage);
 

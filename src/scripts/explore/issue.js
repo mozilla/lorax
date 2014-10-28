@@ -50,9 +50,11 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     if (isVisible && this._title.alpha !== 1) {
       this.elm.addChild(this._title);
       this._title.alpha = 0;
-      createjs.Tween.get(this._title).to({alpha: 1}, 200, createjs.Ease.easeIn);
+      createjs.Tween.get(this._title, {override: true})
+        .to({alpha: 1}, 200, createjs.Ease.easeIn);
     } else if(!this.isOver) {
-      createjs.Tween.get(this._title).to({alpha: 0}, 200, createjs.Ease.easeOut)
+      createjs.Tween.get(this._title, {override: true})
+        .to({alpha: 0}, 200, createjs.Ease.easeOut)
         .call(function () {
           if (this._title.parent) {
             this.elm.removeChild(this._title);
@@ -76,7 +78,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     if (!this._textAlwaysVisible) {
       this.elm.addChild(this._title);
       this._title.alpha = 0;
-      createjs.Tween.get(this._title).to({alpha: 1}, 200, createjs.Ease.easeIn);
+      createjs.Tween.get(this._title, {override: true})
+        .to({alpha: 1}, 200, createjs.Ease.easeIn);
     }
 
     this.lightDown();
@@ -96,7 +99,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     Issue.prototype._superMouseOut.bind(this)();
 
     if (!this._textAlwaysVisible) {
-    createjs.Tween.get(this._title).to({alpha: 0}, 200, createjs.Ease.easeOut)
+    createjs.Tween.get(this._title, {override: true})
+      .to({alpha: 0}, 200, createjs.Ease.easeOut)
       .call(function () {
         if (this._title.parent) {
           this.elm.removeChild(this._title);
@@ -128,8 +132,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         this.mouseOut();
 
         createjs.Tween.get(this.elm, {override: true})
-        .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
-        .call(this._resumeStaticAnimation.bind(this));
+          .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
+          .call(this._resumeStaticAnimation.bind(this));
       }
     }
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;

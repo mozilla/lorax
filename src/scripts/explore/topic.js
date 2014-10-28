@@ -11,6 +11,7 @@ define([
     this._radius = 70;
     this._linearDist = 40;
     this._linearWidth = 100;
+    this.isOver = false;
 
     this._data = data;
     this._index = index;
@@ -43,16 +44,17 @@ define([
     this._topicArea.mouseover = this._topicArea.touchstart = this._mouseOver.bind(this);
 
     // topic mouse out area
+    var aMargin = 20;
     this._linearArea = new PIXI.Graphics();
     this._linearArea.i = this._index;
-    this._linearArea.x = - 100;
+    this._linearArea.x = - 100 - aMargin / 2;
     this._linearArea.interactive = true;
     this._linearArea.buttonMode = true;
     this._linearArea.hitArea = new PIXI.Rectangle(
       -this._linearWidth / 2,
-      -this._linearDist * this._issues.length / 2,
-      this._linearWidth + 100,
-      this._linearDist * this._issues.length);
+      -(this._linearDist * this._issues.length / 2) - aMargin,
+      this._linearWidth + 100 + aMargin,
+      (this._linearDist * this._issues.length) + aMargin);
 
     // title
     this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
@@ -107,8 +109,9 @@ define([
   * When hovering a topic
   */
   Topic.prototype._mouseOver = function () {
+    this.isOver = true;
+
     this.elm.removeChild(this._topicArea);
-    this.elm.addChild(this._linearArea);
 
     var i, j, topic, issue;
 
@@ -144,15 +147,15 @@ define([
         }
       }
     }
-
-    this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
+    // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
   };
 
   /**
   * When the mouse leaves a topic
   */
   Topic.prototype._mouseOut = function () {
-    this.elm.removeChild(this._linearArea);
+    this.isOver = false;
+
     this.elm.addChild(this._topicArea);
 
     var i, j, topic, issue;
@@ -183,6 +186,20 @@ define([
       issue = this._issues[i];
       issue.moveTo(issue.topicX, issue.topicY)
         .call(issue._resumeStaticAnimation.bind(issue));
+    }
+  };
+
+  Topic.prototype.update = function (mousePosition) {
+    if (this.isOver) {
+      var x0 = this.elm.x + this._linearArea.x + this._linearArea.hitArea.x;
+      var x1 = x0 + this._linearArea.hitArea.width;
+      var y0 = this.elm.y + this._linearArea.y + this._linearArea.hitArea.y;
+      var y1 = y0 + this._linearArea.hitArea.height;
+
+      if (mousePosition.x < x0 || mousePosition.x > x1 ||
+        mousePosition.y < y0 || mousePosition.y > y1) {
+        this._mouseOut();
+      }
     }
   };
 
