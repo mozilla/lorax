@@ -54,18 +54,17 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     // bigger, rectangular mask
     this._issueModeMask = new PIXI.Graphics();
     this._issueModeMask.beginFill(0x000000);
-    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 60);
-    this._issueModeMask.x = -200;
+    this._issueModeMask.drawRect(0, 0, this.elm.stage.width * 2, 60);
     this._issueModeMask.y = -30;
 
     // container for whats masked by _issueModeMask
     this._issueModeContainer = new PIXI.DisplayObjectContainer();
     this._issueModeContainer.mask = this._issueModeMask;
 
-    // mask just like color fill, to mask issue mode title
+    // circular mask
     this._issueModeFillMask = new PIXI.Graphics();
     this._issueModeFillMask.beginFill(this.color);
-    this._issueModeFillMask.drawCircle(0, 0, this.elm.stage.width);
+    this._issueModeFillMask.drawCircle(0, 0, this.elm.stage.width * 2);
     this._issueModeFillMask.endFill();
     this._issueModeFillMask.scale = {x:0, y:0};
     this._issueModeContainer.addChild(this._issueModeFillMask);
@@ -76,15 +75,9 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._issueModeContainer.addChild(this._issueModeOverContainer);
 
     // color fill
-    var globalOrigin = {
-      x:-this.elm.x - this.elm.parent.x,
-      y:-this.elm.y - this.elm.parent.y
-    };
     this._issueModeFiller = new PIXI.Graphics();
     this._issueModeFiller.beginFill(this.color);
-    this._issueModeFiller.drawRect(0, 0, this.elm.stage.width, this.elm.stage.height);
-    this._issueModeFiller.x = globalOrigin.x;
-    this._issueModeFiller.y = globalOrigin.y;
+    this._issueModeFiller.drawRect(0, 0, this.elm.stage.width * 2, this.elm.stage.height);
     this._issueModeFiller.endFill();
     this._issueModeOverContainer.addChild(this._issueModeFiller);
 
@@ -168,6 +161,15 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   Issue.prototype.issueModeMouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
+
+    var globalOrigin = {
+      x:-this.elm.x - this.elm.parent.x,
+      y:-this.elm.y - this.elm.parent.y
+    };
+
+    this._issueModeMask.x = globalOrigin.x;
+    this._issueModeFiller.x = globalOrigin.x;
+    this._issueModeFiller.y = globalOrigin.y;
 
     this.elm.addChild(this._issueModeContainer);
     this.elm.addChild(this._issueModeMask);
