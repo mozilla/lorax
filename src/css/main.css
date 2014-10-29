@@ -512,6 +512,7 @@ img {
 .banner {
   margin-bottom: 76px;
   position: relative;
+  pointer-events: none;
 }
 @media screen and (min-width: 1360px) {
   .banner {

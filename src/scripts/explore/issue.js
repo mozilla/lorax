@@ -1,8 +1,9 @@
 define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs) {
   'use strict';
 
-  var Issue = function (index) {
+  var Issue = function (index, canvasSize) {
     this._index = index;
+    this._canvasSize = canvasSize;
     this.elm = new PIXI.DisplayObjectContainer();
 
     return this;
@@ -54,7 +55,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     // bigger, rectangular mask
     this._issueModeMask = new PIXI.Graphics();
     this._issueModeMask.beginFill(0x000000);
-    this._issueModeMask.drawRect(0, 0, this.elm.stage.width * 2, 60);
+    this._issueModeMask.alpha = 0.1;
+    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 60);
     this._issueModeMask.y = -30;
 
     // container for whats masked by _issueModeMask
@@ -63,8 +65,9 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
     // circular mask
     this._issueModeFillMask = new PIXI.Graphics();
-    this._issueModeFillMask.beginFill(this.color);
-    this._issueModeFillMask.drawCircle(0, 0, this.elm.stage.width * 2);
+    this._issueModeFillMask.beginFill(0xFF0000);
+    this._issueModeFillMask.alpha = 0.1;
+    this._issueModeFillMask.drawCircle(0, 0, this._canvasSize.x);
     this._issueModeFillMask.endFill();
     this._issueModeFillMask.scale = {x:0, y:0};
     this._issueModeContainer.addChild(this._issueModeFillMask);
@@ -77,7 +80,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     // color fill
     this._issueModeFiller = new PIXI.Graphics();
     this._issueModeFiller.beginFill(this.color);
-    this._issueModeFiller.drawRect(0, 0, this.elm.stage.width * 2, this.elm.stage.height);
+    this._issueModeFiller.drawRect(0, 0, this._canvasSize.x, this._canvasSize.y);
     this._issueModeFiller.endFill();
     this._issueModeOverContainer.addChild(this._issueModeFiller);
 
@@ -168,8 +171,11 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     };
 
     this._issueModeMask.x = globalOrigin.x;
+    this._issueModeMask.width = this._canvasSize.x - this._issueModeMask.x;
     this._issueModeFiller.x = globalOrigin.x;
     this._issueModeFiller.y = globalOrigin.y;
+    this._issueModeFiller.width = this._canvasSize.x - this._issueModeFiller.x;
+    this._issueModeFiller.height = this._canvasSize.y - this._issueModeFiller.y;
 
     this.elm.addChild(this._issueModeContainer);
     this.elm.addChild(this._issueModeMask);

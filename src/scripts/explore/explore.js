@@ -56,10 +56,12 @@ define([
   * @param  {object} DOM object
   */
   Explore.prototype.setContainer = function (container) {
+    this._canvasSize = {x: container.width(), y: container.height()};
+
     // create pixijs renderer and stage
     this._renderer = new PIXI.CanvasRenderer(
-      container.width(),
-      container.height(),
+      this._canvasSize.x,
+      this._canvasSize.y,
       null, true, false);
     this._stage = new PIXI.Stage();
     this._stage.interactive = true;
@@ -72,7 +74,7 @@ define([
     this._stage.addChild(this._linesContainer);
 
     // circles
-    var dimension = Math.min(container.width(), container.height());
+    var dimension = Math.min(this._canvasSize.x, this._canvasSize.y);
     this._exploreRadius = dimension / 2;
     this._issuesContainer = new PIXI.DisplayObjectContainer();
     this._issuesContainer.interactive = true;
@@ -284,7 +286,7 @@ define([
       seed = Math.random() * Math.PI * 2;
       rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
-      var issue = new Issue(i);
+      var issue = new Issue(i, this._canvasSize);
 
       this._issues.push(issue);
       this._issuesContainer.addChild(issue.elm);
