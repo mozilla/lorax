@@ -247,11 +247,12 @@ define([
       rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
       var circle = new Circle();
-      circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-      circle.elm.alpha = 0.3;
 
       this._fakes.push(circle);
       this._issuesContainer.addChild(circle.elm);
+
+      circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+      circle.elm.alpha = 0.3;
     }
   };
 
@@ -265,11 +266,12 @@ define([
       rSeed = this._exploreRadius + (Math.random() * 5);
 
       var tag = new Circle();
-      tag.setData(this._tagData[i]);
-      tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
 
       this._tags.push(tag);
       this._issuesContainer.addChild(tag.elm);
+
+      tag.setData(this._tagData[i]);
+      tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
     }
   };
 
@@ -283,6 +285,10 @@ define([
       rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
       var issue = new Issue(i);
+
+      this._issues.push(issue);
+      this._issuesContainer.addChild(issue.elm);
+
       issue.setData(this._issueData[i]);
       issue.draw(
         10 - rSeed / this._exploreRadius * 5,
@@ -292,9 +298,6 @@ define([
 
       issue.exploreX = issue.elm.x;
       issue.exploreY = issue.elm.y;
-
-      this._issues.push(issue);
-      this._issuesContainer.addChild(issue.elm);
 
       issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
       issue.elm.mouseout = issue.elm.touchend = this._onIssueOut.bind(this);

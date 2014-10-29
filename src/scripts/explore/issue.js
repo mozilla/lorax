@@ -3,6 +3,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   var Issue = function (index) {
     this._index = index;
+    this.elm = new PIXI.DisplayObjectContainer();
 
     return this;
   };
@@ -48,9 +49,55 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._overCircle.drawCircle(0, 0, radius + 5);
     this._overCircle.scale = {x:0, y:0};
     this.elm.addChildAt(this._overCircle, 0);
+
+    // create issue mode specific code
+    // bigger, rectangular mask
+    this._issueModeMask = new PIXI.Graphics();
+    this._issueModeMask.beginFill(0x000000);
+    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 60);
+    this._issueModeMask.x = -200;
+    this._issueModeMask.y = -30;
+
+    // container for whats masked by _issueModeMask
+    this._issueModeContainer = new PIXI.DisplayObjectContainer();
+    this._issueModeContainer.mask = this._issueModeMask;
+
+    // mask just like color fill, to mask issue mode title
+    this._issueModeFillMask = new PIXI.Graphics();
+    this._issueModeFillMask.beginFill(this.color);
+    this._issueModeFillMask.drawCircle(0, 0, this.elm.stage.width);
+    this._issueModeFillMask.endFill();
+    this._issueModeFillMask.scale = {x:0, y:0};
+    this._issueModeContainer.addChild(this._issueModeFillMask);
+
+    // container for whats masked by _issueModeFillMask
+    this._issueModeOverContainer = new PIXI.DisplayObjectContainer();
+    this._issueModeOverContainer.mask = this._issueModeFillMask;
+    this._issueModeContainer.addChild(this._issueModeOverContainer);
+
+    // color fill
+    var globalOrigin = {
+      x:-this.elm.x - this.elm.parent.x,
+      y:-this.elm.y - this.elm.parent.y
+    };
+    this._issueModeFiller = new PIXI.Graphics();
+    this._issueModeFiller.beginFill(this.color);
+    this._issueModeFiller.drawRect(0, 0, this.elm.stage.width, this.elm.stage.height);
+    this._issueModeFiller.x = globalOrigin.x;
+    this._issueModeFiller.y = globalOrigin.y;
+    this._issueModeFiller.endFill();
+    this._issueModeOverContainer.addChild(this._issueModeFiller);
+
+    // white title
+    var style = {font: '20px "fira-sans-regular", sans-serif', fill: '#FFFFFF'};
+    this._issueModeTitle = new PIXI.Text(this.data.getName().toUpperCase(), style);
+    this._issueModeTitle.x = this._title.x;
+    this._issueModeTitle.y = -this._issueModeTitle.height / 2;
+    this._issueModeOverContainer.addChild(this._issueModeTitle);
   };
 
   Issue.prototype.setMode = function (mode) {
+    var lastMode = this.mode;
     this.mode = mode;
 
     if (mode === Issue.MODE_EXPLORE) {
@@ -63,6 +110,13 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.stopMoving();
       this.setTextAlwaysVisible(true);
       this.setIsInteractive(false);
+      this._title.setStyle({font: '20px "fira-sans-regular", sans-serif'});
+      this._title.y = -this._title.height / 2;
+    }
+
+    if (lastMode === Issue.MODE_ISSUES) {
+      this._title.setStyle({font: '14px "fira-sans-regular", sans-serif'});
+      this._title.y = -this._title.height / 2;
     }
   };
 
@@ -114,6 +168,15 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   Issue.prototype.issueModeMouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
+
+    this.elm.addChild(this._issueModeContainer);
+    this.elm.addChild(this._issueModeMask);
+
+    createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+      {x:1, y:1},
+      500,
+      createjs.Ease.EaseIn
+    );
   };
 
   Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
@@ -144,6 +207,15 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
   Issue.prototype.issueModeMouseOut = function () {
     Issue.prototype._superMouseOut.bind(this)();
+
+    createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+      {x:0, y:0},
+      400,
+      createjs.Ease.EaseOut)
+      .call(function () {
+        this.elm.removeChild(this._issueModeContainer);
+        this.elm.removeChild(this._issueModeMask);
+      }.bind(this));
   };
 
   /**

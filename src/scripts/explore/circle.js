@@ -2,11 +2,12 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   'use strict';
 
   var Circle = function () {
+    this.elm = new PIXI.DisplayObjectContainer();
+
     return this;
   };
 
   Circle.prototype.draw = function (radius, x, y) {
-    this.elm = new PIXI.DisplayObjectContainer();
     this.radius = radius;
 
     this._circle = new PIXI.Graphics();
