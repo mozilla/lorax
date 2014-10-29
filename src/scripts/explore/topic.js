@@ -9,7 +9,7 @@ define([
 ) {
   'use strict';
 
-  var Topic = function (data, index, issues) {
+  var Topic = function (data, index, issues, fakes) {
     this._radius = 70;
     this._linearDist = 40;
     this._linearWidth = 100;
@@ -18,6 +18,7 @@ define([
     this._data = data;
     this._index = index;
     this._issues = issues;
+    this._fakes = fakes;
 
     this.elm = new PIXI.DisplayObjectContainer();
 
@@ -79,9 +80,9 @@ define([
     this._topicDesc.y = this._radius + 50;
 
     // topic issue elements
-    var issue;
+    var issue, i;
     var tH = (this._topicTitle.height / 2) + 5; // half title height
-    for(var i = 0; i < this._issues.length; i ++) {
+    for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.setTextAlwaysVisible(false);
       issue.setIsInteractive(false);
@@ -93,16 +94,32 @@ define([
       issue.topicY += this.elm.y + (tH * (issue.topicY > 0 ? 1 : -1));
     }
 
+    for(i = 0; i < this._fakes.length; i ++) {
+      issue = this._fakes[i];
+      issue.topicX = this.elm.x + (Math.random() * this._radius * 2) - this._radius;
+      issue.topicY = this.elm.y + (Math.random() * this._radius * 2) - this._radius;
+    }
+
     return this;
   };
 
   Topic.prototype.show = function () {
-    var issue;
-    for(var i = 0; i < this._issues.length; i ++) {
+    var issue, i;
+    for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.setMode(Issue.MODE_TOPICS);
       issue.moveTo(issue.topicX, issue.topicY)
         .call(issue._resumeStaticAnimation.bind(issue));
+    }
+
+    for(i = 0; i < this._fakes.length; i ++) {
+      issue = this._fakes[i];
+      createjs.Tween.get(issue.elm, {override: true})
+        .to({
+          alpha: issue.implodeAlpha,
+          x: issue.topicX,
+          y: issue.topicY
+        }, 300, createjs.Ease.easeIn);
     }
   };
 
@@ -124,6 +141,14 @@ define([
         this.elm.y + this._linearArea.y + ((this._linearDist * i) -
           (this._linearDist * this._issues.length / 2)))
         .call(issue._resumeStaticAnimation.bind(issue));
+    }
+
+    // hide fakes
+    for(i = 0; i < this._fakes.length; i ++) {
+      issue = this._fakes[i];
+      issue.implodeAlpha = issue.elm.alpha;
+      createjs.Tween.get(issue.elm, {override: true})
+        .to({alpha: 0}, 300, createjs.Ease.easeIn);
     }
 
     // move selected title and desc
@@ -167,6 +192,13 @@ define([
       .to({y: -this._topicTitle.height / 2}, 300, createjs.Ease.easeOut);
     createjs.Tween.get(this._topicDesc, {override: true})
       .to({alpha: 1}, 300, createjs.Ease.easeOut);
+
+    // show fakes
+    for(i = 0; i < this._fakes.length; i ++) {
+      issue = this._fakes[i];
+      createjs.Tween.get(issue.elm, {override: true})
+        .to({alpha: issue.implodeAlpha}, 300, createjs.Ease.easeOut);
+    }
 
     // tone down other topics
     for(i = 0; i < Topic.TOPICS.length; i ++) {

@@ -115,10 +115,14 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   /**
    * Moves elements away from center
    */
-  Circle.prototype.explode = function (radius) {
+  Circle.prototype.explode = function (radius, center) {
     if (this.elm.alpha === 0) {
       return;
     }
+    if (!center) {
+      center = {x:0, y:0};
+    }
+
     this.implodeAlpha = this.elm.alpha;
 
     var angle = Math.atan2(this._y0, this._x0);
@@ -130,8 +134,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
       .to(
         {
           alpha: 0,
-          x: Math.cos(angle) * (radius + 200),
-          y: Math.sin(angle) * (radius + 200)
+          x: center.x + Math.cos(angle) * (radius + 200),
+          y: center.y + Math.sin(angle) * (radius + 200)
         },
         (Math.random() * 150) + 300,
         createjs.easeOut);

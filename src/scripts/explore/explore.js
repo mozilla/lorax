@@ -101,8 +101,10 @@ define([
       this._stage.removeChild(this._topicsContainer);
     }
 
-    for(var i = 0; i < this._issues.length; i ++) {
-      createjs.Tween.get(this._issues[i].elm, {override: true})
+    var issue, i;
+    for(i = 0; i < this._issues.length; i ++) {
+      var issue = this._issues[i];
+      createjs.Tween.get(issue.elm, {override: true})
         .to({alpha: 1}, 300, createjs.Ease.easeIn);
     }
   };
@@ -223,7 +225,17 @@ define([
           issues.push(issue);
         }
 
-        this._topics[i] = new Topic(this._topicsData[i], i, issues);
+        // get random fakes for topic
+        var getRandomFake = function () {
+          return this._fakes[Math.floor(Math.random() * this._fakes.length)];
+        }.bind(this);
+        var fakes = [];
+        for(j = 0; j < Math.floor(Math.random() * 10) + 20; j ++) {
+          issue = getRandomFake();
+          fakes.push(issue);
+        }
+
+        this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
         this._topicsContainer.addChild(this._topics[i].elm);
         this._topics[i].elm.x = (this._renderer.width - 400);
         this._topics[i].elm.x /= (this._topicsData.length - 1) / i;
