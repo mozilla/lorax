@@ -7,13 +7,19 @@ define([
 ) {
   'use strict';
 
-  var IssueModel = function (parentInstance, id, data, tags, localeData) {
+  var IssueModel = function (parentInstance, id, data, tags, localeData, localeIssues) {
     this._parent = parentInstance;
     this._id = id;
-    this._name = localeData.issues[id].name;
+    this._name = localeIssues.name;
     this._status = data.status;
-
+    this._title = localeIssues.title;
+    this._narrative = localeIssues.narrative;
+    this._mozActionCopy = localeIssues.mozActionCopy;
+    this._yourActionCopy = localeIssues.yourActionCopy;
+    this._mozActionLink = localeIssues.mozActionLink;
+    this._yourActionLink = localeIssues.yourActionLink;
     this._tags = [];
+
     for (var tagIdx in data.tags) {
       //TODO: consider changing this to an object instead of an array
       var tagObjs = _.filter(tags, function (tag) {
@@ -42,6 +48,30 @@ define([
   IssueModel.prototype.getName = function () {
     return this._name;
   };
+
+  IssueModel.prototype.getTitle = function () {
+    return this._title;
+  };
+
+  IssueModel.prototype.getNarrative = function () {
+    return this._narrative;
+  };
+
+  IssueModel.prototype.getMozActionCopy = function () {
+    return this._mozActionCopy;
+  };
+
+  IssueModel.prototype.getYourActionCopy = function () {
+    return this._yourActionCopy;
+  };
+
+  IssueModel.prototype.getMozActionLink = function () {
+    return this._mozActionLink;
+  };
+
+  IssueModel.prototype.getYourActionLink = function () {
+    return this._yourActionLink;
+  };    
   
   IssueModel.prototype.getTags = function () {
     return this._tags;

@@ -5,18 +5,20 @@ define([
 ) {
   'use strict';
 
-  var TopicModel = function (id, data, tags, localeData) {
+  var TopicModel = function (id, data, tags, localeData, issuesData) {
     this._id = id;
     this._name = localeData.topics[id].name;
     this._tagline = localeData.topics[id].tagline;
     this._issues = [];
+
     for (var idxIssue in data.issues) {
       this._issues.push(new IssueModel(
         this,
         idxIssue,
         data.issues[idxIssue],
         tags,
-        localeData
+        localeData,
+        issuesData.issues[idxIssue]
       ));
     }
   };

@@ -2,7 +2,7 @@
  * @fileOverview Detail section directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define([], function () {
+define([], function (IssueModel) {
   'use strict';
 
   /**
@@ -15,7 +15,8 @@ define([], function () {
       transclude: true,
       scope: {
         'inverted': '@',
-        'issueStatus': '@'
+        'issueStatus': '@',
+        'issueName': '@'
       },
       controller: DetailSectionController,
       link: DetailSectionLinkFn,
@@ -28,7 +29,8 @@ define([], function () {
    * @constructor
    */
   var DetailSectionController = function (
-    $scope
+    $scope,
+    dataService
     )
   {
     this._$scope = $scope;
@@ -37,6 +39,10 @@ define([], function () {
       inverted: $scope.inverted,
       status: $scope.issueStatus
     };
+
+    dataService.getMain().then(function(model) {
+      this._$scope.issue = model.getIssueById($scope.issueName);
+    }.bind(this));
   };
 
   /**
@@ -44,7 +50,8 @@ define([], function () {
    * @type {Array}
    */
   DetailSectionController.$inject = [
-    '$scope'
+    '$scope',
+    'dataService'
   ];
 
   /**

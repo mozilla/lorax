@@ -155,7 +155,7 @@ define([
     var posY = -this._linearDist * this._issues.length / 2;
     posY -= this._topicTitle.height + 20;
     createjs.Tween.get(this._topicTitle, {override: true})
-      .to({y: posY}, 300, createjs.Ease.easeIn);
+      .to({y: posY, tint: 0xFF0000}, 300, createjs.Ease.easeIn);
     createjs.Tween.get(this._topicDesc, {override: true})
       .to({alpha: 0}, 300, createjs.Ease.easeIn);
 
@@ -189,7 +189,7 @@ define([
 
     // move selected title and desc
     createjs.Tween.get(this._topicTitle, {override: true})
-      .to({y: -this._topicTitle.height / 2}, 300, createjs.Ease.easeOut);
+      .to({y: -this._topicTitle.height / 2, tint: 0xFFFFFF}, 300, createjs.Ease.easeOut);
     createjs.Tween.get(this._topicDesc, {override: true})
       .to({alpha: 1}, 300, createjs.Ease.easeOut);
 

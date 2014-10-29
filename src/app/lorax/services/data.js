@@ -20,7 +20,7 @@ define([
 
     function _buildMainEndpoint() {
       return [
-        'data',
+        '/data',
         'base',
         'main.json'
       ].join('/');
@@ -28,10 +28,19 @@ define([
     
     function _buildLocaleMainEndpoint(locale) {
       return [
-        'data',
+        '/data',
         'i18n',
         locale,
         'main.json'
+      ].join('/');
+    }
+
+    function _buildLocaleIssuesEndpoint(locale) {
+      return [
+        '/data',
+        'i18n',
+        locale,
+        'issues.json'
       ].join('/');
     }
 
@@ -45,13 +54,18 @@ define([
 
       var req = this._$http.get(_buildMainEndpoint());
       var localeReq = this._$http.get(_buildLocaleMainEndpoint(locale));
+      var issuesReq = this._$http.get(_buildLocaleIssuesEndpoint(locale));
 
       req.then(function (res) {
         var model = null;
         if (res.data) {
           localeReq.then(function (localeRes) {
-            model = new MainModel(res.data, localeRes.data);
-            deferred.resolve(model);
+            if (localeRes.data) {
+              issuesReq.then(function (issuesRes) {
+                model = new MainModel(res.data, localeRes.data, issuesRes.data);
+                deferred.resolve(model);
+              });              
+            }
           });
         }
       }.bind(this))['catch'](function (error) {

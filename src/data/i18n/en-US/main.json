@@ -17,67 +17,27 @@
       "tagline": "An internet with\n a level-playing field"
     }
   },
-  "issues": {
-    "available": {
-      "name": "Available"
+  "tags": {
+    "google": {
+      "name": "Google"
     },
-    "affordable": {
-      "name": "Affordable"
+    "facebook": {
+      "name": "Facebook"
     },
-    "speaksMyLanguage": {
-      "name": "Speaking my language"
+    "amazon": {
+      "name": "Amazon"
     },
-    "accessible": {
-      "name": "Accessible"
+    "ebay": {
+      "name": "Ebay"
     },
-    "infrastructure": {
-      "name": "Infrastructure"
+    "youtube": {
+      "name": "Youtube"
     },
-    "contentCreation": {
-      "name": "Content creation"
+    "china": {
+      "name": "China"
     },
-    "identityControl": {
-      "name": "Identity control"
-    },
-    "surveillance": {
-      "name": "Surveillance business model"
-    },
-    "corporateTracking": {
-      "name": "Corporate tracking"
-    },
-    "gorvernmentSnooping": {
-      "name": "Government snooping"
-    },
-    "transparency": {
-      "name": "Transparency"
-    },
-    "decentralization": {
-      "name": "Decentralization of power"
-    },
-    "censorship": {
-      "name": "No censorship"
-    },
-    "cyberThreats": {
-      "name": "Protection from cyber-threats"
-    },
-    "cyberBullying": {
-      "name": "Cyber-Stalking and Cyber-Bullying"
-    },
-    "controlPoints": {
-      "name": "Decentralization (control points)"
-    },
-    "storageSecurity": {
-      "name": "Decentralisation (storage/security)"
-    },
-    "netNeutrality": {
-      "name": "Net neutrality"
-    },
-    "interopelability": {
-      "name": "Interoperability"
-    },
-    "distributionOfPower": {
-      "name": "Distribution of power from Internet"
+    "Brazil": {
+      "name": "Brazil"
     }
-  },
-  "tags": {}
+  }
 }

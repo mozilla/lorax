@@ -1,0 +1,109 @@
+{
+  "topics": {
+    "availability": {
+      "issues": {
+        "available": {
+          "name": "Available",
+          "title": "Does sufficient capacity exist around the world?",
+          "narrative": "<p>The global picture shows that the connected population is continuing to grow, as Internet access becomes affordable.</p><p>Understanding what “affordable” means in different countries in instructive.  In the West, Internet access seems like a commodified utility: in the United Kingdom, a month’s worth of fixed broadband Internet access is the equivalent of an hour’s wage.  In Cambodia, that price is approaching a full week’s wage, and in Angola, nearly a month’s.</p><p>This is one of several reasons why wireless Internet connections (“mobile”) connect more and more people in 2nd and 3rd world countries.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#",
+          "vizId": "internet-penetration"
+        },
+        "affordable": {
+          "name": "Affordable",
+          "title": "Is bandwidth affordable?",
+          "narrative": "<p>Understanding what “affordable” means in different countries in instructive.  In the West, Internet access seems like a commodified utility: in the United Kingdom, a month’s worth of fixed broadband Internet access is the equivalent of an hour’s wage.  In Cambodia, that price is approaching a full week’s wage, and in Angola, nearly a month’s.</p><p>This is one of several reasons why wireless Internet connections (“mobile”) connect more and more people in 2nd and 3rd world countries.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "vizId": "decentralized-power"
+        },
+        "speaksMyLanguage": {
+          "name": "Speaking my language",
+          "title": "Does the Web speak my language?",
+          "narrative": "<p>Content chases money, money speaks English. One consequence of this is the acceleration of a global consumer culture driven primarily from North America and partly Western Europe, where the largest consumer markets exist.</p><p>This has meant a greater globalisation of culture: most Internet content is produced in English. Although only approximately a quarter of Internet users are English-speaking, 55% of websites are in English.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#",
+          "vizId": "common-languages"
+        },
+        "accessible": {
+          "name": "Accessible",
+          "title": "Is the web accessible to people with vision problems?",
+          "narrative": "Blind people are less economically important to developers. People with visual disabilities (8.5% of the global population) are typically included late (if at all) in the design of Internet services.  Some parts of the Web (e.g. those catering to the provision of public services) are regulated and consequently function well with technologies such as screen readers, but other services will include such support as an after-thought, if at all.  When such services become very important, this has the effect of increasing the exclusion of some of society’s most vulnerable people.",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "vizId": "internet-penetration"
+        },
+        "infrastructure": {
+          "name": "Infrastructure",
+          "title": "Are we investing enough in communications infrastructure?",
+          "narrative": "<p>There are a number of consequences of current Internet growth: The companies who are building the infrastructure, especially in poorer countries, are not realising as much money from the Internet as a smaller number of companies have.  These companies reside especially in Silicon Valley, and have disrupted much of the network operators’ business.  Where once network operators charged tariffs for messaging and international calls, much of this now runs “over the top”, meaning that Internet software mediates these services as IP-traffic, rather than as traditional network operator services.  This has provided a disincentive for these companies to invest in network equipment.</p><p>Mozilla believes that open and equal access, promoted by net neutrality, is a prerequisite for a healthy Internet. However, the economic consequences of such policy must be recognized. Net neutrality promotes the shifting of communication from heavily regulated traditional network operator services to IP-traffic on the largely unregulated software layer. Yet network operators build and maintain the physical infrastructure upon which the software layer runs.  In 2014, we have a largely unregulated software layer (of apps and content) which is fueling the world’s most valuable companies, running on top of a heavily regulated infrastructure layer (the physical network).</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "vizId": "terms-and-conditions"
+        }
+      }
+    },
+    "control": {
+      "issues": {
+        "contentCreation": {
+          "name": "Content creation"
+        },
+        "identityControl": {
+          "name": "Identity control"
+        },
+        "surveillance": {
+          "name": "Surveillance business model"
+        },
+        "corporateTracking": {
+          "name": "Corporate tracking"
+        },
+        "gorvernmentSnooping": {
+          "name": "Government snooping"
+        },
+        "transparency": {
+          "name": "Transparency"
+        },
+        "decentralization": {
+          "name": "Decentralization of power"
+        },
+        "censorship": {
+          "name": "No censorship"
+        }
+      }
+    },
+    "safety": {
+      "issues": {
+        "cyberThreats": {
+          "name": "Protection from cyber-threats"
+        },
+        "cyberBullying": {
+          "name": "Cyber-Stalking and Cyber-Bullying"
+        },
+        "controlPoints": {
+          "name": "Decentralization (control points)"
+        },
+        "storageSecurity": {
+          "name": "Decentralisation (storage/security)"
+        }
+      }
+    },
+    "fairness": {
+      "issues": {
+        "netNeutrality": {
+          "name": "Net neutrality"
+        },
+        "interopelability": {
+          "name": "Interoperability"
+        },
+        "distributionOfPower": {
+          "name": "Distribution of power from Internet"
+        }
+      }
+    }
+  }
+}
