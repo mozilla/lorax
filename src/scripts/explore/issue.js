@@ -123,10 +123,10 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.elm.addChild(this._title);
       this._title.alpha = 0;
       createjs.Tween.get(this._title, {override: true})
-        .to({alpha: 1}, 200, createjs.Ease.easeIn);
+        .to({alpha: 1}, 200, createjs.Ease.quartIn);
     } else if(!this.isOver) {
       createjs.Tween.get(this._title, {override: true})
-        .to({alpha: 0}, 200, createjs.Ease.easeOut)
+        .to({alpha: 0}, 200, createjs.Ease.quartOut)
         .call(function () {
           if (this._title.parent) {
             this.elm.removeChild(this._title);
@@ -150,7 +150,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     if (!this._textAlwaysVisible) {
       this.elm.addChild(this._title);
       createjs.Tween.get(this._title, {override: true})
-        .to({alpha: 1}, 200, createjs.Ease.easeIn);
+        .to({alpha: 1}, 200, createjs.Ease.quartIn);
     }
 
     this.lightDown();
@@ -183,7 +183,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:1, y:1},
       500,
-      createjs.Ease.EaseIn
+      createjs.Ease.quartOut
     );
   };
 
@@ -196,7 +196,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
     if (!this._textAlwaysVisible) {
     createjs.Tween.get(this._title, {override: true})
-      .to({alpha: 0}, 200, createjs.Ease.easeOut)
+      .to({alpha: 0}, 200, createjs.Ease.quartOut)
       .call(function () {
         if (this._title.parent) {
           this.elm.removeChild(this._title);
@@ -209,7 +209,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     createjs.Tween.get(this._overCircle.scale).to(
       {x:0, y:0},
       300,
-      createjs.Ease.easeOut
+      createjs.Ease.quartIn
     );
   };
 
@@ -219,7 +219,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:0, y:0},
       400,
-      createjs.Ease.EaseOut)
+      createjs.Ease.quartIn)
       .call(function () {
         this.elm.removeChild(this._issueModeContainer);
         this.elm.removeChild(this._issueModeMask);

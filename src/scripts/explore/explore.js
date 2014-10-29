@@ -88,6 +88,17 @@ define([
     this._topicsContainer.y = this._linesContainer.y;
     this._stage.addChild(this._topicsContainer);
 
+    this._scrollPosition = this._scrollFinalPosition = 0;
+
+    this._issueMargin = 100;
+
+    this._scrollArea = new PIXI.Rectangle(
+      -((this._renderer.width - 300) / 2),
+      -((this._renderer.height - 300) / 2),
+      this._renderer.width - 300,
+      this._renderer.height - 300
+    );
+
     this._drawFakes();
     this._drawIssues();
     this._drawTags();
@@ -103,9 +114,9 @@ define([
 
     var issue, i;
     for(i = 0; i < this._issues.length; i ++) {
-      var issue = this._issues[i];
+      issue = this._issues[i];
       createjs.Tween.get(issue.elm, {override: true})
-        .to({alpha: 1}, 300, createjs.Ease.easeIn);
+        .to({alpha: 1}, 300, createjs.Ease.quartIn);
     }
   };
 
@@ -127,8 +138,8 @@ define([
     this._clearTopics();
 
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 300, createjs.Ease.easeOut)
-      .to({alpha:1}, 300, createjs.Ease.easeIn);
+      .to({alpha:0}, 300, createjs.Ease.quartOut)
+      .to({alpha:1}, 300, createjs.Ease.quartIn);
 
     setTimeout(function () {
       this._mode = Issue.MODE_EXPLORE;
@@ -158,8 +169,8 @@ define([
     this._clearTopics();
 
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 300, createjs.Ease.easeOut)
-      .to({alpha:1}, 300, createjs.Ease.easeIn);
+      .to({alpha:0}, 300, createjs.Ease.quartOut)
+      .to({alpha:1}, 300, createjs.Ease.quartIn);
 
     setTimeout(function () {
       this._mode = Issue.MODE_ISSUES;
@@ -174,21 +185,13 @@ define([
       this._fakes[i].explode(this._exploreRadius);
     }
 
-    var issueMargin = 100;
-    var scrollArea = new PIXI.Rectangle(
-      -((this._renderer.width - 300) / 2),
-      -((this._renderer.height - 300) / 2),
-      this._renderer.width - 300,
-      this._renderer.height - 300
-    );
     var issue;
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.setMode(Issue.MODE_ISSUES);
-      issue.moveTo(
-        scrollArea.x,
-        scrollArea.y + (issueMargin * i)
-      );
+      issue.issueX = this._scrollArea.x;
+      issue.issueY = this._scrollArea.y + (this._issueMargin * i);
+      issue.moveTo(issue.issueX, issue.issueY);
     }
   };
 
@@ -197,8 +200,8 @@ define([
   */
   Explore.prototype.showTopics = function () {
     createjs.Tween.get(this._linesContainer)
-      .to({alpha:0}, 400, createjs.Ease.easeOut)
-      .to({alpha:1}, 400, createjs.Ease.easeIn);
+      .to({alpha:0}, 400, createjs.Ease.quartOut)
+      .to({alpha:1}, 400, createjs.Ease.quartIn);
 
     setTimeout(function () {
       this._mode = Issue.MODE_TOPICS;
@@ -462,6 +465,32 @@ define([
     }
   };
 
+  Explore.prototype._updateScroller = function (mousePosition) {
+    if (mousePosition.y > this._canvasSize.y ||
+      mousePosition.y < -this._canvasSize.y) {
+      mousePosition.y = 0;
+    }
+
+    // using tan so the movement is smoother
+    var tanMouse = Math.tan(mousePosition.y / this._canvasSize.y * Math.PI / 2);
+    this._scrollFinalPosition -= tanMouse * 8;
+
+    this._scrollFinalPosition = Math.max(
+      Math.min(this._scrollFinalPosition, 0),
+      (-(this._scrollArea.y + (this._issueMargin * this._issues.length)) +
+      this._scrollArea.height - 200)
+    );
+
+    this._scrollPosition += (this._scrollFinalPosition - this._scrollPosition) / 5;
+
+    var i, issue;
+    for (i = 0; i < this._issues.length; i ++) {
+      issue = this._issues[i];
+      issue.elm.y = issue.issueY + this._scrollPosition;
+      issue.elm.alpha = ((1 - Math.abs(issue.elm.y / this._scrollArea.height))) + 0.3;
+    }
+  };
+
   /**
    * do animation cycle
    */
@@ -482,6 +511,8 @@ define([
 
     if (this._mode === Issue.MODE_TOPICS) {
       this._updateTopics(mousePosition);
+    } else if (this._mode === Issue.MODE_ISSUES) {
+      this._updateScroller(mousePosition);
     }
 
     this._drawLines();

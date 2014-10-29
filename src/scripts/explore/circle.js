@@ -138,7 +138,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
           y: center.y + Math.sin(angle) * (radius + 200)
         },
         (Math.random() * 150) + 300,
-        createjs.easeOut);
+        createjs.quartOut);
   };
 
   /**
@@ -149,7 +149,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     createjs.Tween.get(this.elm, {override: true})
       .to({alpha: this.implodeAlpha, x: this._x0, y: this._y0},
         (Math.random() * 100) + 200,
-        createjs.easeIn)
+        createjs.quartIn)
       .call(this._resumeStaticAnimation.bind(this));
   };
 

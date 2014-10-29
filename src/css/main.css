@@ -735,6 +735,7 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -773,6 +774,7 @@ img {
 }
 .explore-menu > li {
   min-height: 50px;
+  pointer-events: auto;
 }
 @media screen and (min-width: 560px) {
   .no-flexbox .explore-menu > li {
