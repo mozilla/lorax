@@ -119,6 +119,7 @@ define([
     // move issues to a linear position
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
+      issue.setTextAlwaysVisible(true);
       issue.moveTo(this.elm.x + this._linearArea.x,
         this.elm.y + this._linearArea.y + ((this._linearDist * i) -
           (this._linearDist * this._issues.length / 2)))
@@ -185,6 +186,7 @@ define([
 
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
+      issue.setTextAlwaysVisible(false);
       issue.moveTo(issue.topicX, issue.topicY)
         .call(issue._resumeStaticAnimation.bind(issue));
     }
