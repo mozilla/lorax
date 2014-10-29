@@ -225,13 +225,9 @@ define([
           issues.push(issue);
         }
 
-        // get random fakes for topic
-        var getRandomFake = function () {
-          return this._fakes[Math.floor(Math.random() * this._fakes.length)];
-        }.bind(this);
         var fakes = [];
         for(j = 0; j < Math.floor(Math.random() * 10) + 20; j ++) {
-          issue = getRandomFake();
+          issue = this._getRandomFake();
           fakes.push(issue);
         }
 
@@ -249,6 +245,11 @@ define([
 
       this._topics[i].show();
     }
+  };
+
+  // get random fakes for topic
+  Explore.prototype._getRandomFake = function () {
+    return this._fakes[Math.floor(Math.random() * this._fakes.length)];
   };
 
   /**

@@ -21,7 +21,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this.mode = Issue.MODE_EXPLORE;
     this._superSetData.bind(this)(data);
 
-    var colors = [0x00ae52, 0xffcc00, 0xe11313];
+    var colors = [0x6bb94e, 0xf6c925, 0xdb3f33];
     this.color = colors[this.data._status];
 
     this._textAlwaysVisible = false;
