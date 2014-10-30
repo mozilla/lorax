@@ -47,7 +47,7 @@ define(['jquery', 'd3'], function ($, d3) {
   var ChartCommonLanguagesLinkFn = function () {
     d3.json('/scripts/data/common-languages.json', function (error, res) {
       var data = res.commonLanguages;
-      var chart = d3.select('.common-languages-content');
+      var chart = d3.selectAll('.common-languages-content');
 
       var maxPercent = res.topPercentageOfLanguages;
       var maxScale = maxPercent + 5;

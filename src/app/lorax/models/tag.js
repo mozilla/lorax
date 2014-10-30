@@ -7,7 +7,8 @@ define([
 
   var TagModel = function (id, localeData) {
     this._id = id;
-    this._name = this._localize(localeData, 'tags', id, 'name');
+    // this._name = this._localize(localeData, 'tags', id, 'name');
+    this._name = id;
     this._issues = [];
   };
 

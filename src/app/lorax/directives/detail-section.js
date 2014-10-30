@@ -41,7 +41,7 @@ define([], function (IssueModel) {
     };
 
     dataService.getMain().then(function(model) {
-      this._$scope.issue = model.getIssueById($scope.issueName);
+      this._$scope.detailSection.issue = model.getIssueById($scope.issueName);
     }.bind(this));
   };
 

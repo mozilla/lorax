@@ -42,6 +42,10 @@ define(function () {
         templateUrl: '/app/lorax/templates/detail-fairness.tpl.html'
       })
 
+      .when('/detail/all', {
+        templateUrl: '/app/lorax/templates/detail-all.tpl.html'
+      })
+
       /* -------------------- Error -------------------- */
 
       .when('/error', {
