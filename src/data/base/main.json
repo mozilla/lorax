@@ -52,8 +52,7 @@
             "General Electric Company",
             "General Dynamics Corporation",
             "Wal-Mart Stores, Inc.",
-            "PepsiCo, Inc.",
-            "Wal-Mart Stores, Inc."
+            "PepsiCo, Inc."
           ]
         }
       }
@@ -91,7 +90,6 @@
         "corporateTracking":{
           "status":2,
           "tags":[
-            "J.P. Morgan Chase &amp;amp; Co",
             "J.P. Morgan Chase &amp;amp; Co",
             "International Business Machines Corporation"
           ]

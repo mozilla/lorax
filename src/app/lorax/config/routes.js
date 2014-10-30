@@ -22,28 +22,16 @@ define(function () {
 
       /* -------------------- Detail -------------------- */
 
-      .when('/detail', {
-        redirectTo: '/detail/availability'
+      .when('/detail/', {
+        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
       })
 
-      .when('/detail/availability', {
-        templateUrl: '/app/lorax/templates/detail-availability.tpl.html'
+      .when('/detail/:topic/', {
+        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
       })
 
-      .when('/detail/control', {
-        templateUrl: '/app/lorax/templates/detail-control.tpl.html'
-      })
-
-      .when('/detail/safety', {
-        templateUrl: '/app/lorax/templates/detail-safety.tpl.html'
-      })
-
-      .when('/detail/fairness', {
-        templateUrl: '/app/lorax/templates/detail-fairness.tpl.html'
-      })
-
-      .when('/detail/all', {
-        templateUrl: '/app/lorax/templates/detail-all.tpl.html'
+      .when('/detail/:topic/:issue/', {
+        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
       })
 
       /* -------------------- Error -------------------- */

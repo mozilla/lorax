@@ -13,12 +13,13 @@ define([
   'lorax/controllers/core',
   'lorax/controllers/explore',
   'lorax/controllers/detail',
+  'lorax/controllers/nav',
 
   // directives
   'lorax/directives/window',
   'lorax/directives/prevent-default',
-  'lorax/directives/detail-section',
-  'lorax/directives/detail-scroll',
+  'lorax/directives/issue-details',
+  'lorax/directives/issue-scroll',
   'lorax/directives/chart-top-internet-companies',
   'lorax/directives/chart-terms-and-conditions',
   'lorax/directives/chart-common-languages',
@@ -52,12 +53,13 @@ define([
   CoreCtrl,
   ExploreCtrl,
   DetailCtrl,
+  NavCtrl,
 
   // directives
   WindowDirective,
   PreventDefaultDirective,
-  DetailSectionDirective,
-  DetailScrollDirective,
+  IssueDetailsDirective,
+  IssueScrollDirective,
   ChartTopInternetCompaniesDirective,
   ChartTermsAndConditionsDirective,
   ChartCommonLanguagesDirective,
@@ -121,6 +123,12 @@ define([
     .controller('DetailCtrl', DetailCtrl)
 
     /**
+     * Injects {@link lorax/controllers/NavCtrl} as 'NavCtrl'
+     * @method lorax/loraxApp~controller
+     */
+    .controller('NavCtrl', NavCtrl)
+
+    /**
      * Injects {@link lorax/directives/WindowDirective} as 'WindowDirective'
      * @method lorax/loraxApp~directive
      */
@@ -136,13 +144,13 @@ define([
      * Injects {@link lorax/directives/DetailDirective} as 'DetailDirective'
      * @method lorax/loraxApp~directive
      */
-    .directive('loraxDetailSection', DetailSectionDirective)
+    .directive('loraxIssueDetails', IssueDetailsDirective)
 
     /**
      * Injects {@link lorax/directives/DetailScrollDirective} as 'DetailScrollDirective'
      * @method lorax/loraxApp~directive
      */
-    .directive('loraxDetailScroll', DetailScrollDirective)
+    .directive('loraxIssueScroll', IssueScrollDirective)
 
     /**
      * Injects {@link lorax/directives/ChartTopInternetCompaniesDirective}

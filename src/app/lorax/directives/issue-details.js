@@ -1,14 +1,14 @@
 /**
- * @fileOverview Detail section directive
+ * @fileOverview Issue Details directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
 define([], function (IssueModel) {
   'use strict';
 
   /**
-   * Detail Section directive
+   * Issue Details directive
    */
-  var DetailSectionDirective = function () {
+  var IssueDetailsDirective = function () {
     return {
       restrict: 'A',
       replace: true,
@@ -18,9 +18,9 @@ define([], function (IssueModel) {
         'issueStatus': '@',
         'issueName': '@'
       },
-      controller: DetailSectionController,
-      link: DetailSectionLinkFn,
-      templateUrl: '/app/lorax/directives/detail-section.tpl.html'
+      controller: IssueDetailsController,
+      link: IssueDetailsLinkFn,
+      templateUrl: '/app/lorax/directives/issue-details.tpl.html'
     };
   };
 
@@ -28,20 +28,20 @@ define([], function (IssueModel) {
    * Controller for detail directive
    * @constructor
    */
-  var DetailSectionController = function (
+  var IssueDetailsController = function (
     $scope,
     dataService
     )
   {
     this._$scope = $scope;
 
-    this._$scope.detailSection = {
+    this._$scope.issueDetails = {
       inverted: $scope.inverted,
       status: $scope.issueStatus
     };
 
     dataService.getMain().then(function(model) {
-      this._$scope.detailSection.issue = model.getIssueById($scope.issueName);
+      this._$scope.issueDetails.issue = model.getIssueById($scope.issueName);
     }.bind(this));
   };
 
@@ -49,7 +49,7 @@ define([], function (IssueModel) {
    * Array of dependencies to be injected into controller
    * @type {Array}
    */
-  DetailSectionController.$inject = [
+  IssueDetailsController.$inject = [
     '$scope',
     'dataService'
   ];
@@ -59,7 +59,7 @@ define([], function (IssueModel) {
    * @param  {string}          No parameters
    * @return {string}          No return value
    */
-  DetailSectionController.prototype.testMethod = function () {
+  IssueDetailsController.prototype.testMethod = function () {
     console.log('test');
   };
 
@@ -70,9 +70,9 @@ define([], function (IssueModel) {
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var DetailSectionLinkFn = function (scope, iElem, iAttrs, controller) {
-    console.log(controller);
+  var IssueDetailsLinkFn = function (scope, iElem, iAttrs, controller) {
+    
   };
 
-  return DetailSectionDirective;
+  return IssueDetailsDirective;
 });

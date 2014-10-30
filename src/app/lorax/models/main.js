@@ -7,7 +7,7 @@ define([
 ) {
   'use strict';
 
-  var MainModel = function (data, localeData, issuesData) {
+  var MainModel = function (data, localeData) {
     this._tags = [];
     this._topics = [];
 
@@ -16,9 +16,8 @@ define([
         idxTopic,
         data.topics[idxTopic],
         this._tags,
-        localeData,
-        issuesData.topics[idxTopic])
-      )
+        localeData.topics[idxTopic]
+      ))
     }
   };
   
@@ -32,14 +31,17 @@ define([
       return result;
     }, []);
   };
+
+  MainModel.prototype.getTopicById = function(id) {
+    return _.find(this.getTopics(), function(topic) {
+        return topic._id == id;
+    });
+  };
   
   MainModel.prototype.getIssueById = function(id) {
     return _.find(this.getIssues(), function(issue) {
         return issue._id == id;
     });
-
-
-    // return _.where(this._getIssues, { _id : id } );
   };
 
   MainModel.prototype.getTags = function () {

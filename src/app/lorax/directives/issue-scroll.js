@@ -1,19 +1,19 @@
 /**
- * @fileOverview Detail page scroll directive
+ * @fileOverview Issue page scroll directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
 define(['jquery', 'jquery-scrollie'], function ($) {
   'use strict';
 
   /**
-   * Detail Scroll directive
+   * Issue Scroll directive
    */
-  var DetailScrollDirective = function () {
+  var IssueScrollDirective = function () {
     return {
       restrict: 'A',
       scope: true,
-      controller: DetailScrollCtrl,
-      link: DetailScrollLinkFn
+      controller: IssueScrollCtrl,
+      link: IssueScrollLinkFn
     };
   };
 
@@ -21,7 +21,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
    * Controller for detail scroll directive
    * @constructor
    */
-  var DetailScrollCtrl = function (
+  var IssueScrollCtrl = function (
     $scope,
     $timeout,
     windowService
@@ -35,18 +35,18 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     });
   };
 
-  DetailScrollCtrl.$inject = [
+  IssueScrollCtrl.$inject = [
     '$scope',
     '$timeout',
     'windowService'
   ];
 
   /**
-   * Link function for Detail Page Scroll directive
+   * Link function for Issue Page Scroll directive
    * @param {object} scope      Angular scope.
    * @param {JQuery} iElem      Detail wrapper jQuery element.
    */
-  var DetailScrollLinkFn = function (scope, iElem, iAttrs, controller) {
+  var IssueScrollLinkFn = function (scope, iElem, iAttrs, controller) {
 
     controller._$timeout(function () {
       var $body = $('body');
@@ -66,5 +66,5 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     }, 500);
   };
 
-  return DetailScrollDirective;
+  return IssueScrollDirective;
 });

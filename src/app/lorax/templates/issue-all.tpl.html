@@ -1,0 +1,24 @@
+<nav class="banner__nav" ng-controller="NavCtrl">
+    <ul class="banner-nav">
+        <li><a href="/detail/availability" class="banner-nav__link" ng-class="{'is-active': nav.active==='availability'}" ng-click="nav.handleClick('availability')">Availability</a></li>
+        <li><a href="/detail/control" class="banner-nav__link" ng-class="{'is-active': nav.active==='control'}" ng-click="nav.handleClick('control')">Control</a></li>
+        <li><a href="/detail/safety" class="banner-nav__link" ng-class="{'is-active': nav.active==='safety'}" ng-click="nav.handleClick('safety')">Safety</a></li>
+        <li><a href="/detail/fairness" class="banner-nav__link" ng-class="{'is-active': nav.active==='fairness'}" ng-click="nav.handleClick('fairness')">Fairness</a></li>
+    </ul>
+</nav>
+<section class="main--detail" ng-controller="DetailCtrl" data-lorax-issue-scroll>
+	<div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-inverted="false" data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
+        <div class="infographic__wrapper">
+            <table class="common-languages">
+                <thead>
+                    <tr>
+                        <th colspan="3">Spoken Languages</th>
+                        <th>vs</th>
+                        <th colspan="3">Internet Languages</th>
+                    </tr>
+                </thead>
+                <tbody class="common-languages-content" data-lorax-chart-common-languages></tbody>
+            </table>
+        </div>
+    </div>
+</section>

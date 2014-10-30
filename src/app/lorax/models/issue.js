@@ -7,18 +7,19 @@ define([
 ) {
   'use strict';
 
-  var IssueModel = function (parentInstance, id, data, tags, localeData, localeIssues) {
+  var IssueModel = function (parentInstance, id, data, tags, localeData) {
     this._parent = parentInstance;
     this._id = id;
-    this._name = localeIssues.name;
+    this._name = localeData.name;
     this._status = data.status;
-    this._title = localeIssues.title;
-    this._narrative = localeIssues.narrative;
-    this._mozActionCopy = localeIssues.mozActionCopy;
-    this._yourActionCopy = localeIssues.yourActionCopy;
-    this._mozActionLink = localeIssues.mozActionLink;
-    this._yourActionLink = localeIssues.yourActionLink;
+    this._title = localeData.title;
+    this._narrative = localeData.narrative;
+    this._mozActionCopy = localeData.mozActionCopy;
+    this._yourActionCopy = localeData.yourActionCopy;
+    this._mozActionLink = localeData.mozActionLink;
+    this._yourActionLink = localeData.yourActionLink;
     this._tags = [];
+
 
     for (var tagIdx in data.tags) {
       //TODO: consider changing this to an object instead of an array
@@ -92,13 +93,13 @@ define([
     var out = '';
     switch (this._status) {
     case 0:
-      out = 'green';
+      out = 'go';
       break;
     case 1:
-      out = 'yellow';
+      out = 'wait';
       break;
     case 2:
-      out = 'red';
+      out = 'stop';
       break;
     }
     return out;
