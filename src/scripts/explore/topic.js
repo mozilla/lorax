@@ -61,23 +61,23 @@ define([
 
     // title
     this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
-      {font: '22px "fira-sans-regular", sans-serif'});
+      {font: '300 22px "Fira Sans", sans-serif', fill: '#222222'});
     this.elm.addChild(this._topicTitle);
-    this._topicTitle.x = -this._topicTitle.width / 2;
-    this._topicTitle.y = -this._topicTitle.height / 2;
+    this._topicTitle.x = Math.round(-this._topicTitle.width / 2);
+    this._topicTitle.y = Math.round(-this._topicTitle.height / 2);
 
     // description
     this._topicDesc = new PIXI.Text(this._data.getTagline(),
       {
-        font: '14px "fira-sans-regular", sans-serif',
+        font: '300 14px "Fira Sans", sans-serif',
         fill: '#666666',
         wordWrap: true,
         wordWrapWidth: 200,
         align: 'center'
     });
     this.elm.addChild(this._topicDesc);
-    this._topicDesc.x = -this._topicDesc.width / 2;
-    this._topicDesc.y = this._radius + 50;
+    this._topicDesc.x = Math.round(-this._topicDesc.width / 2);
+    this._topicDesc.y = Math.round(this._radius + 50);
 
     // topic issue elements
     var issue, i;
@@ -155,7 +155,7 @@ define([
     var posY = -this._linearDist * this._issues.length / 2;
     posY -= this._topicTitle.height + 20;
     createjs.Tween.get(this._topicTitle, {override: true})
-      .to({y: posY, tint: 0xFF0000}, 300, createjs.Ease.easeIn);
+      .to({y: posY}, 300, createjs.Ease.easeIn);
     createjs.Tween.get(this._topicDesc, {override: true})
       .to({alpha: 0}, 300, createjs.Ease.easeIn);
 

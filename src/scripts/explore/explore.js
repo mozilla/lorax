@@ -62,7 +62,7 @@ define([
     this._renderer = new PIXI.CanvasRenderer(
       this._canvasSize.x,
       this._canvasSize.y,
-      null, true, false);
+      {transparent: true, antialias: true});
     this._stage = new PIXI.Stage();
     this._stage.interactive = true;
     container.append(this._renderer.view);
@@ -141,9 +141,7 @@ define([
       .to({alpha:0}, 300, createjs.Ease.quartOut)
       .to({alpha:1}, 300, createjs.Ease.quartIn);
 
-    setTimeout(function () {
-      this._mode = Issue.MODE_EXPLORE;
-    }.bind(this), 300);
+    this._mode = Issue.MODE_EXPLORE;
 
     var i, issue;
     for (i = 0; i < this._issues.length; i ++) {
@@ -172,9 +170,7 @@ define([
       .to({alpha:0}, 300, createjs.Ease.quartOut)
       .to({alpha:1}, 300, createjs.Ease.quartIn);
 
-    setTimeout(function () {
-      this._mode = Issue.MODE_ISSUES;
-    }.bind(this), 300);
+    this._mode = Issue.MODE_ISSUES;
 
     var i;
     for (i = 0; i < this._tags.length; i ++) {
@@ -203,9 +199,7 @@ define([
       .to({alpha:0}, 400, createjs.Ease.quartOut)
       .to({alpha:1}, 400, createjs.Ease.quartIn);
 
-    setTimeout(function () {
-      this._mode = Issue.MODE_TOPICS;
-    }.bind(this), 400);
+    this._mode = Issue.MODE_TOPICS;
 
     this._stage.addChild(this._topicsContainer);
 
@@ -240,9 +234,8 @@ define([
         this._topics[i].elm.x /= (this._topicsData.length - 1) / i;
         this._topics[i].elm.x -= ((this._renderer.width - 400) / 2);
         this._topics[i].elm.y = 0;
-
         this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
-
+        this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
         this._topics[i].setup();
       }
 
@@ -300,7 +293,7 @@ define([
     var seed, rSeed;
     for (var i = 0; i < this._issueData.length; i ++) {
       seed = Math.random() * Math.PI * 2;
-      rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
+      rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
 
       var issue = new Issue(i, this._canvasSize);
 
@@ -309,7 +302,7 @@ define([
 
       issue.setData(this._issueData[i]);
       issue.draw(
-        10 - rSeed / this._exploreRadius * 5,
+        8 - rSeed / this._exploreRadius * 5,
         Math.sin(seed) * rSeed,
         Math.cos(seed) * rSeed
       );
@@ -319,6 +312,9 @@ define([
 
       issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
       issue.elm.mouseout = issue.elm.touchend = this._onIssueOut.bind(this);
+      issue.elm.mousedown = function () {
+        window.location.href += '/detail/all';
+      };
     }
   };
 
