@@ -62,7 +62,7 @@ define([
     this._renderer = new PIXI.CanvasRenderer(
       this._canvasSize.x,
       this._canvasSize.y,
-      null, true, false);
+      {transparent: true, antialias: true});
     this._stage = new PIXI.Stage();
     this._stage.interactive = true;
     container.append(this._renderer.view);

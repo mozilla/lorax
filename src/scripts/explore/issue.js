@@ -45,7 +45,6 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this.elm.index = this._index;
 
     this._overCircle = new PIXI.Graphics();
-    this._overCircle.cacheAsBitmap = true;
     this._overCircle.lineStyle(2, this.color);
     this._overCircle.drawCircle(0, 0, radius + 5);
     this._overCircle.scale = {x:0, y:0};
@@ -85,7 +84,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._issueModeOverContainer.addChild(this._issueModeFiller);
 
     // white title
-    var style = {font: '20px "fira-sans-regular", sans-serif', fill: '#FFFFFF'};
+    var style = {font: '20px "fira-sans-light", sans-serif', fill: '#FFFFFF'};
     this._issueModeTitle = new PIXI.Text(this.data.getName().toUpperCase(), style);
     this._issueModeTitle.x = this._title.x;
     this._issueModeTitle.y = -this._issueModeTitle.height / 2;
@@ -106,12 +105,12 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.stopMoving();
       this.setTextAlwaysVisible(true);
       this.setIsInteractive(false);
-      this._title.setStyle({font: '20px "fira-sans-regular", sans-serif'});
+      this._title.setStyle({font: '20px "fira-sans-light", sans-serif'});
       this._title.y = -this._title.height / 2;
     }
 
     if (lastMode === Issue.MODE_ISSUES) {
-      this._title.setStyle({font: '14px "fira-sans-regular", sans-serif'});
+      this._title.setStyle({font: '14px "fira-sans-light", sans-serif'});
       this._title.y = -this._title.height / 2;
     }
   };

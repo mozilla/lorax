@@ -14,7 +14,6 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     this.elm.addChild(this._circle);
     this._drawCircle();
     this._circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
-    this._circle.cacheAsBitmap = true;
 
     if (this.data) {
       this._drawTitle();
@@ -92,7 +91,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   */
   Circle.prototype._drawCircle = function (color) {
     if (!color) {
-      color = 0x000000;
+      color = 0x222222;
     }
 
     this._circle.clear();
@@ -103,7 +102,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
   Circle.prototype._drawTitle = function () {
     var style = {
-      font: '14px "fira-sans-regular", sans-serif'
+      font: '14px "fira-sans-light", sans-serif',
+      tint: '#222222'
     };
 
     this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
