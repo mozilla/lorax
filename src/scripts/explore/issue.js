@@ -88,7 +88,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._issueModeOverContainer.addChild(this._issueModeFiller);
 
     // white title
-    var style = {font: '20px "fira-sans-light", sans-serif', fill: '#FFFFFF'};
+    var style = {font: '300 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
     this._issueModeTitle = new PIXI.Text(this.data.getName().toUpperCase(), style);
     this._issueModeTitle.x = this._title.x;
     this._issueModeTitle.y = -this._issueModeTitle.height / 2;
@@ -109,7 +109,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.stopMoving();
       this.setTextAlwaysVisible(true);
       this.setIsInteractive(false);
-      this._title.setStyle({font: '20px "fira-sans-light", sans-serif'});
+      this._title.setStyle({font: '300 20px "Fira Sans", sans-serif'});
       this._title.y = -this._title.height / 2;
       if (!this._issueModeArea) {
         this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
@@ -118,7 +118,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     }
 
     if (lastMode === Issue.MODE_ISSUES) {
-      this._title.setStyle({font: '14px "fira-sans-light", sans-serif'});
+      this._title.setStyle({font: '300 14px "Fira Sans", sans-serif'});
       this._title.y = -this._title.height / 2;
       this.elm.hitArea = null;
       this.elm.alpha = 1;

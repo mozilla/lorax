@@ -61,7 +61,7 @@ define([
 
     // title
     this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
-      {font: '22px "fira-sans-light", sans-serif', fill: '#222222'});
+      {font: '300 22px "Fira Sans", sans-serif', fill: '#222222'});
     this.elm.addChild(this._topicTitle);
     this._topicTitle.x = Math.round(-this._topicTitle.width / 2);
     this._topicTitle.y = Math.round(-this._topicTitle.height / 2);
@@ -69,7 +69,7 @@ define([
     // description
     this._topicDesc = new PIXI.Text(this._data.getTagline(),
       {
-        font: '14px "fira-sans-light", sans-serif',
+        font: '300 14px "Fira Sans", sans-serif',
         fill: '#666666',
         wordWrap: true,
         wordWrapWidth: 200,

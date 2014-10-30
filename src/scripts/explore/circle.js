@@ -102,7 +102,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
   Circle.prototype._drawTitle = function () {
     var style = {
-      font: '14px "fira-sans-light", sans-serif',
+      font: '300 14px "Fira Sans", sans-serif',
       tint: '#222222'
     };
 
