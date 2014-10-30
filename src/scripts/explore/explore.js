@@ -90,7 +90,7 @@ define([
 
     this._scrollPosition = this._scrollFinalPosition = 0;
 
-    this._issueMargin = 100;
+    this._issueMargin = 80;
 
     this._scrollArea = new PIXI.Rectangle(
       -((this._renderer.width - 300) / 2),

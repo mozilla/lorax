@@ -56,8 +56,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this._issueModeMask = new PIXI.Graphics();
     this._issueModeMask.beginFill(0x000000);
     this._issueModeMask.alpha = 0.1;
-    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 60);
-    this._issueModeMask.y = -30;
+    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 80);
+    this._issueModeMask.y = -40;
 
     // container for whats masked by _issueModeMask
     this._issueModeContainer = new PIXI.DisplayObjectContainer();
@@ -182,8 +182,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:1, y:1},
-      500,
-      createjs.Ease.quartOut
+      200,
+      createjs.Ease.sineOut
     );
   };
 
@@ -218,8 +218,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
 
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:0, y:0},
-      400,
-      createjs.Ease.quartIn)
+      200,
+      createjs.Ease.sineIn)
       .call(function () {
         this.elm.removeChild(this._issueModeContainer);
         this.elm.removeChild(this._issueModeMask);
