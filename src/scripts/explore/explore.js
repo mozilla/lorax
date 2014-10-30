@@ -293,7 +293,7 @@ define([
     var seed, rSeed;
     for (var i = 0; i < this._issueData.length; i ++) {
       seed = Math.random() * Math.PI * 2;
-      rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
+      rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
 
       var issue = new Issue(i, this._canvasSize);
 
@@ -302,7 +302,7 @@ define([
 
       issue.setData(this._issueData[i]);
       issue.draw(
-        10 - rSeed / this._exploreRadius * 5,
+        8 - rSeed / this._exploreRadius * 5,
         Math.sin(seed) * rSeed,
         Math.cos(seed) * rSeed
       );
@@ -312,6 +312,9 @@ define([
 
       issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
       issue.elm.mouseout = issue.elm.touchend = this._onIssueOut.bind(this);
+      issue.elm.mousedown = function () {
+        window.location.href += '/detail/all';
+      };
     }
   };
 

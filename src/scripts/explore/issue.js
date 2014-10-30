@@ -51,11 +51,15 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this.elm.addChildAt(this._overCircle, 0);
 
     // create issue mode specific code
+    this._drawIssueMode();
+  };
+
+  Issue.prototype._drawIssueMode = function () {
     // bigger, rectangular mask
     this._issueModeMask = new PIXI.Graphics();
     this._issueModeMask.beginFill(0x000000);
     this._issueModeMask.alpha = 0.1;
-    this._issueModeMask.drawRect(0, 0, this.elm.stage.width, 80);
+    this._issueModeMask.drawRect(0, 0, this.elm.stage.width + 300, 80);
     this._issueModeMask.y = -40;
 
     // container for whats masked by _issueModeMask
@@ -107,11 +111,17 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.setIsInteractive(false);
       this._title.setStyle({font: '20px "fira-sans-light", sans-serif'});
       this._title.y = -this._title.height / 2;
+      if (!this._issueModeArea) {
+        this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+      }
+      this.elm.hitArea = this._issueModeArea;
     }
 
     if (lastMode === Issue.MODE_ISSUES) {
       this._title.setStyle({font: '14px "fira-sans-light", sans-serif'});
       this._title.y = -this._title.height / 2;
+      this.elm.hitArea = null;
+      this.elm.alpha = 1;
     }
   };
 
@@ -169,15 +179,15 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       y:-this.elm.y - this.elm.parent.y
     };
 
-    this._issueModeMask.x = globalOrigin.x;
-    this._issueModeMask.width = this._canvasSize.x - this._issueModeMask.x;
-    this._issueModeFiller.x = globalOrigin.x;
-    this._issueModeFiller.y = globalOrigin.y;
-    this._issueModeFiller.width = this._canvasSize.x - this._issueModeFiller.x;
-    this._issueModeFiller.height = this._canvasSize.y - this._issueModeFiller.y;
-
     this.elm.addChild(this._issueModeContainer);
     this.elm.addChild(this._issueModeMask);
+
+    this._issueModeMask.x = globalOrigin.x;
+    // this._issueModeMask.width = this._canvasSize.x - globalOrigin.x;
+    this._issueModeFiller.x = globalOrigin.x;
+    this._issueModeFiller.y = globalOrigin.y;
+    this._issueModeFiller.width = this._canvasSize.x - globalOrigin.x;
+    this._issueModeFiller.height = this._canvasSize.y - globalOrigin.y;
 
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:1, y:1},
