@@ -129,11 +129,12 @@ define([
     clearTimeout(this._autoModeTimeout);
     this._autoModeTimeout = setTimeout(
       this._endAutoMode.bind(this),
-      this._autoModeTimeUp
+      this._autoModeTimeUp,
+      true
     );
   };
 
-  Explore.prototype._endAutoMode = function () {
+  Explore.prototype._endAutoMode = function (startAnother) {
     if (this._autoModeIssue) {
       this._mouseOutIssue(this._autoModeIssue);
     }
@@ -141,10 +142,12 @@ define([
     this._autoMode = false;
 
     clearTimeout(this._autoModeTimeout);
-    this._autoModeTimeout = setTimeout(
-      this._startAutoMode.bind(this),
-      this._autoModeTime
-    );
+    if (startAnother) {
+      this._autoModeTimeout = setTimeout(
+        this._startAutoMode.bind(this),
+        this._autoModeTime
+      );
+    }
   };
 
   Explore.prototype._clearTopics = function () {
@@ -176,6 +179,7 @@ define([
   */
   Explore.prototype.showExplore = function () {
     this._clearTopics();
+    this._startAutoMode();
 
     createjs.Tween.get(this._linesContainer)
       .to({alpha:0}, 300, createjs.Ease.quartOut)
@@ -211,6 +215,7 @@ define([
       .to({alpha:1}, 300, createjs.Ease.quartIn);
 
     this._mode = Issue.MODE_ISSUES;
+    this._endAutoMode(false);
 
     var i;
     for (i = 0; i < this._tags.length; i ++) {
@@ -240,6 +245,7 @@ define([
       .to({alpha:1}, 400, createjs.Ease.quartIn);
 
     this._mode = Issue.MODE_TOPICS;
+    this._endAutoMode(false);
 
     this._stage.addChild(this._topicsContainer);
 
@@ -558,7 +564,7 @@ define([
     if (lastMouse &&
       (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
       Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
-      this._endAutoMode();
+      this._endAutoMode(this.mode === Issue.MODE_EXPLORE);
     };
 
     // sets mouse position as selected issues position
