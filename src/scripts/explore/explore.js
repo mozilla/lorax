@@ -43,6 +43,14 @@ define([
 
     this._lastTick = 0;
     this._mode = Issue.MODE_EXPLORE;
+
+    this._autoMode;
+    this._autoModeTimeout;
+    this._autoModeIssue;
+    this._autoModeTime = 8000;
+    this._autoModeTimeUp = 3000;
+
+    this._mousePosition;
   };
 
   Explore.prototype.setData = function (data) {
@@ -105,6 +113,38 @@ define([
 
     // start animation
     requestAnimationFrame(this._animate.bind(this));
+
+    this._autoModeTimeout = setTimeout(
+      this._startAutoMode.bind(this),
+      this._autoModeTime
+    );
+  };
+
+  Explore.prototype._startAutoMode = function () {
+    this._autoMode = true;
+
+    this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
+    this._mouseOverIssue(this._autoModeIssue);
+
+    clearTimeout(this._autoModeTimeout);
+    this._autoModeTimeout = setTimeout(
+      this._endAutoMode.bind(this),
+      this._autoModeTimeUp
+    );
+  };
+
+  Explore.prototype._endAutoMode = function () {
+    if (this._autoModeIssue) {
+      this._mouseOutIssue(this._autoModeIssue);
+    }
+
+    this._autoMode = false;
+
+    clearTimeout(this._autoModeTimeout);
+    this._autoModeTimeout = setTimeout(
+      this._startAutoMode.bind(this),
+      this._autoModeTime
+    );
   };
 
   Explore.prototype._clearTopics = function () {
@@ -310,16 +350,25 @@ define([
       issue.exploreX = issue.elm.x;
       issue.exploreY = issue.elm.y;
 
-      issue.elm.mouseover = issue.elm.touchstart = this._onIssueOver.bind(this);
-      issue.elm.mouseout = issue.elm.touchend = this._onIssueOut.bind(this);
-      issue.elm.mousedown = function () {
-        window.location.href += '/detail/all';
-      };
+      issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
+      issue.elm.mouseout = issue.elm.touchend = this._onOutIssue.bind(this);
+      issue.elm.mousedown = this._onPressIssue.bind(this);
     }
   };
 
-  Explore.prototype._onIssueOver = function (event) {
-    var issue = this._issues[event.target.index];
+  Explore.prototype._onOverIssue = function (event) {
+    this._mouseOverIssue(this._issues[event.target.index]);
+  };
+
+  Explore.prototype._onOutIssue = function (event) {
+    this._mouseOutIssue(this._issues[event.target.index]);
+  };
+
+  Explore.prototype._onPressIssue = function (event) {
+    window.location.href += '/detail/all';
+  };
+
+  Explore.prototype._mouseOverIssue = function (issue) {
     var related, relatedIssue;
 
     if (this._mode !== Issue.MODE_ISSUES) {
@@ -339,12 +388,11 @@ define([
     }
   };
 
-  Explore.prototype._onIssueOut = function (event) {
-    var issue = this._issues[event.target.index];
+  Explore.prototype._mouseOutIssue = function (issue) {
     var related, relatedIssue;
 
     if (this._mode !== Issue.MODE_ISSUES) {
-      if (!issue.isInteractive) {
+      if (!issue.isInteractive || this._autoMode) {
         issue.mouseOut.bind(issue)();
       }
 
@@ -502,6 +550,22 @@ define([
     var mousePosition = this._stage.getMousePosition().clone();
     mousePosition.x -= this._issuesContainer.x;
     mousePosition.y -= this._issuesContainer.y;
+
+    var lastMouse = this._mousePosition;
+    this._mousePosition = mousePosition.clone();
+
+    // ends auto mode
+    if (lastMouse &&
+      (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
+      Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
+      this._endAutoMode();
+    };
+
+    // sets mouse position as selected issues position
+    if (this._autoMode) {
+      mousePosition.x = this._autoModeIssue._x0;
+      mousePosition.y = this._autoModeIssue._y0;
+    };
 
     this._updatePositions(mousePosition);
 

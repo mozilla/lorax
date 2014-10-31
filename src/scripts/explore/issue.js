@@ -203,19 +203,23 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
   Issue.prototype.mouseOut = function () {
     Issue.prototype._superMouseOut.bind(this)();
 
+    createjs.Tween.get(this.elm, {override: true})
+      .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
+      .call(this._resumeStaticAnimation.bind(this));
+
     if (!this._textAlwaysVisible) {
-    createjs.Tween.get(this._title, {override: true})
-      .to({alpha: 0}, 200, createjs.Ease.quartOut)
-      .call(function () {
-        if (this._title.parent) {
-          this.elm.removeChild(this._title);
-        }
-      }.bind(this));
+      createjs.Tween.get(this._title, {override: true})
+        .to({alpha: 0}, 200, createjs.Ease.quartOut)
+        .call(function () {
+          if (this._title.parent) {
+            this.elm.removeChild(this._title);
+          }
+        }.bind(this));
     }
 
     this.lightUp();
 
-    createjs.Tween.get(this._overCircle.scale).to(
+    createjs.Tween.get(this._overCircle.scale, {override: true}).to(
       {x:0, y:0},
       300,
       createjs.Ease.quartIn
@@ -248,10 +252,6 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       if (Math.abs(this.elm.x - this._x0) > stickyRadius ||
           Math.abs(this.elm.y - this._y0) > stickyRadius) {
         this.mouseOut();
-
-        createjs.Tween.get(this.elm, {override: true})
-          .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
-          .call(this._resumeStaticAnimation.bind(this));
       }
     }
     // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
