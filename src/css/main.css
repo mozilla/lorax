@@ -622,12 +622,6 @@ img {
 }
 .banner__nav {
   height: 40px;
-  padding: 0 20px;
-}
-@media screen and (min-width: 560px) {
-  .banner__nav {
-    padding: 0;
-  }
 }
 @media screen and (min-width: 1360px) {
   .banner__nav {
@@ -638,18 +632,24 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 20px;
+  left: 50%;
 }
 @media screen and (min-width: 560px) {
   .banner-nav {
     margin: 0 auto;
     max-width: 460px;
+    margin-left: -230px;
     min-width: 360px;
+    margin-left: -180px;
     width: 60%;
   }
 }
 @media screen and (min-width: 960px) {
   .banner-nav {
     max-width: 520px;
+    margin-left: -260px;
   }
 }
 .flexbox .banner-nav {
@@ -858,7 +858,7 @@ img {
 }
 /* ==========================================================================
    Detail page, modules
-   ========================================================================== */
+   // ========================================================================== */
 .detail {
   padding-bottom: 134px;
 }

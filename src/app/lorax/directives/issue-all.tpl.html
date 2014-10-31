@@ -1,4 +1,5 @@
-<div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-inverted="false" data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
+<section>
+	<div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-inverted="false" data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
         <div class="infographic__wrapper">
             <table class="common-languages">
                 <thead>
@@ -11,4 +12,5 @@
                 <tbody class="common-languages-content" data-lorax-chart-common-languages></tbody>
             </table>
         </div>
-</div>
+    </div>
+</section>

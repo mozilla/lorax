@@ -23,16 +23,17 @@ define(function () {
       /* -------------------- Detail -------------------- */
 
       .when('/detail/', {
-        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
+        templateUrl: '/app/lorax/templates/issues.tpl.html',
+        reloadOnSearch: false
       })
 
-      .when('/detail/:topic/', {
-        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
-      })
+      // .when('/detail/:topic/', {
+      //   templateUrl: '/app/lorax/templates/issues.tpl.html'
+      // })
 
-      .when('/detail/:topic/:issue/', {
-        templateUrl: '/app/lorax/templates/issue-all.tpl.html'
-      })
+      // .when('/detail/:topic/:issue/', {
+      //   templateUrl: '/app/lorax/templates/issues.tpl.html'
+      // })
 
       /* -------------------- Error -------------------- */
 

@@ -100,10 +100,9 @@
 
 .banner__nav {
   height: 40px;
-  padding: 0 20px;
-
+  
   .at-medium({
-    padding: 0;
+
   });
 
   .at-xlarge({
@@ -114,15 +113,22 @@
 .banner-nav {
   .reset-list;
 
+  position: fixed;
+  top: 20px;
+  left: 50%;
+
   .at-medium({
     margin: 0 auto;
     max-width: 460px;
+    margin-left: -230px;
     min-width: 360px;
+    margin-left: -180px;
     width: 60%;
   });
 
   .at-large({
     max-width: 520px;
+    margin-left: -260px;
   });
 
   .flexbox & {

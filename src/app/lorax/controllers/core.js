@@ -15,10 +15,6 @@ define(['jquery', 'angular'], function ($, angular) {
   ) {
 
     this._$scope = $scope;
-
-    $scope.$on('$locationChangeSuccess', function () {
-      scrollService.go('top',  { duration: 0 });
-    });
   };
 
   CoreCtrl.$inject = [

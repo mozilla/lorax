@@ -1,0 +1,9 @@
+<nav class="banner__nav" ng-controller="NavCtrl">
+    <ul class="banner-nav">
+        <li><a href="/detail/?topic=availability" class="banner-nav__link" ng-class="{'is-active': nav.active==='availability'}" ng-click="nav.handleClick('availability')">Availability</a></li>
+        <li><a href="/detail/?topic=control" class="banner-nav__link" ng-class="{'is-active': nav.active==='control'}" ng-click="nav.handleClick('control')">Control</a></li>
+        <li><a href="/detail/?topic=safety" class="banner-nav__link" ng-class="{'is-active': nav.active==='safety'}" ng-click="nav.handleClick('safety')">Safety</a></li>
+        <li><a href="/detail/?topic=fairness" class="banner-nav__link" ng-class="{'is-active': nav.active==='fairness'}" ng-click="nav.handleClick('fairness')">Fairness</a></li>
+    </ul>
+</nav>
+<section class="main--detail" data-lorax-issue-all></section>

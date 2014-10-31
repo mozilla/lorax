@@ -20,6 +20,7 @@ define([
   'lorax/directives/prevent-default',
   'lorax/directives/issue-details',
   'lorax/directives/issue-scroll',
+  'lorax/directives/issue-all',
   'lorax/directives/chart-top-internet-companies',
   'lorax/directives/chart-terms-and-conditions',
   'lorax/directives/chart-common-languages',
@@ -60,6 +61,7 @@ define([
   PreventDefaultDirective,
   IssueDetailsDirective,
   IssueScrollDirective,
+  IssueAllDirective,
   ChartTopInternetCompaniesDirective,
   ChartTermsAndConditionsDirective,
   ChartCommonLanguagesDirective,
@@ -141,16 +143,22 @@ define([
     .directive('loraxPreventDefault', PreventDefaultDirective)
 
     /**
-     * Injects {@link lorax/directives/DetailDirective} as 'DetailDirective'
+     * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'
      * @method lorax/loraxApp~directive
      */
     .directive('loraxIssueDetails', IssueDetailsDirective)
 
     /**
-     * Injects {@link lorax/directives/DetailScrollDirective} as 'DetailScrollDirective'
+     * Injects {@link lorax/directives/IssueScrollDirective} as 'IssueScrollDirective'
      * @method lorax/loraxApp~directive
      */
     .directive('loraxIssueScroll', IssueScrollDirective)
+
+    /**
+     * Injects {@link lorax/directives/IssueAll} as 'IssueAllDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxIssueAll', IssueAllDirective)
 
     /**
      * Injects {@link lorax/directives/ChartTopInternetCompaniesDirective}
