@@ -30,8 +30,13 @@ define([], function () {
 
     }.bind(this));
 
-    //console.log(this._$location.search('topic'));
-
+    var topic = this._$location.search().topic;
+    if (topic) {
+      this._$scope.nav.active = topic;
+    }
+    else {
+      this._$scope.nav.active = "availability";
+    }
   };
 
   NavCtrl.$inject = [

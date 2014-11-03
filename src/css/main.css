@@ -730,6 +730,16 @@ img {
 .banner-nav__link.is-active:focus {
   text-decoration: none;
 }
+.down-arrow-nav {
+  background: url('../images/down-arrow.png') no-repeat 0 0 transparent;
+  width: 17px;
+  height: 10px;
+  position: fixed;
+  bottom: 34px;
+  left: 50%;
+  margin-left: -9px;
+  cursor: pointer;
+}
 /* ==========================================================================
    Explore page
    ========================================================================== */
