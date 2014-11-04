@@ -82,7 +82,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
   var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
 
     controller._$timeout(function() {
-
       var topic = controller._$location.search().topic;
       var issue = controller._$location.search().issue;
 
@@ -129,7 +128,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
           $body.attr('data-bg-mode', status);
         }
       });
-
     }.bind(controller), 500);
   };
 

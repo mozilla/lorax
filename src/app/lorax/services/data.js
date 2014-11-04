@@ -36,6 +36,15 @@ define([
       ].join('/');
     }
 
+    function _buildInfographicEndpoint(locale) {
+      return [
+        '/data',
+        'i18n',
+        locale,
+        'infographics.json'
+      ].join('/');
+    }
+
     /**
      * @method core/services/dataService~getMain
      * @param locale {String} Locale code
@@ -53,12 +62,17 @@ define([
 
         var req = this._$http.get(_buildMainEndpoint());
         var localeReq = this._$http.get(_buildLocaleMainEndpoint(locale));
+        var infographicReq = this._$http.get(_buildInfographicEndpoint(locale));
 
         req.then(function (res) {
           if (res.data) {
             localeReq.then(function (localeRes) {
-              this._mainData = new MainModel(res.data, localeRes.data);
-              this._mainDefer.resolve(this._mainData);
+              if (localeRes.data) {
+                infographicReq.then(function (infographicRes) {
+                  this._mainData = new MainModel(res.data, localeRes.data, infographicRes.data);
+                  this._mainDefer.resolve(this._mainData);
+                }.bind(this))
+              }
             }.bind(this));
           }
         }.bind(this))['catch'](function (error) {

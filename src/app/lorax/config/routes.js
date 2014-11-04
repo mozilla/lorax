@@ -22,18 +22,15 @@ define(function () {
 
       /* -------------------- Detail -------------------- */
 
+      .when('/detail/availability', {
+        templateUrl: '/app/lorax/templates/detail-availability.tpl.html',
+        reloadOnSearch: false
+      })
+
       .when('/detail/', {
         templateUrl: '/app/lorax/templates/issues.tpl.html',
         reloadOnSearch: false
       })
-
-      // .when('/detail/:topic/', {
-      //   templateUrl: '/app/lorax/templates/issues.tpl.html'
-      // })
-
-      // .when('/detail/:topic/:issue/', {
-      //   templateUrl: '/app/lorax/templates/issues.tpl.html'
-      // })
 
       /* -------------------- Error -------------------- */
 

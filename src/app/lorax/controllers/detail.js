@@ -34,7 +34,6 @@ define([], function () {
     //       } else if ( newParam.params.topic ) {
     //         console.log("Topic exists. Animate!");        
     //         var issue = this._$scope.detail.model.getTopicById(newParam.params.topic).getIssues()[0].getId();
-    //         debugger;
     //         $('#' + issue).scrollIntoView();
     //       } else {
     //         console.log("Nothing. Go to top of page.");

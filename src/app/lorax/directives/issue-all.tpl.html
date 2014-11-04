@@ -1,15 +1,11 @@
 <div ng-click="detail.nextIssue()" class="down-arrow-nav"></div>
 <div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-inverted="false" data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
-        <div class="infographic__wrapper">
-            <table class="common-languages">
-                <thead>
-                    <tr>
-                        <th colspan="3">Spoken Languages</th>
-                        <th>vs</th>
-                        <th colspan="3">Internet Languages</th>
-                    </tr>
-                </thead>
-                <tbody class="common-languages-content" data-lorax-chart-common-languages></tbody>
-            </table>
+    <header class="infographic__header">
+            <h1>{{issue.getInfographic().getHeader()}} <span>{{issue.getInfographic().getSubheader()}}</span></h1>
+    </header>
+    <div class="infographic__wrapper">
+        <div>
+            {{issue.getInfographic().drawInfographic()}}
         </div>
+    </div>
 </div>

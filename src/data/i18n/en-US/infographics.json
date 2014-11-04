@@ -1,0 +1,562 @@
+{
+  "available": { 
+    "header": "Top 5 Longest Terms & Conditions",
+    "subheader": "by total words",
+    "dataPoints": {
+      "termsAndConditions": [
+        {
+          "name": "Facebook",
+          "length": 12000
+        },
+        {
+          "name": "Apple iOS 5",
+          "length": 14000
+        },
+        {
+          "name": "Windows Live",
+          "length": 15000
+        },
+        {
+          "name": "Apple iTunes",
+          "length": 20000
+        },
+        {
+          "name": "Paypal",
+          "length": 37000
+        }
+      ]
+    }
+  },
+  "affordable": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "speaksMyLanguage": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "accessible": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "infrastructure": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "contentCreation": { 
+    "header": "Top 5 Longest Terms & Conditions",
+    "subheader": "by total words",
+    "dataPoints": {
+      "termsAndConditions": [
+        {
+          "name": "Facebook",
+          "length": 12000
+        },
+        {
+          "name": "Apple iOS 5",
+          "length": 14000
+        },
+        {
+          "name": "Windows Live",
+          "length": 15000
+        },
+        {
+          "name": "Apple iTunes",
+          "length": 20000
+        },
+        {
+          "name": "Paypal",
+          "length": 37000
+        }
+      ]
+    }
+  },
+  "identityControl": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "surveillance": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "corporateTracking": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "governmentSnooping": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "transparency": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "decentralization": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "censorship": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "cyberThreats": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "cyberBullying": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+    "controlPoints": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "storageSecurity": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "netNeutrality": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "interopelability": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "distributionOfPower": { 
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  }
+}

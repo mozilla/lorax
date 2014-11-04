@@ -7,7 +7,7 @@ define([
 ) {
   'use strict';
 
-  var MainModel = function (data, localeData) {
+  var MainModel = function (data, localeData, infographicData) {
     this._tags = [];
     this._topics = [];
 
@@ -16,7 +16,8 @@ define([
         idxTopic,
         data.topics[idxTopic],
         this._tags,
-        localeData.topics[idxTopic]
+        localeData.topics[idxTopic],
+        infographicData
       ))
     }
   };

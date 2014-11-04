@@ -1,13 +1,15 @@
 define([
   'lodash',
-  'lorax/models/tag'
+  'lorax/models/tag',
+  'lorax/models/infographic'
   ], function (
   _,
-  TagModel
+  TagModel,
+  InfographicModel
 ) {
   'use strict';
 
-  var IssueModel = function (parentInstance, id, data, tags, localeData) {
+  var IssueModel = function (parentInstance, id, data, tags, localeData, infographicData) {
     this._parent = parentInstance;
     this._id = id;
     this._name = localeData.name;
@@ -18,8 +20,13 @@ define([
     this._yourActionCopy = localeData.yourActionCopy;
     this._mozActionLink = localeData.mozActionLink;
     this._yourActionLink = localeData.yourActionLink;
+    this._infographicType = data.infographicType;
     this._tags = [];
-
+    this._infographic = new InfographicModel(
+      this._id,
+      this._infographicType,
+      infographicData
+    );
 
     for (var tagIdx in data.tags) {
       //TODO: consider changing this to an object instead of an array
@@ -72,7 +79,15 @@ define([
 
   IssueModel.prototype.getYourActionLink = function () {
     return this._yourActionLink;
-  };    
+  };
+
+  IssueModel.prototype.getInfographicType = function () {
+    return this._infographicType;
+  }
+
+  IssueModel.prototype.getInfographic = function () {
+    return this._infographic;
+  }    
   
   IssueModel.prototype.getTags = function () {
     return this._tags;

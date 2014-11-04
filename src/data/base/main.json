@@ -4,6 +4,7 @@
       "issues":{
         "available":{
           "status":0,
+          "infographicType":"line-graph",
           "tags":[
             "Target Corporation",
             "Citigroup Inc",
@@ -14,6 +15,7 @@
         },
         "affordable":{
           "status":1,
+          "infographicType":"bar-graph",
           "tags":[
             "Bank of America Corporation",
             "Procter &amp;amp; Gamble Co",
@@ -25,6 +27,7 @@
         },
         "speaksMyLanguage":{
           "status":1,
+          "infographicType":"map",
           "tags":[
             "Morgan Stanley",
             "Amerada Hess Corporation",
@@ -35,6 +38,7 @@
         },
         "accessible":{
           "status":1,
+          "infographicType":"static-image",
           "tags":[
             "Medco Health Solutions Inc",
             "Wells Fargo &amp;amp; Company",
@@ -46,6 +50,7 @@
         },
         "infrastructure":{
           "status":1,
+          "infographicType":"bar-graph",
           "tags":[
             "Cisco Systems, Inc.",
             "Abbott Laboratories",
@@ -61,6 +66,7 @@
       "issues":{
         "contentCreation":{
           "status":2,
+          "infographicType":"line-graph",
           "tags":[
             "McKesson Corporation",
             "Sprint",
@@ -70,6 +76,7 @@
         },
         "identityControl":{
           "status":1,
+          "infographicType":"bar-graph",
           "tags":[
             "Lockheed Martin Corporation",
             "Walgreen Company",
@@ -79,6 +86,7 @@
         },
         "surveillance":{
           "status":2,
+          "infographicType":"static-image",
           "tags":[
             "ChevronTexaco Corporation",
             "The Dow Chemical Company",
@@ -89,13 +97,15 @@
         },
         "corporateTracking":{
           "status":2,
+          "infographicType":"map",
           "tags":[
             "J.P. Morgan Chase &amp;amp; Co",
             "International Business Machines Corporation"
           ]
         },
-        "gorvernmentSnooping":{
+        "governmentSnooping":{
           "status":2,
+          "infographicType":"map",
           "tags":[
             "FedEx Corporation",
             "General Motors Corporation",
@@ -104,6 +114,7 @@
         },
         "transparency":{
           "status":2,
+          "infographicType":"bar-graph",
           "tags":[
             "Goldman Sachs Group",
             "Bank of America Corporation",
@@ -114,6 +125,7 @@
         },
         "decentralization":{
           "status":2,
+          "infographicType":"map",
           "tags":[
             "General Dynamics Corporation",
             "Cisco Systems, Inc.",
@@ -123,6 +135,7 @@
         },
         "censorship":{
           "status":2,
+          "infographicType":"map",
           "tags":[
             "Apple Computer, Inc",
             "FedEx Corporation",
@@ -136,6 +149,7 @@
       "issues":{
         "cyberThreats":{
           "status":1,
+          "infographicType":"static-image",
           "tags":[
             "General Dynamics Corporation",
             "The Dow Chemical Company",
@@ -145,6 +159,7 @@
         },
         "cyberBullying":{
           "status":1,
+          "infographicType":"bar-graph",
           "tags":[
             "Dell, Inc",
             "Sprint",
@@ -154,6 +169,7 @@
         },
         "controlPoints":{
           "status":1,
+          "infographicType":"map",
           "tags":[
             "News Corp",
             "State Farm Insurance",
@@ -163,6 +179,7 @@
         },
         "storageSecurity":{
           "status":2,
+          "infographicType":"bar-graph",
           "tags":[
             "The Dow Chemical Company",
             "Procter &amp;amp; Gamble Co",
@@ -178,6 +195,7 @@
       "issues":{
         "netNeutrality":{
           "status":2,
+          "infographicType":"map",
           "tags":[
             "Honeywell International",
             "Northrop Grumman Corporation",
@@ -187,6 +205,7 @@
         },
         "interopelability":{
           "status":1,
+          "infographicType":"bar-graph",
           "tags":[
             "Dell, Inc",
             "Prudential Financial, Inc",
@@ -196,6 +215,7 @@
         },
         "distributionOfPower":{
           "status":2,
+          "infographicType":"static-image",
           "tags":[
             "Berkshire Hathaway",
             "General Dynamics Corporation",
