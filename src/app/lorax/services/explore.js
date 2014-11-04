@@ -1,12 +1,14 @@
-define(['jquery'], function ($) {
+define(['angular', 'jquery'], function (angular, $) {
   'use strict';
 
-  var ExploreService = function () {
-
+  var ExploreService = function ($location, $timeout) {
+    this._$location = $location;
+    this._$timeout = $timeout;
   };
 
   ExploreService.prototype.setCanvas = function (canvas) {
     this._canvas = canvas;
+    this._canvas.setEnterIssueCallback(this._onPressIssue.bind(this));
   };
 
   ExploreService.prototype.switchView = function (view) {
@@ -18,6 +20,17 @@ define(['jquery'], function ($) {
       this._canvas.showIssues();
     }
   };
+
+  ExploreService.prototype._onPressIssue = function (topic, issue) {
+    this._$timeout(function () {
+      this._$location.url('/detail/?topipc=' + topic + '&issue=' + issue);
+    }.bind(this));
+  };
+
+  ExploreService.$inject = [
+    '$location',
+    '$timeout'
+  ];
 
   return ExploreService;
 });

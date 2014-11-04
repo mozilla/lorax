@@ -22,7 +22,8 @@ define([
       setData: this.setData.bind(this),
       showExplore: this.showExplore.bind(this),
       showTopics: this.showTopics.bind(this),
-      showIssues: this.showIssues.bind(this)
+      showIssues: this.showIssues.bind(this),
+      setEnterIssueCallback: this.setEnterIssueCallback.bind(this)
     };
   };
 
@@ -118,6 +119,10 @@ define([
       this._startAutoMode.bind(this),
       this._autoModeTime
     );
+  };
+
+  Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
+    this.enterIssueCallback = enterIssueCallback;
   };
 
   Explore.prototype._startAutoMode = function () {
@@ -371,7 +376,10 @@ define([
   };
 
   Explore.prototype._onPressIssue = function (event) {
-    window.location.href += '/detail/all';
+    if (this.enterIssueCallback) {
+      var issue = this._issueData[event.target.index];
+      this.enterIssueCallback(issue.getParent().getId(), issue.getId());
+    }
   };
 
   Explore.prototype._mouseOverIssue = function (issue) {
