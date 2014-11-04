@@ -537,7 +537,7 @@ define([
     for (i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.elm.y = issue.issueY + this._scrollPosition;
-      issue.elm.alpha = ((1 - Math.abs(issue.elm.y / this._scrollArea.height))) + 0.3;
+      // issue.elm.alpha = ((1 - Math.abs(issue.elm.y / this._scrollArea.height))) + 0.3;
     }
   };
 
