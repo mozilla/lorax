@@ -524,6 +524,7 @@ define([
   };
 
   Explore.prototype._updateScroller = function (mousePosition) {
+    // no movement if mouse is out of the canvas
     if (mousePosition.y > this._canvasSize.y ||
       mousePosition.y < -this._canvasSize.y) {
       mousePosition.y = 0;
@@ -531,6 +532,12 @@ define([
 
     // using tan so the movement is smoother
     var tanMouse = Math.tan(mousePosition.y / this._canvasSize.y * Math.PI / 2);
+
+    // no movement if mouse is near the center
+    if (Math.abs(tanMouse) < 0.5) {
+      tanMouse = 0;
+    }
+
     this._scrollFinalPosition -= tanMouse * 8;
 
     this._scrollFinalPosition = Math.max(
