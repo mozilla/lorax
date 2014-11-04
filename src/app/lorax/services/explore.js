@@ -23,7 +23,7 @@ define(['angular', 'jquery'], function (angular, $) {
 
   ExploreService.prototype._onPressIssue = function (topic, issue) {
     this._$timeout(function () {
-      this._$location.url('/detail/?topipc=' + topic + '&issue=' + issue);
+      this._$location.url('/detail/?topic=' + topic + '&issue=' + issue);
     }.bind(this));
   };
 
