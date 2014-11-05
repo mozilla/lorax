@@ -51,8 +51,16 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
       this._circle.scale,
       {loop: true, override: true})
       .wait(Math.random() * 1000)
-      .to({x:1 + (0.2 * d), y:1 + (0.2 * d)}, 500, createjs.Ease.bounceOut)
-      .to({x:1, y:1}, 500, createjs.Ease.linear);
+      .to(
+        {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d)},
+        600 + Math.random() * 500,
+        createjs.Ease.sineInOut
+      )
+      .to(
+        {x:1, y:1},
+        600 + Math.random() * 500,
+        createjs.Ease.sineInOut
+      );
 
     if (this._staticPositionTween) {
       this._staticPositionTween.setPaused(true);
