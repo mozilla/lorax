@@ -3,9 +3,16 @@
    ========================================================================== */
 
 .banner {
-  margin-bottom: 76px;
-  position: relative;
-  pointer-events: none;
+  margin: 50px 0 8px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: @header-z-index;
+
+  .at-medium({
+    margin-top: 25px;
+  });
 
   .at-xlarge({
     height: 238px;
@@ -15,21 +22,19 @@
 
 .banner-logo {
   margin: 0;
-  padding-right: 20px;
 
   .at-medium({
     padding: 0 15px;
   });
 
   > a {
-    background: url('../images/open-internet-cloud.png') no-repeat 10px 50% transparent;
+    //background: url('../images/open-internet-cloud.png') no-repeat 10px 50% transparent;
     color: @black;
     display: block;
     .din-condensed-medium;
     .font-size(1.8);
-    height: 64px;
-    line-height: 64px;
-    text-align: right;
+    line-height: 22px;
+    text-align: center;
     text-transform: uppercase;
 
     .at-medium({
@@ -54,27 +59,45 @@
 
 .banner-mozilla {
   color: @extra-dark-grey;
-  display: none;
-  .font-size(1.2);
+  .font-size(1.1);
+  .fira-sans-regular;
+  line-height: 14px;
   margin: 0;
+  text-align: center;
 
   .at-medium({
-    display: block;
-    height: 46px;
-    line-height: 46px;
+    .font-size(1.2);
+    line-height: 14px;
     position: absolute;
     right: 15px;
-    top: 0;
+    text-align: right;
+    top: 9px;
   });
 
   .at-xlarge({
-    height: 80px;
     line-height: 80px;
     right: 30px;
   });
 
   > span {
+    .at-medium({
+      display: inline;
+    });
+  }
+
+  > a {
     .fira-sans-bold;
+
+    .at-medium({
+      display: block;
+      .font-size(1.8);
+      line-height: 18px;
+    });
+
+    .at-xlarge({
+      display: inline;
+      line-height: 80px;
+    });
   }
 }
 
@@ -100,7 +123,7 @@
 
 .banner__nav {
   height: 40px;
-  
+
   .at-medium({
 
   });
