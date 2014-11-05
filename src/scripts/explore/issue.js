@@ -14,7 +14,8 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
   Issue.MODE_EXPLORE = 'explore';
   Issue.MODE_TOPICS = 'topics';
   Issue.MODE_ISSUES = 'issues';
-  Issue.MODES = [Issue.MODE_EXPLORE, Issue.MODE_TOPICS, Issue.MODE_ISSUES];
+  Issue.MODE_DETAIL = 'detail';
+  Issue.MODES = [Issue.MODE_EXPLORE, Issue.MODE_TOPICS, Issue.MODE_ISSUES, Issue.MODE_DETAIL];
 
   Issue.prototype._superSetData = Issue.prototype.setData;
   Issue.prototype.setData = function (data) {
@@ -58,7 +59,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     // bigger, rectangular mask
     this._issueModeMask = new PIXI.Graphics();
     this._issueModeMask.beginFill(0x000000);
-    this._issueModeMask.alpha = 0.1;
+    this._issueModeMask.alpha = 0.5;
     this._issueModeMask.drawRect(0, 0, this.elm.stage.width + 300, 80);
     this._issueModeMask.y = -40;
 
@@ -111,6 +112,17 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.setIsInteractive(false);
       this._title.setStyle({font: '300 20px "Fira Sans", sans-serif'});
       this._title.y = Math.round(-this._title.height / 2);
+      if (!this._issueModeArea) {
+        this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+      }
+      this.elm.hitArea = this._issueModeArea;
+    } else if (mode === Issue.MODE_DETAIL) {
+      this.stopMoving();
+      this.setTextAlwaysVisible(true);
+      this.setIsInteractive(false);
+      var style = {font: '300 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
+      this._issueModeTitle.setStyle(style);
+      this._issueModeTitle.y = Math.round(-this._title.height / 2);
       if (!this._issueModeArea) {
         this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
       }
@@ -174,20 +186,17 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
   Issue.prototype.issueModeMouseOver = function () {
     Issue.prototype._superMouseOver.bind(this)();
 
-    var globalOrigin = {
-      x:-this.elm.x - this.elm.parent.x,
-      y:-this.elm.y - this.elm.parent.y
-    };
+    var globalOrigin = this.elm.toGlobal(new PIXI.Point());
 
     this.elm.addChild(this._issueModeContainer);
     this.elm.addChild(this._issueModeMask);
 
-    this._issueModeMask.x = globalOrigin.x;
+    this._issueModeMask.x = -globalOrigin.x;
     // this._issueModeMask.width = this._canvasSize.x - globalOrigin.x;
-    this._issueModeFiller.x = globalOrigin.x;
-    this._issueModeFiller.y = globalOrigin.y;
-    this._issueModeFiller.width = this._canvasSize.x - globalOrigin.x;
-    this._issueModeFiller.height = this._canvasSize.y - globalOrigin.y;
+    this._issueModeFiller.x = -globalOrigin.x;
+    this._issueModeFiller.y = -globalOrigin.y;
+    this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
+    this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
 
     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
       {x:1, y:1},
@@ -237,6 +246,37 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         this.elm.removeChild(this._issueModeContainer);
         this.elm.removeChild(this._issueModeMask);
       }.bind(this));
+  };
+
+  Issue.prototype.openIssue = function () {
+    this.setMode(Issue.MODE_DETAIL);
+
+    var globalOrigin = this.elm.toGlobal(new PIXI.Point());
+
+    this.elm.addChild(this._issueModeContainer);
+    this.elm.addChild(this._issueModeMask);
+
+    this._issueModeMask.x = -globalOrigin.x;
+    this._issueModeFiller.x = -globalOrigin.x;
+    this._issueModeFiller.y = -globalOrigin.y;
+    this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
+    this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
+
+    // this._issueModeFillMask.scale = {x:1, y:1};
+    this._issueModeMask.y = -globalOrigin.y;
+    this._issueModeMask.height = this._canvasSize.y;
+
+    createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+      {x:1, y:1},
+      300,
+      createjs.Ease.sineOut
+    );
+
+    // createjs.Tween.get(this._issueModeMask).to(
+    //   {y: -globalOrigin.y},
+    //   300,
+    //   createjs.Ease.sineOut
+    // );
   };
 
   /**

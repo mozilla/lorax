@@ -376,9 +376,13 @@ define([
   };
 
   Explore.prototype._onPressIssue = function (event) {
+    this._mode = Issue.MODE_DETAIL;
+
     if (this.enterIssueCallback) {
-      var issue = this._issueData[event.target.index];
-      this.enterIssueCallback(issue.getParent().getId(), issue.getId());
+      var issueData = this._issueData[event.target.index];
+      var issue = this._getElementFromId(issueData.getId());
+      issue.openIssue();
+      this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
     }
   };
 
@@ -579,7 +583,7 @@ define([
     if (lastMouse &&
       (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
       Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
-      this._endAutoMode(this.mode === Issue.MODE_EXPLORE);
+      this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
     };
 
     // sets mouse position as selected issues position
