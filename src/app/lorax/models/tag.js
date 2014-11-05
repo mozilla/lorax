@@ -13,7 +13,7 @@ define([
   };
 
   TagModel.prototype = new BaseModel();
-  
+
   TagModel.prototype.getId = function () {
     return this._id;
   };
@@ -29,7 +29,11 @@ define([
   TagModel.prototype.addIssue = function (issue) {
     this._issues.push(issue);
   };
-  
+
+  TagModel.prototype.getRelated = function () {
+    return this.getIssues();
+  };
+
   return TagModel;
 });
 

@@ -10,6 +10,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   Circle.prototype.draw = function (radius, x, y) {
     this.radius = radius;
 
+    x = Math.round(x);
+    y = Math.round(y);
+
     this._circle = new PIXI.Graphics();
     this.elm.addChild(this._circle);
     this._drawCircle();
@@ -197,6 +200,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
   Circle.prototype.stopMoving = function () {
     this._staticScaleTween.setPaused(true);
     this._staticPositionTween.setPaused(true);
+    this.elm.x = Math.round(this.elm.x);
+    this.elm.y = Math.round(this.elm.y);
   };
 
   return Circle;

@@ -327,13 +327,19 @@ define([
       seed = Math.random() * Math.PI * 2;
       rSeed = this._exploreRadius + (Math.random() * 5);
 
-      var tag = new Circle();
+      var tag = new Issue(i, this._canvasSize);
+      tag.setIsInteractive(false);
 
       this._tags.push(tag);
       this._issuesContainer.addChild(tag.elm);
 
       tag.setData(this._tagData[i]);
       tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+
+      tag.elm.mouseover = this._onOverTag.bind(this);
+      tag.elm.mouseout = this._onOutTag.bind(this);
+      // tag.elm.mousedown = this._onPressIssue.bind(this);
+      tag.isInteractive = false;
     }
   };
 
@@ -367,6 +373,14 @@ define([
     }
   };
 
+  Explore.prototype._onOverTag = function (event) {
+    this._mouseOverIssue(this._tags[event.target.index]);
+  };
+
+  Explore.prototype._onOutTag = function (event) {
+    this._mouseOutIssue(this._tags[event.target.index]);
+  };
+
   Explore.prototype._onOverIssue = function (event) {
     this._mouseOverIssue(this._issues[event.target.index]);
   };
@@ -395,11 +409,12 @@ define([
       related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
         relatedIssue = this._getElementFromId(related[i]._id);
-        if (issue.data.getStatus() === relatedIssue.data.getStatus()) {
-          relatedIssue.lightUp();
-        } else {
-          relatedIssue.lightDown();
-        }
+        relatedIssue.lightUp();
+        // if (issue.data.getStatus() === relatedIssue.data.getStatus()) {
+        //   relatedIssue.lightUp();
+        // } else {
+        //   relatedIssue.lightDown();
+        // }
       }
     } else {
       issue.issueModeMouseOver.bind(issue)();
