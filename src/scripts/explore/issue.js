@@ -15,7 +15,12 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
   Issue.MODE_TOPICS = 'topics';
   Issue.MODE_ISSUES = 'issues';
   Issue.MODE_DETAIL = 'detail';
-  Issue.MODES = [Issue.MODE_EXPLORE, Issue.MODE_TOPICS, Issue.MODE_ISSUES, Issue.MODE_DETAIL];
+  Issue.MODES = [
+    Issue.MODE_EXPLORE,
+    Issue.MODE_TOPICS,
+    Issue.MODE_ISSUES,
+    Issue.MODE_DETAIL
+  ];
 
   Issue.prototype._superSetData = Issue.prototype.setData;
   Issue.prototype.setData = function (data) {
@@ -44,12 +49,6 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     this.elm.buttonMode = true;
     this.isInteractive = true;
     this.elm.index = this._index;
-
-    this._overCircle = new PIXI.Graphics();
-    this._overCircle.lineStyle(2, this.color);
-    this._overCircle.drawCircle(0, 0, radius + 5);
-    this._overCircle.scale = {x:0, y:0};
-    this.elm.addChildAt(this._overCircle, 0);
 
     // create issue mode specific code
     this._drawIssueMode();
@@ -174,13 +173,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         .to({alpha: 1}, 200, createjs.Ease.quartIn);
     }
 
-    this.lightDown();
-
-    createjs.Tween.get(this._overCircle.scale).to(
-      {x:1, y:1},
-      300,
-      createjs.Ease.getBackOut(2.5)
-    );
+    this.lightUp();
   };
 
   Issue.prototype.issueModeMouseOver = function () {
@@ -229,13 +222,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         }.bind(this));
     }
 
-    this.lightUp();
-
-    createjs.Tween.get(this._overCircle.scale, {override: true}).to(
-      {x:0, y:0},
-      300,
-      createjs.Ease.quartIn
-    );
+    this.lightDown();
   };
 
   Issue.prototype.issueModeMouseOut = function () {

@@ -154,7 +154,7 @@ define([
     }
 
     // move selected title and desc
-    var posY = -this._linearDist * this._issues.length / 2;
+    posY = -this._linearDist * this._issues.length / 2;
     posY -= this._topicTitle.height + 50;
     createjs.Tween.get(this._topicTitle, {override: true})
       .to({y: posY}, 300, createjs.Ease.easeIn);

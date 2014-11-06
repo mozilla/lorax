@@ -410,7 +410,7 @@ define([
       for(var i = 0; i < related.length; i ++) {
         relatedIssue = this._getElementFromId(related[i]._id);
         isSameTopic = issue.data._parent._id === relatedIssue.data._parent._id;
-        if (!(this._mode === Issue.MODE_TOPICS && !isSameTopic)) {
+        if (this._mode !== Issue.MODE_TOPICS) {
           relatedIssue.lightUp();
         }
       }
@@ -442,7 +442,7 @@ define([
   */
   Explore.prototype._drawLines = function () {
     this._linesContainer.clear();
-    var isOver, isSameTopic, isSameStatus, isTopicOver;
+    var isOver, isSameTopic;
     var issue;
     var related;
     var tags;
@@ -459,10 +459,9 @@ define([
 
           isOver = (issue.isOver || relatedItem.isOver);
           isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
-          isSameStatus = issue.data.getStatus() === relatedItem.data.getStatus();
           // only show related on same topic if on topics
           if (this._mode === Issue.MODE_EXPLORE || isSameTopic) {
-            if (isOver) {
+            if (isOver && this._mode !== Issue.MODE_TOPICS) {
               this._linesContainer.lineStyle(1, 0x000000,  0.15);
             } else {
               this._linesContainer.lineStyle(1, 0x000000, 0.03);
@@ -590,13 +589,13 @@ define([
       (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
       Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
       this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
-    };
+    }
 
     // sets mouse position as selected issues position
     if (this._autoMode) {
       mousePosition.x = this._autoModeIssue._x0;
       mousePosition.y = this._autoModeIssue._y0;
-    };
+    }
 
     this._updatePositions(mousePosition);
 
