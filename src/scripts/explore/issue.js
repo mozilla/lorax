@@ -212,9 +212,12 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
   Issue.prototype.mouseOut = function () {
     Issue.prototype._superMouseOut.bind(this)();
 
-    createjs.Tween.get(this.elm, {override: true})
-      .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5))
-      .call(this._resumeStaticAnimation.bind(this));
+    var tweenBack = createjs.Tween.get(this.elm, {override: true})
+      .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5));
+
+    if (this.mode === Issue.MODE_EXPLORE) {
+      tweenBack.call(this._resumeStaticAnimation.bind(this));
+    }
 
     if (!this._textAlwaysVisible) {
       createjs.Tween.get(this._title, {override: true})

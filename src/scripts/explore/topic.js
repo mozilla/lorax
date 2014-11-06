@@ -134,13 +134,15 @@ define([
     var i, j, topic, issue;
 
     // move issues to a linear position
+    var posX, posY;
     for(i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       issue.setTextAlwaysVisible(true);
-      issue.moveTo(this.elm.x + this._linearArea.x,
-        this.elm.y + this._linearArea.y + ((this._linearDist * i) -
-          (this._linearDist * this._issues.length / 2)))
-        .call(issue._resumeStaticAnimation.bind(issue));
+      issue.stopMoving();
+      posX = this.elm.x + this._linearArea.x;
+      posY = this.elm.y + this._linearArea.y;
+      posY += (((this._linearDist * i) - this._linearDist * this._issues.length / 2));
+      issue.moveTo(Math.round(posX), Math.round(posY));
     }
 
     // hide fakes
