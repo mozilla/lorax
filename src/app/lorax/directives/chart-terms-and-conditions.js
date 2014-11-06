@@ -45,6 +45,8 @@ define(['jquery', 'd3'], function ($, d3) {
    * @param {object} controller Controller reference.
    */
   var ChartTermsAndConditionsLinkFn = function () {
+    debugger;
+
     d3.json('/scripts/data/terms-and-conditions.json', function (error, res) {
       var data = res.termsAndConditions;
       var chart = d3.select('.terms-and-conditions');

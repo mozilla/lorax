@@ -89,11 +89,11 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
     }
 
     /**
-     * @method core/services/windowService~setBreakpoint
-     * @param newBreakpoint {String} Current breakpoint after change.
+     * @method core/services/windowService~setDetailMode
+     * @param detailMode {Bool} Detail mode on/off
      */
-    function setTrafficLightMode(newMode) {
-      pubSubService.publish('windowService.trafficLightMode', [newMode]);
+    function setDetailMode(detailMode) {
+      pubSubService.publish('windowService.detailMode', [detailMode]);
     }
 
     return {
@@ -107,7 +107,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
       unsubscribe: unsubscribe,
       mq: matchMedia,
       getDeviceWindowHeight: getDeviceWindowHeight,
-      setTrafficLightMode: setTrafficLightMode
+      setDetailMode: setDetailMode
     };
   };
 

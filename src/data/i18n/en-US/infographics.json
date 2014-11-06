@@ -1,7 +1,11 @@
 {
-  "available": { 
+  "available": {
     "header": "Top 5 Longest Terms & Conditions",
     "subheader": "by total words",
+    "source": {
+      "name": "Freedom House",
+      "src": "http://test.com"
+    },
     "dataPoints": {
       "termsAndConditions": [
         {
@@ -27,9 +31,13 @@
       ]
     }
   },
-  "affordable": { 
+  "affordable": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -55,9 +63,13 @@
       ]
     }
   },
-  "speaksMyLanguage": { 
+  "speaksMyLanguage": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -83,9 +95,13 @@
       ]
     }
   },
-  "accessible": { 
+  "accessible": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -111,9 +127,13 @@
       ]
     }
   },
-  "infrastructure": { 
+  "infrastructure": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -139,9 +159,13 @@
       ]
     }
   },
-  "contentCreation": { 
+  "contentCreation": {
     "header": "Top 5 Longest Terms & Conditions",
     "subheader": "by total words",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "termsAndConditions": [
         {
@@ -167,9 +191,13 @@
       ]
     }
   },
-  "identityControl": { 
+  "identityControl": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -195,9 +223,13 @@
       ]
     }
   },
-  "surveillance": { 
+  "surveillance": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -223,9 +255,13 @@
       ]
     }
   },
-  "corporateTracking": { 
+  "corporateTracking": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -251,9 +287,13 @@
       ]
     }
   },
-  "governmentSnooping": { 
+  "governmentSnooping": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -279,9 +319,13 @@
       ]
     }
   },
-  "transparency": { 
+  "transparency": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -307,9 +351,13 @@
       ]
     }
   },
-  "decentralization": { 
+  "decentralization": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -335,9 +383,13 @@
       ]
     }
   },
-  "censorship": { 
+  "censorship": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -363,9 +415,13 @@
       ]
     }
   },
-  "cyberThreats": { 
+  "cyberThreats": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -391,9 +447,13 @@
       ]
     }
   },
-  "cyberBullying": { 
+  "cyberBullying": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -419,9 +479,13 @@
       ]
     }
   },
-    "controlPoints": { 
+    "controlPoints": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -447,9 +511,13 @@
       ]
     }
   },
-  "storageSecurity": { 
+  "storageSecurity": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -475,9 +543,13 @@
       ]
     }
   },
-  "netNeutrality": { 
+  "netNeutrality": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -503,9 +575,13 @@
       ]
     }
   },
-  "interopelability": { 
+  "interopelability": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {
@@ -531,9 +607,13 @@
       ]
     }
   },
-  "distributionOfPower": { 
+  "distributionOfPower": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
     "dataPoints": {
       "internetCompaniesByRevenue": [
         {

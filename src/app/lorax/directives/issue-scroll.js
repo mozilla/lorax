@@ -23,16 +23,11 @@ define(['jquery', 'jquery-scrollie'], function ($) {
    */
   var IssueScrollCtrl = function (
     $scope,
-    $timeout,
-    windowService
+    $timeout
   ) {
 
     this._$scope = $scope;
     this._$timeout = $timeout;
-
-    $scope.$on('$destroy', function () {
-      windowService.setTrafficLightMode(false);
-    });
   };
 
   IssueScrollCtrl.$inject = [

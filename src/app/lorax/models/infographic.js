@@ -1,5 +1,4 @@
-define([
-], function () {
+define(['d3'], function (d3) {
   'use strict';
 
   var InfographicModel = function (id, type, data) {
@@ -8,7 +7,8 @@ define([
     this._header = data.header;
     this._subheader = data.subheader;
     this._dataPoints = data.dataPoints;
-    
+    this._source = data.source;
+
     // this._draw = {
     //   "line-graph": function () {
     //     this.drawLineGraph();
@@ -24,7 +24,7 @@ define([
     //   }
     // }
   };
-  
+
   InfographicModel.prototype.getId = function () {
     return this._id;
   };
@@ -45,24 +45,32 @@ define([
     return this._dataPoints;
   };
 
+  InfographicModel.prototype.getSourceName = function () {
+    return this._source.name;
+  };
+
+  InfographicModel.prototype.getSourceLocation = function () {
+    return this._source.src;
+  };
+
   InfographicModel.prototype.drawInfographic = function () {
     // console.log(this._id);
     switch ( this._type ) {
-      case "line-graph":
-        this.drawLineGraph();
-        break;
+    case 'line-graph':
+      this.drawLineGraph();
+      break;
 
-      case "bar-graph":
-        this.drawBarGraph();
-        break;
+    case 'bar-graph':
+      this.drawBarGraph();
+      break;
 
-      case "map":
-        this.drawMap();
-        break;
+    case 'map':
+      this.drawMap();
+      break;
 
-      case "static-image":
-        this.drawStaticImage();
-        break;
+    case 'static-image':
+      this.drawStaticImage();
+      break;
     }
     // console.log(this._drawingFunctions[this._type]);
     // var draw = {
@@ -135,8 +143,7 @@ define([
 
   InfographicModel.prototype.drawLineGraph = function () {
     var data = this._dataPoints.termsAndConditions;
-    var chart = d3.select('#' + this._id + ' .infographic__wrapper' + ' div');
-
+    var chart = d3.select('#' + this._id + ' .infographic__wrapper div');
 
     var companies = chart.selectAll('div')
       .data(data)
@@ -177,7 +184,7 @@ define([
   InfographicModel.prototype.drawStaticImage = function () {
     console.log("drawing static image here");
   };
-  
+
   return InfographicModel;
 });
 

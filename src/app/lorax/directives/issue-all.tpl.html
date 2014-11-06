@@ -1,11 +1,17 @@
 <div ng-click="detail.nextIssue()" class="down-arrow-nav"></div>
-<div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-inverted="false" data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
+<div id="{{issue.getId()}}" ng-repeat="issue in detail.model.getIssues()" data-lorax-issue-details data-issue-status="{{issue.getStatusDescription()}}" data-issue-name="{{issue.getId()}}">
     <header class="infographic__header">
             <h1>{{issue.getInfographic().getHeader()}} <span>{{issue.getInfographic().getSubheader()}}</span></h1>
     </header>
     <div class="infographic__wrapper">
-        <div>
+        <div ng-class="'infographic-' + issue.getCssClass()">
             {{issue.getInfographic().drawInfographic()}}
         </div>
     </div>
+    <footer class="infographic__footer">
+        <div class="detail-tags" ng-show="issue.getInfographic().getSourceName()">
+            <span class="detail-tags__title">Source:</span>
+            <a ng-href="{{issue.getInfographic().getSourceLocation()}}" class="detail-tags__tag">{{issue.getInfographic().getSourceName()}}</a>
+        </div>
+    </footer>
 </div>

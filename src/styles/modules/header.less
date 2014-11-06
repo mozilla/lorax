@@ -3,33 +3,44 @@
    ========================================================================== */
 
 .banner {
-  margin: 50px 0 8px;
+  margin: 50px 0 0;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: @header-z-index;
-  pointer-events: none;
 
   .at-medium({
-    margin-top: 25px;
+    height: 126px;
+    margin-top: 20px;
   });
 
   .at-xlarge({
-    height: 238px;
+    height: 144px;
     margin: 0;
   });
+
+  .is-detail & {
+    position: relative;
+  }
 }
 
 .banner-logo {
   margin: 0;
 
   .at-medium({
-    padding: 0 15px;
+    display: none; // temp?
+    padding: 0 30px;
+  });
+
+  .at-xlarge({
+    display: block; // temp?
+    left: 0;
+    position: fixed;
+    top: 30px;
   });
 
   > a {
-    //background: url('../images/open-internet-cloud.png') no-repeat 10px 50% transparent;
     color: @black;
     display: block;
     .din-condensed-medium;
@@ -39,21 +50,17 @@
     text-transform: uppercase;
 
     .at-medium({
-      background: none;
-      height: 46px;
-      line-height: 46px;
+      height: 60px;
+      line-height: 60px;
       text-align: left;
     });
 
     .at-xlarge({
       background: url('../images/open-internet-project.png') no-repeat 0 0 transparent;
       height: 149px;
-      left: 13px;
-      position: absolute;
       text-align: left;
       text-indent: -9999px;
-      top: 30px;
-      width: 107px;
+      width: 90px;
     });
   }
 }
@@ -70,14 +77,9 @@
     .font-size(1.2);
     line-height: 14px;
     position: absolute;
-    right: 15px;
-    text-align: right;
-    top: 9px;
-  });
-
-  .at-xlarge({
-    line-height: 80px;
     right: 30px;
+    text-align: right;
+    top: 14px;
   });
 
   > span {
@@ -111,49 +113,62 @@
 
   .at-medium({
     display: block;
-    left: 15px;
-    position: absolute;
-    top: 51px;
+    left: 30px;
+    position: fixed;
+    top: 33px;
   });
 
   .at-xlarge({
-    left: 30px;
     top: 200px;
   });
 }
 
-.banner__nav {
-  height: 40px;
+
+
+/* Banner Nav
+   ========================================================================== */
+.banner-nav-wrap {
+  background-color: @body-bg;
+  height: 60px;
+  margin: 0 0 24px;
+  padding: 0 20px;
+  .transition(background-color 0.3s ease-in-out);
 
   .at-medium({
-
-  });
-
-  .at-xlarge({
     height: 80px;
+    left: 0;
+    margin: 0;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: @header-z-index;
   });
+
+  [data-bg-mode="stop"] & {
+    background-color: @stop;
+  }
+
+  [data-bg-mode="wait"] & {
+    background-color: @wait;
+  }
+
+  [data-bg-mode="go"] & {
+    background-color: @go;
+  }
 }
 
 .banner-nav {
   .reset-list;
 
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  pointer-events: auto;
-
   .at-medium({
-    margin: 0 auto;
-    max-width: 460px;
-    margin-left: -230px;
-    min-width: 360px;
-    margin-left: -180px;
-    width: 60%;
+    padding: 20px 140px 0;
   });
 
   .at-large({
+    margin: 0 auto;
     max-width: 520px;
-    margin-left: -260px;
+    padding: 20px 0 0;
   });
 
   .flexbox & {
@@ -178,9 +193,9 @@
   color: fade(@extra-dark-grey, 50%);
   display: block;
   .font-size(1);
-  height: 40px;
+  height: 60px;
   letter-spacing: 1px;
-  line-height: 40px;
+  line-height: 60px;
   text-align: center;
   text-transform: uppercase;
   .transition(all 0.1s ease-in-out);

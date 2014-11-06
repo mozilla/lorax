@@ -1,11 +1,16 @@
-<article class="detail cf" data-status="{{issueDetails.issueStatus}}" ng-class="{'detail--inverted': issueDetails.inverted}">
+<article class="detail cf" data-status="{{issueDetails.issueStatus}}">
     <header class="detail__header">
-        <h1>{{issueDetails.issue.getTitle()}}</h1>
+        <div class="detail-header-section">Content Creation</div>
+        <h1 class="detail-header-title">{{issueDetails.issue.getTitle()}}</h1>
     </header>
     <section class="detail__main">
         <div class="detail-main">
             <div class="detail-main__copy" ng-bind-html="issueDetails.issue.getNarrative() | unsafe"></div>
-            <p class="detail-main__copy"><a href="#" class="detail-main-read-more">Read More</a></p>
+            <!--a href="#" class="detail-main-read-more">Read More</a-->
+            <div class="detail-tags detail-tags--main">
+                <span class="detail-tags__title">Related Tags:</span>
+                <a href="#" class="detail-tags__tag" ng-repeat="tag in issueDetails.issue.getTags()">{{tag.getName()}}</a>
+            </div>
         </div>
     </section>
     <section class="detail__infographic">
@@ -32,8 +37,8 @@
                 </section>
             </li>
         </ul>
-        <div class="detail-tags">
-            <span class="detail-tags__related">Related Tags:</span>
+        <div class="detail-tags detail-tags--more">
+            <span class="detail-tags__title">Related Tags:</span>
             <a href="#" class="detail-tags__tag" ng-repeat="tag in issueDetails.issue.getTags()">{{tag.getName()}}</a>
         </div>
     </section>

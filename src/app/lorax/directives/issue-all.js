@@ -39,28 +39,34 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     this._$location = $location;
     this._$scope.dataService = dataService;
     this._$scope.detail = {
-      currentIssue : ""
+      currentIssue : ''
     };
 
+    // set detail mode on, adds body class
+    windowService.setDetailMode(true);
+
     $scope.$on('$destroy', function () {
-      windowService.setTrafficLightMode(false);
+      // set detail mode off, removes body class
+      windowService.setDetailMode(false);
     });
 
-    this._$scope.dataService.getMain().then(function(model) {
-        this._$scope.detail.model = model;
+    this._$scope.dataService.getMain().then(function (model) {
+      this._$scope.detail.model = model;
     }.bind(this));
-    
-    this._$scope.detail.scrollTo = function(issue) {
+
+    this._$scope.detail.scrollTo = function (issue) {
       $('body').animate({
         scrollTop: $('#' + issue).offset().top - 138
       }, 500);
     }.bind(this);
 
-    this._$scope.detail.nextIssue = function() {
-      this._$scope.detail.currentIssue = $('#' + this._$scope.detail.currentIssue).next().attr('id');
+    this._$scope.detail.nextIssue = function () {
+      this._$scope.detail.currentIssue =
+        $('#' + this._$scope.detail.currentIssue).next().attr('id');
+
       if (this._$scope.detail.currentIssue) {
         this._$scope.detail.scrollTo(this._$scope.detail.currentIssue);
-      } 
+      }
     }.bind(this);
   };
 
@@ -81,25 +87,28 @@ define(['jquery', 'jquery-scrollie'], function ($) {
    */
   var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
 
-    controller._$timeout(function() {
+    controller._$timeout(function () {
       var topic = controller._$location.search().topic;
       var issue = controller._$location.search().issue;
 
       if (topic) {
-        if ( !issue ) {
-          issue = controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+        if (!issue) {
+          issue =
+            controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
         }
+
         controller._$scope.detail.scrollTo(issue);
         controller._$scope.detail.currentIssue = issue;
       }
 
-      var routeChange = controller._$rootScope.$on('$routeUpdate', function(evt, newParam) {
+      var routeChange = controller._$rootScope.$on('$routeUpdate', function (evt, newParam) {
         topic = newParam.params.topic;
         issue = newParam.params.issue;
-          
+
         if (topic) {
-          if ( !issue ) {
-            issue = controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+          if (!issue) {
+            issue =
+              controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
           }
           controller._$scope.detail.scrollTo(issue);
 
@@ -108,7 +117,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
           $('body').animate({
             scrollTop: 0
           });
-          controller._$scope.detail.currentIssue = "";
+          controller._$scope.detail.currentIssue = '';
         }
       }.bind(controller));
 

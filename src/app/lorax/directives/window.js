@@ -27,7 +27,8 @@ define(['angular', 'jquery'], function (angular, $) {
     $compile,
     $timeout,
     windowService,
-    pubSubService) {
+    pubSubService
+  ) {
 
     /**
      * Reference to controller $scope
@@ -140,10 +141,9 @@ define(['angular', 'jquery'], function (angular, $) {
         .addClass('bp-' + newBreakpoint);
     }
 
-    function onTrafficLightModeChange(isTrafficLight) {
-      if (!isTrafficLight) {
-        iElem.attr('data-bg-mode', '');
-      }
+    function onDetailModeChange(isDetail) {
+      var classMethod = (isDetail === true) ? 'addClass' : 'removeClass';
+      iElem[classMethod]('is-detail');
     }
 
     windowEl
@@ -161,8 +161,8 @@ define(['angular', 'jquery'], function (angular, $) {
     );
 
     controller.pubSubService.subscribe(
-      'windowService.trafficLightMode',
-      onTrafficLightModeChange
+      'windowService.detailMode',
+      onDetailModeChange
     );
   };
 

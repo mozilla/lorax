@@ -9,7 +9,14 @@ define([
 ) {
   'use strict';
 
-  var IssueModel = function (parentInstance, id, data, tags, localeData, infographicData) {
+  var IssueModel = function (
+    parentInstance,
+    id,
+    data,
+    tags,
+    localeData,
+    infographicData
+  ) {
     this._parent = parentInstance;
     this._id = id;
     this._name = localeData.name;
@@ -31,8 +38,9 @@ define([
     for (var tagIdx in data.tags) {
       //TODO: consider changing this to an object instead of an array
       var tagObjs = _.filter(tags, function (tag) {
-        return (tag.getId() === data.tags[tagIdx])
+        return (tag.getId() === data.tags[tagIdx]);
       });
+
       if (tagObjs.length > 0) {
         this._tags.push(tagObjs[0]);
         tagObjs[0].addIssue(this);
@@ -55,6 +63,10 @@ define([
 
   IssueModel.prototype.getName = function () {
     return this._name;
+  };
+
+  IssueModel.prototype.getCssClass = function () {
+    return this._name.toLowerCase().replace(/[\W_]+/g, '-');
   };
 
   IssueModel.prototype.getTitle = function () {
@@ -83,16 +95,16 @@ define([
 
   IssueModel.prototype.getInfographicType = function () {
     return this._infographicType;
-  }
+  };
 
   IssueModel.prototype.getInfographic = function () {
     return this._infographic;
-  }    
-  
+  };
+
   IssueModel.prototype.getTags = function () {
     return this._tags;
   };
-  
+
   IssueModel.prototype.getRelated = function () {
     var related = _.uniq(_.reduce(this._tags, function (result, tag) {
       result = result.concat(tag.getIssues());
@@ -101,7 +113,7 @@ define([
 
     return related.concat(this._parent.getIssues());
   };
-  
+
   IssueModel.prototype.getStatus = function () {
     return this._status;
   };
@@ -121,6 +133,6 @@ define([
     }
     return out;
   };
-  
+
   return IssueModel;
 });

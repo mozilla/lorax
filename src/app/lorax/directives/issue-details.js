@@ -14,12 +14,11 @@ define([], function (IssueModel) {
       replace: true,
       transclude: true,
       scope: {
-        'inverted': '@',
         'issueStatus': '@',
         'issueName': '@'
       },
       controller: IssueDetailsController,
-      link: IssueDetailsLinkFn,
+      //link: IssueDetailsLinkFn,
       templateUrl: '/app/lorax/directives/issue-details.tpl.html'
     };
   };
@@ -36,11 +35,10 @@ define([], function (IssueModel) {
     this._$scope = $scope;
 
     this._$scope.issueDetails = {
-      inverted: $scope.inverted,
       status: $scope.issueStatus
     };
 
-    dataService.getMain().then(function(model) {
+    dataService.getMain().then(function (model) {
       this._$scope.issueDetails.issue = model.getIssueById($scope.issueName);
     }.bind(this));
   };
@@ -70,9 +68,9 @@ define([], function (IssueModel) {
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var IssueDetailsLinkFn = function (scope, iElem, iAttrs, controller) {
-    
-  };
+  /*var IssueDetailsLinkFn = function (scope, iElem, iAttrs, controller) {
+
+  };*/
 
   return IssueDetailsDirective;
 });
