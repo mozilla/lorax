@@ -102,10 +102,10 @@ define([
     this._issueMargin = 80;
 
     this._scrollArea = new PIXI.Rectangle(
-      -((this._renderer.width - 300) / 2),
-      -((this._renderer.height - 300) / 2),
-      this._renderer.width - 300,
-      this._renderer.height - 300
+      -((this._renderer.width - 400) / 2),
+      -((this._renderer.height - 200) / 2),
+      this._renderer.width - 400,
+      this._renderer.height - 200
     );
 
     this._drawFakes();

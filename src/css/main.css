@@ -531,6 +531,7 @@ img {
   top: 0;
   width: 100%;
   z-index: 1000;
+  pointer-events: none;
 }
 @media screen and (min-width: 560px) {
   .banner {
@@ -671,6 +672,7 @@ img {
   position: fixed;
   top: 20px;
   left: 50%;
+  pointer-events: auto;
 }
 @media screen and (min-width: 560px) {
   .banner-nav {
