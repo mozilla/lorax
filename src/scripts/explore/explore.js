@@ -314,7 +314,7 @@ define([
       this._issuesContainer.addChild(circle.elm);
 
       circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-      circle.elm.alpha = 0.3;
+      circle.elm.alpha = 0.1 + (0.3 * rSeed / this._exploreRadius);
     }
   };
 

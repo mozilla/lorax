@@ -141,14 +141,14 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
     this.stopMoving();
     createjs.Tween.get(this.elm, {override: true})
-      .wait(Math.random() * 200)
+      .wait(Math.random() * 100)
       .to(
         {
           alpha: 0,
           x: center.x + Math.cos(angle) * (radius + 200),
           y: center.y + Math.sin(angle) * (radius + 200)
         },
-        (Math.random() * 150) + 300,
+        (Math.random() * 150) + 200,
         createjs.quartOut);
   };
 
