@@ -120,7 +120,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
       this.stopMoving();
       this.setTextAlwaysVisible(true);
       this.setIsInteractive(false);
-      var style = {font: '300 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
+      var style = {font: '300 12px "Fira Sans", sans-serif', fill: '#FFFFFF'};
       this._issueModeTitle.setStyle(style);
       this._issueModeTitle.y = Math.round(-this._title.height / 2);
       if (!this._issueModeArea) {
@@ -130,7 +130,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     }
 
     if (lastMode === Issue.MODE_ISSUES) {
-      this._title.setStyle({font: '300 14px "Fira Sans", sans-serif'});
+      this._title.setStyle({font: '300 12px "Fira Sans", sans-serif'});
       this._title.y = Math.round(-this._title.height / 2);
       this.elm.hitArea = null;
       this.elm.alpha = 1;
