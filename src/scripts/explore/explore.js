@@ -401,7 +401,7 @@ define([
   };
 
   Explore.prototype._mouseOverIssue = function (issue) {
-    var related, relatedIssue;
+    var related, relatedIssue, isSameTopic;
 
     if (this._mode !== Issue.MODE_ISSUES) {
       issue.mouseOver.bind(issue)();
@@ -409,12 +409,10 @@ define([
       related = issue.data.getRelated();
       for(var i = 0; i < related.length; i ++) {
         relatedIssue = this._getElementFromId(related[i]._id);
-        relatedIssue.lightUp();
-        // if (issue.data.getStatus() === relatedIssue.data.getStatus()) {
-        //   relatedIssue.lightUp();
-        // } else {
-        //   relatedIssue.lightDown();
-        // }
+        isSameTopic = issue.data._parent._id === relatedIssue.data._parent._id;
+        if (!(this._mode === Issue.MODE_TOPICS && !isSameTopic)) {
+          relatedIssue.lightUp();
+        }
       }
     } else {
       issue.issueModeMouseOver.bind(issue)();
@@ -450,7 +448,6 @@ define([
     var tags;
     var relatedItem;
     var i, j;
-    var lineColor;
     for (i = 0; i < this._issues.length; i ++) {
       issue = this._issues[i];
       related = this._issues[i].data.getRelated();
@@ -463,15 +460,10 @@ define([
           isOver = (issue.isOver || relatedItem.isOver);
           isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
           isSameStatus = issue.data.getStatus() === relatedItem.data.getStatus();
-          isTopicOver = (this._mode === Issue.MODE_TOPICS && isOver);
           // only show related on same topic if on topics
-          if (this._mode === Issue.MODE_EXPLORE || isSameTopic || isTopicOver) {
+          if (this._mode === Issue.MODE_EXPLORE || isSameTopic) {
             if (isOver) {
-              lineColor = issue.isOver ? issue.color : relatedItem.color;
-              if (!isSameStatus) {
-                lineColor = 0x000000;
-              }
-              this._linesContainer.lineStyle(1, lineColor,  0.15);
+              this._linesContainer.lineStyle(1, 0x000000,  0.15);
             } else {
               this._linesContainer.lineStyle(1, 0x000000, 0.03);
             }
@@ -489,8 +481,7 @@ define([
 
           isOver = (issue.isOver || relatedItem.isOver);
           if (isOver) {
-            lineColor = issue.isOver ? issue.color : relatedItem.color;
-            this._linesContainer.lineStyle(1, lineColor,  0.15);
+            this._linesContainer.lineStyle(1, 0x000000,  0.15);
           } else {
             this._linesContainer.lineStyle(1, 0x000000, 0.03);
           }
