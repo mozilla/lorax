@@ -22,7 +22,7 @@ define([
       ));
     }
   };
-  
+
   TopicModel.prototype.getId = function () {
     return this._id;
   };
@@ -34,11 +34,11 @@ define([
   TopicModel.prototype.getTagline = function () {
     return this._tagline;
   };
-  
+
   TopicModel.prototype.getIssues = function () {
     return this._issues;
   };
-  
+
   return TopicModel;
 });
 

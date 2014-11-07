@@ -18,10 +18,10 @@ define([
         this._tags,
         localeData.topics[idxTopic],
         infographicData
-      ))
+      ));
     }
   };
-  
+
   MainModel.prototype.getTopics = function () {
     return this._topics;
   };
@@ -33,15 +33,15 @@ define([
     }, []);
   };
 
-  MainModel.prototype.getTopicById = function(id) {
-    return _.find(this.getTopics(), function(topic) {
-        return topic._id == id;
+  MainModel.prototype.getTopicById = function (id) {
+    return _.find(this.getTopics(), function (topic) {
+      return topic._id === id;
     });
   };
-  
-  MainModel.prototype.getIssueById = function(id) {
-    return _.find(this.getIssues(), function(issue) {
-        return issue._id == id;
+
+  MainModel.prototype.getIssueById = function (id) {
+    return _.find(this.getIssues(), function (issue) {
+      return issue._id === id;
     });
   };
 
