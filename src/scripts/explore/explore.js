@@ -281,12 +281,23 @@ define([
 
         this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
         this._topicsContainer.addChild(this._topics[i].elm);
-        this._topics[i].elm.x = (this._renderer.width - 400);
-        this._topics[i].elm.x /= (this._topicsData.length - 1) / i;
-        this._topics[i].elm.x -= ((this._renderer.width - 400) / 2);
-        this._topics[i].elm.y = 0;
-        this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
-        this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
+
+        if (this._renderer.width > 960) {
+          this._topics[i].elm.x = (this._renderer.width - 400) /
+            (this._topicsData.length - 1) * i;
+          this._topics[i].elm.x -= ((this._renderer.width - 400) / 2);
+          this._topics[i].elm.y = 0;
+          this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
+          this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
+        } else {
+          this._topics[i].elm.x = (this._renderer.width - 600) * (i % 2);
+          this._topics[i].elm.x -= ((this._renderer.width - 600) / 2);
+          // this._topics[i].elm.x += 110;
+          this._topics[i].elm.y =  (300 * Math.floor(i / 2)) - 300;
+          this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
+          this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
+        }
+
         this._topics[i].setup();
       }
 
