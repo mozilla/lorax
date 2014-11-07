@@ -28,6 +28,7 @@ define([
     this._mozActionLink = localeData.mozActionLink;
     this._yourActionLink = localeData.yourActionLink;
     this._infographicType = data.infographicType;
+    this._infographicOverflow = data.infographicOverflow;
     this._tags = [];
     this._infographic = new InfographicModel(
       this._id,
@@ -95,6 +96,10 @@ define([
 
   IssueModel.prototype.getInfographicType = function () {
     return this._infographicType;
+  };
+
+  IssueModel.prototype.getInfographicOverflow = function () {
+    return this._infographicOverflow;
   };
 
   IssueModel.prototype.getInfographic = function () {

@@ -5,6 +5,7 @@
         "available":{
           "status":0,
           "infographicType":"data-lorax-chart-world-map",
+          "infographicOverflow":true,
           "tags":[
             "Target Corporation",
             "Citigroup Inc",
@@ -16,6 +17,7 @@
         "affordable":{
           "status":1,
           "infographicType":"data-lorax-chart-top-internet-companies",
+          "infographicOverflow":false,
           "tags":[
             "Bank of America Corporation",
             "Procter &amp;amp; Gamble Co",
@@ -27,7 +29,8 @@
         },
         "speaksMyLanguage":{
           "status":1,
-          "infographicType":"data-lorax-chart-terms-and-conditions",
+          "infographicType":"static-image",
+          "infographicOverflow":true,
           "tags":[
             "Morgan Stanley",
             "Amerada Hess Corporation",
@@ -39,6 +42,7 @@
         "accessible":{
           "status":1,
           "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
             "Medco Health Solutions Inc",
             "Wells Fargo &amp;amp; Company",
@@ -51,6 +55,7 @@
         "infrastructure":{
           "status":1,
           "infographicType":"bar-graph",
+          "infographicOverflow":false,
           "tags":[
             "Cisco Systems, Inc.",
             "Abbott Laboratories",
@@ -67,6 +72,7 @@
         "contentCreation":{
           "status":2,
           "infographicType":"line-graph",
+          "infographicOverflow":false,
           "tags":[
             "McKesson Corporation",
             "Sprint",
@@ -77,6 +83,7 @@
         "identityControl":{
           "status":1,
           "infographicType":"bar-graph",
+          "infographicOverflow":false,
           "tags":[
             "Lockheed Martin Corporation",
             "Walgreen Company",
@@ -87,6 +94,7 @@
         "surveillance":{
           "status":2,
           "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
             "ChevronTexaco Corporation",
             "The Dow Chemical Company",
@@ -98,6 +106,7 @@
         "corporateTracking":{
           "status":2,
           "infographicType":"data-lorax-chart-line-graph",
+          "infographicOverflow":true,
           "tags":[
             "J.P. Morgan Chase &amp;amp; Co",
             "International Business Machines Corporation"
@@ -106,6 +115,7 @@
         "governmentSnooping":{
           "status":2,
           "infographicType":"map",
+          "infographicOverflow":true,
           "tags":[
             "FedEx Corporation",
             "General Motors Corporation",
@@ -114,7 +124,8 @@
         },
         "transparency":{
           "status":2,
-          "infographicType":"bar-graph",
+          "infographicType":"data-lorax-chart-terms-and-conditions",
+          "infographicOverflow":true,
           "tags":[
             "Goldman Sachs Group",
             "Bank of America Corporation",
@@ -126,6 +137,7 @@
         "decentralization":{
           "status":2,
           "infographicType":"map",
+          "infographicOverflow":true,
           "tags":[
             "General Dynamics Corporation",
             "Cisco Systems, Inc.",
@@ -136,6 +148,7 @@
         "censorship":{
           "status":2,
           "infographicType":"map",
+          "infographicOverflow":true,
           "tags":[
             "Apple Computer, Inc",
             "FedEx Corporation",
@@ -150,6 +163,7 @@
         "cyberThreats":{
           "status":1,
           "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
             "General Dynamics Corporation",
             "The Dow Chemical Company",
@@ -160,6 +174,7 @@
         "cyberBullying":{
           "status":1,
           "infographicType":"bar-graph",
+          "infographicOverflow":false,
           "tags":[
             "Dell, Inc",
             "Sprint",
@@ -170,6 +185,7 @@
         "controlPoints":{
           "status":1,
           "infographicType":"map",
+          "infographicOverflow":true,
           "tags":[
             "News Corp",
             "State Farm Insurance",
@@ -180,6 +196,7 @@
         "storageSecurity":{
           "status":2,
           "infographicType":"bar-graph",
+          "infographicOverflow":false,
           "tags":[
             "The Dow Chemical Company",
             "Procter &amp;amp; Gamble Co",
@@ -196,6 +213,7 @@
         "netNeutrality":{
           "status":2,
           "infographicType":"map",
+          "infographicOverflow":true,
           "tags":[
             "Honeywell International",
             "Northrop Grumman Corporation",
@@ -206,6 +224,7 @@
         "interopelability":{
           "status":1,
           "infographicType":"bar-graph",
+          "infographicOverflow":false,
           "tags":[
             "Dell, Inc",
             "Prudential Financial, Inc",
@@ -216,6 +235,7 @@
         "distributionOfPower":{
           "status":2,
           "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
             "Berkshire Hathaway",
             "General Dynamics Corporation",

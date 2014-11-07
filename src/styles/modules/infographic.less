@@ -3,30 +3,24 @@
    ========================================================================== */
 
 .infographic {
-  //padding: 0 20px;
 
-  .at-medium({
-    //padding: 0 60px;
-  });
-
-  .at-large({
-
-  });
-
-  .at-xlarge({
-
-  });
-}
-
-.infographic--overflow {
-  padding: 0 0 0 20px;
-
-  .at-medium({
-    padding: 0 0 0 60px;
-  });
 }
 
 .infographic__header {
+  padding: 0 20px;
+
+  .at-medium({
+    padding: 0 70px;
+  });
+
+  .at-large({
+    padding: 0 70px 0 20px;
+  });
+
+  .at-xlarge({
+    padding: 0 100px 0 30px;
+  });
+
   > h1 {
     .fira-sans-book;
     .font-size(1.8);
@@ -63,8 +57,55 @@
 
 .infographic__wrapper {
   margin-bottom: 20px;
+  overflow: hidden;
+  padding: 0 20px;
 
   .at-medium({
     margin-bottom: 30px;
+    padding: 0 70px;
+  });
+
+  .at-large({
+    padding: 0 70px 0 20px;
+  });
+
+  .at-xlarge({
+    padding: 0 100px 0 30px;
+  });
+}
+
+.infographic__wrapper--overflow {
+  padding: 0 20px;
+
+  .at-medium({
+    padding: 0 0 0 70px;
+  });
+
+  .at-large({
+    padding: 0 0 0 20px;
+  });
+
+  .at-xlarge({
+    padding: 0 0 0 30px;
+  });
+
+  //.touch & {
+    overflow-x: auto;
+  //}
+}
+
+.infographic__footer {
+  padding: 0 20px;
+
+  .at-medium({
+    padding: 0 70px;
+  });
+
+  .at-large({
+    padding: 0 70px 0 20px;
+  });
+
+  .at-xlarge({
+    padding: 0 100px 0 30px;
   });
 }

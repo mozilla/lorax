@@ -354,33 +354,79 @@
     }
   },
   "transparency": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Online Terms & Conditions (in total words)",
+    "subheader": "by length",
     "source": {
-      "name": "",
-      "src": ""
+      "name": "Freedom House",
+      "src": "http://test.com"
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "termsAndConditions": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "length": 36275,
+          "minutes": 201,
+          "name": "Paypal",
+          "shakespeare": false
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "length": 30066,
+          "minutes": 167,
+          "name": "Hamlet",
+          "shakespeare": true
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "length": 19972,
+          "minutes": 110,
+          "name": "Apple iTunes",
+          "shakespeare": false
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "length": 18110,
+          "minutes": 100,
+          "name": "Macbeth",
+          "shakespeare": true
         },
         {
+          "length": 14714,
+          "minutes": 81,
+          "name": "Windows Live",
+          "shakespeare": false
+        },
+        {
+          "length": 13366,
+          "minutes": 74,
+          "name": "Apple iOS 5",
+          "shakespeare": false
+        },
+        {
+          "length": 11195,
+          "minutes": 62,
           "name": "Facebook",
-          "revenue": 7.87
+          "shakespeare": false
+        },
+        {
+          "length": 10724,
+          "minutes": 60,
+          "name": "Apple iCloud",
+          "shakespeare": false
+        },
+        {
+          "length": 10640,
+          "minutes": 60,
+          "name": "Google",
+          "shakespeare": false
+        },
+        {
+          "length": 7115,
+          "minutes": 39,
+          "name": "Amazon Kindle",
+          "shakespeare": false
+        },
+        {
+          "length": 4445,
+          "minutes": 24,
+          "name": "Twitter",
+          "shakespeare": false
         }
       ]
     }

@@ -14,7 +14,8 @@ define(['jquery', 'd3'], function ($, d3) {
       replace: true,
       scope: true,
       controller: ChartTermsAndConditionsController,
-      link: ChartTermsAndConditionsLinkFn
+      link: ChartTermsAndConditionsLinkFn,
+      templateUrl: '/app/lorax/directives/chart-terms-and-conditions.tpl.html'
     };
   };
 
@@ -24,11 +25,29 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartTermsAndConditionsController = function (
     $scope,
-    $timeout
+    $timeout,
+    pubSubService,
+    windowService
     )
   {
     this._$scope = $scope;
     this._$timeout = $timeout;
+    this._pubSubService = pubSubService;
+    this._windowService = windowService;
+
+    this._data = $scope.issue.getInfographic().getDataPoints().termsAndConditions;
+
+    $scope.tAndC = {
+      data: this._data,
+      minutesToString: this.minutesToString.bind(this)
+    };
+
+    this._stackMultipliers = {
+      'small': 0.85,
+      'medium': 1.65,
+      'large': 1.65,
+      'xlarge': 1.65
+    };
   };
 
   /**
@@ -37,8 +56,23 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   ChartTermsAndConditionsController.$inject = [
     '$scope',
-    '$timeout'
+    '$timeout',
+    'pubSubService',
+    'windowService'
   ];
+
+  ChartTermsAndConditionsController.prototype.minutesToString = function (mins) {
+    var hours = Math.floor(mins / 60);
+    var minutes = mins % 60;
+
+    if (hours === 0) {
+      return minutes + 'min';
+    } else if (hours === 1) {
+      return '1 hour ' + minutes + ' min';
+    } else {
+      return hours + ' hours ' + minutes + ' min';
+    }
+  };
 
   /**
    * Link function for Terms and Conditions Chart directive
@@ -48,41 +82,33 @@ define(['jquery', 'd3'], function ($, d3) {
    * @param {object} controller Controller reference.
    */
   var ChartTermsAndConditionsLinkFn = function (scope, iElem, iAttrs, controller) {
-    controller._$timeout(function () {
-      var data = controller._$scope.issue.getInfographic().getDataPoints().termsAndConditions;
-      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
-            
-      var companies = chart.selectAll('div')
-        .data(data)
-        .enter()
-        .append('div')
-          .attr('class', 'terms-company cf');
+    var createStacks = function () {
+      console.log('create');
+      var $stacks = $('.terms-company__stacks');
 
-      companies.append('div')
-        .attr('class', 'terms-company__length')
-        .text(function (d) {
-          return Math.round(d.length / 1000) + 'k';
-        });
+      // clear stacks
+      $stacks.html('');
 
-      companies.append('div')
-        .attr('class', 'terms-company__title')
-        .text(function (d) {
-          return d.name;
-        });
-
-      companies.append('div')
-        .attr('class', 'terms-company__stacks');
-
-      $('.terms-company__stacks').each(function (idx) {
+      $stacks.each(function (idx) {
         var $this = $(this);
-        var length = data[idx].length;
-        var numBars = Math.round(length / 1000) * 2;
+        var length = controller._data[idx].length;
+        var numBars = Math.round(length / 1000) *
+          controller._stackMultipliers[controller._windowService.breakpoint()];
 
         for (var i = 0; i < numBars; i++) {
           $this.append('<div class="stacks-item"></div>');
         }
       });
-    }.bind(controller));
+    };
+
+    // init stacks
+    controller._$timeout(createStacks);
+
+    // reinit on breakpoint change
+    controller._pubSubService.subscribe(
+      'windowService.breakpoint',
+      createStacks
+    );
   };
 
   return ChartTermsAndConditionsDirective;

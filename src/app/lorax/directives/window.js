@@ -7,8 +7,9 @@ define(['angular', 'jquery'], function (angular, $) {
 
   var BREAKPOINTS = {
     0: 'small',
-    550: 'medium',
-    1024: 'large'
+    560: 'medium',
+    960: 'large',
+    1360: 'xlarge'
   };
 
   var Window = function () {
