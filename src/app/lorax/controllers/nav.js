@@ -17,17 +17,15 @@ define([], function () {
     this._$location = $location;
 
     this._$scope.nav = {
-      active : "availability"
-    }
+      active : 'access'
+    };
 
-    this._$scope.nav.handleClick = function(topic) {
+    this._$scope.nav.handleClick = function (topic) {
       this._$scope.nav.active = topic;
     }.bind(this);
 
-    dataService.getMain().then(function(model) {
+    dataService.getMain().then(function (model) {
       this._$scope.nav.model = model;
-
-
     }.bind(this));
 
     var topic = this._$location.search().topic;
@@ -35,7 +33,7 @@ define([], function () {
       this._$scope.nav.active = topic;
     }
     else {
-      this._$scope.nav.active = "availability";
+      this._$scope.nav.active = 'access';
     }
   };
 

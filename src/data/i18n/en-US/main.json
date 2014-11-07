@@ -1,7 +1,7 @@
 {
   "topics": {
-    "availability": {
-      "name": "Availability",
+    "access": {
+      "name": "Access",
       "tagline": "An Internet where\n everyone can play",
       "issues": {
         "available": {

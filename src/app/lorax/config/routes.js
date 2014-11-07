@@ -22,8 +22,8 @@ define(function () {
 
       /* -------------------- Detail -------------------- */
 
-      .when('/detail/availability', {
-        templateUrl: '/app/lorax/templates/detail-availability.tpl.html',
+      .when('/detail/access', {
+        templateUrl: '/app/lorax/templates/detail-access.tpl.html',
         reloadOnSearch: false
       })
 
