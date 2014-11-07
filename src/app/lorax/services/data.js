@@ -18,6 +18,7 @@ define([
     this._$http = $http;
     this._$q    = $q;
     this._mainData, this._requestingMain, this._mainDefer;
+    this._mapData, this._requestingMap, this._mapDefer;
 
     function _buildMainEndpoint() {
       return [
@@ -42,6 +43,14 @@ define([
         'i18n',
         locale,
         'infographics.json'
+      ].join('/');
+    }
+
+    function _buildMapEndpoint() {
+      return [
+        '/data',
+        'base',
+        'countries.topo.json'
       ].join('/');
     }
 
@@ -85,8 +94,33 @@ define([
       return this._mainDefer.promise;
     }
 
+    function getMap() {
+      if (!this._mapData) {
+        if (this._requestingMap) {
+          return this._mapDefer.promise;
+        }
+
+        this._requestingMap = true;
+        this._mapDefer = this._$q.defer();
+
+        var req = this._$http.get(_buildMapEndpoint());
+
+        req.then(function (res) {
+          this._mapData = res.data;
+          this._mapDefer.resolve(this._mapData);
+        }.bind(this))['catch'](function (error) {
+          this._mapDefer.reject(error);
+        }.bind(this));
+      } else {
+        this._mapDefer.resolve(this._mapData);
+      }
+
+      return this._mapDefer.promise;
+    }
+
     return {
-      getMain: getMain.bind(this)
+      getMain: getMain.bind(this),
+      getMap: getMap.bind(this)
     };
   };
 

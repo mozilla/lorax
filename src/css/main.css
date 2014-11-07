@@ -1494,3 +1494,8 @@ img {
 .common-languages-bar__inner--internet {
   background: #ffffff;
 }
+/* World Map - Generic Styles
+   ========================================================================== */
+.map__background {
+  fill: none;
+}

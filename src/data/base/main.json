@@ -4,7 +4,7 @@
       "issues":{
         "available":{
           "status":0,
-          "infographicType":"data-lorax-chart-terms-and-conditions",
+          "infographicType":"data-lorax-chart-world-map",
           "tags":[
             "Target Corporation",
             "Citigroup Inc",
@@ -27,7 +27,7 @@
         },
         "speaksMyLanguage":{
           "status":1,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-terms-and-conditions",
           "tags":[
             "Morgan Stanley",
             "Amerada Hess Corporation",

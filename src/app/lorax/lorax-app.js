@@ -26,6 +26,7 @@ define([
   'lorax/directives/chart-common-languages',
   'lorax/directives/chart-lobbying-costs',
   'lorax/directives/chart-line-graph',
+  'lorax/directives/chart-world-map',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -68,7 +69,8 @@ define([
   ChartTermsAndConditionsDirective,
   ChartCommonLanguagesDirective,
   ChartLobbyingCostsDirective,
-  ChartLineGraph,
+  ChartLineGraphDirective,
+  ChartWorldMapDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -197,7 +199,14 @@ define([
      * as 'ChartLineGraphDirective'
      * @method lorax/loraxApp~directive
      */
-    .directive('loraxChartLineGraph', ChartLineGraph)
+    .directive('loraxChartLineGraph', ChartLineGraphDirective)
+
+    /**
+     * Injects {@link lorax/directives/ChartWorldMapDirective}
+     * as 'ChartLineGraphDirective'
+     * @method lorax/loraxApp~directive
+     */
+    .directive('loraxChartWorldMap', ChartWorldMapDirective)
 
     /**
      * Injects {@link lorax/directives/ChartLobbyingCostsDirective}

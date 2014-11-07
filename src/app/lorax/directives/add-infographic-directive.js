@@ -23,12 +23,7 @@ define([], function () {
       //   };
       // },
       controller: AddInfographicController,
-      link: function postLink(scope, iElement, iAttrs) {
-            var directiveType = iAttrs.directiveType;
-            iElement.removeAttr('data-lorax-add-infographic-directive');
-            iElement.attr(directiveType, '');
-            $compile(iElement)(scope);
-      }
+      link: AddInfographicLinkFn
     };
   };
 
@@ -61,9 +56,12 @@ define([], function () {
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  // var AddInfographicLinkFn = function (scope, iElem, iAttrs, controller) {
-
-  // };
+  var AddInfographicLinkFn = function (scope, iElem, iAttrs, controller) {
+      var directiveType = iAttrs.directiveType;
+      iElem.removeAttr('data-lorax-add-infographic-directive');
+      iElem.attr(directiveType, '');
+      controller._$compile(iElem)(scope);
+  };
 
   return AddInfographicDirective;
 });

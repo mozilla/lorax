@@ -1,32 +1,37 @@
 {
   "available": {
-    "header": "Top 5 Longest Terms & Conditions",
-    "subheader": "by total words",
+    "header": "Growth of the Internet Industry",
+    "subheader": "Percent By Year",
     "source": {
       "name": "Freedom House",
       "src": "http://test.com"
     },
     "dataPoints": {
-      "termsAndConditions": [
+      "countries": [
         {
-          "name": "Facebook",
-          "length": 12000
+          "id": "IND",
+          "displayName": "India",
+          "value": 0.0237
         },
         {
-          "name": "Apple iOS 5",
-          "length": 14000
+          "id": "JAM",
+          "displayName": "Jamaica",
+          "value": 0.533
         },
         {
-          "name": "Windows Live",
-          "length": 15000
+          "id": "MAR",
+          "displayName": "Morocco",
+          "value": 0.25
         },
         {
-          "name": "Apple iTunes",
-          "length": 20000
+          "id": "USA",
+          "displayName": "United States",
+          "value": 0.723
         },
         {
-          "name": "Paypal",
-          "length": 37000
+          "id": "NOR",
+          "displayName": "Norway",
+          "value": 0.972
         }
       ]
     }
@@ -64,33 +69,33 @@
     }
   },
   "speaksMyLanguage": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Top 5 Longest Terms & Conditions",
+    "subheader": "by total words",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
-        },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
+      "termsAndConditions": [
         {
           "name": "Facebook",
-          "revenue": 7.87
+          "length": 12000
+        },
+        {
+          "name": "Apple iOS 5",
+          "length": 14000
+        },
+        {
+          "name": "Windows Live",
+          "length": 15000
+        },
+        {
+          "name": "Apple iTunes",
+          "length": 20000
+        },
+        {
+          "name": "Paypal",
+          "length": 37000
         }
       ]
     }
