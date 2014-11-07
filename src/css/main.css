@@ -464,8 +464,8 @@ body[data-bg-mode="go"] {
   background-color: #6bb94e;
 }
 .container {
+  margin: 0 auto;
   max-width: 1600px;
-  z-index: 100;
   position: relative;
 }
 /* Links
@@ -530,7 +530,6 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
 }
 @media screen and (min-width: 560px) {
   .banner {
@@ -562,6 +561,7 @@ img {
     left: 0;
     position: fixed;
     top: 30px;
+    z-index: 1000;
   }
 }
 .banner-logo > a {
@@ -612,6 +612,7 @@ img {
     right: 30px;
     text-align: right;
     top: 14px;
+    z-index: 1000;
   }
 }
 @media screen and (min-width: 560px) {
@@ -651,6 +652,7 @@ img {
     left: 30px;
     position: fixed;
     top: 33px;
+    z-index: 1000;
   }
 }
 @media screen and (min-width: 1360px) {
@@ -679,7 +681,7 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
   }
 }
 [data-bg-mode="stop"] .banner-nav-wrap {
@@ -698,14 +700,15 @@ img {
 }
 @media screen and (min-width: 560px) {
   .banner-nav {
-    padding: 20px 140px 0;
+    margin: 0 auto;
+    max-width: 420px;
+    padding: 20px 0 0;
+    width: 64%;
   }
 }
 @media screen and (min-width: 960px) {
   .banner-nav {
-    margin: 0 auto;
     max-width: 520px;
-    padding: 20px 0 0;
   }
 }
 .flexbox .banner-nav {

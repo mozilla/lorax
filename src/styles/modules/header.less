@@ -8,7 +8,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: @header-z-index;
 
   .at-medium({
     height: 126px;
@@ -38,6 +37,7 @@
     left: 0;
     position: fixed;
     top: 30px;
+    z-index: @header-z-index;
   });
 
   > a {
@@ -80,6 +80,7 @@
     right: 30px;
     text-align: right;
     top: 14px;
+    z-index: @header-z-index;
   });
 
   > span {
@@ -116,6 +117,7 @@
     left: 30px;
     position: fixed;
     top: 33px;
+    z-index: @header-z-index;
   });
 
   .at-xlarge({
@@ -142,7 +144,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: @header-z-index;
+    z-index: @header-z-index - 1;
   });
 
   [data-bg-mode="stop"] & {
@@ -162,13 +164,14 @@
   .reset-list;
 
   .at-medium({
-    padding: 20px 140px 0;
+    margin: 0 auto;
+    max-width: 420px;
+    padding: 20px 0 0;
+    width: 64%;
   });
 
   .at-large({
-    margin: 0 auto;
     max-width: 520px;
-    padding: 20px 0 0;
   });
 
   .flexbox & {
