@@ -23,10 +23,12 @@ define(['jquery', 'd3'], function ($, d3) {
    * @constructor
    */
   var ChartTopInternetCompaniesController = function (
-    $scope
+    $scope,
+    $timeout
     )
   {
     this._$scope = $scope;
+    this._$timeout = $timeout;
   };
 
   /**
@@ -34,7 +36,8 @@ define(['jquery', 'd3'], function ($, d3) {
    * @type {Array}
    */
   ChartTopInternetCompaniesController.$inject = [
-    '$scope'
+    '$scope',
+    '$timeout'
   ];
 
   /**
@@ -44,10 +47,11 @@ define(['jquery', 'd3'], function ($, d3) {
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var ChartTopInternetCompaniesLinkFn = function () {
-    d3.json('/scripts/data/decentralized-power.json', function (error, res) {
-      var data = res.internetCompaniesByRevenue;
-      var chart = d3.select('.decentralized-power');
+  var ChartTopInternetCompaniesLinkFn = function (scope, iElem, iAttrs, controller) {
+
+    controller._$timeout(function () {
+      var data = controller._$scope.issue.getInfographic().getDataPoints().internetCompaniesByRevenue;
+      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
 
       // get the top revenue of all companies
       var maxRevenue = data[0].revenue;
@@ -99,7 +103,7 @@ define(['jquery', 'd3'], function ($, d3) {
           var display = (i === 0) ? 'display: none;' : '';
           return 'width: ' + maxRevenue + '%;' + display;
         });
-    });
+    }.bind(controller));
   };
 
   return ChartTopInternetCompaniesDirective;

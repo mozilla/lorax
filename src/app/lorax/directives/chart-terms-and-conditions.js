@@ -23,10 +23,12 @@ define(['jquery', 'd3'], function ($, d3) {
    * @constructor
    */
   var ChartTermsAndConditionsController = function (
-    $scope
+    $scope,
+    $timeout
     )
   {
     this._$scope = $scope;
+    this._$timeout = $timeout;
   };
 
   /**
@@ -34,7 +36,8 @@ define(['jquery', 'd3'], function ($, d3) {
    * @type {Array}
    */
   ChartTermsAndConditionsController.$inject = [
-    '$scope'
+    '$scope',
+    '$timeout'
   ];
 
   /**
@@ -44,13 +47,11 @@ define(['jquery', 'd3'], function ($, d3) {
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var ChartTermsAndConditionsLinkFn = function () {
-    debugger;
-
-    d3.json('/scripts/data/terms-and-conditions.json', function (error, res) {
-      var data = res.termsAndConditions;
-      var chart = d3.select('.terms-and-conditions');
-
+  var ChartTermsAndConditionsLinkFn = function (scope, iElem, iAttrs, controller) {
+    controller._$timeout(function () {
+      var data = controller._$scope.issue.getInfographic().getDataPoints().termsAndConditions;
+      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
+            
       var companies = chart.selectAll('div')
         .data(data)
         .enter()
@@ -81,7 +82,7 @@ define(['jquery', 'd3'], function ($, d3) {
           $this.append('<div class="stacks-item"></div>');
         }
       });
-    });
+    }.bind(controller));
   };
 
   return ChartTermsAndConditionsDirective;

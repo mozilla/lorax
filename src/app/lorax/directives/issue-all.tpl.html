@@ -4,9 +4,7 @@
             <h1>{{::issue.getInfographic().getHeader()}} <span>{{::issue.getInfographic().getSubheader()}}</span></h1>
     </header>
     <div class="infographic__wrapper">
-        <div ng-class="'infographic-' + issue.getCssClass()">
-            {{::issue.getInfographic().drawInfographic()}}
-        </div>
+        <div data-lorax-add-infographic-directive  data-directive-type="{{issue.getInfographicType()}}"></div>
     </div>
     <footer class="infographic__footer">
         <div class="detail-tags" ng-show="::issue.getInfographic().getSourceName()">

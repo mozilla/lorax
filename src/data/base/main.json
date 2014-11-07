@@ -4,7 +4,7 @@
       "issues":{
         "available":{
           "status":0,
-          "infographicType":"line-graph",
+          "infographicType":"data-lorax-chart-terms-and-conditions",
           "tags":[
             "Target Corporation",
             "Citigroup Inc",
@@ -15,7 +15,7 @@
         },
         "affordable":{
           "status":1,
-          "infographicType":"bar-graph",
+          "infographicType":"data-lorax-chart-top-internet-companies",
           "tags":[
             "Bank of America Corporation",
             "Procter &amp;amp; Gamble Co",
@@ -97,7 +97,7 @@
         },
         "corporateTracking":{
           "status":2,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-line-graph",
           "tags":[
             "J.P. Morgan Chase &amp;amp; Co",
             "International Business Machines Corporation"

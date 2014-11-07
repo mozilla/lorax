@@ -263,26 +263,55 @@
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "lineGraphData": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "label": "1998",
+          "data": [
+              "39,232,100",
+              238
+          ]
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "label": "1999",
+          "data": [
+              "46,232,716",
+              410
+          ]
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "label": "2000",
+          "data": [
+              "56,828,897",
+              577
+          ]
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "label": "2001",
+          "data": [
+              "60,286,248",
+              529
+          ]
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "label": "2002",
+          "data": [
+              "68,875,588",
+              653
+          ]
+        },
+        {
+          "label": "2003",
+          "data": [
+              "80,143,509",
+              692
+          ]
+        },
+        {
+          "label": "2004",
+          "data": [
+              "89,129,850",
+              730
+          ]
         }
       ]
     }
@@ -479,7 +508,7 @@
       ]
     }
   },
-    "controlPoints": {
+  "controlPoints": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {

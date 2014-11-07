@@ -13,6 +13,7 @@
       'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
       'modernizr': '../scripts/modernizr',
       'd3': '../bower_components/d3/d3',
+      'topojson': '../scripts/libs/topojson.v1.min',
       'pubsub': '../bower_components/jquery-tiny-pubsub/src/tiny-pubsub',
       'utils': '../scripts/utils',
       'lodash': '../bower_components/lodash/dist/lodash.min',
