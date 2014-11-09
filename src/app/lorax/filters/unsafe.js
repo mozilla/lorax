@@ -1,9 +1,9 @@
 define([], function () {
-  'use strict';
+    'use strict';
 
-  return function($sce) {
-    return function(val) {
-      return $sce.trustAsHtml(val);
+    return function($sce) {
+        return function(val) {
+            return $sce.trustAsHtml(val);
+        };
     };
-  };
 });

@@ -5,23 +5,23 @@
  * @param $scope
  */
 define(['jquery', 'angular'], function ($, angular) {
-  'use strict';
+    'use strict';
 
-  /*jshint unused: false */
-  var CoreCtrl = function (
-    $scope,
-    scrollService,
-    dataService
-  ) {
+    /*jshint unused: false */
+    var CoreCtrl = function (
+        $scope,
+        scrollService,
+        dataService
+    ) {
 
-    this._$scope = $scope;
-  };
+        this._$scope = $scope;
+    };
 
-  CoreCtrl.$inject = [
-    '$scope',
-    'scrollService',
-    'dataService'
-  ];
+    CoreCtrl.$inject = [
+        '$scope',
+        'scrollService',
+        'dataService'
+    ];
 
-  return CoreCtrl;
+    return CoreCtrl;
 });

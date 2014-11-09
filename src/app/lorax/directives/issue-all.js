@@ -3,142 +3,142 @@
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
 define(['jquery', 'jquery-scrollie'], function ($) {
-  'use strict';
+    'use strict';
 
-  /**
-   * Issue All directive
-   */
-  var IssueAllDirective = function () {
-    return {
-      restrict: 'A',
-      scope: true,
-      controller: IssueAllCtrl,
-      link: IssueAllLinkFn,
-      templateUrl: '/app/lorax/directives/issue-all.tpl.html'
-    };
-  };
-
-  /**
-   * Controller for issue all directive
-   * @constructor
-   */
-  var IssueAllCtrl = function (
-    $scope,
-    $route,
-    $timeout,
-    $rootScope,
-    $location,
-    dataService,
-    windowService
-  ) {
-
-    this._$scope = $scope;
-    this._$route = $route;
-    this._$timeout = $timeout;
-    this._$rootScope = $rootScope;
-    this._$location = $location;
-    this._$scope.dataService = dataService;
-    this._$scope.detail = {
-      currentIssue : ''
+    /**
+     * Issue All directive
+     */
+    var IssueAllDirective = function () {
+        return {
+            restrict: 'A',
+            scope: true,
+            controller: IssueAllCtrl,
+            link: IssueAllLinkFn,
+            templateUrl: '/app/lorax/directives/issue-all.tpl.html'
+        };
     };
 
-    // set detail mode on, adds body class
-    windowService.setDetailMode(true);
+    /**
+     * Controller for issue all directive
+     * @constructor
+     */
+    var IssueAllCtrl = function (
+        $scope,
+        $route,
+        $timeout,
+        $rootScope,
+        $location,
+        dataService,
+        windowService
+    ) {
 
-    $scope.$on('$destroy', function () {
-      // set detail mode off, removes body class
-      windowService.setDetailMode(false);
-    });
+        this._$scope = $scope;
+        this._$route = $route;
+        this._$timeout = $timeout;
+        this._$rootScope = $rootScope;
+        this._$location = $location;
+        this._$scope.dataService = dataService;
+        this._$scope.detail = {
+            currentIssue : ''
+        };
 
-    this._$scope.dataService.getMain().then(function (model) {
-      this._$scope.detail.model = model;
-    }.bind(this));
+        // set detail mode on, adds body class
+        windowService.setDetailMode(true);
 
-    this._$scope.detail.scrollTo = function (issue) {
-      $('body').animate({
-        scrollTop: $('#' + issue).offset().top - 138
-      }, 500);
-    }.bind(this);
+        $scope.$on('$destroy', function () {
+            // set detail mode off, removes body class
+            windowService.setDetailMode(false);
+        });
 
-    this._$scope.detail.nextIssue = function () {
-      this._$scope.detail.currentIssue =
-        $('#' + this._$scope.detail.currentIssue).next().attr('id');
+        this._$scope.dataService.getMain().then(function (model) {
+            this._$scope.detail.model = model;
+        }.bind(this));
 
-      if (this._$scope.detail.currentIssue) {
-        this._$scope.detail.scrollTo(this._$scope.detail.currentIssue);
-      }
-    }.bind(this);
-  };
+        this._$scope.detail.scrollTo = function (issue) {
+            $('body').animate({
+                scrollTop: $('#' + issue).offset().top - 138
+            }, 500);
+        }.bind(this);
 
-  IssueAllCtrl.$inject = [
-    '$scope',
-    '$route',
-    '$timeout',
-    '$rootScope',
-    '$location',
-    'dataService',
-    'windowService'
-  ];
+        this._$scope.detail.nextIssue = function () {
+            this._$scope.detail.currentIssue =
+                $('#' + this._$scope.detail.currentIssue).next().attr('id');
 
-  /**
-   * Link function for Issue All directive
-   * @param {object} scope      Angular scope.
-   * @param {JQuery} iElem      Detail wrapper jQuery element.
-   */
-  var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
+            if (this._$scope.detail.currentIssue) {
+                this._$scope.detail.scrollTo(this._$scope.detail.currentIssue);
+            }
+        }.bind(this);
+    };
 
-    controller._$timeout(function () {
-      var topic = controller._$location.search().topic;
-      var issue = controller._$location.search().issue;
+    IssueAllCtrl.$inject = [
+        '$scope',
+        '$route',
+        '$timeout',
+        '$rootScope',
+        '$location',
+        'dataService',
+        'windowService'
+    ];
 
-      if (topic) {
-        if (!issue) {
-          issue =
-            controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
-        }
+    /**
+     * Link function for Issue All directive
+     * @param {object} scope      Angular scope.
+     * @param {JQuery} iElem      Detail wrapper jQuery element.
+     */
+    var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
 
-        controller._$scope.detail.scrollTo(issue);
-        controller._$scope.detail.currentIssue = issue;
-      }
+        controller._$timeout(function () {
+            var topic = controller._$location.search().topic;
+            var issue = controller._$location.search().issue;
 
-      var routeChange = controller._$rootScope.$on('$routeUpdate', function (evt, newParam) {
-        topic = newParam.params.topic;
-        issue = newParam.params.issue;
+            if (topic) {
+                if (!issue) {
+                    issue =
+                        controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+                }
 
-        if (topic) {
-          if (!issue) {
-            issue =
-              controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
-          }
-          controller._$scope.detail.scrollTo(issue);
+                controller._$scope.detail.scrollTo(issue);
+                controller._$scope.detail.currentIssue = issue;
+            }
 
-          controller._$scope.detail.currentIssue = issue;
-        } else {
-          $('body').animate({
-            scrollTop: 0
-          });
-          controller._$scope.detail.currentIssue = '';
-        }
-      }.bind(controller));
+            var routeChange = controller._$rootScope.$on('$routeUpdate', function onRouteChange (evt, newParam) {
+                topic = newParam.params.topic;
+                issue = newParam.params.issue;
 
-      controller._$scope.$on('$destroy', routeChange);
+                if (topic) {
+                    if (!issue) {
+                        issue =
+                            controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+                    }
+                    controller._$scope.detail.scrollTo(issue);
 
-      var $body = $('body');
-      var $detail = $('.detail');
-      var status = $detail.eq(0).attr('data-issue-status');
+                    controller._$scope.detail.currentIssue = issue;
+                } else {
+                    $('body').animate({
+                        scrollTop: 0
+                    });
+                    controller._$scope.detail.currentIssue = '';
+                }
+            }.bind(controller));
 
-      $body.attr('data-bg-mode', status);
+            controller._$scope.$on('$destroy', routeChange);
 
-      $detail.scrollie({
-        scrollOffset : 138,
-        ScrollingOutOfView : function (elem) {
-          status = elem.attr('data-issue-status');
+            var $body = $('body');
+            var $detail = $('.detail');
+            var status = $detail.eq(0).attr('data-issue-status');
 
-          $body.attr('data-bg-mode', status);
-        }
-      });
-    }.bind(controller), 500);
-  };
+            $body.attr('data-bg-mode', status);
 
-  return IssueAllDirective;
+            $detail.scrollie({
+                scrollOffset : 138,
+                ScrollingOutOfView : function onScrollOutOfView (elem) {
+                    status = elem.attr('data-issue-status');
+
+                    $body.attr('data-bg-mode', status);
+                }
+            });
+        }.bind(controller), 500);
+    };
+
+    return IssueAllDirective;
 });

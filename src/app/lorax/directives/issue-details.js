@@ -3,74 +3,74 @@
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
 define([], function (IssueModel) {
-  'use strict';
+    'use strict';
 
-  /**
-   * Issue Details directive
-   */
-  var IssueDetailsDirective = function () {
-    return {
-      restrict: 'A',
-      replace: true,
-      transclude: true,
-      scope: {
-        'issueStatus': '@',
-        'issueName': '@'
-      },
-      controller: IssueDetailsController,
-      //link: IssueDetailsLinkFn,
-      templateUrl: '/app/lorax/directives/issue-details.tpl.html'
-    };
-  };
-
-  /**
-   * Controller for detail directive
-   * @constructor
-   */
-  var IssueDetailsController = function (
-    $scope,
-    dataService
-    )
-  {
-    this._$scope = $scope;
-
-    this._$scope.issueDetails = {
-      status: $scope.issueStatus
+    /**
+     * Issue Details directive
+     */
+    var IssueDetailsDirective = function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            transclude: true,
+            scope: {
+                'issueStatus': '@',
+                'issueName': '@'
+            },
+            controller: IssueDetailsController,
+            //link: IssueDetailsLinkFn,
+            templateUrl: '/app/lorax/directives/issue-details.tpl.html'
+        };
     };
 
-    dataService.getMain().then(function (model) {
-      this._$scope.issueDetails.issue = model.getIssueById($scope.issueName);
-    }.bind(this));
-  };
+    /**
+     * Controller for detail directive
+     * @constructor
+     */
+    var IssueDetailsController = function (
+        $scope,
+        dataService
+        )
+    {
+        this._$scope = $scope;
 
-  /**
-   * Array of dependencies to be injected into controller
-   * @type {Array}
-   */
-  IssueDetailsController.$inject = [
-    '$scope',
-    'dataService'
-  ];
+        this._$scope.issueDetails = {
+            status: $scope.issueStatus
+        };
 
-  /**
-   * Doesn't really do anything
-   * @param  {string}          No parameters
-   * @return {string}          No return value
-   */
-  IssueDetailsController.prototype.testMethod = function () {
-    console.log('test');
-  };
+        dataService.getMain().then(function (model) {
+            this._$scope.issueDetails.issue = model.getIssueById($scope.issueName);
+        }.bind(this));
+    };
 
-  /**
-   * Link function for Detail Section directive
-   * @param {object} scope      Angular scope.
-   * @param {JQuery} iElem      jQuery element.
-   * @param {object} iAttrs     Directive attributes.
-   * @param {object} controller Controller reference.
-   */
-  /*var IssueDetailsLinkFn = function (scope, iElem, iAttrs, controller) {
+    /**
+     * Array of dependencies to be injected into controller
+     * @type {Array}
+     */
+    IssueDetailsController.$inject = [
+        '$scope',
+        'dataService'
+    ];
 
-  };*/
+    /**
+     * Doesn't really do anything
+     * @param  {string}          No parameters
+     * @return {string}          No return value
+     */
+    IssueDetailsController.prototype.testMethod = function () {
+        console.log('test');
+    };
 
-  return IssueDetailsDirective;
+    /**
+     * Link function for Detail Section directive
+     * @param {object} scope      Angular scope.
+     * @param {JQuery} iElem      jQuery element.
+     * @param {object} iAttrs     Directive attributes.
+     * @param {object} controller Controller reference.
+     */
+    /*var IssueDetailsLinkFn = function (scope, iElem, iAttrs, controller) {
+
+    };*/
+
+    return IssueDetailsDirective;
 });

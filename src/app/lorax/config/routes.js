@@ -1,55 +1,55 @@
 define(function () {
-  'use strict';
+    'use strict';
 
-  var RouteConfig = function (
-      $routeProvider,
-      $locationProvider
-    ) {
+    var RouteConfig = function (
+            $routeProvider,
+            $locationProvider
+        ) {
 
-    // Invoke HTML5 pushState
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
+        // Invoke HTML5 pushState
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
 
-    $routeProvider
+        $routeProvider
 
-      /* --------- Explore -------- */
+            /* --------- Explore -------- */
 
-      .when('/', {
-        templateUrl: '/app/lorax/templates/explore.tpl.html'
-      })
+            .when('/', {
+                templateUrl: '/app/lorax/templates/explore.tpl.html'
+            })
 
-      /* -------------------- Detail -------------------- */
+            /* -------------------- Detail -------------------- */
 
-      .when('/detail/access', {
-        templateUrl: '/app/lorax/templates/detail-access.tpl.html',
-        reloadOnSearch: false
-      })
+            .when('/detail/access', {
+                templateUrl: '/app/lorax/templates/detail-access.tpl.html',
+                reloadOnSearch: false
+            })
 
-      .when('/detail/', {
-        templateUrl: '/app/lorax/templates/issues.tpl.html',
-        reloadOnSearch: false
-      })
+            .when('/detail/', {
+                templateUrl: '/app/lorax/templates/issues.tpl.html',
+                reloadOnSearch: false
+            })
 
-      /* -------------------- Error -------------------- */
+            /* -------------------- Error -------------------- */
 
-      .when('/error', {
-        redirectTo: '/'
-        //templateUrl: '/app/lorax/templates/404.tpl.html'
-      });
+            .when('/error', {
+                redirectTo: '/'
+                //templateUrl: '/app/lorax/templates/404.tpl.html'
+            });
 
-  };
+    };
 
 
-  /**
-   * Array of dependencies to preserve Angular DI during rjs minification
-   * @type {Array}
-   */
-  RouteConfig.$inject = [
-    '$routeProvider',
-    '$locationProvider'
-  ];
+    /**
+     * Array of dependencies to preserve Angular DI during rjs minification
+     * @type {Array}
+     */
+    RouteConfig.$inject = [
+        '$routeProvider',
+        '$locationProvider'
+    ];
 
-  return RouteConfig;
+    return RouteConfig;
 });
