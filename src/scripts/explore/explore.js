@@ -119,6 +119,8 @@ define([
       this._startAutoMode.bind(this),
       this._autoModeTime
     );
+
+    this._stage.touchstart = this._onTouchStart.bind(this);
   };
 
   Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
@@ -290,10 +292,9 @@ define([
           this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
           this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
         } else {
-          this._topics[i].elm.x = (this._renderer.width - 600) * (i % 2);
-          this._topics[i].elm.x -= ((this._renderer.width - 600) / 2);
-          // this._topics[i].elm.x += 110;
-          this._topics[i].elm.y =  (300 * Math.floor(i / 2)) - 300;
+          this._topics[i].elm.x = (this._renderer.width - 500) * (i % 2);
+          this._topics[i].elm.x -= ((this._renderer.width - 500) / 2);
+          this._topics[i].elm.y =  (350 * Math.floor(i / 2)) - 350;
           this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
           this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
         }
@@ -576,6 +577,10 @@ define([
     }
   };
 
+  Explore.prototype._onTouchStart = function (event) {
+    this._touchPosition = event.global;
+  };
+
   /**
    * do animation cycle
    */
@@ -599,6 +604,11 @@ define([
     if (lastMouse &&
       (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
       Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
+      this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
+    }
+
+    if (this._touchPosition) {
+      mousePosition = this._touchPosition;
       this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
     }
 
