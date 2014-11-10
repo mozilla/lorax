@@ -391,7 +391,7 @@ define([
             issue.exploreY = issue.elm.y;
 
             issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
-            issue.elm.mouseout = issue.elm.touchend = this._onOutIssue.bind(this);
+            issue.elm.mouseout = this._onOutIssue.bind(this);
             issue.elm.mousedown = this._onPressIssue.bind(this);
         }
     };
@@ -615,6 +615,12 @@ define([
 
         // mouse position relative to issues container
         var mousePosition = this._stage.getMousePosition().clone();
+
+        // get position from touch if theres one
+        if (this._touchPosition) {
+            mousePosition = this._touchPosition.clone();
+        }
+
         mousePosition.x -= this._issuesContainer.x;
         mousePosition.y -= this._issuesContainer.y;
 
@@ -625,11 +631,6 @@ define([
         if (lastMouse &&
             (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
             Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
-            this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
-        }
-
-        if (this._touchPosition) {
-            mousePosition = this._touchPosition;
             this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
         }
 
