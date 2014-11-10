@@ -170,6 +170,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
      */
     Circle.prototype.mouseOver = function () {
         this.isOver = true;
+        if (this.mouseOverCallback) {
+            this.mouseOverCallback(this);
+        }
     };
 
     /**
@@ -177,6 +180,9 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
      */
     Circle.prototype.mouseOut = function () {
         this.isOver = false;
+        if (this.mouseOutCallback) {
+            this.mouseOutCallback(this);
+        }
     };
 
     Circle.prototype.lightUp = function () {

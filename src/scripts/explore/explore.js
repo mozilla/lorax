@@ -129,33 +129,33 @@ define([
     };
 
     Explore.prototype._startAutoMode = function () {
-        this._autoMode = true;
+        // this._autoMode = true;
 
-        this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
-        this._mouseOverIssue(this._autoModeIssue);
+        // this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
+        // this._mouseOverIssue(this._autoModeIssue);
 
-        clearTimeout(this._autoModeTimeout);
-        this._autoModeTimeout = setTimeout(
-            this._endAutoMode.bind(this),
-            this._autoModeTimeUp,
-            true
-        );
+        // clearTimeout(this._autoModeTimeout);
+        // this._autoModeTimeout = setTimeout(
+        //     this._endAutoMode.bind(this),
+        //     this._autoModeTimeUp,
+        //     true
+        // );
     };
 
     Explore.prototype._endAutoMode = function (startAnother) {
-        if (this._autoModeIssue) {
-            this._mouseOutIssue(this._autoModeIssue);
-        }
+        // if (this._autoModeIssue) {
+        //     this._mouseOutIssue(this._autoModeIssue);
+        // }
 
-        this._autoMode = false;
+        // this._autoMode = false;
 
-        clearTimeout(this._autoModeTimeout);
-        if (startAnother) {
-            this._autoModeTimeout = setTimeout(
-                this._startAutoMode.bind(this),
-                this._autoModeTime
-            );
-        }
+        // clearTimeout(this._autoModeTimeout);
+        // if (startAnother) {
+        //     this._autoModeTimeout = setTimeout(
+        //         this._startAutoMode.bind(this),
+        //         this._autoModeTime
+        //     );
+        // }
     };
 
     Explore.prototype._clearTopics = function () {
@@ -390,6 +390,9 @@ define([
             issue.exploreX = issue.elm.x;
             issue.exploreY = issue.elm.y;
 
+            issue.mouseOverCallback = this._mouseOverIssue.bind(this);
+            issue.mouseOutCallback = this._mouseOutIssue.bind(this);
+
             issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
             issue.elm.mouseout = this._onOutIssue.bind(this);
             issue.elm.mousedown = this._onPressIssue.bind(this);
@@ -397,19 +400,27 @@ define([
     };
 
     Explore.prototype._onOverTag = function (event) {
-        this._mouseOverIssue(this._tags[event.target.index]);
+        this._tags[event.target.index].mouseOver();
     };
 
     Explore.prototype._onOutTag = function (event) {
-        this._mouseOutIssue(this._tags[event.target.index]);
+        this._tags[event.target.index].mouseOut();
     };
 
     Explore.prototype._onOverIssue = function (event) {
-        this._mouseOverIssue(this._issues[event.target.index]);
+        if (this._mode === Issue.MODE_ISSUES) {
+            this._issues[event.target.index].issueModeMouseOver();
+        } else {
+            this._issues[event.target.index].mouseOver();
+        }
     };
 
     Explore.prototype._onOutIssue = function (event) {
-        this._mouseOutIssue(this._issues[event.target.index]);
+        if (this._mode === Issue.MODE_ISSUES) {
+            this._issues[event.target.index].issueModeMouseOut();
+        } else {
+            this._issues[event.target.index].mouseOut();
+        }
     };
 
     Explore.prototype._onPressIssue = function (event) {
@@ -430,8 +441,6 @@ define([
         var i;
 
         if (this._mode !== Issue.MODE_ISSUES) {
-            issue.mouseOver.bind(issue)();
-
             related = issue.data.getRelated();
             for(i = 0; i < related.length; i ++) {
                 relatedIssue = this._getElementFromId(related[i]._id);
@@ -440,8 +449,6 @@ define([
                     relatedIssue.lightUp();
                 }
             }
-        } else {
-            issue.issueModeMouseOver.bind(issue)();
         }
     };
 
@@ -451,17 +458,15 @@ define([
         var i;
 
         if (this._mode !== Issue.MODE_ISSUES) {
-            if (!issue.isInteractive || this._autoMode) {
-                issue.mouseOut.bind(issue)();
-            }
+            // if (!issue.isInteractive || this._autoMode) {
+            //     issue.mouseOut.bind(issue)();
+            // }
 
             related = issue.data.getRelated();
             for(i = 0; i < related.length; i ++) {
                 relatedIssue = this._getElementFromId(related[i]._id);
                 relatedIssue.lightDown();
             }
-        } else {
-            issue.issueModeMouseOut.bind(issue)();
         }
     };
 
