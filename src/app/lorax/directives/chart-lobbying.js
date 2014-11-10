@@ -69,6 +69,7 @@ define(['jquery', 'd3'], function ($, d3) {
         .attr("width", width)
         .attr("height", height);
       
+      drawPattern();
       drawLegend();
       drawFirstAndLast();
       drawData();
@@ -226,6 +227,39 @@ define(['jquery', 'd3'], function ($, d3) {
         }
       }      
 
+      function drawPattern() {
+        var x = d3.scale.linear()
+          .range([margin.left, width-margin.right])
+          .domain([
+            d3.min( lineData, function(d) { return d.label }),
+            d3.max( lineData, function(d) { return d.label })
+          ]);
+
+        var diff = Math.floor(Math.abs(x(lineData[0].label) - x(lineData[1].label)));
+
+        var pattern = svg.append("g")
+          .attr("class", "linegraph__pattern");  
+
+        var years = lineData.map( function(d) { return d.label; });
+        years.forEach( function(val) {
+
+          for ( var i = margin.top+15; i < height-margin.bottom; i+=diff ) {
+            var xPos = x(val);
+            pattern.append("line")
+              .attr("x1", xPos+2.5)
+              .attr("y1", i)
+              .attr("x2", xPos+2.5)
+              .attr("y2", i+5);
+
+            pattern.append("line")
+              .attr("x1", xPos)
+              .attr("y1", i+2.5)
+              .attr("x2", xPos+5)
+              .attr("y2", i+2.5);              
+          }
+        });
+
+      }
 
     }.bind(controller));
   };
