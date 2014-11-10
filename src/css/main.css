@@ -1605,6 +1605,9 @@ img {
 }
 /* Line Graph
    ========================================================================== */
+.linegraph__svg {
+  fill: #ffffff;
+}
 .linegraph__line {
   fill: none;
   stroke: #ffffff;
@@ -1615,13 +1618,54 @@ img {
   stroke: #ffffff;
   stroke-width: 1.5px;
 }
-.linegraph__point_1_circle {
-  fill: #ffffff;
-}
 .linegraph__xaxis_year {
   font-size: 10px;
+  font-size: 1rem;
 }
 .linegraph__xaxis_info {
-  fill: #ffffff;
   font-size: 12px;
+  font-size: 1.2rem;
+}
+.linegraph__legendtext {
+  font-size: 10px;
+  font-size: 1rem;
+}
+/* Platform Neutrality Pie Chart
+   ========================================================================== */
+.platformneutrality__users {
+  fill: #000000;
+}
+.platformneutrality__wedge {
+  fill: none;
+  stroke: #cd9d1d;
+}
+.platformneutrality__others {
+  fill: #cd9d1d;
+}
+.platformneutrality__value {
+  fill: #FFFFFF;
+  font-size: 10px;
+}
+.platformneutrality__legend {
+  float: right;
+}
+.platformneutrality__legendbox {
+  font-size: 10px;
+  font-size: 1rem;
+  display: inline-block;
+  padding-right: 10px;
+}
+.platformneutrality__legendbox div {
+  display: inline-block;
+  padding: 5px;
+}
+.platformneutrality__legendbox .mobile-web {
+  background: #000000;
+  width: 8px;
+  height: 8px;
+}
+.platformneutrality__legendbox .native-app {
+  background: #cd9d1d;
+  width: 8px;
+  height: 8px;
 }

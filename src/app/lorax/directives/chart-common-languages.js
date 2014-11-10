@@ -14,7 +14,8 @@ define(['jquery', 'd3'], function ($, d3) {
             replace: true,
             scope: true,
             controller: ChartCommonLanguagesController,
-            link: ChartCommonLanguagesLinkFn
+            link: ChartCommonLanguagesLinkFn,
+            templateUrl: "/app/lorax/directives/chart-common-languages.tpl.html" 
         };
     };
 
@@ -50,33 +51,18 @@ define(['jquery', 'd3'], function ($, d3) {
   var ChartCommonLanguagesLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
       var data = controller._$scope.issue.getInfographic().getDataPoints().commonLanguages;
-      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
+      var chart = d3.selectAll(".common-languages-content");
 
       var maxPercent = controller._$scope.issue.getInfographic().getDataPoints().topPercentageOfLanguages
       var maxScale = maxPercent + 5;
 
-      var table = chart.append("table")
-        .attr("class", "common-languages");
+      var tableBody = chart.select(".common-languages-content");
 
-      var tableHead = table.append("thead");
-      var titleRow = tableHead.append("tr");
-      titleRow.append("th")
-        .attr("colspan", 3)
-        .text("Spoken Languages");
-      titleRow.append("th")
-        .text("vs");
-      titleRow.append("th")
-        .attr("colspan", 3)
-        .text("Internet Languages");
-
-      var tableBody = table.append("tbody")
-        .attr("class", "common-languages-content");
-
-      var topLanguages = tableBody.selectAll('tbody')
+      var topLanguages = chart.selectAll("div")
         .data(data)
         .enter()
         .append('tr');
-      
+
       topLanguages.append('td')
           .text(function (d) {
               return d.spoken.pct + '%';

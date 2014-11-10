@@ -1,5 +1,5 @@
 /**
- * @fileOverview Line Graph Chart directive
+ * @fileOverview Lobbying Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
@@ -8,21 +8,21 @@ define(['jquery', 'd3'], function ($, d3) {
     /**
      * Line Graph Chart directive
      */
-    var ChartLineGraphDirective = function () {
+    var ChartLobbyingDirective = function () {
         return {
             restrict: 'A',
             replace: true,
             scope: true,
-            controller: ChartLineGraphController,
-            link: ChartLineGraphLinkFn
+            controller: ChartLobbyingController,
+            link: ChartLobbyingLinkFn
         };
     };
 
     /**
-     * Controller for Terms & Conditions Chart directive
+     * Controller for Lobbying Chart directive
      * @constructor
      */
-    var ChartLineGraphController = function (
+    var ChartLobbyingController = function (
         $scope,
         $timeout
         )
@@ -35,19 +35,19 @@ define(['jquery', 'd3'], function ($, d3) {
      * Array of dependencies to be injected into controller
      * @type {Array}
      */
-    ChartLineGraphController.$inject = [
+    ChartLobbyingController.$inject = [
         '$scope',
         '$timeout'
     ];
 
   /**
-   * Link function for Line Graph Chart directive
+   * Link function for Lobbying Chart directive
    * @param {object} scope      Angular scope.
    * @param {JQuery} iElem      jQuery element.
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var ChartLineGraphLinkFn = function (scope, iElem, iAttrs, controller) {
+  var ChartLobbyingLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout( function() {
       var data = controller._$scope.issue.getInfographic().getDataPoints();
       var lineData = data.lineGraphData;
@@ -230,5 +230,5 @@ define(['jquery', 'd3'], function ($, d3) {
     }.bind(controller));
   };
 
-    return ChartLineGraphDirective;
+    return ChartLobbyingDirective;
 });

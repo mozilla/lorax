@@ -5,48 +5,43 @@
       "tagline": "An Internet where\n everyone can play",
       "issues": {
         "available": {
-          "name": "Available",
-          "title": "Does sufficient capacity exist around the world?",
-          "narrative": "<p>The global picture shows that the connected population is continuing to grow, as Internet access becomes affordable.</p><p>Understanding what “affordable” means in different countries in instructive.  In the West, Internet access seems like a commodified utility: in the United Kingdom, a month’s worth of fixed broadband Internet access is the equivalent of an hour’s wage.  In Cambodia, that price is approaching a full week’s wage, and in Angola, nearly a month’s.</p><p>This is one of several reasons why wireless Internet connections (“mobile”) connect more and more people in 2nd and 3rd world countries.</p>",
+          "name": "Availability",
+          "title": "Who's online?",
+          "narrative": "<p>Internet usage is spreading like wildfire, and that’s a good thing. The more people connected to the network, the more powerful that network can be. This process will only accelerate as the price for access gets lower and lower, and as Web-enabled devices proliferate, spawning more affordable options.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
         "affordable": {
-          "name": "Affordable",
-          "title": "Is bandwidth affordable?",
-          "narrative": "<p>Understanding what “affordable” means in different countries in instructive.  In the West, Internet access seems like a commodified utility: in the United Kingdom, a month’s worth of fixed broadband Internet access is the equivalent of an hour’s wage.  In Cambodia, that price is approaching a full week’s wage, and in Angola, nearly a month’s.</p><p>This is one of several reasons why wireless Internet connections (“mobile”) connect more and more people in 2nd and 3rd world countries.</p>",
+          "name": "Affordability",
+          "title": "The price of admission.",
+          "narrative": "<p>If you imagine everyone with online access as a point of light on a globe, some parts would glow intensely, while others would be dark. In many developing countries, a month of broadband access costs almost a month’s paycheck, making it a luxury beyond reach.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
-          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
-          "vizId": "decentralized-power"
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper."
         },
-        "speaksMyLanguage": {
-          "name": "Speaking my language",
-          "title": "Does the Web speak my language?",
-          "narrative": "<p>Content chases money, money speaks English. One consequence of this is the acceleration of a global consumer culture driven primarily from North America and partly Western Europe, where the largest consumer markets exist.</p><p>This has meant a greater globalisation of culture: most Internet content is produced in English. Although only approximately a quarter of Internet users are English-speaking, 55% of websites are in English.</p>",
+        "localization": {
+          "name": "Localization",
+          "title": "Content chases money, and money speaks English.",
+          "narrative": "<p>Although only a 25% of Internet users are English-speaking, 55% of websites are in English. Why? Internet content creators target the largest markets possible. Right now those markets are North America and partly Western Europe, where English is the dominant language.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "common-languages"
+          "yourActionLink": "#"
         },
         "accessible": {
-          "name": "Accessible",
-          "title": "Is the web accessible to people with vision problems?",
-          "narrative": "Blind people are less economically important to developers. People with visual disabilities (8.5% of the global population) are typically included late (if at all) in the design of Internet services.  Some parts of the Web (e.g. those catering to the provision of public services) are regulated and consequently function well with technologies such as screen readers, but other services will include such support as an after-thought, if at all.  When such services become very important, this has the effect of increasing the exclusion of some of society’s most vulnerable people.",
+          "name": "Accessibility",
+          "title": "The Web can’t see the blind.",
+          "narrative": "You’re probably reading these words on a screen. But if you can’t see, you’re hearing them spoken aloud by screen-reading software, which works on any Web page built with HTML. The problem is, when sites are built using non-HTML proprietary platforms, such as mobile apps, blind users — who make up 8.5% of the world’s population — miss out.",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
-          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
-          "vizId": "internet-penetration"
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper."
         },
         "infrastructure": {
           "name": "Infrastructure",
-          "title": "Are we investing enough in communications infrastructure?",
-          "narrative": "<p>There are a number of consequences of current Internet growth: The companies who are building the infrastructure, especially in poorer countries, are not realising as much money from the Internet as a smaller number of companies have.  These companies reside especially in Silicon Valley, and have disrupted much of the network operators’ business.  Where once network operators charged tariffs for messaging and international calls, much of this now runs “over the top”, meaning that Internet software mediates these services as IP-traffic, rather than as traditional network operator services.  This has provided a disincentive for these companies to invest in network equipment.</p><p>Mozilla believes that open and equal access, promoted by net neutrality, is a prerequisite for a healthy Internet. However, the economic consequences of such policy must be recognized. Net neutrality promotes the shifting of communication from heavily regulated traditional network operator services to IP-traffic on the largely unregulated software layer. Yet network operators build and maintain the physical infrastructure upon which the software layer runs.  In 2014, we have a largely unregulated software layer (of apps and content) which is fueling the world’s most valuable companies, running on top of a heavily regulated infrastructure layer (the physical network).</p>",
+          "title": "Is the wired network here to stay?",
+          "narrative": "<p>Today, the fastest Internet connections come from network operators — the guys who pipe broadband access, and also phone service, directly into our homes and offices over physical wires. But long-distance calling and other services are now moving to the Internet, and software companies are capturing that revenue from the network operators, leaving them with less resources and incentive for building new pipelines. The risk is to see Internet companies build their own wired networks and bias them toward their content.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
-          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
-          "vizId": "terms-and-conditions"
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper."
         }
       }
     },
@@ -56,83 +51,102 @@
       "issues": {
         "contentCreation": {
           "name": "Content creation",
-          "title": "Availability of self-publishing tools with ability to retain ownership of content",
-          "narrative": "<p>The Internet ushered in a new era of freedom in publishing: from the 1990s, the only real barrier to being able to publish on the Internet was access and the technical skill-set.  Access has become cheaper and tools easier to use.  By the early 2000s, blogging platforms were widespread making self-publishing on the Web a trivial task for many, democratising the creation of content on the Internet.</p><p>Self-publishing platforms have become more widely adopted, but also more proprietary: social media typically is controlled by a hosting entity which is therefore either liable to censor or liable to regulation, and app stores are controlled and curated by owning entities.  More of the content that is created for the Internet is subject to censorship and control than ever before.  Where 10 years ago, new computing experiences were created for the Web and available to anyone through a URL, now they are gated by approvers for app stores and only available on specific platforms.  While there is a huge increase in the volume of, and capacity for, self-publishing on the Internet, this is a regression in the public’s experience of the Internet.</p>",
+          "title": "You published it, but is it still yours?",
+          "narrative": "<p>The Internet opened up the floodgates for all forms of creativity, giving the Web its multi-faceted, organic character. Social networks and blogging platforms let us speak our minds without learning code or configuring servers. But this creative outpouring is threatened: Some platforms maintain copyright over our content, and some can censor us, damming the flow of expression. And when we switch services, we often have to leave our creations behind.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
         "identityControl": {
           "name": "Identity control",
-          "title": "Battle for control of online identity",
-          "narrative": "<p>NEEDS CONTENT</p>",
+          "title": "Who owns your digital passport?",
+          "narrative": "<p>Too many passwords! Email providers and social networks are aware of how painful this can be, and are only too happy to also act as identity providers, letting you access multiple sites using a single name-and-password combo. But if we hand our digital passports over to a single company, we’re at their mercy if they get breached, or go out of business.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
+        },
+        "publicTrust": {
+          "name": "Public trust",
+          "title": "The giant seems too big to fight.",
+          "narrative": "<p>Snowden revealed just how freely our personal information is shared between companies and the U.S. government. This dealt a double blow: it shattered public trust, and it told us the power was beyond our control, that there was no use trying to fight it. The second blow was the fiercest. If apathy sets in, the Internet could someday be permanently at odds with individual rights and the potential for good.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#"
+        },
+        "dataTracking": {
+          "name": "Data tracking",
+          "title": "The product is you.",
+          "narrative": "<p>All of our moves on the Web are tracked, as if by the paparazzi. It’s the price we pay for free information and services. But we don’t want to be the last ones to know that our privacy has been violated. And we certainly don’t want drugstores to be the ones announcing pregnancies. As tracking techniques grow in sophistication, capturing finer details, we’re completely left out of the process.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#"
         },
         "surveillance": {
-          "name": "Surveillance business model",
-          "title": "NEEDS TITLE",
-          "narrative": "<p>The last few years have destroyed an enormous amount of public trust in Internet companies, and we are in danger of the Internet permanently resetting society’s expectations of privacy to Orwellian levels.  Public trust in Internet companies is now very low.</p>",
+          "name": "Surveillance",
+          "title": "Big Brother really is watching you.",
+          "narrative": "<p>In Orwell’s 1984, the government monitors citizens day and night. That might seem like a paranoid scenario, but part of this nightmare is actually happening: when government agencies want our data, and Internet companies are motivated to collect and sell it, who is left to advocate for users?</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "corporateTracking": {
-          "name": "Corporate tracking",
-          "title": "NEEDS TITLE",
-          "narrative": "<p>This has, however, been a feature of consumption of the Internet from very early in its existence.  Content is consumed for free and “monetised” through advertising: most models aimed at monetising (i.e. charging directly for) content, have floundered because of the large volume of potential substitutes and very low cost of switching.  This has in  turn led to an experience of online publishers trying to garner as many “clicks” and delivering advertisers as many relevant “impressions” (views of an advert) as possible, influencing editorial policy and user experience.</p>",
+        "userAgreements": {
+          "name": "User Agreements",
+          "title": "Signing in the dark.",
+          "narrative": "<p>User agreements are getting progressively longer and more complex, leaving many of us with a fuzzy notion of what they actually say.  But by not fully understanding these documents, we’re not really in control of our online lives. What have we agreed to? Often, we’re handing over copyright ownership, saying yes to censorship and signing up for spam.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "governmentSnooping": {
-          "name": "Government snooping",
-          "title": "NEEDS TITLE",
-          "narrative": "<p>It is this economic imperative, the delivery of relevant impressions, that is one of main drivers of the erosion of privacy, “Surveillance is the business model of the Internet”, as Bruce Schneier put it.  Online services are all geared towards gathering information about their users and their interests, regulation is slow to follow and industry self-regulation has failed to change this in any meaningful way.  While there has been slow progress on responding to 3rd party tracking (which aggregate data across websites about a user), in August 2014 a new method, called canvas fingerprinting, demonstrated that every computer user can be uniquely identified.important Internet services are based.  Global security concerns frequently conflict with civil liberties and we live in an era where vast amounts of information are collected about us, and where governments perceive greater security risks than in several decades.  It should not seem unreasonable to expect one’s rights to be respected in the collection and usage of personal information.  But the political reality of “big data” is that vast commercial interests collect this information and are highly susceptible to governmental influence.  The centralisation of economic power on the Internet is the enemy of privacy.</p>",
+        "openSource": {
+          "name": "Open Source",
+          "title": "Can you look under the hood?",
+          "narrative": "<p>The Web, when it’s built on HTML, is fully transparent: to see how something works, just look at the code. HTML, which is free and open source software, is also built and evaluated in a fully public setting. But proprietary software, which is built behind closed doors, is gaining prominence, especially in the arena of mobile apps.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "transparency": {
-          "name": "Transparency",
-          "title": "Are EULAs getting more complicated?",
-          "narrative": "<p>An increased propensity to use closed-source software and cloud computing leads to less transparency for users: you do not know for sure, nor are you able to investigate thoroughly, what your computer, or your cloud provider’s computer is doing.</p><p>Most users do not read the lengthy terms of use of new services, and do not have the competence to, but they do accept more and more risk for failures or security breaches.</p><p>10 years ago, a user might reasonably be using Windows XP and Mozilla Firefox to get online: in total, they would have accepted 6,680 words (depending on the language) of end user license agreements (relating to Windows XP and Windows Service Pack 2).</p><p>In 2014, an iPhone user can expected to have accepted 25,700 words of end user license for iOS and iTunes.  It does not seem fanciful to suggest that most users do not know nor expect to understand the terms of their relationship with Apple.</p>",
+        "openDataStandards": {
+          "name": "Open Data Standards",
+          "title": "We’re locking up our data, throwing away the key.",
+          "narrative": "<p>The Internet relies on open standards: Servers, browsers and content all speak the same language. But there is a trend, mostly in the mobile apps market, towards using closed standards, and this prevents data from being moved from one service to another, even with the consent of the owner. The upshot? We lose control over our own data, which gets locked away under closed, proprietary systems.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "decentralization": {
-          "name": "Decentralization of power",
-          "title": "Is control over the internet distributed?",
-          "narrative": "<p>The Internet, being literally a network, is hugely susceptible to what economists call “network effects” (in brief, the more users there are of a service, the more new users it is likely to attract), leading to concentrations of power within a few corporations and within an even smaller number of legal jurisdictions.  In particular, companies are concentrated in the USA.  Certainly, the majority of Internet companies most people can name are American (although there is a rise in Asian Internet companies) - 62% of the world’s IP addresses are American.</p><p>While there are many reasons for American dominance in this field (not least America’s record of investment and innovation in the field), it also represents and extension of American power at the level of the citizen, who may have different expectations of a relationship with a private company.  The World Economic Forum study on the state of development of a country’s regulatory framework with respect to the Internet economy, including consumer protection, placed the United States in 15th position, behind inter alia China, Malaysia and Estonia.</p><p>This, when combined with the inherent client-server design of most important internet technologies (notably HTTP), It is this centralisation that creates de facto an increased:Control over what is published onlineCollection of data about individualsPoints of control for governmental censorship and surveillance</p>",
+        "dataRegulation": {
+          "name": "Data Regulation",
+          "title": "The world’s data is not in good hands.",
+          "narrative": "<p>Most of the world's data is stored in the U.S., which has some of the most relaxed data-privacy regulations on the planet. This means less scrutiny over how the world’s data is collected, how it is used and who can access it, with more potential for abuse.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
+        },
+        "lobbyPower": {
+          "name": "Lobby Power",
+          "title": "Meet the U.S. Silicon Government.",
+          "narrative": "<p>The Internet industry has incredibly deep pockets for lobbying. In 2013, Internet companies spent $141million on lobbying in the U.S. alone, with Google spending the most, recently surpassing even Lockheed-Martin. This is cause for concern: with a government so deeply influenced by these companies, U.S. consumer protection laws won’t likely receive as much support.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#"
         },
         "censorship": {
-          "name": "No censorship",
-          "title": "Are governments censoring the internet?",
-          "narrative": "<p>The Web was “born open”. The only requirements to be able to self-publish on the Web in 1994 were the technical ability and access to equipment.  The Web has remained largely permissive, but with increased influence, there has been increased oversight of the Internet.</p><p>There are only a few parts of the world where the Web is censored, but 2014 has seen an unwelcome increase in this in for example Turkey. However, governmental censorship of the Web is typically a reflection of the overriding political climate in a country.</p><p>Private control and censorship of proprietary parts of the Internet is a more global, commercial phenomenon and is more intrinsic to the economic landscape of the Internet.</p><p>However, self-publishing platforms have become more widely adopted, but also more proprietary: social media typically is controlled by a hosting entity which is therefore either liable to censor or liable to regulation, and app stores are controlled and curated by owning entities.  More of the content that is created for the Internet is subject to control or censorship than ever before, and this control is exercised by a handful of commercial entities.  Where 10 years ago, new computing experiences were created for the Web and available to anyone through a URL, now they are gated by approvers for app stores and only available on specific platforms. While there is a huge increase in the volume of, and capacity for, self-publishing on the Internet, there is also a regression in the public’s experience of the Internet.</p>",
+          "name": "Censorship",
+          "title": "Too big to silence.",
+          "narrative": "<p>The Web is a living, breathing ecosystem, sustained by billions of contributors all over the planet. It can’t be stopped, though some repressive governments have successfully restricted access. 2014 has seen an unwelcome increase of censorship  in Turkey and Ukraine. Still, due to the sheer size and distributed nature of the Web, citizens of censored countries have still found ways for their voices to be heard.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         }
       }
     },
@@ -141,44 +155,40 @@
       "tagline": "An Internet that\n has our back",
       "issues": {
         "cyberThreats": {
-          "name": "Protection from cyber-threats",
-          "title": "Are we safe from cyber attacks?",
-          "narrative": "<p>Overall, the number of cyber-attacks is increasing, and is one of the fastest-growing area of criminal activity, but this is in the context of one of the fastest growing areas of human activity.</p>",
+          "name": "Cyber-Threats",
+          "title": "New threats, new vulnerabilities.",
+          "narrative": "<p>Do the bad guys ever sleep? They’re launching more and more attacks, and they’re getting sneakier, mixing up identity theft, spoofing and viruses. Some of this can be spotted a mile away (that isn’t your aunt Sally emailing you with a strange-looking link) while much of it is more insidious.  Stay vigilant; what’s at stake is the trust that holds the Web together.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
         "cyberBullying": {
-          "name": "Cyber-Stalking and Cyber-Bullying",
-          "title": "NEEDS TITLE",
-          "narrative": "<p>The aspect of security most easily overlooked by the technology community is the growth of anti-social or threatening behaviour faciliated by the Internet. Studies have shown that over a third of participants in social networks may believe that they have experienced a form of cyber-bullying at some point. Interestingly, there is a disconnect between the rate of formally-defined stalking and people’s propensity to report being stalked (the latter being much higher) - this is possibly because the Internet facilitates such behaviours more readily.</p>",
+          "name": "Cyber Bullying",
+          "title": "Virtual torment, real-life damage",
+          "narrative": "<p>The Web represents the widest range of human behavior, from the civil to the obnoxious, and that’s OK. But the Web also facilitates insults, physical threats, stalking and sexual harassment, and that’s not OK: such behavior can be as damaging as physical injury. On social networking sites, which are becoming central to our lives and identities, such activities can be particularly harmful.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "controlPoints": {
-          "name": "Decentralization (control points)",
-          "title": "How easy is it for a government to control the internet in a country?",
-          "narrative": "<p>The less control points, the easier it gets for government to control the internet.</p>",
+        "networkDecentralization": {
+          "name": "Network Decentralisation",
+          "title": "Choke Points for Surveillance.",
+          "narrative": "<p>Like our central nervous systems, the Internet was built to support many paths, so if one path got blocked, information could find another. But while some countries have a robust set of networks connecting to the global Internet, others have only a handful. With fewer, more obvious control points, such networks are more vulnerable, and enable more censorship and surveillance.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "storageSecurity": {
-          "name": "Decentralisation (storage/security)",
-          "title": "NEEDS TITLE",
-          "narrative": "<p>The concentration of services is a particular challenge for security: it introduces larger and more obvious targets for cyber-criminals (e.g. iCloud pictures leaks)</p>",
+        "cloudSecurity": {
+          "name": "Cloud Security",
+          "title": "Don’t put all your nude pictures in one basket.",
+          "narrative": "<p>Celebrities got a rude awakening in September 2014 when their iCloud accounts were hacked, and their personal photos were broadcast over Twitter. The rest of us might want to think twice about what we store in the cloud. Services like Apple’s iCloud, Google Drive and Dropbox make attractive targets for hackers, housing data from millions of users.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         }
       }
     },
@@ -188,33 +198,39 @@
       "issues": {
         "netNeutrality": {
           "name": "Net neutrality",
-          "title": "Are ISPs in certain countries throttling/blocking certain types of traffic?",
-          "narrative": "<p>Regulators around the world quickly realised the potential and introduced principles to safeguard this, widely known as “net neutrality”, which is widely supported around the world today.  Net neutrality is the principle that data packets must be treated with equivalence on the Internet by the companies who operate networks: Internet service providers and mobile network operators.  This has created a distribution platform unparalleled in history.  Net neutrality, and the permissive platform of the Web, mean that new companies and services can appear on a daily basis and with availability around the world.  Enormous creativity and innovation has been unleashed as a result.  This is why Mozilla is a supporter of Net Neutrality.</p><p>Although the benefits of Net Neutrality are well understood, Net Neutrality itself is not uncontroversial.  That’s because the Internet has given rise to a handful of incredibly wealthy and powerful companies who are generated huge profits, or huge growth, or huge profits and huge growth, but many of the infrastructure companies without whose investment this would not be possible, are effectively locked out of charging these companies a premium.  It is worth noting that many Internet companies themselves only have a lukewarm or expedient commitment to net neutrality: Google compromised their position on net neutrality in partnership with Verizon in 2010, and Facebook’s Internet.org programme calls for the zero-rating (i.e. transport without charge to the consumer) of Facebook services in emerging markets.</p>",
+          "title": "No slow lane on the highway of innovation.",
+          "narrative": "<p>Intentionally slow Internet connections? Charging extra for the fastest speeds? That’s highway robbery. Net neutrality is the simple idea that network operators — companies like Comcast, AT&T and Verizon — must treat all data equally. Attacks on net neutrality threaten to tilt the playing field that’s been level since the Internet began, making it harder for startups to compete with the status quo. </p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "interopelability": {
-          "name": "Interoperability",
-          "title": "Developer, user and network. What are developers build for, what are users using, what does the traffic look like?",
-          "narrative": "<p>While the infrastructure level of the Internet is subject to clear regulation, other layers of the stack are not. Companies like Google and Facebook who have far more market power than network operators or Internet service providers, are nevertheless subject to much less regulation in their core businesses.</p><p>They are also able to build “moats” and to erect “walls” with the use of closed protocols, locking competitors out of their markets. More and more Internet content has become exclusive to particular platforms, and while net neutrality (that all content should be treated equally for transport purposes) is a well understood and supported principle, platform neutrality, that all content should be available on all platforms - how the Web works, but how native apps do not - is a less widely appreciated principle.  It is this principle, however, that would be a bulwark to ensuring a more equitable Internet economy.</p>",
+        "zeroRating": {
+          "name": "Zero Rating",
+          "title": "“The internet”, brought to you by...",
+          "narrative": "<p>Imagine a Web where all sites are curated by a single company. It would feel more like a single department store than an open, global marketplace. This is “zero rating” at work: Companies like Facebook and Google are striking deals with network operators to offer limited free browsing on mobiles devices or in hot spots, while charging for access to additional sites. True, free access is better than no access. But for many, the sponsored view would be their only view.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
         },
-        "distributionOfPower": {
-          "name": "Distribution of power from Internet",
-          "title": "Is control over the internet distributed?",
-          "narrative": "<p>The Internet has also lead to the very rapid creation of new, very power, global institutions accountable primarily to market forces in an Internet industry much more lightly regulated than many of the industries (broadcasting, infrastructure, journalism) to which it is adjacent. This has lead to a very high pace of innovation in the Internet sector, which persistently “disrupts” older industries.</p><p>The computer and Internet industry spent $3.2Bn on lobbying in the US alone in 2013, with Google the largest in the sector. However, lobbying expenses are not a good index of the “soft power” of Internet companies. The large Internet companies have direct relationships with hundreds of millions of users in a way that few other businesses do, enabling them to take direct action, such as the protests against SOPA and PIPA (which Mozilla participated in) in ways that other business cannot.</p><p>Many of these companies “know” far more about a country’s citizens than their government does. In 2014, three of the world’s four most valuable publicly traded companies are tech companies: Apple, Microsoft and Google. 5 years ago, Microsoft was the only tech company that appeared in the top 10. Amazon’s revenues are approx $100bn, 3 times what they were 5 years ago, Apple is the world’s most valuable company, and this year Facebook acquired WhatsApp, a company less than 5 years old, with 55 employees and no patents, for $19bn. These companies are performing extraordinarily well, and making their owners and employees extremely wealthy. They also invest very heavily in innovation, and the pace of Internet innovation has remained consistently high for 10 years.</p>",
+        "platformNeutrality": {
+          "name": "Platform neutrality",
+          "title": "Your apps, everywhere.",
+          "narrative": "<p>The Web is designed to be platform-neutral, which allows us to access any Web page on virtually any browser. Unfortunately, proprietary platforms are gaining traction. iTunes or Google Play, for example, require code that’s specific to each platform. So if we switch platforms, we have to buy everything all over again.</p>",
           "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
           "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
           "mozActionLink": "#",
-          "yourActionLink": "#",
-          "vizId": "internet-penetration"
+          "yourActionLink": "#"
+        },
+        "concentrationOfPower": {
+          "name": "Concentration of power",
+          "title": "Digital empires are on the rise.",
+          "narrative": "<p>The Internet is the world’s largest shared resource. But it’s being controlled by a decreasing number of companies, and those in control are increasing in power. This is a dangerous scenario: Some companies as rich as governments, and have more direct contact with people than most governments. But unlike governments, which are held accountable to their citizens, companies are accountable only to shareholders.</p>",
+          "mozActionCopy": "Mozilla is always trying to protect personal freedom, to make sure you’re safe and under no unauthorized survaillence",
+          "yourActionCopy": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id placerat turpis, eu fermentum justo neque ullamcorper.",
+          "mozActionLink": "#",
+          "yourActionLink": "#"
         }
       }
     }

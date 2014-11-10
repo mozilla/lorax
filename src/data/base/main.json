@@ -7,11 +7,8 @@
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
           "tags":[
-            "Target Corporation",
-            "Citigroup Inc",
-            "Intel Corporation",
-            "Bank of America Corporation",
-            "The Dow Chemical Company"
+            "Mobile",
+            "Emerging economies"
           ]
         },
         "affordable":{
@@ -19,38 +16,27 @@
           "infographicType":"data-lorax-chart-top-internet-companies",
           "infographicOverflow":false,
           "tags":[
-            "Bank of America Corporation",
-            "Procter &amp;amp; Gamble Co",
-            "SYSCO Corporation",
-            "Morgan Stanley",
-            "Sears Holdings Corporation",
-            "United Technologies Corporation"
+            "Mobile",
+            "Emerging economies",
+            "Network operators"
           ]
         },
-        "speaksMyLanguage":{
+        "localization":{
           "status":1,
           "infographicType":"data-lorax-chart-common-languages",
           "infographicOverflow":true,
           "tags":[
-            "Morgan Stanley",
-            "Amerada Hess Corporation",
-            "Hewlett-Packard Company",
-            "Northrop Grumman Corporation",
-            "General Dynamics Corporation"
+            "User rights",
+            "Emerging economies"
           ]
         },
         "accessible":{
           "status":1,
           "infographicType":"data-lorax-chart-accessible",
           "infographicOverflow":false,
-
           "tags":[
-            "Medco Health Solutions Inc",
-            "Wells Fargo &amp;amp; Company",
-            "International Business Machines Corporation",
-            "United Parcel Service of America, Inc",
-            "The Coca-Cola Company",
-            "Humana Inc."
+            "User rights",
+            "Emerging economies"
           ]
         },
         "infrastructure":{
@@ -58,12 +44,10 @@
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":false,
           "tags":[
-            "Cisco Systems, Inc.",
-            "Abbott Laboratories",
-            "General Electric Company",
-            "General Dynamics Corporation",
-            "Wal-Mart Stores, Inc.",
-            "PepsiCo, Inc."
+            "Mobile",
+            "Network operators",
+            "Internet companies",
+            "Private internet"
           ]
         }
       }
@@ -72,24 +56,49 @@
       "issues":{
         "contentCreation":{
           "status":2,
-          "infographicType":"data-lorax-chart-line-graph",
+          "infographicType":"static-image",
           "infographicOverflow":false,
           "tags":[
-            "McKesson Corporation",
-            "Sprint",
-            "Hewlett-Packard Company",
-            "CVS Caremark"
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "Apple",
+            "User rights",
+            "Regulation"
           ]
         },
         "identityControl":{
           "status":1,
-          "infographicType":"data-lorax-chart-terms-and-conditions",
+          "infographicType":"static-image",
           "infographicOverflow":false,
           "tags":[
-            "Lockheed Martin Corporation",
-            "Walgreen Company",
-            "McKesson Corporation",
-            "Intel Corporation"
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "User data",
+            "User rights"
+          ]
+        },
+        "publicTrust":{
+          "status":1,
+          "infographicType":"static-image",
+          "infographicOverflow":false,
+          "tags":[
+            "Government",
+            "Internet companies",
+            "Privacy"
+          ]
+        },
+        "dataTracking":{
+          "status":1,
+          "infographicType":"static-image",
+          "infographicOverflow":false,
+          "tags":[
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "User data",
+            "Privacy"
           ]
         },
         "surveillance":{
@@ -97,64 +106,71 @@
           "infographicType":"static-image",
           "infographicOverflow":false,
           "tags":[
-            "ChevronTexaco Corporation",
-            "The Dow Chemical Company",
-            "The Coca-Cola Company",
-            "International Business Machines Corporation",
-            "General Motors Corporation"
+            "Network operators",
+            "Government",
+            "Internet companies",
+            "User data",
+            "Privacy",
+            "User rights",
+            "Regulation"
           ]
         },
-        "corporateTracking":{
+        "userAgreements":{
           "status":2,
-          "infographicType":"bar-graph",
-          "infographicOverflow":true,
+          "infographicType":"data-lorax-chart-terms-and-conditions",
+          "infographicOverflow":false,
           "tags":[
-            "J.P. Morgan Chase &amp;amp; Co",
-            "International Business Machines Corporation"
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "Apple",
+            "User rights",
+            "Regulation"
           ]
         },
-        "governmentSnooping":{
-          "status":2,
-          "infographicType":"map",
-          "infographicOverflow":true,
-          "tags":[
-            "FedEx Corporation",
-            "General Motors Corporation",
-            "Amerada Hess Corporation"
-          ]
-        },
-        "transparency":{
+        "openSource":{
           "status":2,
           "infographicType":"static-image",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "tags":[
-            "Goldman Sachs Group",
-            "Bank of America Corporation",
-            "Costco Wholesale Corp.",
-            "Sears Holdings Corporation",
-            "SYSCO Corporation"
           ]
         },
-        "decentralization":{
+        "openDataStandards":{
           "status":2,
-          "infographicType":"map",
-          "infographicOverflow":true,
+          "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
-            "General Dynamics Corporation",
-            "Cisco Systems, Inc.",
-            "General Motors Corporation",
-            "Medco Health Solutions Inc"
+          ]
+        },
+        "dataRegulation":{
+          "status":2,
+          "infographicType":"static-image",
+          "infographicOverflow":false,
+          "tags":[
+            "Government",
+            "User data",
+            "User rights",
+            "Regulation"
+          ]
+        },
+        "lobbyPower":{
+          "status":1,
+          "infographicType":"data-lorax-chart-lobbying",
+          "infographicOverflow":false,
+          "tags":[
+            "Government",
+            "Internet companies",
+            "Google",
+            "Facebook"
           ]
         },
         "censorship":{
-          "status":2,
-          "infographicType":"map",
-          "infographicOverflow":true,
+          "status":1,
+          "infographicType":"static-image",
+          "infographicOverflow":false,
           "tags":[
-            "Apple Computer, Inc",
-            "FedEx Corporation",
-            "Target Corporation",
-            "MetLife, Inc."
+            "Government",
+            "User rights"
           ]
         }
       }
@@ -166,10 +182,6 @@
           "infographicType":"static-image",
           "infographicOverflow":false,
           "tags":[
-            "General Dynamics Corporation",
-            "The Dow Chemical Company",
-            "Marathon Oil Corp.",
-            "McKesson Corporation"
           ]
         },
         "cyberBullying":{
@@ -177,34 +189,30 @@
           "infographicType":"bar-graph",
           "infographicOverflow":false,
           "tags":[
-            "Dell, Inc",
-            "Sprint",
-            "American International Group",
-            "SYSCO Corporation"
+            "Facebook",
+            "User rights",
+            "Regulation"
           ]
         },
-        "controlPoints":{
+        "networkDecentralization":{
           "status":1,
           "infographicType":"map",
           "infographicOverflow":true,
           "tags":[
-            "News Corp",
-            "State Farm Insurance",
-            "Apple Computer, Inc",
-            "Sunoco Inc"
+            "Network operators",
+            "Government"
           ]
         },
-        "storageSecurity":{
+        "cloudSecurity":{
           "status":2,
           "infographicType":"bar-graph",
           "infographicOverflow":false,
           "tags":[
-            "The Dow Chemical Company",
-            "Procter &amp;amp; Gamble Co",
-            "CVS Caremark",
-            "FedEx Corporation",
-            "Honeywell International",
-            "Wal-Mart Stores, Inc."
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "Apple",
+            "User data"
           ]
         }
       }
@@ -212,38 +220,54 @@
     "fairness":{
       "issues":{
         "netNeutrality":{
+          "status":1,
+          "infographicType":"map",
+          "infographicOverflow":true,
+          "tags":[
+            "Network operators",
+            "Internet companies",
+            "Net neutrality",
+            "Regulation"
+          ]
+        },
+        "zeroRating":{
+          "status":1,
+          "infographicType":"map",
+          "infographicOverflow":true,
+          "tags":[
+            "Mobile",
+            "Network operators",
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "Net neutrality",
+            "Emerging economies",
+            "Private internet"
+          ]
+        },
+        "platformNeutrality":{
+          "status":1,
+          "infographicType":"data-lorax-chart-platform-neutrality",
+          "infographicOverflow":false,
+          "tags":[
+            "Mobile",
+            "Internet companies",
+            "Google",
+            "Apple",
+            "Net neutrality",
+            "Private internet"
+          ]
+        },
+        "concentrationOfPower":{
           "status":2,
           "infographicType":"map",
           "infographicOverflow":true,
           "tags":[
-            "Honeywell International",
-            "Northrop Grumman Corporation",
-            "PepsiCo, Inc.",
-            "AT&amp;amp;T Corp"
-          ]
-        },
-        "interopelability":{
-          "status":1,
-          "infographicType":"bar-graph",
-          "infographicOverflow":false,
-          "tags":[
-            "Dell, Inc",
-            "Prudential Financial, Inc",
-            "International Assets Holding",
-            "Sunoco Inc"
-          ]
-        },
-        "distributionOfPower":{
-          "status":2,
-          "infographicType":"static-image",
-          "infographicOverflow":false,
-          "tags":[
-            "Berkshire Hathaway",
-            "General Dynamics Corporation",
-            "Sears Holdings Corporation",
-            "State Farm Insurance",
-            "United Technologies Corporation",
-            "Microsoft Corporation"
+            "Internet companies",
+            "Google",
+            "Facebook",
+            "Apple",
+            "Regulation"
           ]
         }
       }

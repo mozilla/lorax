@@ -29,6 +29,8 @@ define([
   'lorax/directives/chart-world-map',
   'lorax/directives/chart-static-image',
   'lorax/directives/chart-accessible',
+  'lorax/directives/chart-platform-neutrality',
+  'lorax/directives/chart-lobbying',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -75,6 +77,8 @@ define([
   ChartWorldMapDirective,
   ChartStaticImageDirective,
   ChartAccessibleDirective,
+  ChartPlatformNeutralityDirective,
+  ChartLobbyingDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -220,11 +224,25 @@ define([
         .directive('loraxChartStaticImage', ChartStaticImageDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartStaticImageDirective}
-         * as 'ChartStaticImageDirective'
+         * Injects {@link lorax/directives/ChartAccessibleDirective}
+         * as 'ChartAccessibleDirective'
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartAccessible', ChartAccessibleDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartPlatformNeutralityDirective}
+         * as 'ChartPlatformNeutralityDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartPlatformNeutrality', ChartPlatformNeutralityDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartLobbyingDirective}
+         * as 'ChartLobbyingDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartLobbying', ChartLobbyingDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}

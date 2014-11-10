@@ -68,7 +68,7 @@
       ]
     }
   },
-  "speaksMyLanguage": {
+  "localization": {
     "header": "Languages on the Web",
     "subheader": "Percent of users",
     "source": {
@@ -237,118 +237,26 @@
       "src": ""
     },
     "dataPoints": {
-      "lineGraphData": [
+      "internetCompaniesByRevenue": [
         {
-          "label": "1998",
-          "data": [
-            "39,232,100",
-            238
-          ]
+          "name": "Amazon",
+          "revenue": 74.45
         },
         {
-          "label": "1999",
-          "data": [
-            "46,232,716",
-            410
-          ]
+          "name": "Google",
+          "revenue": 59.82
         },
         {
-          "label": "2000",
-          "data": [
-            "56,828,897",
-            577
-          ]
+          "name": "eBay",
+          "revenue": 16.05
         },
         {
-          "label": "2001",
-          "data": [
-            "60,286,248",
-            529
-          ]
+          "name": "Tencent",
+          "revenue": 9.91
         },
         {
-          "label": "2002",
-          "data": [
-            "68,875,588",
-            653
-          ]
-        },
-        {
-          "label": "2003",
-          "data": [
-            "80,143,509",
-            692
-          ]
-        },
-        {
-          "label": "2004",
-          "data": [
-            "89,129,850",
-            730
-          ]
-        },
-        {
-          "label": "2005",
-          "data": [
-            "98,370,157",
-            870
-          ]
-        },
-        {
-          "label": "2006",
-          "data": [
-            "117,890,235",
-            956
-          ]
-        },
-        {
-          "label": "2007",
-          "data": [
-            "121,134,287",
-            1016
-          ]
-        },
-        {
-          "label": "2008",
-          "data": [
-            "124,122,449",
-            975
-          ]
-        },
-        {
-          "label": "2009",
-          "data": [
-            "120,014,575",
-            943
-          ]
-        },
-        {
-          "label": "2010",
-          "data": [
-            "123,414,449",
-            885
-          ]
-        },
-        {
-          "label": "2011",
-          "data": [
-            "127,197,796",
-            880
-          ]
-        },
-        {
-          "label": "2012",
-          "data": [
-            "133,188,902",
-            799
-          ]
-        },
-        {
-          "label": "2013",
-          "data": [
-            "141,486,592",
-            776
-          ]
+          "name": "Facebook",
+          "revenue": 7.87
         }
       ]
     }
@@ -385,6 +293,70 @@
       ]
     }
   },
+  "publicTrust": {
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "dataTracking": {
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
   "surveillance": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
@@ -417,105 +389,12 @@
       ]
     }
   },
-  "corporateTracking": {
+  "userAgreements": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
       "name": "",
       "src": ""
-    },
-    "dataPoints": {
-      "lineGraphData": [
-        {
-          "label": "1998",
-          "data": [
-              "39,232,100",
-              238
-          ]
-        },
-        {
-          "label": "1999",
-          "data": [
-              "46,232,716",
-              410
-          ]
-        },
-        {
-          "label": "2000",
-          "data": [
-              "56,828,897",
-              577
-          ]
-        },
-        {
-          "label": "2001",
-          "data": [
-              "60,286,248",
-              529
-          ]
-        },
-        {
-          "label": "2002",
-          "data": [
-              "68,875,588",
-              653
-          ]
-        },
-        {
-          "label": "2003",
-          "data": [
-              "80,143,509",
-              692
-          ]
-        },
-        {
-          "label": "2004",
-          "data": [
-              "89,129,850",
-              730
-          ]
-        }
-      ]
-    }
-  },
-  "governmentSnooping": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
-    "source": {
-      "name": "",
-      "src": ""
-    },
-    "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
-        },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
-        }
-      ]
-    }
-  },
-  "transparency": {
-    "header": "Online Terms & Conditions (in total words)",
-    "subheader": "by length",
-    "source": {
-      "name": "Freedom House",
-      "src": "http://test.com"
     },
     "dataPoints": {
       "termsAndConditions": [
@@ -588,7 +467,7 @@
       ]
     }
   },
-  "decentralization": {
+  "openSource": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
@@ -619,6 +498,198 @@
         }
       ]
     }
+  },
+  "openDataStandards": {
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "dataRegulation": {
+    "header": "Top 5 Internet Companies",
+    "subheader": "by Revenue",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+      "internetCompaniesByRevenue": [
+        {
+          "name": "Amazon",
+          "revenue": 74.45
+        },
+        {
+          "name": "Google",
+          "revenue": 59.82
+        },
+        {
+          "name": "eBay",
+          "revenue": 16.05
+        },
+        {
+          "name": "Tencent",
+          "revenue": 9.91
+        },
+        {
+          "name": "Facebook",
+          "revenue": 7.87
+        }
+      ]
+    }
+  },
+  "lobbyPower": {
+    "header": "Lobbying Expenditures vs. Revolvers*",
+    "subheader": "in $ and % per year",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+          "dataLabels": [
+            "Expenditures",
+            "Revolvers"
+          ],
+          "lineGraphData": [
+            {
+              "label": "1998",
+              "data": [
+                1450000000,
+                44.70
+              ]
+            },
+            {
+              "label": "1999",
+              "data": [
+                1450000000,
+                43.70
+              ]
+            },
+            {
+              "label": "2000",
+              "data": [
+                1570000000,
+                48.20
+              ]
+            },
+            {
+              "label": "2001",
+              "data": [
+                1640000000,
+                50.90
+              ]
+            },
+            {
+              "label": "2002",
+              "data": [
+                1830000000,
+                54.90
+              ]
+            },
+            {
+              "label": "2003",
+              "data": [
+                2060000000,
+                57.00
+              ]
+            },
+            {
+              "label": "2004",
+              "data": [
+                2200000000,
+                56.80
+              ]
+            },
+            {
+              "label": "2005",
+              "data": [
+                2440000000,
+                57.50
+              ]
+            },
+            {
+              "label": "2006",
+              "data": [
+                2630000000,
+                60.10
+              ]
+            },
+            {
+              "label": "2007",
+              "data": [
+                2870000000,
+                60.70
+              ]
+            },
+            {
+              "label": "2008",
+              "data": [
+                3300000000,
+                63.70
+              ]
+            },
+            {
+              "label": "2009",
+              "data": [
+                3500000000,
+                66.60
+              ]
+            },
+            {
+              "label": "2010",
+              "data": [
+                3550000000,
+                67.50
+              ]
+            },
+            {
+              "label": "2011",
+              "data": [
+                3330000000,
+                68.50
+              ]
+            },
+            {
+              "label": "2012",
+              "data": [
+                3310000000,
+                68.60
+              ]
+            },
+            {
+              "label": "2013",
+              "data": [
+                3240000000,
+                68.90
+              ]
+            }
+          ]
+        }
   },
   "censorship": {
     "header": "Top 5 Internet Companies",
@@ -716,7 +787,7 @@
       ]
     }
   },
-  "controlPoints": {
+  "networkDecentralization": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
@@ -748,7 +819,7 @@
       ]
     }
   },
-  "storageSecurity": {
+  "cloudSecurity": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
@@ -812,7 +883,7 @@
       ]
     }
   },
-  "interopelability": {
+  "zeroRating": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
@@ -844,7 +915,31 @@
       ]
     }
   },
-  "distributionOfPower": {
+  "platformNeutrality": {
+    "header": "Developers that target Mobile Web vs. Native platform",
+    "subheader": "Percentage per Q3 of 2014",
+    "source": {
+      "name": "",
+      "src": ""
+    },
+    "dataPoints": {
+      "percentOfUsers": [
+        {
+          "type": "Mobile",
+          "value": 15
+        },
+        {
+          "type": "Android",
+          "value": 30
+        },
+        {
+          "type": "iOS",
+          "value": 49
+        }
+      ]
+    }
+  },
+  "concentrationOfPower": {
     "header": "Top 5 Internet Companies",
     "subheader": "by Revenue",
     "source": {
