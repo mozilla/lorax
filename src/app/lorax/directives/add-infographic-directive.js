@@ -8,20 +8,10 @@ define([], function () {
     /**
      * Issue Details directive
      */
-    var AddInfographicDirective = function ($compile) {
+    var AddInfographicDirective = function () {
         return {
             restrict: 'A',
             scope: true,
-            // compile: function compile(tElement, tAttrs) {
-            //   console.log(tAttrs);
-            //   var directiveGetter = tAttrs.directiveType;
-
-            //   return function postLink(scope, element) {
-            //       element.removeAttr('data-lorax-add-infographic-directive');
-            //       // element.attr(directiveGetter, '');
-            //       // $compile(element)(scope);
-            //   };
-            // },
             controller: AddInfographicController,
             link: AddInfographicLinkFn
         };
@@ -57,10 +47,12 @@ define([], function () {
      * @param {object} controller Controller reference.
      */
     var AddInfographicLinkFn = function (scope, iElem, iAttrs, controller) {
-            var directiveType = iAttrs.directiveType;
-            iElem.removeAttr('data-lorax-add-infographic-directive');
-            iElem.attr(directiveType, '');
-            controller._$compile(iElem)(scope);
+        var directiveType = iAttrs.directiveType;
+
+        iElem.removeAttr('data-lorax-add-infographic-directive');
+        iElem.attr(directiveType, '');
+
+        controller._$compile(iElem)(scope);
     };
 
     return AddInfographicDirective;

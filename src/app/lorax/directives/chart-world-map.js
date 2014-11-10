@@ -57,7 +57,7 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
                 '#3b672c',
                 '#2d4c20',
                 '#457833'
-            ]
+            ];
 
             var mapData = model;
 
@@ -71,7 +71,7 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
                 countryData[id] = {
                     'display': display,
                     'value': value
-                }
+                };
             });
 
             var map = d3.select('#' + controller._$scope.issue.getId() + ' .infographic__wrapper div')
@@ -97,7 +97,7 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
                 .attr('class', 'map__background')
                 .attr('width', width)
                 .attr('height', height)
-                .on('click', country_clicked);
+                .on('click', countryClicked);
 
             var g = svg.append('g');
 
@@ -113,11 +113,11 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
                 // .style('filter', 'url(#patternFilter)')
                 //.style('mask', 'url(#maskStripe)')
                 //.style('pattern', 'url(#patternStripe)')
-                .on('click', country_clicked);
+                .on('click', countryClicked);
 
             initializeSvgFilters(svg);
 
-            function country_clicked (d) {
+            function countryClicked (d) {
                 g.selectAll('path').style('filter', '');
                 if (d) {
                     var country = g.select('#' + controller._$scope.issue.getId() + '_' + d.id);
@@ -137,17 +137,18 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
                 .attr('height', '130%');
 
         var bright = offsetFilter.append('feComponentTransfer');
-                bright.attr('in', 'SourceGraphic')
-                bright.append('feFuncR')
-                    .attr('type', 'linear')
-                    .attr('slope', 9999)
-                bright.append('feFuncG')
-                    .attr('type', 'linear')
-                    .attr('slope', '10')
-                bright.append('feFuncB')
-                    .attr('type', 'linear')
-                    .attr('slope', '10')
-                bright.attr('result', 'brightness');
+
+        bright.attr('in', 'SourceGraphic');
+        bright.append('feFuncR')
+            .attr('type', 'linear')
+            .attr('slope', 9999);
+        bright.append('feFuncG')
+            .attr('type', 'linear')
+            .attr('slope', '10');
+        bright.append('feFuncB')
+            .attr('type', 'linear')
+            .attr('slope', '10');
+        bright.attr('result', 'brightness');
 
         offsetFilter.append('feColorMatrix')
                 .attr('in', 'brightness')

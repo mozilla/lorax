@@ -1,4 +1,4 @@
-define(['angular', 'jquery'], function (angular, $) {
+define(function () {
     'use strict';
 
     var ExploreService = function ($location, $timeout) {

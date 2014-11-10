@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    var TagModel = function (id, localeData) {
+    var TagModel = function (id) {
         this._id = id;
         // this._name = this._localize(localeData, 'tags', id, 'name');
         this._name = id;

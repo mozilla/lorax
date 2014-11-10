@@ -61,11 +61,11 @@ define(['jquery', 'd3'], function ($, d3) {
             var width = 1000;
             var height = 500;
             var margins = {
-                        top: 20,
-                        right: 20,
-                        bottom: 20,
-                        left: 50
-                    };
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 50
+            };
 
 
             var xAxis = chart.selectAll('div')

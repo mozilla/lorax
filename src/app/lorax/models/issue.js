@@ -2,7 +2,7 @@ define([
     'lodash',
     'lorax/models/tag',
     'lorax/models/infographic'
-    ], function (
+], function (
     _,
     TagModel,
     InfographicModel

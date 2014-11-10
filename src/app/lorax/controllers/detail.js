@@ -9,9 +9,7 @@ define([], function () {
 
     var DetailCtrl = function (
         $scope,
-        $route,
-        $timeout,
-        dataService
+        $route
     ) {
 
         this._$scope = $scope;
@@ -32,7 +30,7 @@ define([], function () {
         //       if ( newParam.params.issue ) {
         //         console.log("Issue exists. Animate!");
         //       } else if ( newParam.params.topic ) {
-        //         console.log("Topic exists. Animate!");        
+        //         console.log("Topic exists. Animate!");
         //         var issue = this._$scope.detail.model.getTopicById(newParam.params.topic).getIssues()[0].getId();
         //         $('#' + issue).scrollIntoView();
         //       } else {
@@ -47,9 +45,7 @@ define([], function () {
 
     DetailCtrl.$inject = [
         '$scope',
-        '$route',
-        '$timeout',
-        'dataService'
+        '$route'
     ];
 
     return DetailCtrl;

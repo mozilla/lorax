@@ -14,7 +14,7 @@ define([
 
     var dataService = function ($http, $q) {
 
-        this._defaultLocale = 'en-US'
+        this._defaultLocale = 'en-US';
         this._$http = $http;
         this._$q    = $q;
         this._mainData, this._requestingMain, this._mainDefer;
@@ -80,7 +80,7 @@ define([
                                 infographicReq.then(function (infographicRes) {
                                     this._mainData = new MainModel(res.data, localeRes.data, infographicRes.data);
                                     this._mainDefer.resolve(this._mainData);
-                                }.bind(this))
+                                }.bind(this));
                             }
                         }.bind(this));
                     }
