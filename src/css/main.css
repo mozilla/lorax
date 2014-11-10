@@ -1585,3 +1585,43 @@ img {
 .map__background {
   fill: none;
 }
+/* Accessibiity / Vision Impairment
+   ========================================================================== */
+.accessibility__img {
+  padding: 25px 0;
+  margin: 0 auto;
+  display: block;
+}
+.accessibility__header {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 23px;
+  font-size: 2.3rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+.accessibility__header span {
+  opacity: 0.8;
+}
+/* Line Graph
+   ========================================================================== */
+.linegraph__line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1px;
+}
+.linegraph__point_0_circle {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.5px;
+}
+.linegraph__point_1_circle {
+  fill: #ffffff;
+}
+.linegraph__xaxis_year {
+  font-size: 10px;
+}
+.linegraph__xaxis_info {
+  fill: #ffffff;
+  font-size: 12px;
+}

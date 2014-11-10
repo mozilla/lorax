@@ -6,87 +6,91 @@
  *
  */
 define([
-    'lorax/config/routes',
-    //'core/config/http',
+  'lorax/config/routes',
+  //'core/config/http',
 
-    // controller
-    'lorax/controllers/core',
-    'lorax/controllers/explore',
-    'lorax/controllers/detail',
-    'lorax/controllers/nav',
+  // controller
+  'lorax/controllers/core',
+  'lorax/controllers/explore',
+  'lorax/controllers/detail',
+  'lorax/controllers/nav',
 
-    // directives
-    'lorax/directives/window',
-    'lorax/directives/prevent-default',
-    'lorax/directives/issue-details',
-    'lorax/directives/issue-scroll',
-    'lorax/directives/issue-all',
-    'lorax/directives/chart-top-internet-companies',
-    'lorax/directives/chart-terms-and-conditions',
-    'lorax/directives/chart-common-languages',
-    'lorax/directives/chart-lobbying-costs',
-    'lorax/directives/chart-line-graph',
-    'lorax/directives/chart-world-map',
-    'lorax/directives/explore-canvas',
-    'lorax/directives/add-infographic-directive',
+  // directives
+  'lorax/directives/window',
+  'lorax/directives/prevent-default',
+  'lorax/directives/issue-details',
+  'lorax/directives/issue-scroll',
+  'lorax/directives/issue-all',
+  'lorax/directives/chart-top-internet-companies',
+  'lorax/directives/chart-terms-and-conditions',
+  'lorax/directives/chart-common-languages',
+  'lorax/directives/chart-lobbying-costs',
+  'lorax/directives/chart-line-graph',
+  'lorax/directives/chart-world-map',
+  'lorax/directives/chart-static-image',
+  'lorax/directives/chart-accessible',
+  'lorax/directives/explore-canvas',
+  'lorax/directives/add-infographic-directive',
 
-    // services
-    'lorax/services/window',
-    'lorax/services/scroll',
-    'lorax/services/pubsub',
-    'lorax/services/data',
-    'lorax/services/explore',
+  // services
+  'lorax/services/window',
+  'lorax/services/scroll',
+  'lorax/services/pubsub',
+  'lorax/services/data',
+  'lorax/services/explore',
 
-    // filters
-    'lorax/filters/unsafe',
+  // filters
+  'lorax/filters/unsafe',
 
-    //'core/constants/resource-bundle',
+  //'core/constants/resource-bundle',
 
-    'angular',
-    'angular-route'
-    //'angular-animate',
-    //'angular-touch',
-    //'angular-resource',
+  'angular',
+  'angular-route'
+  //'angular-animate',
+  //'angular-touch',
+  //'angular-resource',
 
-    //'core/providers/angular-adaptive-detection'
+  //'core/providers/angular-adaptive-detection'
 ], function (
-    RouteConfig,
-    //HTTPConfig,
+  RouteConfig,
+  //HTTPConfig,
 
-    // controllers
-    CoreCtrl,
-    ExploreCtrl,
-    DetailCtrl,
-    NavCtrl,
+  // controllers
+  CoreCtrl,
+  ExploreCtrl,
+  DetailCtrl,
+  NavCtrl,
 
-    // directives
-    WindowDirective,
-    PreventDefaultDirective,
-    IssueDetailsDirective,
-    IssueScrollDirective,
-    IssueAllDirective,
-    ChartTopInternetCompaniesDirective,
-    ChartTermsAndConditionsDirective,
-    ChartCommonLanguagesDirective,
-    ChartLobbyingCostsDirective,
-    ChartLineGraphDirective,
-    ChartWorldMapDirective,
-    ExploreCanvasDirective,
-    AddInfographicDirective,
+  // directives
+  WindowDirective,
+  PreventDefaultDirective,
+  IssueDetailsDirective,
+  IssueScrollDirective,
+  IssueAllDirective,
+  ChartTopInternetCompaniesDirective,
+  ChartTermsAndConditionsDirective,
+  ChartCommonLanguagesDirective,
+  ChartLobbyingCostsDirective,
+  ChartLineGraphDirective,
+  ChartWorldMapDirective,
+  ChartStaticImageDirective,
+  ChartAccessibleDirective,
+  ExploreCanvasDirective,
+  AddInfographicDirective,
 
-    // services
-    windowService,
-    scrollService,
-    pubSubService,
-    dataService,
-    exploreService,
+  // services
+  windowService,
+  scrollService,
+  pubSubService,
+  dataService,
+  exploreService,
 
-    // filters
-    unsafeFilter,
+  // filters
+  unsafeFilter,
 
-    //ResourceBundle,
+  //ResourceBundle,
 
-    angular
+  angular
 ) {
     'use strict';
 
@@ -209,6 +213,20 @@ define([
         .directive('loraxChartWorldMap', ChartWorldMapDirective)
 
         /**
+         * Injects {@link lorax/directives/ChartStaticImageDirective}
+         * as 'ChartStaticImageDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartStaticImage', ChartStaticImageDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartStaticImageDirective}
+         * as 'ChartStaticImageDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartAccessible', ChartAccessibleDirective)
+
+        /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
          * as 'ChartLobbyingCostsDirective'
          * @method lorax/loraxApp~directive
@@ -260,8 +278,8 @@ define([
 
         .filter('unsafe', unsafeFilter);
 
-    /**
-     * Bootstrap the application
-     */
-    return angular.bootstrap(document, ['loraxApp']);
+      /**
+       * Bootstrap the application
+       */
+      return angular.bootstrap(document, ['loraxApp']);
 });
