@@ -57,6 +57,8 @@ define([
 
         this._currentTopic = 0;
 
+        this.AT_LARGE = 960;
+        this.AT_MEDIUM = 560;
         // this._mousePosition;
     };
 
@@ -107,11 +109,18 @@ define([
 
         this._issueMargin = 80;
 
+        var topMargin = 200;
+        var leftMargin = 400;
+        if (this._renderer.width < this.AT_MEDIUM) {
+            topMargin = 250;
+            leftMargin = 100;
+        }
+
         this._scrollArea = new PIXI.Rectangle(
-            -((this._renderer.width - 400) / 2),
-            -((this._renderer.height - 200) / 2),
-            this._renderer.width - 400,
-            this._renderer.height - 200
+            -((this._renderer.width - leftMargin) / 2),
+            -((this._renderer.height - topMargin) / 2),
+            this._renderer.width - leftMargin,
+            this._renderer.height - topMargin
         );
 
         this._drawFakes();
@@ -300,11 +309,11 @@ define([
                 topic = this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
                 this._topicsContainer.addChild(topic.elm);
 
-                if (this._renderer.width > 960) {
+                if (this._renderer.width > this.AT_LARGE) {
                     topic.elm.x = (this._renderer.width - 400) /
                         (this._topicsData.length - 1) * i;
                     topic.elm.x -= ((this._renderer.width - 400) / 2);
-                } else if (this._renderer.width > 560) {
+                } else if (this._renderer.width > this.AT_MEDIUM) {
                     topic.elm.x = (this._renderer.width - 500) * (i % 2);
                     topic.elm.x -= ((this._renderer.width - 500) / 2);
                     topic.elm.y =  (350 * Math.floor(i / 2)) - 350;

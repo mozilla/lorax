@@ -130,7 +130,7 @@ define([
     Topic.prototype._delayTouchOver = function () {
         this._timeoutTouchOver = setTimeout(function () {
             this._mouseOver();
-        }.bind(this), 1000);
+        }.bind(this), 1500);
     };
 
     /**

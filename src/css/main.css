@@ -814,7 +814,7 @@ img {
   pointer-events: none;
   position: fixed;
   width: 100%;
-  bottom: 80px;
+  bottom: 20px;
   margin: 0 auto;
 }
 .flexbox .explore-menu {
@@ -842,6 +842,11 @@ img {
   clear: both;
   content: '';
   display: table;
+}
+@media screen and (min-width: 560px) {
+  .explore-menu {
+    bottom: 80px;
+  }
 }
 .explore-menu > li {
   min-height: 50px;
