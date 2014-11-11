@@ -4,6 +4,10 @@ define([
     'pixi',
     'stats',
     'createjs',
+    'explore/explore-canvas',
+    'explore/explore-mode',
+    'explore/topics-mode',
+    'explore/issues-mode',
     'explore/issue',
     'explore/circle',
     'explore/topic',
@@ -13,6 +17,10 @@ define([
     PIXI,
     Stats,
     createjs,
+    ExploreCanvas,
+    ExploreMode,
+    TopicsMode,
+    IssuesMode,
     Issue,
     Circle,
     Topic
@@ -20,33 +28,44 @@ define([
     'use strict';
 
     var Explore = function () {
-        return {
-            setContainer: this.setContainer.bind(this),
-            init: this.init.bind(this),
-            setData: this.setData.bind(this),
-            showExplore: this.showExplore.bind(this),
-            showTopics: this.showTopics.bind(this),
-            showIssues: this.showIssues.bind(this),
-            setEnterIssueCallback: this.setEnterIssueCallback.bind(this)
-        };
+        this._canvas = new ExploreCanvas();
+        this._explore = new ExploreMode(this._canvas);
+        this._topics = new TopicsMode(this._canvas);
+        this._issues = new IssuesMode(this._canvas);
+
+        // return {
+        //     setContainer: this.setContainer.bind(this),
+        //     init: this.init.bind(this),
+        //     setData: this.setData.bind(this),
+        //     showExplore: this.showExplore.bind(this),
+        //     showTopics: this.showTopics.bind(this),
+        //     showIssues: this.showIssues.bind(this),
+        //     setEnterIssueCallback: this.setEnterIssueCallback.bind(this)
+        // };
     };
 
     Explore.prototype.init = function (isDebug) {
-        // FPS count for debuggingg
+        this._canvas.drawTags(this._tagData);
+        this._canvas.drawIssues(this._issueData);
+
+        this._explore.init();
+        // this._topics.init();
+        // this._issues.init();
+
+        this._explore.show();
+
+        // FPS count for debugging
         if (isDebug) {
             this._stats = new Stats();
             this._showStats();
         }
 
-        this._issues = [];
-        this._tags = [];
-        this._fakes = [];
-        this._topics = [];
+        // this._topics = [];
 
         // this._issueData;
         // this._tagData;
 
-        this._lastTick = 0;
+        // this._lastTick = 0;
         this._mode = Issue.MODE_EXPLORE;
 
         // this._autoMode;
@@ -55,7 +74,7 @@ define([
         this._autoModeTime = 8000;
         this._autoModeTimeUp = 3000;
 
-        this._currentTopic = 0;
+        // this._currentTopic = 0;
 
         this.AT_LARGE = 960;
         this.AT_MEDIUM = 560;
@@ -68,77 +87,81 @@ define([
         this._topicsData = data.getTopics();
     };
 
+    Explore.prototype.setContainer = function (container) {
+        this._canvas.init(container);
+    };
+
     /**
     * Sets HTML element for PIXI container
     * @param  {object} DOM object
     */
-    Explore.prototype.setContainer = function (container) {
-        this._canvasSize = {x: container.width(), y: container.height()};
+    // Explore.prototype.setContainer = function (container) {
+    //     this._canvasSize = {x: container.width(), y: container.height()};
 
-        // create pixijs renderer and stage
-        this._renderer = new PIXI.CanvasRenderer(
-            this._canvasSize.x,
-            this._canvasSize.y,
-            {transparent: true, antialias: true});
-        this._stage = new PIXI.Stage();
-        this._stage.interactive = true;
-        container.append(this._renderer.view);
+    //     // create pixijs renderer and stage
+    //     this._renderer = new PIXI.CanvasRenderer(
+    //         this._canvasSize.x,
+    //         this._canvasSize.y,
+    //         {transparent: true, antialias: true});
+    //     this._stage = new PIXI.Stage();
+    //     this._stage.interactive = true;
+    //     container.append(this._renderer.view);
 
-        // lines
-        this._linesContainer = new PIXI.Graphics();
-        this._linesContainer.x = Math.round(this._renderer.width / 2);
-        this._linesContainer.y = Math.round(this._renderer.height / 2);
-        this._stage.addChild(this._linesContainer);
+    //     // lines
+    //     this._linesContainer = new PIXI.Graphics();
+    //     this._linesContainer.x = Math.round(this._renderer.width / 2);
+    //     this._linesContainer.y = Math.round(this._renderer.height / 2);
+    //     this._stage.addChild(this._linesContainer);
 
-        // circles
-        var dimension = Math.min(this._canvasSize.x, this._canvasSize.y);
-        this._exploreRadius = dimension / 2;
-        this._issuesContainer = new PIXI.DisplayObjectContainer();
-        this._issuesContainer.interactive = true;
-        this._issuesContainer.x = this._linesContainer.x;
-        this._issuesContainer.y = this._linesContainer.y;
-        this._stage.addChild(this._issuesContainer);
+    //     // circles
+    //     var dimension = Math.min(this._canvasSize.x, this._canvasSize.y);
+    //     this._exploreRadius = dimension / 2;
+    //     this._issuesContainer = new PIXI.DisplayObjectContainer();
+    //     this._issuesContainer.interactive = true;
+    //     this._issuesContainer.x = this._linesContainer.x;
+    //     this._issuesContainer.y = this._linesContainer.y;
+    //     this._stage.addChild(this._issuesContainer);
 
-        // topics hover areas
-        this._topicsContainer = new PIXI.DisplayObjectContainer();
-        this._topicsContainer.x = this._linesContainer.x;
-        this._topicsContainer.y = this._linesContainer.y;
-        this._stage.addChild(this._topicsContainer);
+    //     // topics hover areas
+    //     this._topicsContainer = new PIXI.DisplayObjectContainer();
+    //     this._topicsContainer.x = this._linesContainer.x;
+    //     this._topicsContainer.y = this._linesContainer.y;
+    //     this._stage.addChild(this._topicsContainer);
 
-        this._scrollPosition = this._scrollFinalPosition = 0;
+    //     this._scrollPosition = this._scrollFinalPosition = 0;
 
-        this._issueMargin = 80;
+    //     this._issueMargin = 80;
 
-        var topMargin = 200;
-        var leftMargin = 400;
-        if (this._renderer.width < this.AT_MEDIUM) {
-            topMargin = 250;
-            leftMargin = 100;
-        }
+    //     var topMargin = 200;
+    //     var leftMargin = 400;
+    //     if (this._renderer.width < this.AT_MEDIUM) {
+    //         topMargin = 250;
+    //         leftMargin = 100;
+    //     }
 
-        this._scrollArea = new PIXI.Rectangle(
-            -((this._renderer.width - leftMargin) / 2),
-            -((this._renderer.height - topMargin) / 2),
-            this._renderer.width - leftMargin,
-            this._renderer.height - topMargin
-        );
+    //     this._scrollArea = new PIXI.Rectangle(
+    //         -((this._renderer.width - leftMargin) / 2),
+    //         -((this._renderer.height - topMargin) / 2),
+    //         this._renderer.width - leftMargin,
+    //         this._renderer.height - topMargin
+    //     );
 
-        this._drawFakes();
-        this._drawIssues();
-        this._drawTags();
+    //     this._drawFakes();
+    //     this._drawIssues();
+    //     this._drawTags();
 
-        // start animation
-        requestAnimationFrame(this._animate.bind(this));
+    //     // start animation
+    //     requestAnimationFrame(this._animate.bind(this));
 
-        this._autoModeTimeout = setTimeout(
-            this._startAutoMode.bind(this),
-            this._autoModeTime
-        );
+    //     this._autoModeTimeout = setTimeout(
+    //         this._startAutoMode.bind(this),
+    //         this._autoModeTime
+    //     );
 
-        this._stage.touchstart = this._onTouchStart.bind(this);
-        $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
-        $(document).on('swiperight', container, this._onSwipeRight.bind(this));
-    };
+    //     this._stage.touchstart = this._onTouchStart.bind(this);
+    //     $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
+    //     $(document).on('swiperight', container, this._onSwipeRight.bind(this));
+    // };
 
     Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
         this.enterIssueCallback = enterIssueCallback;
@@ -337,88 +360,88 @@ define([
         return this._fakes[Math.floor(Math.random() * this._fakes.length)];
     };
 
-    /**
-    * Draw dull circles on canvas
-    */
-    Explore.prototype._drawFakes = function () {
-        var seed;
-        var rSeed;
-        var circle;
-        for (var i = 0; i < 200; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
+    // /**
+    // * Draw dull circles on canvas
+    // */
+    // Explore.prototype._drawFakes = function () {
+    //     var seed;
+    //     var rSeed;
+    //     var circle;
+    //     for (var i = 0; i < 200; i ++) {
+    //         seed = Math.random() * Math.PI * 2;
+    //         rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
 
-            circle = new Circle();
+    //         circle = new Circle();
 
-            this._fakes.push(circle);
-            this._issuesContainer.addChild(circle.elm);
+    //         this._fakes.push(circle);
+    //         this._issuesContainer.addChild(circle.elm);
 
-            circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-            circle.elm.alpha = 0.1 + (0.3 * rSeed / this._exploreRadius);
-        }
-    };
+    //         circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+    //         circle.elm.alpha = 0.1 + (0.3 * rSeed / this._exploreRadius);
+    //     }
+    // };
 
-    /**
-    * Draw tags on canvas
-    */
-    Explore.prototype._drawTags = function () {
-        var seed;
-        var rSeed;
-        var tag;
-        for (var i = 0; i < this._tagData.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = this._exploreRadius + (Math.random() * 5);
+    // /**
+    // * Draw tags on canvas
+    // */
+    // Explore.prototype._drawTags = function () {
+    //     var seed;
+    //     var rSeed;
+    //     var tag;
+    //     for (var i = 0; i < this._tagData.length; i ++) {
+    //         seed = Math.random() * Math.PI * 2;
+    //         rSeed = this._exploreRadius + (Math.random() * 5);
 
-            tag = new Issue(i, this._canvasSize);
-            tag.setIsInteractive(false);
+    //         tag = new Issue(i, this._canvasSize);
+    //         tag.setIsInteractive(false);
 
-            this._tags.push(tag);
-            this._issuesContainer.addChild(tag.elm);
+    //         this._tags.push(tag);
+    //         this._issuesContainer.addChild(tag.elm);
 
-            tag.setData(this._tagData[i]);
-            tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+    //         tag.setData(this._tagData[i]);
+    //         tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
 
-            tag.elm.mouseover = this._onOverTag.bind(this);
-            tag.elm.mouseout = this._onOutTag.bind(this);
-            // tag.elm.mousedown = this._onPressIssue.bind(this);
-            tag.isInteractive = false;
-        }
-    };
+    //         tag.elm.mouseover = this._onOverTag.bind(this);
+    //         tag.elm.mouseout = this._onOutTag.bind(this);
+    //         tag.elm.mousedown = this._onPressIssue.bind(this);
+    //         tag.isInteractive = false;
+    //     }
+    // };
 
-    /**
-    * Draw issues on canvas
-    */
-    Explore.prototype._drawIssues = function () {
-        var seed;
-        var rSeed;
-        var issue;
-        for (var i = 0; i < this._issueData.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
+    // /**
+    // * Draw issues on canvas
+    // */
+    // Explore.prototype._drawIssues = function () {
+    //     var seed;
+    //     var rSeed;
+    //     var issue;
+    //     for (var i = 0; i < this._issueData.length; i ++) {
+    //         seed = Math.random() * Math.PI * 2;
+    //         rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
 
-            issue = new Issue(i, this._canvasSize);
+    //         issue = new Issue(i, this._canvasSize);
 
-            this._issues.push(issue);
-            this._issuesContainer.addChild(issue.elm);
+    //         this._issues.push(issue);
+    //         this._issuesContainer.addChild(issue.elm);
 
-            issue.setData(this._issueData[i]);
-            issue.draw(
-                8 - rSeed / this._exploreRadius * 5,
-                Math.sin(seed) * rSeed,
-                Math.cos(seed) * rSeed
-            );
+    //         issue.setData(this._issueData[i]);
+    //         issue.draw(
+    //             8 - rSeed / this._exploreRadius * 5,
+    //             Math.sin(seed) * rSeed,
+    //             Math.cos(seed) * rSeed
+    //         );
 
-            issue.exploreX = issue.elm.x;
-            issue.exploreY = issue.elm.y;
+    //         issue.exploreX = issue.elm.x;
+    //         issue.exploreY = issue.elm.y;
 
-            issue.mouseOverCallback = this._mouseOverIssue.bind(this);
-            issue.mouseOutCallback = this._mouseOutIssue.bind(this);
+    //         issue.mouseOverCallback = this._mouseOverIssue.bind(this);
+    //         issue.mouseOutCallback = this._mouseOutIssue.bind(this);
 
-            issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
-            issue.elm.mouseout = this._onOutIssue.bind(this);
-            issue.elm.mousedown = this._onPressIssue.bind(this);
-        }
-    };
+    //         issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
+    //         issue.elm.mouseout = this._onOutIssue.bind(this);
+    //         issue.elm.mousedown = this._onPressIssue.bind(this);
+    //     }
+    // };
 
     Explore.prototype._onOverTag = function (event) {
         this._tags[event.target.index].mouseOver();
@@ -445,15 +468,18 @@ define([
     };
 
     Explore.prototype._onPressIssue = function (event) {
+        this._openIssue(this._getElementFromId(this._issueData[event.target.index].getId()));
+    };
+
+    Explore.prototype._openIssue = function (issue) {
         this._mode = Issue.MODE_DETAIL;
 
         if (this.enterIssueCallback) {
-            var issueData = this._issueData[event.target.index];
-            var issue = this._getElementFromId(issueData.getId());
+            var issueData = issue.data;
             issue.openIssue();
             this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
         }
-    };
+    }
 
     Explore.prototype._mouseOverIssue = function (issue) {
         var related;
@@ -491,70 +517,70 @@ define([
         }
     };
 
-    /**
-    * Draw connecting lines
-    */
-    Explore.prototype._drawLines = function () {
-        this._linesContainer.clear();
-        var isOver;
-        var isSameTopic;
-        var issue;
-        var related;
-        var tags;
-        var relatedItem;
-        var i;
-        var j;
-        for (i = 0; i < this._issues.length; i ++) {
-            issue = this._issues[i];
-            related = this._issues[i].data.getRelated();
-            tags = this._issues[i].data.getTags();
+    // /**
+    // * Draw connecting lines
+    // */
+    // Explore.prototype._drawLines = function () {
+    //     this._linesContainer.clear();
+    //     var isOver;
+    //     var isSameTopic;
+    //     var issue;
+    //     var related;
+    //     var tags;
+    //     var relatedItem;
+    //     var i;
+    //     var j;
+    //     for (i = 0; i < this._issues.length; i ++) {
+    //         issue = this._issues[i];
+    //         related = this._issues[i].data.getRelated();
+    //         tags = this._issues[i].data.getTags();
 
-            if (this._mode === Issue.MODE_EXPLORE || this._mode === Issue.MODE_TOPICS) {
-                for (j = 0; j < related.length; j ++) {
-                    relatedItem = this._getElementFromId(related[j]._id);
+    //         if (this._mode === Issue.MODE_EXPLORE || this._mode === Issue.MODE_TOPICS) {
+    //             for (j = 0; j < related.length; j ++) {
+    //                 relatedItem = this._getElementFromId(related[j]._id);
 
-                    isOver = (issue.isOver || relatedItem.isOver);
-                    isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
-                    // only show related on same topic if on topics
-                    if (this._mode === Issue.MODE_EXPLORE || isSameTopic) {
-                        if (isOver && this._mode !== Issue.MODE_TOPICS) {
-                            this._linesContainer.lineStyle(1, 0x000000,  0.15);
-                        } else {
-                            this._linesContainer.lineStyle(1, 0x000000, 0.03);
-                        }
+    //                 isOver = (issue.isOver || relatedItem.isOver);
+    //                 isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
+    //                 // only show related on same topic if on topics
+    //                 if (this._mode === Issue.MODE_EXPLORE || isSameTopic) {
+    //                     if (isOver && this._mode !== Issue.MODE_TOPICS) {
+    //                         this._linesContainer.lineStyle(1, 0x000000,  0.15);
+    //                     } else {
+    //                         this._linesContainer.lineStyle(1, 0x000000, 0.03);
+    //                     }
 
-                        this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-                        this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-                    }
-                }
-            }
+    //                     this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+    //                     this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+    //                 }
+    //             }
+    //         }
 
-            // connect to tags on explore
-            if (this._mode === Issue.MODE_EXPLORE) {
-                for (j = 0; j < tags.length; j ++) {
-                    relatedItem = this._getElementFromId(tags[j]._id);
+    //         // connect to tags on explore
+    //         if (this._mode === Issue.MODE_EXPLORE) {
+    //             for (j = 0; j < tags.length; j ++) {
+    //                 relatedItem = this._getElementFromId(tags[j]._id);
 
-                    isOver = (issue.isOver || relatedItem.isOver);
-                    if (isOver) {
-                        this._linesContainer.lineStyle(1, 0x000000,  0.15);
-                    } else {
-                        this._linesContainer.lineStyle(1, 0x000000, 0.03);
-                    }
+    //                 isOver = (issue.isOver || relatedItem.isOver);
+    //                 if (isOver) {
+    //                     this._linesContainer.lineStyle(1, 0x000000,  0.15);
+    //                 } else {
+    //                     this._linesContainer.lineStyle(1, 0x000000, 0.03);
+    //                 }
 
-                    this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-                    this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-                }
-            }
+    //                 this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+    //                 this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+    //             }
+    //         }
 
-            // connect to next in line on issues
-            if (this._mode === Issue.MODE_ISSUES && i < this._issues.length - 1) {
-                relatedItem = this._issues[i + 1];
-                this._linesContainer.lineStyle(1, 0x000000, 0.15);
-                this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-                this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-            }
-        }
-    };
+    //         // connect to next in line on issues
+    //         if (this._mode === Issue.MODE_ISSUES && i < this._issues.length - 1) {
+    //             relatedItem = this._issues[i + 1];
+    //             this._linesContainer.lineStyle(1, 0x000000, 0.15);
+    //             this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+    //             this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
+    //         }
+    //     }
+    // };
 
     Explore.prototype._swipeToNextTopic = function () {
         var position = new PIXI.Point();
@@ -595,20 +621,20 @@ define([
         }
     };
 
-    /**
-     * update issue positions
-     */
-    Explore.prototype._updatePositions = function (mousePosition) {
-        for (var i = 0; i < this._issues.length; i ++) {
-            this._issues[i].update(mousePosition);
-        }
-    };
+    // /**
+    //  * update issue positions
+    //  */
+    // Explore.prototype._updatePositions = function (mousePosition) {
+    //     for (var i = 0; i < this._issues.length; i ++) {
+    //         this._issues[i].update(mousePosition);
+    //     }
+    // };
 
-    Explore.prototype._updateTopics = function (mousePosition) {
-        for (var i = 0; i < this._topics.length; i ++) {
-            this._topics[i].update(mousePosition);
-        }
-    };
+    // Explore.prototype._updateTopics = function (mousePosition) {
+    //     for (var i = 0; i < this._topics.length; i ++) {
+    //         this._topics[i].update(mousePosition);
+    //     }
+    // };
 
     Explore.prototype._updateScroller = function (mousePosition) {
         // no movement if mouse is out of the canvas
@@ -663,57 +689,57 @@ define([
     /**
      * do animation cycle
      */
-    Explore.prototype._animate = function (tick) {
-        if (this._stats) {
-            this._stats.begin();
-        }
+    // Explore.prototype._animate = function (tick) {
+    //     if (this._stats) {
+    //         this._stats.begin();
+    //     }
 
-        createjs.Tween.tick(tick - this._lastTick);
-        this._lastTick = tick;
+    //     createjs.Tween.tick(tick - this._lastTick);
+    //     this._lastTick = tick;
 
-        // mouse position relative to issues container
-        var mousePosition = this._stage.getMousePosition().clone();
+    //     // mouse position relative to issues container
+    //     var mousePosition = this._stage.getMousePosition().clone();
 
-        // get position from touch if theres one
-        if (this._touchPosition) {
-            mousePosition = this._touchPosition.clone();
-        }
+    //     // get position from touch if theres one
+    //     if (this._touchPosition) {
+    //         mousePosition = this._touchPosition.clone();
+    //     }
 
-        mousePosition.x -= this._issuesContainer.x;
-        mousePosition.y -= this._issuesContainer.y;
+    //     mousePosition.x -= this._issuesContainer.x;
+    //     mousePosition.y -= this._issuesContainer.y;
 
-        var lastMouse = this._mousePosition;
-        this._mousePosition = mousePosition.clone();
+    //     var lastMouse = this._mousePosition;
+    //     this._mousePosition = mousePosition.clone();
 
-        // ends auto mode
-        if (lastMouse &&
-            (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
-            Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
-            this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
-        }
+    //     // ends auto mode
+    //     if (lastMouse &&
+    //         (Math.abs(lastMouse.x - this._mousePosition.x) > 2 ||
+    //         Math.abs(lastMouse.y - this._mousePosition.y) > 2)) {
+    //         this._endAutoMode(this._mode === Issue.MODE_EXPLORE);
+    //     }
 
-        // sets mouse position as selected issues position
-        if (this._autoMode) {
-            mousePosition.x = this._autoModeIssue._x0;
-            mousePosition.y = this._autoModeIssue._y0;
-        }
+    //     // sets mouse position as selected issues position
+    //     if (this._autoMode) {
+    //         mousePosition.x = this._autoModeIssue._x0;
+    //         mousePosition.y = this._autoModeIssue._y0;
+    //     }
 
-        this._updatePositions(mousePosition);
+    //     this._updatePositions(mousePosition);
 
-        if (this._mode === Issue.MODE_TOPICS) {
-            this._updateTopics(mousePosition);
-        } else if (this._mode === Issue.MODE_ISSUES) {
-            this._updateScroller(mousePosition);
-        }
+    //     if (this._mode === Issue.MODE_TOPICS) {
+    //         this._updateTopics(mousePosition);
+    //     } else if (this._mode === Issue.MODE_ISSUES) {
+    //         this._updateScroller(mousePosition);
+    //     }
 
-        this._drawLines();
-        this._renderer.render(this._stage);
+    //     this._drawLines();
+    //     this._renderer.render(this._stage);
 
-        if (this._stats) {
-            this._stats.end();
-        }
-        requestAnimationFrame(this._animate.bind(this));
-    };
+    //     if (this._stats) {
+    //         this._stats.end();
+    //     }
+    //     requestAnimationFrame(this._animate.bind(this));
+    // };
 
     return Explore;
 });
