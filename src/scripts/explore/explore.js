@@ -1,12 +1,15 @@
 /* global define:true */
 define([
+    'jquery',
     'pixi',
     'stats',
     'createjs',
     'explore/issue',
     'explore/circle',
-    'explore/topic'
+    'explore/topic',
+    'jquery-mobile'
 ], function (
+    $,
     PIXI,
     Stats,
     createjs,
@@ -51,6 +54,8 @@ define([
         // this._autoModeIssue;
         this._autoModeTime = 8000;
         this._autoModeTimeUp = 3000;
+
+        this._currentTopic = 0;
 
         // this._mousePosition;
     };
@@ -122,6 +127,8 @@ define([
         );
 
         this._stage.touchstart = this._onTouchStart.bind(this);
+        $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
+        $(document).on('swiperight', container, this._onSwipeRight.bind(this));
     };
 
     Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
@@ -257,11 +264,14 @@ define([
         this._mode = Issue.MODE_TOPICS;
         this._endAutoMode(false);
 
+        this._currentTopic = 0;
+
         this._stage.addChild(this._topicsContainer);
 
         var i;
         var j;
         var issue;
+        var topic;
 
         for (i = 0; i < this._tags.length; i ++) {
             this._tags[i].explode(this._exploreRadius);
@@ -272,7 +282,8 @@ define([
         }
 
         for(i = 0; i < this._topicsData.length; i ++) {
-            if (!this._topics[i]) {
+            topic = this._topics[i];
+            if (!topic) {
                 // get issue elements for topic
                 var issues = [];
                 for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
@@ -286,28 +297,29 @@ define([
                     fakes.push(issue);
                 }
 
-                this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
-                this._topicsContainer.addChild(this._topics[i].elm);
+                topic = this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
+                this._topicsContainer.addChild(topic.elm);
 
                 if (this._renderer.width > 960) {
-                    this._topics[i].elm.x = (this._renderer.width - 400) /
+                    topic.elm.x = (this._renderer.width - 400) /
                         (this._topicsData.length - 1) * i;
-                    this._topics[i].elm.x -= ((this._renderer.width - 400) / 2);
-                    this._topics[i].elm.y = 0;
-                    this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
-                    this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
+                    topic.elm.x -= ((this._renderer.width - 400) / 2);
+                } else if (this._renderer.width > 560) {
+                    topic.elm.x = (this._renderer.width - 500) * (i % 2);
+                    topic.elm.x -= ((this._renderer.width - 500) / 2);
+                    topic.elm.y =  (350 * Math.floor(i / 2)) - 350;
                 } else {
-                    this._topics[i].elm.x = (this._renderer.width - 500) * (i % 2);
-                    this._topics[i].elm.x -= ((this._renderer.width - 500) / 2);
-                    this._topics[i].elm.y =  (350 * Math.floor(i / 2)) - 350;
-                    this._topics[i].elm.x = Math.round(this._topics[i].elm.x);
-                    this._topics[i].elm.y = Math.round(this._topics[i].elm.y);
+                    topic.elm.x = this._renderer.width * i;
+                    // this._topics[i].elm.x -= this._renderer.width / 2;
                 }
 
-                this._topics[i].setup();
+                topic.elm.x = Math.round(topic.elm.x);
+                topic.elm.y = Math.round(topic.elm.y);
+
+                topic.setup();
             }
 
-            this._topics[i].show();
+            topic.show();
         }
     };
 
@@ -535,6 +547,26 @@ define([
         }
     };
 
+    Explore.prototype._swipeToNextTopic = function () {
+        var position = new PIXI.Point();
+        this._currentTopic = Math.min(this._currentTopic + 1, 3);
+
+        for(var i = 0; i < this._topics.length; i ++) {
+            position.x = this._renderer.width * (i - this._currentTopic);
+            this._topics[i].moveTo(position.clone());
+        }
+    };
+
+    Explore.prototype._swipeToPrevTopic = function () {
+        var position = new PIXI.Point();
+        this._currentTopic = Math.max(this._currentTopic - 1, 0);
+
+        for(var i = 0; i < this._topics.length; i ++) {
+            position.x = this._renderer.width * (i - this._currentTopic);
+            this._topics[i].moveTo(position.clone());
+        }
+    };
+
     /**
     * Get visual element from id
     */
@@ -605,6 +637,18 @@ define([
 
     Explore.prototype._onTouchStart = function (event) {
         this._touchPosition = event.global;
+    };
+
+    Explore.prototype._onSwipeLeft = function () {
+        if (this._mode === Issue.MODE_TOPICS) {
+            this._swipeToNextTopic();
+        }
+    };
+
+    Explore.prototype._onSwipeRight = function () {
+        if (this._mode === Issue.MODE_TOPICS) {
+            this._swipeToPrevTopic();
+        }
     };
 
     /**

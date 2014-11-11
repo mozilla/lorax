@@ -11,6 +11,7 @@
             'angular': '../bower_components/angular/angular',
             'angular-route': '../bower_components/angular-route/angular-route',
             'jquery': '../bower_components/jquery/dist/jquery',
+            'jquery-mobile': '../scripts/libs/jquery.mobile.min',
             'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
             'modernizr': '../scripts/modernizr',
             'd3': '../bower_components/d3/d3',
@@ -35,6 +36,9 @@
             },
             'angular-route': {
                 deps: ['angular']
+            },
+            'jquery-mobile': {
+                deps: ['jquery']
             },
             'jquery-scrollie': {
                 deps: ['jquery']

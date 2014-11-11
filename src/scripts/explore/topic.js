@@ -45,7 +45,8 @@ define([
         this._topicArea.interactive = true;
         this._topicArea.buttonMode = true;
         this.elm.addChild(this._topicArea);
-        this._topicArea.mouseover = this._topicArea.touchstart = this._mouseOver.bind(this);
+        this._topicArea.mouseover = this._mouseOver.bind(this);
+        this._topicArea.touchstart = this._delayTouchOver.bind(this);
 
         // topic mouse out area
         var aMargin = 20;
@@ -89,17 +90,17 @@ define([
             issue.setTextAlwaysVisible(false);
             issue.setIsInteractive(false);
 
-            issue.topicX = this.elm.x + (Math.random() * this._radius * 2) - this._radius;
+            issue.topicX = (Math.random() * this._radius * 2) - this._radius;
              // from -(radius - tH / 2) to (radius - tH / 2)
             issue.topicY = (Math.random() * (this._radius - tH) * 2) - (this._radius - tH);
             // dont go between -tH/2 and tH/2 (the title area)
-            issue.topicY += this.elm.y + (tH * (issue.topicY > 0 ? 1 : -1));
+            issue.topicY += tH * (issue.topicY > 0 ? 1 : -1);
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            issue.topicX = this.elm.x + (Math.random() * this._radius * 2) - this._radius;
-            issue.topicY = this.elm.y + (Math.random() * this._radius * 2) - this._radius;
+            issue.topicX = (Math.random() * this._radius * 2) - this._radius;
+            issue.topicY = (Math.random() * this._radius * 2) - this._radius;
         }
 
         return this;
@@ -111,7 +112,7 @@ define([
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setMode(Issue.MODE_TOPICS);
-            issue.moveTo(issue.topicX, issue.topicY)
+            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
         }
 
@@ -120,10 +121,16 @@ define([
             createjs.Tween.get(issue.elm, {override: true})
                 .to({
                     alpha: issue.implodeAlpha,
-                    x: issue.topicX,
-                    y: issue.topicY
+                    x: this.elm.x + issue.topicX,
+                    y: this.elm.y + issue.topicY
                 }, 300, createjs.Ease.easeIn);
         }
+    };
+
+    Topic.prototype._delayTouchOver = function () {
+        this._timeoutTouchOver = setTimeout(function () {
+            this._mouseOver();
+        }.bind(this), 1000);
     };
 
     /**
@@ -234,6 +241,37 @@ define([
             issue.moveTo(issue.topicX, issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
         }
+    };
+
+    Topic.prototype.moveTo = function (position) {
+        var i;
+        var issue;
+
+        clearTimeout(this._timeoutTouchOver);
+        this._topicArea.mouseover = this._topicArea.touchstart = null;
+
+        createjs.Tween.get(this.elm, {override: true})
+            .to({x:position.x, y:position.y}, 300, createjs.Ease.getBackOut(1.5));
+
+        for(i = 0; i < this._issues.length; i ++) {
+            issue = this._issues[i];
+            issue.moveTo(position.x + issue.topicX, position.y + issue.topicY)
+                .call(issue._resumeStaticAnimation.bind(issue));
+        }
+
+        for(i = 0; i < this._fakes.length; i ++) {
+            issue = this._fakes[i];
+            createjs.Tween.get(issue.elm, {override: true})
+                .to({
+                    alpha: issue.implodeAlpha,
+                    x: position.x + issue.topicX,
+                    y: position.y + issue.topicY
+                }, 300, createjs.Ease.easeIn);
+        }
+
+        setTimeout(function resumeEvents () {
+            this._topicArea.mouseover = this._topicArea.touchstart = this._mouseOver.bind(this);
+        }.bind(this), 5000);
     };
 
     Topic.prototype.update = function (mousePosition) {
