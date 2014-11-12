@@ -28,15 +28,15 @@ body {
     text-rendering: optimizeLegibility;
     .transition(background-color 0.3s ease-in-out);
 
-    &[data-bg-mode="stop"] {
+    &.is-detail[data-bg-mode="stop"] {
         background-color: @stop;
     }
 
-    &[data-bg-mode="wait"] {
+    &.is-detail[data-bg-mode="wait"] {
         background-color: @wait;
     }
 
-    &[data-bg-mode="go"] {
+    &.is-detail[data-bg-mode="go"] {
         background-color: @go;
     }
 }

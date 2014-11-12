@@ -299,6 +299,19 @@ define([
         // );
     };
 
+    Issue.prototype.closeIssue = function () {
+        this.setMode(Issue.MODE_EXPLORE);
+
+        this.elm.removeChild(this._issueModeContainer);
+        this.elm.removeChild(this._issueModeMask);
+
+        this._issueModeFiller.x = 0;
+        this._issueModeFiller.y = 0;
+
+        this._issueModeFillMask.scale = {x:0, y:0};
+        this._issueModeMask.y = 0;
+    };
+
     /**
      * animation tick
      * @param  {Point} mousePosition current mouse position

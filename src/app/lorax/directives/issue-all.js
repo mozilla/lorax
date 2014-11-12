@@ -29,7 +29,8 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         $rootScope,
         $location,
         dataService,
-        windowService
+        windowService,
+        exploreService
     ) {
 
         this._$scope = $scope;
@@ -45,9 +46,12 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         // set detail mode on, adds body class
         windowService.setDetailMode(true);
 
+        exploreService.switchView('detail');
+
         $scope.$on('$destroy', function () {
             // set detail mode off, removes body class
             windowService.setDetailMode(false);
+            exploreService.switchView('explore');
         });
 
         this._$scope.dataService.getMain().then(function (model) {
@@ -77,7 +81,8 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         '$rootScope',
         '$location',
         'dataService',
-        'windowService'
+        'windowService',
+        'exploreService'
     ];
 
     /**

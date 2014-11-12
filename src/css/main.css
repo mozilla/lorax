@@ -454,13 +454,13 @@ body {
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
-body[data-bg-mode="stop"] {
+body.is-detail[data-bg-mode="stop"] {
   background-color: #db3f33;
 }
-body[data-bg-mode="wait"] {
+body.is-detail[data-bg-mode="wait"] {
   background-color: #f6c925;
 }
-body[data-bg-mode="go"] {
+body.is-detail[data-bg-mode="go"] {
   background-color: #6bb94e;
 }
 .container {
@@ -806,6 +806,8 @@ img {
   width: 100%;
   height: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
 }
 .explore-menu {
   list-style: none;

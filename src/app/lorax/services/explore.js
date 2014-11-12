@@ -19,6 +19,8 @@ define(function () {
             this._canvas.showTopics();
         } else if (view === 'issues') {
             this._canvas.showIssues();
+        } else if (view === 'detail') {
+            this._canvas.showDetail();
         }
     };
 
