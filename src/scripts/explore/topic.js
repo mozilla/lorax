@@ -114,6 +114,10 @@ define([
             issue.setMode(Issue.MODE_TOPICS);
             issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
+            issue.topicMouseOver = this._mouseOverIssue.bind(this);
+            issue.topicMouseOut = this._mouseOutIssue.bind(this);
+            issue.mouseOverS.add(issue.topicMouseOver);
+            issue.mouseOutS.add(issue.topicMouseOut);
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
@@ -135,11 +139,21 @@ define([
             issue = this._issues[i];
             createjs.Tween.get(issue.elm, {override: true})
                 .to({alpha: 1}, 300, createjs.Ease.quartIn);
+            issue.mouseOverS.remove(issue.topicMouseOver);
+            issue.mouseOutS.remove(issue.topicMouseOut);
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
             this._fakes[i].explode();
         }
+    };
+
+    Topic.prototype._mouseOverIssue = function (issue) {
+        issue.mouseOver();
+    };
+
+    Topic.prototype._mouseOutIssue = function (issue) {
+        issue.mouseOut();
     };
 
     Topic.prototype._delayTouchOver = function () {

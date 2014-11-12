@@ -67,6 +67,14 @@ define([
         }
     };
 
+    IssuesMode.prototype._mouseOverIssue = function (issue) {
+        issue.issueModeMouseOver();
+    };
+
+    IssuesMode.prototype._mouseOutIssue = function (issue) {
+        issue.issueModeMouseOut();
+    };
+
     IssuesMode.prototype._onStartShow = function () {
         var i;
         var issue;
@@ -75,6 +83,10 @@ define([
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_ISSUES);
             issue.moveTo(issue.issueX, issue.issueY);
+            issue.issueMouseOver = this._mouseOverIssue.bind(this);
+            issue.issueMouseOut = this._mouseOutIssue.bind(this);
+            issue.mouseOverS.add(issue.issueMouseOver);
+            issue.mouseOutS.add(issue.issueMouseOut);
         };
 
         this._drawLinesBind = this._drawLines.bind(this);
@@ -84,6 +96,15 @@ define([
     };
 
     IssuesMode.prototype._onStartHide = function () {
+        var i;
+        var issue;
+
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+            issue.mouseOverS.remove(issue.issueMouseOver);
+            issue.mouseOutS.remove(issue.issueMouseOut);
+        };
+
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 0);
