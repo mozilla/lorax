@@ -1,29 +1,19 @@
 /* global define:true */
 define([
-    'jquery',
-    'pixi',
     'stats',
-    'createjs',
     'explore/explore-canvas',
     'explore/explore-mode',
     'explore/topics-mode',
     'explore/issues-mode',
     'explore/issue',
-    'explore/circle',
-    'explore/topic',
     'jquery-mobile'
 ], function (
-    $,
-    PIXI,
     Stats,
-    createjs,
     ExploreCanvas,
     ExploreMode,
     TopicsMode,
     IssuesMode,
-    Issue,
-    Circle,
-    Topic
+    Issue
 ) {
     'use strict';
 

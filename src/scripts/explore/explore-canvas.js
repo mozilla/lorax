@@ -150,11 +150,11 @@ define([
      */
     ExploreCanvas.prototype._updateParticles = function () {
         for (var i = 0; i < this.issues.length; i ++) {
-            this.issues[i].update(this._mousePosition);
+            this.issues[i].update(this.mousePosition);
         }
 
         for (var i = 0; i < this.tags.length; i ++) {
-            this.tags[i].update(this._mousePosition);
+            this.tags[i].update(this.mousePosition);
         }
     };
 
@@ -239,8 +239,8 @@ define([
         mousePosition.x -= this._particlesContainer.x;
         mousePosition.y -= this._particlesContainer.y;
 
-        var lastMouse = this._mousePosition;
-        this._mousePosition = mousePosition.clone();
+        var lastMouse = this.mousePosition;
+        this.mousePosition = mousePosition.clone();
     };
 
     /**

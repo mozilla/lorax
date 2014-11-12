@@ -112,6 +112,12 @@ define([
         }
     };
 
+    TopicsMode.prototype._updateTopics = function () {
+        for (var i = 0; i < this._topics.length; i ++) {
+            this._topics[i].update(this._canvas.mousePosition);
+        };
+    };
+
     TopicsMode.prototype._onStartShow = function () {
         this._canvas.addChild(this._topicsContainer);
 
@@ -121,6 +127,7 @@ define([
         };
 
         this._canvas.renderStartS.add(this._drawLines.bind(this));
+        this._canvas.renderStartS.add(this._updateTopics.bind(this));
         this._canvas.swipeLeftS.add(this._swipeToNextTopic.bind(this));
         this._canvas.swipeRightS.add(this._swipeToPrevTopic.bind(this));
         this._canvas.showLines();
@@ -137,6 +144,7 @@ define([
         };
 
         this._canvas.renderStartS.remove(this._drawLines.bind(this));
+        this._canvas.renderStartS.remove(this._updateTopics.bind(this));
         this._canvas.swipeLeftS.remove(this._swipeToNextTopic.bind(this));
         this._canvas.swipeRightS.remove(this._swipeToPrevTopic.bind(this));
         this._canvas.hideLines();

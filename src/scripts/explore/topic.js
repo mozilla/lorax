@@ -253,7 +253,7 @@ define([
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setTextAlwaysVisible(false);
-            issue.moveTo(issue.topicX, issue.topicY)
+            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
         }
     };
