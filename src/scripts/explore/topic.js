@@ -135,7 +135,7 @@ define([
             issue = this._issues[i];
             createjs.Tween.get(issue.elm, {override: true})
                 .to({alpha: 1}, 300, createjs.Ease.quartIn);
-        };
+        }
 
         for(i = 0; i < this._fakes.length; i ++) {
             this._fakes[i].explode();

@@ -75,7 +75,7 @@ define([
             topic.elm.y = Math.round(topic.elm.y);
 
             topic.setup();
-        };
+        }
     };
 
     TopicsMode.prototype._getRandomFake = function () {
@@ -115,7 +115,7 @@ define([
     TopicsMode.prototype._updateTopics = function () {
         for (var i = 0; i < this._topics.length; i ++) {
             this._topics[i].update(this._canvas.mousePosition);
-        };
+        }
     };
 
     TopicsMode.prototype._onStartShow = function () {
@@ -124,13 +124,16 @@ define([
         var i;
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].show();
-        };
+        }
 
-        this._canvas.renderStartS.add(this._drawLines.bind(this));
-        this._canvas.renderStartS.add(this._updateTopics.bind(this));
-        this._canvas.swipeLeftS.add(this._swipeToNextTopic.bind(this));
-        this._canvas.swipeRightS.add(this._swipeToPrevTopic.bind(this));
-        this._canvas.showLines();
+        this._drawLinesBind = this._drawLines.bind(this);
+        this._updateTopicsBind = this._updateTopics.bind(this);
+        this._swipeToNextTopicBind = this._swipeToNextTopic.bind(this);
+        this._swipeToPrevTopicBind = this._swipeToPrevTopic.bind(this);
+        this._canvas.renderStartS.add(this._drawLinesBind);
+        this._canvas.renderStartS.add(this._updateTopicsBind);
+        this._canvas.swipeLeftS.add(this._swipeToNextTopicBind);
+        this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
 
          setTimeout(this._onShow.bind(this), 500);
     };
@@ -141,13 +144,12 @@ define([
         var i;
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].hide();
-        };
+        }
 
-        this._canvas.renderStartS.remove(this._drawLines.bind(this));
-        this._canvas.renderStartS.remove(this._updateTopics.bind(this));
-        this._canvas.swipeLeftS.remove(this._swipeToNextTopic.bind(this));
-        this._canvas.swipeRightS.remove(this._swipeToPrevTopic.bind(this));
-        this._canvas.hideLines();
+        this._canvas.renderStartS.remove(this._drawLinesBind);
+        this._canvas.renderStartS.remove(this._updateTopicsBind);
+        this._canvas.swipeLeftS.remove(this._swipeToNextTopicBind);
+        this._canvas.swipeRightS.remove(this._swipeToPrevTopicBind);
 
         setTimeout(this._onHide.bind(this), 0);
     };

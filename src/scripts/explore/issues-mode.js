@@ -77,15 +77,14 @@ define([
             issue.moveTo(issue.issueX, issue.issueY);
         };
 
-        this._canvas.renderStartS.add(this._drawLines.bind(this));
-        this._canvas.showLines();
+        this._drawLinesBind = this._drawLines.bind(this);
+        this._canvas.renderStartS.add(this._drawLinesBind);
 
         setTimeout(this._onShow.bind(this), 500);
     };
 
     IssuesMode.prototype._onStartHide = function () {
-        this._canvas.renderStartS.remove(this._drawLines.bind(this));
-        this._canvas.hideLines();
+        this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 0);
     };

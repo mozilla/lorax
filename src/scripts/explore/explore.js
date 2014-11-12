@@ -39,8 +39,8 @@ define([
             this._showStats();
         }
 
-        this._autoModeTime = 8000;
-        this._autoModeTimeUp = 3000;
+        // this._autoModeTime = 8000;
+        // this._autoModeTimeUp = 3000;
 
         this.showExplore();
     };
@@ -61,35 +61,35 @@ define([
         this.enterIssueCallback = enterIssueCallback;
     };
 
-    Explore.prototype._startAutoMode = function () {
-        // this._autoMode = true;
+    // Explore.prototype._startAutoMode = function () {
+    //     this._autoMode = true;
 
-        // this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
-        // this._mouseOverIssue(this._autoModeIssue);
+    //     this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
+    //     this._mouseOverIssue(this._autoModeIssue);
 
-        // clearTimeout(this._autoModeTimeout);
-        // this._autoModeTimeout = setTimeout(
-        //     this._endAutoMode.bind(this),
-        //     this._autoModeTimeUp,
-        //     true
-        // );
-    };
+    //     clearTimeout(this._autoModeTimeout);
+    //     this._autoModeTimeout = setTimeout(
+    //         this._endAutoMode.bind(this),
+    //         this._autoModeTimeUp,
+    //         true
+    //     );
+    // };
 
-    Explore.prototype._endAutoMode = function (startAnother) {
-        // if (this._autoModeIssue) {
-        //     this._mouseOutIssue(this._autoModeIssue);
-        // }
+    // Explore.prototype._endAutoMode = function (startAnother) {
+    //     if (this._autoModeIssue) {
+    //         this._mouseOutIssue(this._autoModeIssue);
+    //     }
 
-        // this._autoMode = false;
+    //     this._autoMode = false;
 
-        // clearTimeout(this._autoModeTimeout);
-        // if (startAnother) {
-        //     this._autoModeTimeout = setTimeout(
-        //         this._startAutoMode.bind(this),
-        //         this._autoModeTime
-        //     );
-        // }
-    };
+    //     clearTimeout(this._autoModeTimeout);
+    //     if (startAnother) {
+    //         this._autoModeTimeout = setTimeout(
+    //             this._startAutoMode.bind(this),
+    //             this._autoModeTime
+    //         );
+    //     }
+    // };
 
     /**
     * Shows FPS count
@@ -123,30 +123,6 @@ define([
         this._topics.show();
     };
 
-    // Explore.prototype._onOverTag = function (event) {
-    //     this._tags[event.target.index].mouseOver();
-    // };
-
-    // Explore.prototype._onOutTag = function (event) {
-    //     this._tags[event.target.index].mouseOut();
-    // };
-
-    // Explore.prototype._onOverIssue = function (event) {
-    //     if (this._mode === Issue.MODE_ISSUES) {
-    //         this._issues[event.target.index].issueModeMouseOver();
-    //     } else {
-    //         this._issues[event.target.index].mouseOver();
-    //     }
-    // };
-
-    // Explore.prototype._onOutIssue = function (event) {
-    //     if (this._mode === Issue.MODE_ISSUES) {
-    //         this._issues[event.target.index].issueModeMouseOut();
-    //     } else {
-    //         this._issues[event.target.index].mouseOut();
-    //     }
-    // };
-
     Explore.prototype._openIssue = function (issue) {
         this._mode = Issue.MODE_DETAIL;
 
@@ -155,7 +131,7 @@ define([
             issue.openIssue();
             this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
         }
-    }
+    };
 
     Explore.prototype._updateScroller = function (mousePosition) {
         // no movement if mouse is out of the canvas

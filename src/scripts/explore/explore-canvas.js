@@ -156,11 +156,13 @@ define([
      * update particle positions
      */
     ExploreCanvas.prototype._updateParticles = function () {
-        for (var i = 0; i < this.issues.length; i ++) {
+        var i;
+
+        for (i = 0; i < this.issues.length; i ++) {
             this.issues[i].update(this.mousePosition);
         }
 
-        for (var i = 0; i < this.tags.length; i ++) {
+        for (i = 0; i < this.tags.length; i ++) {
             this.tags[i].update(this.mousePosition);
         }
     };
@@ -246,7 +248,6 @@ define([
         mousePosition.x -= this._particlesContainer.x;
         mousePosition.y -= this._particlesContainer.y;
 
-        var lastMouse = this.mousePosition;
         this.mousePosition = mousePosition.clone();
     };
 
