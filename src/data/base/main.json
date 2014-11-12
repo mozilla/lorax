@@ -179,7 +179,7 @@
       "issues":{
         "cyberThreats":{
           "status":1,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-cyber-threats",
           "infographicOverflow":false,
           "tags":[
           ]

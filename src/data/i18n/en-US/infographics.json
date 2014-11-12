@@ -32,6 +32,31 @@
           "id": "NOR",
           "displayName": "Norway",
           "value": 0.972
+        },
+        {
+          "id": "RUS",
+          "displayName": "Russia",
+          "value": 0.342
+        },
+        {
+          "id": "CHN",
+          "displayName": "China",
+          "value": 0.753
+        },
+        {
+          "id": "AUS",
+          "displayName": "Australia",
+          "value": 0.123
+        },
+        {
+          "id": "BRA",
+          "displayName": "Brazil",
+          "value": 0.456
+        },
+        {
+          "id": "ESP",
+          "displayName": "Spain",
+          "value": 0.913
         }
       ]
     }
@@ -571,125 +596,125 @@
       "src": ""
     },
     "dataPoints": {
-          "dataLabels": [
-            "Expenditures",
-            "Revolvers"
-          ],
-          "lineGraphData": [
-            {
-              "label": "1998",
-              "data": [
-                1450000000,
-                44.70
-              ]
-            },
-            {
-              "label": "1999",
-              "data": [
-                1450000000,
-                43.70
-              ]
-            },
-            {
-              "label": "2000",
-              "data": [
-                1570000000,
-                48.20
-              ]
-            },
-            {
-              "label": "2001",
-              "data": [
-                1640000000,
-                50.90
-              ]
-            },
-            {
-              "label": "2002",
-              "data": [
-                1830000000,
-                54.90
-              ]
-            },
-            {
-              "label": "2003",
-              "data": [
-                2060000000,
-                57.00
-              ]
-            },
-            {
-              "label": "2004",
-              "data": [
-                2200000000,
-                56.80
-              ]
-            },
-            {
-              "label": "2005",
-              "data": [
-                2440000000,
-                57.50
-              ]
-            },
-            {
-              "label": "2006",
-              "data": [
-                2630000000,
-                60.10
-              ]
-            },
-            {
-              "label": "2007",
-              "data": [
-                2870000000,
-                60.70
-              ]
-            },
-            {
-              "label": "2008",
-              "data": [
-                3300000000,
-                63.70
-              ]
-            },
-            {
-              "label": "2009",
-              "data": [
-                3500000000,
-                66.60
-              ]
-            },
-            {
-              "label": "2010",
-              "data": [
-                3550000000,
-                67.50
-              ]
-            },
-            {
-              "label": "2011",
-              "data": [
-                3330000000,
-                68.50
-              ]
-            },
-            {
-              "label": "2012",
-              "data": [
-                3310000000,
-                68.60
-              ]
-            },
-            {
-              "label": "2013",
-              "data": [
-                3240000000,
-                68.90
-              ]
-            }
+      "dataLabels": [
+        "Expenditures",
+        "Revolvers"
+      ],
+      "lineGraphData": [
+        {
+          "label": "1998",
+          "data": [
+            1450000000,
+            44.70
+          ]
+        },
+        {
+          "label": "1999",
+          "data": [
+            1450000000,
+            43.70
+          ]
+        },
+        {
+          "label": "2000",
+          "data": [
+            1570000000,
+            48.20
+          ]
+        },
+        {
+          "label": "2001",
+          "data": [
+            1640000000,
+            50.90
+          ]
+        },
+        {
+          "label": "2002",
+          "data": [
+            1830000000,
+            54.90
+          ]
+        },
+        {
+          "label": "2003",
+          "data": [
+            2060000000,
+            57.00
+          ]
+        },
+        {
+          "label": "2004",
+          "data": [
+            2200000000,
+            56.80
+          ]
+        },
+        {
+          "label": "2005",
+          "data": [
+            2440000000,
+            57.50
+          ]
+        },
+        {
+          "label": "2006",
+          "data": [
+            2630000000,
+            60.10
+          ]
+        },
+        {
+          "label": "2007",
+          "data": [
+            2870000000,
+            60.70
+          ]
+        },
+        {
+          "label": "2008",
+          "data": [
+            3300000000,
+            63.70
+          ]
+        },
+        {
+          "label": "2009",
+          "data": [
+            3500000000,
+            66.60
+          ]
+        },
+        {
+          "label": "2010",
+          "data": [
+            3550000000,
+            67.50
+          ]
+        },
+        {
+          "label": "2011",
+          "data": [
+            3330000000,
+            68.50
+          ]
+        },
+        {
+          "label": "2012",
+          "data": [
+            3310000000,
+            68.60
+          ]
+        },
+        {
+          "label": "2013",
+          "data": [
+            3240000000,
+            68.90
           ]
         }
+      ]
+    }
   },
   "censorship": {
     "header": "Top 5 Internet Companies",
@@ -724,33 +749,73 @@
     }
   },
   "cyberThreats": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "The Different Types of Cyber-Threats",
+    "subheader": "Vulnerabilities, Malware, and Exploits",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "cyberThreats": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "name": "Phishing",
+          "description": "A high-tech scam that frequently uses spam or pop-up messages to deceive people into disclosing sensitive information. Internet scammers use e-mail bait to \"phish\" for passwords and financial information from the sea of internet users.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "name": "Viruses",
+          "description": "Viruses are programs that “infect” other programs, and when those programs are run, the virus is able to spread. It is possible for a virus to be benign, but they are usually designed maliciously.",
+          "category": "Malware"
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "name": "Zero-day Exploit",
+          "description": "A \"zero-day\" exploit is a technique developed to take advantage of a security vulnerability that was previously unknown.",
+          "category": "Exploits"
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "name": "Spamming",
+          "description": "Spam is \"junk\" email - unsolicited advertising. Because of the very low cost of sending email, a lot of spam is delivered, from reasonably reputable promotional emails to more malicious and potentially damaging material.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "name": "Worms",
+          "description": "Worms are similar to viruses, but they are able to reproduce themselves independently of other software programs and propogate themselves across a network of machines.",
+          "category": "Malware"
+        },
+        {
+          "name": "Cross-site Scripting",
+          "description": "Cross site scripting (\"XSS\") is an exploit where a trusted website is also hosting a third party's code (often unwittingly) that a user will execute.",
+          "category": "Exploits"
+        },
+        {
+          "name": "Weak Passwords",
+          "description": "More and more Internet services require users choose more complex passwords. That is because weaker passwords (which may seem more memorable to the user) can easily be auto-generated in \"brute force\" methods to crack passwords.",
+          "category": "Vulnerabilities"
+        },
+        {
+          "name": "Trojan Horses",
+          "description": "A trojan horse is a program that conceals its true purpose. It may appear to be useful for the user, but have a true purpose to leak data, for example.",
+          "category": "Malware"
+        },
+        {
+          "name": "Denial of Service Attack",
+          "description": "A Denial of Service attack is a method whereby a sytem is flooded with inbound requests, consuming all its resources and effectively taking the system out of action. A distributed denial of service attack (DDOS) is such an attack where multiple systems are attacking the target.",
+          "category": "Exploits"
+        },
+        {
+          "name": "Removable Media",
+          "description": "It is easily overlooked, but removable media (such as USB drives) may be used to transmit malicious software.",
+          "category": "Vulnerabilities"
+        },
+        {
+          "name": "Spyware",
+          "description": "Spyware is software that is installed on a user's machine, frequently without their knowledge, which transmits data about the user. Spyware may be a trojan horse, or it may not be visible to the user.",
+          "category": "Malware"
+        },
+        {
+          "name": "Packet Sniffing",
+          "description": "Packet sniffners are program that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
+          "category": "Exploits"
         }
       ]
     }

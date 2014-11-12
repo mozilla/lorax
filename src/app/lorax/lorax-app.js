@@ -31,6 +31,7 @@ define([
   'lorax/directives/chart-accessible',
   'lorax/directives/chart-platform-neutrality',
   'lorax/directives/chart-lobbying',
+  'lorax/directives/chart-cyber-threats',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -79,6 +80,7 @@ define([
   ChartAccessibleDirective,
   ChartPlatformNeutralityDirective,
   ChartLobbyingDirective,
+  ChartCyberThreatsDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -243,6 +245,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartLobbying', ChartLobbyingDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartCyberThreatsDirective}
+         * as 'ChartCyberThreatsDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartCyberThreats', ChartCyberThreatsDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
