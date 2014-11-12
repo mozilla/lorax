@@ -121,6 +121,8 @@ define([
         };
 
         this._canvas.renderStartS.add(this._drawLines.bind(this));
+        this._canvas.swipeLeftS.add(this._swipeToNextTopic.bind(this));
+        this._canvas.swipeRightS.add(this._swipeToPrevTopic.bind(this));
         this._canvas.showLines();
 
          setTimeout(this._onShow.bind(this), 500);
@@ -130,9 +132,31 @@ define([
         this._canvas.removeChild(this._topicsContainer);
 
         this._canvas.renderStartS.remove(this._drawLines.bind(this));
+        this._canvas.swipeLeftS.remove(this._swipeToNextTopic.bind(this));
+        this._canvas.swipeRightS.remove(this._swipeToPrevTopic.bind(this));
         this._canvas.hideLines();
 
         setTimeout(this._onHide.bind(this), 0);
+    };
+
+    TopicsMode.prototype._swipeToNextTopic = function () {
+        var position = new PIXI.Point();
+        this._currentTopic = Math.min(this._currentTopic + 1, 3);
+
+        for(var i = 0; i < this._topics.length; i ++) {
+            position.x = this._canvas.canvasSize.x * (i - this._currentTopic);
+            this._topics[i].moveTo(position.clone());
+        }
+    };
+
+    TopicsMode.prototype._swipeToPrevTopic = function () {
+        var position = new PIXI.Point();
+        this._currentTopic = Math.max(this._currentTopic - 1, 0);
+
+        for(var i = 0; i < this._topics.length; i ++) {
+            position.x = this._canvas.canvasSize.x * (i - this._currentTopic);
+            this._topics[i].moveTo(position.clone());
+        }
     };
 
     return TopicsMode;

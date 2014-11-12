@@ -1,12 +1,15 @@
 /* global define:true */
 define([
+    'jquery',
     'pixi',
     'createjs',
     'signals',
     'explore/issue',
     'explore/circle',
-    'explore/responsive'
+    'explore/responsive',
+    'jquery-mobile'
 ], function (
+    $,
     PIXI,
     createjs,
     signals,
@@ -25,6 +28,9 @@ define([
 
         this.renderStartS = new signals.Signal();
         this.renderEndS = new signals.Signal();
+
+        this.swipeLeftS = new signals.Signal();
+        this.swipeRightS = new signals.Signal();
 
         return this;
     };
@@ -66,6 +72,11 @@ define([
         requestAnimationFrame(this._render.bind(this));
 
         this._drawFakes();
+
+        // touch events
+        this._stage.touchstart = this._onTouchStart.bind(this);
+        $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
+        $(document).on('swiperight', container, this._onSwipeRight.bind(this));
     };
 
     /**
@@ -198,6 +209,18 @@ define([
                 return this.tags[i];
             }
         }
+    };
+
+    ExploreCanvas.prototype._onTouchStart = function (event) {
+        this._touchPosition = event.global;
+    };
+
+    ExploreCanvas.prototype._onSwipeLeft = function () {
+        this.swipeLeftS.dispatch();
+    };
+
+    ExploreCanvas.prototype._onSwipeRight = function () {
+        this.swipeRightS.dispatch();
     };
 
     /**

@@ -590,25 +590,25 @@ define([
     //     }
     // };
 
-    Explore.prototype._swipeToNextTopic = function () {
-        var position = new PIXI.Point();
-        this._currentTopic = Math.min(this._currentTopic + 1, 3);
+    // Explore.prototype._swipeToNextTopic = function () {
+    //     var position = new PIXI.Point();
+    //     this._currentTopic = Math.min(this._currentTopic + 1, 3);
 
-        for(var i = 0; i < this._topics.length; i ++) {
-            position.x = this._renderer.width * (i - this._currentTopic);
-            this._topics[i].moveTo(position.clone());
-        }
-    };
+    //     for(var i = 0; i < this._topics.length; i ++) {
+    //         position.x = this._renderer.width * (i - this._currentTopic);
+    //         this._topics[i].moveTo(position.clone());
+    //     }
+    // };
 
-    Explore.prototype._swipeToPrevTopic = function () {
-        var position = new PIXI.Point();
-        this._currentTopic = Math.max(this._currentTopic - 1, 0);
+    // Explore.prototype._swipeToPrevTopic = function () {
+    //     var position = new PIXI.Point();
+    //     this._currentTopic = Math.max(this._currentTopic - 1, 0);
 
-        for(var i = 0; i < this._topics.length; i ++) {
-            position.x = this._renderer.width * (i - this._currentTopic);
-            this._topics[i].moveTo(position.clone());
-        }
-    };
+    //     for(var i = 0; i < this._topics.length; i ++) {
+    //         position.x = this._renderer.width * (i - this._currentTopic);
+    //         this._topics[i].moveTo(position.clone());
+    //     }
+    // };
 
     /**
     * Get visual element from id
@@ -678,21 +678,21 @@ define([
         }
     };
 
-    Explore.prototype._onTouchStart = function (event) {
-        this._touchPosition = event.global;
-    };
+    // Explore.prototype._onTouchStart = function (event) {
+    //     this._touchPosition = event.global;
+    // };
 
-    Explore.prototype._onSwipeLeft = function () {
-        if (this._mode === Issue.MODE_TOPICS) {
-            this._swipeToNextTopic();
-        }
-    };
+    // Explore.prototype._onSwipeLeft = function () {
+    //     if (this._mode === Issue.MODE_TOPICS) {
+    //         this._swipeToNextTopic();
+    //     }
+    // };
 
-    Explore.prototype._onSwipeRight = function () {
-        if (this._mode === Issue.MODE_TOPICS) {
-            this._swipeToPrevTopic();
-        }
-    };
+    // Explore.prototype._onSwipeRight = function () {
+    //     if (this._mode === Issue.MODE_TOPICS) {
+    //         this._swipeToPrevTopic();
+    //     }
+    // };
 
     /**
      * do animation cycle
