@@ -27,6 +27,7 @@ define([
     Explore.prototype.init = function (isDebug) {
         this._canvas.drawTags(this._tagData);
         this._canvas.drawIssues(this._issueData);
+        this._canvas.pressIssueS.add(this._openIssue.bind(this));
 
         this._explore.init();
         this._topics.init();
@@ -122,33 +123,29 @@ define([
         this._topics.show();
     };
 
-    Explore.prototype._onOverTag = function (event) {
-        this._tags[event.target.index].mouseOver();
-    };
+    // Explore.prototype._onOverTag = function (event) {
+    //     this._tags[event.target.index].mouseOver();
+    // };
 
-    Explore.prototype._onOutTag = function (event) {
-        this._tags[event.target.index].mouseOut();
-    };
+    // Explore.prototype._onOutTag = function (event) {
+    //     this._tags[event.target.index].mouseOut();
+    // };
 
-    Explore.prototype._onOverIssue = function (event) {
-        if (this._mode === Issue.MODE_ISSUES) {
-            this._issues[event.target.index].issueModeMouseOver();
-        } else {
-            this._issues[event.target.index].mouseOver();
-        }
-    };
+    // Explore.prototype._onOverIssue = function (event) {
+    //     if (this._mode === Issue.MODE_ISSUES) {
+    //         this._issues[event.target.index].issueModeMouseOver();
+    //     } else {
+    //         this._issues[event.target.index].mouseOver();
+    //     }
+    // };
 
-    Explore.prototype._onOutIssue = function (event) {
-        if (this._mode === Issue.MODE_ISSUES) {
-            this._issues[event.target.index].issueModeMouseOut();
-        } else {
-            this._issues[event.target.index].mouseOut();
-        }
-    };
-
-    Explore.prototype._onPressIssue = function (event) {
-        this._openIssue(this._getElementFromId(this._issueData[event.target.index].getId()));
-    };
+    // Explore.prototype._onOutIssue = function (event) {
+    //     if (this._mode === Issue.MODE_ISSUES) {
+    //         this._issues[event.target.index].issueModeMouseOut();
+    //     } else {
+    //         this._issues[event.target.index].mouseOut();
+    //     }
+    // };
 
     Explore.prototype._openIssue = function (issue) {
         this._mode = Issue.MODE_DETAIL;
@@ -159,42 +156,6 @@ define([
             this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
         }
     }
-
-    Explore.prototype._mouseOverIssue = function (issue) {
-        var related;
-        var relatedIssue;
-        var isSameTopic;
-        var i;
-
-        if (this._mode !== Issue.MODE_ISSUES) {
-            related = issue.data.getRelated();
-            for(i = 0; i < related.length; i ++) {
-                relatedIssue = this._getElementFromId(related[i]._id);
-                isSameTopic = issue.data._parent._id === relatedIssue.data._parent._id;
-                if (this._mode !== Issue.MODE_TOPICS) {
-                    relatedIssue.lightUp();
-                }
-            }
-        }
-    };
-
-    Explore.prototype._mouseOutIssue = function (issue) {
-        var related;
-        var relatedIssue;
-        var i;
-
-        if (this._mode !== Issue.MODE_ISSUES) {
-            // if (!issue.isInteractive || this._autoMode) {
-            //     issue.mouseOut.bind(issue)();
-            // }
-
-            related = issue.data.getRelated();
-            for(i = 0; i < related.length; i ++) {
-                relatedIssue = this._getElementFromId(related[i]._id);
-                relatedIssue.lightDown();
-            }
-        }
-    };
 
     Explore.prototype._updateScroller = function (mousePosition) {
         // no movement if mouse is out of the canvas

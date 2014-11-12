@@ -31,6 +31,7 @@ define([
 
         this.swipeLeftS = new signals.Signal();
         this.swipeRightS = new signals.Signal();
+        this.pressIssueS = new signals.Signal();
 
         return this;
     };
@@ -116,6 +117,7 @@ define([
 
             tag.setData(this._tagData[i]);
             tag.draw(2);
+            tag.pressS.add(this._onPressIssue.bind(this));
         }
     };
 
@@ -134,7 +136,12 @@ define([
 
             issue.setData(this._issueData[i]);
             issue.draw(3 + Math.random() * 5);
+            issue.pressS.add(this._onPressIssue.bind(this));
         }
+    };
+
+    ExploreCanvas.prototype._onPressIssue = function (issue) {
+        this.pressIssueS.dispatch(issue);
     };
 
     ExploreCanvas.prototype.addChild = function (child) {

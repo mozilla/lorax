@@ -85,6 +85,42 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         }
     };
 
+    ExploreMode.prototype._mouseOverIssue = function (issue) {
+        var related = issue.data.getRelated();
+        var relatedIssue;
+        var i;
+
+        issue.mouseOver();
+        for(i = 0; i < related.length; i ++) {
+            relatedIssue = this._canvas.getElementById(related[i]._id);
+            relatedIssue.lightUp()
+        }
+    };
+
+    ExploreMode.prototype._mouseOutIssue = function (issue) {
+        var related = issue.data.getRelated();
+        var relatedIssue;
+        var i;
+
+        issue.mouseOut();
+        for(i = 0; i < related.length; i ++) {
+            relatedIssue = this._canvas.getElementById(related[i]._id);
+            relatedIssue.lightDown();
+        }
+    };
+
+    ExploreMode.prototype._updateIssues = function () {
+        var i;
+
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            this._canvas.issues[i].update(this._canvas.mousePosition);
+        }
+
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            this._canvas.tags[i].update(this._canvas.mousePosition);
+        }
+    };
+
     ExploreMode.prototype._onStartShow = function () {
         // set position for issues
         var issue;
@@ -95,6 +131,10 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
             issue.setMode(Issue.MODE_EXPLORE);
             issue.moveTo(issue.exploreX, issue.exploreY)
                 .call(issue._resumeStaticAnimation.bind(issue));
+            issue.exploreMouseOver = this._mouseOverIssue.bind(this);
+            issue.exploreMouseOut = this._mouseOutIssue.bind(this);
+            issue.mouseOverS.add(issue.exploreMouseOver);
+            issue.mouseOutS.add(issue.exploreMouseOut);
         };
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
@@ -105,7 +145,10 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
             this._canvas.fakes[i].implode();
         }
 
-        this._canvas.renderStartS.add(this._drawLines.bind(this));
+        this._updateIssuesBind = this._updateIssues.bind(this);
+        this._drawLinesBind = this._drawLines.bind(this);
+        this._canvas.renderStartS.add(this._updateIssuesBind);
+        this._canvas.renderStartS.add(this._drawLinesBind);
         this._canvas.showLines();
 
         setTimeout(this._onShow.bind(this), 500);
@@ -115,6 +158,12 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         var issue;
         var i;
 
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+            issue.mouseOverS.remove(issue.exploreMouseOver);
+            issue.mouseOutS.remove(issue.exploreMouseOut);
+        }
+
         for (i = 0; i < this._canvas.tags.length; i ++) {
             this._canvas.tags[i].explode(this._exploreRadius);
         }
@@ -123,7 +172,8 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
             this._canvas.fakes[i].explode(this._exploreRadius);
         }
 
-        this._canvas.renderStartS.remove(this._drawLines.bind(this));
+        this._canvas.renderStartS.remove(this._updateIssuesBind);
+        this._canvas.renderStartS.remove(this._drawLinesBind);
         this._canvas.hideLines();
 
         setTimeout(this._onHide.bind(this), 0);

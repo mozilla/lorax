@@ -1,11 +1,25 @@
 /* global define:true */
-define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs) {
+define([
+    'explore/circle',
+    'pixi',
+    'createjs',
+    'signals'
+], function (
+    Circle,
+    PIXI,
+    createjs,
+    signals
+) {
     'use strict';
 
     var Issue = function (index, canvasSize) {
         this._index = index;
         this._canvasSize = canvasSize;
         this.elm = new PIXI.DisplayObjectContainer();
+
+        this.mouseOverS = new signals.Signal();
+        this.mouseOutS = new signals.Signal();
+        this.pressS = new signals.Signal();
 
         return this;
     };
@@ -50,8 +64,24 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         this.isInteractive = true;
         this.elm.index = this._index;
 
+        this.elm.mouseover = this.elm.touchstart = this._onMouseOver.bind(this);
+        this.elm.mouseout = this._onMouseOut.bind(this);
+        this.elm.mousedown = this._onPress.bind(this);
+
         // create issue mode specific code
         this._drawIssueMode();
+    };
+
+    Issue.prototype._onMouseOver = function () {
+        this.mouseOverS.dispatch(this);
+    };
+
+    Issue.prototype._onMouseOut = function () {
+        this.mouseOutS.dispatch(this);
+    };
+
+    Issue.prototype._onPress = function () {
+        this.pressS.dispatch(this);
     };
 
     Issue.prototype._drawIssueMode = function () {
