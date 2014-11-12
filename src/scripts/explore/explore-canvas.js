@@ -2,11 +2,13 @@
 define([
     'pixi',
     'createjs',
+    'signals',
     'explore/issue',
     'explore/circle'
 ], function (
     PIXI,
     createjs,
+    signals,
     Issue,
     Circle
 ) {
@@ -18,6 +20,11 @@ define([
         this.fakes = [];
 
         this.canvasSize = new PIXI.Point();
+
+        this.renderStartS = new signals.Signal();
+        this.renderEndS = new signals.Signal();
+
+        return this;
     };
 
     /**
@@ -84,13 +91,8 @@ define([
     ExploreCanvas.prototype.drawTags = function (tagData) {
         this._tagData = tagData;
 
-        var seed;
-        var rSeed;
         var tag;
         for (var i = 0; i < this._tagData.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = this._exploreRadius + (Math.random() * 5);
-
             tag = new Issue(i, this.canvasSize);
             tag.setIsInteractive(false);
 
@@ -98,11 +100,7 @@ define([
             this._particlesContainer.addChild(tag.elm);
 
             tag.setData(this._tagData[i]);
-            tag.draw(2, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-
-            // tag.elm.mouseover = this._onOverTag.bind(this);
-            // tag.elm.mouseout = this._onOutTag.bind(this);
-            // tag.elm.mousedown = this._onPressIssue.bind(this);
+            tag.draw(2);
         }
     };
 
@@ -112,123 +110,88 @@ define([
     ExploreCanvas.prototype.drawIssues = function (issueData) {
         this._issueData = issueData;
 
-        var seed;
-        var rSeed;
         var issue;
         for (var i = 0; i < this._issueData.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
-
             issue = new Issue(i, this.canvasSize);
 
             this.issues.push(issue);
             this._particlesContainer.addChild(issue.elm);
 
             issue.setData(this._issueData[i]);
-            issue.draw(
-                8 - rSeed / this._exploreRadius * 5,
-                Math.sin(seed) * rSeed,
-                Math.cos(seed) * rSeed
-            );
-
-            // issue.exploreX = issue.elm.x;
-            // issue.exploreY = issue.elm.y;
-
-            // issue.mouseOverCallback = this._mouseOverIssue.bind(this);
-            // issue.mouseOutCallback = this._mouseOutIssue.bind(this);
-
-            // issue.elm.mouseover = issue.elm.touchstart = this._onOverIssue.bind(this);
-            // issue.elm.mouseout = this._onOutIssue.bind(this);
-            // issue.elm.mousedown = this._onPressIssue.bind(this);
+            issue.draw(3 + Math.random() * 5);
         }
     };
 
     /**
      * update particle positions
      */
-    ExploreCanvas.prototype._updateParticles = function (mousePosition) {
+    ExploreCanvas.prototype._updateParticles = function () {
         for (var i = 0; i < this.issues.length; i ++) {
-            this.issues[i].update(mousePosition);
+            this.issues[i].update(this._mousePosition);
         }
 
         for (var i = 0; i < this.tags.length; i ++) {
-            this.tags[i].update(mousePosition);
+            this.tags[i].update(this._mousePosition);
         }
     };
 
     /**
-    * Draw connecting lines
-    */
-    ExploreCanvas.prototype._drawLines = function () {
-        // this._linesContainer.clear();
-        // var isOver;
-        // var isSameTopic;
-        // var issue;
-        // var related;
-        // var tags;
-        // var relatedItem;
-        // var i;
-        // var j;
-        // for (i = 0; i < this.issues.length; i ++) {
-        //     issue = this.issues[i];
-        //     related = this.issues[i].data.getRelated();
-        //     tags = this.issues[i].data.getTags();
-
-        //     if (this._mode === Issue.MODE_EXPLORE || this._mode === Issue.MODE_TOPICS) {
-        //         for (j = 0; j < related.length; j ++) {
-        //             relatedItem = this._getElementFromId(related[j]._id);
-
-        //             isOver = (issue.isOver || relatedItem.isOver);
-        //             isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
-        //             // only show related on same topic if on topics
-        //             if (this._mode === Issue.MODE_EXPLORE || isSameTopic) {
-        //                 if (isOver && this._mode !== Issue.MODE_TOPICS) {
-        //                     this._linesContainer.lineStyle(1, 0x000000,  0.15);
-        //                 } else {
-        //                     this._linesContainer.lineStyle(1, 0x000000, 0.03);
-        //                 }
-
-        //                 this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-        //                 this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-        //             }
-        //         }
-        //     }
-
-        //     // connect to tags on explore
-        //     if (this._mode === Issue.MODE_EXPLORE) {
-        //         for (j = 0; j < tags.length; j ++) {
-        //             relatedItem = this._getElementFromId(tags[j]._id);
-
-        //             isOver = (issue.isOver || relatedItem.isOver);
-        //             if (isOver) {
-        //                 this._linesContainer.lineStyle(1, 0x000000,  0.15);
-        //             } else {
-        //                 this._linesContainer.lineStyle(1, 0x000000, 0.03);
-        //             }
-
-        //             this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-        //             this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-        //         }
-        //     }
-
-        //     // connect to next in line on issues
-        //     if (this._mode === Issue.MODE_ISSUES && i < this.issues.length - 1) {
-        //         relatedItem = this.issues[i + 1];
-        //         this._linesContainer.lineStyle(1, 0x000000, 0.15);
-        //         this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
-        //         this._linesContainer.lineTo(relatedItem.elm.x, relatedItem.elm.y);
-        //     }
-        // }
+     * Clear lines from canvas
+     */
+    ExploreCanvas.prototype.clearLines = function () {
+        this._linesContainer.clear();
     };
 
     /**
-     * do render cycle
+     * Hide lines container
      */
-    ExploreCanvas.prototype._render = function (tick) {
-        // update tween tick
-        createjs.Tween.tick(tick - this._lastTick);
-        this._lastTick = tick;
+    ExploreCanvas.prototype.hideLines = function () {
+        createjs.Tween.get(this._linesContainer).to({alpha:0}, 300, createjs.Ease.quartOut);
+    };
 
+    /**
+     * Show lines container
+     */
+    ExploreCanvas.prototype.showLines = function () {
+        createjs.Tween.get(this._linesContainer).to({alpha:1}, 300, createjs.Ease.quartIn);
+    };
+
+    /**
+     * Draw a line on canvas
+     * @param  {Circle} issue origin particle
+     * @param  {Circle} related destination particle
+     * @param  {Number} color line color
+     * @param  {Number} alpha line alpha
+     */
+    ExploreCanvas.prototype.drawLine = function (issue, related, color, alpha) {
+        this._linesContainer.lineStyle(1, color,  alpha);
+        this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
+        this._linesContainer.lineTo(related.elm.x, related.elm.y);
+    };
+
+    /**
+    * Get visual element from id
+    */
+    ExploreCanvas.prototype.getElementById = function (id) {
+        var i;
+
+        for (i = 0; i < this.issues.length; i ++) {
+            if (this.issues[i].data._id === id) {
+                return this.issues[i];
+            }
+        }
+
+        for (i = 0; i < this.tags.length; i ++) {
+            if (this.tags[i].data._id === id) {
+                return this.tags[i];
+            }
+        }
+    };
+
+    /**
+     * Updates _mousePosition
+     */
+    ExploreCanvas.prototype._updateMousePosition = function () {
         // mouse position
         var mousePosition = this._stage.getMousePosition().clone();
 
@@ -243,13 +206,27 @@ define([
 
         var lastMouse = this._mousePosition;
         this._mousePosition = mousePosition.clone();
+    };
 
-        this._updateParticles(mousePosition);
+    /**
+     * do render cycle
+     */
+    ExploreCanvas.prototype._render = function (tick) {
+        this.renderStartS.dispatch();
 
-        this._drawLines();
+        // update elements
+        this._updateMousePosition();
+        this._updateParticles();
+
+        // update tween tick
+        createjs.Tween.tick(tick - this._lastTick);
+        this._lastTick = tick;
+
+        // render canvas
         this._renderer.render(this._stage);
-
         requestAnimationFrame(this._render.bind(this));
+
+        this.renderEndS.dispatch();
     };
 
     return ExploreCanvas;

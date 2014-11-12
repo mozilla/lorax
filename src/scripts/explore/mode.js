@@ -4,12 +4,6 @@ define([], function () {
 
     var Mode = function () {
         Mode.MODES.push(this);
-
-        return {
-            show: this.show.bind(this),
-            hide: this.hide.bind(this),
-            init: this.init.bind(this)
-        }
     };
 
     if (!Mode.MODES) {
@@ -35,7 +29,7 @@ define([], function () {
     };
 
     Mode.prototype._onShow = function () {
-
+        Mode.OPEN_MODE = this;
     };
 
     Mode.prototype.hide = function (callback) {

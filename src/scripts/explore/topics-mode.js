@@ -3,14 +3,11 @@ define(['explore/mode'], function (Mode) {
     'use strict';
 
     var TopicsMode = function () {
-
-        return {
-            show: this.show.bind(this),
-            hide: this.hide.bind(this)
-        }
+        return this;
     };
 
     TopicsMode.prototype = new Mode();
+    TopicsMode.prototype.constructor = TopicsMode;
 
     return TopicsMode;
 });

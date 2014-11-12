@@ -11,6 +11,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
     };
 
     Issue.prototype = new Circle();
+    Issue.prototype.constructor = Issue;
 
     Issue.MODE_EXPLORE = 'explore';
     Issue.MODE_TOPICS = 'topics';
@@ -23,10 +24,9 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         Issue.MODE_DETAIL
     ];
 
-    Issue.prototype._superSetData = Issue.prototype.setData;
     Issue.prototype.setData = function (data) {
         this.mode = Issue.MODE_EXPLORE;
-        this._superSetData.bind(this)(data);
+        Circle.prototype.setData.call(this, data);
 
         var colors = [0x6bb94e, 0xf6c925, 0xdb3f33];
         this.color = colors[this.data._status];
@@ -34,7 +34,6 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         this._textAlwaysVisible = false;
     };
 
-    Issue.prototype._superDraw = Issue.prototype.draw;
     /**
      * Draws an issue circle
      * @param  {number} radius desired radius
@@ -45,7 +44,7 @@ define(['explore/circle', 'pixi', 'createjs'], function (Circle, PIXI, createjs)
         x = Math.round(x);
         y = Math.round(y);
 
-        this._superDraw.bind(this)(radius, x, y);
+        Circle.prototype.draw.call(this, radius, x, y);
         this.elm.interactive = true;
         this.elm.buttonMode = true;
         this.isInteractive = true;

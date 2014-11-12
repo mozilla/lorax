@@ -24,7 +24,8 @@
     "lodash": "~2.4.1",
     "stats.js": "*",
     "TweenJS": "*",
-    "pixi": "~2.0.0"
+    "pixi": "~2.0.0",
+    "js-signals": "git://github.com/WebSpellChecker/js-signals.git#~1.0.0"
   },
   "devDependencies": {
     "almond": "~0.3.0",

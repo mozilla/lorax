@@ -8,11 +8,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         return this;
     };
 
-    Circle.prototype.draw = function (radius, x, y) {
+    Circle.prototype.draw = function (radius) {
         this.radius = radius;
-
-        x = Math.round(x);
-        y = Math.round(y);
 
         this._circle = new PIXI.Graphics();
         this.elm.addChild(this._circle);
@@ -22,11 +19,6 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         if (this.data) {
             this._drawTitle();
         }
-
-        this.elm.x = x;
-        this.elm.y = y;
-        this._x0 = x;
-        this._y0 = y;
 
         this._resumeStaticAnimation();
     };

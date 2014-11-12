@@ -49,10 +49,8 @@ define([
         this._canvas.drawIssues(this._issueData);
 
         this._explore.init();
-        // this._topics.init();
-        // this._issues.init();
-
-        this._explore.show();
+        this._topics.init();
+        this._issues.init();
 
         // FPS count for debugging
         if (isDebug) {
@@ -79,6 +77,8 @@ define([
         this.AT_LARGE = 960;
         this.AT_MEDIUM = 560;
         // this._mousePosition;
+
+        this.showExplore();
     };
 
     Explore.prototype.setData = function (data) {
@@ -226,133 +226,139 @@ define([
     * Go to explore mode
     */
     Explore.prototype.showExplore = function () {
-        this._clearTopics();
-        this._startAutoMode();
+        // this._clearTopics();
+        // this._startAutoMode();
 
-        createjs.Tween.get(this._linesContainer)
-            .to({alpha:0}, 300, createjs.Ease.quartOut)
-            .to({alpha:1}, 300, createjs.Ease.quartIn);
+        // createjs.Tween.get(this._linesContainer)
+        //     .to({alpha:0}, 300, createjs.Ease.quartOut)
+        //     .to({alpha:1}, 300, createjs.Ease.quartIn);
 
-        this._mode = Issue.MODE_EXPLORE;
+        // this._mode = Issue.MODE_EXPLORE;
 
-        var issue;
-        var i;
-        for (i = 0; i < this._issues.length; i ++) {
-            issue = this._issues[i];
-            issue.setMode(Issue.MODE_EXPLORE);
-            issue.moveTo(issue.exploreX, issue.exploreY)
-                .call(issue._resumeStaticAnimation.bind(issue));
-        }
+        // var issue;
+        // var i;
+        // for (i = 0; i < this._issues.length; i ++) {
+        //     issue = this._issues[i];
+        //     issue.setMode(Issue.MODE_EXPLORE);
+        //     issue.moveTo(issue.exploreX, issue.exploreY)
+        //         .call(issue._resumeStaticAnimation.bind(issue));
+        // }
 
-        for (i = 0; i < this._tags.length; i ++) {
-            this._tags[i].implode();
-        }
+        // for (i = 0; i < this._tags.length; i ++) {
+        //     this._tags[i].implode();
+        // }
 
-        for (i = 0; i < this._fakes.length; i ++) {
-            this._fakes[i].implode();
-        }
+        // for (i = 0; i < this._fakes.length; i ++) {
+        //     this._fakes[i].implode();
+        // }
+
+        this._explore.show();
     };
 
     /**
     * Go to issues mode
     */
     Explore.prototype.showIssues = function () {
-        this._clearTopics();
+        // this._clearTopics();
 
-        createjs.Tween.get(this._linesContainer)
-            .to({alpha:0}, 300, createjs.Ease.quartOut)
-            .to({alpha:1}, 300, createjs.Ease.quartIn);
+        // createjs.Tween.get(this._linesContainer)
+        //     .to({alpha:0}, 300, createjs.Ease.quartOut)
+        //     .to({alpha:1}, 300, createjs.Ease.quartIn);
 
-        this._mode = Issue.MODE_ISSUES;
-        this._endAutoMode(false);
+        // this._mode = Issue.MODE_ISSUES;
+        // this._endAutoMode(false);
 
-        var issue;
-        var i;
-        for (i = 0; i < this._tags.length; i ++) {
-            this._tags[i].explode(this._exploreRadius);
-        }
+        // var issue;
+        // var i;
+        // for (i = 0; i < this._tags.length; i ++) {
+        //     this._tags[i].explode(this._exploreRadius);
+        // }
 
-        for (i = 0; i < this._fakes.length; i ++) {
-            this._fakes[i].explode(this._exploreRadius);
-        }
+        // for (i = 0; i < this._fakes.length; i ++) {
+        //     this._fakes[i].explode(this._exploreRadius);
+        // }
 
-        for(i = 0; i < this._issues.length; i ++) {
-            issue = this._issues[i];
-            issue.setMode(Issue.MODE_ISSUES);
-            issue.issueX = this._scrollArea.x;
-            issue.issueY = this._scrollArea.y + (this._issueMargin * i);
-            issue.moveTo(issue.issueX, issue.issueY);
-        }
+        // for(i = 0; i < this._issues.length; i ++) {
+        //     issue = this._issues[i];
+        //     issue.setMode(Issue.MODE_ISSUES);
+        //     issue.issueX = this._scrollArea.x;
+        //     issue.issueY = this._scrollArea.y + (this._issueMargin * i);
+        //     issue.moveTo(issue.issueX, issue.issueY);
+        // }
+
+        this._issues.show();
     };
 
     /**
     * Go to topics mode
     */
     Explore.prototype.showTopics = function () {
-        createjs.Tween.get(this._linesContainer)
-            .to({alpha:0}, 400, createjs.Ease.quartOut)
-            .to({alpha:1}, 400, createjs.Ease.quartIn);
+        // createjs.Tween.get(this._linesContainer)
+        //     .to({alpha:0}, 400, createjs.Ease.quartOut)
+        //     .to({alpha:1}, 400, createjs.Ease.quartIn);
 
-        this._mode = Issue.MODE_TOPICS;
-        this._endAutoMode(false);
+        // this._mode = Issue.MODE_TOPICS;
+        // this._endAutoMode(false);
 
-        this._currentTopic = 0;
+        // this._currentTopic = 0;
 
-        this._stage.addChild(this._topicsContainer);
+        // this._stage.addChild(this._topicsContainer);
 
-        var i;
-        var j;
-        var issue;
-        var topic;
+        // var i;
+        // var j;
+        // var issue;
+        // var topic;
 
-        for (i = 0; i < this._tags.length; i ++) {
-            this._tags[i].explode(this._exploreRadius);
-        }
+        // for (i = 0; i < this._tags.length; i ++) {
+        //     this._tags[i].explode(this._exploreRadius);
+        // }
 
-        for (i = 0; i < this._fakes.length; i ++) {
-            this._fakes[i].explode(this._exploreRadius);
-        }
+        // for (i = 0; i < this._fakes.length; i ++) {
+        //     this._fakes[i].explode(this._exploreRadius);
+        // }
 
-        for(i = 0; i < this._topicsData.length; i ++) {
-            topic = this._topics[i];
-            if (!topic) {
-                // get issue elements for topic
-                var issues = [];
-                for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
-                    issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
-                    issues.push(issue);
-                }
+        // for(i = 0; i < this._topicsData.length; i ++) {
+        //     topic = this._topics[i];
+        //     if (!topic) {
+        //         // get issue elements for topic
+        //         var issues = [];
+        //         for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
+        //             issue = this._getElementFromId(this._topicsData[i]._issues[j]._id);
+        //             issues.push(issue);
+        //         }
 
-                var fakes = [];
-                for(j = 0; j < Math.floor(Math.random() * 10) + 20; j ++) {
-                    issue = this._getRandomFake();
-                    fakes.push(issue);
-                }
+        //         var fakes = [];
+        //         for(j = 0; j < Math.floor(Math.random() * 10) + 20; j ++) {
+        //             issue = this._getRandomFake();
+        //             fakes.push(issue);
+        //         }
 
-                topic = this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
-                this._topicsContainer.addChild(topic.elm);
+        //         topic = this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
+        //         this._topicsContainer.addChild(topic.elm);
 
-                if (this._renderer.width > this.AT_LARGE) {
-                    topic.elm.x = (this._renderer.width - 400) /
-                        (this._topicsData.length - 1) * i;
-                    topic.elm.x -= ((this._renderer.width - 400) / 2);
-                } else if (this._renderer.width > this.AT_MEDIUM) {
-                    topic.elm.x = (this._renderer.width - 500) * (i % 2);
-                    topic.elm.x -= ((this._renderer.width - 500) / 2);
-                    topic.elm.y =  (350 * Math.floor(i / 2)) - 350;
-                } else {
-                    topic.elm.x = this._renderer.width * i;
-                    // this._topics[i].elm.x -= this._renderer.width / 2;
-                }
+        //         if (this._renderer.width > this.AT_LARGE) {
+        //             topic.elm.x = (this._renderer.width - 400) /
+        //                 (this._topicsData.length - 1) * i;
+        //             topic.elm.x -= ((this._renderer.width - 400) / 2);
+        //         } else if (this._renderer.width > this.AT_MEDIUM) {
+        //             topic.elm.x = (this._renderer.width - 500) * (i % 2);
+        //             topic.elm.x -= ((this._renderer.width - 500) / 2);
+        //             topic.elm.y =  (350 * Math.floor(i / 2)) - 350;
+        //         } else {
+        //             topic.elm.x = this._renderer.width * i;
+        //             // this._topics[i].elm.x -= this._renderer.width / 2;
+        //         }
 
-                topic.elm.x = Math.round(topic.elm.x);
-                topic.elm.y = Math.round(topic.elm.y);
+        //         topic.elm.x = Math.round(topic.elm.x);
+        //         topic.elm.y = Math.round(topic.elm.y);
 
-                topic.setup();
-            }
+        //         topic.setup();
+        //     }
 
-            topic.show();
-        }
+        //     topic.show();
+        // }
+
+        this._topics.show();
     };
 
     // get random fakes for topic

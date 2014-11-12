@@ -22,6 +22,7 @@
             'pixi': '../bower_components/pixi/bin/pixi',
             'stats': '../bower_components/stats.js/build/stats.min',
             'createjs': '../bower_components/TweenJS/lib/tweenjs-0.5.1.min',
+            'signals': '../bower_components/js-signals/dist/signals.min',
             'explore': '../scripts/explore'
         },
 

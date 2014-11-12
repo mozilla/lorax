@@ -34,7 +34,6 @@ define(['explore/explore'], function (Explore) {
             this._explore = new Explore();
             this._explore.setData(model);
             this._explore.setContainer(this._container);
-            this._explore.init();
             exploreService.setCanvas(this._explore);
         }.bind(this));
     };
