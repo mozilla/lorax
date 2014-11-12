@@ -28,17 +28,17 @@ define([
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             issue.explode();
-        };
+        }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             issue = this._canvas.tags[i];
             issue.explode();
-        };
+        }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
             issue = this._canvas.fakes[i];
             issue.explode();
-        };
+        }
 
         this._canvas.clearLines();
 
@@ -52,17 +52,17 @@ define([
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             issue.implode();
-        };
+        }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             issue = this._canvas.tags[i];
             issue.implode();
-        };
+        }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
             issue = this._canvas.fakes[i];
             issue.implode();
-        };
+        }
 
         setTimeout(this._onHide.bind(this), 0);
     };

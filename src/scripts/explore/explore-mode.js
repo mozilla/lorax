@@ -1,9 +1,12 @@
 /* global define:true */
-define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
+define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
     'use strict';
 
     var ExploreMode = function (canvas) {
         this._canvas = canvas;
+
+        ExploreMode.AUTO_MODE_TIME = 6000;
+        ExploreMode.AUTO_MODE_TIMEOUT = 3000;
 
         return this;
     };
@@ -52,6 +55,41 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         }
     };
 
+    ExploreMode.prototype._startAutoMode = function () {
+        this._autoMode = true;
+
+        this._autoModeIssue = this._canvas.issues[Math.floor(Math.random() * this._canvas.issues.length)];
+        this._canvas.mousePosition = this._canvas.autoModePosition = new PIXI.Point(
+            this._autoModeIssue.elm.x,
+            this._autoModeIssue.elm.y
+        );
+        this._mouseOverIssue(this._autoModeIssue);
+
+        clearTimeout(this._autoModeTimeout);
+        this._autoModeTimeout = setTimeout(
+            this._endAutoMode.bind(this),
+            ExploreMode.AUTO_MODE_TIMEOUT,
+            true
+        );
+    };
+
+    ExploreMode.prototype._endAutoMode = function (startAnother) {
+        if (this._autoModeIssue) {
+            this._mouseOutIssue(this._autoModeIssue);
+        }
+
+        this._autoMode = false;
+        this._canvas.autoModePosition = null;
+
+        clearTimeout(this._autoModeTimeout);
+        if (startAnother) {
+            this._autoModeTimeout = setTimeout(
+                this._startAutoMode.bind(this),
+                ExploreMode.AUTO_MODE_TIME
+            );
+        }
+    };
+
     ExploreMode.prototype._drawLines = function () {
         var i;
         var j;
@@ -91,6 +129,10 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         var relatedIssue;
         var i;
 
+        if (issue !== this._autoModeIssue) {
+            this._endAutoMode();
+        }
+
         issue.mouseOver();
         for(i = 0; i < related.length; i ++) {
             relatedIssue = this._canvas.getElementById(related[i]._id);
@@ -102,6 +144,10 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         var related = issue.data.getRelated();
         var relatedIssue;
         var i;
+
+        if (issue !== this._autoModeIssue) {
+            this._endAutoMode(true);
+        }
 
         issue.mouseOut();
         for(i = 0; i < related.length; i ++) {
@@ -151,6 +197,9 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         this._canvas.renderStartS.add(this._updateIssuesBind);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
+        // start a new autoMode timeout
+        this._endAutoMode(true);
+
         setTimeout(this._onShow.bind(this), 500);
     };
 
@@ -174,6 +223,8 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
 
         this._canvas.renderStartS.remove(this._updateIssuesBind);
         this._canvas.renderStartS.remove(this._drawLinesBind);
+
+        this._endAutoMode();
 
         setTimeout(this._onHide.bind(this), 0);
     };

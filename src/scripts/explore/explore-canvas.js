@@ -248,6 +248,10 @@ define([
         mousePosition.x -= this._particlesContainer.x;
         mousePosition.y -= this._particlesContainer.y;
 
+        if (this.autoModePosition) {
+            mousePosition = this.autoModePosition.clone();
+        }
+
         this.mousePosition = mousePosition.clone();
     };
 

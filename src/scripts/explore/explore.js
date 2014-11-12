@@ -43,9 +43,6 @@ define([
             this._showStats();
         }
 
-        // this._autoModeTime = 8000;
-        // this._autoModeTimeUp = 3000;
-
         this.showExplore();
     };
 
@@ -64,36 +61,6 @@ define([
     Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
         this.enterIssueCallback = enterIssueCallback;
     };
-
-    // Explore.prototype._startAutoMode = function () {
-    //     this._autoMode = true;
-
-    //     this._autoModeIssue = this._issues[Math.floor(Math.random() * this._issues.length)];
-    //     this._mouseOverIssue(this._autoModeIssue);
-
-    //     clearTimeout(this._autoModeTimeout);
-    //     this._autoModeTimeout = setTimeout(
-    //         this._endAutoMode.bind(this),
-    //         this._autoModeTimeUp,
-    //         true
-    //     );
-    // };
-
-    // Explore.prototype._endAutoMode = function (startAnother) {
-    //     if (this._autoModeIssue) {
-    //         this._mouseOutIssue(this._autoModeIssue);
-    //     }
-
-    //     this._autoMode = false;
-
-    //     clearTimeout(this._autoModeTimeout);
-    //     if (startAnother) {
-    //         this._autoModeTimeout = setTimeout(
-    //             this._startAutoMode.bind(this),
-    //             this._autoModeTime
-    //         );
-    //     }
-    // };
 
     /**
     * Shows FPS count

@@ -54,8 +54,6 @@ define([
         var i;
         var issue;
         var relatedItem;
-        var tags;
-        var isOver;
 
         this._canvas.clearLines();
 
@@ -87,7 +85,7 @@ define([
             issue.issueMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.issueMouseOver);
             issue.mouseOutS.add(issue.issueMouseOut);
-        };
+        }
 
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
@@ -103,7 +101,7 @@ define([
             issue = this._canvas.issues[i];
             issue.mouseOverS.remove(issue.issueMouseOver);
             issue.mouseOutS.remove(issue.issueMouseOut);
-        };
+        }
 
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
