@@ -126,7 +126,7 @@ define(['explore/mode', 'explore/issue'], function (Mode, Issue) {
         this._canvas.renderStartS.remove(this._drawLines.bind(this));
         this._canvas.hideLines();
 
-        setTimeout(this._onHide.bind(this), 500);
+        setTimeout(this._onHide.bind(this), 0);
     };
 
     return ExploreMode;

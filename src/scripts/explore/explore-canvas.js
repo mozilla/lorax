@@ -4,13 +4,15 @@ define([
     'createjs',
     'signals',
     'explore/issue',
-    'explore/circle'
+    'explore/circle',
+    'explore/responsive'
 ], function (
     PIXI,
     createjs,
     signals,
     Issue,
-    Circle
+    Circle,
+    Responsive
 ) {
     'use strict';
 
@@ -35,6 +37,8 @@ define([
         this._lastTick = 0;
         this.canvasSize.x = container.width();
         this.canvasSize.y = container.height();
+
+        Responsive.SIZE = this.canvasSize;
 
         // create pixijs renderer and stage
         this._renderer = new PIXI.CanvasRenderer(
@@ -120,6 +124,14 @@ define([
             issue.setData(this._issueData[i]);
             issue.draw(3 + Math.random() * 5);
         }
+    };
+
+    ExploreCanvas.prototype.addChild = function (child) {
+        this._stage.addChild(child);
+    };
+
+    ExploreCanvas.prototype.removeChild = function (child) {
+        this._stage.removeChild(child);
     };
 
     /**

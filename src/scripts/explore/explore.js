@@ -85,6 +85,8 @@ define([
         this._issueData = data.getIssues();
         this._tagData = data.getTags();
         this._topicsData = data.getTopics();
+
+        this._topics.setData(this._topicsData);
     };
 
     Explore.prototype.setContainer = function (container) {
@@ -362,9 +364,9 @@ define([
     };
 
     // get random fakes for topic
-    Explore.prototype._getRandomFake = function () {
-        return this._fakes[Math.floor(Math.random() * this._fakes.length)];
-    };
+    // Explore.prototype._getRandomFake = function () {
+    //     return this._fakes[Math.floor(Math.random() * this._fakes.length)];
+    // };
 
     // /**
     // * Draw dull circles on canvas
@@ -611,21 +613,21 @@ define([
     /**
     * Get visual element from id
     */
-    Explore.prototype._getElementFromId = function (id) {
-        var i;
+    // Explore.prototype._getElementFromId = function (id) {
+    //     var i;
 
-        for (i = 0; i < this._issues.length; i ++) {
-            if (this._issues[i].data._id === id) {
-                return this._issues[i];
-            }
-        }
+    //     for (i = 0; i < this._issues.length; i ++) {
+    //         if (this._issues[i].data._id === id) {
+    //             return this._issues[i];
+    //         }
+    //     }
 
-        for (i = 0; i < this._tags.length; i ++) {
-            if (this._tags[i].data._id === id) {
-                return this._tags[i];
-            }
-        }
-    };
+    //     for (i = 0; i < this._tags.length; i ++) {
+    //         if (this._tags[i].data._id === id) {
+    //             return this._tags[i];
+    //         }
+    //     }
+    // };
 
     // /**
     //  * update issue positions

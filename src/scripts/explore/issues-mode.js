@@ -2,7 +2,9 @@
 define(['explore/mode'], function (Mode) {
     'use strict';
 
-    var IssuesMode = function () {
+    var IssuesMode = function (canvas) {
+        this._canvas = canvas;
+
         return this;
     };
 
