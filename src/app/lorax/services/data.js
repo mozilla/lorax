@@ -54,6 +54,15 @@ define([
             ].join('/');
         }
 
+        function _buildCountryDataEndpoint(locale) {
+            return [
+                '/data',
+                'i18n',
+                locale,
+                'country-data.json'
+            ].join('/');
+        }
+
         /**
          * @method core/services/dataService~getMain
          * @param locale {String} Locale code
@@ -94,7 +103,9 @@ define([
             return this._mainDefer.promise;
         }
 
-        function getMap() {
+        function getMap(locale) {
+            locale = locale || this._defaultLocale;
+
             if (!this._mapData) {
                 if (this._requestingMap) {
                     return this._mapDefer.promise;
@@ -104,10 +115,19 @@ define([
                 this._mapDefer = this._$q.defer();
 
                 var req = this._$http.get(_buildMapEndpoint());
+                var countryReq = this._$http.get(_buildCountryDataEndpoint(locale));
 
                 req.then(function (res) {
-                    this._mapData = res.data;
-                    this._mapDefer.resolve(this._mapData);
+                    if ( res.data ) {
+                        countryReq.then(function (countryRes) {
+                            this._mapData = {
+                                "geoData": res.data,
+                                "countryData": countryRes.data
+                            };
+
+                            this._mapDefer.resolve(this._mapData);
+                        }.bind(this));
+                    }
                 }.bind(this))['catch'](function (error) {
                     this._mapDefer.reject(error);
                 }.bind(this));

@@ -7,58 +7,25 @@
       "src": "http://test.com"
     },
     "dataPoints": {
-      "countries": [
-        {
-          "id": "IND",
-          "displayName": "India",
-          "value": 0.0237
+      "countryData": {
+        "shading": {
+          "name": "levelOfFreedom",
+          "values": [
+            0,
+            1,
+            2
+          ],
+          "legend": [
+            "Not Free",
+            "Partly Free",
+            "Free"
+          ]
         },
-        {
-          "id": "JAM",
-          "displayName": "Jamaica",
-          "value": 0.533
-        },
-        {
-          "id": "MAR",
-          "displayName": "Morocco",
-          "value": 0.25
-        },
-        {
-          "id": "USA",
-          "displayName": "United States",
-          "value": 0.723
-        },
-        {
-          "id": "NOR",
-          "displayName": "Norway",
-          "value": 0.972
-        },
-        {
-          "id": "RUS",
-          "displayName": "Russia",
-          "value": 0.342
-        },
-        {
-          "id": "CHN",
-          "displayName": "China",
-          "value": 0.753
-        },
-        {
-          "id": "AUS",
-          "displayName": "Australia",
-          "value": 0.123
-        },
-        {
-          "id": "BRA",
-          "displayName": "Brazil",
-          "value": 0.456
-        },
-        {
-          "id": "ESP",
-          "displayName": "Spain",
-          "value": 0.913
+        "display": {
+          "name": "freedomScore",
+          "units": "Freedom Score"
         }
-      ]
+      }
     }
   },
   "affordable": {
@@ -225,33 +192,29 @@
       "src": ""
     },
     "dataPoints": {
-      "countries": [
-        {
-          "id": "IND",
-          "displayName": "India",
-          "value": 0.0237
+      "countryData": {
+        "shading": {
+          "name": "internetPopPercentage",
+          "values": [
+            20.0,
+            40.0,
+            60.0,
+            80.0,
+            100.0
+          ],
+          "legend": [
+            "Less than 20%",
+            "20-40%",
+            "40-60%",
+            "60-80%",
+            "Greater than 80%"
+          ]
         },
-        {
-          "id": "JAM",
-          "displayName": "Jamaica",
-          "value": 0.533
-        },
-        {
-          "id": "MAR",
-          "displayName": "Morocco",
-          "value": 0.25
-        },
-        {
-          "id": "USA",
-          "displayName": "United States",
-          "value": 0.723
-        },
-        {
-          "id": "NOR",
-          "displayName": "Norway",
-          "value": 0.972
+        "display": {
+          "name": "internetPopPercentage",
+          "units": "% of population with Internet"
         }
-      ]
+      }
     }
   },
   "contentCreation": {
