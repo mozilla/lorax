@@ -42,9 +42,6 @@ define([
   'lorax/services/data',
   'lorax/services/explore',
 
-  // filters
-  'lorax/filters/unsafe',
-
   //'core/constants/resource-bundle',
 
   'angular',
@@ -90,9 +87,6 @@ define([
   pubSubService,
   dataService,
   exploreService,
-
-  // filters
-  unsafeFilter,
 
   //ResourceBundle,
 
@@ -302,8 +296,6 @@ define([
          * @method lorax/loraxApp~factory
          */
         .factory('dataService', dataService)
-
-        .filter('unsafe', unsafeFilter);
 
       /**
        * Bootstrap the application

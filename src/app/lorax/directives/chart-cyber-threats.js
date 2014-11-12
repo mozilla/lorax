@@ -55,10 +55,10 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
       var width = graphWidth;
-      var height = graphWidth * .7;
+      var height = graphWidth;
 
-      var circleSize = 55;
-      var circleFromCenter = height/2.5;
+      var circleSize = 50;
+      var circleFromCenter = height/2.6;
       var twoPi = (Math.PI*2);
 
       var threatData = {};
@@ -72,136 +72,78 @@ define(['jquery', 'd3'], function ($, d3) {
         }
       });
 
-      var svg = circleChart.append("svg")
-        .attr("width", graphWidth)
-        .attr("height", graphWidth * height / width);
-
-      var descriptionBox = svg.append("g")
-        .attr("class", "cyberthreat__descriptionbox")
-        .attr("transform", function() {
-          var x = svg.attr("width")/2 - (circleFromCenter - circleFromCenter/5)/2;
-          var y = svg.attr("height")/2 - circleFromCenter/5;
-          return "translate(" + x + "," + y + ")";
-        });
-
-      descriptionBox.append("rect")
-        .attr("width", circleFromCenter - circleFromCenter/5)
-        .attr("height", circleFromCenter - circleFromCenter/5);
-
-      descriptionBox.append("text")
-          .attr("class", "cyberthreat__description")
-          .attr("font-size", 12);
-
-      var cyberThreatGroup = svg.append("g")
-        .attr("class", "cyberthreat__group")
-        .attr("transform", "translate(" + svg.attr("width")/2 + "," + svg.attr("height")/2 + ")");
-
-      var labels = cyberThreatGroup.selectAll("g")
-        .data(circleData)
-        .enter()
-        .append("g")
-          .attr("class", "cyberthreat__label")
-          .attr("transform", function(d,i) {
-            var x = Math.cos( twoPi * i/circleData.length) * circleFromCenter;
-            var y = Math.sin( twoPi * i/circleData.length) * circleFromCenter;
-            return "translate(" + x + "," + y + ")";
-          })
-          .on("mouseover", addDescription)
-          .on("mouseout", removeDescription);
-
-      labels.append("circle")
-        .attr("class", "cyberthreat__circle")
-        .style("fill", function(d) { 
-            if( d.category === "Vulnerabilities")
-              return "rgba(0,0,0,0.7)";
-            else if( d.category === "Malware")
-              return "rgba(0,0,0,0.5)";
-            else( d.category === "Exploits")
-              return "rgba(0,0,0,0.3)";
-          })
-        .attr("r", circleSize);
-
-      labels.append("text")
-        .attr("class", "cyberthreat__name")
-        .attr("id", function(d) { return "cyberthreat__name-" + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_"); })
-        .attr("text-anchor", "middle")
-        .attr("y", -10)
-        .attr("font-size", 14)
-        .text(function(d) { return d.name; });
-
-      $.each( d3.selectAll(".cyberthreat__name")[0], function(key, value) {
-        d3plus.textwrap()
-          .container(d3.select("#" + value.id))
-          .width(circleSize*2-20)
-          .draw();
-      });
+      var background = circleChart.append("div")
+        .attr("class","cyberthreat__background")
+        .style("width", width + "px")
+        .style("height", height + "px");
 
       drawLegend();
 
-      function drawLegend() {
-        boxSize = 10;
-        startX = 0;
-        startY = 10;
+      var descriptionBox = background.append("div")
+        .attr("class", "cyberthreat__descriptionbox")
+        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize + "px")
+        .style("top", height/2 - circleFromCenter/5 + "px");
 
-        svg.append("g")
-          .attr("class", "cyberthreat__legend");
+      var circleContainer = background.append("div")
+        .attr("class", "cyberthreat__circlecontainer")
+        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 + "px")
+        .style("top", height/2 - circleFromCenter/5 + "px");  
 
-        var legend = d3.select(".cyberthreat__legend");
+      var labels = circleContainer.selectAll("div")
+        .data(circleData)
+        .enter()
+        .append("div")
+          .attr("class", "cyberthreat__label")
+          .attr("id", function(d) { return "cyberthreat__name-" + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_"); })
+          .style("left", function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + "px"; })
+          .style("top", function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + "px"; })
+          .style("background", function(d) { 
+            if( d.category === "Vulnerabilities")
+              return "rgba(0,0,0,0.7)";
+            else if( d.category === "Malware")
+              return "rgba(0,0,0,0.45)";
+            else( d.category === "Exploits")
+              return "rgba(0,0,0,0.2)";
+          })
+          .on("mouseover", addDescription)
+          .append("div")
+            .text( function(d) { return d.name; });
 
-        legend.append("rect")
-          .attr("x", 0)
-          .attr("y", startY + boxSize)
-          .attr("width", boxSize)
-          .attr("height", boxSize)
-          .style("fill", "rgba(0,0,0,0.7)");
+      d3.select("#cyberthreat__name-spyware")
+        .style("border", "3px solid #fff");
 
-        legend.append("text")
-          .attr("class", "cyberthreat__legend-text")
-          .attr("x", startX + boxSize*2)
-          .attr("y", startY + boxSize*2)
-          .text("Vulnerabilities");
+      d3.select(".cyberthreat__descriptionbox")
+        .text( threatData["cyberthreat__name-spyware"].description);
 
-        legend.append("rect")
-          .attr("x", 0)
-          .attr("y", startY + boxSize*3)
-          .attr("width", boxSize)
-          .attr("height", boxSize)
-          .style("fill", "rgba(0,0,0,0.5)");
 
-        legend.append("text")
-          .attr("class", "cyberthreat__legend-text")
-          .attr("x", startX + boxSize*2)
-          .attr("y", startY + boxSize*3 + boxSize)
-          .text("Malware");
-
-        legend.append("rect")
-          .attr("x", 0)
-          .attr("y", startY + boxSize*5)
-          .attr("width", boxSize)
-          .attr("height", boxSize)
-          .style("fill", "rgba(0,0,0,0.3)");
-
-        legend.append("text")
-          .attr("class", "cyberthreat__legend-text")
-          .attr("x", startX + boxSize*2)
-          .attr("y", startY + boxSize*5 + boxSize)
-          .text("Exploits");
-      }
 
       function addDescription() {
-        d3.select(".cyberthreat__description")
-          .text( threatData[this.childNodes[1].id].description );
-        d3plus.textwrap()
-          .container(d3.select(".cyberthreat__description"))
-          .draw()
+        d3.select(".cyberthreat__descriptionbox")
+          .text( threatData[this.id].description );
 
-        d3.select(this.childNodes[0])
-          .style("stroke", "#fff");
+        d3.selectAll(".cyberthreat__label")
+          .style("border", "none");
+
+        d3.select(this)
+          .style("border", "3px solid #fff");
       }
 
-      function removeDescription() {
-        d3.select(this.childNodes[0])
-          .style("stroke", "none");
+      function drawLegend() {
+        var legend = background.append("div")
+          .attr("class", "cyberthreat__legend");
+
+        legend.append("div")
+          .text("Vulnerabilities")
+          .style("border-left", "15px solid rgba(0,0,0,0.7)");
+
+        legend.append("div")
+          .text("Malware")
+          .style("border-left", "15px solid rgba(0,0,0,0.45)");
+
+        legend.append("div")
+          .text("Exploits")
+          .style("border-left", "15px solid rgba(0,0,0,0.2)");
+
       }
 
     }.bind(controller));

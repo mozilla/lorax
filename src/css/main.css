@@ -1676,3 +1676,39 @@ img {
   width: 8px;
   height: 8px;
 }
+/* Cyber Threats Circle Chart
+   ========================================================================== */
+.cyberthreat__background {
+  position: relative;
+}
+.cyberthreat__circlecontainer {
+  position: absolute;
+}
+.cyberthreat__descriptionbox {
+  position: absolute;
+  width: 220px;
+  font-size: 12px;
+}
+.cyberthreat__label {
+  display: table;
+  position: absolute;
+  background: #000;
+  width: 110px;
+  height: 110px;
+  border-radius: 110px;
+}
+.cyberthreat__label div {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  color: #fff;
+  font-size: 14px;
+}
+.cyberthreat__legend div {
+  height: 15px;
+  margin: 10px 0;
+  padding-left: 10px;
+  font-size: 14px;
+  color: #fff;
+}
