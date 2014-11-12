@@ -127,6 +127,12 @@ define([
         }
     };
 
+    Topic.prototype.hide = function () {
+        for(var i = 0; i < this._fakes.length; i ++) {
+            this._fakes[i].explode();
+        }
+    };
+
     Topic.prototype._delayTouchOver = function () {
         this._timeoutTouchOver = setTimeout(function () {
             this._mouseOver();

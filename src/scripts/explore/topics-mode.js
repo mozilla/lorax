@@ -131,6 +131,11 @@ define([
     TopicsMode.prototype._onStartHide = function () {
         this._canvas.removeChild(this._topicsContainer);
 
+        var i;
+        for (i = 0; i < this._topics.length; i ++) {
+            this._topics[i].hide();
+        };
+
         this._canvas.renderStartS.remove(this._drawLines.bind(this));
         this._canvas.swipeLeftS.remove(this._swipeToNextTopic.bind(this));
         this._canvas.swipeRightS.remove(this._swipeToPrevTopic.bind(this));
