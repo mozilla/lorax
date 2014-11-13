@@ -5,8 +5,8 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
     var ExploreMode = function (canvas) {
         this._canvas = canvas;
 
-        ExploreMode.AUTO_MODE_TIME = 6000;
-        ExploreMode.AUTO_MODE_TIMEOUT = 3000;
+        ExploreMode.AUTO_MODE_TIME = 3000;
+        ExploreMode.AUTO_MODE_TIMEOUT = 1500;
 
         return this;
     };
