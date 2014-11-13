@@ -57,7 +57,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var width = graphWidth;
       var height = graphWidth;
 
-      var circleSize = 50;
+      var circleSize = width/5.5;
       var circleFromCenter = height/2.6;
       var twoPi = (Math.PI*2);
 
@@ -81,7 +81,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var descriptionBox = background.append("div")
         .attr("class", "cyberthreat__descriptionbox")
-        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize + "px")
+        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize/2 + "px")
         .style("top", height/2 - circleFromCenter/5 + "px");
 
       var circleContainer = background.append("div")
@@ -97,6 +97,9 @@ define(['jquery', 'd3'], function ($, d3) {
           .attr("id", function(d) { return "cyberthreat__name-" + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_"); })
           .style("left", function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + "px"; })
           .style("top", function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + "px"; })
+          .style("width", circleSize + "px")
+          .style("height", circleSize + "px")
+          .style("border-radius", circleSize + "px")
           .style("background", function(d) { 
             if( d.category === "Vulnerabilities")
               return "rgba(0,0,0,0.7)";

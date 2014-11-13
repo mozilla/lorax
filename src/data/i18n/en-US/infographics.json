@@ -11,9 +11,9 @@
         "shading": {
           "name": "levelOfFreedom",
           "values": [
-            0,
-            1,
-            2
+            0.01,
+            1.01,
+            2.01
           ],
           "legend": [
             "Not Free",
@@ -23,7 +23,7 @@
         },
         "display": {
           "name": "freedomScore",
-          "units": "Freedom Score"
+          "units": " freedom score"
         }
       }
     }
@@ -196,11 +196,11 @@
         "shading": {
           "name": "internetPopPercentage",
           "values": [
-            20.0,
-            40.0,
-            60.0,
-            80.0,
-            100.0
+            20.01,
+            40.01,
+            60.01,
+            80.01,
+            100.01
           ],
           "legend": [
             "Less than 20%",
@@ -456,65 +456,164 @@
     }
   },
   "openSource": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Operating system (OS) vs. browser source usage",
+    "subheader": "Percent by Year",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "dataLabels": {
+        "os": [
+          "OS Closed Source",
+          "OS Open Source",
+          "OS Free and Open Source"
+        ],
+        "browser": [
+          "Browser Closed Source",
+          "Browser Open Source",
+          "Browser Free and Open Source"
+        ]
+      },
+      "lineGraphData": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "label": "2008",
+          "data": [
+            99.10,
+            0.01,
+            0.60,
+            73.10,
+            1.40,
+            25.30
+          ]
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "label": "2009",
+          "data": [
+            99.00,
+            0.01,
+            0.70,
+            66.20,
+            3.10,
+            30.50
+          ]
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "label": "2010",
+          "data": [
+            97.75,
+            0.25,
+            1.65,
+            59.60,
+            9.95,
+            30.50
+          ]
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "label": "2011",
+          "data": [
+            94.90,
+            1.70,
+            2.80,
+            50.80,
+            22.40,
+            26.35
+          ]
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "label": "2012",
+          "data": [
+            92.70,
+            3.95,
+            2.40,
+            44.40,
+            33.80,
+            21.65
+          ]
+        },
+        {
+          "label": "2013",
+          "data": [
+            88.75,
+            8.15,
+            2.20,
+            41.80,
+            42.05,
+            17.00
+          ]
+        },
+        {
+          "label": "2014",
+          "data": [
+            80.30,
+            16.35,
+            2.00,
+            38.50,
+            47.50,
+            13.80
+          ]
         }
       ]
     }
   },
   "openDataStandards": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Do key online services allow data portability?",
+    "subheader": "Can you extract data?",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "dataStandards": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "service": "Google",
+          "answer": "Partial",
+          "comments": "An impressive number of products and services, but not search history"
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "service": "Facebook",
+          "answer": "Partial",
+          "comments": "Almost all of your data (deserve credit for this), but not your search history"
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "service": "Twitter",
+          "answer": "Yes",
+          "comments": "NEEDS CONTENT"
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "service": "WhatsApp",
+          "answer": "Yes",
+          "comments": "NEEDS CONTENT"
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "service": "LinkedIn",
+          "answer": "Partial",
+          "comments": "Can export your contacts, which is core to LinkedIn's offer"
+        },
+        {
+          "service": "Reddit",
+          "answer": "No",
+          "comments": "Not supported, but Reddit community offers hacks to help you do this"
+        },
+        {
+          "service": "Tumblr",
+          "answer": "No",
+          "comments": "Not supported, but Tumblr community offers hacks to help you do this"
+        },
+        {
+          "service": "Pinterest",
+          "answer": "No",
+          "comments": "Not supported, but Pinterest community offers hacks to help you do this"
+        },
+        {
+          "service": "Instagram",
+          "answer": "No",
+          "comments": "Not supported, but Instagram community offers hacks to help you do this"
+        },
+        {
+          "service": "Wordpress",
+          "answer": "Yes",
+          "comments": "NEEDS CONTENT"
         }
       ]
     }

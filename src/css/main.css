@@ -1602,6 +1602,11 @@ img {
   font-size: 12px;
   font-size: 1.2rem;
 }
+.worldmap__dropdown {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+}
 /* Accessibiity / Vision Impairment
    ========================================================================== */
 .accessibility__img {
@@ -1620,7 +1625,7 @@ img {
 .accessibility__header span {
   opacity: 0.8;
 }
-/* Line Graph
+/* Line Graph - General
    ========================================================================== */
 .linegraph__svg {
   fill: #ffffff;
@@ -1638,6 +1643,7 @@ img {
 .linegraph__xaxis_year {
   font-size: 10px;
   font-size: 1rem;
+  fill: #000000;
 }
 .linegraph__xaxis_info {
   font-size: 12px;
@@ -1648,7 +1654,7 @@ img {
   font-size: 1rem;
 }
 .linegraph__pattern {
-  stroke: #cd9d1d;
+  stroke: rgba(0, 0, 0, 0.15);
   stroke-width: 1px;
 }
 /* Platform Neutrality Pie Chart
@@ -1707,9 +1713,6 @@ img {
   display: table;
   position: absolute;
   background: #000;
-  width: 110px;
-  height: 110px;
-  border-radius: 110px;
 }
 .cyberthreat__label div {
   display: table-cell;
@@ -1725,4 +1728,363 @@ img {
   padding-left: 10px;
   font-size: 14px;
   color: #fff;
+}
+/* Data Portability
+   ========================================================================== */
+.data-portability {
+  border-collapse: separate;
+}
+.data-portability th {
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #000000;
+  padding: 0;
+  text-align: left;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+.data-portability td {
+  padding-bottom: 35px;
+}
+.data-portability__company {
+  padding: 0px;
+  font-size: 11px;
+  font-size: 1.1rem;
+}
+.data-portability__service {
+  width: 11%;
+}
+.data-portability__line {
+  width: 12%;
+}
+.data-portability__line div {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.data-portability__symbol {
+  width: 2%;
+  padding: 0 15px;
+}
+.data-portability__symbol div {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+.data-portability__symbol .data-portability__symbol-yes {
+  background: #ffffff;
+}
+.data-portability__symbol .data-portability__symbol-partial {
+  background: transparent;
+  border: 2px solid #ffffff;
+}
+.data-portability__symbol .data-portability__symbol-no {
+  background: #000000;
+}
+.data-portability__answer {
+  width: 75%;
+}
+/* Open Source
+   ========================================================================== */
+.opensource__svg {
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+.opensource__line_0,
+.opensource__line_1 {
+  stroke: #000000;
+}
+.opensource__line_3,
+.opensource__line_4 {
+  stroke: #ffffff;
+}
+.opensource__line_2 {
+  stroke: rgba(0, 0, 0, 0.4);
+}
+.opensource__line_5 {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+.opensource__point_1,
+.opensource__point_2,
+.opensource__point_4,
+.opensource__point_5 {
+  fill: transparent;
+}
+.opensource__point_0 {
+  fill: #000000;
+}
+.opensource__point_1 {
+  stroke: #000000;
+}
+.opensource__point_2 {
+  stroke: rgba(0, 0, 0, 0.4);
+}
+.opensource__point_3 {
+  fill: #ffffff;
+}
+.opensource__point_4 {
+  stroke: #ffffff;
+}
+.opensource__point_5 {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+.opensource__legend-os,
+.opensource__legend-browser {
+  padding: 0;
+  list-style-type: none;
+}
+.opensource__legend-os div,
+.opensource__legend-browser div {
+  display: inline-block;
+  margin: 0 6px 1px 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+}
+.opensource__legend-os {
+  color: #000000;
+  list-style-type: none;
+  float: left;
+}
+.opensource__legend-os li:nth-child(1) div {
+  background: #000000;
+}
+.opensource__legend-os li:nth-child(2) div {
+  background: transparent;
+  border: 1px solid #000000;
+}
+.opensource__legend-os li:nth-child(3) div {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.opensource__legend-browser {
+  color: #ffffff;
+  list-style-type: none;
+  float: right;
+  margin-top: 48%;
+}
+.opensource__legend-browser li:nth-child(1) div {
+  background: #ffffff;
+}
+.opensource__legend-browser li:nth-child(2) div {
+  background: transparent;
+  border: 1px solid #ffffff;
+}
+.opensource__legend-browser li:nth-child(3) div {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.opensource__label {
+  position: absolute;
+  width: 100px;
+}
+.opensource__label h3 {
+  font-size: 20px;
+  font-size: 2rem;
+  margin: 5px 0;
+}
+.opensource__label p {
+  margin: 5px 0;
+}
+.opensource__label-os {
+  left: 4%;
+  top: 45%;
+  color: #000000;
+}
+.opensource__label-os h3 {
+  border-bottom: 1px dashed #000000;
+}
+.opensource__label-browser {
+  right: 30%;
+  top: 40%;
+  color: #ffffff;
+  text-align: right;
+}
+.opensource__label-browser h3 {
+  border-bottom: 1px dashed #ffffff;
+}
+/*======================================================================
+  Selectric
+======================================================================*/
+.selectricWrapper {
+  position: relative;
+  margin: 0 0 10px;
+  width: 300px;
+  cursor: pointer;
+}
+.selectricResponsive {
+  width: 100%;
+}
+.selectric {
+  border: 1px solid #DDD;
+  background: #F8F8F8;
+  position: relative;
+  border-radius: 2px;
+}
+.selectric .label {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 30px 0 0;
+  padding: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #444;
+  min-height: 18px;
+}
+.selectric .button {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  color: #BBB;
+  text-align: center;
+  font: 0/0 a;
+  /* IE Fix */
+  *font: 0.66666667px Lucida Sans Unicode, Arial Unicode MS, Arial;
+}
+.selectric .button:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border: 4px solid transparent;
+  border-top-color: #BBB;
+  border-bottom: none;
+}
+.selectricHover .selectric {
+  border-color: #CCC;
+}
+.selectricHover .selectric .button {
+  color: #888;
+}
+.selectricHover .selectric .button:after {
+  border-top-color: #888;
+}
+.selectricOpen {
+  z-index: 9999;
+}
+.selectricOpen .selectric {
+  border-color: #CCC;
+  background: #F0F0F0;
+}
+.selectricOpen .selectricItems {
+  display: block;
+}
+.selectricDisabled {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.selectricHideSelect {
+  position: relative;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+}
+.selectricHideSelect select {
+  position: absolute;
+  left: -100%;
+  display: none;
+}
+.selectricInput {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  outline: none !important;
+  border: none !important;
+  *font: NaN a !important;
+  background: none !important;
+}
+.selectricTempShow {
+  position: absolute !important;
+  visibility: hidden !important;
+  display: block !important;
+}
+/* Items box */
+.selectricItems {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #F9F9F9;
+  border: 1px solid #CCC;
+  z-index: -1;
+  box-shadow: 0 0 10px -6px;
+}
+.selectricItems .selectricScroll {
+  height: 100%;
+  overflow: auto;
+}
+.selectricAbove .selectricItems {
+  top: auto;
+  bottom: 100%;
+}
+.selectricItems ul,
+.selectricItems li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  line-height: 20px;
+  min-height: 20px;
+}
+.selectricItems li {
+  display: block;
+  padding: 5px;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #EEE;
+  color: #666;
+  cursor: pointer;
+}
+.selectricItems li.selected {
+  background: #EFEFEF;
+  color: #444;
+  border-top-color: #E0E0E0;
+}
+.selectricItems li:hover {
+  background: #F0F0F0;
+  color: #444;
+}
+.selectricItems li.disabled {
+  background: #F5F5F5;
+  color: #BBB;
+  border-top-color: #FAFAFA;
+  cursor: default;
+}
+/*======================================================================
+  Selectric
+======================================================================*/
+.selectricWrapper {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  margin: 0 0 10px;
+  width: 200px;
+  cursor: pointer;
+}
+.selectricResponsive {
+  width: 100%;
+}
+.selectric {
+  border: 1px solid #DDD;
+  background: #F8F8F8;
+  border-radius: 2px;
 }

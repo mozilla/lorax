@@ -42,7 +42,7 @@
         "infrastructure":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Mobile",
             "Network operators",
@@ -129,15 +129,15 @@
           ]
         },
         "openSource":{
-          "status":2,
-          "infographicType":"static-image",
+          "status":1,
+          "infographicType":"data-lorax-chart-open-source",
           "infographicOverflow":false,
           "tags":[
           ]
         },
         "openDataStandards":{
-          "status":2,
-          "infographicType":"static-image",
+          "status":1,
+          "infographicType":"data-lorax-chart-data-portability",
           "infographicOverflow":false,
           "tags":[
           ]

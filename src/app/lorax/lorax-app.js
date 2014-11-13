@@ -24,7 +24,6 @@ define([
   'lorax/directives/chart-top-internet-companies',
   'lorax/directives/chart-terms-and-conditions',
   'lorax/directives/chart-common-languages',
-  'lorax/directives/chart-lobbying-costs',
   'lorax/directives/chart-line-graph',
   'lorax/directives/chart-world-map',
   'lorax/directives/chart-static-image',
@@ -32,6 +31,8 @@ define([
   'lorax/directives/chart-platform-neutrality',
   'lorax/directives/chart-lobbying',
   'lorax/directives/chart-cyber-threats',
+  'lorax/directives/chart-data-portability',
+  'lorax/directives/chart-open-source',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -70,7 +71,6 @@ define([
   ChartTopInternetCompaniesDirective,
   ChartTermsAndConditionsDirective,
   ChartCommonLanguagesDirective,
-  ChartLobbyingCostsDirective,
   ChartLineGraphDirective,
   ChartWorldMapDirective,
   ChartStaticImageDirective,
@@ -78,6 +78,8 @@ define([
   ChartPlatformNeutralityDirective,
   ChartLobbyingDirective,
   ChartCyberThreatsDirective,
+  ChartDataPortabilityDirective,
+  ChartOpenSourceDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -192,13 +194,6 @@ define([
         .directive('loraxChartCommonLanguages', ChartCommonLanguagesDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
-         * as 'ChartLobbyingCostsDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartLobbyingCosts', ChartLobbyingCostsDirective)
-
-        /**
          * Injects {@link lorax/directives/ChartLineGraphDirective}
          * as 'ChartLineGraphDirective'
          * @method lorax/loraxApp~directive
@@ -246,6 +241,20 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartCyberThreats', ChartCyberThreatsDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartDataPortabilityDirective}
+         * as 'ChartDataPortabilityDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartDataPortability', ChartDataPortabilityDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartOpenSourceDirective}
+         * as 'ChartOpenSourceDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartOpenSource', ChartOpenSourceDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}

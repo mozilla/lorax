@@ -1,55 +1,61 @@
 /**
- * @fileOverview Lobbying Chart directive
+ * @fileOverview Open Source Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
 
     /**
-     * Line Graph Chart directive
+     * Open Source Chart directive
      */
-    var ChartLobbyingDirective = function () {
+    var ChartOpenSourceDirective = function () {
         return {
             restrict: 'A',
             replace: true,
             scope: true,
-            controller: ChartLobbyingController,
-            link: ChartLobbyingLinkFn
+            controller: ChartOpenSourceController,
+            link: ChartOpenSourceLinkFn,
+            templateUrl: '/app/lorax/directives/chart-open-source.tpl.html'
         };
     };
 
     /**
-     * Controller for Lobbying Chart directive
+     * Controller for Open Source Chart directive
      * @constructor
      */
-    var ChartLobbyingController = function (
+    var ChartOpenSourceController = function (
         $scope,
         $timeout
         )
     {
         this._$scope = $scope;
         this._$timeout = $timeout;
+
+        $scope.lineGraph = {
+          data: $scope.issue.getInfographic().getDataPoints(),
+          dataLabels: $scope.issue.getInfographic().getDataPoints().dataLabels
+        }
     };
 
     /**
      * Array of dependencies to be injected into controller
      * @type {Array}
      */
-    ChartLobbyingController.$inject = [
+    ChartOpenSourceController.$inject = [
         '$scope',
         '$timeout'
     ];
 
   /**
-   * Link function for Lobbying Chart directive
+   * Link function for Open Source Chart directive
    * @param {object} scope      Angular scope.
    * @param {JQuery} iElem      jQuery element.
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var ChartLobbyingLinkFn = function (scope, iElem, iAttrs, controller) {
+  var ChartOpenSourceLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout( function() {
-      var data = controller._$scope.issue.getInfographic().getDataPoints();
+      var data = controller._$scope.lineGraph.data;
       var lineData = data.lineGraphData;
       var id = controller._$scope.issue.getId();
       var lineGraph = d3.select("#" + id + " .infographic__wrapper div");
@@ -61,22 +67,20 @@ define(['jquery', 'd3'], function ($, d3) {
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
 
       var margin = {top: 20, right: 20, bottom: 50, left: 10};
-      var width = graphWidth;
-      var height = graphWidth * .7;
+      var width = graphWidth/2.25;
+      var height = graphWidth/2.0;
 
       var svg = lineGraph.append("svg")
-        .attr("class", "linegraph__svg")
+        .attr("class", "opensource__svg")
         .attr("width", width)
         .attr("height", height);
+        // .style("position", "absolute")
+        // .style("left", (graphWidth/2-width/2) + "px")
+        // .style("top", height/2 + "px");
       
       drawPattern();
-      drawLegend();
-      drawFirstAndLast();
+      //drawFirstAndLast();
       drawData();
-
-      lineGraph.append("div")
-        .attr("class", "linegraph__revolvers")
-        .html("* Revolvers are former members of Congress, congressional staffers, or executive branch officials.");
 
       function drawFirstAndLast() {
         var first = svg.append("g")
@@ -109,42 +113,6 @@ define(['jquery', 'd3'], function ($, d3) {
           .text( function(d) { return lineData[lineData.length-1].data[1]});
       }
 
-
-      function drawLegend() {
-        var legend = svg.append("g")
-          .attr("class", "linegraph__legend")
-          .attr("x", width-margin.right)
-          .attr("y", margin.top/3)
-          .attr("height", 100)
-          .attr("width", 300);
-
-        legend.selectAll("g")
-          .data(data.dataLabels)
-          .enter()
-          .append("g")
-            .attr("class", "linegraph__legendLabel");
-
-        var legendLabel = legend.selectAll(".linegraph__legendLabel");
-
-        legendLabel.selectAll("circle")
-          .data(data.dataLabels)
-          .enter()
-          .append("circle")
-            .attr("class", function(d, i) { return "linegraph__point_" + i + "_circle"})
-            .attr("cx", function(d, i) {return width - margin.right - i*80 - (margin.right*5)})
-            .attr("cy", margin.top/3)
-            .attr("r", 3);
-
-        legendLabel.selectAll("text")
-          .data(data.dataLabels)
-          .enter()
-          .append("text")
-              .attr("class", "linegraph__legendtext")
-              .attr("x", function(d, i) {return width - margin.right - i*80 - (margin.right*5) + 10})
-              .attr("y", margin.top/3+4)
-              .text(function(d) { return d; })
-      }
-
       function drawLabel() {
         var x = d3.scale.linear()
           .range([margin.left, width-margin.right])
@@ -162,7 +130,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         svg.append("g")
           .attr("class", "linegraph__xaxis_year")
-          .attr("transform", "translate(0," + (height-margin.bottom) + ")")
+          .attr("transform", "translate(0," + (height-margin.bottom+10) + ")")
           .call(xAxis);
 
           return x;
@@ -173,7 +141,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         for ( var i = 0; i < numDatasets; i++ ) {
           var y = d3.scale.linear()
-          .range([height-margin.top, -margin.bottom])
+          .range([height-margin.bottom, margin.top])
           .domain([
             d3.min( lineData, function(d) { return (d.data[i] * 0.50); }),
             d3.max( lineData, function(d) { return (d.data[i] * 1.25); })
@@ -183,25 +151,33 @@ define(['jquery', 'd3'], function ($, d3) {
             .x(function(d) { return x(d.label); })
             .y(function(d) { return y(d.data[i]) }); 
 
-          var datasetGroup = svg.append("g");
+          var datasetGroup = svg.append("g")
+            .attr("class", function() {
+              if ( i < 3 ) {
+                return "opensource__dataset-os";
+              }
+              else {
+                return "opensource__dataset-browser"
+              }
+            });
 
           datasetGroup.append("path")
             .datum(lineData)
-            .attr("class", "linegraph__line")
+            .attr("class", "linegraph__line opensource__line_" + i)
             .attr("d", line);
 
           var point = datasetGroup.selectAll(".point__" + i)
             .data(lineData)
             .enter()
             .append("g")
-            .attr("class", function() { return "linegraph__point_" + i; })
+            .attr("class", "opensource__point_" + i)
             .append("circle")
-              .attr("class", function() { return "linegraph__point_" + i + "_circle"})
+              .attr("class", "opensource__point_" + i + "_circle")
               .attr("cx", function(d) { return x(d.label); })
               .attr("cy", function(d) { return y(+d.data[i]); })
               .attr("r", 3);
         }
-      }      
+      }
 
       function drawPattern() {
         var x = d3.scale.linear()
@@ -211,7 +187,7 @@ define(['jquery', 'd3'], function ($, d3) {
             d3.max( lineData, function(d) { return d.label })
           ]);
 
-        var diff = Math.floor(Math.abs(x(lineData[0].label) - x(lineData[1].label)));
+        var diff = Math.floor(Math.abs(x(lineData[0].label) - x(lineData[1].label)))/2;
 
         var pattern = svg.append("g")
           .attr("class", "linegraph__pattern");
@@ -234,11 +210,11 @@ define(['jquery', 'd3'], function ($, d3) {
               .attr("y2", i+2.5);              
           }
         });
+      }      
 
-      }
 
     }.bind(controller));
   };
 
-    return ChartLobbyingDirective;
+    return ChartOpenSourceDirective;
 });

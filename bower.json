@@ -26,7 +26,8 @@
     "TweenJS": "*",
     "pixi": "~2.0.0",
     "js-signals": "git://github.com/WebSpellChecker/js-signals.git#~1.0.0",
-    "d3plus": "~1.6.5"
+    "d3plus": "~1.6.5",
+    "jquery-selectric": "~1.8.4"
   },
   "devDependencies": {
     "almond": "~0.3.0",

@@ -2,7 +2,7 @@
  * @fileOverview World Map Chart directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
+define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojson) {
   'use strict';
 
   /**
@@ -62,6 +62,7 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
       var shadeLegend = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.legend;
       var displayDataset = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.name;
       var displayUnits = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.units;
+      var colorScale = setShading(shadeValues);
 
       var infographicData = {};
       $.each(countryData, function(key, data) {
@@ -77,10 +78,13 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
           "displayUnits": displayUnits
         }
       });
+
+      $('select').selectric('init'); 
       
-      var map = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div")
+      
+      var map = d3.select("#" + issueId + " .infographic__wrapper div")
         .attr("class", "map");
-      var mapWidth = $("#" + controller._$scope.issue.getId() + " .infographic__wrapper div").width();
+      var mapWidth = $("#" + issueId + " .infographic__wrapper div").width();
       var width = 650;
       var height = 500;
 
@@ -97,18 +101,15 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
 
       var svg = map.append("svg")
         .attr("preserveAspectRatio", "xMidYMid")
-        .attr("viewBox", "0 0 " + width + " " + height)
         .attr("width", mapWidth)
         .attr("height", mapWidth * height / width);
 
       svg.append("rect")
         .attr("class", "worldmap__background")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", mapWidth)
+        .attr("height", mapWidth * height / width);
       
       var g = svg.append("g");
-
-      var colorScale = setShading();
        
       g.append("g")
         .attr("id", "countries")
@@ -117,7 +118,7 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
         .enter()
         .append("path")
           .attr("id", function(d) { return d.id; })
-          .attr("fill", function(d) { 
+          .style("fill", function(d) { 
             if (infographicData[d.id] && infographicData[d.id].displayData) {
               return colorScale(infographicData[d.id].shadeData);
             } else {
@@ -140,57 +141,21 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
         .attr("x", function() { return labelX; })
         .attr("y", function() { return labelY+20; })
         .attr("text-anchor", "middle")
-        .text(infographicData["USA"].displayUnits + ": " + infographicData["USA"].displayData);  
+        .text(infographicData["USA"].displayData + infographicData["USA"].displayUnits);  
 
-      g.select("#" + defaultCountry).style("filter", "url(#offsetFilter)");
+      g.select("#" + defaultCountry).style("mask","");
+      g.select("#" + defaultCountry).style("fill", "#fff");
 
       initializeSvgFilters(svg);
       drawLegend();
+      drawDropdown();
 
       function country_over (d) {
         if (d) {
-          var country = g.select("#" + d.id);
           if ( infographicData[d.id] && infographicData[d.id].displayData ) {
-            svg.select(".worldmap__label-country")
-              .text("");
-            svg.select(".worldmap__label-data")
-              .text("");
-            g.selectAll("path")
-              .style("filter", "")
-              .style("mask", "url(#maskStripe)")
-              .attr("fill", function(d) { 
-                if (infographicData[d.id] && infographicData[d.id].displayData) {
-                  return colorScale(infographicData[d.id].shadeData);
-                } else {
-                  return "rgba(0,0,0,0.15)";
-                }
-              });
-
-            country.style("mask","");
-            country.attr("fill", "#fff");
-            country.style("filter", "url(#offsetFilter)");
-
-            svg.select(".worldmap__label-country")
-              .text(infographicData[d.id].displayName);
-            svg.select(".worldmap__label-data")
-              .text(infographicData[d.id].displayUnits + ": " + infographicData[d.id].displayData);
+            selectCountry(d.id);
           }
         }
-      }
-
-      function setShading() {
-        var opacity = 1.0;
-        var minOpacity = 0.6;
-        var opacityMod = minOpacity/(shadeValues.length-1);
-        var countryColors = [];
-        for (var i = 0; i < shadeValues.length; i++) {
-          countryColors.push("rgba(0,0,0," + (opacity-i*opacityMod) + ")");
-        }
-
-        var colorScale = d3.scale.threshold()
-          .domain(shadeValues)
-          .range(countryColors);
-        return colorScale;
       }
 
       function drawLegend() {
@@ -199,14 +164,14 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
           .enter()
           .append("g")
             .attr("class", "worldmap__legend")
-            .attr("transform", function(d, i) { return "translate(0," + i*20 + ")";});
+            .attr("transform", function(d, i) { return "translate(0," + (i*20 + (mapWidth * height / width)/2) + ")";});
 
         legend.append("rect")
           .attr("x", 0)
           .attr("width", 15)
           .attr("height", 15)
           .style("mask", "url(#maskStripe)")
-          .style("fill", function(d, i) { return colorScale(shadeValues[i-1]);});
+          .style("fill", function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
 
         legend.append("text")
           .attr("x", 20)
@@ -215,58 +180,75 @@ define(['jquery', 'd3', 'topojson'], function ($, d3, topojson) {
           .text(function(d) { return d; });
       }
 
+    function drawDropdown() {
+      var dropDown = map.append("select")
+        .attr("class", "worldmap__dropdown");
+
+      dropDown.append("option")
+        .text("Find a country");
+
+      $.each(countryData, function(key, data) {
+        if (infographicData[data.id] && infographicData[data.id].displayData) {
+          dropDown.append("option")
+            .attr("value", data.id)
+            .text(data.displayName);
+        }
+      });
+
+      
+      $("#" + issueId + " .infographic__wrapper div select").change( function() {
+        selectCountry(this.value);
+      });
+    }
+
+    function selectCountry(countryId) {
+      var country = g.select("#" + countryId);
+
+      svg.select(".worldmap__label-country")
+        .text("");
+      svg.select(".worldmap__label-data")
+        .text("");
+      g.selectAll("path")
+        .style("mask", "url(#maskStripe)")
+        .style("fill", function(d) { 
+          if (infographicData[d.id] && infographicData[d.id].displayData) {
+            return colorScale(infographicData[d.id].shadeData);
+          } else {
+            return "rgba(0,0,0,0.15)";
+          }
+        });
+
+      country.style("mask","");
+      country.style("fill", "#fff");
+
+      svg.select(".worldmap__label-country")
+        .text(infographicData[countryId].displayName);
+      svg.select(".worldmap__label-data")
+        .text(infographicData[countryId].displayData + infographicData[countryId].displayUnits);
+    }
+
     }.bind(controller));
   };
+
+  function setShading(shadeValues) {
+    var opacity = 1.0;
+    var minOpacity = 1.0;
+    var opacityMod = minOpacity/(shadeValues.length);
+    var countryColors = [];
+    for (var i = 0; i < shadeValues.length; i++) {
+      countryColors.push("rgba(0,0,0," + (opacity-i*opacityMod) + ")");
+    }
+
+    var colorScale = d3.scale.threshold()
+      .domain(shadeValues)
+      .range(countryColors);
+    return colorScale;
+  }
 
   function initializeSvgFilters(svg) {
     var defs = svg.append("defs");
 
-    var offsetFilter = defs.append("filter")
-        .attr("id", "offsetFilter")
-        .attr("height", "130%");
-
-    var bright = offsetFilter.append("feComponentTransfer");
-        bright.attr("in", "SourceGraphic")
-        bright.append("feFuncR")
-          .attr("type", "linear")
-          .attr("slope", 9999)
-        bright.append("feFuncG")
-          .attr("type", "linear")
-          .attr("slope", "10")
-        bright.append("feFuncB")
-          .attr("type", "linear")
-          .attr("slope", "10")
-        bright.attr("result", "brightness");
-
-    offsetFilter.append("feColorMatrix")
-        .attr("in", "brightness")
-        .attr("type", "saturate")
-        .attr("values", 0)
-        .attr("result", "desaturate");
-
-    offsetFilter.append("feOffset")
-        .attr("in", "desaturate")
-        .attr("dx", 0)
-        .attr("dy", 0)
-        .attr("result", "offset");
-
-    var feOffsetMerge = offsetFilter.append("feMerge");
-    feOffsetMerge.append("feMergeNode")
-        .attr("in", "SourceGraphic");
-    feOffsetMerge.append("feMergeNode")
-        .attr("in", "offset");
-
     var patternStripe = defs.append("pattern")
-      // .attr("id", "patternStripe")
-      // .attr("width", 2)
-      // .attr("height", 2)
-      // .attr("patternUnits", "userSpaceOnUse")
-      // .attr("patternTransform", "rotate(-45)")
-      // .append("rect")
-      //   .attr("width", 1)
-      //   .attr("height", 2)
-      //   .attr("transform", "translate(0,0)")
-      //   .attr("fill", "#fff");
       .attr("id", "patternStripe")
       .attr("patternUnits", "userSpaceOnUse")
       .attr("width", "100%")

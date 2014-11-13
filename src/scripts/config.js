@@ -13,6 +13,7 @@
             'jquery': '../bower_components/jquery/dist/jquery',
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
             'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
+            'jquery-selectric': '../bower_components/jquery-selectric/dist/jquery.selectric.min',
             'modernizr': '../scripts/modernizr',
             'd3': '../bower_components/d3/d3',
             'topojson': '../scripts/libs/topojson.v1.min',
@@ -42,6 +43,9 @@
                 deps: ['jquery']
             },
             'jquery-scrollie': {
+                deps: ['jquery']
+            },
+            'jquery-selectric': {
                 deps: ['jquery']
             },
             'pubsub': {
