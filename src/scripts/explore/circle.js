@@ -38,12 +38,11 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         var d = this.radius / 10; // displace quocient
 
         if (this._staticScaleTween) {
-            this._staticScaleTween.setPaused(true);
+            createjs.Tween.removeTweens(this._circle.scale);
         }
         this._staticScaleTween = createjs.Tween.get(
             this._circle.scale,
             {loop: true, override: true})
-            .wait(Math.random() * 1000)
             .to(
                 {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d)},
                 600 + Math.random() * 500,
