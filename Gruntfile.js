@@ -66,15 +66,10 @@ module.exports = function (grunt) {
                     src: [
                         '<%= config.temp %>',
                         '<%= config.dist %>/*',
-                        '!<%= config.dist %>/.git*',
-                        '<%= config.bedrock %>/*',
-                        '!<%= config.bedrock %>/.git*'
+                        '!<%= config.dist %>/.git*'
                     ]
                 }]
-            },
-            'dist-cleanup': [
-                '<%= config.dist %>/bower_components'
-            ]
+            }
         },
 
         concat: {
@@ -84,7 +79,7 @@ module.exports = function (grunt) {
             },*/
             headScripts: {
                 src: [
-                    '<%= config.src %>/bower_components/modernizr/modernizr.js'/*,
+                    '<%= config.src %>/scripts/components/modernizr/modernizr.js'/*,
                     '<%= config.src %>/scripts/grunticon.js'*/
                 ],
                 dest: '<%= config.dist %>/scripts/lorax-head.min.js'

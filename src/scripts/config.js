@@ -5,7 +5,7 @@
     require.config({
         baseUrl: '/app/',
 
-        name: './components/almond/almond',
+        name: '../scripts/components/almond/almond',
 
         paths: {
             'angular': '../scripts/components/angular/angular',
