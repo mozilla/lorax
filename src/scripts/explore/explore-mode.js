@@ -17,7 +17,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
     ExploreMode.prototype.init = function () {
         // set explore radius based on smallest canvas dimension
         var dimension = Math.min(this._canvas.canvasSize.x, this._canvas.canvasSize.y);
-        this._exploreRadius = dimension / 2;
+        this._exploreRadius = dimension / 1.5;
 
         var seed;
         var rSeed;
@@ -26,12 +26,20 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
         // set issue positions
         for (i = 0; i < this._canvas.issues.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
-
             elm = this._canvas.issues[i];
-            elm.exploreX = Math.sin(seed) * rSeed;
-            elm.exploreY = Math.cos(seed) * rSeed;
+
+            do {
+                seed = Math.random() * Math.PI * 2;
+                rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
+                elm.exploreX = Math.sin(seed) * rSeed;
+                elm.exploreY = Math.cos(seed) * rSeed;
+            } while (
+                !(elm.exploreX > -this._canvas.canvasSize.x / 2 &&
+                elm.exploreX < this._canvas.canvasSize.x / 2 &&
+                elm.exploreY > -this._canvas.canvasSize.y / 2 &&
+                elm.exploreY < this._canvas.canvasSize.y / 2)
+            );
+
             elm.moveTo(elm.exploreX, elm.exploreY);
         }
 

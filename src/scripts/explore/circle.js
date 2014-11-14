@@ -106,13 +106,24 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     Circle.prototype._drawTitle = function () {
         var style = {
             font: '300 12px "Fira Sans", sans-serif',
-            tint: '#222222'
+            fill: '#222222'
         };
 
         this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
         this._title.x = 20;
         this._title.y = -this._title.height / 2;
         this._title.alpha = 0;
+
+        if (this.data.getParent) {
+            style = {
+                font: '600 11px "Fira Sans", sans-serif',
+                fill: '#AAAAAA'
+            }
+            this._subtitle = new PIXI.Text(this.data.getParent().getName().toUpperCase(), style);
+            this._subtitle.x = this._title.x;
+            this._subtitle.y = -this._subtitle.height / 2;
+            this._subtitle.alpha = 0;
+        }
     };
 
     /**
@@ -178,10 +189,24 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
     Circle.prototype.lightUp = function () {
         this._drawCircle(this.color);
+
+        this.elm.addChild(this._title);
+        createjs.Tween.get(this._title, {override: true})
+            .to({alpha: 1}, 200, createjs.Ease.quartIn);
     };
 
     Circle.prototype.lightDown = function () {
         this._drawCircle();
+
+        if (!this._textAlwaysVisible) {
+            createjs.Tween.get(this._title, {override: true})
+                .to({alpha: 0}, 200, createjs.Ease.quartOut)
+                .call(function () {
+                    if (this._title.parent) {
+                        this.elm.removeChild(this._title);
+                    }
+                }.bind(this));
+        }
     };
 
     /**

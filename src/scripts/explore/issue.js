@@ -197,13 +197,23 @@ define([
         Issue.prototype._superMouseOver.bind(this)();
 
         this.stopMoving();
-        if (!this._textAlwaysVisible) {
-            this.elm.addChild(this._title);
-            createjs.Tween.get(this._title, {override: true})
-                .to({alpha: 1}, 200, createjs.Ease.quartIn);
+        this.lightUp();
+
+        var totalHeight = this._title.height;
+
+        if (this._subtitle) {
+            totalHeight += this._subtitle.height + 2;
         }
 
-        this.lightUp();
+        this._title.setStyle({font: '500 14px "Fira Sans", sans-serif'});
+        this._title.y = Math.round(-totalHeight / 2);
+
+        if (this._subtitle) {
+            this.elm.addChild(this._subtitle);
+            this._subtitle.y = this._title.y + this._title.height + 2;
+            createjs.Tween.get(this._subtitle, {override: true})
+            .to({alpha: 1}, 200, createjs.Ease.quartIn);
+        }
     };
 
     Issue.prototype.issueModeMouseOver = function () {
@@ -242,15 +252,18 @@ define([
             tweenBack.call(this._resumeStaticAnimation.bind(this));
         }
 
-        if (!this._textAlwaysVisible) {
-            createjs.Tween.get(this._title, {override: true})
+        if (this._subtitle) {
+            createjs.Tween.get(this._subtitle, {override: true})
                 .to({alpha: 0}, 200, createjs.Ease.quartOut)
                 .call(function () {
-                    if (this._title.parent) {
-                        this.elm.removeChild(this._title);
+                    if (this._subtitle.parent) {
+                        this.elm.removeChild(this._subtitle);
                     }
                 }.bind(this));
         }
+
+        this._title.setStyle({font: '300 12px "Fira Sans", sans-serif'});
+        this._title.y = Math.round(-this._title.height / 2);
 
         this.lightDown();
     };

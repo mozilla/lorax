@@ -28,8 +28,8 @@ define([
     };
 
     Explore.prototype.init = function (isDebug) {
-        this._canvas.drawTags(this._tagData);
         this._canvas.drawIssues(this._issueData);
+        this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
 
         this._explore.init();
