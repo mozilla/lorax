@@ -2,10 +2,12 @@
 define([
     'pixi',
     'createjs',
+    'signals',
     'explore/issue'
 ], function (
     PIXI,
     createjs,
+    signals,
     Issue
 ) {
     'use strict';
@@ -22,6 +24,9 @@ define([
         this._fakes = fakes;
 
         this.elm = new PIXI.DisplayObjectContainer();
+
+        this.mouseOverS = new signals.Signal();
+        this.mouseOutS = new signals.Signal();
 
         // this._topicArea;
         // this._linearArea;
@@ -203,23 +208,9 @@ define([
             .to({y: posY}, 300, createjs.Ease.easeIn);
         createjs.Tween.get(this._topicDesc, {override: true})
             .to({alpha: 0}, 300, createjs.Ease.easeIn);
-
-        // tone down other topics
-        for(i = 0; i < Topic.TOPICS.length; i ++) {
-            topic = Topic.TOPICS[i];
-            if (topic._index !== this._index) {
-                createjs.Tween.get(topic._topicTitle, {override: true})
-                    .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-                createjs.Tween.get(topic._topicDesc, {override: true})
-                    .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-
-                for(j = 0; j < topic._issues.length; j ++) {
-                    createjs.Tween.get(topic._issues[j].elm, {override: true})
-                        .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-                }
-            }
-        }
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
+
+        this.mouseOverS.dispatch(this);
     };
 
     /**
@@ -248,27 +239,37 @@ define([
                 .to({alpha: issue.implodeAlpha}, 300, createjs.Ease.easeOut);
         }
 
-        // tone down other topics
-        for(i = 0; i < Topic.TOPICS.length; i ++) {
-            topic = Topic.TOPICS[i];
-            if (topic._index !== this._index) {
-                createjs.Tween.get(topic._topicTitle, {override: true})
-                    .to({alpha: 1}, 300, createjs.Ease.easeIn);
-                createjs.Tween.get(topic._topicDesc, {override: true})
-                    .to({alpha: 1}, 300, createjs.Ease.easeIn);
-
-                for(j = 0; j < topic._issues.length; j ++) {
-                    createjs.Tween.get(topic._issues[j].elm, {override: true})
-                        .to({alpha: 1}, 300, createjs.Ease.easeIn);
-                }
-            }
-        }
-
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setTextAlwaysVisible(false);
             issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
+        }
+
+        this.mouseOutS.dispatch(this);
+    };
+
+    Topic.prototype.toneDown = function () {
+        createjs.Tween.get(this._topicTitle, {override: true})
+            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        createjs.Tween.get(this._topicDesc, {override: true})
+            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+
+        for(var i = 0; i < this._issues.length; i ++) {
+            createjs.Tween.get(this._issues[i].elm, {override: true})
+                .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        }
+    };
+
+    Topic.prototype.endToneDown = function () {
+        createjs.Tween.get(this._topicTitle, {override: true})
+            .to({alpha: 1}, 300, createjs.Ease.easeIn);
+        createjs.Tween.get(this._topicDesc, {override: true})
+            .to({alpha: 1}, 300, createjs.Ease.easeIn);
+
+        for(var i = 0; i < this._issues.length; i ++) {
+            createjs.Tween.get(this._issues[i].elm, {override: true})
+                .to({alpha: 1}, 300, createjs.Ease.easeIn);
         }
     };
 

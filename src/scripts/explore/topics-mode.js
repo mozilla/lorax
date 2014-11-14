@@ -17,6 +17,9 @@ define([
 
         this._canvas = canvas;
 
+        this.mouseOverB = this._onMouseOver.bind(this);
+        this.mouseOutB = this._onMouseOut.bind(this);
+
         return this;
     };
 
@@ -118,12 +121,42 @@ define([
         }
     };
 
+    TopicsMode.prototype._onMouseOver = function (selectedTopic) {
+        var i;
+        var j;
+        var topic;
+
+        // tone down other topics
+        for(i = 0; i < Topic.TOPICS.length; i ++) {
+            topic = Topic.TOPICS[i];
+            if (topic._index !== selectedTopic._index) {
+                topic.toneDown();
+            }
+        }
+    };
+
+    TopicsMode.prototype._onMouseOut = function (selectedTopic) {
+        var i;
+        var j;
+        var topic;
+
+        // set other issues alpha back to 1
+        for(i = 0; i < Topic.TOPICS.length; i ++) {
+            topic = Topic.TOPICS[i];
+            if (topic._index !== selectedTopic._index) {
+                topic.endToneDown();
+            }
+        }
+    };
+
     TopicsMode.prototype._onStartShow = function () {
         this._canvas.addChild(this._topicsContainer);
 
         var i;
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].show();
+            this._topics[i].mouseOverS.add(this.mouseOverB);
+            this._topics[i].mouseOutS.add(this.mouseOutB);
         }
 
         this._drawLinesBind = this._drawLines.bind(this);
@@ -144,6 +177,8 @@ define([
         var i;
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].hide();
+            this._topics[i].mouseOverS.remove(this.mouseOverB);
+            this._topics[i].mouseOutS.remove(this.mouseOutB);
         }
 
         this._canvas.renderStartS.remove(this._drawLinesBind);
