@@ -68,7 +68,7 @@ define(['jquery', 'd3'], function ($, d3) {
         .attr("class", "linegraph__svg")
         .attr("width", width)
         .attr("height", height)
-        .style("margin-left", "25%");
+        .style("margin-left", "20%");
       
       drawPattern();
       drawLegend();

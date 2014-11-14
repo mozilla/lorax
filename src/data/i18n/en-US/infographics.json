@@ -282,33 +282,41 @@
     }
   },
   "identityControl": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Market share of social login providers",
+    "subheader": "Percent per Q3 of 2014",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "termsAndConditions": [
+      "marketShare": [
         {
-          "name": "Facebook",
-          "length": 12000
+          "company": "Facebook",
+          "value": 45
         },
         {
-          "name": "Apple iOS 5",
-          "length": 14000
+          "company": "Google",
+          "value": 34
         },
         {
-          "name": "Windows Live",
-          "length": 15000
+          "company": "Twitter",
+          "value": 7
         },
         {
-          "name": "Apple iTunes",
-          "length": 20000
+          "company": "Microsoft",
+          "value": 2
         },
         {
-          "name": "Paypal",
-          "length": 37000
+          "company": "Yahoo",
+          "value": 4
+        },
+        {
+          "company": "LinkedIn",
+          "value": 3
+        },
+        {
+          "company": "Other",
+          "value": 5
         }
       ]
     }

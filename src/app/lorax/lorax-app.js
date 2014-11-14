@@ -38,6 +38,7 @@ define([
   'lorax/directives/chart-concentration-power',
   'lorax/directives/chart-public-trust',
   'lorax/directives/chart-infrastructure',
+  'lorax/directives/chart-identity-control',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -90,6 +91,7 @@ define([
   ChartConcentrationPowerDirective,
   ChartPublicTrustDirective,
   ChartInfrastructureDirective,
+  ChartIdentityControlDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -300,6 +302,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartInfrastructure', ChartInfrastructureDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartIdentityControlDirective}
+         * as 'ChartIdentityControlDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartIdentityControl', ChartIdentityControlDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
