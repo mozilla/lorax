@@ -61,7 +61,7 @@ define([
             issue = this._canvas.issues[i];
             relatedItem = this._canvas.issues[i + 1];
 
-            this._canvas.drawLine(issue, relatedItem, 0x0, 0.15);
+            this._canvas.drawLine(issue, relatedItem, 0x0, 0.10);
         }
     };
 

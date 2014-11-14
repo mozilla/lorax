@@ -119,7 +119,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
                 relatedItem = this._canvas.getElementById(related[j]._id);
                 isOver = (issue.isOver || relatedItem.isOver);
 
-                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.15 : 0.03);
+                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
             }
 
             // draw lines connecting related tags
@@ -127,7 +127,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
                 relatedItem = this._canvas.getElementById(tags[j]._id);
                 isOver = (issue.isOver || relatedItem.isOver);
 
-                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.15 : 0.03);
+                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
             }
         }
     };

@@ -106,7 +106,7 @@ define([
                 isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
 
                 if (isSameTopic) {
-                    this._canvas.drawLine(issue, relatedItem, 0x0, 0.03);
+                    this._canvas.drawLine(issue, relatedItem, 0x0, 0.02);
                 }
             }
         }
