@@ -1,0 +1,8 @@
+<div class="concentration-power">
+  <div class="concentration-power__organization" ng-repeat="org in ::revenue.data" ng-class="{'concentration-power__tech': org.tech}">
+    <div class="concentration-power__name">{{::org.name}}</div>
+    <div class="concentration-power__dollar">$</div>
+    <div class="concentration-power__stacks"></div>
+    <div class="concentration-power__amount">{{::org.amount}}</div>
+  </div>
+</div>

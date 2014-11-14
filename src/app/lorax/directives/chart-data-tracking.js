@@ -64,7 +64,6 @@ define(['jquery', 'd3'], function ($, d3) {
                 var length = controller._data[idx].percent;
                 var percentBar = document.createElement("div");
                 percentBar.style.height = ((length * maxHeight)/100) + "px";
-                console.log(percentBar.style.height);
                 percentBar.classList.add("data-tracking__tracker-bar-percent");
                 
                 $this.append(percentBar);

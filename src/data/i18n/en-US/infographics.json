@@ -185,68 +185,100 @@
     }
   },
   "infrastructure": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Stock prices of internet and mobile operators",
+    "subheader": "Share prices by year",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "countryData": {
-        "shading": {
-          "name": "internetPopPercentage",
-          "values": [
-            20.01,
-            40.01,
-            60.01,
-            80.01,
-            100.01
-          ],
-          "legend": [
-            "Less than 20%",
-            "20-40%",
-            "40-60%",
-            "60-80%",
-            "Greater than 80%"
+      "dataLabels": [
+        "Internet Companies",
+        "Mobile Companies"
+      ],
+      "lineGraphData": [
+        {
+          "label": "2004",
+          "data": [
+            43.23,
+            53.36
           ]
         },
-        "display": {
-          "name": "internetPopPercentage",
-          "units": "% of population with Internet"
+        {
+          "label": "2005",
+          "data": [
+            60.01,
+            55.13
+          ]
+        },
+        {
+          "label": "2006",
+          "data": [
+            73.92,
+            61.34
+          ]
+        },
+        {
+          "label": "2007",
+          "data": [
+            110.76,
+            91.27
+          ]
+        },
+        {
+          "label": "2008",
+          "data": [
+            107.17,
+            81.29
+          ]
+        },
+        {
+          "label": "2009",
+          "data": [
+            108.92,
+            60.96
+          ]
+        },
+        {
+          "label": "2010",
+          "data": [
+            155.98,
+            67.43
+          ]
+        },
+        {
+          "label": "2011",
+          "data": [
+            186.40,
+            75.46
+          ]
+        },
+        {
+          "label": "2012",
+          "data": [
+            230.62,
+            69.98
+          ]
+        },
+        {
+          "label": "2013",
+          "data": [
+            262.03,
+            70.56
+          ]
         }
-      }
+      ]
     }
   },
   "contentCreation": {
-    "header": "Lobbying Expenditures",
-    "subheader": "in '000s of $",
+    "header": "Availability of self-publishing tools with ability to retain ownership of content",
+    "subheader": "Excerpt from Instagram's Terms of Service",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
-        },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
-        }
-      ]
+      "url": "/images/content-creation-infographic.png"
     }
   },
   "identityControl": {
@@ -282,33 +314,115 @@
     }
   },
   "publicTrust": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Net positive view of industries",
+    "subheader": "Percent by Year",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "dataLabels": [
+        "Internet",
+        "Computing"
+      ],
+      "lineGraphData": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "label": "2001",
+          "data": [
+            17,
+            57
+          ]
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "label": "2002",
+          "data": [
+            22,
+            55
+          ]
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "label": "2003",
+          "data": [
+            31,
+            64
+          ]
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "label": "2004",
+          "data": [
+            23,
+            52
+          ]
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "label": "2005",
+          "data": [
+            24,
+            47
+          ]
+        },
+        {
+          "label": "2006",
+          "data": [
+            29,
+            50
+          ]
+        },
+        {
+          "label": "2007",
+          "data": [
+            35,
+            51
+          ]
+        },
+        {
+          "label": "2008",
+          "data": [
+            32,
+            54
+          ]
+        },
+        {
+          "label": "2009",
+          "data": [
+            30,
+            53
+          ]
+        },
+        {
+          "label": "2010",
+          "data": [
+            28,
+            49
+          ]
+        },
+        {
+          "label": "2011",
+          "data": [
+            40,
+            62
+          ]
+        },
+        {
+          "label": "2012",
+          "data": [
+            36,
+            63
+          ]
+        },
+        {
+          "label": "2013",
+          "data": [
+            34,
+            56
+          ]
+        },
+        {
+          "label": "2014",
+          "data": [
+            27,
+            58
+          ]
         }
       ]
     }
@@ -1134,33 +1248,73 @@
     }
   },
   "concentrationOfPower": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Revenue by top internet companies vs. countries",
+    "subheader": "Total reserves in US$ for 2013",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "totalRevenue": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "name": "Apple",
+          "amount": 155,
+          "tech": true
+        },
+        {
+          "name": "Italy",
+          "amount": 146,
+          "tech": false
+        },
+        {
+          "name": "United Kingdom",
+          "amount": 104,
+          "tech": false
+        },
+        {
+          "name": "Microsoft",
+          "amount": 89,
+          "tech": true
+        },
+        {
+          "name": "Philippines",
+          "amount": 83,
+          "tech": false
+        },
+        {
+          "name": "Canada",
+          "amount": 72,
+          "tech": false
         },
         {
           "name": "Google",
-          "revenue": 59.82
+          "amount": 62,
+          "tech": true
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "name": "South Africa",
+          "amount": 50,
+          "tech": false
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "name": "Chile",
+          "amount": 41,
+          "tech": false
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "name": "Amazon",
+          "amount": 14,
+          "tech": true
+        },
+        {
+          "name": "Finland",
+          "amount": 11,
+          "tech": false
+        },
+        {
+          "name": "Tunisia",
+          "amount": 7,
+          "tech": false
         }
       ]
     }

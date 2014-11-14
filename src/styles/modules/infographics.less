@@ -723,3 +723,59 @@
   text-align: right;
   color: @black;
 }
+
+/* Length of Terms & Conditions
+   ========================================================================== */
+
+.concentration-power {
+    width: 1110px;
+
+    //.touch & { // scrollbar
+        padding-bottom: 20px;
+    //}
+}
+
+.concentration-power__organization {
+    float: left;
+    width: 90px;
+}
+
+.concentration-power__name {
+    .font-size(1.4);
+    height: 32px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    width: 50px;
+}
+
+.concentration-power__dollar {
+  border: 2px solid @extra-dark-grey;
+  width: 45px;
+  padding: 1px 0;
+  color: @extra-dark-grey;
+  text-align: center;
+  .font-size(0.9);
+  font-weight: 900;
+}
+
+.concentration-power__stacks {
+    margin-bottom: 8px;
+    width: 45px;
+}
+
+.concentration-power__stacks-item {
+    background: @extra-dark-grey;
+    height: 3px;
+    width: 45px;
+    margin-bottom: 2px;
+
+    .concentration-power__tech & {
+        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.7);
+    }
+}
+
+.concentration-power__amount {
+    color: @extra-dark-grey;
+    .font-size(1.4);
+    line-height: 16px;
+}

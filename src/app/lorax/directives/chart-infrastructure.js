@@ -1,28 +1,28 @@
 /**
- * @fileOverview Lobbying Chart directive
+ * @fileOverview Infrastructure Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
 
     /**
-     * Line Graph Chart directive
+     * Infrastructure Chart directive
      */
-    var ChartLobbyingDirective = function () {
+    var ChartInfrastructureDirective = function () {
         return {
             restrict: 'A',
             replace: true,
             scope: true,
-            controller: ChartLobbyingController,
-            link: ChartLobbyingLinkFn
+            controller: ChartInfrastructureController,
+            link: ChartInfrastructureLinkFn
         };
     };
 
     /**
-     * Controller for Lobbying Chart directive
+     * Controller for Infrastructure Chart directive
      * @constructor
      */
-    var ChartLobbyingController = function (
+    var ChartInfrastructureController = function (
         $scope,
         $timeout
         )
@@ -35,19 +35,19 @@ define(['jquery', 'd3'], function ($, d3) {
      * Array of dependencies to be injected into controller
      * @type {Array}
      */
-    ChartLobbyingController.$inject = [
+    ChartInfrastructureController.$inject = [
         '$scope',
         '$timeout'
     ];
 
   /**
-   * Link function for Lobbying Chart directive
+   * Link function for Infrastructure Chart directive
    * @param {object} scope      Angular scope.
    * @param {JQuery} iElem      jQuery element.
    * @param {object} iAttrs     Directive attributes.
    * @param {object} controller Controller reference.
    */
-  var ChartLobbyingLinkFn = function (scope, iElem, iAttrs, controller) {
+  var ChartInfrastructureLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout( function() {
       var data = controller._$scope.issue.getInfographic().getDataPoints();
       var lineData = data.lineGraphData;
@@ -60,55 +60,19 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
 
-      var margin = {top: 20, right: 20, bottom: 50, left: 10};
-      var width = graphWidth;
-      var height = graphWidth * .7;
+      var margin = {top: 20, right: 20, bottom: 50, left: 20};
+      var width = graphWidth*0.6;
+      var height = graphWidth;
 
       var svg = lineGraph.append("svg")
         .attr("class", "linegraph__svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .style("margin-left", "25%");
       
       drawPattern();
       drawLegend();
-      drawFirstAndLast();
       drawData();
-
-      lineGraph.append("div")
-        .attr("class", "linegraph__revolvers")
-        .html("* Revolvers are former members of Congress, congressional staffers, or executive branch officials.");
-
-      function drawFirstAndLast() {
-        var first = svg.append("g")
-
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 120)
-          .text( function(d) { return dollarFormat(lineData[0].data[0]).replace("G","M")});
-
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 190)
-          .text( function(d) { return lineData[0].data[1]});
-
-        var last = svg.append("g")
-          .attr("class", "linegraph__firstlast")
-
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 115)
-          .text( function(d) { return dollarFormat(lineData[lineData.length-1].data[0]).replace("G","M")});
-
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 55)
-          .text( function(d) { return lineData[lineData.length-1].data[1]});
-      }
-
 
       function drawLegend() {
         var legend = svg.append("g")
@@ -131,7 +95,7 @@ define(['jquery', 'd3'], function ($, d3) {
           .enter()
           .append("circle")
             .attr("class", function(d, i) { return "linegraph__point_" + i + "_circle"})
-            .attr("cx", function(d, i) {return width - margin.right - i*80 - (margin.right*5)})
+            .attr("cx", function(d, i) {return width - margin.right - i*110 - (margin.right*5)})
             .attr("cy", margin.top/3)
             .attr("r", 3);
 
@@ -140,7 +104,7 @@ define(['jquery', 'd3'], function ($, d3) {
           .enter()
           .append("text")
               .attr("class", "linegraph__legendtext")
-              .attr("x", function(d, i) {return width - margin.right - i*80 - (margin.right*5) + 6})
+              .attr("x", function(d, i) {return width - margin.right - i*110 - (margin.right*5) + 6})
               .attr("y", margin.top/3+4)
               .text(function(d) { return d; })
       }
@@ -174,10 +138,7 @@ define(['jquery', 'd3'], function ($, d3) {
         for ( var i = 0; i < numDatasets; i++ ) {
           var y = d3.scale.linear()
           .range([height-margin.top, -margin.bottom])
-          .domain([
-            d3.min( lineData, function(d) { return (d.data[i] * 0.50); }),
-            d3.max( lineData, function(d) { return (d.data[i] * 1.25); })
-          ]);
+          .domain([20,300]);
 
           var line = d3.svg.line()    
             .x(function(d) { return x(d.label); })
@@ -200,6 +161,21 @@ define(['jquery', 'd3'], function ($, d3) {
               .attr("cx", function(d) { return x(d.label); })
               .attr("cy", function(d) { return y(+d.data[i]); })
               .attr("r", 3);
+
+
+          var xAxisScale = d3.scale.ordinal()
+            .domain(lineData.map( function(d) { return d.data[i].toString(); }))
+            .rangePoints([margin.left, width-margin.right], 0.0);
+
+          var xAxisValue = d3.svg.axis()
+            .scale(xAxisScale)
+            .orient("bottom")
+            .tickSize(0);
+
+          svg.append("g")
+            .attr("class", "x_axis_info")
+            .attr("transform", "translate(0," + (height - 30 +( i * 17)) + ")")
+            .call(xAxisValue);
         }
       }      
 
@@ -240,5 +216,5 @@ define(['jquery', 'd3'], function ($, d3) {
     }.bind(controller));
   };
 
-    return ChartLobbyingDirective;
+    return ChartInfrastructureDirective;
 });

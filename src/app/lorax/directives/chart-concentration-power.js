@@ -1,29 +1,29 @@
 /**
- * @fileOverview Terms & Conditions Chart directive
+ * @fileOverview Concentration of Power Chart directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
 
     /**
-     * Terms & Conditions Chart directive
+     * Concentration of Power Chart directive
      */
-    var ChartTermsAndConditionsDirective = function () {
+    var ChartConcentrationPowerDirective = function () {
         return {
             restrict: 'A',
             replace: true,
             scope: true,
-            controller: ChartTermsAndConditionsController,
-            link: ChartTermsAndConditionsLinkFn,
-            templateUrl: '/app/lorax/directives/chart-terms-and-conditions.tpl.html'
+            controller: ChartConcentrationPowerController,
+            link: ChartConcentrationPowerLinkFn,
+            templateUrl: '/app/lorax/directives/chart-concentration-power.tpl.html'
         };
     };
 
     /**
-     * Controller for Terms & Conditions Chart directive
+     * Controller for Concentration of Power Chart directive
      * @constructor
      */
-    var ChartTermsAndConditionsController = function (
+    var ChartConcentrationPowerController = function (
         $scope,
         $timeout,
         pubSubService,
@@ -35,11 +35,10 @@ define(['jquery', 'd3'], function ($, d3) {
         this._pubSubService = pubSubService;
         this._windowService = windowService;
 
-        this._data = $scope.issue.getInfographic().getDataPoints().termsAndConditions;
+        this._data = $scope.issue.getInfographic().getDataPoints().totalRevenue;
 
-        $scope.tAndC = {
-            data: this._data,
-            minutesToString: this.minutesToString.bind(this)
+        $scope.revenue = {
+            data: this._data
         };
 
         this._stackMultipliers = {
@@ -54,48 +53,35 @@ define(['jquery', 'd3'], function ($, d3) {
      * Array of dependencies to be injected into controller
      * @type {Array}
      */
-    ChartTermsAndConditionsController.$inject = [
+    ChartConcentrationPowerController.$inject = [
         '$scope',
         '$timeout',
         'pubSubService',
         'windowService'
     ];
 
-    ChartTermsAndConditionsController.prototype.minutesToString = function (mins) {
-        var hours = Math.floor(mins / 60);
-        var minutes = mins % 60;
-
-        if (hours === 0) {
-            return minutes + 'min';
-        } else if (hours === 1) {
-            return '1 hour ' + minutes + ' min';
-        } else {
-            return hours + ' hours ' + minutes + ' min';
-        }
-    };
-
     /**
-     * Link function for Terms and Conditions Chart directive
+     * Link function for Concentration of Power Chart directive
      * @param {object} scope      Angular scope.
      * @param {JQuery} iElem      jQuery element.
      * @param {object} iAttrs     Directive attributes.
      * @param {object} controller Controller reference.
      */
-    var ChartTermsAndConditionsLinkFn = function (scope, iElem, iAttrs, controller) {
+    var ChartConcentrationPowerLinkFn = function (scope, iElem, iAttrs, controller) {
         var createStacks = function () {
-            var $stacks = $('.terms-company__stacks');
+            var $stacks = $('.concentration-power__stacks');
 
             // clear stacks
             $stacks.html('');
 
             $stacks.each(function (idx) {
                 var $this = $(this);
-                var length = controller._data[idx].length;
-                var numBars = Math.round(length / 1000) *
+                var length = controller._data[idx].amount;
+                var numBars = Math.round(length/5) *
                     controller._stackMultipliers[controller._windowService.breakpoint()];
 
                 for (var i = 0; i < numBars; i++) {
-                    $this.append('<div class="stacks-item"></div>');
+                    $this.append('<div class="concentration-power__stacks-item"></div>');
                 }
             });
         };
@@ -110,5 +96,5 @@ define(['jquery', 'd3'], function ($, d3) {
         );
     };
 
-    return ChartTermsAndConditionsDirective;
+    return ChartConcentrationPowerDirective;
 });

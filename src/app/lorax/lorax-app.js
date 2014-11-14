@@ -35,6 +35,9 @@ define([
   'lorax/directives/chart-open-source',
   'lorax/directives/chart-surveillance',
   'lorax/directives/chart-data-tracking',
+  'lorax/directives/chart-concentration-power',
+  'lorax/directives/chart-public-trust',
+  'lorax/directives/chart-infrastructure',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -84,6 +87,9 @@ define([
   ChartOpenSourceDirective,
   ChartSurveillanceDirective,
   ChartDataTrackingDirective,
+  ChartConcentrationPowerDirective,
+  ChartPublicTrustDirective,
+  ChartInfrastructureDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -273,6 +279,27 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartDataTracking', ChartDataTrackingDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartConcentrationPowerDirective}
+         * as 'ChartConcentrationPowerDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartConcentrationPower', ChartConcentrationPowerDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartPublicTrustDirective}
+         * as 'ChartPublicTrustDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartPublicTrust', ChartPublicTrustDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartInfrastructureDirective}
+         * as 'ChartInfrastructureDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartInfrastructure', ChartInfrastructureDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}

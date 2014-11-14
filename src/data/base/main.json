@@ -41,8 +41,8 @@
         },
         "infrastructure":{
           "status":1,
-          "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicType":"data-lorax-chart-infrastructure",
+          "infographicOverflow":false,
           "tags":[
             "Mobile",
             "Network operators",
@@ -56,7 +56,7 @@
       "issues":{
         "contentCreation":{
           "status":2,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-static-image",
           "infographicOverflow":false,
           "tags":[
             "Internet companies",
@@ -81,7 +81,7 @@
         },
         "publicTrust":{
           "status":1,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-public-trust",
           "infographicOverflow":false,
           "tags":[
             "Government",
@@ -260,7 +260,7 @@
         },
         "concentrationOfPower":{
           "status":2,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-concentration-power",
           "infographicOverflow":true,
           "tags":[
             "Internet companies",
