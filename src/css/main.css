@@ -365,55 +365,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/*@font-face {
-  font-family: 'fira-sans-bold';
-  src: url('../fonts/fira-sans/FiraSans-Bold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-semibold';
-  src: url('../fonts/fira-sans/FiraSans-SemiBold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-medium';
-  src: url('../fonts/fira-sans/FiraSans-Medium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-regular';
-  src: url('../fonts/fira-sans/FiraSans-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-book';
-  src: url('../fonts/fira-sans/FiraSans-Book.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-light';
-  src: url('../fonts/fira-sans/FiraSans-Light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira-sans-xlight';
-  src: url('../fonts/fira-sans/FiraSans-ExtraLight.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-*/
 @font-face {
   font-family: 'din-condensed-medium';
   src: url('../fonts/DINCond-Medium.otf') format('opentype');
@@ -486,7 +437,7 @@ a {
   color: #ffffff;
   display: inline-block;
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   font-size: 11px;
   font-size: 1.1rem;
@@ -1033,7 +984,7 @@ img {
 .detail-header-title {
   color: #ffffff;
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
   font-size: 28px;
   font-size: 2.8rem;
@@ -1095,7 +1046,7 @@ img {
 .detail-main-read-more {
   color: #222222;
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   font-size: 11px;
   font-size: 1.1rem;
@@ -1254,7 +1205,7 @@ img {
 }
 .infographic__header > h1 {
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 500;
+  font-weight: 900;
   font-style: normal;
   font-size: 18px;
   font-size: 1.8rem;
