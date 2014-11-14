@@ -78,9 +78,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
           "displayUnits": displayUnits
         }
       });
-
-      $('select').selectric('init'); 
-      
       
       var map = d3.select("#" + issueId + " .infographic__wrapper div")
         .attr("class", "map");
@@ -150,6 +147,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       drawLegend();
       drawDropdown();
 
+      $("#" + issueId + " .infographic__wrapper div select").selectric('init'); 
+
       function country_over (d) {
         if (d) {
           if ( infographicData[d.id] && infographicData[d.id].displayData ) {
@@ -185,6 +184,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
         .attr("class", "worldmap__dropdown");
 
       dropDown.append("option")
+        .attr("value", "Find a country")
         .text("Find a country");
 
       $.each(countryData, function(key, data) {
@@ -197,7 +197,9 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
 
       
       $("#" + issueId + " .infographic__wrapper div select").change( function() {
-        selectCountry(this.value);
+        if ( infographicData[this.value] && infographicData[this.value].displayData ) {
+          selectCountry(this.value);
+        }
       });
     }
 
