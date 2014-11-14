@@ -760,6 +760,9 @@ img {
   top: 0;
   left: 0;
 }
+.is-detail .explore-canvas {
+  display: none;
+}
 .explore-menu {
   list-style: none;
   margin: 0;
