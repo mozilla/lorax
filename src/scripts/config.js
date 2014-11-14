@@ -5,25 +5,25 @@
     require.config({
         baseUrl: '/app/',
 
-        name: '../bower_components/almond/almond',
+        name: './components/almond/almond',
 
         paths: {
-            'angular': '../bower_components/angular/angular',
-            'angular-route': '../bower_components/angular-route/angular-route',
-            'jquery': '../bower_components/jquery/dist/jquery',
+            'angular': '../scripts/components/angular/angular',
+            'angular-route': '../scripts/components/angular-route/angular-route',
+            'jquery': '../scripts/components/jquery/jquery',
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
             'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
-            'jquery-selectric': '../bower_components/jquery-selectric/dist/jquery.selectric.min',
+            'jquery-selectric': '../scripts/components/jquery-selectric/jquery.selectric',
             'modernizr': '../scripts/modernizr',
-            'd3': '../bower_components/d3/d3',
+            'd3': '../scripts/components/d3/d3',
             'topojson': '../scripts/libs/topojson.v1.min',
-            'pubsub': '../bower_components/jquery-tiny-pubsub/src/tiny-pubsub',
+            'pubsub': '../scripts/components/jquery-tiny-pubsub/tiny-pubsub',
             'utils': '../scripts/utils',
-            'lodash': '../bower_components/lodash/dist/lodash.min',
-            'pixi': '../bower_components/pixi/bin/pixi',
-            'stats': '../bower_components/stats.js/build/stats.min',
-            'createjs': '../bower_components/TweenJS/lib/tweenjs-0.5.1.min',
-            'signals': '../bower_components/js-signals/dist/signals.min',
+            'lodash': '../scripts/components/lodash/lodash.compat',
+            'pixi': '../scripts/components/pixi/pixi.dev',
+            'stats': '../scripts/components/stats.js/stats.min',
+            'createjs': '../scripts/components/TweenJS/tweenjs-0.5.1.combined',
+            'signals': '../scripts/components/js-signals/signals',
             'explore': '../scripts/explore'
         },
 

@@ -46,12 +46,15 @@ module.exports = function (grunt) {
         config: config,
 
         bower: {
+            options: {
+                cleanTargetDir: true,
+                cleanBowerDir: false,
+                copy: true,
+                install: false
+            },
             install: {
                 options: {
-                    cleanup: true,
-                    copy: true,
-                    install: true,
-                    targetDir: '<%= config.src %>/bower_components'
+                    targetDir: '<%= config.src %>/scripts/components'
                 }
             }
         },
@@ -63,7 +66,9 @@ module.exports = function (grunt) {
                     src: [
                         '<%= config.temp %>',
                         '<%= config.dist %>/*',
-                        '!<%= config.dist %>/.git*'
+                        '!<%= config.dist %>/.git*',
+                        '<%= config.bedrock %>/*',
+                        '!<%= config.bedrock %>/.git*'
                     ]
                 }]
             },
@@ -104,7 +109,7 @@ module.exports = function (grunt) {
         },
 
         copy: {
-             dist: {
+            dist: {
                 files: [{
                     expand: true,
                     dot: true,
@@ -131,12 +136,13 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
             all: [
-                'Gruntfile.js',
+                '!Gruntfile.js',
                 'app/**/*.js',
                 '<%= config.src %>/scripts/{,*/}*.js',
                 '!<%= config.src %>/scripts/libs/{,*/}*.js',
+                '!<%= config.src %>/scripts/components/{,*/}*.js',
                 '!<%= config.src %>/scripts/utils.js',
-                '!<%= config.src %>/bower_components/{,*/}*.js',
+                '!/bower_components/{,*/}*.js',
                 '!node_modules/{,*/}*.js'
             ]
         },
@@ -249,6 +255,7 @@ module.exports = function (grunt) {
     // Dev
     grunt.registerTask('server', function () {
         grunt.task.run([
+            'bower:install',
             'less:server',
             'connect:server',
             'notify:server',
