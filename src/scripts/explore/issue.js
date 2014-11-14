@@ -21,6 +21,9 @@ define([
         this.mouseOutS = new signals.Signal();
         this.pressS = new signals.Signal();
 
+        this._titleOverStyle = {font: '600 14px "Fira Sans", sans-serif', fill: '#222222'};
+        this._topicStyle = {font: '200 12px "Fira Sans", sans-serif', fill: '#222222'};
+
         return this;
     };
 
@@ -118,7 +121,7 @@ define([
         this._issueModeOverContainer.addChild(this._issueModeFiller);
 
         // white title
-        var style = {font: '300 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
+        var style = {font: '200 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
         this._issueModeTitle = new PIXI.Text(this.data.getName().toUpperCase(), style);
         this._issueModeOverContainer.addChild(this._issueModeTitle);
         this._issueModeTitle.x = this._title.x;
@@ -135,11 +138,13 @@ define([
         } else if (mode === Issue.MODE_TOPICS) {
             this.setTextAlwaysVisible(false);
             this.setIsInteractive(false);
+            this._title.setStyle(this._topicStyle);
+            this._title.y = Math.round(-this._title.height / 2);
         } else if (mode === Issue.MODE_ISSUES) {
             this.stopMoving();
             this.setTextAlwaysVisible(true);
             this.setIsInteractive(false);
-            this._title.setStyle({font: '300 20px "Fira Sans", sans-serif'});
+            this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
             if (!this._issueModeArea) {
                 this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
@@ -152,14 +157,14 @@ define([
             var style = {font: '300 12px "Fira Sans", sans-serif', fill: '#FFFFFF'};
             this._issueModeTitle.setStyle(style);
             this._issueModeTitle.y = Math.round(-this._title.height / 2);
-            if (!this._issueModeArea) {
-                this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-            }
-            this.elm.hitArea = this._issueModeArea;
+            // if (!this._issueModeArea) {
+            //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+            // }
+            // this.elm.hitArea = this._issueModeArea;
         }
 
         if (lastMode === Issue.MODE_ISSUES) {
-            this._title.setStyle({font: '300 12px "Fira Sans", sans-serif'});
+            this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
             this.elm.hitArea = null;
             this.elm.alpha = 1;
@@ -201,16 +206,16 @@ define([
 
         var totalHeight = this._title.height;
 
-        if (this._subtitle) {
+        if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             totalHeight += this._subtitle.height + 2;
+            this._title.setStyle(this._titleOverStyle);
         }
 
-        this._title.setStyle({font: '500 14px "Fira Sans", sans-serif'});
         this._title.y = Math.round(-totalHeight / 2);
 
-        if (this._subtitle) {
+        if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             this.elm.addChild(this._subtitle);
-            this._subtitle.y = this._title.y + this._title.height + 2;
+            this._subtitle.y = Math.round(this._title.y + this._title.height + 2);
             createjs.Tween.get(this._subtitle, {override: true})
             .to({alpha: 1}, 200, createjs.Ease.quartIn);
         }
@@ -248,11 +253,11 @@ define([
         var tweenBack = createjs.Tween.get(this.elm, {override: true})
             .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5));
 
-        if (this.mode === Issue.MODE_EXPLORE) {
+        if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             tweenBack.call(this._resumeStaticAnimation.bind(this));
-        }
+            this._title.setStyle(this._titleStyle);
+            this._title.y = Math.round(-this._title.height / 2);
 
-        if (this._subtitle) {
             createjs.Tween.get(this._subtitle, {override: true})
                 .to({alpha: 0}, 200, createjs.Ease.quartOut)
                 .call(function () {
@@ -261,9 +266,6 @@ define([
                     }
                 }.bind(this));
         }
-
-        this._title.setStyle({font: '300 12px "Fira Sans", sans-serif'});
-        this._title.y = Math.round(-this._title.height / 2);
 
         this.lightDown();
     };
@@ -304,17 +306,9 @@ define([
             300,
             createjs.Ease.sineOut
         );
-
-        // createjs.Tween.get(this._issueModeMask).to(
-        //   {y: -globalOrigin.y},
-        //   300,
-        //   createjs.Ease.sineOut
-        // );
     };
 
     Issue.prototype.closeIssue = function () {
-        this.setMode(Issue.MODE_EXPLORE);
-
         this.elm.removeChild(this._issueModeContainer);
         this.elm.removeChild(this._issueModeMask);
 

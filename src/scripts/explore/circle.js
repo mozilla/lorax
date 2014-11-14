@@ -104,22 +104,20 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     };
 
     Circle.prototype._drawTitle = function () {
-        var style = {
-            font: '300 12px "Fira Sans", sans-serif',
-            fill: '#222222'
-        };
+        this._titleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#222222'};
 
-        this._title = new PIXI.Text(this.data.getName().toUpperCase(), style);
+        //.split('').join(String.fromCharCode(8202))
+        this._title = new PIXI.Text(this.data.getName().toUpperCase(), this._titleStyle);
         this._title.x = 20;
         this._title.y = -this._title.height / 2;
         this._title.alpha = 0;
 
         if (this.data.getParent) {
-            style = {
-                font: '600 11px "Fira Sans", sans-serif',
-                fill: '#AAAAAA'
-            }
-            this._subtitle = new PIXI.Text(this.data.getParent().getName().toUpperCase(), style);
+            this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'}
+            this._subtitle = new PIXI.Text(
+                this.data.getParent().getName().toUpperCase(),
+                this._subtitleStyle
+            );
             this._subtitle.x = this._title.x;
             this._subtitle.y = -this._subtitle.height / 2;
             this._subtitle.alpha = 0;

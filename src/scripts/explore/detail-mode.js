@@ -1,10 +1,12 @@
 /* global define:true */
 define([
     'pixi',
-    'explore/mode'
+    'explore/mode',
+    'explore/issue'
 ], function (
     PIXI,
-    Mode
+    Mode,
+    Issue
 ) {
     'use strict';
 
@@ -27,7 +29,7 @@ define([
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-            issue.explode();
+            issue.setMode(Issue.MODE_DETAIL);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {

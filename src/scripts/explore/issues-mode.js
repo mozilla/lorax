@@ -66,11 +66,11 @@ define([
     };
 
     IssuesMode.prototype._mouseOverIssue = function (issue) {
-        issue.issueModeMouseOver();
+        issue.mouseOver();
     };
 
     IssuesMode.prototype._mouseOutIssue = function (issue) {
-        issue.issueModeMouseOut();
+        issue.mouseOut();
     };
 
     IssuesMode.prototype._onStartShow = function () {

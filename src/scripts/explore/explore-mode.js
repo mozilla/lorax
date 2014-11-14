@@ -145,6 +145,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
         for(i = 0; i < related.length; i ++) {
             relatedIssue = this._canvas.getElementById(related[i]._id);
             relatedIssue.lightUp();
+            relatedIssue.stopMoving();
         }
     };
 
@@ -161,6 +162,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
         for(i = 0; i < related.length; i ++) {
             relatedIssue = this._canvas.getElementById(related[i]._id);
             relatedIssue.lightDown();
+            relatedIssue._resumeStaticAnimation();
         }
     };
 
