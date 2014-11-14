@@ -91,7 +91,7 @@
         },
         "dataTracking":{
           "status":1,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-data-tracking",
           "infographicOverflow":false,
           "tags":[
             "Internet companies",
@@ -103,7 +103,7 @@
         },
         "surveillance":{
           "status":2,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-surveillance",
           "infographicOverflow":false,
           "tags":[
             "Network operators",

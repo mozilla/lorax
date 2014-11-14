@@ -33,6 +33,8 @@ define([
   'lorax/directives/chart-cyber-threats',
   'lorax/directives/chart-data-portability',
   'lorax/directives/chart-open-source',
+  'lorax/directives/chart-surveillance',
+  'lorax/directives/chart-data-tracking',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -80,6 +82,8 @@ define([
   ChartCyberThreatsDirective,
   ChartDataPortabilityDirective,
   ChartOpenSourceDirective,
+  ChartSurveillanceDirective,
+  ChartDataTrackingDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -255,6 +259,20 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartOpenSource', ChartOpenSourceDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartSurveillanceDirective}
+         * as 'ChartSurveillanceDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartSurveillance', ChartSurveillanceDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartDataTrackingDirective}
+         * as 'ChartDataTrackingDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartDataTracking', ChartDataTrackingDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
