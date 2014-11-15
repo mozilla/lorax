@@ -108,7 +108,7 @@ define([
                 for (j = 0; j < topic._issues.length; j ++) {
                     issue = topic._issues[j];
 
-                    for (k = 0; k < topic.length; k ++) {
+                    for (k = 0; k < topic._issues.length; k ++) {
                         if (j !== k) {
                             relatedItem = topic._issues[k];
                             this._canvas.drawLine(issue, relatedItem, 0x0, 0.02);
