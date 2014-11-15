@@ -23,6 +23,7 @@ define([
 
         this._titleOverStyle = {font: '600 14px "Fira Sans", sans-serif', fill: '#222222'};
         this._topicStyle = {font: '200 12px "Fira Sans", sans-serif', fill: '#222222'};
+        this._issuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#222222'};
 
         return this;
     };
@@ -135,6 +136,8 @@ define([
         if (mode === Issue.MODE_EXPLORE) {
             this.setTextAlwaysVisible(false);
             this.setIsInteractive(true);
+            this._title.setStyle(this._titleStyle);
+            this._title.y = Math.round(-this._title.height / 2);
         } else if (mode === Issue.MODE_TOPICS) {
             this.setTextAlwaysVisible(false);
             this.setIsInteractive(false);
@@ -144,7 +147,7 @@ define([
             this.stopMoving();
             this.setTextAlwaysVisible(true);
             this.setIsInteractive(false);
-            this._title.setStyle(this._titleStyle);
+            this._title.setStyle(this._issuesStyle);
             this._title.y = Math.round(-this._title.height / 2);
             if (!this._issueModeArea) {
                 this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
@@ -154,18 +157,11 @@ define([
             this.stopMoving();
             this.setTextAlwaysVisible(true);
             this.setIsInteractive(false);
-            var style = {font: '300 12px "Fira Sans", sans-serif', fill: '#FFFFFF'};
-            this._issueModeTitle.setStyle(style);
-            this._issueModeTitle.y = Math.round(-this._title.height / 2);
-            // if (!this._issueModeArea) {
-            //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-            // }
-            // this.elm.hitArea = this._issueModeArea;
+            this._title.setStyle(this._topicStyle);
+            this._title.y = Math.round(-this._title.height / 2);
         }
 
         if (lastMode === Issue.MODE_ISSUES) {
-            this._title.setStyle(this._titleStyle);
-            this._title.y = Math.round(-this._title.height / 2);
             this.elm.hitArea = null;
             this.elm.alpha = 1;
         }
@@ -221,28 +217,6 @@ define([
         }
     };
 
-    // Issue.prototype.issueModeMouseOver = function () {
-    //     Issue.prototype._superMouseOver.bind(this)();
-
-    //     var globalOrigin = this.elm.toGlobal(new PIXI.Point());
-
-    //     this.elm.addChild(this._issueModeContainer);
-    //     this.elm.addChild(this._issueModeMask);
-
-    //     this._issueModeMask.x = -globalOrigin.x;
-    //     // this._issueModeMask.width = this._canvasSize.x - globalOrigin.x;
-    //     this._issueModeFiller.x = -globalOrigin.x;
-    //     this._issueModeFiller.y = -globalOrigin.y;
-    //     this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
-    //     this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
-
-    //     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
-    //         {x:1, y:1},
-    //         200,
-    //         createjs.Ease.sineOut
-    //     );
-    // };
-
     Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
     /**
      * Sets mouse out
@@ -269,19 +243,6 @@ define([
 
         this.lightDown();
     };
-
-    // Issue.prototype.issueModeMouseOut = function () {
-    //     Issue.prototype._superMouseOut.bind(this)();
-
-    //     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
-    //         {x:0, y:0},
-    //         200,
-    //         createjs.Ease.sineIn)
-    //         .call(function () {
-    //             this.elm.removeChild(this._issueModeContainer);
-    //             this.elm.removeChild(this._issueModeMask);
-    //         }.bind(this));
-    // };
 
     Issue.prototype.openIssue = function () {
         this.setMode(Issue.MODE_DETAIL);
