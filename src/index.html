@@ -18,21 +18,12 @@
   </head>
 
   <body ng-controller="CoreCtrl" data-lorax-window>
+    <div data-lorax-explore-canvas></div>
     <header role="banner" class="banner">
       <h1 class="banner-logo"><a href="/">Open Internet Project</a></h1>
       <h2 class="banner-mozilla"><span class="is-hidden-sm">Published </span>by <a href="https://www.mozilla.org">Mozilla</a></h2>
       <a href="#" class="banner-info">Information</a>
-      <!-- FIXME: shouldnt this be on the detail directive? -->
-      <!-- <nav class="banner__nav">
-        <ul class="banner-nav">
-          <li><a href="#" class="banner-nav__link">Availability</a></li>
-          <li><a href="#" class="banner-nav__link is-active">Control</a></li>
-          <li><a href="#" class="banner-nav__link">Safety</a></li>
-          <li><a href="#" class="banner-nav__link">Fairness</a></li>
-        </ul>
-      </nav> -->
     </header>
-    <div data-lorax-explore-canvas></div>
 
     <div class="container" data-ng-view data-ng-cloak></div>
   </body>

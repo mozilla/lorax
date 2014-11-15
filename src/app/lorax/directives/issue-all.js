@@ -40,12 +40,13 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._$location = $location;
         this._$scope.dataService = dataService;
         this._$scope.detail = {
-            currentIssue : ''
+            currentIssue : '',
+            scrollTo: this.scrollToIssue.bind(this),
+            nextIssue: this.nextIssue.bind(this)
         };
 
         // set detail mode on, adds body class
         windowService.setDetailMode(true);
-
         exploreService.switchView('detail');
 
         $scope.$on('$destroy', function () {
@@ -54,24 +55,10 @@ define(['jquery', 'jquery-scrollie'], function ($) {
             exploreService.switchView('explore');
         });
 
+        // get model
         this._$scope.dataService.getMain().then(function (model) {
             this._$scope.detail.model = model;
         }.bind(this));
-
-        this._$scope.detail.scrollTo = function (issue) {
-            $('body').animate({
-                scrollTop: $('#' + issue).offset().top - 138
-            }, 500);
-        }.bind(this);
-
-        this._$scope.detail.nextIssue = function () {
-            this._$scope.detail.currentIssue =
-                $('#' + this._$scope.detail.currentIssue).next().attr('id');
-
-            if (this._$scope.detail.currentIssue) {
-                this._$scope.detail.scrollTo(this._$scope.detail.currentIssue);
-            }
-        }.bind(this);
     };
 
     IssueAllCtrl.$inject = [
@@ -85,6 +72,39 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         'exploreService'
     ];
 
+    IssueAllCtrl.prototype.scrollToIssue = function (issue, topic) {
+        // get first issue from topic
+        if (topic && !issue) {
+            issue = this._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+        }
+
+        // find issue offset
+        var offset = 0;
+        if (issue && $('#' + issue).length) {
+            offset = $('#' + issue).offset().top - 138;
+        }
+
+        // scroll to offset
+        $('body').animate({scrollTop: offset}, 500);
+
+        this._$scope.detail.currentIssue = issue;
+    };
+
+    IssueAllCtrl.prototype.onRouteChange = function (evt, newParam) {
+        var topic = newParam.params.topic;
+        var issue = newParam.params.issue;
+        this.scrollToIssue(issue, topic);
+    };
+
+    IssueAllCtrl.prototype.nextIssue = function () {
+        this._$scope.detail.currentIssue =
+            $('#' + this._$scope.detail.currentIssue).next().attr('id');
+
+        if (this._$scope.detail.currentIssue) {
+            this._$scope.detail.scrollTo(this._$scope.detail.currentIssue);
+        }
+    };
+
     /**
      * Link function for Issue All directive
      * @param {object} scope      Angular scope.
@@ -92,42 +112,17 @@ define(['jquery', 'jquery-scrollie'], function ($) {
      */
     var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
 
+        // wait for everything to be rendered
         controller._$timeout(function () {
             var topic = controller._$location.search().topic;
             var issue = controller._$location.search().issue;
 
-            if (topic) {
-                if (!issue) {
-                    issue =
-                        controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
-                }
+            controller.scrollToIssue(issue, topic);
 
-                controller._$scope.detail.scrollTo(issue);
-                controller._$scope.detail.currentIssue = issue;
-            }
+            controller._$rootScope.$on('$routeUpdate', controller.onRouteChange.bind(controller));
+            controller._$scope.$on('$destroy', controller.onRouteChange.bind(controller));
 
-            var routeChange = controller._$rootScope.$on('$routeUpdate', function onRouteChange (evt, newParam) {
-                topic = newParam.params.topic;
-                issue = newParam.params.issue;
-
-                if (topic) {
-                    if (!issue) {
-                        issue =
-                            controller._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
-                    }
-                    controller._$scope.detail.scrollTo(issue);
-
-                    controller._$scope.detail.currentIssue = issue;
-                } else {
-                    $('body').animate({
-                        scrollTop: 0
-                    });
-                    controller._$scope.detail.currentIssue = '';
-                }
-            }.bind(controller));
-
-            controller._$scope.$on('$destroy', routeChange);
-
+            // change bg mode according to issue
             var $body = $('body');
             var $detail = $('.detail');
             var status = $detail.eq(0).attr('data-issue-status');
@@ -138,7 +133,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
                 scrollOffset : 138,
                 ScrollingOutOfView : function onScrollOutOfView (elem) {
                     status = elem.attr('data-issue-status');
-
                     $body.attr('data-bg-mode', status);
                 }
             });

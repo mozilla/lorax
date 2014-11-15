@@ -7,21 +7,25 @@ define(function () {
     };
 
     ExploreService.prototype.setCanvas = function (canvas) {
-        this._canvas = canvas;
-        this._canvas.init();
-        this._canvas.setEnterIssueCallback(this._onPressIssue.bind(this));
+        this._explore = canvas;
+        this._explore.init();
+        this._explore.setEnterIssueCallback(this._onPressIssue.bind(this));
     };
 
     ExploreService.prototype.switchView = function (view) {
         if (view === 'explore') {
-            this._canvas.showExplore();
+            this._explore.showExplore();
         } else if (view === 'topics') {
-            this._canvas.showTopics();
+            this._explore.showTopics();
         } else if (view === 'issues') {
-            this._canvas.showIssues();
+            this._explore.showIssues();
         } else if (view === 'detail') {
-            this._canvas.showDetail();
+            this._explore.showDetail();
         }
+    };
+
+    ExploreService.prototype.onScroll = function () {
+        this._explore.onScroll();
     };
 
     ExploreService.prototype._onPressIssue = function (topic, issue) {

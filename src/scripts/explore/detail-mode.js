@@ -23,6 +23,21 @@ define([
 
     };
 
+    DetailMode.prototype._drawLines = function () {
+        var i;
+        var issue;
+        var relatedItem;
+
+        this._canvas.clearLines();
+
+        for (i = 0; i < this._canvas.issues.length - 1; i ++) {
+            issue = this._canvas.issues[i];
+            relatedItem = this._canvas.issues[i + 1];
+
+            this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+        }
+    };
+
     DetailMode.prototype._onStartShow = function () {
         var i;
         var issue;
@@ -42,7 +57,8 @@ define([
             issue.explode();
         }
 
-        this._canvas.clearLines();
+        this._drawLinesBind = this._drawLines.bind(this);
+        this._canvas.renderStartS.add(this._drawLinesBind);
 
         setTimeout(this._onShow.bind(this), 500);
     };
@@ -65,6 +81,8 @@ define([
             issue = this._canvas.fakes[i];
             issue.implode();
         }
+
+        this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 0);
     };

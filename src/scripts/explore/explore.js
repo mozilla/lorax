@@ -30,6 +30,20 @@ define([
     };
 
     Explore.prototype.init = function (isDebug) {
+        // FPS count for debugging
+        if (isDebug) {
+            this._stats = new Stats();
+            this._showStats();
+        }
+
+        // preload font
+        var font = new Font();
+        font.onload = this.onFontLoaded.bind(this);
+        font.fontFamily = 'Fira Sans';
+        font.src = font.fontFamily;
+    };
+
+    Explore.prototype.onFontLoaded = function () {
         this._canvas.drawIssues(this._issueData);
         this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
@@ -39,17 +53,10 @@ define([
         this._issues.init();
         this._detail.init();
 
-        // FPS count for debugging
-        if (isDebug) {
-            this._stats = new Stats();
-            this._showStats();
-        }
-
-        // preload font
-        var font = new Font();
-        font.onload = this.showExplore.bind(this);
-        font.fontFamily = 'Fira Sans';
-        font.src = font.fontFamily;
+        this._hasInitialized = true;
+        if (this._onInitMode) {
+            this._onInitMode();
+        };
     };
 
     Explore.prototype.setData = function (data) {
@@ -83,25 +90,41 @@ define([
     * Go to explore mode
     */
     Explore.prototype.showExplore = function () {
-        this._explore.show();
+        if (this._hasInitialized) {
+            this._explore.show();
+        } else {
+            this._onInitMode = this.showExplore;
+        }
     };
 
     /**
     * Go to issues mode
     */
     Explore.prototype.showIssues = function () {
-        this._issues.show();
+        if (this._hasInitialized) {
+            this._issues.show();
+        } else {
+            this._onInitMode = this.showIssues;
+        }
     };
 
     /**
     * Go to topics mode
     */
     Explore.prototype.showTopics = function () {
-        this._topics.show();
+        if (this._hasInitialized) {
+            this._topics.show();
+        } else {
+            this._onInitMode = this.showTopics;
+        }
     };
 
     Explore.prototype.showDetail = function () {
-        this._detail.show();
+        if (this._hasInitialized) {
+            this._detail.show();
+        } else {
+            this._onInitMode = this.showDetail;
+        }
     };
 
     Explore.prototype._openIssue = function (issue) {
