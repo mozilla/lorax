@@ -1,6 +1,7 @@
 /* global define:true */
 define([
     'stats',
+    'font',
     'explore/explore-canvas',
     'explore/explore-mode',
     'explore/topics-mode',
@@ -10,6 +11,7 @@ define([
     'jquery-mobile'
 ], function (
     Stats,
+    Font,
     ExploreCanvas,
     ExploreMode,
     TopicsMode,
@@ -43,7 +45,11 @@ define([
             this._showStats();
         }
 
-        this.showExplore();
+        // preload font
+        var font = new Font();
+        font.onload = this.showExplore.bind(this);
+        font.fontFamily = 'Fira Sans';
+        font.src = font.fontFamily;
     };
 
     Explore.prototype.setData = function (data) {
