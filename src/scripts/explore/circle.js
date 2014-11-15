@@ -110,7 +110,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this._title.alpha = 0;
 
         if (this.data.getParent) {
-            this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'}
+            this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
             this._subtitle = new PIXI.Text(
                 this.data.getParent().getName().toUpperCase(),
                 this._subtitleStyle

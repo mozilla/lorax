@@ -184,8 +184,6 @@ define([
         Topic.SELECTED_TOPIC = this;
 
         var i;
-        var j;
-        var topic;
         var issue;
 
         // move issues to a linear position
@@ -221,7 +219,7 @@ define([
         setTimeout(function () {
             this.elm.removeChild(this._topicArea);
             this.isOver = true;
-        }.bind(this), 300);
+        }.bind(this), 600);
 
         this.mouseOverS.dispatch(this);
     };
@@ -236,8 +234,6 @@ define([
         }
 
         var i;
-        var j;
-        var topic;
         var issue;
 
         // move selected title and desc
