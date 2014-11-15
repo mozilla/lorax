@@ -37,6 +37,7 @@ define([
     };
 
     Topic.TOPICS = [];
+    Topic.SELECTED_TOPIC = null;
 
     Topic.prototype.setup = function () {
         // topic mouse over
@@ -154,11 +155,15 @@ define([
     };
 
     Topic.prototype._mouseOverIssue = function (issue) {
-        issue.mouseOver();
+        if (this.isOver) {
+            issue.mouseOver();
+        }
     };
 
     Topic.prototype._mouseOutIssue = function (issue) {
-        issue.mouseOut();
+        if (this.isOver) {
+            issue.mouseOut();
+        }
     };
 
     Topic.prototype._delayTouchOver = function () {
@@ -171,9 +176,12 @@ define([
     * When hovering a topic
     */
     Topic.prototype._mouseOver = function () {
-        this.isOver = true;
+        // dont mouse in if theres another one still selected
+        if (Topic.SELECTED_TOPIC) {
+            return;
+        }
 
-        this.elm.removeChild(this._topicArea);
+        Topic.SELECTED_TOPIC = this;
 
         var i;
         var j;
@@ -210,6 +218,11 @@ define([
             .to({alpha: 0}, 300, createjs.Ease.easeIn);
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
+        setTimeout(function () {
+            this.elm.removeChild(this._topicArea);
+            this.isOver = true;
+        }.bind(this), 300);
+
         this.mouseOverS.dispatch(this);
     };
 
@@ -217,9 +230,10 @@ define([
     * When the mouse leaves a topic
     */
     Topic.prototype._mouseOut = function () {
-        this.isOver = false;
-
-        this.elm.addChild(this._topicArea);
+        // dont mouse out if it's animating in
+        if (Topic.SELECTED_TOPIC && !this.isOver) {
+            return;
+        }
 
         var i;
         var j;
@@ -241,10 +255,15 @@ define([
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
+            issue.mouseOut();
             issue.setTextAlwaysVisible(false);
             issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
                 .call(issue._resumeStaticAnimation.bind(issue));
         }
+
+        this.elm.addChild(this._topicArea);
+        this.isOver = false;
+        Topic.SELECTED_TOPIC = null;
 
         this.mouseOutS.dispatch(this);
     };

@@ -221,27 +221,27 @@ define([
         }
     };
 
-    Issue.prototype.issueModeMouseOver = function () {
-        Issue.prototype._superMouseOver.bind(this)();
+    // Issue.prototype.issueModeMouseOver = function () {
+    //     Issue.prototype._superMouseOver.bind(this)();
 
-        var globalOrigin = this.elm.toGlobal(new PIXI.Point());
+    //     var globalOrigin = this.elm.toGlobal(new PIXI.Point());
 
-        this.elm.addChild(this._issueModeContainer);
-        this.elm.addChild(this._issueModeMask);
+    //     this.elm.addChild(this._issueModeContainer);
+    //     this.elm.addChild(this._issueModeMask);
 
-        this._issueModeMask.x = -globalOrigin.x;
-        // this._issueModeMask.width = this._canvasSize.x - globalOrigin.x;
-        this._issueModeFiller.x = -globalOrigin.x;
-        this._issueModeFiller.y = -globalOrigin.y;
-        this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
-        this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
+    //     this._issueModeMask.x = -globalOrigin.x;
+    //     // this._issueModeMask.width = this._canvasSize.x - globalOrigin.x;
+    //     this._issueModeFiller.x = -globalOrigin.x;
+    //     this._issueModeFiller.y = -globalOrigin.y;
+    //     this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
+    //     this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
 
-        createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
-            {x:1, y:1},
-            200,
-            createjs.Ease.sineOut
-        );
-    };
+    //     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+    //         {x:1, y:1},
+    //         200,
+    //         createjs.Ease.sineOut
+    //     );
+    // };
 
     Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
     /**
@@ -250,10 +250,10 @@ define([
     Issue.prototype.mouseOut = function () {
         Issue.prototype._superMouseOut.bind(this)();
 
-        var tweenBack = createjs.Tween.get(this.elm, {override: true})
+        if (this.mode === Issue.MODE_EXPLORE) {
+            var tweenBack = createjs.Tween.get(this.elm, {override: true})
             .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5));
 
-        if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             tweenBack.call(this._resumeStaticAnimation.bind(this));
             this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
@@ -270,18 +270,18 @@ define([
         this.lightDown();
     };
 
-    Issue.prototype.issueModeMouseOut = function () {
-        Issue.prototype._superMouseOut.bind(this)();
+    // Issue.prototype.issueModeMouseOut = function () {
+    //     Issue.prototype._superMouseOut.bind(this)();
 
-        createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
-            {x:0, y:0},
-            200,
-            createjs.Ease.sineIn)
-            .call(function () {
-                this.elm.removeChild(this._issueModeContainer);
-                this.elm.removeChild(this._issueModeMask);
-            }.bind(this));
-    };
+    //     createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+    //         {x:0, y:0},
+    //         200,
+    //         createjs.Ease.sineIn)
+    //         .call(function () {
+    //             this.elm.removeChild(this._issueModeContainer);
+    //             this.elm.removeChild(this._issueModeMask);
+    //         }.bind(this));
+    // };
 
     Issue.prototype.openIssue = function () {
         this.setMode(Issue.MODE_DETAIL);
