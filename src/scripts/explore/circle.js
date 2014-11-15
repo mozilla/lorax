@@ -54,10 +54,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
                 createjs.Ease.sineInOut
             );
 
-        if (this._staticPositionTween) {
-            this._staticPositionTween.setPaused(true);
-        }
-        this._staticPositionTween = createjs.Tween.get(this.elm, {loop: true, override: true})
+        this._positionTween = createjs.Tween.get(this.elm, {loop: true, override: true})
             .to({
                     x: this._x0 + (-10 + Math.random() * 20) * d,
                     y: this._y0 + (-10 + Math.random() * 20) * d
@@ -141,7 +138,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
 
         this.stopMoving();
-        createjs.Tween.get(this.elm, {override: true})
+        this._positionTween = createjs.Tween.get(this.elm, {override: true})
             .wait(Math.random() * 100)
             .to(
                 {
@@ -157,8 +154,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
      * Recovers from explode()
      */
     Circle.prototype.implode = function () {
-        this._staticPositionTween.setPaused(true);
-        createjs.Tween.get(this.elm, {override: true})
+        this._positionTween.setPaused(true);
+        this._positionTween = createjs.Tween.get(this.elm, {override: true})
             .to({alpha: this.implodeAlpha, x: this._x0, y: this._y0},
                 (Math.random() * 100) + 200,
                 createjs.quartIn)
@@ -217,10 +214,14 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this._x0 = x;
         this._y0 = y;
 
-        this._staticPositionTween.setPaused(true);
+        if (this._positionTween) {
+            this._positionTween.setPaused(true);
+        }
 
-        return createjs.Tween.get(this.elm, {override: true})
+        this._positionTween = createjs.Tween.get(this.elm, {override: true})
             .to({x:x, y:y}, (Math.random() * 100) + 400, createjs.Ease.getBackOut(1.5));
+
+        return this._positionTween;
     };
 
     /**
@@ -228,7 +229,7 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
      */
     Circle.prototype.stopMoving = function () {
         this._staticScaleTween.setPaused(true);
-        this._staticPositionTween.setPaused(true);
+        this._positionTween.setPaused(true);
         this.elm.x = Math.round(this.elm.x);
         this.elm.y = Math.round(this.elm.y);
     };

@@ -88,28 +88,53 @@ define([
     TopicsMode.prototype._drawLines = function () {
         var i;
         var j;
+        var k;
         var issue;
         var related;
         var relatedItem;
         var tags;
         var isOver;
         var isSameTopic;
+        var topic;
 
         this._canvas.clearLines();
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
-            related = issue.data.getRelated();
-            tags = issue.data.getTags();
+        // for (i = 0; i < this._canvas.issues.length; i ++) {
+        //     issue = this._canvas.issues[i];
+        //     related = issue.data.getRelated();
+        //     tags = issue.data.getTags();
 
-            // draw lines connecting related issues
-            for (j = 0; j < related.length; j ++) {
-                relatedItem = this._canvas.getElementById(related[j]._id);
-                isOver = (issue.isOver || relatedItem.isOver);
-                isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
+        //     // draw lines connecting related issues
+        //     for (j = 0; j < related.length; j ++) {
+        //         relatedItem = this._canvas.getElementById(related[j]._id);
+        //         isOver = (issue.isOver || relatedItem.isOver);
+        //         isSameTopic = issue.data._parent._id === relatedItem.data._parent._id;
 
-                if (isSameTopic) {
-                    this._canvas.drawLine(issue, relatedItem, 0x0, 0.02);
+        //         if (isSameTopic) {
+        //             this._canvas.drawLine(issue, relatedItem, 0x0, 0.02);
+        //         }
+        //     }
+        // }
+
+        for (i = 0; i < this._topics.length; i ++) {
+            topic = this._topics[i];
+
+            if (topic === this.selectedTopic) {
+                for (j = 0; j < topic._issues.length - 1; j ++) {
+                    issue = topic._issues[j];
+                    relatedItem = topic._issues[j + 1];
+                    this._canvas.drawLine(issue, relatedItem, 0x0, 0.1);
+                }
+            } else {
+                for (j = 0; j < topic._issues.length; j ++) {
+                    issue = topic._issues[j];
+
+                    for (k = 0; k < topic.length; k ++) {
+                        if (j !== k) {
+                            relatedItem = topic._issues[k];
+                            this._canvas.drawLine(issue, relatedItem, 0x0, 0.02);
+                        }
+                    }
                 }
             }
         }
@@ -122,6 +147,7 @@ define([
     };
 
     TopicsMode.prototype._onMouseOver = function (selectedTopic) {
+        this.selectedTopic = selectedTopic;
         var i;
         var j;
         var topic;
@@ -147,6 +173,8 @@ define([
                 topic.endToneDown();
             }
         }
+
+        this.selectedTopic = null;
     };
 
     TopicsMode.prototype._onStartShow = function () {
