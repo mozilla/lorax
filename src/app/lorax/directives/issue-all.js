@@ -157,6 +157,8 @@ define(['jquery', 'jquery-scrollie'], function ($) {
 
             // update explore on scroll
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));
+            controller._exploreService.onScroll(0);
+
         }.bind(controller), 500);
     };
 

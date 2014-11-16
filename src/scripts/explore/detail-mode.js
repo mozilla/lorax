@@ -72,7 +72,7 @@ define([
                 relatedItem = this._canvas.getElementById(related[j]._id);
                 isSameTopic = issue.data.getParent().getId() === related[j].getParent().getId();
                 if (isSameTopic) {
-                    this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+                    this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 0.1);
                 }
             }
         }
