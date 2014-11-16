@@ -56,6 +56,8 @@ define([
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
+        } else {
+            this.showExplore();
         }
     };
 
@@ -122,9 +124,9 @@ define([
         }
     };
 
-    Explore.prototype.onScroll = function () {
+    Explore.prototype.onScroll = function (offset) {
         if (this._mode === Issue.MODE_DETAIL) {
-            this._detail.onScroll();
+            this._detail.onScroll(offset);
         }
     };
 

@@ -24,8 +24,8 @@ define(function () {
         }
     };
 
-    ExploreService.prototype.onScroll = function () {
-        this._explore.onScroll();
+    ExploreService.prototype.onScroll = function (offset) {
+        this._explore.onScroll(offset);
     };
 
     ExploreService.prototype._onPressIssue = function (topic, issue) {

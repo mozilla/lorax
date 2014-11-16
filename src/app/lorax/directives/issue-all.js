@@ -100,20 +100,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     };
 
     IssueAllCtrl.prototype.onScroll = function (event) {
-        var issues = this._$scope.detail.model.getIssues();
-        var issue;
-        var issueTitle;
-
-        // update offset property of all issues
-        for (var i = 0; i < issues.length; i ++) {
-            issue = issues[i];
-            issueTitle = $('.detail-header-section', '#' + issue.getId());
-            issue.offset = issueTitle.offset();
-            issue.offset.top -= $(event.target).scrollTop();
-        };
-
-        // trigger an update on the explore canvas
-        this._exploreService.onScroll();
+        this._exploreService.onScroll($(event.target).scrollTop());
     };
 
     IssueAllCtrl.prototype.nextIssue = function () {
@@ -156,6 +143,17 @@ define(['jquery', 'jquery-scrollie'], function ($) {
                     $body.attr('data-bg-mode', status);
                 }
             });
+
+            var issues = scope.detail.model.getIssues();
+            var issue;
+            var issueTitle;
+
+            // set offset property of all issues
+            for (var i = 0; i < issues.length; i ++) {
+                issue = issues[i];
+                issueTitle = $('.detail-header-section', '#' + issue.getId());
+                issue.offset = issueTitle.offset();
+            };
 
             // update explore on scroll
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));

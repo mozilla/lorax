@@ -25,12 +25,12 @@ define([
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-            issue.detailOffset = Math.random() * this._canvas.canvasSize.x;
-            issue.detailOffset -= this._canvas.canvasSize.x / 2;
+            issue.detailOffset = Math.random() * (this._canvas.canvasSize.x / 30);
+            issue.detailOffset -= this._canvas.canvasSize.x / 60;
         }
     };
 
-    DetailMode.prototype.onScroll = function () {
+    DetailMode.prototype.onScroll = function (offset) {
         var i;
         var issue;
         var offsetPercent;
@@ -38,33 +38,20 @@ define([
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
 
-            issue.elm.x = issue.data.offset.left - this._canvas.canvasSize.x / 2;
-            issue.elm.y = issue.data.offset.top - this._canvas.canvasSize.y / 2;
+            issue.elm.y = issue.data.offset.top - offset;
+            issue.elm.y -= this._canvas.canvasSize.y / 2;
 
             // 0 -> 1
             offsetPercent = (issue.elm.y + (this._canvas.canvasSize.y / 2)) / this._canvas.canvasSize.y;
             // 1 -> 0 -> 1
             offsetPercent = (6 * Math.pow(offsetPercent, 2)) - (6 * offsetPercent) + 1;
-            offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
+            //offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
+            offsetPercent = Math.max(offsetPercent, 0);
 
-            issue.elm.x += (issue.detailOffset - issue.elm.x) * offsetPercent;
+            issue.elm.x = issue.detailOffset * offsetPercent;
+            issue.elm.x += issue.data.offset.left - (this._canvas.canvasSize.x / 2);
         }
     };
-
-    // DetailMode.prototype._drawLines = function () {
-    //     var i;
-    //     var issue;
-    //     var relatedItem;
-
-    //     this._canvas.clearLines();
-
-    //     for (i = 0; i < this._canvas.issues.length - 1; i ++) {
-    //         issue = this._canvas.issues[i];
-    //         relatedItem = this._canvas.issues[i + 1];
-
-    //         this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
-    //     }
-    // };
 
     DetailMode.prototype._drawLines = function () {
         var i;
