@@ -56,7 +56,7 @@ define([
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
-        };
+        }
     };
 
     Explore.prototype.setData = function (data) {
@@ -86,33 +86,27 @@ define([
         document.body.appendChild(this._stats.domElement);
     };
 
-    /**
-    * Go to explore mode
-    */
     Explore.prototype.showExplore = function () {
         if (this._hasInitialized) {
+            this._mode = Issue.MODE_EXPLORE;
             this._explore.show();
         } else {
             this._onInitMode = this.showExplore;
         }
     };
 
-    /**
-    * Go to issues mode
-    */
     Explore.prototype.showIssues = function () {
         if (this._hasInitialized) {
+            this._mode = Issue.MODE_ISSUES;
             this._issues.show();
         } else {
             this._onInitMode = this.showIssues;
         }
     };
 
-    /**
-    * Go to topics mode
-    */
     Explore.prototype.showTopics = function () {
         if (this._hasInitialized) {
+            this._mode = Issue.MODE_TOPICS;
             this._topics.show();
         } else {
             this._onInitMode = this.showTopics;
@@ -121,9 +115,16 @@ define([
 
     Explore.prototype.showDetail = function () {
         if (this._hasInitialized) {
+            this._mode = Issue.MODE_DETAIL;
             this._detail.show();
         } else {
             this._onInitMode = this.showDetail;
+        }
+    };
+
+    Explore.prototype.onScroll = function () {
+        if (this._mode === Issue.MODE_DETAIL) {
+            this._detail.onScroll();
         }
     };
 

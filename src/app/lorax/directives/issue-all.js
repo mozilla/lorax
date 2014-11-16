@@ -38,12 +38,15 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._$timeout = $timeout;
         this._$rootScope = $rootScope;
         this._$location = $location;
-        this._$scope.dataService = dataService;
+        this._exploreService = exploreService;
+        this._dataService = dataService;
         this._$scope.detail = {
             currentIssue : '',
             scrollTo: this.scrollToIssue.bind(this),
             nextIssue: this.nextIssue.bind(this)
         };
+
+        this._issueOffset = 138;
 
         // set detail mode on, adds body class
         windowService.setDetailMode(true);
@@ -56,7 +59,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         });
 
         // get model
-        this._$scope.dataService.getMain().then(function (model) {
+        this._dataService.getMain().then(function (model) {
             this._$scope.detail.model = model;
         }.bind(this));
     };
@@ -81,7 +84,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         // find issue offset
         var offset = 0;
         if (issue && $('#' + issue).length) {
-            offset = $('#' + issue).offset().top - 138;
+            offset = $('#' + issue).offset().top - this._issueOffset;
         }
 
         // scroll to offset
@@ -94,6 +97,23 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         var topic = newParam.params.topic;
         var issue = newParam.params.issue;
         this.scrollToIssue(issue, topic);
+    };
+
+    IssueAllCtrl.prototype.onScroll = function (event) {
+        var issues = this._$scope.detail.model.getIssues();
+        var issue;
+        var issueTitle;
+
+        // update offset property of all issues
+        for (var i = 0; i < issues.length; i ++) {
+            issue = issues[i];
+            issueTitle = $('.detail-header-section', '#' + issue.getId());
+            issue.offset = issueTitle.offset();
+            issue.offset.top -= $(event.target).scrollTop();
+        };
+
+        // trigger an update on the explore canvas
+        this._exploreService.onScroll();
     };
 
     IssueAllCtrl.prototype.nextIssue = function () {
@@ -130,12 +150,15 @@ define(['jquery', 'jquery-scrollie'], function ($) {
             $body.attr('data-bg-mode', status);
 
             $detail.scrollie({
-                scrollOffset : 138,
+                scrollOffset : controller._issueOffset,
                 ScrollingOutOfView : function onScrollOutOfView (elem) {
                     status = elem.attr('data-issue-status');
                     $body.attr('data-bg-mode', status);
                 }
             });
+
+            // update explore on scroll
+            $(window, 'body').on('scroll', controller.onScroll.bind(controller));
         }.bind(controller), 500);
     };
 

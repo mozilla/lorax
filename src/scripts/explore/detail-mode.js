@@ -20,21 +20,67 @@ define([
     DetailMode.prototype.constructor = DetailMode;
 
     DetailMode.prototype.init = function () {
+        var i;
+        var issue;
 
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+            issue.detailOffset = Math.random() * this._canvas.canvasSize.x;
+            issue.detailOffset -= this._canvas.canvasSize.x / 2;
+        }
     };
+
+    DetailMode.prototype.onScroll = function () {
+        var i;
+        var issue;
+        var offsetPercent;
+
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+
+            issue.elm.x = issue.data.offset.left - this._canvas.canvasSize.x / 2;
+            issue.elm.y = issue.data.offset.top - this._canvas.canvasSize.y / 2;
+
+            offsetPercent = issue.elm.y / this._canvas.canvasSize.y;
+            offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
+
+            issue.elm.x += (issue.detailOffset - issue.elm.x) * offsetPercent;
+        }
+    };
+
+    // DetailMode.prototype._drawLines = function () {
+    //     var i;
+    //     var issue;
+    //     var relatedItem;
+
+    //     this._canvas.clearLines();
+
+    //     for (i = 0; i < this._canvas.issues.length - 1; i ++) {
+    //         issue = this._canvas.issues[i];
+    //         relatedItem = this._canvas.issues[i + 1];
+
+    //         this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+    //     }
+    // };
 
     DetailMode.prototype._drawLines = function () {
         var i;
+        var j;
         var issue;
+        var related;
         var relatedItem;
 
         this._canvas.clearLines();
 
-        for (i = 0; i < this._canvas.issues.length - 1; i ++) {
+        for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-            relatedItem = this._canvas.issues[i + 1];
+            related = issue.data.getRelated();
 
-            this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+            // draw lines connecting related issues
+            for (j = 0; j < related.length; j ++) {
+                relatedItem = this._canvas.getElementById(related[j]._id);
+                this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+            }
         }
     };
 
