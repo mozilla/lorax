@@ -41,7 +41,10 @@ define([
             issue.elm.x = issue.data.offset.left - this._canvas.canvasSize.x / 2;
             issue.elm.y = issue.data.offset.top - this._canvas.canvasSize.y / 2;
 
-            offsetPercent = issue.elm.y / this._canvas.canvasSize.y;
+            // 0 -> 1
+            offsetPercent = (issue.elm.y + (this._canvas.canvasSize.y / 2)) / this._canvas.canvasSize.y;
+            // 1 -> 0 -> 1
+            offsetPercent = (6 * Math.pow(offsetPercent, 2)) - (6 * offsetPercent) + 1;
             offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
 
             issue.elm.x += (issue.detailOffset - issue.elm.x) * offsetPercent;
@@ -69,6 +72,7 @@ define([
         var issue;
         var related;
         var relatedItem;
+        var isSameTopic;
 
         this._canvas.clearLines();
 
@@ -79,7 +83,10 @@ define([
             // draw lines connecting related issues
             for (j = 0; j < related.length; j ++) {
                 relatedItem = this._canvas.getElementById(related[j]._id);
-                this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+                isSameTopic = issue.data.getParent().getId() === related[j].getParent().getId();
+                if (isSameTopic) {
+                    this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 1);
+                }
             }
         }
     };
