@@ -24,6 +24,7 @@ define([
         this._titleOverStyle = {font: '600 14px "Fira Sans", sans-serif', fill: '#222222'};
         this._topicStyle = {font: '200 12px "Fira Sans", sans-serif', fill: '#222222'};
         this._issuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#222222'};
+        this._detailStyle = {font: '500 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
 
         return this;
     };
@@ -68,12 +69,17 @@ define([
         this.isInteractive = true;
         this.elm.index = this._index;
 
+        var biggestSize = Math.max(this._canvasSize.x, this._canvasSize.y);
+        this._openCircle = new PIXI.Graphics();
+        this._openCircle.beginFill(this.color);
+        this._openCircle.drawCircle(0, 0, biggestSize);
+        this._openCircle.scale = {x: 0, y: 0};
+        this._openCircle.endFill();
+        this.elm.addChild(this._openCircle);
+
         this.elm.mouseover = this.elm.touchstart = this._onMouseOver.bind(this);
         this.elm.mouseout = this._onMouseOut.bind(this);
         this.elm.mousedown = this._onPress.bind(this);
-
-        // create issue mode specific code
-        this._drawIssueMode();
     };
 
     Issue.prototype._onMouseOver = function () {
@@ -86,47 +92,6 @@ define([
 
     Issue.prototype._onPress = function () {
         this.pressS.dispatch(this);
-    };
-
-    Issue.prototype._drawIssueMode = function () {
-        // bigger, rectangular mask
-        this._issueModeMask = new PIXI.Graphics();
-        this._issueModeMask.beginFill(0x000000);
-        this._issueModeMask.alpha = 0.5;
-        this._issueModeMask.drawRect(0, 0, this.elm.stage.width + 300, 80);
-        this._issueModeMask.y = -40;
-
-        // container for whats masked by _issueModeMask
-        this._issueModeContainer = new PIXI.DisplayObjectContainer();
-        this._issueModeContainer.mask = this._issueModeMask;
-
-        // circular mask
-        this._issueModeFillMask = new PIXI.Graphics();
-        this._issueModeFillMask.beginFill(0xFF0000);
-        this._issueModeFillMask.alpha = 0.1;
-        this._issueModeFillMask.drawCircle(0, 0, this._canvasSize.x);
-        this._issueModeFillMask.endFill();
-        this._issueModeFillMask.scale = {x:0, y:0};
-        this._issueModeContainer.addChild(this._issueModeFillMask);
-
-        // container for whats masked by _issueModeFillMask
-        this._issueModeOverContainer = new PIXI.DisplayObjectContainer();
-        this._issueModeOverContainer.mask = this._issueModeFillMask;
-        this._issueModeContainer.addChild(this._issueModeOverContainer);
-
-        // color fill
-        this._issueModeFiller = new PIXI.Graphics();
-        this._issueModeFiller.beginFill(this.color);
-        this._issueModeFiller.drawRect(0, 0, this._canvasSize.x, this._canvasSize.y);
-        this._issueModeFiller.endFill();
-        this._issueModeOverContainer.addChild(this._issueModeFiller);
-
-        // white title
-        var style = {font: '200 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
-        this._issueModeTitle = new PIXI.Text(this.data.getName().toUpperCase(), style);
-        this._issueModeOverContainer.addChild(this._issueModeTitle);
-        this._issueModeTitle.x = this._title.x;
-        this._issueModeTitle.y = -10; // -this._issueModeTitle.height / 2
     };
 
     Issue.prototype.setMode = function (mode) {
@@ -157,8 +122,9 @@ define([
             this.stopMoving();
             this.setTextAlwaysVisible(true);
             this.setIsInteractive(false);
-            this._title.setStyle(this._topicStyle);
+            this._title.setStyle(this._detailStyle);
             this._title.y = Math.round(-this._title.height / 2);
+            this._drawCircle(0xffffff);
         }
 
         if (lastMode === Issue.MODE_ISSUES) {
@@ -190,12 +156,11 @@ define([
         this.isInteractive = value;
     };
 
-    Issue.prototype._superMouseOver = Issue.prototype.mouseOver;
     /**
      * Sets mouse over
      */
     Issue.prototype.mouseOver = function () {
-        Issue.prototype._superMouseOver.bind(this)();
+        Circle.prototype.mouseOver.call(this);
 
         this.stopMoving();
         this.lightUp();
@@ -217,12 +182,11 @@ define([
         }
     };
 
-    Issue.prototype._superMouseOut = Issue.prototype.mouseOut;
     /**
      * Sets mouse out
      */
     Issue.prototype.mouseOut = function () {
-        Issue.prototype._superMouseOut.bind(this)();
+        Circle.prototype.mouseOut.call(this);
 
         if (this.mode === Issue.MODE_EXPLORE) {
             var tweenBack = createjs.Tween.get(this.elm, {override: true})
@@ -246,23 +210,9 @@ define([
 
     Issue.prototype.openIssue = function () {
         this.setMode(Issue.MODE_DETAIL);
+        this.elm.removeChild(this._subtitle);
 
-        var globalOrigin = this.elm.toGlobal(new PIXI.Point());
-
-        this.elm.addChild(this._issueModeContainer);
-        this.elm.addChild(this._issueModeMask);
-
-        this._issueModeMask.x = -globalOrigin.x;
-        this._issueModeFiller.x = -globalOrigin.x;
-        this._issueModeFiller.y = -globalOrigin.y;
-        this._issueModeFiller.width = this._canvasSize.x + globalOrigin.x;
-        this._issueModeFiller.height = this._canvasSize.y + globalOrigin.y;
-
-        // this._issueModeFillMask.scale = {x:1, y:1};
-        this._issueModeMask.y = -globalOrigin.y;
-        this._issueModeMask.height = this._canvasSize.y;
-
-        createjs.Tween.get(this._issueModeFillMask.scale, {override: true}).to(
+        createjs.Tween.get(this._openCircle.scale, {override: true}).to(
             {x:1, y:1},
             300,
             createjs.Ease.sineOut
@@ -270,14 +220,7 @@ define([
     };
 
     Issue.prototype.closeIssue = function () {
-        this.elm.removeChild(this._issueModeContainer);
-        this.elm.removeChild(this._issueModeMask);
-
-        this._issueModeFiller.x = 0;
-        this._issueModeFiller.y = 0;
-
-        this._issueModeFillMask.scale = {x:0, y:0};
-        this._issueModeMask.y = 0;
+        this._openCircle.scale = {x: 0, y: 0};
     };
 
     /**

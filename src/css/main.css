@@ -972,6 +972,8 @@ img {
   line-height: 12px;
   margin: 0 0 24px 16px;
   text-transform: uppercase;
+  text-indent: -9000px;
+  overflow: hidden;
 }
 @media screen and (min-width: 560px) {
   .detail-header-section {

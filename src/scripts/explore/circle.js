@@ -14,7 +14,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this._circle = new PIXI.Graphics();
         this.elm.addChild(this._circle);
         this._drawCircle();
-        this._circle.hitArea = new PIXI.Rectangle(-radius, -radius, radius * 2, radius * 2);
+        var hitRadius = Math.min(radius, 5);
+        this._circle.hitArea = new PIXI.Rectangle(-hitRadius, -hitRadius, hitRadius * 2, hitRadius * 2);
 
         if (this.data) {
             this._drawTitle();

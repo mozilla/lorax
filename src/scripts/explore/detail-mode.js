@@ -38,6 +38,7 @@ define([
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
 
+            // relative vertical position
             issue.elm.y = issue.data.offset.top - offset;
             issue.elm.y -= this._canvas.canvasSize.y / 2;
 
@@ -48,8 +49,17 @@ define([
             //offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
             offsetPercent = Math.max(offsetPercent, 0);
 
+            // relative horizontal position based on offset
             issue.elm.x = issue.detailOffset * offsetPercent;
             issue.elm.x += issue.data.offset.left - (this._canvas.canvasSize.x / 2);
+
+            // align text
+            issue.elm.x -= 20;
+            issue.elm.y += 10;
+
+            // round it
+            issue.elm.x = Math.round(issue.elm.x);
+            issue.elm.y = Math.round(issue.elm.y);
         }
     };
 
