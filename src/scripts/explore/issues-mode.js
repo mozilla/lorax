@@ -3,12 +3,15 @@ define([
     'pixi',
     'explore/mode',
     'explore/issue',
-    'explore/responsive'
+    'explore/responsive',
+    'jquery',
+    'jquery-mousewheel'
 ], function (
     PIXI,
     Mode,
     Issue,
-    Responsive
+    Responsive,
+    $
 ) {
     'use strict';
 
@@ -73,9 +76,28 @@ define([
         issue.mouseOut();
     };
 
+    IssuesMode.prototype._onMouseWheel = function (event) {
+        this._scrollPosition += event.deltaY / 10;
+
+        this._scrollPosition = Math.max(
+            Math.min(this._scrollPosition, 0),
+            (this._scrollArea.y - (this._issueMargin * this._canvas.issues.length)
+            + this._scrollArea.height * 1.5)
+        );
+        console.log(this._scrollPosition);
+
+        var i, issue;
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+          issue = this._canvas.issues[i];
+          issue.elm.y = issue.issueY + this._scrollPosition;
+        }
+    };
+
     IssuesMode.prototype._onStartShow = function () {
         var i;
         var issue;
+
+        this._scrollPosition = this._scrollFinalPosition = 0;
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
@@ -89,6 +111,8 @@ define([
 
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
+
+        $('body').on('mousewheel', this._onMouseWheel.bind(this));
 
         setTimeout(this._onShow.bind(this), 500);
     };

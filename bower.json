@@ -28,7 +28,8 @@
     "js-signals": "git://github.com/WebSpellChecker/js-signals.git#~1.0.0",
     "d3plus": "~1.6.5",
     "jquery-selectric": "~1.8.4",
-    "Font.js": "*"
+    "Font.js": "*",
+    "jquery-mousewheel": "~3.1.12"
   },
   "devDependencies": {
     "almond": "~0.3.0",

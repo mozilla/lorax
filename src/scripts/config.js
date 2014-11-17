@@ -14,6 +14,7 @@
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
             'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
             'jquery-selectric': '../scripts/components/jquery-selectric/jquery.selectric',
+            'jquery-mousewheel': '../scripts/components/jquery-mousewheel/jquery.mousewheel',
             'modernizr': '../scripts/modernizr',
             'd3': '../scripts/components/d3/d3',
             'topojson': '../scripts/libs/topojson.v1.min',
@@ -47,6 +48,9 @@
                 deps: ['jquery']
             },
             'jquery-selectric': {
+                deps: ['jquery']
+            },
+            'jquery-mousewheel': {
                 deps: ['jquery']
             },
             'pubsub': {
