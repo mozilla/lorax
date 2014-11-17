@@ -8,7 +8,7 @@ define(function () {
 
     ExploreService.prototype.setCanvas = function (canvas) {
         this._explore = canvas;
-        this._explore.init(true);
+        this._explore.init();
         this._explore.setEnterIssueCallback(this._onPressIssue.bind(this));
     };
 
