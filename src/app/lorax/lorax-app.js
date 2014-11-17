@@ -39,6 +39,7 @@ define([
   'lorax/directives/chart-public-trust',
   'lorax/directives/chart-infrastructure',
   'lorax/directives/chart-identity-control',
+  'lorax/directives/chart-cloud-security',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -92,6 +93,7 @@ define([
   ChartPublicTrustDirective,
   ChartInfrastructureDirective,
   ChartIdentityControlDirective,
+  ChartCloudSecurityDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -309,6 +311,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartIdentityControl', ChartIdentityControlDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartCloudSecurityDirective}
+         * as 'ChartCloudSecurityDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartCloudSecurity', ChartCloudSecurityDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}

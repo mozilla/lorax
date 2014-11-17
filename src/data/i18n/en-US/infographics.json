@@ -1136,33 +1136,53 @@
     }
   },
   "cloudSecurity": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "News headlines post-iCloud leaks",
+    "subheader": "International News Sources",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
+      "newsSource": [
         {
-          "name": "Amazon",
-          "revenue": 74.45
+          "headline": "Apple says it will add new iCloud security measures after celebrity hack",
+          "logoUrl": "/images/cloud-security-nytimes.png",
+          "inverted": false
         },
         {
-          "name": "Google",
-          "revenue": 59.82
+          "headline": "Apple actively investigating iCloud link to celeb photo leak",
+          "logoUrl": "/images/cloud-security-cnet.png",
+          "inverted": true
         },
         {
-          "name": "eBay",
-          "revenue": 16.05
+          "headline": "Is it safe for you to use the cloud after celebrity hack?",
+          "logoUrl": "/images/cloud-security-time.png",
+          "inverted": false
         },
         {
-          "name": "Tencent",
-          "revenue": 9.91
+          "headline": "iCloud celebrity photo hack: texts, address books and more also accessible",
+          "logoUrl": "/images/cloud-security-sydney.png",
+          "inverted": true
         },
         {
-          "name": "Facebook",
-          "revenue": 7.87
+          "headline": "Nuove foto di star nude sul web",
+          "logoUrl": "/images/cloud-security-cds.png",
+          "inverted": false
+        },
+        {
+          "headline": "Continua o vazamento de imagens de famosos enquanto a Apple nega ataque",
+          "logoUrl": "/images/cloud-security-elpais.png",
+          "inverted": true
+        },
+        {
+          "headline": "Apple \"indigné\", va revoir la sécurité des comptes iCloud",
+          "logoUrl": "/images/cloud-security-lemonde.png",
+          "inverted": false
+        },
+        {
+          "headline": "Apple erklärt Nackfoto-Skandal mit passwortklau",
+          "logoUrl": "/images/cloud-security-diewelt.png",
+          "inverted": true
         }
       ]
     }

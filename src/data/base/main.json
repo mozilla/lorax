@@ -205,7 +205,7 @@
         },
         "cloudSecurity":{
           "status":2,
-          "infographicType":"bar-graph",
+          "infographicType":"data-lorax-chart-cloud-security",
           "infographicOverflow":false,
           "tags":[
             "Internet companies",
