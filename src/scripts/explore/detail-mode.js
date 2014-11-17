@@ -33,34 +33,47 @@ define([
     DetailMode.prototype.onScroll = function (offset) {
         var i;
         var issue;
-        var offsetPercent;
+        var position;
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-
-            // relative vertical position
-            issue.elm.y = issue.data.offset.top - offset;
-            issue.elm.y -= this._canvas.canvasSize.y / 2;
-
-            // 0 -> 1
-            offsetPercent = (issue.elm.y + (this._canvas.canvasSize.y / 2)) / this._canvas.canvasSize.y;
-            // 1 -> 0 -> 1
-            offsetPercent = (6 * Math.pow(offsetPercent, 2)) - (6 * offsetPercent) + 1;
-            //offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
-            offsetPercent = Math.max(offsetPercent, 0);
-
-            // relative horizontal position based on offset
-            issue.elm.x = issue.detailOffset * offsetPercent;
-            issue.elm.x += issue.data.offset.left - (this._canvas.canvasSize.x / 2);
-
-            // align text
-            issue.elm.x -= 20;
-            issue.elm.y += 10;
-
-            // round it
-            issue.elm.x = Math.round(issue.elm.x);
-            issue.elm.y = Math.round(issue.elm.y);
+            position = this._getIssuePosition(issue, offset);
+            issue.elm.x = position.x;
+            issue.elm.y = position.y;
+            issue.elm.alpha = 1;
         }
+    };
+
+    DetailMode.prototype._getIssuePosition = function (issue, offset) {
+        if (!offset) {
+            offset = 0;
+        }
+
+        var position = {x: 0, y: 0};
+        // relative vertical position
+        position.y = issue.data.offset.top - offset;
+        position.y -= this._canvas.canvasSize.y / 2;
+
+        // 0 -> 1
+        var offsetPercent = (position.y + (this._canvas.canvasSize.y / 2)) / this._canvas.canvasSize.y;
+        // 1 -> 0 -> 1
+        offsetPercent = (6 * Math.pow(offsetPercent, 2)) - (6 * offsetPercent) + 1;
+        //offsetPercent = Math.max(Math.min(offsetPercent, 1), 0);
+        offsetPercent = Math.max(offsetPercent, 0);
+
+        // relative horizontal position based on offset
+        position.x = issue.detailOffset * offsetPercent;
+        position.x += issue.data.offset.left - (this._canvas.canvasSize.x / 2);
+
+        // align text
+        position.x -= 20;
+        position.y += 10;
+
+        // round it
+        position.x = Math.round(position.x);
+        position.y = Math.round(position.y);
+
+        return position;
     };
 
     DetailMode.prototype._drawLines = function () {
@@ -91,10 +104,12 @@ define([
     DetailMode.prototype._onStartShow = function () {
         var i;
         var issue;
+        var position;
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_DETAIL);
+            issue.elm.alpha = 0;
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {

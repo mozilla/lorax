@@ -103,11 +103,13 @@ define([
             this.setIsInteractive(true);
             this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
+            this._drawCircle(0x222222);
         } else if (mode === Issue.MODE_TOPICS) {
             this.setTextAlwaysVisible(false);
             this.setIsInteractive(false);
             this._title.setStyle(this._topicStyle);
             this._title.y = Math.round(-this._title.height / 2);
+            this._drawCircle(0x222222);
         } else if (mode === Issue.MODE_ISSUES) {
             this.stopMoving();
             this.setTextAlwaysVisible(true);
@@ -118,6 +120,7 @@ define([
                 this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
             }
             this.elm.hitArea = this._issueModeArea;
+            this._drawCircle(0x222222);
         } else if (mode === Issue.MODE_DETAIL) {
             this.stopMoving();
             this.setTextAlwaysVisible(true);

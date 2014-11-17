@@ -139,8 +139,11 @@ define([
             setTimeout(function () {
                 this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
                 this._detail.show();
-                issue.closeIssue();
             }.bind(this), 300);
+
+            setTimeout(function () {
+                issue.closeIssue();
+             }.bind(this), 1000);
         }
     };
 
