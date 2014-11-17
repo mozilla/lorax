@@ -1072,35 +1072,84 @@
     }
   },
   "cyberBullying": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "NEEDS CONTENT",
+    "subheader": "Needs more content.",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "cyberBullyingData": {
+        "socialNetwork": {
+          "title": "Social Network Rise",
+          "lineData": [
+            {
+              "label": "2010",
+              "data": [
+                85
+              ]
+            },
+            {
+              "label": "2011",
+              "data": [
+                86
+              ]
+            },
+            {
+              "label": "2012",
+              "data": [
+                93
+              ]
+            },
+            {
+              "label": "2013",
+              "data": [
+                89
+              ]
+            },
+            {
+              "label": "2014",
+              "data": [
+                90
+              ]
+            }
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
+        "cyberStalking": {
+          "title": "Around 6.5 out of 10 students experienced cyberstalking in 2013.",
+          "copy": "Cyberstalking is the use of the Internet or other electronic means to stalk or harass an individual, a group, or an organization.",
+          "imageUrl": "/images/cyber-bullying-stalking.png"
         },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "onlineHarassment": {
+          "title": "Online Harassment",
+          "circleData": [
+            {
+              "name": "Online Dating",
+              "value": 6
+            },
+            {
+              "name": "Discussion Site",
+              "value": 10
+            },
+            {
+              "name": "Email",
+              "value": 16
+            },
+            {
+              "name": "Online Gaming",
+              "value": 17
+            },
+            {
+              "name": "Website Comments Section",
+              "value": 22
+            },
+            {
+              "name": "Social Networking Site",
+              "value": 66
+            }
+          ]
         }
-      ]
+      }
     }
   },
   "networkDecentralization": {

@@ -1606,9 +1606,15 @@ img {
   stroke-width: 1.5px;
 }
 .linegraph__xaxis_year {
-  font-size: 10px;
-  font-size: 1rem;
+  font-size: 9px;
+  font-size: 0.9rem;
   fill: #000000;
+}
+@media screen and (min-width: 560px) {
+  .linegraph__xaxis_year {
+    font-size: 10px;
+    font-size: 1rem;
+  }
 }
 .linegraph__xaxis_info {
   font-size: 12px;
@@ -1639,7 +1645,17 @@ img {
   font-size: 10px;
 }
 .platformneutrality__legend {
-  float: right;
+  margin-top: 0;
+}
+@media screen and (min-width: 560px) {
+  .platformneutrality__legend {
+    margin-top: -15%;
+  }
+}
+@media screen and (min-width: 960px) {
+  .platformneutrality__legend {
+    margin-top: -15%;
+  }
 }
 .platformneutrality__legendbox {
   font-size: 10px;
@@ -1671,13 +1687,47 @@ img {
 }
 .cyberthreat__descriptionbox {
   position: absolute;
-  width: 220px;
+  width: 130px;
+  height: 80px;
+  overflow: scroll;
+  text-align: center;
   font-size: 12px;
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 560px) {
+  .cyberthreat__descriptionbox {
+    width: 130px;
+    height: 80px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .cyberthreat__descriptionbox {
+    width: 220px;
+    height: 220px;
+    text-align: left;
+  }
 }
 .cyberthreat__label {
   display: table;
   position: absolute;
-  background: #000;
+  background: rgba(0, 0, 0, 0.7);
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+}
+@media screen and (min-width: 560px) {
+  .cyberthreat__label {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .cyberthreat__label {
+    width: 110px;
+    height: 110px;
+    border-radius: 110px;
+  }
 }
 .cyberthreat__label div {
   display: table-cell;
@@ -1685,7 +1735,33 @@ img {
   vertical-align: middle;
   padding: 7px;
   color: #fff;
-  font-size: 14px;
+  font-size: 11px;
+  font-size: 1.1rem;
+}
+@media screen and (min-width: 560px) {
+  .cyberthreat__label div {
+    font-size: 11px;
+    font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 960px) {
+  .cyberthreat__label div {
+    font-size: 14px;
+    font-size: 1.4rem;
+  }
+}
+.cyberthreat__legend {
+  display: none;
+}
+@media screen and (min-width: 560px) {
+  .cyberthreat__legend {
+    display: none;
+  }
+}
+@media screen and (min-width: 960px) {
+  .cyberthreat__legend {
+    display: block;
+  }
 }
 .cyberthreat__legend div {
   height: 15px;
@@ -1750,9 +1826,7 @@ img {
 /* Open Source
    ========================================================================== */
 .opensource__svg {
-  position: absolute;
-  left: 20%;
-  top: 30%;
+  margin-left: 110px;
 }
 .opensource__line_0,
 .opensource__line_1 {
@@ -1825,7 +1899,16 @@ img {
   color: #ffffff;
   list-style-type: none;
   float: right;
-  margin-top: 48%;
+}
+@media screen and (min-width: 560px) {
+  .opensource__legend-browser {
+    margin-top: 52%;
+  }
+}
+@media screen and (min-width: 960px) {
+  .opensource__legend-browser {
+    margin-top: 52%;
+  }
 }
 .opensource__legend-browser li:nth-child(1) div {
   background: #ffffff;
@@ -1851,18 +1934,39 @@ img {
   margin: 5px 0;
 }
 .opensource__label-os {
-  left: 4%;
-  top: 45%;
+  margin-top: 23%;
   color: #000000;
+}
+@media screen and (min-width: 560px) {
+  .opensource__label-os {
+    margin-top: 18%;
+  }
+}
+@media screen and (min-width: 960px) {
+  .opensource__label-os {
+    margin-top: 140px;
+  }
 }
 .opensource__label-os h3 {
   border-bottom: 1px dashed #000000;
 }
 .opensource__label-browser {
-  right: 30%;
-  top: 40%;
+  margin-top: 38%;
+  margin-left: 61%;
   color: #ffffff;
   text-align: right;
+}
+@media screen and (min-width: 560px) {
+  .opensource__label-browser {
+    margin-top: 33%;
+    margin-left: 50%;
+  }
+}
+@media screen and (min-width: 960px) {
+  .opensource__label-browser {
+    margin-top: 230px;
+    margin-left: 370px;
+  }
 }
 .opensource__label-browser h3 {
   border-bottom: 1px dashed #ffffff;
@@ -1877,16 +1981,50 @@ img {
 }
 .surveillance__descriptionbox {
   position: absolute;
-  width: 220px;
+  width: 130px;
+  height: 80px;
+  overflow: scroll;
+  text-align: center;
   font-size: 12px;
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 560px) {
+  .surveillance__descriptionbox {
+    width: 130px;
+    height: 80px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .surveillance__descriptionbox {
+    width: 220px;
+    height: 220px;
+    text-align: left;
+  }
 }
 .surveillance__label {
   display: table;
   position: absolute;
   background: rgba(0, 0, 0, 0.7);
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
 }
 .surveillance__label:nth-child(odd) {
   background: rgba(0, 0, 0, 0.45);
+}
+@media screen and (min-width: 560px) {
+  .surveillance__label {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .surveillance__label {
+    width: 110px;
+    height: 110px;
+    border-radius: 110px;
+  }
 }
 .surveillance__label div {
   display: table-cell;
@@ -1894,7 +2032,20 @@ img {
   vertical-align: middle;
   padding: 7px;
   color: #fff;
-  font-size: 14px;
+  font-size: 11px;
+  font-size: 1.1rem;
+}
+@media screen and (min-width: 560px) {
+  .surveillance__label div {
+    font-size: 11px;
+    font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 960px) {
+  .surveillance__label div {
+    font-size: 14px;
+    font-size: 1.4rem;
+  }
 }
 .surveillance__legend div {
   height: 15px;
@@ -1906,8 +2057,9 @@ img {
 /* Data Tracking
    ========================================================================== */
 .data-tracking {
-  width: 600px;
+  width: 615px;
   height: 500px;
+  padding-left: 15px;
 }
 .data-tracking__info {
   color: #000000;
@@ -2001,11 +2153,18 @@ img {
   height: 15px;
   margin: 10px 0;
   padding-left: 10px;
-  font-size: 14px;
   color: #fff;
 }
 .identity__label-text {
   fill: #ffffff;
+}
+.identity__label-text .at-medium {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+.identity__label-text .at-large {
+  font-size: 14px;
+  font-size: 1.4rem;
 }
 /* Cloud Security
    ========================================================================== */
@@ -2021,6 +2180,52 @@ img {
 }
 .cloud-news__leftcol {
   text-align: right;
+}
+/* Cyber Bullying
+   ========================================================================== */
+.cyberbullying__linechart {
+  width: 50%;
+  display: inline-block;
+  border-right: 1px solid #ffffff;
+}
+.cyberbullying__imagechart {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 25px;
+}
+.cyberbullying__imagechart img {
+  padding: 15px 0;
+}
+.cyberbullying__imagechart p {
+  margin: 0;
+  font-size: 10px;
+  font-size: 1rem;
+}
+.cyberbullying__imagechart .at-large img {
+  padding: 50px 0;
+}
+.cyberbullying__imagechart .at-large p {
+  margin: 0;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+.cyberbullying__piechart {
+  margin-top: 5%;
+}
+.cyberbullying__title {
+  margin: 0;
+}
+.cyberbullying__legend {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.cyberbullying__legend div {
+  height: 15px;
+  margin: 15px 0;
+  padding-left: 10px;
+  font-size: 12px;
+  color: #fff;
 }
 /*======================================================================
   Selectric

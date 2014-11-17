@@ -61,14 +61,14 @@ define(['jquery', 'd3'], function ($, d3) {
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
 
       var margin = {top: 20, right: 20, bottom: 50, left: 20};
-      var width = graphWidth*0.6;
+      var width = graphWidth*0.75;
       var height = graphWidth;
 
       var svg = lineGraph.append("svg")
         .attr("class", "linegraph__svg")
         .attr("width", width)
         .attr("height", height)
-        .style("margin-left", "20%");
+        .style("margin-left", (width*0.1) + "px");
       
       drawPattern();
       drawLegend();
@@ -86,8 +86,7 @@ define(['jquery', 'd3'], function ($, d3) {
           .data(data.dataLabels)
           .enter()
           .append("g")
-            .attr("class", "linegraph__legendLabel");
-
+            .attr("class", "linegraph__legendLabel");15
         var legendLabel = legend.selectAll(".linegraph__legendLabel");
 
         legendLabel.selectAll("circle")
@@ -137,7 +136,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         for ( var i = 0; i < numDatasets; i++ ) {
           var y = d3.scale.linear()
-          .range([height-margin.top, -margin.bottom])
+          .range([height-margin.bottom, margin.top])
           .domain([20,300]);
 
           var line = d3.svg.line()    
@@ -163,19 +162,21 @@ define(['jquery', 'd3'], function ($, d3) {
               .attr("r", 3);
 
 
-          var xAxisScale = d3.scale.ordinal()
-            .domain(lineData.map( function(d) { return d.data[i].toString(); }))
-            .rangePoints([margin.left, width-margin.right], 0.0);
+          if ( width > 385 ) {
+            var xAxisScale = d3.scale.ordinal()
+              .domain(lineData.map( function(d) { return d.data[i].toString(); }))
+              .rangePoints([margin.left, width-margin.right], 0.0);
 
-          var xAxisValue = d3.svg.axis()
-            .scale(xAxisScale)
-            .orient("bottom")
-            .tickSize(0);
+            var xAxisValue = d3.svg.axis()
+              .scale(xAxisScale)
+              .orient("bottom")
+              .tickSize(0);
 
-          svg.append("g")
-            .attr("class", "x_axis_info")
-            .attr("transform", "translate(0," + (height - 30 +( i * 17)) + ")")
-            .call(xAxisValue);
+            svg.append("g")
+              .attr("class", "x_axis_info")
+              .attr("transform", "translate(0," + (height - 30 +( i * 17)) + ")")
+              .call(xAxisValue);
+          }
         }
       }      
 

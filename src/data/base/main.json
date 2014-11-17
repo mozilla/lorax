@@ -92,7 +92,7 @@
         "dataTracking":{
           "status":1,
           "infographicType":"data-lorax-chart-data-tracking",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Internet companies",
             "Google",
@@ -118,7 +118,7 @@
         "userAgreements":{
           "status":2,
           "infographicType":"data-lorax-chart-terms-and-conditions",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Internet companies",
             "Google",
@@ -186,7 +186,7 @@
         },
         "cyberBullying":{
           "status":1,
-          "infographicType":"bar-graph",
+          "infographicType":"data-lorax-chart-cyber-bullying",
           "infographicOverflow":false,
           "tags":[
             "Facebook",
@@ -248,7 +248,7 @@
         "platformNeutrality":{
           "status":1,
           "infographicType":"data-lorax-chart-platform-neutrality",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Mobile",
             "Internet companies",

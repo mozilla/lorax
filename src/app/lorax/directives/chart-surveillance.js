@@ -58,7 +58,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var height = graphWidth;
 
       var circleSize = width/5.5;
-      var circleFromCenter = height/2.6;
+      var circleFromCenter = height/3;
       var twoPi = (Math.PI*2);
 
       var surveillanceData = {};
@@ -95,9 +95,6 @@ define(['jquery', 'd3'], function ($, d3) {
           .attr("id", function(d) { return "surveillance__name-" + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_"); })
           .style("left", function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + "px"; })
           .style("top", function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + "px"; })
-          .style("width", circleSize + "px")
-          .style("height", circleSize + "px")
-          .style("border-radius", circleSize + "px")
           .on("mouseover", addDescription)
           .append("div")
             .text( function(d) { return d.name; });

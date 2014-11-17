@@ -84,13 +84,13 @@ define(['jquery', 'd3'], function ($, d3) {
         first.append("text")
           .attr("class", "linegraph__firstlast")
           .attr("x", margin.left)
-          .attr("y", height - 120)
+          .attr("y", height - (height/4)+10)
           .text( function(d) { return dollarFormat(lineData[0].data[0]).replace("G","M")});
 
         first.append("text")
           .attr("class", "linegraph__firstlast")
           .attr("x", margin.left)
-          .attr("y", height - 190)
+          .attr("y", height - (height/3)-10)
           .text( function(d) { return lineData[0].data[1]});
 
         var last = svg.append("g")
@@ -99,13 +99,13 @@ define(['jquery', 'd3'], function ($, d3) {
         last.append("text")
           .attr("class", "linegraph__firstlast")
           .attr("x", width - margin.right*2)
-          .attr("y", 115)
+          .attr("y", (height/3+10))
           .text( function(d) { return dollarFormat(lineData[lineData.length-1].data[0]).replace("G","M")});
 
         last.append("text")
           .attr("class", "linegraph__firstlast")
           .attr("x", width - margin.right*2)
-          .attr("y", 55)
+          .attr("y", (height/4))
           .text( function(d) { return lineData[lineData.length-1].data[1]});
       }
 
@@ -173,7 +173,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         for ( var i = 0; i < numDatasets; i++ ) {
           var y = d3.scale.linear()
-          .range([height-margin.top, -margin.bottom])
+          .range([height-margin.bottom, margin.top])
           .domain([
             d3.min( lineData, function(d) { return (d.data[i] * 0.50); }),
             d3.max( lineData, function(d) { return (d.data[i] * 1.25); })

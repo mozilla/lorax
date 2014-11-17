@@ -63,12 +63,12 @@ define(['jquery', 'd3'], function ($, d3) {
 
 
       var color = d3.scale.ordinal()
-        .range(["rgba(0,0,0,0.9)", "rgba(0,0,0,0.15)", "rgba(0,0,0,0.7)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.4)", "rgba(255,255,255,0.5)"]);
+        .range(["rgba(0,0,0,0.8)", "rgba(0,0,0,0.15)", "rgba(0,0,0,0.7)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.4)", "rgba(255,255,255,0.5)"]);
       
       drawLegend();
 
       var svg = pieChart.append("svg")
-        .attr("id", "platformneutrality__svg")
+        .attr("id", "identity__svg")
         .attr("width", width)
         .attr("height", height)
         .style("margin-top", height*(-0.3));
@@ -98,7 +98,7 @@ define(['jquery', 'd3'], function ($, d3) {
       arcs.append("text")
         .attr("class", "identity__label-text")
         .attr("transform", function(d, i) { 
-          var labelPos = [ 2.3, 2.5, 2.7, 3.0, 3.2, 3.6, 4.4 ];
+          var labelPos = [ 2.4, 2.6, 2.8, 3.1, 3.3, 3.7, 4.55 ];
           var center = arc.centroid(d);
           var outside = [center[0]*labelPos[i], center[1]*labelPos[i]];
           return "translate(" + outside + ")"; 

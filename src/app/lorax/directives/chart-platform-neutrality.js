@@ -55,7 +55,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
       var width = graphWidth;
-      var height = graphWidth * .4;
+      var height = graphWidth * .5;
 
       var innerR = 72;
       var outerR = 80;

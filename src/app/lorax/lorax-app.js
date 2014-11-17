@@ -40,6 +40,7 @@ define([
   'lorax/directives/chart-infrastructure',
   'lorax/directives/chart-identity-control',
   'lorax/directives/chart-cloud-security',
+  'lorax/directives/chart-cyber-bullying',
   'lorax/directives/explore-canvas',
   'lorax/directives/add-infographic-directive',
 
@@ -94,6 +95,7 @@ define([
   ChartInfrastructureDirective,
   ChartIdentityControlDirective,
   ChartCloudSecurityDirective,
+  ChartCyberBullyingDirective,
   ExploreCanvasDirective,
   AddInfographicDirective,
 
@@ -318,6 +320,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartCloudSecurity', ChartCloudSecurityDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartCyberBullyingDirective}
+         * as 'ChartCyberBullyingDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartCyberBullying', ChartCyberBullyingDirective)
 
         /**
          * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
