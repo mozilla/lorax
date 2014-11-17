@@ -144,6 +144,8 @@ define([
         if (this.enterIssueCallback) {
             var issueData = issue.data;
             issue.openIssue();
+            this.showDetail();
+
             setTimeout(function () {
                 this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
             }.bind(this), 300);
