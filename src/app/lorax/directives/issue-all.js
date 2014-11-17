@@ -38,8 +38,10 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._$timeout = $timeout;
         this._$rootScope = $rootScope;
         this._$location = $location;
-        this._exploreService = exploreService;
         this._dataService = dataService;
+        this._windowService = windowService;
+        this._exploreService = exploreService;
+
         this._$scope.detail = {
             currentIssue : '',
             scrollTo: this.scrollToIssue.bind(this),
@@ -47,10 +49,9 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         };
 
         this._issueOffset = 138;
-
-        // set detail mode on, adds body class
-        windowService.setDetailMode(true);
-        exploreService.switchView('detail');
+        console.log('all constructor');
+        // dirty hack: force explore to wait for init call
+        this._exploreService.switchView('');
 
         $scope.$on('$destroy', function () {
             // set detail mode off, removes body class
@@ -75,6 +76,21 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         'exploreService'
     ];
 
+    IssueAllCtrl.prototype.init = function () {
+        console.log('all init');
+        // set detail mode on, adds body class
+        this._windowService.setDetailMode(true);
+        this._exploreService.switchView('detail');
+
+        // set bg color
+        $('body').addClass('no-anim');
+        var status = $('.detail').eq(0).attr('data-issue-status');
+        $('body').attr('data-bg-mode', status);
+        setTimeout(function () {
+            // $('body').removeClass('no-anim');
+        }, 1000);
+    };
+
     IssueAllCtrl.prototype.scrollToIssue = function (issue, topic) {
         // get first issue from topic
         if (topic && !issue) {
@@ -94,6 +110,9 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     };
 
     IssueAllCtrl.prototype.onRouteChange = function (evt, newParam) {
+        if (!newParam) {
+            return;
+        }
         var topic = newParam.params.topic;
         var issue = newParam.params.issue;
         this.scrollToIssue(issue, topic);
@@ -129,12 +148,12 @@ define(['jquery', 'jquery-scrollie'], function ($) {
             controller._$rootScope.$on('$routeUpdate', controller.onRouteChange.bind(controller));
             controller._$scope.$on('$destroy', controller.onRouteChange.bind(controller));
 
+            controller.init();
+
             // change bg mode according to issue
             var $body = $('body');
             var $detail = $('.detail');
-            var status = $detail.eq(0).attr('data-issue-status');
-
-            $body.attr('data-bg-mode', status);
+            var status;
 
             $detail.scrollie({
                 scrollOffset : controller._issueOffset,

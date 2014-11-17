@@ -405,6 +405,12 @@ body {
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
+body.is-detail.no-anim {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
 body.is-detail[data-bg-mode="stop"] {
   background-color: #db3f33;
 }
@@ -618,10 +624,6 @@ img {
   height: 60px;
   margin: 0 0 24px;
   padding: 0 20px;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  -moz-transition: background-color 0.3s ease-in-out;
-  -o-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
 }
 @media screen and (min-width: 560px) {
   .banner-nav-wrap {
@@ -634,6 +636,12 @@ img {
     width: 100%;
     z-index: 999;
   }
+}
+.no-amin .banner-nav-wrap {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 [data-bg-mode="stop"] .banner-nav-wrap {
   background-color: #db3f33;

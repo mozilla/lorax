@@ -104,7 +104,6 @@ define([
     DetailMode.prototype._onStartShow = function () {
         var i;
         var issue;
-        var position;
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
@@ -125,7 +124,7 @@ define([
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
-        setTimeout(this._onShow.bind(this), 500);
+        this._onShow();
     };
 
     DetailMode.prototype._onStartHide = function () {

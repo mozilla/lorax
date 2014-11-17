@@ -30,6 +30,7 @@ define([
     };
 
     Explore.prototype.init = function (isDebug) {
+        console.log('init');
         // FPS count for debugging
         if (isDebug) {
             this._stats = new Stats();
@@ -53,6 +54,7 @@ define([
         this._issues.init();
         this._detail.init();
 
+        console.log('onFontLoaded', this._onInitMode);
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
@@ -88,6 +90,10 @@ define([
         document.body.appendChild(this._stats.domElement);
     };
 
+    Explore.prototype.hold = function () {
+        this._onInitMode = function () {};
+    };
+
     Explore.prototype.showExplore = function () {
         if (this._hasInitialized) {
             this._mode = Issue.MODE_EXPLORE;
@@ -116,9 +122,13 @@ define([
     };
 
     Explore.prototype.showDetail = function () {
+        console.log('showDetail', this._hasInitialized);
         if (this._hasInitialized) {
             this._mode = Issue.MODE_DETAIL;
             this._detail.show();
+            if (this._currentIssue) {
+                this._currentIssue.closeIssue();
+            }
         } else {
             this._onInitMode = this.showDetail;
         }
@@ -132,18 +142,14 @@ define([
 
     Explore.prototype._openIssue = function (issue) {
         this._mode = Issue.MODE_DETAIL;
+        this._currentIssue = issue;
 
         if (this.enterIssueCallback) {
             var issueData = issue.data;
             issue.openIssue();
             setTimeout(function () {
                 this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
-                this._detail.show();
             }.bind(this), 300);
-
-            setTimeout(function () {
-                issue.closeIssue();
-             }.bind(this), 1000);
         }
     };
 

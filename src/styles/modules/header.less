@@ -134,7 +134,7 @@
     height: 60px;
     margin: 0 0 24px;
     padding: 0 20px;
-    .transition(background-color 0.3s ease-in-out);
+    // .transition(background-color 0.3s ease-in-out);
 
     .at-medium({
         height: 80px;
@@ -146,6 +146,10 @@
         width: 100%;
         z-index: @header-z-index - 1;
     });
+
+    .no-amin & {
+        .transition(none);
+    }
 
     [data-bg-mode="stop"] & {
         background-color: @stop;

@@ -28,6 +28,10 @@ body {
     text-rendering: optimizeLegibility;
     .transition(background-color 0.3s ease-in-out);
 
+    &.is-detail.no-anim {
+        .transition(none);
+    }
+
     &.is-detail[data-bg-mode="stop"] {
         background-color: @stop;
     }

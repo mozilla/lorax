@@ -84,20 +84,15 @@ define([
     * Draw fake circles on canvas
     */
     ExploreCanvas.prototype._drawFakes = function () {
-        var seed;
-        var rSeed;
         var circle;
         for (var i = 0; i < 200; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = Math.pow(Math.random(), 1/3) * (this._exploreRadius - 20);
-
             circle = new Circle();
 
             this.fakes.push(circle);
             this._particlesContainer.addChild(circle.elm);
 
-            circle.draw(1, Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
-            circle.elm.alpha = 0.1 + (0.3 * rSeed / this._exploreRadius);
+            circle.draw(1);
+            circle.elm.alpha = 0.3;
         }
     };
 

@@ -129,9 +129,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         if (this.elm.alpha === 0) {
             return;
         }
-        if (!center) {
-            center = {x:0, y:0};
-        }
+        center = center || {x:0, y:0};
+        radius = radius || 500;
 
         this.implodeAlpha = this.elm.alpha;
 

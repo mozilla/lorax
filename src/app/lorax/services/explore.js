@@ -13,14 +13,21 @@ define(function () {
     };
 
     ExploreService.prototype.switchView = function (view) {
-        if (view === 'explore') {
-            this._explore.showExplore();
-        } else if (view === 'topics') {
-            this._explore.showTopics();
-        } else if (view === 'issues') {
-            this._explore.showIssues();
-        } else if (view === 'detail') {
-            this._explore.showDetail();
+        switch (view) {
+            case 'explore':
+                this._explore.showExplore();
+                break;
+            case 'topics':
+                this._explore.showTopics();
+                break;
+            case 'issues':
+                this._explore.showIssues();
+                break;
+            case 'detail':
+                this._explore.showDetail();
+                break;
+            default:
+                this._explore.hold();
         }
     };
 

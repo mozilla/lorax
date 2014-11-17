@@ -18,7 +18,9 @@ define([], function () {
     Mode.prototype.show = function () {
         // close previous mode and call _onStartShow
         if (Mode.OPEN_MODE) {
-            Mode.OPEN_MODE.hide(this._onStartShow.bind(this));
+            if (Mode.OPEN_MODE !== this) {
+                Mode.OPEN_MODE.hide(this._onStartShow.bind(this));
+            }
         } else {
             this._onStartShow();
         }
