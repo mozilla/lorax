@@ -92,7 +92,7 @@ define([
 
             // draw lines connecting related issues
             for (j = 0; j < related.length; j ++) {
-                relatedItem = this._canvas.getElementById(related[j]._id);
+                relatedItem = this._canvas.getElementByData(related[j]);
                 isSameTopic = issue.data.getParent().getId() === related[j].getParent().getId();
                 if (isSameTopic) {
                     this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 0.1);

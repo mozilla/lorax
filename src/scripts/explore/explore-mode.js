@@ -116,7 +116,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
             // draw lines connecting related issues
             for (j = 0; j < related.length; j ++) {
-                relatedItem = this._canvas.getElementById(related[j]._id);
+                relatedItem = this._canvas.getElementByData(related[j]);
                 isOver = (issue.isOver || relatedItem.isOver);
 
                 this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
@@ -124,7 +124,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
             // draw lines connecting related tags
             for (j = 0; j < tags.length; j ++) {
-                relatedItem = this._canvas.getElementById(tags[j]._id);
+                relatedItem = this._canvas.getElementByData(tags[j]);
                 isOver = (issue.isOver || relatedItem.isOver);
 
                 this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
@@ -143,7 +143,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
         issue.mouseOver();
         for(i = 0; i < related.length; i ++) {
-            relatedIssue = this._canvas.getElementById(related[i]._id);
+            relatedIssue = this._canvas.getElementByData(related[i]);
             relatedIssue.lightUp();
             relatedIssue.stopMoving();
         }
@@ -160,21 +160,9 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
         issue.mouseOut();
         for(i = 0; i < related.length; i ++) {
-            relatedIssue = this._canvas.getElementById(related[i]._id);
+            relatedIssue = this._canvas.getElementByData(related[i]);
             relatedIssue.lightDown();
             relatedIssue._resumeStaticAnimation();
-        }
-    };
-
-    ExploreMode.prototype._updateIssues = function () {
-        var i;
-
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            this._canvas.issues[i].update(this._canvas.mousePosition);
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            this._canvas.tags[i].update(this._canvas.mousePosition);
         }
     };
 
@@ -202,9 +190,7 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
             this._canvas.fakes[i].implode();
         }
 
-        this._updateIssuesBind = this._updateIssues.bind(this);
         this._drawLinesBind = this._drawLines.bind(this);
-        this._canvas.renderStartS.add(this._updateIssuesBind);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
         // start a new autoMode timeout
@@ -231,7 +217,6 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
             this._canvas.fakes[i].explode(this._exploreRadius);
         }
 
-        this._canvas.renderStartS.remove(this._updateIssuesBind);
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         this._endAutoMode();

@@ -203,17 +203,23 @@ define([
     /**
     * Get visual element from id
     */
-    ExploreCanvas.prototype.getElementById = function (id) {
+    ExploreCanvas.prototype.getElementByData = function (data) {
+        if (data.elm) {
+            return data.elm;
+        }
+
         var i;
 
         for (i = 0; i < this.issues.length; i ++) {
-            if (this.issues[i].data._id === id) {
+            if (this.issues[i].data._id === data._id) {
+                data.elm = this.issues[i];
                 return this.issues[i];
             }
         }
 
         for (i = 0; i < this.tags.length; i ++) {
-            if (this.tags[i].data._id === id) {
+            if (this.tags[i].data._id === data._id) {
+                data.elm = this.tags[i];
                 return this.tags[i];
             }
         }

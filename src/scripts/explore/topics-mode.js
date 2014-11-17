@@ -47,7 +47,7 @@ define([
             // get all issues for this topic
             var issues = [];
             for(j = 0; j < this._topicsData[i]._issues.length; j ++) {
-                issue = this._canvas.getElementById(this._topicsData[i]._issues[j]._id);
+                issue = this._canvas.getElementByData(this._topicsData[i]._issues[j]);
                 issues.push(issue);
             }
 

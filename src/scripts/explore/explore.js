@@ -32,7 +32,6 @@ define([
     Explore.prototype.init = function (isDebug) {
         // FPS count for debugging
         if (isDebug) {
-            this._stats = new Stats();
             this._showStats();
         }
 
@@ -81,11 +80,21 @@ define([
     * Shows FPS count
     */
     Explore.prototype._showStats = function () {
+        this._stats = new Stats();
+
         this._stats.setMode(0);
         this._stats.domElement.style.position = 'absolute';
         this._stats.domElement.style.left = '0px';
         this._stats.domElement.style.top = '0px';
         document.body.appendChild(this._stats.domElement);
+
+        this._canvas.renderStartS.add(function () {
+            this._stats.begin();
+        }.bind(this));
+
+        this._canvas.renderEndS.add(function () {
+            this._stats.end();
+        }.bind(this));
     };
 
     Explore.prototype.hold = function () {
