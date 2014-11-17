@@ -49,7 +49,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         };
 
         this._issueOffset = 138;
-        console.log('all constructor');
         // dirty hack: force explore to wait for init call
         this._exploreService.switchView('');
 
@@ -77,7 +76,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     ];
 
     IssueAllCtrl.prototype.init = function () {
-        console.log('all init');
         // set detail mode on, adds body class
         this._windowService.setDetailMode(true);
         this._exploreService.switchView('detail');
@@ -87,7 +85,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         var status = $('.detail').eq(0).attr('data-issue-status');
         $('body').attr('data-bg-mode', status);
         setTimeout(function () {
-            // $('body').removeClass('no-anim');
+            $('body').removeClass('no-anim');
         }, 1000);
     };
 

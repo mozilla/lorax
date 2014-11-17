@@ -624,6 +624,10 @@ img {
   height: 60px;
   margin: 0 0 24px;
   padding: 0 20px;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 @media screen and (min-width: 560px) {
   .banner-nav-wrap {

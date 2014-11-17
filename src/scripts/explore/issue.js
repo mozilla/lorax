@@ -212,7 +212,6 @@ define([
     };
 
     Issue.prototype.openIssue = function () {
-        this.setMode(Issue.MODE_DETAIL);
         this.elm.removeChild(this._subtitle);
 
         createjs.Tween.get(this._openCircle.scale, {override: true}).to(
@@ -224,6 +223,7 @@ define([
 
     Issue.prototype.closeIssue = function () {
         this._openCircle.scale = {x: 0, y: 0};
+        this.setMode(Issue.MODE_DETAIL);
     };
 
     /**

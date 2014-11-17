@@ -30,7 +30,6 @@ define([
     };
 
     Explore.prototype.init = function (isDebug) {
-        console.log('init');
         // FPS count for debugging
         if (isDebug) {
             this._stats = new Stats();
@@ -54,7 +53,6 @@ define([
         this._issues.init();
         this._detail.init();
 
-        console.log('onFontLoaded', this._onInitMode);
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
@@ -122,7 +120,6 @@ define([
     };
 
     Explore.prototype.showDetail = function () {
-        console.log('showDetail', this._hasInitialized);
         if (this._hasInitialized) {
             this._mode = Issue.MODE_DETAIL;
             this._detail.show();
