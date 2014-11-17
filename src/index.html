@@ -26,6 +26,28 @@
     </header>
 
     <div class="container" data-ng-view data-ng-cloak></div>
+
+    <footer class="footer-links">
+      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" data-lorax-prevent-default>Keep me informed</a>
+      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-show="!core.shareOptions" ng-click="core.openShareOptions()" data-lorax-prevent-default>Sharing options</a>
+      <div class="footer-links__share-options" ng-show="core.shareOptions">
+        <ul class="share-options">
+          <li class="share-option share-option--twitter icon-twitter" >
+            <a href="#"ng-click="core.openShareModal('twitter')" data-lorax-prevent-default>Twitter</a>
+          </li>
+          <li class="share-option share-option--email icon-email">
+            <a href="#" ng-click="core.openShareModal('email')" data-lorax-prevent-default>Email</a>
+          </li>
+          <li class="share-option share-option--fb icon-fb">
+            <a href="#" ng-click="core.openShareModal('fb')" data-lorax-prevent-default>Facebook</a>
+          </li>
+        </ul>
+        <a href="#" class="share-options-close" ng-click="core.closeShareOptions()" data-lorax-prevent-default>Close</a>
+      </div>
+    </footer>
+
+    <!--div data-lorax-modal-email></div-->
+    <div data-lorax-modal-share></div>
   </body>
 
   <!-- build:js /scripts/lorax.min.js -->

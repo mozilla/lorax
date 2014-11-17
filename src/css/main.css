@@ -9,6 +9,9 @@
    ========================================================================== */
 /* Scaffolding
    ========================================================================== */
+.icon-share {
+  background-image: url('/images/icon-info.png');
+}
 /* ==========================================================================
    Mixins
    ========================================================================== */
@@ -384,7 +387,7 @@ table {
 }
 html {
   font-size: 62.5%;
-  min-height: 100%;
+  height: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   width: 100%;
 }
@@ -396,6 +399,7 @@ body {
   font-style: normal;
   font-size: 12px;
   font-size: 1.2rem;
+  height: 100%;
   line-height: 16px;
   min-width: 320px;
   -webkit-overflow-scrolling: touch;
@@ -424,8 +428,10 @@ body[data-bg-mode="tag"] {
   background-color: #222222;
 }
 .container {
+  height: auto;
   margin: 0 auto;
   max-width: 1600px;
+  min-height: 100%;
   position: relative;
 }
 /* Links
@@ -764,6 +770,125 @@ img {
   left: 50%;
   margin-left: -9px;
   cursor: pointer;
+}
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.footer-links {
+  bottom: 0;
+  height: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+.footer-links__link {
+  background-size: 30px;
+  bottom: 20px;
+  display: none;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  font-size: 1.2rem;
+  height: 30px;
+  line-height: 30px;
+  min-width: 30px;
+  position: absolute;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 560px) {
+  .footer-links__link {
+    display: block;
+  }
+}
+.footer-links__link--email {
+  left: 20px;
+  padding-left: 40px;
+}
+.footer-links__link--share {
+  right: 20px;
+  text-indent: -9999px;
+  width: 30px;
+}
+.footer-links__share-options {
+  bottom: 20px;
+  display: none;
+  height: 84px;
+  position: absolute;
+  right: 20px;
+  width: 78px;
+}
+@media screen and (min-width: 560px) {
+  .footer-links__share-options {
+    display: block;
+  }
+}
+.share-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.share-option {
+  background-image: url('/images/icon-info.png');
+  background-size: 30px;
+  display: block;
+  height: 30px;
+  position: absolute;
+  text-indent: -9999px;
+  width: 30px;
+}
+.share-option > a {
+  display: block;
+  height: 100%;
+}
+.share-option--twitter {
+  bottom: 0;
+  left: 0;
+}
+.share-option--email {
+  left: 16px;
+  top: 20px;
+}
+.share-option--fb {
+  right: 0;
+  top: 0;
+}
+.share-options-close {
+  background-image: url('/images/icon-info.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 12px;
+  bottom: 0;
+  display: block;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  text-indent: -9999px;
+  width: 30px;
+}
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+.modal {
+  background: #222222;
+  color: #ffffff;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+/* Share Modal
+   ========================================================================== */
+.sharing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sharing-quote {
+  color: #ffffff;
 }
 /* ==========================================================================
    Explore page

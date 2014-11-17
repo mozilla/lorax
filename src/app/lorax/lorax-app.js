@@ -6,133 +6,119 @@
  *
  */
 define([
-  'lorax/config/routes',
-  //'core/config/http',
+    'lorax/config/routes',
 
-  // controller
-  'lorax/controllers/core',
-  'lorax/controllers/explore',
-  'lorax/controllers/detail',
-  'lorax/controllers/nav',
+    // controller
+    'lorax/controllers/core',
+    'lorax/controllers/explore',
+    'lorax/controllers/detail',
+    'lorax/controllers/nav',
 
-  // directives
-  'lorax/directives/window',
-  'lorax/directives/prevent-default',
-  'lorax/directives/issue-details',
-  'lorax/directives/issue-scroll',
-  'lorax/directives/issue-all',
-  'lorax/directives/chart-top-internet-companies',
-  'lorax/directives/chart-terms-and-conditions',
-  'lorax/directives/chart-common-languages',
-  'lorax/directives/chart-line-graph',
-  'lorax/directives/chart-world-map',
-  'lorax/directives/chart-static-image',
-  'lorax/directives/chart-accessible',
-  'lorax/directives/chart-platform-neutrality',
-  'lorax/directives/chart-lobbying',
-  'lorax/directives/chart-cyber-threats',
-  'lorax/directives/chart-data-portability',
-  'lorax/directives/chart-open-source',
-  'lorax/directives/chart-surveillance',
-  'lorax/directives/chart-data-tracking',
-  'lorax/directives/chart-concentration-power',
-  'lorax/directives/chart-public-trust',
-  'lorax/directives/chart-infrastructure',
-  'lorax/directives/chart-identity-control',
-  'lorax/directives/chart-cloud-security',
-  'lorax/directives/chart-cyber-bullying',
-  'lorax/directives/explore-canvas',
-  'lorax/directives/add-infographic-directive',
+    // directives
+    'lorax/directives/window',
+    'lorax/directives/prevent-default',
+    'lorax/directives/modal-email',
+    'lorax/directives/modal-share',
+    'lorax/directives/issue-details',
+    'lorax/directives/issue-scroll',
+    'lorax/directives/issue-all',
+    'lorax/directives/chart-top-internet-companies',
+    'lorax/directives/chart-terms-and-conditions',
+    'lorax/directives/chart-common-languages',
+    'lorax/directives/chart-line-graph',
+    'lorax/directives/chart-world-map',
+    'lorax/directives/chart-static-image',
+    'lorax/directives/chart-accessible',
+    'lorax/directives/chart-platform-neutrality',
+    'lorax/directives/chart-lobbying',
+    'lorax/directives/chart-cyber-threats',
+    'lorax/directives/chart-data-portability',
+    'lorax/directives/chart-open-source',
+    'lorax/directives/chart-surveillance',
+    'lorax/directives/chart-data-tracking',
+    'lorax/directives/chart-concentration-power',
+    'lorax/directives/chart-public-trust',
+    'lorax/directives/chart-infrastructure',
+    'lorax/directives/chart-identity-control',
+    'lorax/directives/chart-cloud-security',
+    'lorax/directives/chart-cyber-bullying',
+    'lorax/directives/explore-canvas',
+    'lorax/directives/add-infographic-directive',
 
-  // services
-  'lorax/services/window',
-  'lorax/services/scroll',
-  'lorax/services/pubsub',
-  'lorax/services/data',
-  'lorax/services/explore',
+    // services
+    'lorax/services/window',
+    'lorax/services/scroll',
+    'lorax/services/utils',
+    'lorax/services/pubsub',
+    'lorax/services/data',
+    'lorax/services/explore',
 
-  //'core/constants/resource-bundle',
+    // filters
+    'lorax/filters/encode-uri',
 
-  'angular',
-  'angular-route'
-  //'angular-animate',
-  //'angular-touch',
-  //'angular-resource',
-
-  //'core/providers/angular-adaptive-detection'
+    'angular',
+    'angular-route'
 ], function (
-  RouteConfig,
-  //HTTPConfig,
+    RouteConfig,
 
-  // controllers
-  CoreCtrl,
-  ExploreCtrl,
-  DetailCtrl,
-  NavCtrl,
+    // controllers
+    CoreCtrl,
+    ExploreCtrl,
+    DetailCtrl,
+    NavCtrl,
 
-  // directives
-  WindowDirective,
-  PreventDefaultDirective,
-  IssueDetailsDirective,
-  IssueScrollDirective,
-  IssueAllDirective,
-  ChartTopInternetCompaniesDirective,
-  ChartTermsAndConditionsDirective,
-  ChartCommonLanguagesDirective,
-  ChartLineGraphDirective,
-  ChartWorldMapDirective,
-  ChartStaticImageDirective,
-  ChartAccessibleDirective,
-  ChartPlatformNeutralityDirective,
-  ChartLobbyingDirective,
-  ChartCyberThreatsDirective,
-  ChartDataPortabilityDirective,
-  ChartOpenSourceDirective,
-  ChartSurveillanceDirective,
-  ChartDataTrackingDirective,
-  ChartConcentrationPowerDirective,
-  ChartPublicTrustDirective,
-  ChartInfrastructureDirective,
-  ChartIdentityControlDirective,
-  ChartCloudSecurityDirective,
-  ChartCyberBullyingDirective,
-  ExploreCanvasDirective,
-  AddInfographicDirective,
+    // directives
+    WindowDirective,
+    PreventDefaultDirective,
+    ModalEmailDirective,
+    ModalShareDirective,
+    IssueDetailsDirective,
+    IssueScrollDirective,
+    IssueAllDirective,
+    ChartTopInternetCompaniesDirective,
+    ChartTermsAndConditionsDirective,
+    ChartCommonLanguagesDirective,
+    ChartLineGraphDirective,
+    ChartWorldMapDirective,
+    ChartStaticImageDirective,
+    ChartAccessibleDirective,
+    ChartPlatformNeutralityDirective,
+    ChartLobbyingDirective,
+    ChartCyberThreatsDirective,
+    ChartDataPortabilityDirective,
+    ChartOpenSourceDirective,
+    ChartSurveillanceDirective,
+    ChartDataTrackingDirective,
+    ChartConcentrationPowerDirective,
+    ChartPublicTrustDirective,
+    ChartInfrastructureDirective,
+    ChartIdentityControlDirective,
+    ChartCloudSecurityDirective,
+    ChartCyberBullyingDirective,
+    ExploreCanvasDirective,
+    AddInfographicDirective,
 
-  // services
-  windowService,
-  scrollService,
-  pubSubService,
-  dataService,
-  exploreService,
+    // services
+    windowService,
+    scrollService,
+    utilsService,
+    pubSubService,
+    dataService,
+    exploreService,
 
-  //ResourceBundle,
+    // filters
+    encodeUriFilter,
 
-  angular
+    angular
 ) {
     'use strict';
 
     angular.module('loraxApp', [
         'ngRoute'
-        // 'ngAnimate',
-        //'ngTouch',
-        //'ngResource',
-
-        //'adaptive.detection'
     ])
 
         // Set up routing
         .config(RouteConfig)
-
-        // Set up HTTP Interception
-        //.config(HTTPConfig)
-
-        // Attach environment config object
-        //.constant('ENVIRONMENT', ENVIRONMENT)
-
-        // For this simple implementation we can
-        // consider the resource bundle as a constant.
-        //.constant('ResourceBundle', ResourceBundle)
 
         /**
          * Injects {@link lorax/controllers/CoreCtrl} as 'CoreCtrl'
@@ -169,6 +155,18 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxPreventDefault', PreventDefaultDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalEmailDirective} as 'ModalEmailDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalEmail', ModalEmailDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalShareDirective} as 'ModalShareDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalShare', ModalShareDirective)
 
         /**
          * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'
@@ -329,24 +327,18 @@ define([
         .directive('loraxChartCyberBullying', ChartCyberBullyingDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
-         * as 'ChartLobbyingCostsDirective'
+         * Injects {@link lorax/directives/ExploreCanvasDirective}
+         * as 'ExploreCanvasDirective'
          * @method lorax/loraxApp~directive
          */
         .directive('loraxExploreCanvas', ExploreCanvasDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartLobbyingCostsDirective}
-         * as 'ChartLobbyingCostsDirective'
+         * Injects {@link lorax/directives/AddInfographicDirective}
+         * as 'AddInfographicDirective'
          * @method lorax/loraxApp~directive
          */
         .directive('loraxAddInfographicDirective', AddInfographicDirective)
-
-        /**
-         * Inject {@link lorax/services/locationService} as 'locationService'
-         * @method lorax/loraxApp~service
-         */
-        //.service('locationService', locationService)
 
         /**
          * Inject {@link lorax/services/windowService} as 'windowService'
@@ -361,8 +353,14 @@ define([
         .service('scrollService', scrollService)
 
         /**
-         * Inject {@link lorax/services/dataService} as 'dataService'
-         * @method lorax/loraxApp~factory
+         * Inject {@link lorax/services/utilsService} as 'utilsService'
+         * @method lorax/loraxApp~service
+         */
+        .service('utilsService', utilsService)
+
+        /**
+         * Inject {@link lorax/services/exploreService} as 'exploreService'
+         * @method lorax/loraxApp~service
          */
         .service('exploreService', exploreService)
 
@@ -378,8 +376,14 @@ define([
          */
         .factory('dataService', dataService)
 
-      /**
-       * Bootstrap the application
-       */
-      return angular.bootstrap(document, ['loraxApp']);
+        /**
+         * Inject {@link lorax/services/encodeUriFilter} as 'encodeUri'
+         * @method lorax/loraxApp~filter
+         */
+        .filter('encodeUri', encodeUriFilter);
+
+    /**
+    * Bootstrap the application
+    */
+    return angular.bootstrap(document, ['loraxApp']);
 });

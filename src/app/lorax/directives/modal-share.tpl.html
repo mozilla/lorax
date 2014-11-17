@@ -1,0 +1,19 @@
+<section class="modal" ng-if="modalShare.open">
+  <header class="modal__header">
+    <h1>#openinternet</h1>
+    <a href="#" class="modal-close" data-lorax-prevent-default ng-click="">Close</a>
+  </header>
+  <div class="modal_content">
+    <ul class="sharing-list">
+      <li class="sharing-list__item">
+        <a ng-href="{{modalShare.shareUrl}}" class="sharing-quote">
+          <blockquote class="sharing-quote__text">
+            <p>82% of the internet is in English. Only 31% of the World speaks English.</p>
+          </blockquote>
+          <span class="sharing-quote__btn">Share</span>
+          <span class="sharing-quote__more">Learn more about this issue</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
