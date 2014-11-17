@@ -77,14 +77,19 @@ define([
     };
 
     IssuesMode.prototype._onMouseWheel = function (event) {
-        this._scrollPosition += event.deltaY / 10;
+        this._scrollTo(event.deltaY / 5);
+    };
 
-        this._scrollPosition = Math.max(
-            Math.min(this._scrollPosition, 0),
+    IssuesMode.prototype._scrollTo = function (delta) {
+        this._scrollFinalPosition += delta;
+
+        this._scrollFinalPosition = Math.max(
+            Math.min(this._scrollFinalPosition, 0),
             (this._scrollArea.y - (this._issueMargin * this._canvas.issues.length)
             + this._scrollArea.height * 1.5)
         );
-        console.log(this._scrollPosition);
+
+        this._scrollPosition += (this._scrollFinalPosition - this._scrollPosition) / 3;
 
         var i, issue;
         for (i = 0; i < this._canvas.issues.length; i ++) {
