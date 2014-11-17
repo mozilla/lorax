@@ -1948,7 +1948,7 @@ img {
   text-align: right;
   color: #000000;
 }
-/* Length of Terms & Conditions
+/* Concentration of Power
    ========================================================================== */
 .concentration-power {
   width: 1110px;
@@ -1994,6 +1994,18 @@ img {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 16px;
+}
+/* Identity Control
+   ========================================================================== */
+.identity__legend div {
+  height: 15px;
+  margin: 10px 0;
+  padding-left: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+.identity__label-text {
+  fill: #ffffff;
 }
 /*======================================================================
   Selectric

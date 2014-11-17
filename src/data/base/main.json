@@ -69,7 +69,7 @@
         },
         "identityControl":{
           "status":1,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-identity-control",
           "infographicOverflow":false,
           "tags":[
             "Internet companies",

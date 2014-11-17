@@ -55,28 +55,66 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var graphWidth = $("#" + id + " .infographic__wrapper div").width();
       var width = graphWidth;
-      var height = graphWidth * .4;
+      var height = graphWidth;
 
-      var innerR = 72;
-      var outerR = 80;
-      var spacing = 200;
+      var innerR = 0;
+      var outerR = d3.scale.ordinal()
+        .range([width*0.16, width*0.18, width*0.20, width*0.22, width*0.24, width*0.26, width*0.30]);
+
+
+      var color = d3.scale.ordinal()
+        .range(["rgba(0,0,0,0.9)", "rgba(0,0,0,0.15)", "rgba(0,0,0,0.7)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.4)", "rgba(255,255,255,0.5)"]);
       
+      drawLegend();
+
       var svg = pieChart.append("svg")
         .attr("id", "platformneutrality__svg")
         .attr("width", width)
-        .attr("height", height);
-        
-      var pie = d3.layout.pie(pieData.map( function(d) { return d.value; }))
+        .attr("height", height)
+        .style("margin-top", height*(-0.3));
+
+      var group = svg.append("g")
+        .attr("class", "identity__piechart")
+        .attr("transform", "translate(" + (width*0.6) + "," + (height*0.3) + ")");
+
+      var arc = d3.svg.arc()
+        .innerRadius(innerR)
+        .outerRadius(outerR);
+
+      var pie = d3.layout.pie()
+        .value(function(d) { return d.value; })
         .sort(null);
 
-      var g = svg.selectAll(".arc")
-        .data(pie)
+      var arcs = group.selectAll(".arc")
+        .data(pie(pieData))
         .enter()
         .append("g")
           .attr("class", "arc");
 
-      g.append("path")
-        .attr("d", arc);
+      arcs.append("path")
+        .attr("d", d3.svg.arc().innerRadius(innerR).outerRadius(function(d) { return outerR(d.value); }))
+        .attr("fill", function(d) { return color(d.value); });
+
+      arcs.append("text")
+        .attr("class", "identity__label-text")
+        .attr("transform", function(d, i) { 
+          var labelPos = [ 2.3, 2.5, 2.7, 3.0, 3.2, 3.6, 4.4 ];
+          var center = arc.centroid(d);
+          var outside = [center[0]*labelPos[i], center[1]*labelPos[i]];
+          return "translate(" + outside + ")"; 
+        })
+        .text(function(d) { return d.value + "%"; });
+
+      function drawLegend() {
+        var legend = pieChart.append("div")
+          .attr("class", "identity__legend");
+
+        for (var i = pieData.length-1; i >= 0 ; i--) {
+          legend.append("div")
+            .text(pieData[i].company)
+            .style("border-left", "15px solid " + color(pieData[i].value));
+        }
+      }
 
     }.bind(controller));
 

@@ -291,32 +291,32 @@
     "dataPoints": {
       "marketShare": [
         {
-          "company": "Facebook",
-          "value": 45
-        },
-        {
-          "company": "Google",
-          "value": 34
-        },
-        {
-          "company": "Twitter",
-          "value": 7
-        },
-        {
-          "company": "Microsoft",
-          "value": 2
-        },
-        {
-          "company": "Yahoo",
-          "value": 4
+          "company": "Other",
+          "value": 5
         },
         {
           "company": "LinkedIn",
           "value": 3
         },
         {
-          "company": "Other",
-          "value": 5
+          "company": "Yahoo",
+          "value": 4
+        },
+        {
+          "company": "Microsoft",
+          "value": 2
+        },
+        {
+          "company": "Twitter",
+          "value": 7
+        },
+        {
+          "company": "Google",
+          "value": 34
+        },
+        {
+          "company": "Facebook",
+          "value": 45
         }
       ]
     }
