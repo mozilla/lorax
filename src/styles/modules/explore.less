@@ -3,20 +3,26 @@
    ========================================================================== */
 
 .explore-canvas {
-    width: 100%;
     height: 100%;
+    left: 0;
     position: fixed;
     top: 0;
-    left: 0;
+    width: 100%;
+    z-index: @explore-z-index;
+
+    .is-detail & {
+        z-index: 0;
+    }
 }
 
 .explore-menu {
     .reset-list;
+    bottom: 20px;
+    margin: 0 auto;
     pointer-events: none;
     position: fixed;
     width: 100%;
-    bottom: 20px;
-    margin: 0 auto;
+    z-index: @explore-z-index + 1;
 
     .flexbox & {
         .flexbox;
@@ -90,24 +96,24 @@
     }
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="explore-icon-"]:before, [class*=" explore-icon-"]:before {
     display: inline-block;
     width: 18px;
     height: 18px;
     background: url('../images/explore-buttons.png') 0 0 no-repeat;
-    content: ' ';
+    content: '';
     vertical-align: middle;
     margin-right: 8px;
 }
 
-.icon-circle-empty:before {
+.explore-icon-circle-empty:before {
     background-position: 0 0;
 }
 
-.icon-th:before {
+.explore-icon-th:before {
     background-position: 50% 0;
 }
 
-.icon-menu:before {
+.explore-icon-menu:before {
     background-position: 100% 0;
 }

@@ -69,6 +69,14 @@ module.exports = function (grunt) {
                         '!<%= config.dist %>/.git*'
                     ]
                 }]
+            },
+            grunticon: {
+                files: [{
+                    src: [
+                        '<%= config.src %>/images/icons-min/',
+                        '<%= config.temp %>/images/icons/',
+                    ]
+                }]
             }
         },
 
@@ -79,8 +87,8 @@ module.exports = function (grunt) {
             },*/
             headScripts: {
                 src: [
-                    '<%= config.src %>/scripts/components/modernizr/modernizr.js'/*,
-                    '<%= config.src %>/scripts/grunticon.js'*/
+                    '<%= config.src %>/scripts/components/modernizr/modernizr.js',
+                    '<%= config.src %>/scripts/grunticon.js'
                 ],
                 dest: '<%= config.dist %>/scripts/lorax-head.min.js'
             }
@@ -98,7 +106,7 @@ module.exports = function (grunt) {
                 options: {
                     open: 'http://localhost:<%= connect.options.port%>',
                     middleware: connectMiddleware,
-                    base: ['src']
+                    base: ['<%= config.temp %>', '<%= config.src %>']
                 }
             }
         },
@@ -126,6 +134,29 @@ module.exports = function (grunt) {
             }
         },
 
+        grunticon: {
+            options: {
+                customselectors:
+                    grunt.file.readJSON('src/styles/grunticon/custom-selectors.json')
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.src %>/images/icons-min/',
+                    src: ['*.svg', '*.png'],
+                    dest: '<%= config.dist %>/images/icons/'
+                }]
+            },
+            server: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.src %>/images/icons-min/',
+                    src: ['*.svg', '*.png'],
+                    dest: '<%= config.temp %>/images/icons/'
+                }]
+            }
+        },
+
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
@@ -137,8 +168,9 @@ module.exports = function (grunt) {
                 '!<%= config.src %>/scripts/libs/{,*/}*.js',
                 '!<%= config.src %>/scripts/components/{,*/}*.js',
                 '!<%= config.src %>/scripts/utils.js',
-                '!/bower_components/{,*/}*.js',
-                '!node_modules/{,*/}*.js'
+                '!bower_components/{,*/}*.js',
+                '!node_modules/{,*/}*.js',
+                '!**/grunticon.js'
             ]
         },
 
@@ -148,7 +180,7 @@ module.exports = function (grunt) {
                     paths: ['<%= config.src %>/styles']
                 },
                 files: {
-                    '<%= config.src %>/css/main.css': '<%= config.src %>/styles/main.less'
+                    '<%= config.temp %>/css/main.css': '<%= config.src %>/styles/main.less'
                 }
             },
             dist: {
@@ -168,6 +200,11 @@ module.exports = function (grunt) {
                     message: 'Less refresh complete'
                 }
             },
+            grunticon: {
+                options: {
+                    message: 'Grunticon refresh complete'
+                }
+            },
             server: {
                 options: {
                     message: 'Server started'
@@ -184,6 +221,17 @@ module.exports = function (grunt) {
                     out: '<%= config.temp %>/scripts/lorax.js',
                     preserveLicenseComments: false
                 }
+            }
+        },
+
+        svgmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.src %>/images/icons-source',
+                    src: ['*.svg'],
+                    dest: '<%= config.src %>/images/icons-min'
+                }]
             }
         },
 
@@ -226,6 +274,18 @@ module.exports = function (grunt) {
                     'notify:less'
                 ]
             },
+            grunticon: {
+                files: [
+                    '<%= config.src %>/images/icons-source/{,*/}*.svg',
+                    '<%= config.src %>/styles/grunticon/custom-selectors.json'
+                ],
+                tasks: [
+                    'clean:grunticon',
+                    'svgmin',
+                    'grunticon:server',
+                    'notify:grunticon'
+                ]
+            },
             jshint: {
                 files: ['<%= jshint.all %>'],
                 tasks: ['jshint']
@@ -262,14 +322,27 @@ module.exports = function (grunt) {
     grunt.registerTask('build', function () {
         grunt.task.run([
             'clean:dist',
+            'clean:grunticon',
             'useminPrepare',
             'bower:install',
             'less:dist',
+            'svgmin',
+            'grunticon:dist',
             'copy:dist',
             'requirejs',
             'concat',
             'uglify:dist',
             'usemin'
+        ]);
+    });
+
+    // Dev
+    grunt.registerTask('icons', function () {
+        grunt.task.run([
+            'clean:grunticon',
+            'svgmin',
+            'grunticon:server',
+            'notify:grunticon'
         ]);
     });
 };

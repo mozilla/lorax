@@ -14,6 +14,7 @@
 
     <!-- build:js /scripts/lorax-head.min.js -->
     <script src="/scripts/components/modernizr/modernizr.js"></script>
+    <script src="/scripts/grunticon.js"></script>
     <!-- endbuild -->
   </head>
 
@@ -35,14 +36,14 @@
           <li class="share-option share-option--twitter icon-twitter" >
             <a href="#"ng-click="core.openShareModal('twitter')" data-lorax-prevent-default>Twitter</a>
           </li>
-          <li class="share-option share-option--email icon-email">
+          <li class="share-option share-option--email icon-mail">
             <a href="#" ng-click="core.openShareModal('email')" data-lorax-prevent-default>Email</a>
           </li>
           <li class="share-option share-option--fb icon-fb">
             <a href="#" ng-click="core.openShareModal('fb')" data-lorax-prevent-default>Facebook</a>
           </li>
         </ul>
-        <a href="#" class="share-options-close" ng-click="core.closeShareOptions()" data-lorax-prevent-default>Close</a>
+        <a href="#" class="share-options-close icon-close-sm" ng-click="core.closeShareOptions()" data-lorax-prevent-default>Close</a>
       </div>
     </footer>
 
