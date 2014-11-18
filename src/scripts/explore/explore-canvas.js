@@ -48,7 +48,7 @@ define([
         Responsive.SIZE = this.canvasSize;
 
         // create pixijs renderer and stage
-        this._renderer = new PIXI.CanvasRenderer(
+        this._renderer = new PIXI.autoDetectRenderer(
             this.canvasSize.x,
             this.canvasSize.y,
             {transparent: true, antialias: true});
