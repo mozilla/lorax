@@ -83,29 +83,30 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       var map = d3.select('#' + issueId + ' .infographic__wrapper div')
         .attr('class', 'map');
       var mapWidth = $('#' + issueId + ' .infographic__wrapper div').width();
-      var width = 650;
+      var width = 938;
       var height = 500;
 
+      drawDropdown();
+
       var defaultCountry = 'USA';
-      var labelX = 385;
-      var labelY = 385;
 
       var projection = d3.geo.mercator()
-          .scale(100)
-          .translate([width / 2, height / 1.75]);
+          .scale(150)
+          .translate([width / 2, height / 1.5]);
 
       var path = d3.geo.path()
         .projection(projection);
 
       var svg = map.append('svg')
         .attr('preserveAspectRatio', 'xMidYMid')
+        .attr('viewBox', '0 0 ' + width + ' ' + height)
         .attr('width', mapWidth)
         .attr('height', mapWidth * height / width);
 
       svg.append('rect')
         .attr('class', 'worldmap__background')
-        .attr('width', mapWidth)
-        .attr('height', mapWidth * height / width);
+        .attr('width', width)
+        .attr('height', height);
 
       var g = svg.append('g');
 
@@ -127,18 +128,12 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
           .style('mask', 'url(#maskStripe)')
           .on('mouseover', countryOver);
 
-      svg.append('text')
+      map.append('div')
         .attr('class', 'worldmap__label worldmap__label-country')
-        .attr('x', function() { return labelX;})
-        .attr('y', function() { return labelY;})
-        .attr('text-anchor', 'middle')
         .text(infographicData[defaultCountry].displayName);
 
-      svg.append('text')
+      map.append('div')
         .attr('class', 'worldmap__label worldmap__label-data')
-        .attr('x', function() { return labelX; })
-        .attr('y', function() { return labelY+20; })
-        .attr('text-anchor', 'middle')
         .text(infographicData.USA.displayData + infographicData.USA.displayUnits);
 
       g.select('#' + defaultCountry).style('mask','');
@@ -146,7 +141,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
 
       initializeSvgFilters(svg);
       drawLegend();
-      drawDropdown();
 
       $('#' + issueId + ' .infographic__wrapper div select').selectric('init');
 
@@ -207,9 +201,9 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
     function selectCountry(countryId) {
       var country = g.select('#' + countryId);
 
-      svg.select('.worldmap__label-country')
+      map.select('.worldmap__label-country')
         .text('');
-      svg.select('.worldmap__label-data')
+      map.select('.worldmap__label-data')
         .text('');
       g.selectAll('path')
         .style('mask', 'url(#maskStripe)')
@@ -224,11 +218,17 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       country.style('mask','');
       country.style('fill', '#fff');
 
-      svg.select('.worldmap__label-country')
+      map.select('.worldmap__label-country')
         .text(infographicData[countryId].displayName);
-      svg.select('.worldmap__label-data')
+      map.select('.worldmap__label-data')
         .text(infographicData[countryId].displayData + infographicData[countryId].displayUnits);
     }
+
+    $(window).resize(function() {
+        var w = $('#' + issueId + ' .infographic__wrapper div').width();
+        svg.attr('width', w);
+        svg.attr('height', w * height / width);
+    });
 
     }.bind(controller));
   };
