@@ -1,6 +1,6 @@
 /**
  * @fileOverview Data Portability Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
@@ -56,20 +56,19 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartDataPortabilityLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._$timeout(function() {
-            var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
-            var divs = d3.selectAll(".data-portability__symbol")
-                .append("div")
-                    .attr("class", function(d, i) {
+            d3.selectAll('.data-portability__symbol')
+                .append('div')
+                    .attr('class', function(d, i) {
                         var answer = controller._$scope.dataStandards.data[i].answer;
-                        if (answer === "Yes") {
-                            return "data-portability__symbol-yes";
-                        } else if (answer === "Partial") {
-                            return "data-portability__symbol-partial";
-                        } else if (answer === "No") {
-                            return "data-portability__symbol-no";
+                        if (answer === 'Yes') {
+                            return 'data-portability__symbol-yes';
+                        } else if (answer === 'Partial') {
+                            return 'data-portability__symbol-partial';
+                        } else if (answer === 'No') {
+                            return 'data-portability__symbol-no';
                         }
                     });
-        }.bind(controller))
+        }.bind(controller));
     };
 
     return ChartDataPortabilityDirective;

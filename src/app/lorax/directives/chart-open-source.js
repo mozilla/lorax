@@ -34,7 +34,7 @@ define(['jquery', 'd3'], function ($, d3) {
         $scope.lineGraph = {
           data: $scope.issue.getInfographic().getDataPoints(),
           dataLabels: $scope.issue.getInfographic().getDataPoints().dataLabels
-        }
+        };
     };
 
     /**
@@ -58,79 +58,44 @@ define(['jquery', 'd3'], function ($, d3) {
       var data = controller._$scope.lineGraph.data;
       var lineData = data.lineGraphData;
       var id = controller._$scope.issue.getId();
-      var lineGraph = d3.select("#" + id + " .infographic__wrapper div");
+      var lineGraph = d3.select('#' + id + ' .infographic__wrapper div');
 
       var numDatasets = lineData[0].data.length;
 
-      var dollarFormat = d3.format(".3s");
+      var dollarFormat = d3.format('.3s');
 
-      var graphWidth = $("#" + id + " .infographic__wrapper div").width();
+      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
 
       var margin = {top: 20, right: 20, bottom: 50, left: 10};
       var width = graphWidth/2.25;
       var height = graphWidth/2.0;
 
-      var svg = lineGraph.append("svg")
-        .attr("class", "opensource__svg")
-        .attr("width", width)
-        .attr("height", height);
-        // .style("position", "absolute")
-        // .style("left", (graphWidth/2-width/2) + "px")
-        // .style("top", height/2 + "px");
-      
+      var svg = lineGraph.append('svg')
+        .attr('class', 'opensource__svg')
+        .attr('width', width)
+        .attr('height', height);
+
       drawPattern();
-      //drawFirstAndLast();
       drawData();
-
-      function drawFirstAndLast() {
-        var first = svg.append("g")
-
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 120)
-          .text( function(d) { return dollarFormat(lineData[0].data[0]).replace("G","M")});
-
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 190)
-          .text( function(d) { return lineData[0].data[1]});
-
-        var last = svg.append("g")
-          .attr("class", "linegraph__firstlast")
-
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 115)
-          .text( function(d) { return dollarFormat(lineData[lineData.length-1].data[0]).replace("G","M")});
-
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 55)
-          .text( function(d) { return lineData[lineData.length-1].data[1]});
-      }
 
       function drawLabel() {
         var x = d3.scale.linear()
           .range([margin.left, width-margin.right])
           .domain([
-            d3.min( lineData, function(d) { return d.label }),
-            d3.max( lineData, function(d) { return d.label })
+            d3.min( lineData, function(d) { return d.label; }),
+            d3.max( lineData, function(d) { return d.label; })
           ]);
 
         var xAxis = d3.svg.axis()
           .scale(x)
-          .orient("bottom")
+          .orient('bottom')
           .tickFormat( function(d) { return d.toString(); })
           .tickValues( lineData.map( function (d) { return d.label; }) )
           .tickSize(0);
 
-        svg.append("g")
-          .attr("class", "linegraph__xaxis_year")
-          .attr("transform", "translate(0," + (height-margin.bottom+10) + ")")
+        svg.append('g')
+          .attr('class', 'linegraph__xaxis_year')
+          .attr('transform', 'translate(0,' + (height-margin.bottom+10) + ')')
           .call(xAxis);
 
           return x;
@@ -147,35 +112,35 @@ define(['jquery', 'd3'], function ($, d3) {
             d3.max( lineData, function(d) { return (d.data[i] * 1.25); })
           ]);
 
-          var line = d3.svg.line()    
+          var line = d3.svg.line()
             .x(function(d) { return x(d.label); })
-            .y(function(d) { return y(d.data[i]) }); 
+            .y(function(d) { return y(d.data[i]); });
 
-          var datasetGroup = svg.append("g")
-            .attr("class", function() {
+          var datasetGroup = svg.append('g')
+            .attr('class', function() {
               if ( i < 3 ) {
-                return "opensource__dataset-os";
+                return 'opensource__dataset-os';
               }
               else {
-                return "opensource__dataset-browser"
+                return 'opensource__dataset-browser';
               }
             });
 
-          datasetGroup.append("path")
+          datasetGroup.append('path')
             .datum(lineData)
-            .attr("class", "linegraph__line opensource__line_" + i)
-            .attr("d", line);
+            .attr('class', 'linegraph__line opensource__line_' + i)
+            .attr('d', line);
 
-          var point = datasetGroup.selectAll(".point__" + i)
+          datasetGroup.selectAll('.point__' + i)
             .data(lineData)
             .enter()
-            .append("g")
-            .attr("class", "opensource__point_" + i)
-            .append("circle")
-              .attr("class", "opensource__point_" + i + "_circle")
-              .attr("cx", function(d) { return x(d.label); })
-              .attr("cy", function(d) { return y(+d.data[i]); })
-              .attr("r", 3);
+            .append('g')
+            .attr('class', 'opensource__point_' + i)
+            .append('circle')
+              .attr('class', 'opensource__point_' + i + '_circle')
+              .attr('cx', function(d) { return x(d.label); })
+              .attr('cy', function(d) { return y(+d.data[i]); })
+              .attr('r', 3);
         }
       }
 
@@ -183,34 +148,34 @@ define(['jquery', 'd3'], function ($, d3) {
         var x = d3.scale.linear()
           .range([margin.left, width-margin.right])
           .domain([
-            d3.min( lineData, function(d) { return d.label }),
-            d3.max( lineData, function(d) { return d.label })
+            d3.min( lineData, function(d) { return d.label; }),
+            d3.max( lineData, function(d) { return d.label; })
           ]);
 
         var diff = Math.floor(Math.abs(x(lineData[0].label) - x(lineData[1].label)))/2;
 
-        var pattern = svg.append("g")
-          .attr("class", "linegraph__pattern");
+        var pattern = svg.append('g')
+          .attr('class', 'linegraph__pattern');
 
         var years = lineData.map( function(d) { return d.label; });
         years.forEach( function(val) {
 
           for ( var i = margin.top+15; i < height-margin.bottom; i+=diff ) {
             var xPos = x(val);
-            pattern.append("line")
-              .attr("x1", xPos+2.5)
-              .attr("y1", i)
-              .attr("x2", xPos+2.5)
-              .attr("y2", i+5);
+            pattern.append('line')
+              .attr('x1', xPos+2.5)
+              .attr('y1', i)
+              .attr('x2', xPos+2.5)
+              .attr('y2', i+5);
 
-            pattern.append("line")
-              .attr("x1", xPos)
-              .attr("y1", i+2.5)
-              .attr("x2", xPos+5)
-              .attr("y2", i+2.5);              
+            pattern.append('line')
+              .attr('x1', xPos)
+              .attr('y1', i+2.5)
+              .attr('x2', xPos+5)
+              .attr('y2', i+2.5);
           }
         });
-      }      
+      }
 
 
     }.bind(controller));

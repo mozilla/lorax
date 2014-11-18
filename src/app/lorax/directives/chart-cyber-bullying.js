@@ -70,7 +70,7 @@ define(['jquery', 'd3'], function ($, d3) {
         var lineChart = cyberBullyingChart.append('div')
           .attr('class', 'cyberbullying__linechart');
 
-        var title = lineChart.append('h3')
+        lineChart.append('h3')
           .attr('class', 'cyberbullying__title')
           .text(controller._$scope.issue.getInfographic().getDataPoints().cyberBullyingData.socialNetwork.title);
 
@@ -100,13 +100,13 @@ define(['jquery', 'd3'], function ($, d3) {
             .attr('class', 'linegraph__line')
             .attr('d', line);
 
-          var point = datasetGroup.selectAll('.point__' + i)
+          datasetGroup.selectAll('.point__' + i)
             .data(lineData)
             .enter()
             .append('g')
             .attr('class', function() { return 'linegraph__point_' + i; })
             .append('circle')
-              .attr('class', function() { return 'linegraph__point_' + i + '_circle'})
+              .attr('class', function() { return 'linegraph__point_' + i + '_circle'; })
               .attr('cx', function(d) { return x(d.label); })
               .attr('cy', function(d) { return y(+d.data[i]); })
               .attr('r', 3);
@@ -138,7 +138,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         var pieChart = cyberBullyingChart.append('div')
           .attr('class', 'cyberbullying__piechart');
-        var title = pieChart.append('h3')
+        pieChart.append('h3')
           .attr('class', 'cyberbullying__title')
           .text(controller._$scope.issue.getInfographic().getDataPoints().cyberBullyingData.onlineHarassment.title);
 

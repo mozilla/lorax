@@ -1,6 +1,6 @@
 /**
  * @fileOverview Static Image Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
   'use strict';
@@ -50,10 +50,10 @@ define(['jquery', 'd3'], function ($, d3) {
   var ChartStaticImageLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout( function() {
       var imageUrl = controller._$scope.issue.getInfographic().getDataPoints().url;
-      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
-      chart.append("img")
-        .attr("src", imageUrl);
-    }.bind(controller));    
+      var chart = d3.select('#' + controller._$scope.issue.getId() + ' .infographic__wrapper div');
+      chart.append('img')
+        .attr('src', imageUrl);
+    }.bind(controller));
   };
 
   return ChartStaticImageDirective;

@@ -1,8 +1,8 @@
 /**
  * @fileOverview Data Tracking Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
-define(['jquery', 'd3'], function ($, d3) {
+define(['jquery'], function ($) {
     'use strict';
 
     /**
@@ -58,14 +58,14 @@ define(['jquery', 'd3'], function ($, d3) {
         var createBars = function () {
             var $bars = $('.data-tracking__tracker-bar');
             var maxHeight = 200;
-            
+
             $bars.each(function(idx) {
                 var $this = $(this);
                 var length = controller._data[idx].percent;
-                var percentBar = document.createElement("div");
-                percentBar.style.height = ((length * maxHeight)/100) + "px";
-                percentBar.classList.add("data-tracking__tracker-bar-percent");
-                
+                var percentBar = document.createElement('div');
+                percentBar.style.height = ((length * maxHeight)/100) + 'px';
+                percentBar.classList.add('data-tracking__tracker-bar-percent');
+
                 $this.append(percentBar);
             });
         };

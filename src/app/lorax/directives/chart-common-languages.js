@@ -1,6 +1,6 @@
 /**
  * @fileOverview Common Languages Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
@@ -15,7 +15,7 @@ define(['jquery', 'd3'], function ($, d3) {
             scope: true,
             controller: ChartCommonLanguagesController,
             link: ChartCommonLanguagesLinkFn,
-            templateUrl: "/app/lorax/directives/chart-common-languages.tpl.html" 
+            templateUrl: '/app/lorax/directives/chart-common-languages.tpl.html'
         };
     };
 
@@ -51,14 +51,12 @@ define(['jquery', 'd3'], function ($, d3) {
   var ChartCommonLanguagesLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
       var data = controller._$scope.issue.getInfographic().getDataPoints().commonLanguages;
-      var chart = d3.selectAll(".common-languages-content");
+      var chart = d3.selectAll('.common-languages-content');
 
-      var maxPercent = controller._$scope.issue.getInfographic().getDataPoints().topPercentageOfLanguages
+      var maxPercent = controller._$scope.issue.getInfographic().getDataPoints().topPercentageOfLanguages;
       var maxScale = maxPercent + 5;
 
-      var tableBody = chart.select(".common-languages-content");
-
-      var topLanguages = chart.selectAll("div")
+      var topLanguages = chart.selectAll('div')
         .data(data)
         .enter()
         .append('tr');

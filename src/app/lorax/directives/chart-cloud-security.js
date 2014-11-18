@@ -14,7 +14,6 @@ define(['jquery', 'd3'], function ($, d3) {
             replace: true,
             scope: true,
             controller: ChartCloudSecurityController,
-            link: ChartCloudSecurityLinkFn,
             templateUrl: '/app/lorax/directives/chart-cloud-security.tpl.html'
         };
     };
@@ -46,17 +45,6 @@ define(['jquery', 'd3'], function ($, d3) {
         '$scope',
         '$timeout'
     ];
-
-    /**
-     * Link function for Cloud Security Chart directive
-     * @param {object} scope      Angular scope.
-     * @param {JQuery} iElem      jQuery element.
-     * @param {object} iAttrs     Directive attributes.
-     * @param {object} controller Controller reference.
-     */
-    var ChartCloudSecurityLinkFn = function (scope, iElem, iAttrs, controller) {
-
-    };
 
     return ChartCloudSecurityDirective;
 });

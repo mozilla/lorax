@@ -52,116 +52,116 @@ define(['jquery', 'd3'], function ($, d3) {
       var data = controller._$scope.issue.getInfographic().getDataPoints();
       var lineData = data.lineGraphData;
       var id = controller._$scope.issue.getId();
-      var lineGraph = d3.select("#" + id + " .infographic__wrapper div");
+      var lineGraph = d3.select('#' + id + ' .infographic__wrapper div');
 
       var numDatasets = lineData[0].data.length;
 
-      var dollarFormat = d3.format(".3s");
+      var dollarFormat = d3.format('.3s');
 
-      var graphWidth = $("#" + id + " .infographic__wrapper div").width();
+      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
 
       var margin = {top: 20, right: 20, bottom: 50, left: 10};
       var width = graphWidth;
-      var height = graphWidth * .7;
+      var height = graphWidth * 0.7;
 
-      var svg = lineGraph.append("svg")
-        .attr("class", "linegraph__svg")
-        .attr("width", width)
-        .attr("height", height);
-      
+      var svg = lineGraph.append('svg')
+        .attr('class', 'linegraph__svg')
+        .attr('width', width)
+        .attr('height', height);
+
       drawLegend();
       drawFirstAndLast();
       drawData();
 
-      lineGraph.append("div")
-        .attr("class", "linegraph__revolvers")
-        .html("* Revolvers are former members of Congress, congressional staffers, or executive branch officials.");
+      lineGraph.append('div')
+        .attr('class', 'linegraph__revolvers')
+        .html('* Revolvers are former members of Congress, congressional staffers, or executive branch officials.');
 
       function drawFirstAndLast() {
-        var first = svg.append("g")
+        var first = svg.append('g');
 
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 120)
-          .text( function(d) { return dollarFormat(lineData[0].data[0]).replace("G","M")});
+        first.append('text')
+          .attr('class', 'linegraph__firstlast')
+          .attr('x', margin.left)
+          .attr('y', height - 120)
+          .text( function() { return dollarFormat(lineData[0].data[0]).replace('G','M');});
 
-        first.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", margin.left)
-          .attr("y", height - 190)
-          .text( function(d) { return lineData[0].data[1]});
+        first.append('text')
+          .attr('class', 'linegraph__firstlast')
+          .attr('x', margin.left)
+          .attr('y', height - 190)
+          .text( function() { return lineData[0].data[1];});
 
-        var last = svg.append("g")
-          .attr("class", "linegraph__firstlast")
+        var last = svg.append('g')
+          .attr('class', 'linegraph__firstlast');
 
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 115)
-          .text( function(d) { return dollarFormat(lineData[lineData.length-1].data[0]).replace("G","M")});
+        last.append('text')
+          .attr('class', 'linegraph__firstlast')
+          .attr('x', width - margin.right*2)
+          .attr('y', 115)
+          .text( function() { return dollarFormat(lineData[lineData.length-1].data[0]).replace('G','M');});
 
-        last.append("text")
-          .attr("class", "linegraph__firstlast")
-          .attr("x", width - margin.right*2)
-          .attr("y", 55)
-          .text( function(d) { return lineData[lineData.length-1].data[1]});
+        last.append('text')
+          .attr('class', 'linegraph__firstlast')
+          .attr('x', width - margin.right*2)
+          .attr('y', 55)
+          .text( function() { return lineData[lineData.length-1].data[1];});
       }
 
 
       function drawLegend() {
-        var legend = svg.append("g")
-          .attr("class", "linegraph__legend")
-          .attr("x", width-margin.right)
-          .attr("y", margin.top)
-          .attr("height", 100)
-          .attr("width", 300);
+        var legend = svg.append('g')
+          .attr('class', 'linegraph__legend')
+          .attr('x', width-margin.right)
+          .attr('y', margin.top)
+          .attr('height', 100)
+          .attr('width', 300);
 
-        legend.selectAll("g")
+        legend.selectAll('g')
           .data(data.dataLabels)
           .enter()
-          .append("g")
-            .attr("class", "linegraph__legendLabel");
+          .append('g')
+            .attr('class', 'linegraph__legendLabel');
 
-        var legendLabel = legend.selectAll(".linegraph__legendLabel");
+        var legendLabel = legend.selectAll('.linegraph__legendLabel');
 
-        legendLabel.selectAll("circle")
+        legendLabel.selectAll('circle')
           .data(data.dataLabels)
           .enter()
-          .append("circle")
-            .attr("class", function(d, i) { return "linegraph__point_" + i + "_circle"})
-            .attr("cx", function(d, i) {return width - margin.right - i*80 - (margin.right*5)})
-            .attr("cy", margin.top)
-            .attr("r", 3);
+          .append('circle')
+            .attr('class', function(d, i) { return 'linegraph__point_' + i + '_circle';})
+            .attr('cx', function(d, i) {return width - margin.right - i*80 - (margin.right*5);})
+            .attr('cy', margin.top)
+            .attr('r', 3);
 
-        legendLabel.selectAll("text")
+        legendLabel.selectAll('text')
           .data(data.dataLabels)
           .enter()
-          .append("text")
-              .attr("class", "linegraph__legendtext")
-              .attr("x", function(d, i) {return width - margin.right - i*80 - (margin.right*5) + 10})
-              .attr("y", margin.top+4)
-              .text(function(d) { return d; })
+          .append('text')
+              .attr('class', 'linegraph__legendtext')
+              .attr('x', function(d, i) {return width - margin.right - i*80 - (margin.right*5) + 10;})
+              .attr('y', margin.top+4)
+              .text(function(d) { return d; });
       }
 
       function drawLabel() {
         var x = d3.scale.linear()
           .range([margin.left, width-margin.right])
           .domain([
-            d3.min( lineData, function(d) { return d.label }),
-            d3.max( lineData, function(d) { return d.label })
+            d3.min( lineData, function(d) { return d.label; }),
+            d3.max( lineData, function(d) { return d.label; })
           ]);
 
         var xAxis = d3.svg.axis()
           .scale(x)
-          .orient("bottom")
+          .orient('bottom')
           .tickFormat( function(d) { return d.toString(); })
           .tickValues( lineData.map( function (d) { return d.label; }) )
           .tickSize(0);
 
-        svg.append("g")
-          .attr("class", "linegraph__xaxis_year")
-          .attr("transform", "translate(0," + (height-margin.bottom) + ")")
+        svg.append('g')
+          .attr('class', 'linegraph__xaxis_year')
+          .attr('transform', 'translate(0,' + (height-margin.bottom) + ')')
           .call(xAxis);
 
           return x;
@@ -178,53 +178,27 @@ define(['jquery', 'd3'], function ($, d3) {
             d3.max( lineData, function(d) { return (d.data[i] * 1.25); })
           ]);
 
-          var line = d3.svg.line()    
+          var line = d3.svg.line()
             .x(function(d) { return x(d.label); })
-            .y(function(d) { return y(d.data[i]) }); 
+            .y(function(d) { return y(d.data[i]); });
 
-          svg.append("path")
+          svg.append('path')
             .datum(lineData)
-            .attr("class", "linegraph__line")
-            .attr("d", line);
+            .attr('class', 'linegraph__line')
+            .attr('d', line);
 
-          var point = svg.selectAll(".point__" + i)
+          svg.selectAll('.point__' + i)
             .data(lineData)
             .enter()
-            .append("g")
-            .attr("class", function() { return "linegraph__point_" + i; })
-            .append("circle")
-              .attr("class", function() { return "linegraph__point_" + i + "_circle"})
-              .attr("cx", function(d) { return x(d.label); })
-              .attr("cy", function(d) { return y(+d.data[i]); })
-              .attr("r", 3);
-
-          /* Draw X axes for data (do we want this?)
-              ========================================================================== */
-
-          // if ( i === 0 ) {
-          //   // var dollarFormat = d3.format(".3s");
-          //   var xAxisScale = d3.scale.ordinal()
-          //     // .domain(lineData.map( function(d) { return dollarFormat(d.data[i]).replace("G", ""); }))
-          //     .domain(lineData.map( function(d) { return d.data[i]; }))
-          //     .rangePoints([margin.left, width-margin.right], 0.0);  
-          //   }
-          // else {
-          //   var xAxisScale = d3.scale.ordinal()
-          //     .domain(lineData.map( function(d) { return d.data[i].toString(); }))
-          //     .rangePoints([margin.left, width-margin.right], 0.0);  
-          // }
-      
-          // var xAxisValue = d3.svg.axis()
-          //   .scale(xAxisScale)
-          //   .orient("bottom")
-          //   .tickSize(0);
-
-          // svg.append("g")
-          //   .attr("class", "linegraph__xaxis_info")
-          //   .attr("transform", "translate(0," + (height - 45 +( i * 20)) + ")")
-          //   .call(xAxisValue);
+            .append('g')
+            .attr('class', function() { return 'linegraph__point_' + i; })
+            .append('circle')
+              .attr('class', function() { return 'linegraph__point_' + i + '_circle';})
+              .attr('cx', function(d) { return x(d.label); })
+              .attr('cy', function(d) { return y(+d.data[i]); })
+              .attr('r', 3);
         }
-      }      
+      }
 
 
     }.bind(controller));

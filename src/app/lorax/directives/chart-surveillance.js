@@ -1,6 +1,6 @@
 /**
  * @fileOverview Surveillance Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
   'use strict';
@@ -51,9 +51,9 @@ define(['jquery', 'd3'], function ($, d3) {
     controller._$timeout(function() {
       var circleData = controller._$scope.issue.getInfographic().getDataPoints().surveillance;
       var id = controller._$scope.issue.getId();
-      var circleChart = d3.select("#" + id + " .infographic__wrapper div");
+      var circleChart = d3.select('#' + id + ' .infographic__wrapper div');
 
-      var graphWidth = $("#" + id + " .infographic__wrapper div").width();
+      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
       var width = graphWidth;
       var height = graphWidth;
 
@@ -64,58 +64,58 @@ define(['jquery', 'd3'], function ($, d3) {
       var surveillanceData = {};
 
       $.each(circleData, function(key, data) {
-        var id = "surveillance__name-" + data.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_");
+        var id = 'surveillance__name-' + data.name.toLowerCase().replace(/[^A-Z0-9]/ig, '_');
         var description = data.description;
 
         surveillanceData[id] = {
-          "description": description
-        }
+          'description': description
+        };
       });
 
-      var background = circleChart.append("div")
-        .attr("class","surveillance__background")
-        .style("width", width + "px")
-        .style("height", height + "px");
+      var background = circleChart.append('div')
+        .attr('class','surveillance__background')
+        .style('width', width + 'px')
+        .style('height', height + 'px');
 
-      var descriptionBox = background.append("div")
-        .attr("class", "surveillance__descriptionbox")
-        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize/2 + "px")
-        .style("top", height/2 - circleFromCenter/5 + "px");
+      background.append('div')
+        .attr('class', 'surveillance__descriptionbox')
+        .style('left', width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize/2 + 'px')
+        .style('top', height/2 - circleFromCenter/5 + 'px');
 
-      var circleContainer = background.append("div")
-        .attr("class", "surveillance__circlecontainer")
-        .style("left", width/2 - (circleFromCenter - circleFromCenter/5)/2 + "px")
-        .style("top", height/2 - circleFromCenter/5 + "px");  
+      var circleContainer = background.append('div')
+        .attr('class', 'surveillance__circlecontainer')
+        .style('left', width/2 - (circleFromCenter - circleFromCenter/5)/2 + 'px')
+        .style('top', height/2 - circleFromCenter/5 + 'px');
 
-      var labels = circleContainer.selectAll("div")
+      circleContainer.selectAll('div')
         .data(circleData)
         .enter()
-        .append("div")
-          .attr("class", "surveillance__label")
-          .attr("id", function(d) { return "surveillance__name-" + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, "_"); })
-          .style("left", function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + "px"; })
-          .style("top", function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + "px"; })
-          .on("mouseover", addDescription)
-          .append("div")
+        .append('div')
+          .attr('class', 'surveillance__label')
+          .attr('id', function(d) { return 'surveillance__name-' + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, '_'); })
+          .style('left', function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + 'px'; })
+          .style('top', function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + 'px'; })
+          .on('mouseover', addDescription)
+          .append('div')
             .text( function(d) { return d.name; });
 
-      d3.select("#surveillance__name-advertising")
-        .style("border", "3px solid #fff");
+      d3.select('#surveillance__name-advertising')
+        .style('border', '3px solid #fff');
 
-      d3.select(".surveillance__descriptionbox")
-        .text( surveillanceData["surveillance__name-advertising"].description);
+      d3.select('.surveillance__descriptionbox')
+        .text( surveillanceData['surveillance__name-advertising'].description);
 
 
 
       function addDescription() {
-        d3.select(".surveillance__descriptionbox")
+        d3.select('.surveillance__descriptionbox')
           .text( surveillanceData[this.id].description );
 
-        d3.selectAll(".surveillance__label")
-          .style("border", "none");
+        d3.selectAll('.surveillance__label')
+          .style('border', 'none');
 
         d3.select(this)
-          .style("border", "3px solid #fff");
+          .style('border', '3px solid #fff');
       }
 
     }.bind(controller));

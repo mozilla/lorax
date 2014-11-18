@@ -1,6 +1,6 @@
 /**
  * @fileOverview Platform Neutrality Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
   'use strict';
@@ -51,21 +51,21 @@ define(['jquery', 'd3'], function ($, d3) {
     controller._$timeout(function() {
       var pieData = controller._$scope.issue.getInfographic().getDataPoints().percentOfUsers;
       var id = controller._$scope.issue.getId();
-      var pieChart = d3.select("#" + id + " .infographic__wrapper div");
+      var pieChart = d3.select('#' + id + ' .infographic__wrapper div');
 
-      var graphWidth = $("#" + id + " .infographic__wrapper div").width();
+      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
       var width = graphWidth;
-      var height = graphWidth * .5;
+      var height = graphWidth * 0.5;
 
       var innerR = 72;
       var outerR = 80;
       var spacing = 200;
-      
-      var svg = pieChart.append("svg")
-        .attr("id", "platformneutrality__svg")
-        .attr("width", width)
-        .attr("height", height);
-        
+
+      var svg = pieChart.append('svg')
+        .attr('id', 'platformneutrality__svg')
+        .attr('width', width)
+        .attr('height', height);
+
       var cScale = d3.scale.linear()
         .domain([0,100])
         .range([0, -2*Math.PI]);
@@ -89,71 +89,69 @@ define(['jquery', 'd3'], function ($, d3) {
           .startAngle(cScale(pieData[i].value))
           .endAngle(cScale(100));
 
-        svg.append("path")
-          .attr("class", "platformneutrality__users")
-          .attr("d", userPercent)
-          .attr("transform", "translate(" + (i*spacing + outerR) + ",100)");
+        svg.append('path')
+          .attr('class', 'platformneutrality__users')
+          .attr('d', userPercent)
+          .attr('transform', 'translate(' + (i*spacing + outerR) + ',100)');
 
-        svg.append("path")
-          .attr("class", "platformneutrality__wedge")
-          .attr("d", userPercentWedge)
-          .attr("transform", "translate(" + (i*spacing + outerR) + ",100)"); 
+        svg.append('path')
+          .attr('class', 'platformneutrality__wedge')
+          .attr('d', userPercentWedge)
+          .attr('transform', 'translate(' + (i*spacing + outerR) + ',100)');
 
-        svg.append("path")
-          .attr("class", "platformneutrality__others")
-          .attr("d", restOfUsers)
-          .attr("transform", "translate(" + (i*spacing + outerR) + ",100)");
+        svg.append('path')
+          .attr('class', 'platformneutrality__others')
+          .attr('d', restOfUsers)
+          .attr('transform', 'translate(' + (i*spacing + outerR) + ',100)');
 
-        svg.append("text")
-          .attr("class", "platformneutrality__label")
-          .attr("text-anchor", "middle")
-          .attr("x", (i*spacing + outerR))
-          .attr("y", 210)
+        svg.append('text')
+          .attr('class', 'platformneutrality__label')
+          .attr('text-anchor', 'middle')
+          .attr('x', (i*spacing + outerR))
+          .attr('y', 210)
           .text(pieData[i].type.toUpperCase());
       }
 
-      svg.append("text")
-        .attr("class", "platformneutrality__value")
-        .attr("x", outerR - 30)
-        .attr("y", 60)
-        .text(pieData[0].value + "%");
+      svg.append('text')
+        .attr('class', 'platformneutrality__value')
+        .attr('x', outerR - 30)
+        .attr('y', 60)
+        .text(pieData[0].value + '%');
 
-      svg.append("text")
-        .attr("class", "platformneutrality__value")
-        .attr("x", spacing + outerR - 45)
-        .attr("y", 85)
-        .text(pieData[1].value + "%");
+      svg.append('text')
+        .attr('class', 'platformneutrality__value')
+        .attr('x', spacing + outerR - 45)
+        .attr('y', 85)
+        .text(pieData[1].value + '%');
 
-      svg.append("text")
-        .attr("class", "platformneutrality__value")
-        .attr("x", spacing*2 + outerR - 55)
-        .attr("y", 105)
-        .text(pieData[2].value + "%");
+      svg.append('text')
+        .attr('class', 'platformneutrality__value')
+        .attr('x', spacing*2 + outerR - 55)
+        .attr('y', 105)
+        .text(pieData[2].value + '%');
 
-      var legend = pieChart.append("div")
-        .attr("class", "platformneutrality__legend");
+      var legend = pieChart.append('div')
+        .attr('class', 'platformneutrality__legend');
 
-      var mobile = legend.append("div")
-        .attr("class", "platformneutrality__legendbox");
+      var mobile = legend.append('div')
+        .attr('class', 'platformneutrality__legendbox');
 
-      mobile.append("div")
-        .text("Mobile Web");
+      mobile.append('div')
+        .text('Mobile Web');
 
-      mobile.append("div")
-        .attr("class", "mobile-web");
+      mobile.append('div')
+        .attr('class', 'mobile-web');
 
-      var nativeApp = legend.append("div")
-        .attr("class", "platformneutrality__legendbox");
+      var nativeApp = legend.append('div')
+        .attr('class', 'platformneutrality__legendbox');
 
-      nativeApp.append("div")
-        .text("Native App");
+      nativeApp.append('div')
+        .text('Native App');
 
-      nativeApp.append("div")
-        .attr("class", "native-app")
-
+      nativeApp.append('div')
+        .attr('class', 'native-app');
     }.bind(controller));
-
-  }
+  };
 
   return ChartPlatformNeutralityDirective;
 });

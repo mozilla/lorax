@@ -1,6 +1,6 @@
 /**
  * @fileOverview Identity Control Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
   'use strict';
@@ -51,9 +51,9 @@ define(['jquery', 'd3'], function ($, d3) {
     controller._$timeout(function() {
       var pieData = controller._$scope.issue.getInfographic().getDataPoints().marketShare;
       var id = controller._$scope.issue.getId();
-      var pieChart = d3.select("#" + id + " .infographic__wrapper div");
+      var pieChart = d3.select('#' + id + ' .infographic__wrapper div');
 
-      var graphWidth = $("#" + id + " .infographic__wrapper div").width();
+      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
       var width = graphWidth;
       var height = graphWidth;
 
@@ -63,19 +63,19 @@ define(['jquery', 'd3'], function ($, d3) {
 
 
       var color = d3.scale.ordinal()
-        .range(["rgba(0,0,0,0.8)", "rgba(0,0,0,0.15)", "rgba(0,0,0,0.7)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0.5)", "rgba(0,0,0,0.4)", "rgba(255,255,255,0.5)"]);
-      
+        .range(['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.15)', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.4)', 'rgba(255,255,255,0.5)']);
+
       drawLegend();
 
-      var svg = pieChart.append("svg")
-        .attr("id", "identity__svg")
-        .attr("width", width)
-        .attr("height", height)
-        .style("margin-top", height*(-0.3));
+      var svg = pieChart.append('svg')
+        .attr('id', 'identity__svg')
+        .attr('width', width)
+        .attr('height', height)
+        .style('margin-top', height*(-0.3));
 
-      var group = svg.append("g")
-        .attr("class", "identity__piechart")
-        .attr("transform", "translate(" + (width*0.6) + "," + (height*0.3) + ")");
+      var group = svg.append('g')
+        .attr('class', 'identity__piechart')
+        .attr('transform', 'translate(' + (width*0.6) + ',' + (height*0.3) + ')');
 
       var arc = d3.svg.arc()
         .innerRadius(innerR)
@@ -85,40 +85,39 @@ define(['jquery', 'd3'], function ($, d3) {
         .value(function(d) { return d.value; })
         .sort(null);
 
-      var arcs = group.selectAll(".arc")
+      var arcs = group.selectAll('.arc')
         .data(pie(pieData))
         .enter()
-        .append("g")
-          .attr("class", "arc");
+        .append('g')
+          .attr('class', 'arc');
 
-      arcs.append("path")
-        .attr("d", d3.svg.arc().innerRadius(innerR).outerRadius(function(d) { return outerR(d.value); }))
-        .attr("fill", function(d) { return color(d.value); });
+      arcs.append('path')
+        .attr('d', d3.svg.arc().innerRadius(innerR).outerRadius(function(d) { return outerR(d.value); }))
+        .attr('fill', function(d) { return color(d.value); });
 
-      arcs.append("text")
-        .attr("class", "identity__label-text")
-        .attr("transform", function(d, i) { 
+      arcs.append('text')
+        .attr('class', 'identity__label-text')
+        .attr('transform', function(d, i) {
           var labelPos = [ 2.4, 2.6, 2.8, 3.1, 3.3, 3.7, 4.55 ];
           var center = arc.centroid(d);
           var outside = [center[0]*labelPos[i], center[1]*labelPos[i]];
-          return "translate(" + outside + ")"; 
+          return 'translate(' + outside + ')';
         })
-        .text(function(d) { return d.value + "%"; });
+        .text(function(d) { return d.value + '%'; });
 
       function drawLegend() {
-        var legend = pieChart.append("div")
-          .attr("class", "identity__legend");
+        var legend = pieChart.append('div')
+          .attr('class', 'identity__legend');
 
         for (var i = pieData.length-1; i >= 0 ; i--) {
-          legend.append("div")
+          legend.append('div')
             .text(pieData[i].company)
-            .style("border-left", "15px solid " + color(pieData[i].value));
+            .style('border-left', '15px solid ' + color(pieData[i].value));
         }
       }
 
     }.bind(controller));
-
-  }
+  };
 
   return ChartIdentityControlDirective;
 });
