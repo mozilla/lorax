@@ -13,8 +13,8 @@
         },
         "affordable":{
           "status":1,
-          "infographicType":"data-lorax-chart-top-internet-companies",
-          "infographicOverflow":false,
+          "infographicType":"data-lorax-chart-world-map",
+          "infographicOverflow":true,
           "tags":[
             "Mobile",
             "Emerging economies",
@@ -221,7 +221,7 @@
       "issues":{
         "netNeutrality":{
           "status":1,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
           "tags":[
             "Network operators",

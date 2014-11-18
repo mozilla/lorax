@@ -1,7 +1,7 @@
 {
   "available": {
-    "header": "Growth of the Internet Industry",
-    "subheader": "Percent By Year",
+    "header": "NEEDS CONTENT",
+    "subheader": "NEEDS CONTENT",
     "source": {
       "name": "Freedom House",
       "src": "http://test.com"
@@ -10,6 +10,7 @@
       "countryData": {
         "shading": {
           "name": "internetPopPercentage",
+          "invert": false,
           "values": [
             20.0,
             40.0,
@@ -33,35 +34,35 @@
     }
   },
   "affordable": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "NEEDS CONTENT",
+    "subheader": "NEEDS CONTENT",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "countryData": {
+        "shading": {
+          "name": "salaryPercentage",
+          "invert": true,
+          "values": [
+            50.0,
+            70.0,
+            100.0,
+            99999999.0
+          ],
+          "legend": [
+            "Less than 50%",
+            "50-70%",
+            "70-100%",
+            "Greater than 100%"
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "display": {
+          "name": "hoursOfWork",
+          "units": " hours of work"
         }
-      ]
+      }
     }
   },
   "localization": {
@@ -178,8 +179,8 @@
     }
   },
   "accessible": {
-    "header": "Vision Impairment",
-    "subheader": "Number of People",
+    "header": "How to make content more accessible",
+    "subheader": "NEEDS CONTENT",
     "source": {
       "name": "",
       "src": ""
@@ -1012,6 +1013,7 @@
       "countryData": {
         "shading": {
           "name": "levelOfFreedom",
+          "invert": false,
           "values": [
             0.01,
             1.01,
@@ -1194,6 +1196,7 @@
       "countryData": {
         "shading": {
           "name": "governmentControl",
+          "invert": false,
           "values": [
             0.01,
             1.01,
@@ -1272,28 +1275,30 @@
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "countryData": {
+        "shading": {
+          "name": "percentBitTorrent",
+          "invert": false,
+          "values": [
+            20.0,
+            40.0,
+            60.0,
+            80.0,
+            100.0
+          ],
+          "legend": [
+            "Less than 20%",
+            "20-40%",
+            "40-60%",
+            "60-80%",
+            "Greater than 80%"
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "display": {
+          "name": "percentBitTorrent",
+          "units": "% internet neutrality"
         }
-      ]
+      }
     }
   },
   "zeroRating": {

@@ -8,7 +8,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Åland Islands",
@@ -19,7 +20,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Albania",
@@ -30,7 +32,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 5,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Algeria",
@@ -41,7 +44,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "American Samoa",
@@ -52,7 +56,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Andorra",
@@ -63,7 +68,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Angola",
@@ -74,7 +80,8 @@
     "freedomScore": 34,
     "internetPopPercentage": 1,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Anguilla",
@@ -85,7 +92,8 @@
     "freedomScore": null,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Antarctica",
@@ -96,7 +104,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Antigua and Barbuda",
@@ -107,7 +116,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Argentina",
@@ -118,7 +128,8 @@
     "freedomScore": 27,
     "internetPopPercentage": 53,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Armenia",
@@ -129,7 +140,8 @@
     "freedomScore": 29,
     "internetPopPercentage": 46,
     "pointsOfControl": 6,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Aruba",
@@ -140,7 +152,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Australia",
@@ -151,7 +164,8 @@
     "freedomScore": 18,
     "internetPopPercentage": 37,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Austria",
@@ -162,7 +176,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Azerbaijan",
@@ -173,7 +188,8 @@
     "freedomScore": 52,
     "internetPopPercentage": 91,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Bahamas",
@@ -184,7 +200,8 @@
     "freedomScore": null,
     "internetPopPercentage": 49,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Bahrain",
@@ -195,7 +212,8 @@
     "freedomScore": 72,
     "internetPopPercentage": 72,
     "pointsOfControl": 4,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Bangladesh",
@@ -206,7 +224,8 @@
     "freedomScore": 49,
     "internetPopPercentage": 34,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Barbados",
@@ -217,7 +236,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Belarus",
@@ -228,7 +248,8 @@
     "freedomScore": 67,
     "internetPopPercentage": 69,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Belgium",
@@ -239,7 +260,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": 10,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Belize",
@@ -250,7 +272,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Benin",
@@ -261,7 +284,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Bermuda",
@@ -272,7 +296,8 @@
     "freedomScore": null,
     "internetPopPercentage": 71,
     "pointsOfControl": 4,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Bhutan",
@@ -283,7 +308,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Bolivia, Plurinational State of",
@@ -294,7 +320,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Bonaire, Sint Eustatius and Saba",
@@ -305,7 +332,8 @@
     "freedomScore": null,
     "internetPopPercentage": 83,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Bosnia and Herzegovina",
@@ -316,7 +344,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": 6,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Botswana",
@@ -327,7 +356,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Bouvet Island",
@@ -338,7 +368,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Brazil",
@@ -349,7 +380,8 @@
     "freedomScore": 32,
     "internetPopPercentage": 95,
     "pointsOfControl": 8,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "British Indian Ocean Territory",
@@ -360,7 +392,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Brunei Darussalam",
@@ -371,7 +404,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Bulgaria",
@@ -382,7 +416,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": 32,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Burkina Faso",
@@ -393,7 +428,8 @@
     "freedomScore": null,
     "internetPopPercentage": 1,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Burundi",
@@ -404,7 +440,8 @@
     "freedomScore": null,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Cabo Verde",
@@ -415,7 +452,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Cambodia",
@@ -426,7 +464,8 @@
     "freedomScore": 47,
     "internetPopPercentage": 99,
     "pointsOfControl": 7,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Cameroon",
@@ -437,7 +476,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Canada",
@@ -448,7 +488,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": 14,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Cayman Islands",
@@ -459,7 +500,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Central African Republic",
@@ -470,7 +512,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Chad",
@@ -481,7 +524,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Chile",
@@ -492,7 +536,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": 5,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "China",
@@ -503,7 +548,8 @@
     "freedomScore": 86,
     "internetPopPercentage": 49,
     "pointsOfControl": 3,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Christmas Island",
@@ -514,7 +560,8 @@
     "freedomScore": null,
     "internetPopPercentage": 72,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Cocos (Keeling) Islands",
@@ -525,7 +572,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Colombia",
@@ -536,7 +584,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": 5,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Comoros",
@@ -547,7 +596,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Congo",
@@ -558,7 +608,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Congo, the Democratic Republic of the",
@@ -569,7 +620,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Cook Islands",
@@ -580,7 +632,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Costa Rica",
@@ -591,7 +644,8 @@
     "freedomScore": null,
     "internetPopPercentage": 71,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Côte d'Ivoire",
@@ -602,7 +656,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Croatia",
@@ -613,7 +668,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": 6,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Cuba",
@@ -624,7 +680,8 @@
     "freedomScore": 86,
     "internetPopPercentage": 83,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Curaçao",
@@ -635,7 +692,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Cyprus",
@@ -646,7 +704,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": 5,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Czech Republic",
@@ -657,7 +716,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": 31,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Denmark",
@@ -668,7 +728,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 16,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Djibouti",
@@ -679,7 +740,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Dominica",
@@ -690,7 +752,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Dominican Republic",
@@ -701,7 +764,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Ecuador",
@@ -712,7 +776,8 @@
     "freedomScore": 37,
     "internetPopPercentage": 1,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Egypt",
@@ -723,7 +788,8 @@
     "freedomScore": 60,
     "internetPopPercentage": 24,
     "pointsOfControl": 3,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "El Salvador",
@@ -734,7 +800,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Equatorial Guinea",
@@ -745,7 +812,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Eritrea",
@@ -756,7 +824,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Estonia",
@@ -767,7 +836,8 @@
     "freedomScore": 9,
     "internetPopPercentage": 46,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Ethiopia",
@@ -778,7 +848,8 @@
     "freedomScore": 79,
     "internetPopPercentage": 45,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Falkland Islands (Malvinas)",
@@ -789,7 +860,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Faroe Islands",
@@ -800,7 +872,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Fiji",
@@ -811,7 +884,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Finland",
@@ -822,7 +896,8 @@
     "freedomScore": null,
     "internetPopPercentage": 49,
     "pointsOfControl": 6,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "France",
@@ -833,7 +908,8 @@
     "freedomScore": 20,
     "internetPopPercentage": 72,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "French Guiana",
@@ -844,7 +920,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "French Polynesia",
@@ -855,7 +932,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "French Southern Territories",
@@ -866,7 +944,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Gabon",
@@ -877,7 +956,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Gambia",
@@ -888,7 +968,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Georgia",
@@ -899,7 +980,8 @@
     "freedomScore": 26,
     "internetPopPercentage": 51,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Germany",
@@ -910,7 +992,8 @@
     "freedomScore": 17,
     "internetPopPercentage": 71,
     "pointsOfControl": 19,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Ghana",
@@ -921,7 +1004,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": 5,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Gibraltar",
@@ -932,7 +1016,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Greece",
@@ -943,7 +1028,8 @@
     "freedomScore": null,
     "internetPopPercentage": 83,
     "pointsOfControl": 11,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Greenland",
@@ -954,7 +1040,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Grenada",
@@ -965,7 +1052,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Guadeloupe",
@@ -976,7 +1064,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Guam",
@@ -987,7 +1076,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Guatemala",
@@ -998,7 +1088,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Guernsey",
@@ -1009,7 +1100,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Guinea",
@@ -1020,7 +1112,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Guinea-Bissau",
@@ -1031,7 +1124,8 @@
     "freedomScore": null,
     "internetPopPercentage": 1,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Guyana",
@@ -1042,7 +1136,8 @@
     "freedomScore": null,
     "internetPopPercentage": 24,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Haiti",
@@ -1053,7 +1148,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Heard Island and McDonald Islands",
@@ -1064,7 +1160,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Holy See (Vatican City State)",
@@ -1075,7 +1172,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Honduras",
@@ -1086,7 +1184,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": 6,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Hong Kong",
@@ -1097,7 +1196,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 9,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Hungary",
@@ -1108,7 +1208,8 @@
     "freedomScore": 23,
     "internetPopPercentage": 37,
     "pointsOfControl": 17,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Iceland",
@@ -1119,7 +1220,8 @@
     "freedomScore": 6,
     "internetPopPercentage": 11,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "India",
@@ -1130,7 +1232,8 @@
     "freedomScore": 47,
     "internetPopPercentage": 91,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Indonesia",
@@ -1141,7 +1244,8 @@
     "freedomScore": 41,
     "internetPopPercentage": 49,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Iran, Islamic Republic of",
@@ -1152,7 +1256,8 @@
     "freedomScore": 91,
     "internetPopPercentage": 72,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Iraq",
@@ -1163,7 +1268,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Ireland",
@@ -1174,7 +1280,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": 8,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Isle of Man",
@@ -1185,7 +1292,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": 5,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Israel",
@@ -1196,7 +1304,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Italy",
@@ -1207,7 +1316,8 @@
     "freedomScore": 23,
     "internetPopPercentage": 50,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Jamaica",
@@ -1218,7 +1328,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Japan",
@@ -1229,7 +1340,8 @@
     "freedomScore": 22,
     "internetPopPercentage": 71,
     "pointsOfControl": 8,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Jersey",
@@ -1240,7 +1352,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Jordan",
@@ -1251,7 +1364,8 @@
     "freedomScore": 46,
     "internetPopPercentage": 62,
     "pointsOfControl": 3,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Kazakhstan",
@@ -1262,7 +1376,8 @@
     "freedomScore": 59,
     "internetPopPercentage": 83,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Kenya",
@@ -1273,7 +1388,8 @@
     "freedomScore": 28,
     "internetPopPercentage": 13,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Kiribati",
@@ -1284,7 +1400,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Korea, Democratic People's Republic of",
@@ -1295,7 +1412,8 @@
     "freedomScore": 32,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Korea, Republic of",
@@ -1306,7 +1424,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 3,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Kuwait",
@@ -1317,7 +1436,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": 6,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Kyrgyzstan",
@@ -1328,7 +1448,8 @@
     "freedomScore": 35,
     "internetPopPercentage": 84,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Lao People's Democratic Republic",
@@ -1339,7 +1460,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": 3,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Latvia",
@@ -1350,7 +1472,8 @@
     "freedomScore": null,
     "internetPopPercentage": 1,
     "pointsOfControl": 6,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Lebanon",
@@ -1361,7 +1484,8 @@
     "freedomScore": 45,
     "internetPopPercentage": 24,
     "pointsOfControl": 7,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Lesotho",
@@ -1372,7 +1496,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Liberia",
@@ -1383,7 +1508,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Libya",
@@ -1394,7 +1520,8 @@
     "freedomScore": 45,
     "internetPopPercentage": 53,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Liechtenstein",
@@ -1405,7 +1532,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": 5,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Lithuania",
@@ -1416,7 +1544,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Luxembourg",
@@ -1427,7 +1556,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": 7,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Macao",
@@ -1438,7 +1568,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Macedonia, the former Yugoslav Republic of",
@@ -1449,7 +1580,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Madagascar",
@@ -1460,7 +1592,8 @@
     "freedomScore": null,
     "internetPopPercentage": 49,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Malawi",
@@ -1471,7 +1604,8 @@
     "freedomScore": 42,
     "internetPopPercentage": 72,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Malaysia",
@@ -1482,7 +1616,8 @@
     "freedomScore": 44,
     "internetPopPercentage": 34,
     "pointsOfControl": 5,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Maldives",
@@ -1493,7 +1628,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Mali",
@@ -1504,7 +1640,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Malta",
@@ -1515,7 +1652,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Marshall Islands",
@@ -1526,7 +1664,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Martinique",
@@ -1537,7 +1676,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Mauritania",
@@ -1548,7 +1688,8 @@
     "freedomScore": null,
     "internetPopPercentage": 71,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Mauritius",
@@ -1559,7 +1700,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Mayotte",
@@ -1570,7 +1712,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Mexico",
@@ -1581,7 +1724,8 @@
     "freedomScore": 38,
     "internetPopPercentage": 83,
     "pointsOfControl": 4,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Micronesia, Federated States of",
@@ -1592,7 +1736,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Moldova, Republic of",
@@ -1603,7 +1748,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Monaco",
@@ -1614,7 +1760,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Mongolia",
@@ -1625,7 +1772,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 2,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Montenegro",
@@ -1636,7 +1784,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Montserrat",
@@ -1647,7 +1796,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Morocco",
@@ -1658,7 +1808,8 @@
     "freedomScore": 42,
     "internetPopPercentage": 56,
     "pointsOfControl": 2,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Mozambique",
@@ -1669,7 +1820,8 @@
     "freedomScore": null,
     "internetPopPercentage": 1,
     "pointsOfControl": 4,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Myanmar",
@@ -1680,7 +1832,8 @@
     "freedomScore": 62,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Namibia",
@@ -1691,7 +1844,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Nauru",
@@ -1702,7 +1856,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Nepal",
@@ -1713,7 +1868,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": 5,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Netherlands",
@@ -1724,7 +1880,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": 24,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "New Caledonia",
@@ -1735,7 +1892,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 1,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "New Zealand",
@@ -1746,7 +1904,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": 8,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Nicaragua",
@@ -1757,7 +1916,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": 5,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Niger",
@@ -1768,7 +1928,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Nigeria",
@@ -1779,7 +1940,8 @@
     "freedomScore": 31,
     "internetPopPercentage": 49,
     "pointsOfControl": 10,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Niue",
@@ -1790,7 +1952,8 @@
     "freedomScore": null,
     "internetPopPercentage": 72,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Norfolk Island",
@@ -1801,7 +1964,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Northern Mariana Islands",
@@ -1812,7 +1976,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Norway",
@@ -1823,7 +1988,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": 11,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Oman",
@@ -1834,7 +2000,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": 1,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Pakistan",
@@ -1845,7 +2012,8 @@
     "freedomScore": 67,
     "internetPopPercentage": 50,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Palau",
@@ -1856,7 +2024,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Palestine, State of",
@@ -1867,7 +2036,8 @@
     "freedomScore": null,
     "internetPopPercentage": 71,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Panama",
@@ -1878,7 +2048,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": 2,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Papua New Guinea",
@@ -1889,7 +2060,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": 1,
-    "governmentControl": 2
+    "governmentControl": 2,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Paraguay",
@@ -1900,7 +2072,8 @@
     "freedomScore": null,
     "internetPopPercentage": 83,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Peru",
@@ -1911,7 +2084,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": 3,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Philippines",
@@ -1922,7 +2096,8 @@
     "freedomScore": 25,
     "internetPopPercentage": 47,
     "pointsOfControl": 5,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Pitcairn",
@@ -1933,7 +2108,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "Poland",
@@ -1944,7 +2120,8 @@
     "freedomScore": null,
     "internetPopPercentage": 95,
     "pointsOfControl": 19,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "Portugal",
@@ -1955,7 +2132,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "Puerto Rico",
@@ -1966,7 +2144,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Qatar",
@@ -1977,7 +2156,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Réunion",
@@ -1988,7 +2168,8 @@
     "freedomScore": null,
     "internetPopPercentage": 1,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Romania",
@@ -1999,7 +2180,8 @@
     "freedomScore": null,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Russian Federation",
@@ -2010,7 +2192,8 @@
     "freedomScore": 54,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Rwanda",
@@ -2021,7 +2204,8 @@
     "freedomScore": 48,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Saint Barthélemy",
@@ -2032,7 +2216,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Saint Helena, Ascension and Tristan da Cunha",
@@ -2043,7 +2228,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Saint Kitts and Nevis",
@@ -2054,7 +2240,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Saint Lucia",
@@ -2065,7 +2252,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Saint Martin (French part)",
@@ -2076,7 +2264,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Saint Pierre and Miquelon",
@@ -2087,7 +2276,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Saint Vincent and the Grenadines",
@@ -2098,7 +2288,8 @@
     "freedomScore": null,
     "internetPopPercentage": 49,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Samoa",
@@ -2109,7 +2300,8 @@
     "freedomScore": null,
     "internetPopPercentage": 72,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "San Marino",
@@ -2120,7 +2312,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Sao Tome and Principe",
@@ -2131,7 +2324,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Saudi Arabia",
@@ -2142,7 +2336,8 @@
     "freedomScore": 70,
     "internetPopPercentage": 69,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Senegal",
@@ -2153,7 +2348,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Serbia",
@@ -2164,7 +2360,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Seychelles",
@@ -2175,7 +2372,8 @@
     "freedomScore": null,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Sierra Leone",
@@ -2186,7 +2384,8 @@
     "freedomScore": null,
     "internetPopPercentage": 71,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Singapore",
@@ -2197,7 +2396,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Sint Maarten (Dutch part)",
@@ -2208,7 +2408,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Slovakia",
@@ -2219,7 +2420,8 @@
     "freedomScore": null,
     "internetPopPercentage": 83,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Slovenia",
@@ -2230,7 +2432,8 @@
     "freedomScore": null,
     "internetPopPercentage": 13,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Solomon Islands",
@@ -2241,7 +2444,8 @@
     "freedomScore": null,
     "internetPopPercentage": 47,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "Somalia",
@@ -2252,7 +2456,8 @@
     "freedomScore": null,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "South Africa",
@@ -2263,7 +2468,8 @@
     "freedomScore": 26,
     "internetPopPercentage": 95,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "South Georgia and the South Sandwich Islands",
@@ -2274,7 +2480,8 @@
     "freedomScore": null,
     "internetPopPercentage": 6,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "South Sudan",
@@ -2285,7 +2492,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Spain",
@@ -2296,7 +2504,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": 10,
-    "governmentControl": 0
+    "governmentControl": 0,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Sri Lanka",
@@ -2307,7 +2516,8 @@
     "freedomScore": 58,
     "internetPopPercentage": 1,
     "pointsOfControl": 4,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Sudan",
@@ -2318,7 +2528,8 @@
     "freedomScore": 63,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Suriname",
@@ -2329,7 +2540,8 @@
     "freedomScore": null,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Svalbard and Jan Mayen",
@@ -2340,7 +2552,8 @@
     "freedomScore": null,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Swaziland",
@@ -2351,7 +2564,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Sweden",
@@ -2362,7 +2576,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Switzerland",
@@ -2373,7 +2588,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": 22,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Syrian Arab Republic",
@@ -2384,7 +2600,8 @@
     "freedomScore": 85,
     "internetPopPercentage": 37,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Taiwan, Province of China",
@@ -2395,7 +2612,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Tajikistan",
@@ -2406,7 +2624,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Tanzania, United Republic of",
@@ -2417,7 +2636,8 @@
     "freedomScore": null,
     "internetPopPercentage": 49,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 49
   },
   {
     "displayName": "Thailand",
@@ -2428,7 +2648,8 @@
     "freedomScore": 60,
     "internetPopPercentage": 72,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 72
   },
   {
     "displayName": "Timor-Leste",
@@ -2439,7 +2660,8 @@
     "freedomScore": null,
     "internetPopPercentage": 34,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 34
   },
   {
     "displayName": "Togo",
@@ -2450,7 +2672,8 @@
     "freedomScore": null,
     "internetPopPercentage": 76,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 76
   },
   {
     "displayName": "Tokelau",
@@ -2461,7 +2684,8 @@
     "freedomScore": null,
     "internetPopPercentage": 69,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 69
   },
   {
     "displayName": "Tonga",
@@ -2472,7 +2696,8 @@
     "freedomScore": null,
     "internetPopPercentage": 88,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 88
   },
   {
     "displayName": "Trinidad and Tobago",
@@ -2483,7 +2708,8 @@
     "freedomScore": null,
     "internetPopPercentage": 50,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 50
   },
   {
     "displayName": "Tunisia",
@@ -2494,7 +2720,8 @@
     "freedomScore": 41,
     "internetPopPercentage": 51,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 51
   },
   {
     "displayName": "Turkey",
@@ -2505,7 +2732,8 @@
     "freedomScore": 49,
     "internetPopPercentage": 71,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 71
   },
   {
     "displayName": "Turkmenistan",
@@ -2516,7 +2744,8 @@
     "freedomScore": null,
     "internetPopPercentage": 48,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 48
   },
   {
     "displayName": "Turks and Caicos Islands",
@@ -2527,7 +2756,8 @@
     "freedomScore": null,
     "internetPopPercentage": 62,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 62
   },
   {
     "displayName": "Tuvalu",
@@ -2538,7 +2768,8 @@
     "freedomScore": null,
     "internetPopPercentage": 83,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 83
   },
   {
     "displayName": "Uganda",
@@ -2549,7 +2780,8 @@
     "freedomScore": 34,
     "internetPopPercentage": 13,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 13
   },
   {
     "displayName": "Ukraine",
@@ -2560,7 +2792,8 @@
     "freedomScore": 28,
     "internetPopPercentage": 47,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 47
   },
   {
     "displayName": "United Arab Emirates",
@@ -2571,7 +2804,8 @@
     "freedomScore": 66,
     "internetPopPercentage": 3,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 3
   },
   {
     "displayName": "United Kingdom",
@@ -2582,7 +2816,8 @@
     "freedomScore": 24,
     "internetPopPercentage": 95,
     "pointsOfControl": 13,
-    "governmentControl": 1
+    "governmentControl": 1,
+    "percentBitTorrent": 95
   },
   {
     "displayName": "United States",
@@ -2593,7 +2828,8 @@
     "freedomScore": 17,
     "internetPopPercentage": 6,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 6
   },
   {
     "displayName": "United States Minor Outlying Islands",
@@ -2604,7 +2840,8 @@
     "freedomScore": null,
     "internetPopPercentage": 84,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 84
   },
   {
     "displayName": "Uruguay",
@@ -2615,7 +2852,8 @@
     "freedomScore": null,
     "internetPopPercentage": 56,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 56
   },
   {
     "displayName": "Uzbekistan",
@@ -2626,7 +2864,8 @@
     "freedomScore": 78,
     "internetPopPercentage": 1,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 1
   },
   {
     "displayName": "Vanuatu",
@@ -2637,7 +2876,8 @@
     "freedomScore": null,
     "internetPopPercentage": 24,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 24
   },
   {
     "displayName": "Venezuela, Bolivarian Republic of",
@@ -2648,7 +2888,8 @@
     "freedomScore": 53,
     "internetPopPercentage": 99,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 99
   },
   {
     "displayName": "Viet Nam",
@@ -2659,7 +2900,8 @@
     "freedomScore": 75,
     "internetPopPercentage": 90,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 90
   },
   {
     "displayName": "Virgin Islands, British",
@@ -2670,7 +2912,8 @@
     "freedomScore": null,
     "internetPopPercentage": 53,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 53
   },
   {
     "displayName": "Virgin Islands, U.S.",
@@ -2681,7 +2924,8 @@
     "freedomScore": null,
     "internetPopPercentage": 46,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 46
   },
   {
     "displayName": "Wallis and Futuna",
@@ -2692,7 +2936,8 @@
     "freedomScore": null,
     "internetPopPercentage": 45,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 45
   },
   {
     "displayName": "Western Sahara",
@@ -2703,7 +2948,8 @@
     "freedomScore": null,
     "internetPopPercentage": 37,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 37
   },
   {
     "displayName": "Yemen",
@@ -2714,7 +2960,8 @@
     "freedomScore": null,
     "internetPopPercentage": 11,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 11
   },
   {
     "displayName": "Zambia",
@@ -2725,7 +2972,8 @@
     "freedomScore": null,
     "internetPopPercentage": 91,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 91
   },
   {
     "displayName": "Zimbabwe",
@@ -2736,6 +2984,7 @@
     "freedomScore": 54,
     "internetPopPercentage": 49,
     "pointsOfControl": null,
-    "governmentControl": null
+    "governmentControl": null,
+    "percentBitTorrent": 49
   }
 ]

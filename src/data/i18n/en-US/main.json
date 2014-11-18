@@ -27,7 +27,7 @@
             "Mozilla is the maker of Firefox OS, a mobile operating system to unleash access for the next billion.",
             "Firefox OS - unleashing access for the next billion."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Understand why Mobile matters to affordability."
           ],
           "mozActionLink": [
@@ -46,7 +46,7 @@
             "Mozilla’s browser Firefox is localized into over 80 languages by a global community of volunteers.",
             "With Firefox OS, Mozilla is enabling local developers to create apps easily"
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Make videos you like accessible in your language.",
             "Contribute to Mozilla localization."
           ],
@@ -67,7 +67,7 @@
             "Find out about accessibility features in Firefox",
             "Accessibility resources from the Mozilla community"
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Learn more about web accessibility."
           ],
           "mozActionLink": [
@@ -123,7 +123,7 @@
             "Mozilla was recognized Most Trusted Internet Company for Privacy",
             "In November 2014, we introduced Polaris, an initiative to reinforce user-focused privacy online"
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Watch and share the Web We Want video.",
             "Follow these best practices to protect your information"
           ],
@@ -145,7 +145,7 @@
             "Do Not Track: a technology and policy proposal to opt out of tracking.",
             "DuckDuckGo is pre-installed on Firefox for search without tracking."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Install Lightbeam for Firefox",
             "Disconnect on your browser",
             "Install Interest Dasboard add-on on Firefox",
@@ -171,7 +171,7 @@
             "In 2013, Mozilla launched StopWatchingUs, a campaign to end digital surveillance.",
             "Mozilla joined the EFF Tor Challenge to help protect privacy online."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Watch and share this TED video from privacy researcher Christopher Soghoian.",
             "Watch \"Citizenfour\", a documentary about the Snowden revelations."
           ],
@@ -191,7 +191,7 @@
           "mozActionCopy": [
             "Transparency and user control are key principles of the Mozilla Manifesto."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Install TOS;DR to better understand Terms of Service",
             "Watch this trailer for the documentary \"Terms and Conditions May Apply\"."
           ],
@@ -211,7 +211,7 @@
             "Commitment to Open Source is part of the Mozilla manifesto.",
             "Mozilla publishes The Open Standard, an online news platform about open, transparent, and collaborative systems."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Use open source tools. Here is a list of the best free and open source software out there.",
             "Watch and share this video explaining Open Source in LEGO"
           ],
@@ -229,7 +229,7 @@
           "title": "We’re locking up our data, throwing away the key.",
           "narrative": "The Internet relies on open standards: Servers, browsers and content all speak the same language. But there is a trend, mostly in the mobile apps market, towards using closed standards, and this prevents data from being moved from one service to another, even with the consent of the owner. The upshot? We lose control over our own data, which gets locked away under closed, proprietary systems.",
           "mozActionCopy": [],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Watch this video from Internet Society about Open Standards."
           ],
           "mozActionLink": [],
@@ -253,7 +253,7 @@
           "mozActionCopy": [
             "Mozilla is not a lobbying organisation: we take firm stances"
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Read more with this Wall Street Journal article: A Decade in Google Lobbying"
           ],
           "mozActionLink": [
@@ -270,7 +270,7 @@
           "mozActionCopy": [
             "Mozilla was one of the frontrunners of the anti-SOPA, PIPA campaign."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Behind the Great Wall of China",
             "How Social Media can Make History"
           ],
@@ -295,7 +295,7 @@
           "mozActionCopy": [
             "Find out about Firefox security features."
           ],
-          "yourActionCopy": [ 
+          "yourActionCopy": [
             "Learn more about online security with this Webmaker module"
           ],
           "mozActionLink": [
@@ -394,26 +394,47 @@
     }
   },
   "tags": {
-    "google": {
+    "mobile": {
+      "name": "Mobile"
+    },
+        "networkOperators": {
+      "name": "Network Operators"
+    },
+        "government": {
+      "name": "Government"
+    },
+        "internetCompanies": {
+      "name": "Internet Companies"
+    },
+        "google": {
       "name": "Google"
     },
-    "facebook": {
+        "facebook": {
       "name": "Facebook"
     },
-    "amazon": {
-      "name": "Amazon"
+        "apple": {
+      "name": "Apple"
     },
-    "ebay": {
-      "name": "Ebay"
+        "privacy": {
+      "name": "Privacy"
     },
-    "youtube": {
-      "name": "Youtube"
+        "netNeutrality": {
+      "name": "Net Neutrality"
     },
-    "china": {
-      "name": "China"
+        "userRights": {
+      "name": "User Rights"
     },
-    "brazil": {
-      "name": "Brazil"
-    }
+        "emergingEconomies": {
+      "name": "Emerging Economies"
+    },
+        "regulation": {
+      "name": "Regulation"
+    },
+        "privateInternet": {
+      "name": "Private Internet"
+    },
+        "openness": {
+      "name": "Openness"
+    },
   }
 }

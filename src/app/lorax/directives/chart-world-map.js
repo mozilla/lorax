@@ -59,10 +59,11 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
 
       var shadeName = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.name;
       var shadeValues = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.values;
+      var shadeInvert = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.invert;
       var shadeLegend = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.legend;
       var displayDataset = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.name;
       var displayUnits = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.units;
-      var colorScale = setShading(shadeValues);
+      var colorScale = setShading(shadeValues, shadeInvert);
 
       var infographicData = {};
       $.each(countryData, function(key, data) {
@@ -232,13 +233,17 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
     }.bind(controller));
   };
 
-  function setShading(shadeValues) {
+  function setShading(shadeValues, shadeInvert) {
     var opacity = 1.0;
     var minOpacity = 1.0;
     var opacityMod = minOpacity/(shadeValues.length);
     var countryColors = [];
     for (var i = 0; i < shadeValues.length; i++) {
       countryColors.push('rgba(0,0,0,' + (opacity-i*opacityMod) + ')');
+    }
+
+    if (shadeInvert) {
+        countryColors.reverse();
     }
 
     var colorScale = d3.scale.threshold()
