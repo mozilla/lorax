@@ -48,6 +48,10 @@ body {
     &[data-bg-mode="tag"] {
         background-color: @extra-dark-grey;
     }
+
+    &.is-modal-open {
+        overflow: hidden !important;
+    }
 }
 
 .container {
@@ -56,6 +60,11 @@ body {
     max-width: 1600px;
     min-height: 100%;
     position: relative;
+    z-index: -1;
+
+    .is-detail & {
+        z-index: 0;
+    }
 }
 
 
@@ -87,6 +96,7 @@ a {
     display: inline-block;
     .fira-sans-semibold;
     .font-size(1.1);
+    height: 40px;
     letter-spacing: 1px;
     line-height: 36px;
     padding: 0 30px;

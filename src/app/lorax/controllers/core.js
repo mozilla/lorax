@@ -31,7 +31,6 @@ define(function () {
 
     CoreCtrl.prototype.openShareModal = function (service) {
         this._$scope.$broadcast('openShareModal', service);
-        console.log('go');
     };
 
     CoreCtrl.prototype.openShareOptions = function () {

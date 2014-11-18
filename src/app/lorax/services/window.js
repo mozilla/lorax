@@ -104,6 +104,14 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             pubSubService.publish('windowService.detailMode', [detailMode]);
         }
 
+        /**
+         * @method core/services/windowService~setModalOpen
+         * @param modalOpen {Bool} modal open true/false
+         */
+        function setModalOpen(modalOpen) {
+            pubSubService.publish('windowService.modalOpen', [modalOpen]);
+        }
+
         return {
             setBreakpoint: setBreakpoint,
             breakpoint: getCurrentBreakpoint,
@@ -116,7 +124,8 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             unsubscribe: unsubscribe,
             mq: matchMedia,
             getDeviceWindowHeight: getDeviceWindowHeight,
-            setDetailMode: setDetailMode
+            setDetailMode: setDetailMode,
+            setModalOpen: setModalOpen
         };
     };
 

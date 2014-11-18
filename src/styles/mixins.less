@@ -468,6 +468,24 @@
   justify-content: space-around;
 }
 
+// flex-basis //
+
+// applies to flex-items
+
+// controls initial width of a flex item, as specified by a standard width value, or 'auto'
+
+// flex-basis is the third of three shorthand values in the flex property
+
+// 2009 spec does not have an equivalent to flex-basis
+
+.flex-basis(@width) {
+// 2009 spec does not have an equivalent to flex-basis
+// 2013 spec and tweener -ms- spec
+  -webkit-flex-basis: @width;
+  -ms-flex: 0 1 @width;
+  flex-basis: @width;
+}
+
 
 /* Text
    ========================================================================== */

@@ -58,6 +58,10 @@ define([
         return this._parent;
     };
 
+    IssueModel.prototype.getParentId = function () {
+        return this._parent._id;
+    };
+
     IssueModel.prototype.getId = function () {
         return this._id;
     };
@@ -137,6 +141,10 @@ define([
             break;
         }
         return out;
+    };
+
+    IssueModel.prototype.getUrl = function () {
+        return '/detail/?topic=' + this.getParentId() + '&issue=' + this.getId();
     };
 
     return IssueModel;

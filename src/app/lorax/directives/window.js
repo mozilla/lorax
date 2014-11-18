@@ -161,6 +161,11 @@ define(['angular', 'jquery'], function (angular, $) {
             }
         }
 
+        function onModalOpenChange(modalOpen) {
+            var classMethod = (modalOpen === true) ? 'addClass' : 'removeClass';
+            iElem[classMethod]('is-modal-open');
+        }
+
         windowEl
             .on('scroll', controller.onScroll.bind(controller))
             .on('resize', onResize).trigger('resize');
@@ -183,6 +188,11 @@ define(['angular', 'jquery'], function (angular, $) {
         controller.pubSubService.subscribe(
             'windowService.bgMode',
             onBgModeChange
+        );
+
+        controller.pubSubService.subscribe(
+            'windowService.modalOpen',
+            onModalOpenChange
         );
     };
 
