@@ -912,7 +912,7 @@ img {
 }
 .modal__header > h1 {
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
   font-size: 14px;
   font-size: 1.4rem;
@@ -1054,7 +1054,7 @@ img {
 }
 .sharing-quote__text > p {
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
   font-size: 16px;
   font-size: 1.6rem;
@@ -1116,7 +1116,7 @@ img {
   color: #ffffff;
   display: none;
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   font-size: 11px;
   font-size: 1.1rem;

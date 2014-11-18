@@ -397,44 +397,44 @@
     "mobile": {
       "name": "Mobile"
     },
-        "networkOperators": {
+    "networkOperators": {
       "name": "Network Operators"
     },
-        "government": {
+    "government": {
       "name": "Government"
     },
-        "internetCompanies": {
+    "internetCompanies": {
       "name": "Internet Companies"
     },
-        "google": {
+    "google": {
       "name": "Google"
     },
-        "facebook": {
+    "facebook": {
       "name": "Facebook"
     },
-        "apple": {
+    "apple": {
       "name": "Apple"
     },
-        "privacy": {
+    "privacy": {
       "name": "Privacy"
     },
-        "netNeutrality": {
+    "netNeutrality": {
       "name": "Net Neutrality"
     },
-        "userRights": {
+    "userRights": {
       "name": "User Rights"
     },
-        "emergingEconomies": {
+    "emergingEconomies": {
       "name": "Emerging Economies"
     },
-        "regulation": {
+    "regulation": {
       "name": "Regulation"
     },
-        "privateInternet": {
+    "privateInternet": {
       "name": "Private Internet"
     },
-        "openness": {
+    "openness": {
       "name": "Openness"
-    },
+    }
   }
 }
