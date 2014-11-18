@@ -27,7 +27,7 @@ define([
         this.SCROLL_DEFAULTS = {
             animate: true,
             delay: 0,
-            easing: 'easeInOut',
+            easing: 'swing',
             duration: 1000
         };
 
@@ -68,6 +68,10 @@ define([
 
     scrollService.prototype.go = function (scrollId, opts) {
         var deferred = this.$q.defer();
+
+        if (opts.animate === false) {
+            opts.duration = 0;
+        }
 
         var o = $.extend({}, this.SCROLL_DEFAULTS, opts);
 
@@ -130,7 +134,8 @@ define([
                             typeof o.callback === 'function' &&
                             o.callback('end');
                     }
-                });
+                }
+            );
         }
 
         this.$timeout(animate, o.delay);

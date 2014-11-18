@@ -28,20 +28,24 @@ body {
     text-rendering: optimizeLegibility;
     .transition(background-color 0.3s ease-in-out);
 
-    &.is-detail.no-anim {
+    &.no-anim {
         .transition(none);
     }
 
-    &.is-detail[data-bg-mode="stop"] {
+    &[data-bg-mode="stop"] {
         background-color: @stop;
     }
 
-    &.is-detail[data-bg-mode="wait"] {
+    &[data-bg-mode="wait"] {
         background-color: @wait;
     }
 
-    &.is-detail[data-bg-mode="go"] {
+    &[data-bg-mode="go"] {
         background-color: @go;
+    }
+
+    &[data-bg-mode="tag"] {
+        background-color: @extra-dark-grey;
     }
 }
 

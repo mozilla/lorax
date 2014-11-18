@@ -30,6 +30,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         $location,
         dataService,
         windowService,
+        scrollService,
         exploreService
     ) {
 
@@ -40,6 +41,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._$location = $location;
         this._dataService = dataService;
         this._windowService = windowService;
+        this._scrollService = scrollService;
         this._exploreService = exploreService;
 
         this._$scope.detail = {
@@ -72,6 +74,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         '$location',
         'dataService',
         'windowService',
+        'scrollService',
         'exploreService'
     ];
 
@@ -81,15 +84,15 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._exploreService.switchView('detail');
 
         // set bg color
-        $('body').addClass('no-anim');
         var status = $('.detail').eq(0).attr('data-issue-status');
-        $('body').attr('data-bg-mode', status);
-        setTimeout(function () {
-            $('body').removeClass('no-anim');
-        }, 1000);
+        this._windowService.setBgMode(status, false);
     };
 
-    IssueAllCtrl.prototype.scrollToIssue = function (issue, topic) {
+    IssueAllCtrl.prototype.scrollToIssue = function (issue, topic, animate) {
+        if (animate !== false) {
+            animate = true;
+        }
+
         // get first issue from topic
         if (topic && !issue) {
             issue = this._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
@@ -102,7 +105,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         }
 
         // scroll to offset
-        $('body').animate({scrollTop: offset}, 500);
+        this._scrollService.go('top', {offset: offset, duration: 500, animate: animate});
 
         this._$scope.detail.currentIssue = issue;
     };
@@ -141,7 +144,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
             var topic = controller._$location.search().topic;
             var issue = controller._$location.search().issue;
 
-            controller.scrollToIssue(issue, topic);
+            controller.scrollToIssue(issue, topic, false);
 
             controller._$rootScope.$on('$routeUpdate', controller.onRouteChange.bind(controller));
             controller._$scope.$on('$destroy', controller.onRouteChange.bind(controller));
@@ -157,7 +160,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
                 scrollOffset : controller._issueOffset,
                 ScrollingOutOfView : function onScrollOutOfView (elem) {
                     status = elem.attr('data-issue-status');
-                    $body.attr('data-bg-mode', status);
+                    controller._windowService.setBgMode(status);
                 }
             });
 

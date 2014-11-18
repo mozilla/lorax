@@ -64,6 +64,14 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             $.publish('windowService.scroll', [scrollTop]);
         }
 
+        function setBgMode(status, animate) {
+            if (animate !== false) {
+                animate = true;
+            }
+
+            pubSubService.publish('windowService.bgMode', [status, animate]);
+        }
+
         function subscribe(eventType, callback) {
             $.subscribe('windowService.' + eventType, function (e, res) {
                 callback(res);
@@ -103,6 +111,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             dimensions: getWindowDims,
             setScrollTop: setScrollTop,
             scrollTop: getScrollTop,
+            setBgMode: setBgMode,
             subscribe: subscribe,
             unsubscribe: unsubscribe,
             mq: matchMedia,

@@ -147,6 +147,20 @@ define(['angular', 'jquery'], function (angular, $) {
             iElem[classMethod]('is-detail');
         }
 
+        function onBgModeChange(status, animate) {
+            if (!animate) {
+                iElem.addClass('no-anim');
+            }
+
+            iElem.attr('data-bg-mode', status);
+
+            if (!animate) {
+                setTimeout(function () {
+                    iElem.removeClass('no-anim');
+                }, 500);
+            }
+        }
+
         windowEl
             .on('scroll', controller.onScroll.bind(controller))
             .on('resize', onResize).trigger('resize');
@@ -164,6 +178,11 @@ define(['angular', 'jquery'], function (angular, $) {
         controller.pubSubService.subscribe(
             'windowService.detailMode',
             onDetailModeChange
+        );
+
+        controller.pubSubService.subscribe(
+            'windowService.bgMode',
+            onBgModeChange
         );
     };
 

@@ -405,20 +405,23 @@ body {
   -o-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
-body.is-detail.no-anim {
+body.no-anim {
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
 }
-body.is-detail[data-bg-mode="stop"] {
+body[data-bg-mode="stop"] {
   background-color: #db3f33;
 }
-body.is-detail[data-bg-mode="wait"] {
+body[data-bg-mode="wait"] {
   background-color: #f6c925;
 }
-body.is-detail[data-bg-mode="go"] {
+body[data-bg-mode="go"] {
   background-color: #6bb94e;
+}
+body[data-bg-mode="tag"] {
+  background-color: #222222;
 }
 .container {
   margin: 0 auto;
