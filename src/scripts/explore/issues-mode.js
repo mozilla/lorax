@@ -30,6 +30,12 @@ define([
 
         this._issueMargin = 80;
 
+        this._issues = this._canvas.issues;
+
+        this._updateScroll();
+    };
+
+    IssuesMode.prototype._updateScroll = function () {
         var topMargin = 200;
         var leftMargin = 400;
         if (Responsive.IS_SMALL()) {
@@ -47,8 +53,8 @@ define([
         var i;
         var issue;
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
+        for (i = 0; i < this._issues.length; i ++) {
+            issue = this._issues[i];
             issue.issueX = this._scrollArea.x;
             issue.issueY = this._scrollArea.y + (this._issueMargin * i);
         }
@@ -61,9 +67,9 @@ define([
 
         this._canvas.clearLines();
 
-        for (i = 0; i < this._canvas.issues.length - 1; i ++) {
-            issue = this._canvas.issues[i];
-            relatedItem = this._canvas.issues[i + 1];
+        for (i = 0; i < this._issues.length - 1; i ++) {
+            issue = this._issues[i];
+            relatedItem = this._issues[i + 1];
 
             this._canvas.drawLine(issue, relatedItem, 0x0, 0.10);
         }
@@ -141,9 +147,10 @@ define([
         var issue;
 
         this._scrollPosition = this._scrollFinalPosition = 0;
+        this._updateScroll();
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
+        for (i = 0; i < this._issues.length; i ++) {
+            issue = this._issues[i];
             issue.setMode(Issue.MODE_ISSUES);
             issue.moveTo(issue.issueX, issue.issueY);
             // so mouse over doesnt block animation
@@ -165,8 +172,8 @@ define([
         var i;
         var issue;
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
+        for (i = 0; i < this._issues.length; i ++) {
+            issue = this._issues[i];
             issue.mouseOverS.remove(issue.issueMouseOver);
             issue.mouseOutS.remove(issue.issueMouseOut);
         }

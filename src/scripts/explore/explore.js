@@ -161,7 +161,8 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TAG_ISSUES;
-            this._tagIssues.show(tag);
+            this._tagIssues.setTag(tag);
+            this._tagIssues.show();
             this._setBgMode('tag');
         } else {
             this._onInitMode = this.showTagIssues;
