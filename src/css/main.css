@@ -499,22 +499,21 @@ img {
    Header
    ========================================================================== */
 .banner {
-  margin: 50px 0 0;
+  height: 0;
   left: 0;
   position: fixed;
-  top: 0;
+  top: 50px;
   width: 100%;
 }
 @media screen and (min-width: 560px) {
   .banner {
-    height: 126px;
-    margin-top: 20px;
+    top: 20px;
   }
 }
 @media screen and (min-width: 1360px) {
   .banner {
     height: 144px;
-    margin: 0;
+    top: 0;
   }
 }
 .is-detail .banner {
