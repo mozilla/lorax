@@ -166,7 +166,7 @@
         },
         "censorship":{
           "status":1,
-          "infographicType":"static-image",
+          "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":false,
           "tags":[
             "Government",
@@ -196,7 +196,7 @@
         },
         "networkDecentralization":{
           "status":1,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
           "tags":[
             "Network operators",

@@ -173,7 +173,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
                 issue = issues[i];
                 issueTitle = $('.detail-header-section', '#' + issue.getId());
                 issue.offset = issueTitle.offset();
-            };
+            }
 
             // update explore on scroll
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));

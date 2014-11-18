@@ -1,0 +1,10 @@
+<div class="accessible">
+  <div class="accessible-section" ng-repeat="section in ::accessible.data">
+    <div class="accessible-section__title">{{::section.title}}</div>
+    <div class="accessible-section__copy" ng-if="section.copy">{{::section.copy}}</div>
+    <div class="accessible-section__image" ng-class="{'accessible-section__fullwidth' : section.fullWidth}">
+      <img ng-src="{{::section.imageUrl}}"/>
+    </div>
+    <div class="accessible-section__link" ng-if="section.linkCopy"><a href="{{::section.linkUrl}}">{{::section.linkCopy}}</a></div>
+  </div>
+</div>

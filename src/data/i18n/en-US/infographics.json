@@ -9,21 +9,25 @@
     "dataPoints": {
       "countryData": {
         "shading": {
-          "name": "levelOfFreedom",
+          "name": "internetPopPercentage",
           "values": [
-            0.01,
-            1.01,
-            2.01
+            20.0,
+            40.0,
+            60.0,
+            80.0,
+            100.0
           ],
           "legend": [
-            "Not Free",
-            "Partly Free",
-            "Free"
+            "Less than 20%",
+            "20-40%",
+            "40-60%",
+            "60-80%",
+            "Greater than 80%"
           ]
         },
         "display": {
-          "name": "freedomScore",
-          "units": " freedom score"
+          "name": "internetPopPercentage",
+          "units": "% population has internet"
         }
       }
     }
@@ -181,7 +185,37 @@
       "src": ""
     },
     "dataPoints": {
-      "url": "/images/accessibility-infographic.png"
+      "sections": [
+        {
+          "title": "1/9 of Internet users have a vision impairment",
+          "imageUrl": "/images/accessible-1.png",
+          "fullWidth": true
+        },
+        {
+          "title": "Screen readers",
+          "imageUrl": "/images/accessible-2.png",
+          "copy": "This sends information to a speech synthesizer to be spoken or to a Braille display. When designing a site, make sure your content divisions are friendly for screen readers to access.",
+          "linkCopy": "Learn more",
+          "linkUrl": "#",
+          "fullWidth": false
+        },
+        {
+          "title": "Special browsers",
+          "imageUrl": "/images/accessible-3.png",
+          "copy": "A browser is designed specifically for blind users. It should be able to discriminate the structure of your page, to the extent that the page has a structure, and pass the information on to the user in a meaningful way.",
+          "linkCopy": "Learn more",
+          "linkUrl": "#",
+          "fullWidth": false
+        },
+        {
+          "title": "Screen magnification",
+          "imageUrl": "/images/accessible-4.png",
+          "copy": "Some users will use a screen magnification program. For these users, your choice of color and layout can make an enormous difference in their experience of your page.",
+          "linkCopy": "Learn more",
+          "linkUrl": "#",
+          "fullWidth": false
+        }
+      ]
     }
   },
   "infrastructure": {
@@ -975,28 +1009,25 @@
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "countryData": {
+        "shading": {
+          "name": "levelOfFreedom",
+          "values": [
+            0.01,
+            1.01,
+            2.01
+          ],
+          "legend": [
+            "Not Free",
+            "Partly Free",
+            "Free"
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "display": {
+          "name": "freedomScore",
+          "units": " freedom score"
         }
-      ]
+      }
     }
   },
   "cyberThreats": {
@@ -1160,28 +1191,25 @@
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "countryData": {
+        "shading": {
+          "name": "governmentControl",
+          "values": [
+            0.01,
+            1.01,
+            2.01
+          ],
+          "legend": [
+            "Easy",
+            "Moderate",
+            "Difficult"
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "display": {
+          "name": "pointsOfControl",
+          "units": " points of control"
         }
-      ]
+      }
     }
   },
   "cloudSecurity": {
@@ -1371,26 +1399,6 @@
         {
           "name": "South Africa",
           "amount": 50,
-          "tech": false
-        },
-        {
-          "name": "Chile",
-          "amount": 41,
-          "tech": false
-        },
-        {
-          "name": "Amazon",
-          "amount": 14,
-          "tech": true
-        },
-        {
-          "name": "Finland",
-          "amount": 11,
-          "tech": false
-        },
-        {
-          "name": "Tunisia",
-          "amount": 7,
           "tech": false
         }
       ]

@@ -269,23 +269,74 @@
 /* Accessibiity / Vision Impairment
    ========================================================================== */
 
-.accessibility__img {
-    padding: 25px 0;
-    margin: 0 auto;
+.accessible-section {
     display: block;
+    width: 100%;
+    padding: 0 5% 10% 5%;
+    vertical-align: top;
+
+    &:nth-child(odd) {
+        border-right: none;
+    }
+
+    .at-medium ({
+        display: inline-block;
+        width: 50%;
+
+        &:nth-child(odd) {
+            border-right: 1px solid @white;
+        }
+    });
 }
 
-.accessibility__header {
-    margin: 0 auto;
-    text-align: center;
-    .font-size(2.3);
-    line-height: 1.3;
-    font-weight: 500;
+.accessible-section__title {
+    .font-size(1.4);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    clear: both;
+
+    .at-medium ({
+        margin-bottom: 40px;
+    })
 }
 
-.accessibility__header span {
-   opacity: 0.8;
+.accessible-section__copy {
+    float: right;
+    width: 60%;
+    .font-size(1.0);
 }
+
+.accessible-section__image {
+    float: left;
+    width: 40%;
+    padding-right: 10%;
+}
+
+.accessible-section__fullwidth {
+    width: 100%;
+    float: none;
+    padding-right: 0;
+}
+
+.accessible-section__link {
+    clear: both;
+    float: right;
+    width: 60%;
+    padding-top: 3%;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    a {
+        color: rgba(0,0,0,0.7);
+    }
+
+    .at-medium ({
+        margin-bottom: 0;
+    })
+}
+
 
 /* Line Graph - General
    ========================================================================== */
@@ -358,7 +409,7 @@
     .at-large({
       margin-top: -15%;
     });
-    
+
 }
 
 .platformneutrality__legendbox {
@@ -455,7 +506,7 @@
 
 .cyberthreat__legend {
     display: none;
-    
+
     .at-medium({
       display: none;
     });
@@ -506,7 +557,7 @@
     width: 12%;
 
     div {
-      border-bottom: 1px solid rgba(0,0,0,0.3);  
+      border-bottom: 1px solid rgba(0,0,0,0.3);
     }
 }
 
@@ -553,7 +604,7 @@
 }
 
 .opensource__line_3, .opensource__line_4 {
-    stroke: @white; 
+    stroke: @white;
 }
 
 
@@ -586,7 +637,7 @@
 }
 
 .opensource__point_4 {
-    stroke: @white; 
+    stroke: @white;
 }
 
 .opensource__point_5 {
@@ -633,7 +684,7 @@
 }
 
 .opensource__legend-browser {
-    color: @white; 
+    color: @white;
     list-style-type: none;
     float: right;
 
@@ -854,13 +905,13 @@
    ========================================================================== */
 
 .concentration-power {
-    width: 1110px;
+    width: 680px;
     padding-bottom: 20px;
 }
 
 .concentration-power__organization {
     float: left;
-    width: 90px;
+    width: 85px;
 }
 
 .concentration-power__name {
@@ -937,7 +988,7 @@
 
     p {
       .font-size(1.6);
-      color: @extra-dark-grey; 
+      color: @extra-dark-grey;
     }
 }
 
@@ -972,7 +1023,7 @@
   .at-large {
     img {
       padding: 50px 0;
-    }  
+    }
 
       p {
       margin: 0;

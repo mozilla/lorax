@@ -1,8 +1,8 @@
 /**
  * @fileOverview Accessible Chart directive
- * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
-define(['jquery', 'd3'], function ($, d3) {
+define([], function () {
   'use strict';
 
   /**
@@ -14,7 +14,7 @@ define(['jquery', 'd3'], function ($, d3) {
       replace: true,
       scope: true,
       controller: ChartAccessibleController,
-      link: ChartAccessibleLinkFn
+      templateUrl: '/app/lorax/directives/chart-accessible.tpl.html'
     };
   };
 
@@ -29,6 +29,12 @@ define(['jquery', 'd3'], function ($, d3) {
   {
     this._$scope = $scope;
     this._$timeout = $timeout;
+
+    this._data = $scope.issue.getInfographic().getDataPoints().sections;
+
+    $scope.accessible = {
+        data: this._data
+    };
   };
 
   /**
@@ -39,32 +45,6 @@ define(['jquery', 'd3'], function ($, d3) {
     '$scope',
     '$timeout'
   ];
-
-  /**
-   * Link function for Accessible Chart directive
-   * @param {object} scope      Angular scope.
-   * @param {JQuery} iElem      jQuery element.
-   * @param {object} iAttrs     Directive attributes.
-   * @param {object} controller Controller reference.
-   */
-  var ChartAccessibleLinkFn = function (scope, iElem, iAttrs, controller) {
-    controller._$timeout( function() {
-      var imageUrl = controller._$scope.issue.getInfographic().getDataPoints().url;
-      var chart = d3.select("#" + controller._$scope.issue.getId() + " .infographic__wrapper div");
-
-      chart.append("h2")
-        .attr("class", "accessibility__header")
-        .html("<span>1/9</span> of internet users have a vision impairment.");
-
-      chart.append("img")
-        .attr("src", imageUrl)
-        .attr("class", "accessibility__img");
-
-      chart.append("h2")
-        .attr("class", "accessibility__header")
-        .text("How to make content more accessible?");
-    }.bind(controller));    
-  };
 
   return ChartAccessibleDirective;
 });
