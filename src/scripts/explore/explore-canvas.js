@@ -80,6 +80,22 @@ define([
         $(document).on('swiperight', container, this._onSwipeRight.bind(this));
     };
 
+    ExploreCanvas.prototype.hide = function () {
+        if (!this._isHidden) {
+            this._stage.removeChild(this._linesContainer);
+            this._stage.removeChild(this._particlesContainer);
+        }
+        this._isHidden = true;
+    };
+
+    ExploreCanvas.prototype.show = function () {
+        if (this._isHidden) {
+            this._stage.addChild(this._linesContainer);
+            this._stage.addChild(this._particlesContainer);
+        }
+        this._isHidden = false;
+    };
+
     /**
     * Draw fake circles on canvas
     */
@@ -104,19 +120,19 @@ define([
 
         var tag;
         var i;
-        var j;
+        // var j;
         for (i = 0; i < this._tagData.length; i ++) {
-            for (j = 0; j < 5; j ++) { // to add some volume
-                tag = new Issue(i, this.canvasSize);
-                tag.setIsInteractive(false);
+            // for (j = 0; j < 5; j ++) { // multiply current tags
+            tag = new Issue(i, this.canvasSize);
+            tag.setIsInteractive(false);
 
-                this.tags.push(tag);
-                this._particlesContainer.addChild(tag.elm);
+            this.tags.push(tag);
+            this._particlesContainer.addChild(tag.elm);
 
-                tag.setData(this._tagData[i]);
-                tag.draw(2);
-                tag.pressS.add(this._onPressIssue.bind(this));
-            }
+            tag.setData(this._tagData[i]);
+            tag.draw(2);
+            tag.pressS.add(this._onPressIssue.bind(this));
+            // }
         }
     };
 

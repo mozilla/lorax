@@ -100,14 +100,14 @@ define([
         this._touchPosition -= this._canvas.canvasSize.y / 2;
     };
 
-    IssuesMode.prototype._onTouchEnd = function (event) {
+    IssuesMode.prototype._onTouchEnd = function () {
         this._touchInterval = setInterval(function () {
             this._touchDelta += (this._touchFinalDelta - this._touchDelta) / 5;
             this._scrollTo(this._touchDelta);
 
             if (Math.abs(this._touchFinalDelta - this._touchDelta) < 1) {
                 clearInterval(this._touchInterval);
-            };
+            }
         }.bind(this), 1000 / 15);
     };
 
@@ -116,8 +116,8 @@ define([
 
         this._scrollFinalPosition = Math.max(
             Math.min(this._scrollFinalPosition, 0),
-            (this._scrollArea.y - (this._issueMargin * this._canvas.issues.length)
-            + this._scrollArea.height * 1.5)
+            (this._scrollArea.y - (this._issueMargin * this._canvas.issues.length) +
+            this._scrollArea.height * 1.5)
         );
 
         this._scrollPosition += (this._scrollFinalPosition - this._scrollPosition) / 3;
@@ -127,6 +127,13 @@ define([
           issue = this._canvas.issues[i];
           issue.elm.y = Math.round(issue.issueY + this._scrollPosition);
         }
+    };
+
+    IssuesMode.prototype._setIssueMouseEvents = function (issue) {
+        issue.issueMouseOver = this._mouseOverIssue.bind(this);
+        issue.issueMouseOut = this._mouseOutIssue.bind(this);
+        issue.mouseOverS.add(issue.issueMouseOver);
+        issue.mouseOutS.add(issue.issueMouseOut);
     };
 
     IssuesMode.prototype._onStartShow = function () {
@@ -139,10 +146,8 @@ define([
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_ISSUES);
             issue.moveTo(issue.issueX, issue.issueY);
-            issue.issueMouseOver = this._mouseOverIssue.bind(this);
-            issue.issueMouseOut = this._mouseOutIssue.bind(this);
-            issue.mouseOverS.add(issue.issueMouseOver);
-            issue.mouseOutS.add(issue.issueMouseOut);
+            // so mouse over doesnt block animation
+            setTimeout(this._setIssueMouseEvents.bind(this), 500, issue);
         }
 
         this._drawLinesBind = this._drawLines.bind(this);
@@ -168,7 +173,7 @@ define([
 
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
-        setTimeout(this._onHide.bind(this), 0);
+        setTimeout(this._onHide.bind(this), 100);
     };
 
     return IssuesMode;

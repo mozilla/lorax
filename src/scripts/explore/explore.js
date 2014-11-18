@@ -2,20 +2,24 @@
 define([
     'stats',
     'font',
+    'lorax/models/tag',
     'explore/explore-canvas',
     'explore/explore-mode',
     'explore/topics-mode',
     'explore/issues-mode',
+    'explore/tag-issues-mode',
     'explore/detail-mode',
     'explore/issue',
     'jquery-mobile'
 ], function (
     Stats,
     Font,
+    TagModel,
     ExploreCanvas,
     ExploreMode,
     TopicsMode,
     IssuesMode,
+    TagIssuesMode,
     DetailMode,
     Issue
 ) {
@@ -26,6 +30,7 @@ define([
         this._explore = new ExploreMode(this._canvas);
         this._topics = new TopicsMode(this._canvas);
         this._issues = new IssuesMode(this._canvas);
+        this._tagIssues = new TagIssuesMode(this._canvas);
         this._detail = new DetailMode(this._canvas);
     };
 
@@ -46,10 +51,12 @@ define([
         this._canvas.drawIssues(this._issueData);
         this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
+        this._canvas.hide();
 
         this._explore.init();
         this._topics.init();
         this._issues.init();
+        this._tagIssues.init();
         this._detail.init();
 
         this._hasInitialized = true;
@@ -73,7 +80,11 @@ define([
     };
 
     Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
-        this.enterIssueCallback = enterIssueCallback;
+        this._enterIssueCallback = enterIssueCallback;
+    };
+
+    Explore.prototype.setBgModeCallback = function (bgModeCallback) {
+        this._setBgMode = bgModeCallback;
     };
 
     /**
@@ -103,8 +114,10 @@ define([
 
     Explore.prototype.showExplore = function () {
         if (this._hasInitialized) {
+            this._canvas.show();
             this._mode = Issue.MODE_EXPLORE;
             this._explore.show();
+            this._setBgMode('');
         } else {
             this._onInitMode = this.showExplore;
         }
@@ -112,6 +125,7 @@ define([
 
     Explore.prototype.showIssues = function () {
         if (this._hasInitialized) {
+            this._canvas.show();
             this._mode = Issue.MODE_ISSUES;
             this._issues.show();
         } else {
@@ -121,6 +135,7 @@ define([
 
     Explore.prototype.showTopics = function () {
         if (this._hasInitialized) {
+            this._canvas.show();
             this._mode = Issue.MODE_TOPICS;
             this._topics.show();
         } else {
@@ -130,13 +145,26 @@ define([
 
     Explore.prototype.showDetail = function () {
         if (this._hasInitialized) {
+            this._canvas.show();
             this._mode = Issue.MODE_DETAIL;
             this._detail.show();
+
             if (this._currentIssue) {
                 this._currentIssue.closeIssue();
             }
         } else {
             this._onInitMode = this.showDetail;
+        }
+    };
+
+    Explore.prototype.showTagIssues = function (tag) {
+        if (this._hasInitialized) {
+            this._canvas.show();
+            this._mode = Issue.MODE_TAG_ISSUES;
+            this._tagIssues.show(tag);
+            this._setBgMode('tag');
+        } else {
+            this._onInitMode = this.showTagIssues;
         }
     };
 
@@ -147,17 +175,25 @@ define([
     };
 
     Explore.prototype._openIssue = function (issue) {
+        if (TagModel.prototype.isPrototypeOf(issue.data)) {
+            this.showTagIssues(issue.data);
+            return;
+        }
+
         this._mode = Issue.MODE_DETAIL;
         this._currentIssue = issue;
 
-        if (this.enterIssueCallback) {
+        if (this._enterIssueCallback) {
             var issueData = issue.data;
             issue.openIssue();
-            this.showDetail();
 
-            setTimeout(function () {
-                this.enterIssueCallback(issueData.getParent().getId(), issueData.getId());
-            }.bind(this), 300);
+            if (this._setBgMode) {
+                this._setBgMode(issueData.getStatusDescription());
+            }
+
+            this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
+
+            this.showDetail();
         }
     };
 

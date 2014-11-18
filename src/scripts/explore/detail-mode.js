@@ -124,7 +124,7 @@ define([
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
-        this._onShow();
+        setTimeout(this._onShow.bind(this), 500);
     };
 
     DetailMode.prototype._onStartHide = function () {
@@ -148,7 +148,7 @@ define([
 
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
-        setTimeout(this._onHide.bind(this), 0);
+        setTimeout(this._onHide.bind(this), 100);
     };
 
     return DetailMode;

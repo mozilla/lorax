@@ -4,6 +4,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
     var Circle = function () {
         this.elm = new PIXI.DisplayObjectContainer();
+        this._titleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#222222'};
+        this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
 
         return this;
     };
@@ -102,8 +104,6 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
     };
 
     Circle.prototype._drawTitle = function () {
-        this._titleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#222222'};
-
         //.split('').join(String.fromCharCode(8202))
         this._title = new PIXI.Text(this.data.getName().toUpperCase(), this._titleStyle);
         this._title.x = 20;
@@ -111,7 +111,6 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this._title.alpha = 0;
 
         if (this.data.getParent) {
-            this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
             this._subtitle = new PIXI.Text(
                 this.data.getParent().getName().toUpperCase(),
                 this._subtitleStyle

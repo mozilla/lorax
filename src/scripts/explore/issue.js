@@ -21,9 +21,11 @@ define([
         this.mouseOutS = new signals.Signal();
         this.pressS = new signals.Signal();
 
+        this._tagStyle = {font: '600 8px "Fira Sans", sans-serif', fill: '#222222'};
         this._titleOverStyle = {font: '600 14px "Fira Sans", sans-serif', fill: '#222222'};
         this._topicStyle = {font: '200 12px "Fira Sans", sans-serif', fill: '#222222'};
         this._issuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#222222'};
+        this._tagIssuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
         this._detailStyle = {font: '500 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
 
         return this;
@@ -33,13 +35,16 @@ define([
     Issue.prototype.constructor = Issue;
 
     Issue.MODE_EXPLORE = 'explore';
+    Issue.MODE_TAG = 'tag';
     Issue.MODE_TOPICS = 'topics';
     Issue.MODE_ISSUES = 'issues';
+    Issue.MODE_TAG_ISSUES = 'tagIssues';
     Issue.MODE_DETAIL = 'detail';
     Issue.MODES = [
         Issue.MODE_EXPLORE,
         Issue.MODE_TOPICS,
         Issue.MODE_ISSUES,
+        Issue.MODE_TAG_ISSUES,
         Issue.MODE_DETAIL
     ];
 
@@ -98,36 +103,61 @@ define([
         var lastMode = this.mode;
         this.mode = mode;
 
-        if (mode === Issue.MODE_EXPLORE) {
-            this.setTextAlwaysVisible(false);
-            this.setIsInteractive(true);
-            this._title.setStyle(this._titleStyle);
-            this._title.y = Math.round(-this._title.height / 2);
-            this._drawCircle(0x222222);
-        } else if (mode === Issue.MODE_TOPICS) {
-            this.setTextAlwaysVisible(false);
-            this.setIsInteractive(false);
-            this._title.setStyle(this._topicStyle);
-            this._title.y = Math.round(-this._title.height / 2);
-            this._drawCircle(0x222222);
-        } else if (mode === Issue.MODE_ISSUES) {
-            this.stopMoving();
-            this.setTextAlwaysVisible(true);
-            this.setIsInteractive(false);
-            this._title.setStyle(this._issuesStyle);
-            this._title.y = Math.round(-this._title.height / 2);
-            if (!this._issueModeArea) {
-                this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-            }
-            this.elm.hitArea = this._issueModeArea;
-            this._drawCircle(0x222222);
-        } else if (mode === Issue.MODE_DETAIL) {
-            this.stopMoving();
-            this.setTextAlwaysVisible(true);
-            this.setIsInteractive(false);
-            this._title.setStyle(this._detailStyle);
-            this._title.y = Math.round(-this._title.height / 2);
-            this._drawCircle(0xffffff);
+        switch (mode) {
+            case Issue.MODE_EXPLORE: {
+                this.setTextAlwaysVisible(false);
+                this.setIsInteractive(true);
+                this._title.setStyle(this._titleStyle);
+                this._title.y = Math.round(-this._title.height / 2);
+                this._drawCircle(0x222222);
+            } break;
+            case Issue.MODE_TAG: {
+                this.setTextAlwaysVisible(false);
+                this.setIsInteractive(false);
+                this._title.setStyle(this._tagStyle);
+                this._title.x = 10;
+                this._title.y = Math.round(-this._title.height / 2);
+                this._drawCircle(0x222222);
+            } break;
+            case Issue.MODE_TOPICS: {
+                this.setTextAlwaysVisible(false);
+                this.setIsInteractive(false);
+                this._title.setStyle(this._topicStyle);
+                this._title.y = Math.round(-this._title.height / 2);
+                this._drawCircle(0x222222);
+            } break;
+            case Issue.MODE_ISSUES: {
+                this.stopMoving();
+                this.setTextAlwaysVisible(true);
+                this.setIsInteractive(false);
+                this._title.setStyle(this._issuesStyle);
+                this._title.y = Math.round(-this._title.height / 2);
+                if (!this._issueModeArea) {
+                    this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+                }
+                this.elm.hitArea = this._issueModeArea;
+                this._drawCircle(0x222222);
+            } break;
+            case Issue.MODE_TAG_ISSUES: {
+                this.stopMoving();
+                this.setTextAlwaysVisible(true);
+                this.setIsInteractive(false);
+                this._title.setStyle(this._tagIssuesStyle);
+                this._title.y = Math.round(-this._title.height / 2);
+                if (!this._issueModeArea) {
+                    this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+                }
+                this.elm.hitArea = this._issueModeArea;
+                this._drawCircle(0xffffff);
+            } break;
+            case Issue.MODE_DETAIL: {
+                this.stopMoving();
+                this.setIsInteractive(false);
+                this.setTextAlwaysVisible(true);
+                this._title.setStyle(this._detailStyle);
+                this._title.y = Math.round(-this._title.height / 2);
+                this._drawCircle(0xffffff);
+            } break;
         }
 
         if (lastMode === Issue.MODE_ISSUES) {
@@ -139,9 +169,8 @@ define([
     Issue.prototype.setTextAlwaysVisible = function (isVisible) {
         this._textAlwaysVisible = isVisible;
 
-        if (isVisible && this._title.alpha !== 1) {
+        if (isVisible) {
             this.elm.addChild(this._title);
-            this._title.alpha = 0;
             createjs.Tween.get(this._title, {override: true})
                 .to({alpha: 1}, 200, createjs.Ease.quartIn);
         } else if(!this.isOver) {
@@ -209,6 +238,10 @@ define([
         }
 
         this.lightDown();
+
+        if (this.mode === Issue.MODE_TAG_ISSUES) {
+            this._drawCircle(0xffffff);
+        }
     };
 
     Issue.prototype.openIssue = function () {

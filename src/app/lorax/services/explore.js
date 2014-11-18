@@ -1,15 +1,17 @@
 define(function () {
     'use strict';
 
-    var ExploreService = function ($location, $timeout) {
+    var ExploreService = function ($location, $timeout, windowService) {
         this._$location = $location;
         this._$timeout = $timeout;
+        this._windowService = windowService;
     };
 
     ExploreService.prototype.setCanvas = function (canvas) {
         this._explore = canvas;
         this._explore.init();
         this._explore.setEnterIssueCallback(this._onPressIssue.bind(this));
+        this._explore.setBgModeCallback(this._onChangeBgMode.bind(this));
     };
 
     ExploreService.prototype.switchView = function (view) {
@@ -41,9 +43,14 @@ define(function () {
         }.bind(this));
     };
 
+    ExploreService.prototype._onChangeBgMode = function (status, animate) {
+        this._windowService.setBgMode(status, animate);
+    };
+
     ExploreService.$inject = [
         '$location',
-        '$timeout'
+        '$timeout',
+        'windowService'
     ];
 
     return ExploreService;
