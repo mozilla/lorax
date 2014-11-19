@@ -20,6 +20,7 @@ define([
     DetailMode.prototype.constructor = DetailMode;
 
     DetailMode.prototype.init = function () {
+        Mode.prototype.init.call(this);
         var i;
         var issue;
 
