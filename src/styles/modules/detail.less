@@ -211,6 +211,10 @@
     .at-large({
         max-width: 200px;
     });
+
+    .icon-arrow-right {
+        background-position: right;
+    }
 }
 
 .detail-link__header {
@@ -245,8 +249,23 @@
     });
 }
 
+.detail-link__multiple {
+    display: inline-block;
+    color: @white;
+    .fira-sans-semibold;
+    .font-size(1.1);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 15px 5px 0px;
 
-/* Detail Links
+    .no-touch &:hover,
+    &:focus {
+        color: @white;
+    }
+}
+
+
+/* Detail Tags
    ========================================================================== */
 .detail-tags {
     color: @extra-dark-grey;

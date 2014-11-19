@@ -53,22 +53,17 @@ define(['jquery', 'd3'], function ($, d3) {
             var lineData = data.lineGraphData;
             var id = controller._$scope.issue.getId();
             var lineGraph = d3.select('#' + id + ' .infographic__wrapper div');
-
             var numDatasets = lineData[0].data.length;
 
-            var dollarFormat = d3.format('.3s');
-
             var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
-
             var margin = {top: 20, right: 20, bottom: 50, left: 20};
-            var width = graphWidth*0.6;
-            var height = graphWidth;
+            var width = graphWidth;
+            var height = graphWidth*0.7;
 
             var svg = lineGraph.append('svg')
                 .attr('class', 'linegraph__svg')
                 .attr('width', width)
-                .attr('height', height)
-                .style('margin-left', '20%');
+                .attr('height', height);
 
             drawPattern();
             drawLegend();
@@ -94,8 +89,8 @@ define(['jquery', 'd3'], function ($, d3) {
                     .data(data.dataLabels)
                     .enter()
                     .append('circle')
-                    .attr('class', function(d, i) { return 'linegraph__point_' + i + '_circle'})
-                    .attr('cx', function(d, i) {return width - margin.right - i*110 - (margin.right*5)})
+                    .attr('class', function(d, i) { return 'linegraph__point_' + i + '_circle';})
+                    .attr('cx', function(d, i) {return width - margin.right - i*110 - (margin.right*5);})
                     .attr('cy', margin.top/3)
                     .attr('r', 3);
 
@@ -104,7 +99,7 @@ define(['jquery', 'd3'], function ($, d3) {
                     .enter()
                     .append('text')
                     .attr('class', 'linegraph__legendtext')
-                    .attr('x', function(d, i) {return width - margin.right - i*110 - (margin.right*5) + 6})
+                    .attr('x', function(d, i) {return width - margin.right - i*110 - (margin.right*5) + 6;})
                     .attr('y', margin.top/3+4)
                     .text(function(d) { return d; });
             }
@@ -113,8 +108,8 @@ define(['jquery', 'd3'], function ($, d3) {
                 var x = d3.scale.linear()
                     .range([margin.left, width-margin.right])
                     .domain([
-                        d3.min( lineData, function(d) { return d.label }),
-                        d3.max( lineData, function(d) { return d.label })
+                        d3.min( lineData, function(d) { return d.label; }),
+                        d3.max( lineData, function(d) { return d.label; })
                     ]);
 
                 var xAxis = d3.svg.axis()
@@ -137,7 +132,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
                 for ( var i = 0; i < numDatasets; i++ ) {
                     var y = d3.scale.linear()
-                        .range([height-margin.top, -margin.bottom])
+                        .range([height-margin.bottom, margin.top])
                         .domain([20,300]);
 
                     var line = d3.svg.line()
@@ -151,7 +146,7 @@ define(['jquery', 'd3'], function ($, d3) {
                         .attr('class', 'linegraph__line')
                         .attr('d', line);
 
-                    var point = datasetGroup.selectAll('.point__' + i)
+                    datasetGroup.selectAll('.point__' + i)
                         .data(lineData)
                         .enter()
                         .append('g')

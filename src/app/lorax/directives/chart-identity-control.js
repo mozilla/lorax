@@ -68,10 +68,9 @@ define(['jquery', 'd3'], function ($, d3) {
       drawLegend();
 
       var svg = pieChart.append('svg')
-        .attr('id', 'identity__svg')
+        .attr('class', 'identity__svg')
         .attr('width', width)
-        .attr('height', height)
-        .style('margin-top', height*(-0.3));
+        .attr('height', height);
 
       var group = svg.append('g')
         .attr('class', 'identity__piechart')

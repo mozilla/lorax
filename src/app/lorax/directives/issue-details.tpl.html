@@ -6,7 +6,6 @@
   <section class="detail__main">
     <div class="detail-main">
       <div class="detail-main__copy">{{::issueDetails.issue.getNarrative()}}</div>
-      <!--a href="#" class="detail-main-read-more">Read More</a-->
       <div class="detail-tags detail-tags--main" ng-if="::issueDetails.issue.getTags()">
         <span class="detail-tags__title">Related Tags:</span>
         <a href="#" class="detail-tags__tag" ng-repeat="tag in ::issueDetails.issue.getTags()">{{tag.getName()}}</a>
@@ -24,7 +23,8 @@
             <h1>What Mozilla is doing</h1>
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getMozActionCopy()}}</p>
-          <a ng-if="::issueDetails.issue.getMozActionLink()" href="{{::issueDetails.issue.getMozActionLink()}}" class="btn detail-link__btn">Read More</a>
+          <a ng-if="::issueDetails.issue.getMozActionLink().length === 1" href="{{::issueDetails.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getMozActionLink()[0].copy}}</a>
+          <a ng-if="::issueDetails.issue.getMozActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getMozActionLink()" href="{{link.url}}" class="detail-link__multiple icon-arrow-right">{{link.copy}}</a>
         </section>
       </li>
       <li>
@@ -33,7 +33,8 @@
             <h1>What you can do</h1>
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getYourActionCopy()}}</p>
-          <a ng-if="::issueDetails.issue.getYourActionLink()" href="{{::issueDetails.issue.getYourActionLink()}}" class="btn detail-link__btn">Sign Petition</a>
+          <a ng-if="::issueDetails.issue.getYourActionLink().length === 1" href="{{::issueDetails.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getYourActionLink()[0].copy}}</a>
+          <a ng-if="::issueDetails.issue.getYourActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getYourActionLink()" href="{{link.url}}" class="detail-link__multiple icon-arrow-right">{{link.copy}}</a>
         </section>
       </li>
     </ul>
