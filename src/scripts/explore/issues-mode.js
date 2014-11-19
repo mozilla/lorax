@@ -25,6 +25,7 @@ define([
     IssuesMode.prototype.constructor = IssuesMode;
 
     IssuesMode.prototype.init = function () {
+        Mode.prototype.init.call(this);
         this._scrollPosition = this._scrollFinalPosition = 0;
         this._touchPosition =  this._touchDelta = this._touchFinalDelta = 0;
 
@@ -32,22 +33,25 @@ define([
 
         this._issues = this._canvas.issues;
 
+        this._margin = {
+            top: 200,
+            left: 400
+        };
+
+        if (Responsive.IS_SMALL()) {
+            this._margin.top = 250;
+            this._margin.left = 100;
+        }
+
         this._updateScroll();
     };
 
     IssuesMode.prototype._updateScroll = function () {
-        var topMargin = 200;
-        var leftMargin = 400;
-        if (Responsive.IS_SMALL()) {
-            topMargin = 250;
-            leftMargin = 100;
-        }
-
         this._scrollArea = new PIXI.Rectangle(
-            -((this._canvas.canvasSize.x - leftMargin) / 2),
-            -((this._canvas.canvasSize.y - topMargin) / 2),
-            this._canvas.canvasSize.x - leftMargin,
-            this._canvas.canvasSize.y - topMargin
+            -((this._canvas.canvasSize.x - this._margin.left) / 2),
+            -((this._canvas.canvasSize.y - this._margin.top) / 2),
+            this._canvas.canvasSize.x - this._margin.left,
+            this._canvas.canvasSize.y - this._margin.top
         );
 
         var i;

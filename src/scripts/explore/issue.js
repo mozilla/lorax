@@ -21,12 +21,13 @@ define([
         this.mouseOutS = new signals.Signal();
         this.pressS = new signals.Signal();
 
-        this._tagStyle = {font: '600 8px "Fira Sans", sans-serif', fill: '#222222'};
-        this._titleOverStyle = {font: '600 14px "Fira Sans", sans-serif', fill: '#222222'};
+        this._tagStyle = {font: '400 8px "Fira Sans", sans-serif', fill: '#222222'};
+        this._tagTitleStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
+        this._titleOverStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#222222'};
         this._topicStyle = {font: '200 12px "Fira Sans", sans-serif', fill: '#222222'};
         this._issuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#222222'};
         this._tagIssuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
-        this._detailStyle = {font: '500 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
+        this._detailStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
 
         return this;
     };
@@ -36,6 +37,7 @@ define([
 
     Issue.MODE_EXPLORE = 'explore';
     Issue.MODE_TAG = 'tag';
+    Issue.MODE_TAG_TITLE = 'tagTitle';
     Issue.MODE_TOPICS = 'topics';
     Issue.MODE_ISSUES = 'issues';
     Issue.MODE_TAG_ISSUES = 'tagIssues';
@@ -119,6 +121,19 @@ define([
                 this._title.y = Math.round(-this._title.height / 2);
                 this._drawCircle(0x222222);
             } break;
+            case Issue.MODE_TAG_TITLE: {
+                this.setTextAlwaysVisible(true);
+                this.setIsInteractive(false);
+                this.elm.addChild(this._tagTitle);
+                var tagTitleText = this.data.getRelated().length;
+                tagTitleText += ' issues related to';
+                this._tagTitle.setText(tagTitleText.toUpperCase());
+                this._title.setStyle(this._tagTitleStyle);
+                this._title.x = 10;
+                this._title.y = Math.round(-this._title.height / 2);
+                this._drawCircle(0xFFFFFF);
+                this.elm.alpha = 1;
+            } break;
             case Issue.MODE_TOPICS: {
                 this.setTextAlwaysVisible(false);
                 this.setIsInteractive(false);
@@ -163,6 +178,10 @@ define([
         if (lastMode === Issue.MODE_ISSUES) {
             this.elm.hitArea = null;
             this.elm.alpha = 1;
+        }
+
+        if (lastMode === Issue.MODE_TAG_TITLE) {
+            this.elm.removeChild(this._tagTitle);
         }
     };
 

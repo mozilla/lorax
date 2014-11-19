@@ -31,6 +31,7 @@ define([
     };
 
     TopicsMode.prototype.init = function () {
+        Mode.prototype.init.call(this);
         this._topics = [];
         this._currentTopic = 0;
 

@@ -4,8 +4,8 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
 
     var Circle = function () {
         this.elm = new PIXI.DisplayObjectContainer();
-        this._titleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#222222'};
-        this._subtitleStyle = {font: '800 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
+        this._titleStyle = {font: '400 10px "Fira Sans", sans-serif', fill: '#222222'};
+        this._subtitleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
 
         return this;
     };
@@ -119,6 +119,10 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
             this._subtitle.y = -this._subtitle.height / 2;
             this._subtitle.alpha = 0;
         }
+
+        this._tagTitle = new PIXI.Text(' ', {font: '200 12px "Fira Sans", sans-serif', fill: '#999999'});
+        this._tagTitle.x = 10;
+        this._tagTitle.y = -this._tagTitle.height - 15;
     };
 
     /**

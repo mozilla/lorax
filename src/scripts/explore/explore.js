@@ -59,6 +59,8 @@ define([
         this._tagIssues.init();
         this._detail.init();
 
+        this._tagIssues.hideS.add(this._onHideTagIssues.bind(this));
+
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
@@ -167,6 +169,10 @@ define([
         } else {
             this._onInitMode = this.showTagIssues;
         }
+    };
+
+    Explore.prototype._onHideTagIssues = function () {
+        this._setBgMode('');
     };
 
     Explore.prototype.onScroll = function (offset) {
