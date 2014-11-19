@@ -1,12 +1,8 @@
 /* global define:true */
 define([
-    'pixi',
-    'experience/mode',
-    'experience/issue'
+    'experience/mode'
 ], function (
-    PIXI,
-    Mode,
-    Issue
+    Mode
 ) {
     'use strict';
 

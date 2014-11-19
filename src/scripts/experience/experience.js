@@ -119,7 +119,6 @@ define([
     };
 
     Experience.prototype.showExplore = function () {
-        debugger;
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_EXPLORE;
