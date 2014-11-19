@@ -255,6 +255,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             this._canvas.fakes[i].explode(this._exploreRadius);
         }
 
+        this._canvas.clearLines();
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         this._endAutoMode();

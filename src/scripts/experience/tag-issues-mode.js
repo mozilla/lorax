@@ -142,6 +142,7 @@ define([
             issue.elm.alpha = 1;
         }
 
+        this._canvas.clearLines();
         this._closeButton.alpha = 0;
         this._canvas.renderStartS.remove(this._drawLinesBind);
 

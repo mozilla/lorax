@@ -187,6 +187,7 @@ define([
             this._topics[i].mouseOutS.remove(this.mouseOutB);
         }
 
+        this._canvas.clearLines();
         this._canvas.renderStartS.remove(this._drawLinesBind);
         this._canvas.renderStartS.remove(this._updateTopicsBind);
         this._canvas.swipeLeftS.remove(this._swipeToNextTopicBind);

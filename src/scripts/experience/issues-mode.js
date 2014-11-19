@@ -182,6 +182,7 @@ define([
             issue.mouseOutS.remove(issue.issueMouseOut);
         }
 
+        this._canvas.clearLines();
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 100);
