@@ -107,7 +107,7 @@ define([
     exploreService,
 
     // filters
-    encodeUriFilter,
+    EncodeUriFilter,
 
     angular
 ) {
@@ -380,7 +380,7 @@ define([
          * Inject {@link lorax/services/encodeUriFilter} as 'encodeUri'
          * @method lorax/loraxApp~filter
          */
-        .filter('encodeUri', encodeUriFilter);
+        .filter('encodeUri', EncodeUriFilter);
 
     /**
     * Bootstrap the application

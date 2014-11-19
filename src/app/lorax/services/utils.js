@@ -1,7 +1,7 @@
 /**
  * Utility functions
  *
- * @class core/services/utilsService
+ * @class lorax/services/utilsService
  */
 define(function () {
     'use strict';

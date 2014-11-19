@@ -1,3 +1,8 @@
+/**
+ * Pub Sub
+ *
+ * @class lorax/services/PubSubFactory
+ */
 define(['jquery'], function ($) {
     'use strict';
 

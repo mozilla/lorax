@@ -64,17 +64,23 @@ module.exports = function (grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '<%= config.temp %>',
                         '<%= config.dist %>/*',
                         '!<%= config.dist %>/.git*'
+                    ]
+                }]
+            },
+            server: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '<%= config.temp %>'
                     ]
                 }]
             },
             grunticon: {
                 files: [{
                     src: [
-                        '<%= config.src %>/images/icons-min/',
-                        '<%= config.temp %>/images/icons/',
+                        '<%= config.src %>/images/icons-min/'
                     ]
                 }]
             }
@@ -310,6 +316,11 @@ module.exports = function (grunt) {
     // Dev
     grunt.registerTask('server', function () {
         grunt.task.run([
+            'clean:server',
+            'clean:grunticon',
+            'svgmin',
+            'grunticon:server',
+            'notify:grunticon',
             'bower:install',
             'less:server',
             'connect:server',

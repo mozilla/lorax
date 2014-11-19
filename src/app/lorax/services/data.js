@@ -1,7 +1,7 @@
 /**
  * Manages data access.
  *
- * @class core/services/dataService
+ * @class lorax/services/dataService
  */
 define([
     'angular',
@@ -16,7 +16,7 @@ define([
 
         this._defaultLocale = 'en-US';
         this._$http = $http;
-        this._$q    = $q;
+        this._$q = $q;
         this._mainData, this._requestingMain, this._mainDefer;
         this._mapData, this._requestingMap, this._mapDefer;
 

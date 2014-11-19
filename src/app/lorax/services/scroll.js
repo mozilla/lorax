@@ -1,3 +1,8 @@
+/**
+ * Manages scrolling
+ *
+ * @class lorax/services/scrollService
+ */
 define([
     'angular',
     'jquery'

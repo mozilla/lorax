@@ -1,7 +1,7 @@
 /**
  * Manages sizing and breakpoints.
  *
- * @class core/services/windowService
+ * @class lorax/services/windowService
  */
 define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
     'use strict';

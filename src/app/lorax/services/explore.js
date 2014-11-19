@@ -1,3 +1,8 @@
+/**
+ * Service for explore infographic
+ *
+ * @class lorax/services/ExploreService
+ */
 define(function () {
     'use strict';
 
