@@ -32,12 +32,11 @@ define([
      TagIssuesMode.prototype._drawCloseButton = function () {
         this._closeButton = new PIXI.DisplayObjectContainer();
 
-        // TODO: use close button sprite
-        var bg = new PIXI.Graphics();
-        bg.beginFill(0xFFFFFF);
-        bg.drawCircle(0, 0, 25);
-        bg.endFill();
-        this._closeButton.addChild(bg);
+        var texture = PIXI.Texture.fromImage('/images/icons/png/close.png');
+        var img = new PIXI.Sprite(texture);
+        img.x = -25;
+        img.y = -25;
+        this._closeButton.addChild(img);
 
         this._closeButton.x = (this._canvas.canvasSize.x / 2) - 65;
         this._closeButton.y = -(this._canvas.canvasSize.y / 2) + 65;
