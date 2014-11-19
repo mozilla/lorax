@@ -243,9 +243,29 @@
 }
 
 .worldmap__legend {
-    text {
-      fill: @white;
+    display: none;
+    position: absolute;
+    margin-top: 30px;
+
+    div {
+        display: inline-block;
     }
+
+    p {
+        .font-size(1.0);
+        display : inline-block;
+        top: -5px;
+        padding-left: 5px;
+        vertical-align: super;
+    }
+
+    .at-medium ({
+        display: none;
+    });
+
+    .at-large ({
+        display: block;
+    });
 }
 
 .worldmap__label {
@@ -258,7 +278,7 @@
     .at-medium({
         margin-left: 50%;
         text-align: left;
-    })
+    });
 
 }
 

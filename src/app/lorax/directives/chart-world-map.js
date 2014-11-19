@@ -153,24 +153,22 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       }
 
       function drawLegend() {
-        var legend = svg.selectAll('.worldmap__legend')
+        var legend = map.selectAll('.worldmap__legend')
           .data(shadeLegend)
           .enter()
-          .append('g')
+          .append('div')
             .attr('class', 'worldmap__legend')
-            .attr('transform', function(d, i) { return 'translate(0,' + (i*20 + (mapWidth * height / width)/2) + ')';});
+            .style('top', function(d,i) { return (i*20 + (mapWidth * height / width)/2) + 'px';} );
 
-        legend.append('rect')
-          .attr('x', 0)
-          .attr('width', 15)
-          .attr('height', 15)
+        legend.append('div')
+          .style('width', 15 + 'px')
+          .style('height', 15 + 'px')
           .style('mask', 'url(#maskStripe)')
-          .style('fill', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
+          .style('background', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
 
-        legend.append('text')
-          .attr('x', 20)
-          .attr('y', 7.5)
-          .attr('dy', '.35em')
+        legend.append('p')
+          .attr('left', 20 + 'px')
+          .attr('top', 7.5 + 'px')
           .text(function(d) { return d; });
       }
 
