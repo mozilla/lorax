@@ -6,57 +6,57 @@
 define(function () {
     'use strict';
 
-    var ExploreService = function ($location, $timeout, windowService) {
+    var ExperienceService = function ($location, $timeout, windowService) {
         this._$location = $location;
         this._$timeout = $timeout;
         this._windowService = windowService;
     };
 
-    ExploreService.prototype.setCanvas = function (canvas) {
-        this._explore = canvas;
-        this._explore.init();
-        this._explore.setEnterIssueCallback(this._onPressIssue.bind(this));
-        this._explore.setBgModeCallback(this._onChangeBgMode.bind(this));
+    ExperienceService.prototype.setCanvas = function (canvas) {
+        this._experience = canvas;
+        this._experience.init();
+        this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
+        this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
     };
 
-    ExploreService.prototype.switchView = function (view) {
+    ExperienceService.prototype.switchView = function (view) {
         switch (view) {
-        case 'explore':
-            this._explore.showExplore();
-            break;
-        case 'topics':
-            this._explore.showTopics();
-            break;
-        case 'issues':
-            this._explore.showIssues();
-            break;
-        case 'detail':
-            this._explore.showDetail();
-            break;
-        default:
-            this._explore.hold();
+            case 'explore':
+                this._experience.showExplore();
+                break;
+            case 'topics':
+                this._experience.showTopics();
+                break;
+            case 'issues':
+                this._experience.showIssues();
+                break;
+            case 'detail':
+                this._experience.showDetail();
+                break;
+            default:
+                this._experience.hold();
         }
     };
 
-    ExploreService.prototype.onScroll = function (offset) {
-        this._explore.onScroll(offset);
+    ExperienceService.prototype.onScroll = function (offset) {
+        this._experience.onScroll(offset);
     };
 
-    ExploreService.prototype._onPressIssue = function (topic, issue) {
+    ExperienceService.prototype._onPressIssue = function (topic, issue) {
         this._$timeout(function () {
             this._$location.url('/detail/?topic=' + topic + '&issue=' + issue);
         }.bind(this));
     };
 
-    ExploreService.prototype._onChangeBgMode = function (status, animate) {
+    ExperienceService.prototype._onChangeBgMode = function (status, animate) {
         this._windowService.setBgMode(status, animate);
     };
 
-    ExploreService.$inject = [
+    ExperienceService.$inject = [
         '$location',
         '$timeout',
         'windowService'
     ];
 
-    return ExploreService;
+    return ExperienceService;
 });

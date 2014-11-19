@@ -1,5 +1,5 @@
 /* global define:true */
-define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
+define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Issue) {
     'use strict';
 
     var ExploreMode = function (canvas) {

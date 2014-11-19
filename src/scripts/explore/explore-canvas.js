@@ -4,9 +4,9 @@ define([
     'pixi',
     'createjs',
     'signals',
-    'explore/issue',
-    'explore/circle',
-    'explore/responsive',
+    'experience/issue',
+    'experience/circle',
+    'experience/responsive',
     'jquery-mobile'
 ], function (
     $,
@@ -19,7 +19,7 @@ define([
 ) {
     'use strict';
 
-    var ExploreCanvas = function () {
+    var ExperienceCanvas = function () {
         this.issues = [];
         this.tags = [];
         this.fakes = [];
@@ -40,7 +40,7 @@ define([
     * Sets HTML element for PIXI container
     * @param  {object} DOM object
     */
-    ExploreCanvas.prototype.init = function (container) {
+    ExperienceCanvas.prototype.init = function (container) {
         this._lastTick = 0;
         this.canvasSize.x = container.width();
         this.canvasSize.y = container.height();
@@ -80,7 +80,7 @@ define([
         $(document).on('swiperight', container, this._onSwipeRight.bind(this));
     };
 
-    ExploreCanvas.prototype.hide = function () {
+    ExperienceCanvas.prototype.hide = function () {
         if (!this._isHidden) {
             this._stage.removeChild(this._linesContainer);
             this._stage.removeChild(this._particlesContainer);
@@ -88,7 +88,7 @@ define([
         this._isHidden = true;
     };
 
-    ExploreCanvas.prototype.show = function () {
+    ExperienceCanvas.prototype.show = function () {
         if (this._isHidden) {
             this._stage.addChild(this._linesContainer);
             this._stage.addChild(this._particlesContainer);
@@ -99,7 +99,7 @@ define([
     /**
     * Draw fake circles on canvas
     */
-    ExploreCanvas.prototype._drawFakes = function () {
+    ExperienceCanvas.prototype._drawFakes = function () {
         var circle;
         for (var i = 0; i < 200; i ++) {
             circle = new Circle();
@@ -115,7 +115,7 @@ define([
     /**
     * Draw tags on canvas
     */
-    ExploreCanvas.prototype.drawTags = function (tagData) {
+    ExperienceCanvas.prototype.drawTags = function (tagData) {
         this._tagData = tagData;
 
         var tag;
@@ -139,7 +139,7 @@ define([
     /**
     * Draw issues on canvas
     */
-    ExploreCanvas.prototype.drawIssues = function (issueData) {
+    ExperienceCanvas.prototype.drawIssues = function (issueData) {
         this._issueData = issueData;
 
         var issue;
@@ -155,22 +155,22 @@ define([
         }
     };
 
-    ExploreCanvas.prototype._onPressIssue = function (issue) {
+    ExperienceCanvas.prototype._onPressIssue = function (issue) {
         this.pressIssueS.dispatch(issue);
     };
 
-    ExploreCanvas.prototype.addChild = function (child) {
+    ExperienceCanvas.prototype.addChild = function (child) {
         this._stage.addChild(child);
     };
 
-    ExploreCanvas.prototype.removeChild = function (child) {
+    ExperienceCanvas.prototype.removeChild = function (child) {
         this._stage.removeChild(child);
     };
 
     /**
      * update particle positions
      */
-    ExploreCanvas.prototype._updateParticles = function () {
+    ExperienceCanvas.prototype._updateParticles = function () {
         var i;
 
         for (i = 0; i < this.issues.length; i ++) {
@@ -185,21 +185,21 @@ define([
     /**
      * Clear lines from canvas
      */
-    ExploreCanvas.prototype.clearLines = function () {
+    ExperienceCanvas.prototype.clearLines = function () {
         this._linesContainer.clear();
     };
 
     /**
      * Hide lines container
      */
-    ExploreCanvas.prototype.hideLines = function () {
+    ExperienceCanvas.prototype.hideLines = function () {
         createjs.Tween.get(this._linesContainer).to({alpha:0}, 300, createjs.Ease.quartOut);
     };
 
     /**
      * Show lines container
      */
-    ExploreCanvas.prototype.showLines = function () {
+    ExperienceCanvas.prototype.showLines = function () {
         createjs.Tween.get(this._linesContainer).to({alpha:1}, 300, createjs.Ease.quartIn);
     };
 
@@ -210,7 +210,7 @@ define([
      * @param  {Number} color line color
      * @param  {Number} alpha line alpha
      */
-    ExploreCanvas.prototype.drawLine = function (issue, related, color, alpha) {
+    ExperienceCanvas.prototype.drawLine = function (issue, related, color, alpha) {
         this._linesContainer.lineStyle(1, color,  alpha);
         this._linesContainer.moveTo(issue.elm.x, issue.elm.y);
         this._linesContainer.lineTo(related.elm.x, related.elm.y);
@@ -219,7 +219,7 @@ define([
     /**
     * Get visual element from id
     */
-    ExploreCanvas.prototype.getElementByData = function (data) {
+    ExperienceCanvas.prototype.getElementByData = function (data) {
         if (data.elm) {
             return data.elm;
         }
@@ -241,22 +241,22 @@ define([
         }
     };
 
-    ExploreCanvas.prototype._onTouchStart = function (event) {
+    ExperienceCanvas.prototype._onTouchStart = function (event) {
         this._touchPosition = event.global;
     };
 
-    ExploreCanvas.prototype._onSwipeLeft = function () {
+    ExperienceCanvas.prototype._onSwipeLeft = function () {
         this.swipeLeftS.dispatch();
     };
 
-    ExploreCanvas.prototype._onSwipeRight = function () {
+    ExperienceCanvas.prototype._onSwipeRight = function () {
         this.swipeRightS.dispatch();
     };
 
     /**
      * Updates _mousePosition
      */
-    ExploreCanvas.prototype._updateMousePosition = function () {
+    ExperienceCanvas.prototype._updateMousePosition = function () {
         // mouse position
         var mousePosition = this._stage.getMousePosition().clone();
 
@@ -279,7 +279,7 @@ define([
     /**
      * do render cycle
      */
-    ExploreCanvas.prototype._render = function (tick) {
+    ExperienceCanvas.prototype._render = function (tick) {
         this.renderStartS.dispatch();
 
         // update elements
@@ -297,5 +297,5 @@ define([
         this.renderEndS.dispatch();
     };
 
-    return ExploreCanvas;
+    return ExperienceCanvas;
 });

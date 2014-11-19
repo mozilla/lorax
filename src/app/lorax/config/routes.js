@@ -14,10 +14,10 @@ define(function () {
 
         $routeProvider
 
-            /* --------- Explore -------- */
+            /* --------- Experience -------- */
 
             .when('/', {
-                templateUrl: '/app/lorax/templates/explore.tpl.html'
+                templateUrl: '/app/lorax/templates/experience.tpl.html'
             })
 
             /* -------------------- Detail -------------------- */

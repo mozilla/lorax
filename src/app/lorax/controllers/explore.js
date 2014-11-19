@@ -1,36 +1,36 @@
 /**
- * Explore controller
+ * Experience controller
  *
- * @class lorax/controllers/ExploreCtrl
+ * @class lorax/controllers/ExperienceCtrl
  * @param $scope
  */
 define([], function () {
     'use strict';
 
     /*jshint unused: false */
-    var ExploreCtrl = function (
+    var ExperienceCtrl = function (
         $scope,
-        exploreService
+        experienceService
     ) {
 
         this._$scope = $scope;
-        this._$scope.explore = {
+        this._$scope.experience = {
             switchView: this.switchView.bind(this),
             currentView: 'explore'
         };
 
-        this._exploreService = exploreService;
+        this._experienceService = experienceService;
     };
 
-    ExploreCtrl.$inject = [
+    ExperienceCtrl.$inject = [
         '$scope',
-        'exploreService'
+        'experienceService'
     ];
 
-    ExploreCtrl.prototype.switchView = function (view) {
-        this._$scope.explore.currentView = view;
-        this._exploreService.switchView(view);
+    ExperienceCtrl.prototype.switchView = function (view) {
+        this._$scope.experience.currentView = view;
+        this._experienceService.switchView(view);
     };
 
-    return ExploreCtrl;
+    return ExperienceCtrl;
 });

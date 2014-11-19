@@ -1,8 +1,8 @@
 /* global define:true */
 define([
     'pixi',
-    'explore/mode',
-    'explore/issue'
+    'experience/mode',
+    'experience/issue'
 ], function (
     PIXI,
     Mode,

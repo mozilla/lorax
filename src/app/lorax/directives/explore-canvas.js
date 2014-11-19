@@ -1,40 +1,40 @@
 /**
- * @fileOverview Explore canvas directive
+ * @fileOverview Experience canvas directive
  * @author <a href="mailto:leandroferreira@moco.to">Leandro Ferreira</a>
  */
-define(['explore/explore'], function (Explore) {
+define(['experience/experience'], function (Experience) {
     'use strict';
 
     /**
      * directive
      */
-    var ExploreCanvasDirective = function () {
+    var ExperienceCanvasDirective = function () {
         return {
             restrict: 'A',
             replace: true,
-            controller: ExploreCanvasController,
-            link: ExploreCanvasLinkFn,
-            templateUrl: '/app/lorax/directives/explore-canvas.tpl.html'
+            controller: ExperienceCanvasController,
+            link: ExperienceCanvasLinkFn,
+            templateUrl: '/app/lorax/directives/experience-canvas.tpl.html'
         };
     };
 
     /**
-     * Controller for explore canvas directive
+     * Controller
      * @constructor
      */
-    var ExploreCanvasController = function (
+    var ExperienceCanvasController = function (
         $scope,
         dataService,
-        exploreService
+        experienceService
         )
     {
         this._$scope = $scope;
 
         dataService.getMain().then(function(model) {
-            this._explore = new Explore();
-            this._explore.setData(model);
-            this._explore.setContainer(this._container);
-            exploreService.setCanvas(this._explore);
+            this._experience = new Experience();
+            this._experience.setData(model);
+            this._experience.setContainer(this._container);
+            experienceService.setCanvas(this._experience);
         }.bind(this));
     };
 
@@ -42,10 +42,10 @@ define(['explore/explore'], function (Explore) {
      * Array of dependencies to be injected into controller
      * @type {Array}
      */
-    ExploreCanvasController.$inject = [
+    ExperienceCanvasController.$inject = [
         '$scope',
         'dataService',
-        'exploreService'
+        'experienceService'
     ];
 
     /**
@@ -55,9 +55,9 @@ define(['explore/explore'], function (Explore) {
      * @param {object} iAttrs     Directive attributes.
      * @param {object} controller Controller reference.
      */
-    var ExploreCanvasLinkFn = function (scope, iElem, iAttrs, controller) {
+    var ExperienceCanvasLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._container = iElem;
     };
 
-    return ExploreCanvasDirective;
+    return ExperienceCanvasDirective;
 });

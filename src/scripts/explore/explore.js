@@ -3,20 +3,20 @@ define([
     'stats',
     'font',
     'lorax/models/tag',
-    'explore/explore-canvas',
-    'explore/explore-mode',
-    'explore/topics-mode',
-    'explore/issues-mode',
-    'explore/tag-issues-mode',
-    'explore/detail-mode',
-    'explore/intro-mode',
-    'explore/issue',
+    'experience/experience-canvas',
+    'experience/explore-mode',
+    'experience/topics-mode',
+    'experience/issues-mode',
+    'experience/tag-issues-mode',
+    'experience/detail-mode',
+    'experience/intro-mode',
+    'experience/issue',
     'jquery-mobile'
 ], function (
     Stats,
     Font,
     TagModel,
-    ExploreCanvas,
+    ExperienceCanvas,
     ExploreMode,
     TopicsMode,
     IssuesMode,
@@ -27,8 +27,8 @@ define([
 ) {
     'use strict';
 
-    var Explore = function () {
-        this._canvas = new ExploreCanvas();
+    var Experience = function () {
+        this._canvas = new ExperienceCanvas();
         this._exploreMode = new ExploreMode(this._canvas);
         this._topicsMode = new TopicsMode(this._canvas);
         this._issuesMode = new IssuesMode(this._canvas);
@@ -37,7 +37,7 @@ define([
         this._introMode = new IntroMode(this._canvas);
     };
 
-    Explore.prototype.init = function (isDebug) {
+    Experience.prototype.init = function (isDebug) {
         // FPS count for debugging
         if (isDebug) {
             this._showStats();
@@ -50,7 +50,7 @@ define([
         font.src = font.fontFamily;
     };
 
-    Explore.prototype.onFontLoaded = function () {
+    Experience.prototype.onFontLoaded = function () {
         this._canvas.drawIssues(this._issueData);
         this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
@@ -73,7 +73,7 @@ define([
         }
     };
 
-    Explore.prototype.setData = function (data) {
+    Experience.prototype.setData = function (data) {
         this._issueData = data.getIssues();
         this._tagData = data.getTags();
         this._topicsModeData = data.getTopics();
@@ -81,22 +81,22 @@ define([
         this._topicsMode.setData(this._topicsModeData);
     };
 
-    Explore.prototype.setContainer = function (container) {
+    Experience.prototype.setContainer = function (container) {
         this._canvas.init(container);
     };
 
-    Explore.prototype.setEnterIssueCallback = function (enterIssueCallback) {
+    Experience.prototype.setEnterIssueCallback = function (enterIssueCallback) {
         this._enterIssueCallback = enterIssueCallback;
     };
 
-    Explore.prototype.setBgModeCallback = function (bgModeCallback) {
+    Experience.prototype.setBgModeCallback = function (bgModeCallback) {
         this._setBgMode = bgModeCallback;
     };
 
     /**
     * Shows FPS count
     */
-    Explore.prototype._showStats = function () {
+    Experience.prototype._showStats = function () {
         this._stats = new Stats();
 
         this._stats.setMode(0);
@@ -114,11 +114,12 @@ define([
         }.bind(this));
     };
 
-    Explore.prototype.hold = function () {
+    Experience.prototype.hold = function () {
         this._onInitMode = function () {};
     };
 
-    Explore.prototype.showExplore = function () {
+    Experience.prototype.showExplore = function () {
+        debugger;
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_EXPLORE;
@@ -129,7 +130,7 @@ define([
         }
     };
 
-    Explore.prototype.showIssues = function () {
+    Experience.prototype.showIssues = function () {
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_ISSUES;
@@ -139,7 +140,7 @@ define([
         }
     };
 
-    Explore.prototype.showTopics = function () {
+    Experience.prototype.showTopics = function () {
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TOPICS;
@@ -149,7 +150,7 @@ define([
         }
     };
 
-    Explore.prototype.showDetail = function () {
+    Experience.prototype.showDetail = function () {
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_DETAIL;
@@ -163,7 +164,7 @@ define([
         }
     };
 
-    Explore.prototype.showTagIssues = function (tag) {
+    Experience.prototype.showTagIssues = function (tag) {
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TAG_ISSUES;
@@ -175,17 +176,17 @@ define([
         }
     };
 
-    Explore.prototype._onHideTagIssues = function () {
+    Experience.prototype._onHideTagIssues = function () {
         this._setBgMode('');
     };
 
-    Explore.prototype.onScroll = function (offset) {
+    Experience.prototype.onScroll = function (offset) {
         if (this._mode === Issue.MODE_DETAIL) {
             this._detailMode.onScroll(offset);
         }
     };
 
-    Explore.prototype._openIssue = function (issue) {
+    Experience.prototype._openIssue = function (issue) {
         if (TagModel.prototype.isPrototypeOf(issue.data)) {
             this.showTagIssues(issue.data);
             return;
@@ -208,7 +209,7 @@ define([
         }
     };
 
-    Explore.prototype._updateScroller = function (mousePosition) {
+    Experience.prototype._updateScroller = function (mousePosition) {
         // no movement if mouse is out of the canvas
         if (mousePosition.y > this._canvasSize.y ||
             mousePosition.y < -this._canvasSize.y) {
@@ -242,5 +243,5 @@ define([
         }
     };
 
-    return Explore;
+    return Experience;
 });

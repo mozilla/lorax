@@ -10,7 +10,7 @@ define([
 
     // controller
     'lorax/controllers/core',
-    'lorax/controllers/explore',
+    'lorax/controllers/experience',
     'lorax/controllers/detail',
     'lorax/controllers/nav',
 
@@ -42,7 +42,7 @@ define([
     'lorax/directives/chart-identity-control',
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
-    'lorax/directives/explore-canvas',
+    'lorax/directives/experience-canvas',
     'lorax/directives/add-infographic-directive',
 
     // services
@@ -51,7 +51,7 @@ define([
     'lorax/services/utils',
     'lorax/services/pubsub',
     'lorax/services/data',
-    'lorax/services/explore',
+    'lorax/services/experience',
 
     // filters
     'lorax/filters/encode-uri',
@@ -63,7 +63,7 @@ define([
 
     // controllers
     CoreCtrl,
-    ExploreCtrl,
+    ExperienceCtrl,
     DetailCtrl,
     NavCtrl,
 
@@ -95,7 +95,7 @@ define([
     ChartIdentityControlDirective,
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
-    ExploreCanvasDirective,
+    ExperienceCanvasDirective,
     AddInfographicDirective,
 
     // services
@@ -104,7 +104,7 @@ define([
     utilsService,
     pubSubService,
     dataService,
-    exploreService,
+    experienceService,
 
     // filters
     EncodeUriFilter,
@@ -127,13 +127,13 @@ define([
         .controller('CoreCtrl', CoreCtrl)
 
         /**
-         * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
+         * Injects {@link lorax/controllers/ExperienceCtrl} as 'ExperienceCtrl'
          * @method lorax/loraxApp~controller
          */
-        .controller('ExploreCtrl', ExploreCtrl)
+        .controller('ExperienceCtrl', ExperienceCtrl)
 
         /**
-         * Injects {@link lorax/controllers/ExploreCtrl} as 'ExploreCtrl'
+         * Injects {@link lorax/controllers/DetailCtrl} as 'DetailCtrl'
          * @method lorax/loraxApp~controller
          */
         .controller('DetailCtrl', DetailCtrl)
@@ -327,11 +327,11 @@ define([
         .directive('loraxChartCyberBullying', ChartCyberBullyingDirective)
 
         /**
-         * Injects {@link lorax/directives/ExploreCanvasDirective}
-         * as 'ExploreCanvasDirective'
+         * Injects {@link lorax/directives/ExperienceCanvasDirective}
+         * as 'ExperienceCanvasDirective'
          * @method lorax/loraxApp~directive
          */
-        .directive('loraxExploreCanvas', ExploreCanvasDirective)
+        .directive('loraxExperienceCanvas', ExperienceCanvasDirective)
 
         /**
          * Injects {@link lorax/directives/AddInfographicDirective}
@@ -359,10 +359,10 @@ define([
         .service('utilsService', utilsService)
 
         /**
-         * Inject {@link lorax/services/exploreService} as 'exploreService'
+         * Inject {@link lorax/services/experienceService} as 'experienceService'
          * @method lorax/loraxApp~service
          */
-        .service('exploreService', exploreService)
+        .service('experienceService', experienceService)
 
         /**
          * Inject {@link lorax/services/pubSubService} as 'pubSubService'

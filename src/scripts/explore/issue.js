@@ -1,6 +1,6 @@
 /* global define:true */
 define([
-    'explore/circle',
+    'experience/circle',
     'pixi',
     'createjs',
     'signals'

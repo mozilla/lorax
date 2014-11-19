@@ -31,7 +31,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         dataService,
         windowService,
         scrollService,
-        exploreService
+        experienceService
     ) {
 
         this._$scope = $scope;
@@ -42,7 +42,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         this._dataService = dataService;
         this._windowService = windowService;
         this._scrollService = scrollService;
-        this._exploreService = exploreService;
+        this._experienceService = experienceService;
 
         this._$scope.detail = {
             currentIssue : '',
@@ -52,12 +52,12 @@ define(['jquery', 'jquery-scrollie'], function ($) {
 
         this._issueOffset = 138;
         // dirty hack: force explore to wait for init call
-        this._exploreService.switchView('');
+        this._experienceService.switchView('');
 
         $scope.$on('$destroy', function () {
             // set detail mode off, removes body class
             windowService.setDetailMode(false);
-            exploreService.switchView('explore');
+            experienceService.switchView('explore');
         });
 
         // get model
@@ -75,13 +75,13 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         'dataService',
         'windowService',
         'scrollService',
-        'exploreService'
+        'experienceService'
     ];
 
     IssueAllCtrl.prototype.init = function () {
         // set detail mode on, adds body class
         this._windowService.setDetailMode(true);
-        this._exploreService.switchView('detail');
+        this._experienceService.switchView('detail');
 
         // set bg color
         var status = $('.detail').eq(0).attr('data-issue-status');
@@ -120,7 +120,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     };
 
     IssueAllCtrl.prototype.onScroll = function (event) {
-        this._exploreService.onScroll($(event.target).scrollTop());
+        this._experienceService.onScroll($(event.target).scrollTop());
     };
 
     IssueAllCtrl.prototype.nextIssue = function () {
@@ -177,7 +177,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
 
             // update explore on scroll
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));
-            controller._exploreService.onScroll(0);
+            controller._experienceService.onScroll(0);
 
         }.bind(controller), 500);
     };

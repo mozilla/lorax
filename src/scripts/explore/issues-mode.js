@@ -1,9 +1,9 @@
 /* global define:true */
 define([
     'pixi',
-    'explore/mode',
-    'explore/issue',
-    'explore/responsive',
+    'experience/mode',
+    'experience/issue',
+    'experience/responsive',
     'jquery',
     'jquery-mousewheel'
 ], function (

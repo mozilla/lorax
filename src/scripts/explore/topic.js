@@ -3,7 +3,7 @@ define([
     'pixi',
     'createjs',
     'signals',
-    'explore/issue'
+    'experience/issue'
 ], function (
     PIXI,
     createjs,
