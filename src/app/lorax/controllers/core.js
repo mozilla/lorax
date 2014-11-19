@@ -17,7 +17,8 @@ define(function () {
             openEmailModal: this.openEmailModal.bind(this),
             openShareModal: this.openShareModal.bind(this),
             openShareOptions: this.openShareOptions.bind(this),
-            closeShareOptions: this.closeShareOptions.bind(this)
+            closeShareOptions: this.closeShareOptions.bind(this),
+            openAboutModal: this.openAboutModal.bind(this)
         };
     };
 
@@ -40,6 +41,10 @@ define(function () {
 
     CoreCtrl.prototype.closeShareOptions = function () {
         this._$scope.core.shareOptions = false;
+    };
+
+    CoreCtrl.prototype.openAboutModal = function () {
+        this._$scope.$broadcast('openAboutModal');
     };
 
     return CoreCtrl;

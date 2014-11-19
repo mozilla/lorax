@@ -1,0 +1,11 @@
+<section class="modal modal-about" ng-if="modalAbout.open">
+  <header class="modal__header modal-about__header">
+    <h1>{{::modalAbout.content.title}}</h1>
+  </header>
+  <a href="#" class="modal-close icon-close" data-lorax-prevent-default ng-click="modalAbout.closeModal()">Close</a>
+  <div class="modal_content">
+    <div class="modal-about__copy">
+      <p ng-repeat="paragraph in modalAbout.content.copy">{{paragraph}}</p>
+    </div>
+  </div>
+</section>

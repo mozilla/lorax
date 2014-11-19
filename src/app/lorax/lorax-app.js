@@ -19,6 +19,7 @@ define([
     'lorax/directives/prevent-default',
     'lorax/directives/modal-email',
     'lorax/directives/modal-share',
+    'lorax/directives/modal-about',
     'lorax/directives/issue-details',
     'lorax/directives/issue-scroll',
     'lorax/directives/issue-all',
@@ -72,6 +73,7 @@ define([
     PreventDefaultDirective,
     ModalEmailDirective,
     ModalShareDirective,
+    ModalAboutDirective,
     IssueDetailsDirective,
     IssueScrollDirective,
     IssueAllDirective,
@@ -167,6 +169,12 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalShare', ModalShareDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalAboutDirective} as 'ModalAboutDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalAbout', ModalAboutDirective)
 
         /**
          * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'

@@ -20,7 +20,7 @@
               "url": "https://blog.mozilla.org/blog/category/firefox-os/"
             }
           ],
-            "yourActionLink": [
+          "yourActionLink": [
             {
               "copy": "Why Mobile matters",
               "url": "https://www.youtube.com/watch?v=TMP45DupbhI&list=PLFlAJDI87Jg2vk3THSt8RBoD7vLG2tnwH"
@@ -81,7 +81,7 @@
           "yourActionCopy": "Donec quis magna eleifend turpis pharetra pulvinar sit amet ut velit. Mauris velit eros, consectetur id ex sed, malesuada tincidunt.",
           "mozActionLink": [
             {
-              "copy": "Firefox accessibility features",
+              "copy": "Firefox accessibility",
               "url": "https://support.mozilla.org/en-US/kb/accessibility-features-firefox-make-firefox-and-we"
             },
             {
@@ -643,6 +643,16 @@
     },
     "openness": {
       "name": "Openness"
+    }
+  },
+  "modals": {
+    "about": {
+      "title": "About",
+      "copy": [
+        "The Web is a living ecosystem that exists in a delicate balance and we all have a role to play in shaping &mdash; and ensuring &mdash; its future.",
+        "At Mozilla, we believe that the more you know about the Web, the easier it is for you to make more informed choices and be a more empowered digital citizen.",
+        "That's why we created this site: to show you where the Web stands today, the issues that impact it and what you can do to get involved."
+      ]
     }
   }
 }

@@ -84,17 +84,17 @@ define(['jquery', 'd3'], function ($, d3) {
         first.append('text')
           .attr('class', 'linegraph__firstlast')
           .attr('x', margin.left)
-          .attr('y', height - (height/4)+10)
+          .attr('y', height - (height/4))
           .text( function() { return dollarFormat(lineData[0].data[0]).replace('G','M');});
 
         first.append('text')
           .attr('class', 'linegraph__firstlast')
           .attr('x', margin.left)
-          .attr('y', height - (height/3)-10)
+          .attr('y', height - (height/3)-13)
           .text( function() { return lineData[0].data[1];});
 
         var last = svg.append('g')
-          .attr('class', 'linegraph__firstlast')
+          .attr('class', 'linegraph__firstlast');
 
         last.append('text')
           .attr('class', 'linegraph__firstlast')

@@ -56,7 +56,7 @@ define(['jquery', 'd3'], function ($, d3) {
             var numDatasets = lineData[0].data.length;
 
             var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
-            var margin = {top: 20, right: 20, bottom: 50, left: 20};
+            var margin = {top: 20, right: 20, bottom: 50, left: 30};
             var width = graphWidth;
             var height = graphWidth*0.7;
 
@@ -167,10 +167,17 @@ define(['jquery', 'd3'], function ($, d3) {
                         .orient('bottom')
                         .tickSize(0);
 
-                    svg.append('g')
-                        .attr('class', 'x_axis_info')
+
+                    var xAxisInfo = svg.append('g')
+                        .attr('class', 'linegraph__xaxis_info')
                         .attr('transform', 'translate(0,' + (height - 30 +( i * 17)) + ')')
                         .call(xAxisValue);
+
+                    xAxisInfo.append("circle")
+                        .attr('class', 'linegraph__point_' + i + '_circle')
+                        .attr('cx', 3)
+                        .attr('cy', 7.5)
+                        .attr('r', 3);
                 }
             }
 

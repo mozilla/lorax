@@ -212,7 +212,6 @@
     }
 }
 
-
 /* Email Modal
    ========================================================================== */
 
@@ -245,4 +244,34 @@
     .at-xlarge({
         margin-bottom: 132px;
     });
+
+/* About Modal
+   ========================================================================== */
+
+.modal-about {
+    width: 33%;
+    right: 0;
+    left: auto;
+}
+
+.modal-about__header {
+    position: relative;
+    left: auto;
+    top: 0;
+    margin-top: 150px;
+
+    > h1 {
+        .font-size(3.0);
+        padding: 0;
+
+        .at-large ({
+            padding: 0;
+        })
+    }
+}
+
+.modal-about__copy {
+    .font-size(1.8);
+    .fira-sans-xlight;
+    line-height: normal;
 }

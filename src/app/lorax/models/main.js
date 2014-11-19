@@ -10,6 +10,7 @@ define([
     var MainModel = function (data, localeData, infographicData) {
         this._tags = [];
         this._topics = [];
+        this._modals = localeData.modals;
 
         for (var idxTopic in data.topics) {
             this._topics.push(new TopicModel(
@@ -47,6 +48,10 @@ define([
 
     MainModel.prototype.getTags = function () {
         return this._tags;
+    };
+
+    MainModel.prototype.getModals = function () {
+        return this._modals;
     };
 
     return MainModel;
