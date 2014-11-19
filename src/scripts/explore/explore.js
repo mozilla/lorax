@@ -9,6 +9,7 @@ define([
     'explore/issues-mode',
     'explore/tag-issues-mode',
     'explore/detail-mode',
+    'explore/intro-mode',
     'explore/issue',
     'jquery-mobile'
 ], function (
@@ -21,17 +22,19 @@ define([
     IssuesMode,
     TagIssuesMode,
     DetailMode,
+    IntroMode,
     Issue
 ) {
     'use strict';
 
     var Explore = function () {
         this._canvas = new ExploreCanvas();
-        this._explore = new ExploreMode(this._canvas);
-        this._topics = new TopicsMode(this._canvas);
-        this._issues = new IssuesMode(this._canvas);
-        this._tagIssues = new TagIssuesMode(this._canvas);
-        this._detail = new DetailMode(this._canvas);
+        this._exploreMode = new ExploreMode(this._canvas);
+        this._topicsMode = new TopicsMode(this._canvas);
+        this._issuesMode = new IssuesMode(this._canvas);
+        this._tagIssuesMode = new TagIssuesMode(this._canvas);
+        this._detailMode = new DetailMode(this._canvas);
+        this._introMode = new IntroMode(this._canvas);
     };
 
     Explore.prototype.init = function (isDebug) {
@@ -53,13 +56,14 @@ define([
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
         this._canvas.hide();
 
-        this._explore.init();
-        this._topics.init();
-        this._issues.init();
-        this._tagIssues.init();
-        this._detail.init();
+        this._exploreMode.init();
+        this._topicsMode.init();
+        this._issuesMode.init();
+        this._tagIssuesMode.init();
+        this._detailMode.init();
+        this._introMode.init();
 
-        this._tagIssues.hideS.add(this._onHideTagIssues.bind(this));
+        this._tagIssuesMode.hideS.add(this._onHideTagIssues.bind(this));
 
         this._hasInitialized = true;
         if (this._onInitMode) {
@@ -72,9 +76,9 @@ define([
     Explore.prototype.setData = function (data) {
         this._issueData = data.getIssues();
         this._tagData = data.getTags();
-        this._topicsData = data.getTopics();
+        this._topicsModeData = data.getTopics();
 
-        this._topics.setData(this._topicsData);
+        this._topicsMode.setData(this._topicsModeData);
     };
 
     Explore.prototype.setContainer = function (container) {
@@ -118,7 +122,7 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_EXPLORE;
-            this._explore.show();
+            this._exploreMode.show();
             this._setBgMode('');
         } else {
             this._onInitMode = this.showExplore;
@@ -129,7 +133,7 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_ISSUES;
-            this._issues.show();
+            this._issuesMode.show();
         } else {
             this._onInitMode = this.showIssues;
         }
@@ -139,7 +143,7 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TOPICS;
-            this._topics.show();
+            this._topicsMode.show();
         } else {
             this._onInitMode = this.showTopics;
         }
@@ -149,7 +153,7 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_DETAIL;
-            this._detail.show();
+            this._detailMode.show();
 
             if (this._currentIssue) {
                 this._currentIssue.closeIssue();
@@ -163,8 +167,8 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TAG_ISSUES;
-            this._tagIssues.setTag(tag);
-            this._tagIssues.show();
+            this._tagIssuesMode.setTag(tag);
+            this._tagIssuesMode.show();
             this._setBgMode('tag');
         } else {
             this._onInitMode = this.showTagIssues;
@@ -177,7 +181,7 @@ define([
 
     Explore.prototype.onScroll = function (offset) {
         if (this._mode === Issue.MODE_DETAIL) {
-            this._detail.onScroll(offset);
+            this._detailMode.onScroll(offset);
         }
     };
 
@@ -223,7 +227,7 @@ define([
 
         this._scrollFinalPosition = Math.max(
             Math.min(this._scrollFinalPosition, 0),
-            (-(this._scrollArea.y + (this._issueMargin * this._issues.length)) +
+            (-(this._scrollArea.y + (this._issueMargin * this._issuesMode.length)) +
             this._scrollArea.height - 200)
         );
 
@@ -231,8 +235,8 @@ define([
 
         var i;
         var issue;
-        for (i = 0; i < this._issues.length; i ++) {
-            issue = this._issues[i];
+        for (i = 0; i < this._issuesMode.length; i ++) {
+            issue = this._issuesMode[i];
             issue.elm.y = issue.issueY + this._scrollPosition;
             // issue.elm.alpha = ((1 - Math.abs(issue.elm.y / this._scrollArea.height))) + 0.3;
         }
