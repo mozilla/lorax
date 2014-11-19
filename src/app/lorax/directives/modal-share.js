@@ -47,8 +47,7 @@ define(['angular', 'jquery'], function (angular, $) {
             open: false,
             service: null,
             closeModal: this.closeModal.bind(this),
-            onShare: this.onShare.bind(this),
-            shareUrl: 'http://test.com'
+            onShare: this.onShare.bind(this)
         };
 
         // listen for $broadcast of 'openShareModal'
@@ -81,6 +80,7 @@ define(['angular', 'jquery'], function (angular, $) {
     ];
 
     ModalShareController.prototype.openModal = function (e, service) {
+        // service = 'twitter', 'email', or 'fb'
         angular.extend(
             this._$scope.modalShare,
             {
@@ -91,8 +91,12 @@ define(['angular', 'jquery'], function (angular, $) {
 
         this._windowService.setModalOpen(true);
 
+        // get the current issue that the user is viewing,
+        // from the url parameters
         var currentIssue = this._utilsService.getURLParameter('issue');
 
+        // scroll to issue
+        // if no issue in focus, e.g. user is on experience, we do nothing
         if (currentIssue) {
             this.scrollToIssue(currentIssue);
         }
@@ -105,6 +109,9 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalShareController.prototype.onShare = function (e, issue) {
+        // if modal service is 'twitter' or 'fb'
+        // prevent the default mailto behavior
+        // open new sharing tab/window
         switch (this._$scope.modalShare.service) {
         case 'twitter':
             e.preventDefault();

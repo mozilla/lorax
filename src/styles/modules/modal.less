@@ -56,7 +56,7 @@
     }
 }
 
-.modal-close {
+.modal__close {
     background-position: 100% 50%;
     background-repeat: no-repeat;
     background-size: 30px;
@@ -73,7 +73,7 @@
     });
 }
 
-.modal_content {
+.modal__content {
     padding-top: 60px;
 
     .at-large({
@@ -210,4 +210,39 @@
     .sharing-quote:hover & {
         opacity: 1;
     }
+}
+
+
+/* Email Modal
+   ========================================================================== */
+
+.keep-informed {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.keep-informed__header {
+    margin-bottom: 8px;
+
+    > h1 {
+        .fira-sans-light;
+        .font-size(2.2);
+        line-height: 26px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}
+
+.keep-informed__copy {
+    color: #ccc;
+    color: rgba(255,255,255,0.2);
+    .fira-sans-light;
+    .font-size(1.6);
+    line-height: 26px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+
+    .at-xlarge({
+        margin-bottom: 132px;
+    });
 }

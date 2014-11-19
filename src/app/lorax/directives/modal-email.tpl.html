@@ -1,9 +1,18 @@
-<section class="modal">
-  <header class="modal__header">
-
-    <a href="#" class="modal-close" data-lorax-prevent-default ng-click="">Close</a>
-  </header>
-  <div class="modal_content">
-
+<section class="modal" ng-if="modalEmail.open">
+  <a href="#" class="modal__close icon-close" data-lorax-prevent-default ng-click="modalEmail.closeModal()">Close</a>
+  <div class="modal__content">
+    <section class="keep-informed">
+      <header class="keep-informed__header">
+        <h1>Keep Me Informed</h1>
+      </header>
+      <p class="keep-informed__copy">Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.</p>
+      <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla">
+        <div class="enter-email__email">
+          <label for="email" class="is-vishidden">Enter Your Email</label>
+          <input name="email" type="email" id="email" value="" required aria-required="true" placeholder="Enter Your Email">
+        </div>
+        <input type="submit" id="enter-email__submit" value="Sign Me Up" class="is-vishidden">
+      </form>
+    </section>
   </div>
 </section>

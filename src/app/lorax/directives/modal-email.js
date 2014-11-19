@@ -2,11 +2,11 @@
  * @fileOverview Email Modal directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(function () {
+define(['angular'], function (angular) {
     'use strict';
 
     /**
-     * Email Modal directive
+     * Share Modal directive
      */
     var ModalEmailDirective = function () {
         return {
@@ -19,13 +19,24 @@ define(function () {
     };
 
     /**
-    * Controller for Email Modal directive
+    * Controller for Share Modal directive
     * @constructor
     */
     var ModalEmailController = function (
-        $scope
+        $scope,
+        windowService
     ) {
         this._$scope = $scope;
+        this._windowService = windowService;
+
+        $scope.modalEmail = {
+            open: false,
+            closeModal: this.closeModal.bind(this),
+            //onShare: this.onShare.bind(this),
+        };
+
+        // listen for $broadcast of 'openEmailModal'
+        $scope.$on('openEmailModal', this.openModal.bind(this));
     };
 
     /**
@@ -33,8 +44,26 @@ define(function () {
     * @type {Array}
     */
     ModalEmailController.$inject = [
-        '$scope'
+        '$scope',
+        'windowService'
     ];
+
+    ModalEmailController.prototype.openModal = function () {
+        angular.extend(
+            this._$scope.modalEmail,
+            {
+                open: true
+            }
+        );
+
+        this._windowService.setModalOpen(true);
+    };
+
+    ModalEmailController.prototype.closeModal = function () {
+        this._$scope.modalShare.open = false;
+
+        this._windowService.setModalOpen(false);
+    };
 
     return ModalEmailDirective;
 });

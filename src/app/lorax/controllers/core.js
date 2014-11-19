@@ -26,6 +26,7 @@ define(function () {
     ];
 
     CoreCtrl.prototype.openEmailModal = function () {
+        console.log('open');
         this._$scope.$broadcast('openEmailModal');
     };
 
