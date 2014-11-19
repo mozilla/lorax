@@ -39,31 +39,26 @@
         display: block;
         left: 0;
         position: fixed;
-        top: 30px;
+        top: 50px;
         z-index: @header-z-index;
     });
 
     > a {
+        background-position: 0 50%;
+        background-size: 0;
         color: @black;
         display: block;
-        .din-condensed-medium;
+        .fira-sans-ultra;
         .font-size(1.8);
         line-height: 22px;
+        padding-left: 20px;
         text-align: center;
         text-transform: uppercase;
 
-        /*.at-medium({
-            height: 60px;
-            line-height: 60px;
-            text-align: left;
-        });*/
-
         .at-xlarge({
-            background: url('../images/open-internet-project.png') no-repeat 0 0 transparent;
-            height: 149px;
+            background-size: 10px;
+            .font-size(2.2);
             text-align: left;
-            text-indent: -9999px;
-            width: 90px;
         });
     }
 }
@@ -77,6 +72,7 @@
     text-align: center;
 
     .at-medium({
+        display: none; // TEMP
         .font-size(1.2);
         line-height: 14px;
         position: absolute;
@@ -124,7 +120,9 @@
     });
 
     .at-xlarge({
-        top: 200px;
+        left: auto;
+        right: 30px;
+        top: 45px;
     });
 }
 
