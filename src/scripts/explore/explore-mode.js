@@ -213,7 +213,6 @@ define(['pixi', 'explore/mode', 'explore/issue'], function (PIXI, Mode, Issue) {
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             issue = this._canvas.tags[i];
-            console.log(issue, issue._x0, issue._y0);
             issue.implode();
             issue.setMode(Issue.MODE_TAG);
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
