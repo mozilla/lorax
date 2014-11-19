@@ -22,24 +22,23 @@
 
 .experience-menu {
     .reset-list;
+    .clearfix;
     bottom: 20px;
     margin: 0 auto;
-    pointer-events: none;
+    max-width: 420px;
+    min-width: 320px;
     position: fixed;
     width: 100%;
     z-index: @experience-z-index + 1;
 
-    .flexbox & {
-        .flexbox;
-        .justify-content(center);
-    }
-
-    .no-flexbox & {
-        .clearfix;
-    }
-
     [data-bg-mode="tag"] & {
         display: none;
+    }
+
+    @media (min-width: 420px) {
+        left: 50%;
+        margin-left: -210px;
+        width: 420px;
     }
 
     .at-medium({
@@ -47,46 +46,55 @@
     });
 
     > li {
-        min-height: 50px;
-        pointer-events: auto;
+        float: left;
+        max-width: 140px;
+        width: 33.3333%;
 
-        .no-flexbox & {
-            float: left;
-            width: 33%;
-        }
+        @media (min-width: 420px) {
+            &:first-child a {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
 
-        &:first-child a {
-            border-top-left-radius: 3px;
-            border-bottom-left-radius: 3px;
-        }
-
-        &:last-child a {
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
+            &:last-child a {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
         }
     }
 }
 
 .experience-menu__link {
     background-color: @white;
-    background-position: 10px 50%;
-    background-size: 16px;
     box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
     color: @extra-dark-grey;
-    .fira-sans-medium;
-    .font-size(1);
-    margin-right: 1px;
-    padding: 10px 8px 10px 32px;
-    text-transform: uppercase;
     display: inline-block;
+    padding: 12px 0;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
 
     .at-medium({
-        background-position: 22px 50%;
-        background-size: 18px;
-        padding: 15px 23px 15px 47px;
-        .font-size(1.1);
+        padding: 16px 0;
+
     });
+
+    > span {
+        background-position: 0 50%;
+        background-size: 16px;
+        display: inline-block;
+        .fira-sans-medium;
+        .font-size(1);
+        line-height: 16px;
+        padding-left: 20px;
+
+        .at-medium({
+            background-size: 18px;
+            .font-size(1.1);
+            line-height: 18px;
+            padding-left: 24px;
+        });
+    }
 
     .no-touch &:hover,
     &:focus,

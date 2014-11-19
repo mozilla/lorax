@@ -1,27 +1,27 @@
 {
     "topic-0": [
         ".icon-topic-white",
-        ".explore-menu__link.icon-topic-dark.is-active",
-        ".explore-menu__link.icon-topic-dark:focus",
-        ".no-touch .explore-menu__link.icon-topic-dark:hover"
+        ".experience-menu__link--topic.is-active > span",
+        ".experience-menu__link--topic:focus > span",
+        ".no-touch .experience-menu__link--topic:hover > span"
     ],
     "topic-1": [
         ".icon-topic-dark"
     ],
     "explore-0": [
         ".icon-explore-white",
-        ".explore-menu__link.icon-explore-dark.is-active",
-        ".explore-menu__link.icon-explore-dark:focus",
-        ".no-touch .explore-menu__link.icon-explore-dark:hover"
+        ".experience-menu__link--explore.is-active > span",
+        ".experience-menu__link--explore:focus > span",
+        ".no-touch .experience-menu__link--explore:hover > span"
     ],
     "explore-1": [
         ".icon-explore-dark"
     ],
     "issues-0": [
         ".icon-issues-white",
-        ".explore-menu__link.icon-issues-dark.is-active",
-        ".explore-menu__link.icon-issues-dark:focus",
-        ".no-touch .explore-menu__link.icon-issues-dark:hover"
+        ".experience-menu__link--issues.is-active > span",
+        ".experience-menu__link--issues:focus > span",
+        ".no-touch .experience-menu__link--issues:hover > span"
     ],
     "issues-1": [
         ".icon-issues-dark"
