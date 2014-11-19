@@ -21,20 +21,20 @@ define(function () {
 
     ExploreService.prototype.switchView = function (view) {
         switch (view) {
-            case 'explore':
-                this._explore.showExplore();
-                break;
-            case 'topics':
-                this._explore.showTopics();
-                break;
-            case 'issues':
-                this._explore.showIssues();
-                break;
-            case 'detail':
-                this._explore.showDetail();
-                break;
-            default:
-                this._explore.hold();
+        case 'explore':
+            this._explore.showExplore();
+            break;
+        case 'topics':
+            this._explore.showTopics();
+            break;
+        case 'issues':
+            this._explore.showIssues();
+            break;
+        case 'detail':
+            this._explore.showDetail();
+            break;
+        default:
+            this._explore.hold();
         }
     };
 

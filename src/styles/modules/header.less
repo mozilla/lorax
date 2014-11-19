@@ -31,12 +31,12 @@
     margin: 0;
 
     .at-medium({
-        display: none; // temp?
+        display: none;
         padding: 0 30px;
     });
 
     .at-xlarge({
-        display: block; // temp?
+        display: block;
         left: 0;
         position: fixed;
         top: 30px;
@@ -52,11 +52,11 @@
         text-align: center;
         text-transform: uppercase;
 
-        .at-medium({
+        /*.at-medium({
             height: 60px;
             line-height: 60px;
             text-align: left;
-        });
+        });*/
 
         .at-xlarge({
             background: url('../images/open-internet-project.png') no-repeat 0 0 transparent;
@@ -150,7 +150,7 @@
         z-index: @header-z-index - 1;
     });
 
-    .no-amin & {
+    .no-anim & {
         .transition(none);
     }
 
@@ -241,12 +241,12 @@
 }
 
 .down-arrow-nav {
-    background: url('../images/down-arrow.png') no-repeat 0 0 transparent;
-    width: 17px;
-    height: 10px;
+    background-position: 50%;
+    background-size: 100%;
+    width: 50px;
+    height: 26px;
     position: fixed;
-    bottom: 34px;
+    bottom: 30px;
     left: 50%;
-    margin-left: -9px;
-    cursor: pointer;
+    margin-left: -25px;
 }
