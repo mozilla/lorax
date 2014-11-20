@@ -63,13 +63,14 @@ define([
         this._detailMode.init();
         this._introMode.init();
 
+        this._introMode.showS.add(this._onEndIntro.bind(this));
         this._tagIssuesMode.hideS.add(this._onHideTagIssues.bind(this));
 
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
         } else {
-            this.showExplore();
+            this.showIntro();
         }
     };
 
@@ -175,8 +176,23 @@ define([
         }
     };
 
+    Experience.prototype.showIntro = function () {
+        if (this._hasInitialized) {
+            this._canvas.show();
+            this._mode = Issue.MODE_INTRO;
+            this._introMode.show();
+            this._setBgMode('intro');
+        } else {
+            this._onInitMode = this.showIntro;
+        }
+    };
+
     Experience.prototype._onHideTagIssues = function () {
         this._setBgMode('');
+    };
+
+    Experience.prototype._onEndIntro = function () {
+        this.showExplore();
     };
 
     Experience.prototype.onScroll = function (offset) {

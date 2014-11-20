@@ -41,7 +41,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 elm.exploreY < this._canvas.canvasSize.y / 2)
             );
 
-            elm.moveTo(elm.exploreX, elm.exploreY);
+            elm.moveTo(0, 0);
         }
 
         // set tags positions
@@ -50,7 +50,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             rSeed = this._exploreRadius + (Math.random() * 5);
 
             elm = this._canvas.tags[i];
-            elm.moveTo(Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+            elm.exploreX = Math.sin(seed) * rSeed;
+            elm.exploreY = Math.cos(seed) * rSeed;
         }
 
         // set fakes positions
@@ -60,7 +61,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
             elm = this._canvas.fakes[i];
             elm.elm.alpha = 0.1 + (0.3 * rSeed / this._exploreRadius);
-            elm.moveTo(Math.sin(seed) * rSeed, Math.cos(seed) * rSeed);
+            elm.exploreX = Math.sin(seed) * rSeed;
+            elm.exploreY = Math.cos(seed) * rSeed;
         }
     };
 
@@ -213,8 +215,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             issue = this._canvas.tags[i];
-            issue.implode();
             issue.setMode(Issue.MODE_TAG);
+            issue._x0 = issue.exploreX;
+            issue._y0 = issue.exploreY;
+            issue.implode();
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
@@ -222,7 +226,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
-            this._canvas.fakes[i].implode();
+            issue = this._canvas.fakes[i];
+            issue._x0 = issue.exploreX;
+            issue._y0 = issue.exploreY;
+            issue.implode();
         }
 
         this._drawLinesBind = this._drawLines.bind(this);
@@ -240,6 +247,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
+            issue.explode(this._exploreRadius);
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);
         }

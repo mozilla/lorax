@@ -42,6 +42,7 @@ define([
     Issue.MODE_ISSUES = 'issues';
     Issue.MODE_TAG_ISSUES = 'tagIssues';
     Issue.MODE_DETAIL = 'detail';
+    Issue.MODE_INTRO = 'intro';
     Issue.MODES = [
         Issue.MODE_EXPLORE,
         Issue.MODE_TOPICS,
