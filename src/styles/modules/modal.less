@@ -286,7 +286,6 @@
     }
 }
 
-
 /* About Modal
    ========================================================================== */
 
@@ -294,6 +293,12 @@
     width: 33%;
     right: 0;
     left: auto;
+    background: @white;
+    color: @black;
+
+    .modal__close {
+        color: @white;
+    }
 }
 
 .modal-about__header {
@@ -316,4 +321,95 @@
     .font-size(1.8);
     .fira-sans-xlight;
     line-height: normal;
+}
+
+/* Legend Modal
+   ========================================================================== */
+
+.modal-legend {
+    width: 33%;
+    right: auto;
+    left: 0;
+    background: @white;
+    color: @black;
+
+    .modal__close {
+        color: @white;
+        right: auto;
+        left: 20px
+        top: 0;
+        width: 46px;
+        z-index: 10;
+
+        .at-large({
+            right: auto;
+            left: 40px;
+            top: 40px;
+        });
+    }
+}
+
+.modal-legend__header {
+    position: relative;
+    left: auto;
+    top: 0;
+    margin: 150px 0 10px 0;
+    height: initial;
+
+    > h1 {
+        .font-size(3.0);
+        padding: 0;
+        line-height: normal;
+
+        .at-large ({
+            padding: 0;
+        })
+    }
+}
+
+.modal-legend__copy {
+    .font-size(1.4);
+    .fira-sans-xlight;
+    line-height: normal;
+}
+
+.modal-legend__group {
+    padding: 10px 0;
+
+    p {
+        margin: 10px 0;
+        display: inline-block;
+    }
+}
+
+.modal-legend__symbol {
+    width: 18px;
+    height: 18px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.modal-legend__symbol-blackdot {
+    border-radius: 18px;
+    background: @black;
+}
+
+.modal-legend__symbol-line {
+    border-top: 1px solid black;
+    transform:rotate(45deg);
+}
+
+.modal-legend__symbol-greendot {
+    border-radius: 18px;
+    background: @go;
+}
+
+.modal-legend__symbol-yellowdot {
+    border-radius: 18px;
+    background: @wait;
+}
+
+.modal-legend__symbol-reddot {
+    border-radius: 18px;
+    background: @stop;
 }

@@ -1,0 +1,18 @@
+<section class="modal modal-legend" ng-if="modalLegend.open">
+  <header class="modal__header modal-legend__header">
+    <h1>{{::modalLegend.content.title}}</h1>
+  </header>
+  <a href="#" class="modal__close icon-close" data-lorax-prevent-default ng-click="modalLegend.closeModal()">Close</a>
+  <div class="modal_content">
+    <div class="modal-legend__copy">
+      <div class="modal-legend__group" ng-repeat="group in modalLegend.content.copy">
+        <div ng-repeat="paragraph in group">
+          <p>
+            <span class="modal-legend__symbol {{paragraph.class}}"></span>
+            {{paragraph.text}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

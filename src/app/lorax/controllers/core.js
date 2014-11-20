@@ -18,7 +18,8 @@ define(function () {
             openShareModal: this.openShareModal.bind(this),
             openShareOptions: this.openShareOptions.bind(this),
             closeShareOptions: this.closeShareOptions.bind(this),
-            openAboutModal: this.openAboutModal.bind(this)
+            openAboutModal: this.openAboutModal.bind(this),
+            openLegendModal: this.openLegendModal.bind(this)
         };
     };
 
@@ -45,6 +46,10 @@ define(function () {
 
     CoreCtrl.prototype.openAboutModal = function () {
         this._$scope.$broadcast('openAboutModal');
+    };
+
+    CoreCtrl.prototype.openLegendModal = function () {
+        this._$scope.$broadcast('openLegendModal');
     };
 
     return CoreCtrl;

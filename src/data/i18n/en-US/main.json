@@ -649,9 +649,52 @@
     "about": {
       "title": "About",
       "copy": [
-        "The Web is a living ecosystem that exists in a delicate balance and we all have a role to play in shaping &mdash; and ensuring &mdash; its future.",
+        "The Web is a living ecosystem that exists in a delicate balance and we all have a role to play in shaping - and ensuring - its future.",
         "At Mozilla, we believe that the more you know about the Web, the easier it is for you to make more informed choices and be a more empowered digital citizen.",
         "That's why we created this site: to show you where the Web stands today, the issues that impact it and what you can do to get involved."
+      ]
+    },
+    "legend": {
+      "title": "Explore the most important issues on the web today and what shape they're in.",
+      "copy": [
+        [
+          {
+            "text": "an individual issue",
+            "class": "modal-legend__symbol-blackdot"
+          },
+          {
+            "text": "a connection between issues",
+            "class": "modal-legend__symbol-line"
+          }
+        ],
+        [
+          {
+            "text": "an issue trending positively",
+            "class": "modal-legend__symbol-greendot"
+          },
+          {
+            "text": "a stable issue",
+            "class": "modal-legend__symbol-yellowdot"
+          },
+          {
+            "text": "an issue trending negatively",
+            "class": "modal-legend__symbol-reddot"
+          }
+        ],
+        [
+          {
+            "text": "all issues and their connections",
+            "class": "icon-explore-dark"
+          },
+          {
+            "text": "four requirements for a healthy Web",
+            "class": "icon-topic-dark"
+          },
+          {
+            "text": "the individual issues as a list",
+            "class": "icon-issues-dark"
+          }
+        ]
       ]
     }
   }

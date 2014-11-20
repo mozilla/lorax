@@ -20,6 +20,7 @@ define([
     'lorax/directives/modal-email',
     'lorax/directives/modal-share',
     'lorax/directives/modal-about',
+    'lorax/directives/modal-legend',
     'lorax/directives/issue-details',
     'lorax/directives/issue-scroll',
     'lorax/directives/issue-all',
@@ -74,6 +75,7 @@ define([
     ModalEmailDirective,
     ModalShareDirective,
     ModalAboutDirective,
+    ModalLegendDirective,
     IssueDetailsDirective,
     IssueScrollDirective,
     IssueAllDirective,
@@ -175,6 +177,12 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalAbout', ModalAboutDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalLegendDirective} as 'ModalLegendDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalLegend', ModalLegendDirective)
 
         /**
          * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'
