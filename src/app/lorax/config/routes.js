@@ -20,6 +20,10 @@ define(function () {
                 templateUrl: '/app/lorax/templates/experience.tpl.html'
             })
 
+            .when('/intro', {
+                templateUrl: '/app/lorax/templates/experience.tpl.html'
+            })
+
             /* -------------------- Detail -------------------- */
 
             .when('/detail/access', {

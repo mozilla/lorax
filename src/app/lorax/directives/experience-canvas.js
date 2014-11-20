@@ -2,7 +2,7 @@
  * @fileOverview Experience canvas directive
  * @author <a href="mailto:leandroferreira@moco.to">Leandro Ferreira</a>
  */
-define(['experience/experience'], function (Experience) {
+define([], function () {
     'use strict';
 
     /**
@@ -24,18 +24,11 @@ define(['experience/experience'], function (Experience) {
      */
     var ExperienceCanvasController = function (
         $scope,
-        dataService,
         experienceService
         )
     {
         this._$scope = $scope;
-
-        dataService.getMain().then(function(model) {
-            this._experience = new Experience();
-            this._experience.setData(model);
-            this._experience.setContainer(this._container);
-            experienceService.setCanvas(this._experience);
-        }.bind(this));
+        this._experienceService = experienceService;
     };
 
     /**
@@ -44,7 +37,6 @@ define(['experience/experience'], function (Experience) {
      */
     ExperienceCanvasController.$inject = [
         '$scope',
-        'dataService',
         'experienceService'
     ];
 
@@ -56,7 +48,7 @@ define(['experience/experience'], function (Experience) {
      * @param {object} controller Controller reference.
      */
     var ExperienceCanvasLinkFn = function (scope, iElem, iAttrs, controller) {
-        controller._container = iElem;
+        controller._experienceService.setContainer(iElem);
     };
 
     return ExperienceCanvasDirective;

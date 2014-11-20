@@ -70,7 +70,7 @@ define([
         if (this._onInitMode) {
             this._onInitMode();
         } else {
-            this.showIntro();
+            this.showExplore();
         }
     };
 

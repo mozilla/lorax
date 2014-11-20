@@ -43,8 +43,8 @@ define([
     };
 
     IntroMode.prototype._onStartShow = function () {
-        createjs.Tween.get(this._message).wait(1000).to({alpha: 1}, 300, createjs.quartIn);
-        createjs.Tween.get(this._internet).to({alpha: 1}, 300, createjs.quartIn);
+        createjs.Tween.get(this._message).wait(2500).to({alpha: 1}, 400, createjs.quartIn);
+        createjs.Tween.get(this._internet).to({alpha: 1}, 400, createjs.quartIn);
 
         setTimeout(this._onShow.bind(this), 6000);
     };
