@@ -53,9 +53,9 @@ define(['jquery', 'd3'], function ($, d3) {
       var id = controller._$scope.issue.getId();
       var pieChart = d3.select('#' + id + ' .infographic__wrapper div');
 
-      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
+      var graphWidth = 600;
       var width = graphWidth;
-      var height = graphWidth * 0.5;
+      var height = graphWidth * 0.4;
 
       var innerR = 72;
       var outerR = 80;

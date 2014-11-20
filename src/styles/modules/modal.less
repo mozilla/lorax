@@ -290,7 +290,7 @@
    ========================================================================== */
 
 .modal-about {
-    width: 33%;
+    width: 100%;
     right: 0;
     left: auto;
     background: @white;
@@ -299,13 +299,22 @@
     .modal__close {
         color: @white;
     }
+
+    .at-medium({
+        width: 33%;
+    });
 }
 
 .modal-about__header {
     position: relative;
     left: auto;
     top: 0;
-    margin-top: 150px;
+    margin: 50px 0 10px 0;
+    height: initial;
+
+    .at-large ({
+        margin: 150px 0 10px 0;
+    });
 
     > h1 {
         .font-size(3.0);
@@ -328,7 +337,7 @@
    ========================================================================== */
 
 .modal-legend {
-    width: 33%;
+    width: 100%;
     right: auto;
     left: 0;
     background: @white;
@@ -348,14 +357,23 @@
             top: 40px;
         });
     }
+
+    .at-medium({
+        width: 33%;
+    });
 }
 
 .modal-legend__header {
+    background: transparent;
     position: relative;
     left: auto;
     top: 0;
-    margin: 150px 0 10px 0;
+    margin: 50px 0 10px 0;
     height: initial;
+
+    .at-large ({
+        margin: 150px 0 10px 0;
+    });
 
     > h1 {
         .font-size(3.0);

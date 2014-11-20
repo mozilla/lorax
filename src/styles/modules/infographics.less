@@ -238,6 +238,10 @@
 /* World Map - Generic Styles
    ========================================================================== */
 
+.worldmap {
+    position: relative;
+}
+
 .worldmap__background {
     fill: none;
 }
@@ -245,7 +249,7 @@
 .worldmap__legend {
     display: none;
     position: absolute;
-    bottom: 10%;
+    bottom: 0%;
     right: 10%;
 
     .at-medium ({
@@ -279,18 +283,39 @@
     fill: @white;
     left: 35%;
     top: 48%;
+    width: 250px;
+    margin-left: -125px;
+
+    .at-large({
+        width: initial;
+        margin-left: 0;
+    });
 }
 
 .worldmap__label-country {
     .fira-sans-regular;
-    .font-size(1.3);
-    letter-spacing: 1px;
+    .font-size(1.6);
+    letter-spacing: 2px;
     text-transform: uppercase;
+    text-align: center;
+
+    .at-large ({
+        .font-size(1.3);
+        letter-spacing: 1px;
+        text-align: left;
+    });
 }
 
 .worldmap__label-data {
-    .font-size(3.0);
-    padding-top: 5px;
+    .font-size(3.5);
+    padding-top: 10px;
+    text-align: center;
+
+    .at-large ({
+        .font-size(3.0);
+        padding-top: 5px;
+        text-align: left;
+    });
 }
 
 .worldmap__dropdown {
@@ -424,11 +449,11 @@
 
 .platformneutrality__wedge {
     fill: none;
-    stroke: #cd9d1d;
+    stroke: rgba(0,0,0,0.2);
 }
 
 .platformneutrality__others {
-    fill: #cd9d1d;
+    fill: rgba(0,0,0,0.2);
 }
 
 .platformneutrality__value {
@@ -438,15 +463,6 @@
 
 .platformneutrality__legend {
     margin-top: 0;
-
-    .at-medium({
-      margin-top: -15%;
-    });
-
-    .at-large({
-      margin-top: -15%;
-    });
-
 }
 
 .platformneutrality__legendbox {
@@ -466,7 +482,7 @@
     }
 
     .native-app {
-      background: #cd9d1d;
+      background: rgba(0,0,0,0.2);
       width: 8px;
       height: 8px;
     }

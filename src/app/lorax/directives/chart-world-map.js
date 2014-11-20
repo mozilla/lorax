@@ -25,11 +25,13 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
   var ChartWorldMapController = function (
     $scope,
     $timeout,
-    dataService
+    dataService,
+    windowService
     )
   {
     this._$scope = $scope;
     this._$timeout = $timeout;
+    this._windowService = windowService;
     this._getMap = dataService.getMap();
   };
 
@@ -40,7 +42,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
   ChartWorldMapController.$inject = [
     '$scope',
     '$timeout',
-    'dataService'
+    'dataService',
+    'windowService'
   ];
 
   /**
@@ -64,6 +67,12 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       var displayDataset = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.name;
       var displayUnits = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.units;
       var colorScale = setShading(shadeValues, shadeInvert);
+      var enableHover = {
+        'small': false,
+        'medium': false,
+        'large': true,
+        'xlarge': true
+      };
 
       var infographicData = {};
       $.each(countryData, function(key, data) {
@@ -83,27 +92,27 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       });
 
       var map = d3.select('#' + issueId + ' .infographic__wrapper div')
-        .attr('class', 'map');
+        .attr('class', 'worldmap');
       var mapWidth = $('#' + issueId + ' .infographic__wrapper div').width();
       var width = 938;
       var height = 500;
 
       var labelLocation = [
           {
-            'left': 35,
-            'top': 49
+            'left': 33,
+            'top': 42
           },
           {
-            'left': 43,
-            'top': 73
+            'left': 41,
+            'top': 74
           },
           {
-            'left': 68,
-            'top': 66
+            'left': 66,
+            'top': 65
           },
           {
-            'left': 87,
-            'top': 55
+            'left': 85,
+            'top': 50
           }
       ];
 
@@ -161,16 +170,13 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
             });
 
       labelContainer.append('div')
-        .attr('class', 'worldmap__label worldmap__label-country')
-        .text(infographicData[defaultCountry].displayName);
+        .attr('class', 'worldmap__label worldmap__label-country');
 
       labelContainer.append('div')
-        .attr('class', 'worldmap__label worldmap__label-data')
-        .text(infographicData.USA.displayData + infographicData.USA.displayUnits);
+        .attr('class', 'worldmap__label worldmap__label-data');
 
-      g.select('#' + defaultCountry).style('mask','');
-      g.select('#' + defaultCountry).style('fill', '#fff');
 
+        selectCountry(defaultCountry);
       initializeSvgFilters(svg);
       drawLegend();
 
@@ -178,7 +184,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
 
       function countryOver (d) {
         if (d) {
-          if ( infographicData[d.id] && infographicData[d.id].displayData ) {
+          if ( infographicData[d.id] && infographicData[d.id].displayData && enableHover[controller._windowService.breakpoint()] ) {
             selectCountry(d.id);
           }
         }
@@ -189,45 +195,45 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
             .attr('class', 'worldmap__legend');
 
         var legendLabel = legend.selectAll('.worldmap__legend-label')
-          .data(shadeLegend)
-          .enter()
-          .append('div')
-            .attr('class', 'worldmap__legend-label');
+            .data(shadeLegend)
+            .enter()
+            .append('div')
+                .attr('class', 'worldmap__legend-label');
 
         legendLabel.append('div')
-          .style('width', 15 + 'px')
-          .style('height', 15 + 'px')
-          .style('mask', 'url(#maskStripe)')
-          .style('background', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
+            .style('width', 15 + 'px')
+            .style('height', 15 + 'px')
+            .style('mask', 'url(#maskStripe)')
+            .style('background', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
 
         legendLabel.append('p')
-          .attr('left', 20 + 'px')
-          .attr('top', 7.5 + 'px')
-          .text(function(d) { return d; });
+            .attr('left', 20 + 'px')
+            .attr('top', 7.5 + 'px')
+            .text(function(d) { return d; });
       }
 
     function drawDropdown() {
-      var dropDown = map.append('select')
-        .attr('class', 'worldmap__dropdown');
+        var dropDown = map.append('select')
+            .attr('class', 'worldmap__dropdown');
 
-      dropDown.append('option')
-        .attr('value', 'Find a country')
-        .text('Find a country');
+        dropDown.append('option')
+            .attr('value', 'Find a country')
+            .text('Find a country');
 
-      $.each(countryData, function(key, data) {
-        if (infographicData[data.id] && infographicData[data.id].displayData) {
-          dropDown.append('option')
-            .attr('value', data.id)
-            .text(data.displayName);
-        }
-      });
+        $.each(countryData, function(key, data) {
+            if (infographicData[data.id] && infographicData[data.id].displayData) {
+                dropDown.append('option')
+                    .attr('value', data.id)
+                    .text(data.displayName);
+            }
+        });
 
 
-      $('#' + issueId + ' .infographic__wrapper div select').change( function() {
-        if ( infographicData[this.value] && infographicData[this.value].displayData ) {
-          selectCountry(this.value);
-        }
-      });
+        $('#' + issueId + ' .infographic__wrapper div select').change( function() {
+            if ( infographicData[this.value] && infographicData[this.value].displayData ) {
+                selectCountry(this.value);
+            }
+        });
     }
 
     function selectCountry(countryId) {
@@ -250,7 +256,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       country.style('mask','');
       country.style('fill', '#fff');
 
-      labelContainer.style('left', function() {
+      if ( enableHover[controller._windowService.breakpoint()]) {
+        labelContainer.style('left', function() {
                 var labelArea = infographicData[countryId].labelArea;
                 return labelLocation[labelArea].left + '%';
             })
@@ -258,6 +265,12 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
                 var labelArea = infographicData[countryId].labelArea;
                 return labelLocation[labelArea].top + '%';
             });
+      }
+      else {
+        labelContainer.style('left', '50%')
+            .style('top', '50%');
+      }
+
       map.select('.worldmap__label-country')
         .text(infographicData[countryId].displayName);
       map.select('.worldmap__label-data')
