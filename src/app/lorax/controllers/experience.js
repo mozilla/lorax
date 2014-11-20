@@ -27,13 +27,14 @@ define(['experience/experience'], function (Experience) {
         this._dataService.getMain().then(function(model) {
             var experience = new Experience();
             experience.setData(model);
-            this._experienceService.setCanvas(experience);
 
             if ($location.path() === '/intro') {
                 this._experienceService.switchView('intro');
             } else {
                 this._experienceService.switchView('explore');
             }
+
+            this._experienceService.setCanvas(experience);
         }.bind(this));
     };
 

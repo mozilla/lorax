@@ -25,7 +25,8 @@
             'stats': '../scripts/components/stats.js/stats.min',
             'createjs': '../scripts/components/TweenJS/tweenjs-0.5.1.combined',
             'signals': '../scripts/components/js-signals/signals',
-            'font': '../scripts/components/Font.js/Font',
+            'font': '../scripts/components/requirejs-plugins/font',
+            'propertyParser': '../scripts/components/requirejs-plugins/propertyParser',
             'experience': '../scripts/experience'
         },
 

@@ -1,7 +1,6 @@
 /* global define:true */
 define([
     'stats',
-    'font',
     'lorax/models/tag',
     'experience/experience-canvas',
     'experience/explore-mode',
@@ -11,10 +10,10 @@ define([
     'experience/detail-mode',
     'experience/intro-mode',
     'experience/issue',
-    'jquery-mobile'
+    'jquery-mobile',
+    'font!custom,families:[Fira Sans:n1,n2,n3,n4,n5,n6,n7,n8,n9]'
 ], function (
     Stats,
-    Font,
     TagModel,
     ExperienceCanvas,
     ExploreMode,
@@ -43,14 +42,6 @@ define([
             this._showStats();
         }
 
-        // preload font
-        var font = new Font();
-        font.onload = this.onFontLoaded.bind(this);
-        font.fontFamily = 'Fira Sans';
-        font.src = font.fontFamily;
-    };
-
-    Experience.prototype.onFontLoaded = function () {
         this._canvas.drawIssues(this._issueData);
         this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
@@ -70,7 +61,7 @@ define([
         if (this._onInitMode) {
             this._onInitMode();
         } else {
-            this.showExplore();
+            this.showIntro();
         }
     };
 

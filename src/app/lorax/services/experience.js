@@ -17,12 +17,12 @@ define(function () {
         this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
 
-        if (this._container) {
-            this.setContainer(this._container);
-        }
-
         if (this._view) {
             this.switchView(this._view);
+        }
+
+        if (this._container) {
+            this.setContainer(this._container);
         }
     };
 
