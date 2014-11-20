@@ -218,6 +218,14 @@
 .keep-informed {
     padding-top: 20px;
     text-align: center;
+
+    .at-medium({
+        padding-top: 40px;
+    });
+
+    .at-large({
+        padding-top: 160px;
+    });
 }
 
 .keep-informed__header {
@@ -233,7 +241,7 @@
 }
 
 .keep-informed__copy {
-    color: #ccc;
+    color: @light-grey;
     color: rgba(255,255,255,0.2);
     .fira-sans-light;
     .font-size(1.6);
@@ -241,10 +249,43 @@
     max-width: 480px;
     margin: 0 auto 40px;
 
-    .at-xlarge({
+    .at-medium({
+        margin-bottom: 60px;
+    });
+
+    .at-large({
         margin-bottom: 132px;
     });
 }
+
+.enter-email__email {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 80%;
+
+    > input {
+        background: none;
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        color: @light-grey;
+        color: rgba(255,255,255,0.2);
+        display: block;
+        .fira-sans-light;
+        .font-size(2.2);
+        line-height: 32px;
+        outline: none;
+        padding: 12px 0;
+        .placeholder-color(rgba(255,255,255,0.2));
+        text-align: center;
+        width: 100%;
+
+        .at-medium({
+            .font-size(3.2);
+        });
+    }
+}
+
 
 /* About Modal
    ========================================================================== */

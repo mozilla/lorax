@@ -6,7 +6,7 @@
         <h1>Keep Me Informed</h1>
       </header>
       <p class="keep-informed__copy">Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.</p>
-      <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla">
+      <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla" ng-submit="modalEmail.onFormSubmit()">
         <div class="enter-email__email">
           <label for="email" class="is-vishidden">Enter Your Email</label>
           <input name="email" type="email" id="email" value="" required aria-required="true" placeholder="Enter Your Email">

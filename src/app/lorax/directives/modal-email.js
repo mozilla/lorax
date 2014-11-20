@@ -31,8 +31,7 @@ define(['angular'], function (angular) {
 
         $scope.modalEmail = {
             open: false,
-            closeModal: this.closeModal.bind(this),
-            //onShare: this.onShare.bind(this),
+            closeModal: this.closeModal.bind(this)
         };
 
         // listen for $broadcast of 'openEmailModal'
