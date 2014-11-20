@@ -31,7 +31,10 @@ define(['angular'], function (angular) {
 
         $scope.modalEmail = {
             open: false,
-            closeModal: this.closeModal.bind(this)
+            closeModal: this.closeModal.bind(this),
+            email: null,
+            onInputChange: this.onInputChange.bind(this),
+            showSubmitBtn: false
         };
 
         // listen for $broadcast of 'openEmailModal'
@@ -62,6 +65,11 @@ define(['angular'], function (angular) {
         this._$scope.modalShare.open = false;
 
         this._windowService.setModalOpen(false);
+    };
+
+    ModalEmailController.prototype.onInputChange = function () {
+        this._$scope.modalEmail.showSubmitBtn =
+         (this._$scope.modalEmail.email) ? true : false;
     };
 
     return ModalEmailDirective;

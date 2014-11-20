@@ -9,9 +9,9 @@
       <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla" ng-submit="modalEmail.onFormSubmit()">
         <div class="enter-email__email">
           <label for="email" class="is-vishidden">Enter Your Email</label>
-          <input name="email" type="email" id="email" value="" required aria-required="true" placeholder="Enter Your Email">
+          <input name="email" type="email" id="email" required aria-required="true" placeholder="Enter Your Email" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()">
         </div>
-        <input type="submit" id="enter-email__submit" value="Sign Me Up" class="is-vishidden">
+        <input type="submit" class="enter-email__submit btn" value="Submit" ng-show="modalEmail.showSubmitBtn">
       </form>
     </section>
   </div>
