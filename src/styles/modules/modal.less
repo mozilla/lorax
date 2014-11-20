@@ -395,6 +395,11 @@
 .modal-legend__group {
     padding: 10px 0;
 
+    > div {
+        height: 24px;
+        margin-bottom: 10px;
+    }
+
     p {
         margin: 10px 0;
         display: inline-block;
@@ -404,31 +409,40 @@
 .modal-legend__symbol {
     width: 18px;
     height: 18px;
+    margin-bottom: -4px;
     margin-right: 15px;
     display: inline-block;
 }
 
-.modal-legend__symbol-blackdot {
+.modal-legend__symbol-blackdot,
+.modal-legend__symbol-greendot,
+.modal-legend__symbol-yellowdot,
+.modal-legend__symbol-reddot {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 0px;
+    margin-right: 23px;
     border-radius: 18px;
+}
+
+.modal-legend__symbol-blackdot {
     background: @black;
+}
+
+.modal-legend__symbol-greendot {
+    background: @go;
+}
+
+.modal-legend__symbol-yellowdot {
+    background: @wait;
+}
+
+.modal-legend__symbol-reddot {
+    background: @stop;
 }
 
 .modal-legend__symbol-line {
     border-top: 1px solid black;
     transform:rotate(45deg);
-}
-
-.modal-legend__symbol-greendot {
-    border-radius: 18px;
-    background: @go;
-}
-
-.modal-legend__symbol-yellowdot {
-    border-radius: 18px;
-    background: @wait;
-}
-
-.modal-legend__symbol-reddot {
-    border-radius: 18px;
-    background: @stop;
+    margin: 0 25px -10px -10px;
 }

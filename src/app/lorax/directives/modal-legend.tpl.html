@@ -7,10 +7,8 @@
     <div class="modal-legend__copy">
       <div class="modal-legend__group" ng-repeat="group in modalLegend.content.copy">
         <div ng-repeat="paragraph in group">
-          <p>
-            <span class="modal-legend__symbol {{paragraph.class}}"></span>
-            {{paragraph.text}}
-          </p>
+            <div class="modal-legend__symbol {{paragraph.class}}"></div>
+            <p>{{paragraph.text}}</p>
         </div>
       </div>
     </div>
