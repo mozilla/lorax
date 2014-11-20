@@ -4,16 +4,16 @@
  * @class lorax/controllers/ExperienceCtrl
  * @param $scope
  */
-define(['experience/experience'], function (Experience) {
+define([], function () {
     'use strict';
 
     /*jshint unused: false */
     var ExperienceCtrl = function (
         $scope,
         $location,
-        dataService,
         experienceService
     ) {
+        this._experienceService = experienceService;
 
         this._$scope = $scope;
         this._$scope.experience = {
@@ -21,27 +21,16 @@ define(['experience/experience'], function (Experience) {
             currentView: 'explore'
         };
 
-        this._experienceService = experienceService;
-        this._dataService = dataService;
-
-        this._dataService.getMain().then(function(model) {
-            var experience = new Experience();
-            experience.setData(model);
-
-            if ($location.path() === '/intro') {
-                this._experienceService.switchView('intro');
-            } else {
-                this._experienceService.switchView('explore');
-            }
-
-            this._experienceService.setCanvas(experience);
-        }.bind(this));
+        if ($location.path() === '/intro') {
+            this._experienceService.switchView('intro');
+        } else {
+            this._experienceService.switchView('explore');
+        }
     };
 
     ExperienceCtrl.$inject = [
         '$scope',
         '$location',
-        'dataService',
         'experienceService'
     ];
 

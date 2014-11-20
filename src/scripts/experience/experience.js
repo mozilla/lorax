@@ -60,8 +60,6 @@ define([
         this._hasInitialized = true;
         if (this._onInitMode) {
             this._onInitMode();
-        } else {
-            this.showIntro();
         }
     };
 

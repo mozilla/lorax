@@ -3,35 +3,45 @@
  *
  * @class lorax/services/ExploreService
  */
-define(function () {
+define(['experience/experience'], function (Experience) {
     'use strict';
 
-    var ExperienceService = function ($location, $timeout, windowService) {
+    var ExperienceService = function ($location, $timeout, windowService, dataService) {
         this._$location = $location;
         this._$timeout = $timeout;
         this._windowService = windowService;
-    };
 
-    ExperienceService.prototype.setCanvas = function (canvas) {
-        this._experience = canvas;
+        this._experience = new Experience();
         this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
 
-        if (this._view) {
-            this.switchView(this._view);
-        }
+        dataService.getMain().then(this.setData.bind(this));
+    };
 
-        if (this._container) {
-            this.setContainer(this._container);
-        }
+    ExperienceService.prototype.setData = function (data) {
+        this._data = data;
+        this._checkIfReady();
     };
 
     ExperienceService.prototype.setContainer = function (container) {
-        if (this._experience) {
-            this._experience.setContainer(container);
+        this._container = container;
+        this._checkIfReady();
+    };
+
+    ExperienceService.prototype._checkIfReady = function () {
+        if (this._experience && this._data && this._container) {
+            this._experience.setContainer(this._container);
+            this._experience.setData(this._data);
+
+            if (this._view) {
+                this.switchView(this._view);
+            }
+
             this._experience.init();
-        } else {
-            this._container = container;
+
+            if (this._offset) {
+                this.onScroll(this._offset);
+            }
         }
     };
 
@@ -56,13 +66,17 @@ define(function () {
                 default:
                     this._experience.hold();
             }
-        } else {
-            this._view = view;
         }
+
+        this._view = view;
     };
 
     ExperienceService.prototype.onScroll = function (offset) {
-        this._experience.onScroll(offset);
+        if (this._experience) {
+            this._experience.onScroll(offset);
+        }
+
+        this._offset = offset;
     };
 
     ExperienceService.prototype._onPressIssue = function (topic, issue) {
@@ -78,7 +92,8 @@ define(function () {
     ExperienceService.$inject = [
         '$location',
         '$timeout',
-        'windowService'
+        'windowService',
+        'dataService'
     ];
 
     return ExperienceService;
