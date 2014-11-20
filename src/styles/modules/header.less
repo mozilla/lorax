@@ -127,6 +127,28 @@
     });
 }
 
+.banner-legend {
+    background-size: 30px;
+    height: 30px;
+    width: 30px;
+    text-indent: -9999px;
+    background: @extra-dark-grey;
+
+    .at-medium({
+        display: block;
+        left: 30px;
+        position: fixed;
+        top: 50%;
+        margin-top: -20px;
+        z-index: @header-z-index;
+    });
+
+    .at-xlarge({
+        top: 50%;
+        margin-top: -20px;
+    });
+}
+
 
 
 /* Banner Nav
