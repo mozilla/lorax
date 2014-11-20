@@ -167,7 +167,7 @@
         "censorship":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Government",
             "User rights"

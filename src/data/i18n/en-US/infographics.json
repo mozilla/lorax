@@ -28,7 +28,7 @@
         },
         "display": {
           "name": "internetPopPercentage",
-          "units": "% population has internet"
+          "units": "%"
         }
       }
     }
@@ -60,7 +60,7 @@
         },
         "display": {
           "name": "hoursOfWork",
-          "units": " hours of work"
+          "units": ""
         }
       }
     }
@@ -1027,7 +1027,7 @@
         },
         "display": {
           "name": "freedomScore",
-          "units": " freedom score"
+          "units": ""
         }
       }
     }
@@ -1210,7 +1210,7 @@
         },
         "display": {
           "name": "pointsOfControl",
-          "units": " points of control"
+          "units": ""
         }
       }
     }
@@ -1296,7 +1296,7 @@
         },
         "display": {
           "name": "percentBitTorrent",
-          "units": "% internet neutrality"
+          "units": "%"
         }
       }
     }

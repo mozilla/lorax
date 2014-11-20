@@ -71,12 +71,14 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
         var displayName = data.displayName;
         var shadeData = data[shadeName];
         var displayData = data[displayDataset];
+        var labelArea = data.labelArea;
 
         infographicData[id] = {
           'displayName': displayName,
           'shadeData': shadeData,
           'displayData': displayData,
-          'displayUnits': displayUnits
+          'displayUnits': displayUnits,
+          'labelArea': labelArea
         };
       });
 
@@ -85,6 +87,25 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       var mapWidth = $('#' + issueId + ' .infographic__wrapper div').width();
       var width = 938;
       var height = 500;
+
+      var labelLocation = [
+          {
+            'left': 35,
+            'top': 49
+          },
+          {
+            'left': 43,
+            'top': 73
+          },
+          {
+            'left': 68,
+            'top': 66
+          },
+          {
+            'left': 87,
+            'top': 55
+          }
+      ];
 
       drawDropdown();
 
@@ -128,11 +149,22 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
           .style('mask', 'url(#maskStripe)')
           .on('mouseover', countryOver);
 
-      map.append('div')
+        var labelContainer = map.append('div')
+            .attr('class', 'worldmap__label-container')
+            .style('left', function() {
+                var label = infographicData[defaultCountry].labelArea;
+                return labelLocation[label].left + '%';
+            })
+            .style('top', function() {
+                var labelArea = infographicData[defaultCountry].labelArea;
+                return labelLocation[labelArea].top + '%';
+            });
+
+      labelContainer.append('div')
         .attr('class', 'worldmap__label worldmap__label-country')
         .text(infographicData[defaultCountry].displayName);
 
-      map.append('div')
+      labelContainer.append('div')
         .attr('class', 'worldmap__label worldmap__label-data')
         .text(infographicData.USA.displayData + infographicData.USA.displayUnits);
 
@@ -153,20 +185,22 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       }
 
       function drawLegend() {
-        var legend = map.selectAll('.worldmap__legend')
+        var legend = map.append('div')
+            .attr('class', 'worldmap__legend');
+
+        var legendLabel = legend.selectAll('.worldmap__legend-label')
           .data(shadeLegend)
           .enter()
           .append('div')
-            .attr('class', 'worldmap__legend')
-            .style('top', function(d,i) { return (i*20 + (mapWidth * height / width)/2) + 'px';} );
+            .attr('class', 'worldmap__legend-label');
 
-        legend.append('div')
+        legendLabel.append('div')
           .style('width', 15 + 'px')
           .style('height', 15 + 'px')
           .style('mask', 'url(#maskStripe)')
           .style('background', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
 
-        legend.append('p')
+        legendLabel.append('p')
           .attr('left', 20 + 'px')
           .attr('top', 7.5 + 'px')
           .text(function(d) { return d; });
@@ -216,6 +250,14 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       country.style('mask','');
       country.style('fill', '#fff');
 
+      labelContainer.style('left', function() {
+                var labelArea = infographicData[countryId].labelArea;
+                return labelLocation[labelArea].left + '%';
+            })
+            .style('top', function() {
+                var labelArea = infographicData[countryId].labelArea;
+                return labelLocation[labelArea].top + '%';
+            });
       map.select('.worldmap__label-country')
         .text(infographicData[countryId].displayName);
       map.select('.worldmap__label-data')
