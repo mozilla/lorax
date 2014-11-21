@@ -9,7 +9,7 @@
       <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla" ng-submit="modalEmail.onFormSubmit()">
         <div class="enter-email__email">
           <label for="email" class="is-vishidden">Enter Your Email</label>
-          <input name="email" type="email" id="email" required aria-required="true" placeholder="Enter Your Email" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()">
+          <input name="email" type="email" id="email" autocorrect="off" autocapitalize="off" spellcheck="false" required aria-required="true" placeholder="Enter Your Email" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()">
         </div>
         <input type="submit" class="enter-email__submit btn" value="Submit" ng-show="modalEmail.showSubmitBtn">
       </form>

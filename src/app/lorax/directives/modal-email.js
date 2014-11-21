@@ -62,7 +62,7 @@ define(['angular'], function (angular) {
     };
 
     ModalEmailController.prototype.closeModal = function () {
-        this._$scope.modalShare.open = false;
+        this._$scope.modalEmail.open = false;
 
         this._windowService.setModalOpen(false);
     };
