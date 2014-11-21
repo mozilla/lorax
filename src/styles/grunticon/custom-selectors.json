@@ -25,5 +25,11 @@
     ],
     "issues-1": [
         ".icon-issues-dark"
+    ],
+    "menu-0": [
+        ".icon-menu-dark"
+    ],
+    "close-inv": [
+        ".no-touch .mobile-option--close:hover"
     ]
 }

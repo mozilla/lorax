@@ -61,11 +61,7 @@ define(function () {
     };
 
     CoreCtrl.prototype.siteInfo = function () {
-        if (this._windowService.breakpoint() === 'small') {
-            this._$scope.$broadcast('openMobileOptions', true);
-        } else {
-            this.openAboutModal();
-        }
+        this._$scope.$broadcast('openMobileOptions', true);
     };
 
     CoreCtrl.prototype.onBreakpointChange = function (bp) {
