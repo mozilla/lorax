@@ -21,6 +21,7 @@ define([
     'lorax/directives/modal-share',
     'lorax/directives/modal-about',
     'lorax/directives/modal-legend',
+    'lorax/directives/modal-mobile-options',
     'lorax/directives/issue-details',
     'lorax/directives/issue-scroll',
     'lorax/directives/issue-all',
@@ -76,6 +77,7 @@ define([
     ModalShareDirective,
     ModalAboutDirective,
     ModalLegendDirective,
+    ModalMobileOptionsDirective,
     IssueDetailsDirective,
     IssueScrollDirective,
     IssueAllDirective,
@@ -183,6 +185,12 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalLegend', ModalLegendDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalMobileOptionsDirective} as 'ModalMobileOptionsDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalMobileOptions', ModalMobileOptionsDirective)
 
         /**
          * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'

@@ -25,6 +25,10 @@
     });
 }
 
+.modal--mobile-options {
+    background: fade(@neutral, 90%);
+}
+
 .modal__header {
     background: @extra-dark-grey;
     height: 60px;
@@ -445,4 +449,42 @@
     border-top: 1px solid black;
     transform:rotate(45deg);
     margin: 0 25px -10px -10px;
+}
+
+
+/* Legend Modal
+   ========================================================================== */
+
+.mobile-options {
+    .reset-list;
+    padding: 20px 0;
+}
+
+.mobile-options__mobile-option {
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.mobile-option {
+    background-position: 100% 50%;
+    background-size: 30px;
+    display: block;
+    .font-size(1.8);
+    line-height: 30px;
+    padding-right: 50px;
+    text-align: right;
+    text-transform: uppercase;
+    .transition(opacity 0.1s ease-in-out);
+
+    .no-touch &:hover {
+        opacity: 0.5;
+    }
+}
+
+.mobile-option--close {
+    text-indent: 9999px;
+
+    .no-touch &:hover {
+        opacity: 1;
+    }
 }

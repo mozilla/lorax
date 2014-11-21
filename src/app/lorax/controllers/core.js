@@ -9,9 +9,13 @@ define(function () {
 
     /*jshint unused: false */
     var CoreCtrl = function (
-        $scope
+        $scope,
+        windowService,
+        pubSubService
     ) {
         this._$scope = $scope;
+        this._windowService = windowService;
+        this._pubSubService = pubSubService;
 
         $scope.core = {
             openEmailModal: this.openEmailModal.bind(this),
@@ -19,16 +23,20 @@ define(function () {
             openShareOptions: this.openShareOptions.bind(this),
             closeShareOptions: this.closeShareOptions.bind(this),
             openAboutModal: this.openAboutModal.bind(this),
-            openLegendModal: this.openLegendModal.bind(this)
+            openLegendModal: this.openLegendModal.bind(this),
+            siteInfo: this.siteInfo.bind(this)
         };
+
+        pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));
     };
 
     CoreCtrl.$inject = [
-        '$scope'
+        '$scope',
+        'windowService',
+        'pubSubService'
     ];
 
     CoreCtrl.prototype.openEmailModal = function () {
-        console.log('open');
         this._$scope.$broadcast('openEmailModal');
     };
 
@@ -50,6 +58,20 @@ define(function () {
 
     CoreCtrl.prototype.openLegendModal = function () {
         this._$scope.$broadcast('openLegendModal');
+    };
+
+    CoreCtrl.prototype.siteInfo = function () {
+        if (this._windowService.breakpoint() === 'small') {
+            this._$scope.$broadcast('openMobileOptions', true);
+        } else {
+            this.openAboutModal();
+        }
+    };
+
+    CoreCtrl.prototype.onBreakpointChange = function (bp) {
+        if (bp !== 'small') {
+            this._$scope.$broadcast('openMobileOptions', false);
+        }
     };
 
     return CoreCtrl;
