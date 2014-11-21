@@ -660,25 +660,25 @@
         [
           {
             "text": "an individual issue",
-            "class": "modal-legend__symbol-blackdot"
+            "class": "legend-symbol--blackdot"
           },
           {
             "text": "a connection between issues",
-            "class": "modal-legend__symbol-line"
+            "class": "legend-symbol--line"
           }
         ],
         [
           {
             "text": "an issue trending positively",
-            "class": "modal-legend__symbol-greendot"
+            "class": "legend-symbol--greendot"
           },
           {
             "text": "a stable issue",
-            "class": "modal-legend__symbol-yellowdot"
+            "class": "legend-symbol--yellowdot"
           },
           {
             "text": "an issue trending negatively",
-            "class": "modal-legend__symbol-reddot"
+            "class": "legend-symbol--reddot"
           }
         ],
         [

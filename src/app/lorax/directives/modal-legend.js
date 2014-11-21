@@ -1,8 +1,9 @@
 /**
  * @fileOverview Legend Modal directive
+ * @author <a href="mailto:owen@work.co">Owen Herterich</a>
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['angular', 'jquery'], function (angular, $) {
+define(function () {
     'use strict';
 
     /**
@@ -24,16 +25,12 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     var ModalLegendController = function (
         $scope,
-        $timeout,
         dataService,
-        windowService,
-        utilsService
+        windowService
     ) {
         this._$scope = $scope;
-        this._$timeout = $timeout;
         this._dataService = dataService;
         this._windowService = windowService;
-        this._utilsService = utilsService;
 
         $scope.modalLegend = {
             open: false,
@@ -47,8 +44,6 @@ define(['angular', 'jquery'], function (angular, $) {
             this._$scope.modalLegend.content = model.getModals().legend;
 
         }.bind(this));
-
-
     };
 
     /**
@@ -57,27 +52,20 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     ModalLegendController.$inject = [
         '$scope',
-        '$timeout',
         'dataService',
-        'windowService',
-        'utilsService'
+        'windowService'
     ];
 
-    ModalLegendController.prototype.openModal = function (e) {
-        angular.extend(
-            this._$scope.modalLegend,
-            {
-                open: true
-            }
-        );
+    ModalLegendController.prototype.openModal = function () {
+        this._$scope.modalLegend.open = true;
 
-        this._windowService.setModalOpen(true);
+        this._windowService.setSidePanelOpen(true);
     };
 
     ModalLegendController.prototype.closeModal = function () {
         this._$scope.modalLegend.open = false;
 
-        this._windowService.setModalOpen(false);
+        this._windowService.setSidePanelOpen(false);
     };
 
     return ModalLegendDirective;

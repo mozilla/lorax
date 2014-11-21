@@ -166,6 +166,11 @@ define(['angular', 'jquery'], function (angular, $) {
             iElem[classMethod]('is-modal-open');
         }
 
+        function onSidePanelOpenChange(panelOpen) {
+            var classMethod = (panelOpen === true) ? 'addClass' : 'removeClass';
+            iElem[classMethod]('is-side-panel-open');
+        }
+
         windowEl
             .on('scroll', controller.onScroll.bind(controller))
             .on('resize', onResize).trigger('resize');
@@ -193,6 +198,11 @@ define(['angular', 'jquery'], function (angular, $) {
         controller.pubSubService.subscribe(
             'windowService.modalOpen',
             onModalOpenChange
+        );
+
+        controller.pubSubService.subscribe(
+            'windowService.sidePanelOpen',
+            onSidePanelOpenChange
         );
     };
 

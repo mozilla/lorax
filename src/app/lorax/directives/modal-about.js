@@ -1,8 +1,9 @@
 /**
  * @fileOverview About Modal directive
+ * @author <a href="mailto:owen@work.co">Owen Herterich</a>
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['angular', 'jquery'], function (angular, $) {
+define(function () {
     'use strict';
 
     /**
@@ -24,16 +25,12 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     var ModalAboutController = function (
         $scope,
-        $timeout,
         dataService,
-        windowService,
-        utilsService
+        windowService
     ) {
         this._$scope = $scope;
-        this._$timeout = $timeout;
         this._dataService = dataService;
         this._windowService = windowService;
-        this._utilsService = utilsService;
 
         $scope.modalAbout = {
             open: false,
@@ -54,27 +51,20 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     ModalAboutController.$inject = [
         '$scope',
-        '$timeout',
         'dataService',
-        'windowService',
-        'utilsService'
+        'windowService'
     ];
 
-    ModalAboutController.prototype.openModal = function (e) {
-        angular.extend(
-            this._$scope.modalAbout,
-            {
-                open: true
-            }
-        );
+    ModalAboutController.prototype.openModal = function () {
+        this._$scope.modalAbout.open = true;
 
-        this._windowService.setModalOpen(true);
+        this._windowService.setSidePanelOpen(true);
     };
 
     ModalAboutController.prototype.closeModal = function () {
         this._$scope.modalAbout.open = false;
 
-        this._windowService.setModalOpen(false);
+        this._windowService.setSidePanelOpen(false);
     };
 
     return ModalAboutDirective;
