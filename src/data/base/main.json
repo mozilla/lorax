@@ -104,7 +104,7 @@
         "surveillance":{
           "status":2,
           "infographicType":"data-lorax-chart-surveillance",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
             "Network operators",
             "Government",
@@ -180,7 +180,7 @@
         "cyberThreats":{
           "status":1,
           "infographicType":"data-lorax-chart-cyber-threats",
-          "infographicOverflow":false,
+          "infographicOverflow":true,
           "tags":[
           ]
         },

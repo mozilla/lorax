@@ -118,7 +118,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
 
       drawDropdown();
 
-      var defaultCountry = 'USA';
+      var defaultCountry = 'CHN';
 
       var projection = d3.geo.mercator()
           .scale(150)

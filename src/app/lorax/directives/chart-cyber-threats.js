@@ -53,9 +53,8 @@ define(['jquery', 'd3'], function ($, d3) {
       var id = controller._$scope.issue.getId();
       var circleChart = d3.select('#' + id + ' .infographic__wrapper div');
 
-      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
-      var width = graphWidth;
-      var height = graphWidth;
+      var width = 600;
+      var height = 600;
 
       var circleSize = width/5.5;
       var circleFromCenter = height/2.6;
