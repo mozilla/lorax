@@ -843,35 +843,37 @@
     }
   },
   "dataRegulation": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "NEEDS CONTENT",
+    "subheader": "NEEDS CONTENT",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
+      "countryData": {
+        "shading": {
+          "name": "dataRegulation",
+          "invert": false,
+          "values": [
+            20.0,
+            40.0,
+            60.0,
+            80.0,
+            100.0
+          ],
+          "legend": [
+            "Less than 20%",
+            "20-40%",
+            "40-60%",
+            "60-80%",
+            "Greater than 80%"
+          ]
         },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "display": {
+          "name": "dataRegulation",
+          "units": "%"
         }
-      ]
+      }
     }
   },
   "lobbyPower": {
@@ -1302,35 +1304,27 @@
     }
   },
   "zeroRating": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Zero-rating cycle",
+    "subheader": "From operators to consumers to content providers",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
-      "internetCompaniesByRevenue": [
-        {
-          "name": "Amazon",
-          "revenue": 74.45
-        },
-        {
-          "name": "Google",
-          "revenue": 59.82
-        },
-        {
-          "name": "eBay",
-          "revenue": 16.05
-        },
-        {
-          "name": "Tencent",
-          "revenue": 9.91
-        },
-        {
-          "name": "Facebook",
-          "revenue": 7.87
+        "cycle" : {
+            "mainTriangle" : [
+                "Operators",
+                "Consumers",
+                "Content Providers"
+            ],
+            "outsideCircle" : [
+                "Zero-rated services are accessible at no charge",
+                "Content providers gain new users",
+                "Negotiate referential access for online content"
+            ],
+            "sideTriangle": "Users have to pay to access the rest of the Web",
+            "insideTriangle": "For users coming online for the first time, their services become their only experience"
         }
-      ]
     }
   },
   "platformNeutrality": {

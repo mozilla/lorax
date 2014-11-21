@@ -53,7 +53,7 @@
 }
 
 .internet-company__scale--full {
-    background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.7);
+    background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
     margin-left: 5px;
 }
 
@@ -116,7 +116,7 @@
     margin-bottom: 2px;
 
     .terms-company--shakespeare & {
-        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.7);
+        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
     }
 
     &:nth-of-type(14n+1),
@@ -997,7 +997,7 @@
     margin-bottom: 2px;
 
     .concentration-power__tech & {
-        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.7);
+        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
     }
 }
 
@@ -1109,4 +1109,143 @@
     padding-left: 10px;
     font-size: 12px;
     color: #fff;
+}
+
+/* Zero Rating
+   ========================================================================== */
+
+.zero-rating {
+    position: relative;
+    width: 620px;
+    height: 620px;
+    color: @black;
+}
+
+.zero-rating__content {
+
+    div {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        display: table;
+        position: absolute;
+        padding: 15px;
+    }
+
+    p {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .zero-rating__triangle-inside {
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+    }
+}
+
+
+
+.zero-rating__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: transparent;
+    stroke: rgba(0,0,0,0.1);
+}
+
+.zero-rating__triangle-main {
+    background: rgba(0,0,0,0.55);
+    color: @white;
+    .font-size(1.5);
+    text-transform: uppercase;
+
+    &:nth-child(1) {
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    &:nth-child(2) {
+        right: 0;
+        margin-right: 30px;
+        top: 75%;
+        margin-top: -90px;
+    }
+
+    &:nth-child(3) {
+        left: 0;
+        margin-left: 30px;
+        top: 75%;
+        margin-top: -90px;
+    }
+}
+
+.zero-rating__circle-outside {
+    background-image: url('../images/stripe_pattern.png');
+    background-color: rgba(0,0,0,0.075);
+    .font-size(1.1);
+
+    &:nth-child(4) {
+        right: 0;
+        margin-right: 33px;
+        top: 25%;
+        margin-top: -30px;
+    }
+
+    &:nth-child(5) {
+        left: 50%;
+        margin-left: -60px;
+        bottom: 0;
+    }
+
+    &:nth-child(6) {
+        left: 0;
+        margin-left: 33px;
+        top: 25%;
+        margin-top: -30px;
+    }
+}
+
+.zero-rating__triangle-sides {
+    background-image: url('../images/stripe_pattern.png');
+    background-color: rgba(0,0,0,0.075);
+    .font-size(0.9);
+
+    &:nth-child(7) {
+        top: 37.5%;
+        margin-top: -45px;
+        right: 25%;
+        margin-right: -15px;
+    }
+
+    &:nth-child(8) {
+        top: 75%;
+        margin-top: -90px;
+        left: 50%;
+        margin-left: -60px;
+        background: transparent;
+    }
+
+    &:nth-child(9) {
+        top: 37.5%;
+        margin-top: -45px;
+        left: 25%;
+        margin-left: -15px;
+    }
+}
+
+.zero-rating__triangle-inside {
+    left: 50%;
+    margin-left: -75px;
+    top: 50%;
+    .font-size(0.9);
+    text-align: center;
+}
+
+.zero-rating__triangle-side-detail {
+    top: 18.75%;
+    margin-top: -15px;
+    right: 25%;
+    margin-right: 30px;
 }

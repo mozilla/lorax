@@ -62,7 +62,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var spacing = 200;
 
       var svg = pieChart.append('svg')
-        .attr('id', 'platformneutrality__svg')
+        .attr('class', 'platformneutrality__svg')
         .attr('width', width)
         .attr('height', height);
 

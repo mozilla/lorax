@@ -144,8 +144,8 @@
         },
         "dataRegulation":{
           "status":2,
-          "infographicType":"static-image",
-          "infographicOverflow":false,
+          "infographicType":"data-lorax-chart-world-map",
+          "infographicOverflow":true,
           "tags":[
             "Government",
             "User data",
@@ -232,7 +232,7 @@
         },
         "zeroRating":{
           "status":1,
-          "infographicType":"map",
+          "infographicType":"data-lorax-chart-zero-rating",
           "infographicOverflow":true,
           "tags":[
             "Mobile",
