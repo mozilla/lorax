@@ -1,6 +1,7 @@
 /* global define:true */
 define([
     'stats',
+    'webfontloader',
     'lorax/models/tag',
     'experience/experience-canvas',
     'experience/explore-mode',
@@ -10,10 +11,10 @@ define([
     'experience/detail-mode',
     'experience/intro-mode',
     'experience/issue',
-    'jquery-mobile',
-    'font!custom,families:[Fira Sans:n1,n2,n3,n4,n5,n6,n7,n8,n9]'
+    'jquery-mobile'
 ], function (
     Stats,
+    WebFont,
     TagModel,
     ExperienceCanvas,
     ExploreMode,
@@ -42,6 +43,14 @@ define([
             this._showStats();
         }
 
+        WebFont.load({
+            active: this._onFontsLoaded.bind(this),
+            custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
+        });
+    };
+
+    Experience.prototype._onFontsLoaded = function () {
+        console.log('onFontsLoaded')
         this._canvas.drawIssues(this._issueData);
         this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
