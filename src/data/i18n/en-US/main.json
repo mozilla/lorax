@@ -2,7 +2,7 @@
   "topics": {
     "access": {
       "name": "Access",
-      "tagline": "An Internet where\n everyone can play",
+      "tagline": "Everyone is able to participate",
       "issues": {
         "available": {
           "name": "Availability",
@@ -123,7 +123,7 @@
     },
     "control": {
       "name": "Control",
-      "tagline": "An Internet where individuals\n are in the driver seat",
+      "tagline": "Power is in the hands of individuals",
       "issues": {
         "contentCreation": {
           "name": "Content creation",
@@ -406,7 +406,7 @@
     },
     "safety": {
       "name": "Safety",
-      "tagline": "An Internet that\n has our back",
+      "tagline": "Our security and privacy are protected",
       "issues": {
         "cyberThreats": {
           "name": "Cyber-Threats",
@@ -504,7 +504,7 @@
     },
     "fairness": {
       "name": "Fairness",
-      "tagline": "An internet with\n a level-playing field",
+      "tagline": "A level playing field for all",
       "issues": {
         "netNeutrality": {
           "name": "Net neutrality",
