@@ -11,9 +11,25 @@
             <p>{{::issue.getTitle()}}</p>
           </blockquote>
           <a ng-href="mailto:?subject={{::issue.getTitle() | encodeUri}}" class="sharing-quote__btn btn" ng-click="modalShare.onShare($event, issue)">Share</a>
-          <a ng-href="{{::issue.getUrl()}}" class="sharing-quote__more" ng-click="modalShare.closeModal()">Learn more about this issue</a>
+          <a ng-href="{{::issue.getUrl()}}" class="sharing-quote__more" ng-click="modalShare.closeModal()">Learn more<span class="is-hidden-sm"> about this issue</span></a>
         </div>
       </li>
     </ul>
+  </div>
+  <div class="modal" ng-if="modalShare.onSecondStep">
+    <a href="#" class="modal__back icon-back" data-lorax-prevent-default ng-click="modalShare.backToFirstStep()">Back</a>
+    <a href="#" class="modal__close icon-close" data-lorax-prevent-default ng-click="modalShare.closeModal()">Close</a>
+    <div class="modal__content">
+      <div class="second-step">
+        <blockquote class="second-step__text">
+          <p>{{modalShare.secondStepIssue.getTitle()}}</p>
+        </blockquote>
+        <ul class="second-step__sharing">
+          <li><a href="#" class="icon-twitter" data-lorax-prevent-default ng-click="modalShare.shareTwitter(modalShare.secondStepIssue)">Twitter</a></li>
+          <li><a href="#" class="icon-fb" data-lorax-prevent-default ng-click="modalShare.shareFacebook(modalShare.secondStepIssue)">Facebook</a></li>
+          <li><a ng-href="mailto:?subject={{modalShare.secondStepIssue.getTitle() | encodeUri}}" class="icon-email">Email</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

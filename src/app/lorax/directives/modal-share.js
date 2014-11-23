@@ -47,7 +47,12 @@ define(['angular', 'jquery'], function (angular, $) {
             open: false,
             service: null,
             closeModal: this.closeModal.bind(this),
-            onShare: this.onShare.bind(this)
+            onShare: this.onShare.bind(this),
+            shareFacebook: this.shareFacebook.bind(this),
+            shareTwitter: this.shareTwitter.bind(this),
+            onSecondStep: false,
+            secondStepIssue: null,
+            backToFirstStep: this.backToFirstStep.bind(this)
         };
 
         // listen for $broadcast of 'openShareModal'
@@ -104,6 +109,7 @@ define(['angular', 'jquery'], function (angular, $) {
 
     ModalShareController.prototype.closeModal = function () {
         this._$scope.modalShare.open = false;
+        this._$scope.modalShare.onSecondStep = false;
 
         this._windowService.setModalOpen(false);
     };
@@ -115,13 +121,36 @@ define(['angular', 'jquery'], function (angular, $) {
         switch (this._$scope.modalShare.service) {
         case 'twitter':
             e.preventDefault();
-            window.open('http://twitter.com/share?text=' + issue.getTitle() + '&url=' + issue.getUrl() + '/&hashtags=shapeoftheweb', '_blank');
+            this.shareTwitter(issue);
             break;
         case 'fb':
+            e.preventDefault(issue);
+            this.shareFacebook();
+            break;
+        // if null, open second step
+        case null:
             e.preventDefault();
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + issue.getUrl(), '_blank');
+            this.secondStep(issue);
             break;
         }
+    };
+
+    ModalShareController.prototype.shareFacebook = function (issue) {
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + issue.getUrl(), '_blank');
+    };
+
+    ModalShareController.prototype.shareTwitter = function (issue) {
+        window.open('http://twitter.com/share?text=' + issue.getTitle() + '&url=' +
+            issue.getUrl() + '/&hashtags=shapeoftheweb', '_blank');
+    };
+
+    ModalShareController.prototype.secondStep = function (issue) {
+        this._$scope.modalShare.onSecondStep = true;
+        this._$scope.modalShare.secondStepIssue = issue;
+    };
+
+    ModalShareController.prototype.backToFirstStep = function () {
+        this._$scope.modalShare.onSecondStep = false;
     };
 
     var ModalShareLinkFn = function (scope, iElem, iAttrs, controller) {

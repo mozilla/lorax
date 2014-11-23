@@ -79,7 +79,7 @@ define(['angular'], function (angular) {
     };
 
     ModalMobileOptionsController.prototype.openShare = function () {
-        this._$rootScope.$broadcast('openShareModal', 'twitter');
+        this._$rootScope.$broadcast('openShareModal', null);
 
         this._$scope.modalOptions.open = false;
     };
