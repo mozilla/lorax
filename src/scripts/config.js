@@ -23,9 +23,12 @@
             'lodash': '../scripts/components/lodash/lodash.compat',
             'pixi': '../scripts/components/pixi/pixi.dev',
             'stats': '../scripts/components/stats.js/stats.min',
-            'createjs': '../scripts/components/TweenJS/tweenjs-0.5.1.combined',
             'signals': '../scripts/components/js-signals/signals',
             'webfontloader': '../scripts/components/webfontloader/webfontloader',
+            'TweenMax': '../scripts/components/greensock/TweenMax',
+            'TimelineMax': '../scripts/components/greensock/TweenMax',
+            'Linear': '../scripts/components/greensock/TweenMax',
+            'Elastic': '../scripts/components/greensock/TweenMax',
             'experience': '../scripts/experience'
         },
 
@@ -67,6 +70,9 @@
             },
             'webfontloader': {
                 exports: 'WebFont'
+            },
+            'tweenmax': {
+                exports: 'TweenMax'
             }
         },
 

@@ -1,11 +1,11 @@
 /* global define:true */
 define([
     'pixi',
-    'createjs',
+    'TweenMax',
     'experience/mode'
 ], function (
     PIXI,
-    createjs,
+    TweenMax,
     Mode
 ) {
     'use strict';
@@ -43,15 +43,15 @@ define([
     };
 
     IntroMode.prototype._onStartShow = function () {
-        createjs.Tween.get(this._message).wait(2500).to({alpha: 1}, 400, createjs.quartIn);
-        createjs.Tween.get(this._internet).to({alpha: 1}, 400, createjs.quartIn);
+        TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: 1, delay: 2.5});
+        TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: 1});
 
         setTimeout(this._onShow.bind(this), 6000);
     };
 
     IntroMode.prototype._onStartHide = function () {
-        createjs.Tween.get(this._message).to({alpha: 0}, 200, createjs.quartIn);
-        createjs.Tween.get(this._internet).to({alpha: 0}, 200, createjs.quartIn);
+        TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: 1});
+        TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: 1});
 
         setTimeout(this._onHide.bind(this), 100);
     };

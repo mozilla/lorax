@@ -2,8 +2,8 @@
 define([
     'jquery',
     'pixi',
-    'createjs',
     'signals',
+    'TweenMax',
     'experience/issue',
     'experience/circle',
     'experience/responsive',
@@ -11,8 +11,8 @@ define([
 ], function (
     $,
     PIXI,
-    createjs,
     signals,
+    TweenMax,
     Issue,
     Circle,
     Responsive
@@ -41,7 +41,6 @@ define([
     * @param  {object} DOM object
     */
     ExperienceCanvas.prototype.init = function (container) {
-        this._lastTick = 0;
         this.canvasSize.x = container.width();
         this.canvasSize.y = container.height();
 
@@ -193,14 +192,14 @@ define([
      * Hide lines container
      */
     ExperienceCanvas.prototype.hideLines = function () {
-        createjs.Tween.get(this._linesContainer).to({alpha:0}, 300, createjs.Ease.quartOut);
+        TweenMax.to(this._linesContainer, 0.3, {alpha: 0, overwrite: 1});
     };
 
     /**
      * Show lines container
      */
     ExperienceCanvas.prototype.showLines = function () {
-        createjs.Tween.get(this._linesContainer).to({alpha:1}, 300, createjs.Ease.quartIn);
+        TweenMax.to(this._linesContainer, 0.3, {alpha: 1, overwrite: 1});
     };
 
     /**
@@ -279,16 +278,12 @@ define([
     /**
      * do render cycle
      */
-    ExperienceCanvas.prototype._render = function (tick) {
+    ExperienceCanvas.prototype._render = function () {
         this.renderStartS.dispatch();
 
         // update elements
         this._updateMousePosition();
         this._updateParticles();
-
-        // update tween tick
-        createjs.Tween.tick(tick - this._lastTick);
-        this._lastTick = tick;
 
         // render canvas
         this._renderer.render(this._stage);

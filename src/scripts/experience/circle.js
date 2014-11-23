@@ -1,5 +1,15 @@
 /* global define:true */
-define(['pixi', 'createjs'], function (PIXI, createjs) {
+define([
+    'pixi',
+    'TweenMax',
+    'TimelineMax',
+    'Linear'
+], function (
+    PIXI,
+    TweenMax,
+    TimelineMax,
+    Linear
+) {
     'use strict';
 
     var Circle = function () {
@@ -22,8 +32,6 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         if (this.data) {
             this._drawTitle();
         }
-
-        this._resumeStaticAnimation();
     };
 
     /**
@@ -34,55 +42,66 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this.data = data;
     };
 
+    Circle.prototype._setStaticAnimation = function () {
+        var d = this.radius / 10; // displace quocient
+
+        TweenMax.fromTo(
+            this._circle.scale,
+            0.6 + Math.random() * 0.5,
+            {x: 1, y: 1},
+            {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d), repeat: -1, yoyo: true, overwrite: 1}
+        );
+
+        this._positionTween = new TimelineMax({repeat:-1, overwrite: 1})
+        .fromTo(
+            this.elm,
+            1 + Math.random() * 0.5,
+            {x: this._x0, y: this._y0},
+            {
+                x: this._x0 + (-10 + Math.random() * 20) * d,
+                y: this._y0 + (-10 + Math.random() * 20) * d,
+                ease:Linear.easeNone
+            }
+        ).to(
+            this.elm,
+            1 + Math.random() * 0.5,
+            {
+                x: this._x0 + (-10 + Math.random() * 20) * d,
+                y: this._y0 + (-10 + Math.random() * 20) * d,
+                ease:Linear.easeNone
+            }
+        ).to(
+            this.elm,
+            1 + Math.random() * 0.5,
+            {
+                x: this._x0 + (-10 + Math.random() * 20) * d,
+                y: this._y0 + (-10 + Math.random() * 20) * d,
+                ease:Linear.easeNone
+            })
+        .to(
+            this.elm,
+            1 + Math.random() * 0.5,
+            {
+                x: this._x0 + (-10 + Math.random() * 20) * d,
+                y: this._y0 + (-10 + Math.random() * 20) * d,
+                ease:Linear.easeNone
+            })
+        .to(
+            this.elm,
+            1 + Math.random() * 0.5,
+            {
+                x: this._x0,
+                y: this._y0,
+                ease:Linear.easeNone
+            });
+    };
+
     /**
      * Enables static (explore) animation mode
      */
     Circle.prototype._resumeStaticAnimation = function () {
-        var d = this.radius / 10; // displace quocient
-
-        if (this._staticScaleTween) {
-            createjs.Tween.removeTweens(this._circle.scale);
-        }
-        this._staticScaleTween = createjs.Tween.get(
-            this._circle.scale,
-            {loop: true, override: true})
-            .to(
-                {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d)},
-                600 + Math.random() * 500,
-                createjs.Ease.sineInOut
-            )
-            .to(
-                {x:1, y:1},
-                600 + Math.random() * 500,
-                createjs.Ease.sineInOut
-            );
-
-        this._positionTween = createjs.Tween.get(this.elm, {loop: true, override: true})
-            .to({
-                    x: this._x0 + (-10 + Math.random() * 20) * d,
-                    y: this._y0 + (-10 + Math.random() * 20) * d
-                },
-                1000 + Math.random() * 500,
-                createjs.sineInOut)
-            .to({
-                    x: this._x0 + (-10 + Math.random() * 20) * d,
-                    y: this._y0 + (-10 + Math.random() * 20) * d
-                },
-                1000 + Math.random() * 500,
-                createjs.sineInOut)
-            .to({
-                    x: this._x0 + (-10 + Math.random() * 20) * d,
-                    y: this._y0 + (-10 + Math.random() * 20) * d
-                },
-                1000 + Math.random() * 500,
-                createjs.sineInOut)
-            .to({
-                    x: this._x0 + (-10 + Math.random() * 20) * d,
-                    y: this._y0 + (-10 + Math.random() * 20) * d
-                },
-                1000 + Math.random() * 500,
-                createjs.sineInOut)
-            .to({x: this._x0, y: this._y0}, 1000 + Math.random() * 500, createjs.sineInOut);
+        this.stopMoving();
+        this._setStaticAnimation();
     };
 
     /**
@@ -140,29 +159,33 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         var angle = Math.atan2(this._y0, this._x0);
         angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
 
-        this.stopMoving();
-        this._positionTween = createjs.Tween.get(this.elm, {override: true})
-            .wait(Math.random() * 100)
-            .to(
-                {
-                    alpha: 0,
-                    x: center.x + Math.cos(angle) * (radius + 200),
-                    y: center.y + Math.sin(angle) * (radius + 200)
-                },
-                (Math.random() * 150) + 200,
-                createjs.quartOut);
+        TweenMax.to(
+            this.elm,
+            0.2 + Math.random() * 0.15,
+            {
+                alpha: 0,
+                x: center.x + Math.cos(angle) * (radius + 200),
+                y: center.y + Math.sin(angle) * (radius + 200),
+                overwrite: 1, delay: Math.random() * 0.1
+            }
+        );
     };
 
     /**
      * Recovers from explode()
      */
     Circle.prototype.implode = function () {
-        this._positionTween.setPaused(true);
-        this._positionTween = createjs.Tween.get(this.elm, {override: true})
-            .to({alpha: this.implodeAlpha, x: this._x0, y: this._y0},
-                (Math.random() * 100) + 200,
-                createjs.quartIn)
-            .call(this._resumeStaticAnimation.bind(this));
+        TweenMax.to(
+            this.elm,
+            0.2 + Math.random() * 0.15,
+            {
+                alpha: this.implodeAlpha,
+                x: this._x0,
+                y: this._y0,
+                overwrite: 1, delay: Math.random() * 0.1,
+                onComplete: this._resumeStaticAnimation.bind(this)
+            }
+        );
     };
 
     /**
@@ -189,21 +212,19 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
         this._drawCircle(this.color);
 
         this.elm.addChild(this._title);
-        createjs.Tween.get(this._title, {override: true})
-            .to({alpha: 1}, 200, createjs.Ease.quartIn);
+        TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
     };
 
     Circle.prototype.lightDown = function () {
         this._drawCircle();
 
         if (!this._textAlwaysVisible) {
-            createjs.Tween.get(this._title, {override: true})
-                .to({alpha: 0}, 200, createjs.Ease.quartOut)
-                .call(function () {
-                    if (this._title.parent) {
-                        this.elm.removeChild(this._title);
-                    }
-                }.bind(this));
+            var onLightDown = function () {
+                if (this._title.parent) {
+                    this.elm.removeChild(this._title);
+                }
+            }.bind(this);
+            TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onLightDown});
         }
     };
 
@@ -213,26 +234,27 @@ define(['pixi', 'createjs'], function (PIXI, createjs) {
      * @param  {number} y desired y position
      * @return {object} Tween for chaining
      */
-    Circle.prototype.moveTo = function (x, y) {
+    Circle.prototype.moveTo = function (x, y, onComplete) {
         this._x0 = x;
         this._y0 = y;
 
-        if (this._positionTween) {
-            this._positionTween.setPaused(true);
+        if (!onComplete) {
+            onComplete = function () {};
         }
 
-        this._positionTween = createjs.Tween.get(this.elm, {override: true})
-            .to({x:x, y:y}, (Math.random() * 100) + 400, createjs.Ease.getBackOut(1.5));
-
-        return this._positionTween;
+        TweenMax.to(
+            this.elm,
+            0.3 + Math.random() * 0.1,
+            {x: x, y: y, overwrite: 1, onComplete: onComplete}
+        );
     };
 
     /**
      * Stops static movement
      */
     Circle.prototype.stopMoving = function () {
-        this._staticScaleTween.setPaused(true);
-        this._positionTween.setPaused(true);
+        TweenMax.killTweensOf(this.elm);
+        TweenMax.killTweensOf(this._circle.scale);
         this.elm.x = Math.round(this.elm.x);
         this.elm.y = Math.round(this.elm.y);
     };

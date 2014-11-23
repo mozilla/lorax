@@ -2,13 +2,15 @@
 define([
     'experience/circle',
     'pixi',
-    'createjs',
-    'signals'
+    'signals',
+    'TweenMax',
+    'Elastic'
 ], function (
     Circle,
     PIXI,
-    createjs,
-    signals
+    signals,
+    TweenMax,
+    Elastic
 ) {
     'use strict';
 
@@ -191,16 +193,14 @@ define([
 
         if (isVisible) {
             this.elm.addChild(this._title);
-            createjs.Tween.get(this._title, {override: true})
-                .to({alpha: 1}, 200, createjs.Ease.quartIn);
+            TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
         } else if(!this.isOver) {
-            createjs.Tween.get(this._title, {override: true})
-                .to({alpha: 0}, 200, createjs.Ease.quartOut)
-                .call(function () {
-                    if (this._title.parent) {
-                        this.elm.removeChild(this._title);
-                    }
-                }.bind(this));
+            var onOut = function () {
+                if (this._title.parent) {
+                    this.elm.removeChild(this._title);
+                }
+            }.bind(this);
+            TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onOut});
         }
     };
 
@@ -229,8 +229,7 @@ define([
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             this.elm.addChild(this._subtitle);
             this._subtitle.y = Math.round(this._title.y + this._title.height + 2);
-            createjs.Tween.get(this._subtitle, {override: true})
-            .to({alpha: 1}, 200, createjs.Ease.quartIn);
+            TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: 1});
         }
     };
 
@@ -241,20 +240,23 @@ define([
         Circle.prototype.mouseOut.call(this);
 
         if (this.mode === Issue.MODE_EXPLORE) {
-            var tweenBack = createjs.Tween.get(this.elm, {override: true})
-            .to({x: this._x0, y: this._y0}, 500, createjs.Ease.getBackOut(2.5));
+            TweenMax.to(
+                this.elm, 1,
+                {
+                    x: this._x0, y: this._y0, ease: Elastic.easeOut.config(2, 0.7),
+                    overwrite: 1, onComplete: this._resumeStaticAnimation.bind(this)
+                }
+            );
 
-            tweenBack.call(this._resumeStaticAnimation.bind(this));
             this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
 
-            createjs.Tween.get(this._subtitle, {override: true})
-                .to({alpha: 0}, 200, createjs.Ease.quartOut)
-                .call(function () {
-                    if (this._subtitle.parent) {
-                        this.elm.removeChild(this._subtitle);
-                    }
-                }.bind(this));
+            var onHide = function () {
+                if (this._subtitle.parent) {
+                    this.elm.removeChild(this._subtitle);
+                }
+            }.bind(this);
+            TweenMax.to(this._subtitle, 0.2, {alpha: 0, overwrite: 1, onComplete: onHide});
         }
 
         this.lightDown();
@@ -267,11 +269,7 @@ define([
     Issue.prototype.openIssue = function () {
         this.elm.removeChild(this._subtitle);
 
-        createjs.Tween.get(this._openCircle.scale, {override: true}).to(
-            {x:1, y:1},
-            300,
-            createjs.Ease.sineOut
-        );
+        TweenMax.to(this._openCircle.scale, 0.3, {x: 1, y: 1, overwrite: 1});
     };
 
     Issue.prototype.closeIssue = function () {

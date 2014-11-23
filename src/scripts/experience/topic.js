@@ -1,12 +1,14 @@
 /* global define:true */
 define([
     'pixi',
-    'createjs',
+    'TweenMax',
+    'Elastic',
     'signals',
     'experience/issue'
 ], function (
     PIXI,
-    createjs,
+    TweenMax,
+    Elastic,
     signals,
     Issue
 ) {
@@ -118,8 +120,7 @@ define([
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setMode(Issue.MODE_TOPICS);
-            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
-                .call(issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY, issue._resumeStaticAnimation.bind(issue));
             issue.topicMouseOver = this._mouseOverIssue.bind(this);
             issue.topicMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.topicMouseOver);
@@ -128,12 +129,16 @@ define([
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            createjs.Tween.get(issue.elm, {override: true})
-                .to({
+            TweenMax.to(
+                issue.elm,
+                0.3,
+                {
                     alpha: issue.implodeAlpha,
                     x: this.elm.x + issue.topicX,
-                    y: this.elm.y + issue.topicY
-                }, 300, createjs.Ease.easeIn);
+                    y: this.elm.y + issue.topicY,
+                    overwrite: 1
+                }
+            );
         }
     };
 
@@ -143,8 +148,7 @@ define([
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
-            createjs.Tween.get(issue.elm, {override: true})
-                .to({alpha: 1}, 300, createjs.Ease.quartIn);
+            TweenMax.to(issue.elm, 0.3, {alpha: 1, overwrite: 1});
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
         }
@@ -203,17 +207,14 @@ define([
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
             issue.implodeAlpha = issue.elm.alpha;
-            createjs.Tween.get(issue.elm, {override: true})
-                .to({alpha: 0}, 300, createjs.Ease.easeIn);
+            TweenMax.to(issue.elm, 0.3, {alpha: 0, overwrite: 1});
         }
 
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
         posY -= this._topicTitle.height + 50;
-        createjs.Tween.get(this._topicTitle, {override: true})
-            .to({y: posY}, 300, createjs.Ease.easeIn);
-        createjs.Tween.get(this._topicDesc, {override: true})
-            .to({alpha: 0}, 300, createjs.Ease.easeIn);
+        TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: 1});
+        TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: 1});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
         setTimeout(function () {
@@ -237,24 +238,24 @@ define([
         var issue;
 
         // move selected title and desc
-        createjs.Tween.get(this._topicTitle, {override: true})
-            .to({y: -this._topicTitle.height / 2, tint: 0xFFFFFF}, 300, createjs.Ease.easeOut);
-        createjs.Tween.get(this._topicDesc, {override: true})
-            .to({alpha: 1}, 300, createjs.Ease.easeOut);
+        TweenMax.to(
+            this._topicTitle,
+            0.3,
+            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, overwrite: 1}
+        );
+        TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
 
         // show fakes
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            createjs.Tween.get(issue.elm, {override: true})
-                .to({alpha: issue.implodeAlpha}, 300, createjs.Ease.easeOut);
+            TweenMax.to(issue.elm, 0.3, {alpha: issue.implodeAlpha, overwrite: 1});
         }
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.mouseOut();
             issue.setTextAlwaysVisible(false);
-            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY)
-                .call(issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY, issue._resumeStaticAnimation.bind(issue));
         }
 
         this.elm.addChild(this._topicArea);
@@ -265,26 +266,20 @@ define([
     };
 
     Topic.prototype.toneDown = function () {
-        createjs.Tween.get(this._topicTitle, {override: true})
-            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
-        createjs.Tween.get(this._topicDesc, {override: true})
-            .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+        TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5, overwrite: 1});
+        TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5, overwrite: 1});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            createjs.Tween.get(this._issues[i].elm, {override: true})
-                .to({alpha: 0.5}, 300, createjs.Ease.easeIn);
+            TweenMax.to(this._issues[i].elm, 0.3, {alpha: 0.5, overwrite: 1});
         }
     };
 
     Topic.prototype.endToneDown = function () {
-        createjs.Tween.get(this._topicTitle, {override: true})
-            .to({alpha: 1}, 300, createjs.Ease.easeIn);
-        createjs.Tween.get(this._topicDesc, {override: true})
-            .to({alpha: 1}, 300, createjs.Ease.easeIn);
+        TweenMax.to(this._topicTitle, 0.3, {alpha: 1, overwrite: 1});
+        TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            createjs.Tween.get(this._issues[i].elm, {override: true})
-                .to({alpha: 1}, 300, createjs.Ease.easeIn);
+            TweenMax.to(this._issues[i].elm, 1, {alpha: 0.5, overwrite: 1});
         }
     };
 
@@ -295,23 +290,29 @@ define([
         clearTimeout(this._timeoutTouchOver);
         this._topicArea.mouseover = this._topicArea.touchstart = null;
 
-        createjs.Tween.get(this.elm, {override: true})
-            .to({x:position.x, y:position.y}, 300, createjs.Ease.getBackOut(1.5));
+        TweenMax.to(
+            this.elm,
+            0.3,
+            {x:position.x, y:position.y, overwrite: 1, ease: Elastic.easeOut.config(2, 0.7)}
+        );
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
-            issue.moveTo(position.x + issue.topicX, position.y + issue.topicY)
-                .call(issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(position.x + issue.topicX, position.y + issue.topicY, issue._resumeStaticAnimation.bind(issue));
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            createjs.Tween.get(issue.elm, {override: true})
-                .to({
+            TweenMax.to(
+                issue.elm,
+                0.3,
+                {
                     alpha: issue.implodeAlpha,
                     x: position.x + issue.topicX,
-                    y: position.y + issue.topicY
-                }, 300, createjs.Ease.easeIn);
+                    y: position.y + issue.topicY,
+                    overwrite: 1
+                }
+            );
         }
 
         setTimeout(function resumeEvents () {

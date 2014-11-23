@@ -183,6 +183,9 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         issue.mouseOut();
 
         for(i = 0; i < related.length; i ++) {
+            if (related[i] === issue.data) {
+                continue;
+            }
             relatedIssue = this._canvas.getElementByData(related[i]);
             relatedIssue.lightDown();
             relatedIssue._resumeStaticAnimation();
@@ -205,8 +208,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_EXPLORE);
-            issue.moveTo(issue.exploreX, issue.exploreY)
-                .call(issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(issue.exploreX, issue.exploreY, issue._resumeStaticAnimation.bind(issue));
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
