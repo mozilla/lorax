@@ -30,6 +30,12 @@
     });
 }
 
+.detail__header--map {
+    .at-xlarge({
+        width: percentage(678 / 1600);
+    });
+}
+
 .detail__main {
     margin: 0 0 30px;
     padding: 0 20px;
@@ -48,6 +54,12 @@
     .at-xlarge({
         margin: 0 0 40px;
         padding: 0 30px 0 220px;
+    });
+}
+
+.detail__main--map {
+    .at-xlarge({
+        width: percentage(678 / 1600);
     });
 }
 
@@ -72,6 +84,12 @@
     });
 }
 
+.detail__infographic--map {
+    .at-xlarge({
+        width: percentage(922 / 1600);
+    });
+}
+
 .detail__more {
     padding: 0 20px;
 
@@ -86,6 +104,12 @@
 
     .at-xlarge({
         padding: 0 30px 0 220px;
+    });
+}
+
+.detail__more--map {
+    .at-xlarge({
+        width: percentage(678 / 1600);
     });
 }
 
@@ -200,6 +224,18 @@
                 margin: 0;
             }
         });
+
+        .detail__more--map & {
+            .at-xlarge({
+                width: percentage(200 / 428);
+            });
+
+            &:first-child {
+                .at-xlarge({
+                    margin-right: percentage(28 / 428);
+                });
+            }
+        }
     }
 }
 
@@ -214,6 +250,12 @@
 
     .icon-arrow-right {
         background-position: right;
+    }
+
+    .detail__more--map & {
+        .at-xlarge({
+            margin-right: 0;
+        });
     }
 }
 

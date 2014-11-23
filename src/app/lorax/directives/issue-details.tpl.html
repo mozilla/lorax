@@ -1,9 +1,9 @@
 <article class="detail cf" data-status="{{::issueDetails.issueStatus}}">
-  <header class="detail__header">
+  <header class="detail__header" ng-class="{'detail__header--map': issueDetails.issue.getInfographicIsMap()}">
     <div class="detail-header-section">{{::issueDetails.issue.getName()}}</div>
     <h1 class="detail-header-title">{{::issueDetails.issue.getTitle()}}</h1>
   </header>
-  <section class="detail__main">
+  <section class="detail__main" ng-class="{'detail__main--map': issueDetails.issue.getInfographicIsMap()}">
     <div class="detail-main">
       <div class="detail-main__copy">{{::issueDetails.issue.getNarrative()}}</div>
       <div class="detail-tags detail-tags--main" ng-if="::issueDetails.issue.getTags()">
@@ -12,10 +12,10 @@
       </div>
     </div>
   </section>
-  <section class="detail__infographic">
+  <section class="detail__infographic" ng-class="{'detail__infographic--map': issueDetails.issue.getInfographicIsMap()}">
     <section class="infographic" ng-transclude></section>
   </section>
-  <section class="detail__more">
+  <section class="detail__more" ng-class="{'detail__more--map': issueDetails.issue.getInfographicIsMap()}">
     <ul class="detail-links cf">
       <li>
         <section class="detail-link">

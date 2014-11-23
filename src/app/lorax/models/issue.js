@@ -29,6 +29,7 @@ define([
         this._yourActionLink = localeData.yourActionLink;
         this._infographicType = data.infographicType;
         this._infographicOverflow = data.infographicOverflow;
+        this._infographicIsMap = data.infographicMap;
         this._tags = [];
         this._infographic = new InfographicModel(
             this._id,
@@ -104,6 +105,10 @@ define([
 
     IssueModel.prototype.getInfographicOverflow = function () {
         return this._infographicOverflow;
+    };
+
+    IssueModel.prototype.getInfographicIsMap = function () {
+        return this._infographicIsMap;
     };
 
     IssueModel.prototype.getInfographic = function () {

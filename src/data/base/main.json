@@ -6,6 +6,7 @@
           "status":0,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Mobile",
             "Emerging economies"
@@ -15,6 +16,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Mobile",
             "Emerging economies",
@@ -25,6 +27,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-common-languages",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "User rights",
             "Emerging economies"
@@ -34,6 +37,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-accessible",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "User rights",
             "Emerging economies"
@@ -43,6 +47,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-infrastructure",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Mobile",
             "Network operators",
@@ -58,6 +63,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-static-image",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
@@ -71,6 +77,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-identity-control",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
@@ -83,6 +90,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-public-trust",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Government",
             "Internet companies",
@@ -93,6 +101,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-data-tracking",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
@@ -105,6 +114,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-surveillance",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Network operators",
             "Government",
@@ -119,6 +129,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-terms-and-conditions",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
@@ -132,6 +143,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-open-source",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
           ]
         },
@@ -139,6 +151,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-data-portability",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
           ]
         },
@@ -146,6 +159,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Government",
             "User data",
@@ -157,6 +171,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-lobbying",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Government",
             "Internet companies",
@@ -168,6 +183,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Government",
             "User rights"
@@ -181,6 +197,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-cyber-threats",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
           ]
         },
@@ -188,6 +205,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-cyber-bullying",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Facebook",
             "User rights",
@@ -198,6 +216,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Network operators",
             "Government"
@@ -207,6 +226,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-cloud-security",
           "infographicOverflow":false,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
@@ -223,6 +243,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
           "infographicOverflow":true,
+          "infographicMap":true,
           "tags":[
             "Network operators",
             "Internet companies",
@@ -234,6 +255,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-zero-rating",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Mobile",
             "Network operators",
@@ -249,6 +271,7 @@
           "status":1,
           "infographicType":"data-lorax-chart-platform-neutrality",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Mobile",
             "Internet companies",
@@ -262,6 +285,7 @@
           "status":2,
           "infographicType":"data-lorax-chart-concentration-power",
           "infographicOverflow":true,
+          "infographicMap":false,
           "tags":[
             "Internet companies",
             "Google",
