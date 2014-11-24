@@ -9,38 +9,25 @@ define([], function () {
 
     var NavCtrl = function (
         $scope,
-        $location,
-        dataService
+        $route
     ) {
 
         this._$scope = $scope;
-        this._$location = $location;
+        this._$route = $route;
 
         this._$scope.nav = {
             active : 'access'
         };
 
-        this._$scope.nav.handleClick = function (topic) {
-            this._$scope.nav.active = topic;
+        this._$scope.nav.handleClick = function () {
         }.bind(this);
 
-        dataService.getMain().then(function (model) {
-            this._$scope.nav.model = model;
-        }.bind(this));
-
-        var topic = this._$location.search().topic;
-        if (topic) {
-            this._$scope.nav.active = topic;
-        }
-        else {
-            this._$scope.nav.active = 'access';
-        }
+        this._$scope.nav.active = this._$route.current.params.topic;
     };
 
     NavCtrl.$inject = [
         '$scope',
-        '$location',
-        'dataService'
+        '$route'
     ];
 
     return NavCtrl;
