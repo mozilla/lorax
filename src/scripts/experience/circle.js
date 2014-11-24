@@ -1,14 +1,10 @@
 /* global define:true */
 define([
     'pixi',
-    'TweenMax',
-    'TimelineMax',
-    'Linear'
+    'gs'
 ], function (
     PIXI,
-    TweenMax,
-    TimelineMax,
-    Linear
+    gs
 ) {
     'use strict';
 
@@ -45,14 +41,14 @@ define([
     Circle.prototype._setStaticAnimation = function () {
         var d = this.radius / 10; // displace quocient
 
-        TweenMax.fromTo(
+        gs.TweenMax.fromTo(
             this._circle.scale,
             0.6 + Math.random() * 0.5,
             {x: 1, y: 1},
             {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d), repeat: -1, yoyo: true, overwrite: 1}
         );
 
-        this._positionTween = new TimelineMax({repeat:-1, overwrite: 1})
+        this._positionTween = new gs.TimelineMax({repeat:-1, overwrite: 1})
         .fromTo(
             this.elm,
             1 + Math.random() * 0.5,
@@ -60,7 +56,7 @@ define([
             {
                 x: this._x0 + (-10 + Math.random() * 20) * d,
                 y: this._y0 + (-10 + Math.random() * 20) * d,
-                ease:Linear.easeNone
+                ease:gs.Linear.easeNone
             }
         ).to(
             this.elm,
@@ -68,7 +64,7 @@ define([
             {
                 x: this._x0 + (-10 + Math.random() * 20) * d,
                 y: this._y0 + (-10 + Math.random() * 20) * d,
-                ease:Linear.easeNone
+                ease:gs.Linear.easeNone
             }
         ).to(
             this.elm,
@@ -76,7 +72,7 @@ define([
             {
                 x: this._x0 + (-10 + Math.random() * 20) * d,
                 y: this._y0 + (-10 + Math.random() * 20) * d,
-                ease:Linear.easeNone
+                ease:gs.Linear.easeNone
             })
         .to(
             this.elm,
@@ -84,7 +80,7 @@ define([
             {
                 x: this._x0 + (-10 + Math.random() * 20) * d,
                 y: this._y0 + (-10 + Math.random() * 20) * d,
-                ease:Linear.easeNone
+                ease:gs.Linear.easeNone
             })
         .to(
             this.elm,
@@ -92,7 +88,7 @@ define([
             {
                 x: this._x0,
                 y: this._y0,
-                ease:Linear.easeNone
+                ease:gs.Linear.easeNone
             });
     };
 
@@ -159,7 +155,7 @@ define([
         var angle = Math.atan2(this._y0, this._x0);
         angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
 
-        TweenMax.to(
+        gs.TweenMax.to(
             this.elm,
             0.2 + Math.random() * 0.15,
             {
@@ -175,7 +171,7 @@ define([
      * Recovers from explode()
      */
     Circle.prototype.implode = function () {
-        TweenMax.to(
+        gs.TweenMax.to(
             this.elm,
             0.2 + Math.random() * 0.15,
             {
@@ -212,7 +208,7 @@ define([
         this._drawCircle(this.color);
 
         this.elm.addChild(this._title);
-        TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
     };
 
     Circle.prototype.lightDown = function () {
@@ -224,7 +220,7 @@ define([
                     this.elm.removeChild(this._title);
                 }
             }.bind(this);
-            TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onLightDown});
+            gs.TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onLightDown});
         }
     };
 
@@ -242,7 +238,7 @@ define([
             onComplete = function () {};
         }
 
-        TweenMax.to(
+        gs.TweenMax.to(
             this.elm,
             0.3 + Math.random() * 0.1,
             {x: x, y: y, overwrite: 1, onComplete: onComplete}
@@ -253,8 +249,8 @@ define([
      * Stops static movement
      */
     Circle.prototype.stopMoving = function () {
-        TweenMax.killTweensOf(this.elm);
-        TweenMax.killTweensOf(this._circle.scale);
+        gs.TweenMax.killTweensOf(this.elm);
+        gs.TweenMax.killTweensOf(this._circle.scale);
         this.elm.x = Math.round(this.elm.x);
         this.elm.y = Math.round(this.elm.y);
     };

@@ -3,7 +3,7 @@ define([
     'jquery',
     'pixi',
     'signals',
-    'TweenMax',
+    'gs',
     'experience/issue',
     'experience/circle',
     'experience/responsive',
@@ -12,7 +12,7 @@ define([
     $,
     PIXI,
     signals,
-    TweenMax,
+    gs,
     Issue,
     Circle,
     Responsive
@@ -192,14 +192,14 @@ define([
      * Hide lines container
      */
     ExperienceCanvas.prototype.hideLines = function () {
-        TweenMax.to(this._linesContainer, 0.3, {alpha: 0, overwrite: 1});
+        gs.TweenMax.to(this._linesContainer, 0.3, {alpha: 0, overwrite: 1});
     };
 
     /**
      * Show lines container
      */
     ExperienceCanvas.prototype.showLines = function () {
-        TweenMax.to(this._linesContainer, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._linesContainer, 0.3, {alpha: 1, overwrite: 1});
     };
 
     /**

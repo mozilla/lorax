@@ -25,10 +25,7 @@
             'stats': '../scripts/components/stats.js/stats.min',
             'signals': '../scripts/components/js-signals/signals',
             'webfontloader': '../scripts/components/webfontloader/webfontloader',
-            'TweenMax': '../scripts/components/greensock/TweenMax',
-            'TimelineMax': '../scripts/components/greensock/TweenMax',
-            'Linear': '../scripts/components/greensock/TweenMax',
-            'Elastic': '../scripts/components/greensock/TweenMax',
+            'gs': '../scripts/components/greensock/TweenMax',
             'experience': '../scripts/experience'
         },
 
@@ -50,7 +47,7 @@
             'jquery-scrollie': {
                 deps: ['jquery']
             },
-            'jquery-selectric': {
+            'jquery-selezctric': {
                 deps: ['jquery']
             },
             'jquery-mousewheel': {
@@ -65,14 +62,19 @@
             'stats': {
                 exports: 'Stats'
             },
-            'createjs': {
-                exports: 'createjs'
-            },
             'webfontloader': {
                 exports: 'WebFont'
             },
-            'tweenmax': {
-                exports: 'TweenMax'
+            'gs': {
+                exports: 'gs',
+                init: function() {
+                    return {
+                        TweenMax: this.TweenMax,
+                        TimelineMax: this.TimelineMax,
+                        Linear: this.Linear,
+                        Elastic: this.Elastic
+                    };
+                }
             }
         },
 

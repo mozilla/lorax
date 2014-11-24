@@ -1,14 +1,12 @@
 /* global define:true */
 define([
     'pixi',
-    'TweenMax',
-    'Elastic',
+    'gs',
     'signals',
     'experience/issue'
 ], function (
     PIXI,
-    TweenMax,
-    Elastic,
+    gs,
     signals,
     Issue
 ) {
@@ -129,7 +127,7 @@ define([
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            TweenMax.to(
+            gs.TweenMax.to(
                 issue.elm,
                 0.3,
                 {
@@ -148,7 +146,7 @@ define([
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
-            TweenMax.to(issue.elm, 0.3, {alpha: 1, overwrite: 1});
+            gs.TweenMax.to(issue.elm, 0.3, {alpha: 1, overwrite: 1});
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
         }
@@ -207,14 +205,14 @@ define([
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
             issue.implodeAlpha = issue.elm.alpha;
-            TweenMax.to(issue.elm, 0.3, {alpha: 0, overwrite: 1});
+            gs.TweenMax.to(issue.elm, 0.3, {alpha: 0, overwrite: 1});
         }
 
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
         posY -= this._topicTitle.height + 50;
-        TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: 1});
-        TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: 1});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
         setTimeout(function () {
@@ -238,17 +236,17 @@ define([
         var issue;
 
         // move selected title and desc
-        TweenMax.to(
+        gs.TweenMax.to(
             this._topicTitle,
             0.3,
             {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, overwrite: 1}
         );
-        TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
 
         // show fakes
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            TweenMax.to(issue.elm, 0.3, {alpha: issue.implodeAlpha, overwrite: 1});
+            gs.TweenMax.to(issue.elm, 0.3, {alpha: issue.implodeAlpha, overwrite: 1});
         }
 
         for(i = 0; i < this._issues.length; i ++) {
@@ -266,20 +264,20 @@ define([
     };
 
     Topic.prototype.toneDown = function () {
-        TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5, overwrite: 1});
-        TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5, overwrite: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5, overwrite: 1});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            TweenMax.to(this._issues[i].elm, 0.3, {alpha: 0.5, overwrite: 1});
+            gs.TweenMax.to(this._issues[i].elm, 0.3, {alpha: 0.5, overwrite: 1});
         }
     };
 
     Topic.prototype.endToneDown = function () {
-        TweenMax.to(this._topicTitle, 0.3, {alpha: 1, overwrite: 1});
-        TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            TweenMax.to(this._issues[i].elm, 1, {alpha: 0.5, overwrite: 1});
+            gs.TweenMax.to(this._issues[i].elm, 1, {alpha: 0.5, overwrite: 1});
         }
     };
 
@@ -290,10 +288,10 @@ define([
         clearTimeout(this._timeoutTouchOver);
         this._topicArea.mouseover = this._topicArea.touchstart = null;
 
-        TweenMax.to(
+        gs.TweenMax.to(
             this.elm,
             0.3,
-            {x:position.x, y:position.y, overwrite: 1, ease: Elastic.easeOut.config(2, 0.7)}
+            {x:position.x, y:position.y, overwrite: 1, ease: gs.Elastic.easeOut.config(2, 0.7)}
         );
 
         for(i = 0; i < this._issues.length; i ++) {
@@ -303,7 +301,7 @@ define([
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            TweenMax.to(
+            gs.TweenMax.to(
                 issue.elm,
                 0.3,
                 {
