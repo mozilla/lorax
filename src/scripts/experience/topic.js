@@ -214,7 +214,7 @@ define([
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
         posY -= this._topicTitle.height + 50;
-        gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: true});
+        gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, alpha: 0, overwrite: true});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: true});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
@@ -242,7 +242,7 @@ define([
         gs.TweenMax.to(
             this._topicTitle,
             0.3,
-            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, overwrite: true}
+            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, alpha: 1, overwrite: true}
         );
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: true});
 
