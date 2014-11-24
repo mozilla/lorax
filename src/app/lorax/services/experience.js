@@ -81,7 +81,7 @@ define(['experience/experience'], function (Experience) {
 
     ExperienceService.prototype._onPressIssue = function (topic, issue) {
         this._$timeout(function () {
-            this._$location.url('/detail/?topic=' + topic + '&issue=' + issue);
+            this._$location.url('/detail/' + topic + '/' + issue);
         }.bind(this));
     };
 

@@ -28,10 +28,6 @@
             z-index: @header-z-index;
         });
     }
-
-    .is-detail & {
-        position: relative;
-    }
 }
 
 .banner__logo {
@@ -68,11 +64,6 @@
             .font-size(2.2);
         });
     }
-
-    // TEMP
-    .is-detail & {
-        display: none;
-    }
 }
 
 .banner-info {
@@ -89,11 +80,6 @@
     .at-medium({
         display: block;
     });
-
-    // TEMP
-    .is-detail & {
-        display: none;
-    }
 }
 
 .banner-info--menu {
@@ -131,6 +117,7 @@
     margin: 0 0 24px;
     padding: 0 20px;
     .transition(background-color 0.3s ease-in-out);
+    .transition(background 0.3s ease-in-out);
 
     .at-medium({
         height: 80px;
@@ -148,15 +135,15 @@
     }
 
     [data-bg-mode="stop"] & {
-        background-color: @stop;
+        .nav-gradient(@stop);
     }
 
     [data-bg-mode="wait"] & {
-        background-color: @wait;
+        .nav-gradient(@wait);
     }
 
     [data-bg-mode="go"] & {
-        background-color: @go;
+        .nav-gradient(@go);
     }
 }
 

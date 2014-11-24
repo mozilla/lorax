@@ -26,9 +26,12 @@ define(function () {
 
             /* -------------------- Detail -------------------- */
 
-            .when('/detail/access', {
-                templateUrl: '/app/lorax/templates/detail-access.tpl.html',
-                reloadOnSearch: false
+            .when('/detail/:topic', {
+                templateUrl: '/app/lorax/templates/issues.tpl.html',
+            })
+
+            .when('/detail/:topic/:issue', {
+                templateUrl: '/app/lorax/templates/issues.tpl.html',
             })
 
             .when('/detail/', {

@@ -101,6 +101,16 @@
   border-radius: @radius;
 }
 
+.nav-gradient(@color) {
+    background: @color;
+    background: -moz-linear-gradient(top, fade(@color,90%) 0%, fade(@color,90%) 65%, fade(@color,0%) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, fade(@color,90%)), color-stop(65%, fade(@color,90%)), color-stop(100%, fade(@color,0%)));
+    background: -webkit-linear-gradient(top, fade(@color,90%) 0%, fade(@color,90%) 65%, fade(@color,0%) 100%);
+    background: -o-linear-gradient(top, fade(@color,90%) 0%, fade(@color,90%) 65%, fade(@color,0%) 100%);
+    background: -ms-linear-gradient(top, fade(@color,90%) 0%, fade(@color,90%) 65%, fade(@color,0%) 100%);
+    background: linear-gradient(to bottom, fade(@color,90%) 0%, fade(@color,90%) 59%, fade(@color,0%) 100%);
+}
+
 
 /* Flexbox
  * Big thanks: https://github.com/ProLoser/Flexbox.less/blob/master/flexbox.less

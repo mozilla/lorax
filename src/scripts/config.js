@@ -47,7 +47,7 @@
             'jquery-scrollie': {
                 deps: ['jquery']
             },
-            'jquery-selezctric': {
+            'jquery-selectric': {
                 deps: ['jquery']
             },
             'jquery-mousewheel': {

@@ -852,26 +852,22 @@
     "dataPoints": {
       "countryData": {
         "shading": {
-          "name": "dataRegulation",
+          "name": "dataRegulationStatus",
           "invert": false,
           "values": [
-            20.0,
-            40.0,
-            60.0,
-            80.0,
-            100.0
+            0.01,
+            1.01,
+            2.01
           ],
           "legend": [
-            "Less than 20%",
-            "20-40%",
-            "40-60%",
-            "60-80%",
-            "Greater than 80%"
+            "Low",
+            "Medium",
+            "High"
           ]
         },
         "display": {
-          "name": "dataRegulation",
-          "units": "%"
+          "name": "dataRegulationType",
+          "units": ""
         }
       }
     }
@@ -1280,7 +1276,7 @@
       "countryData": {
         "shading": {
           "name": "percentBitTorrent",
-          "invert": false,
+          "invert": true,
           "values": [
             20.0,
             40.0,

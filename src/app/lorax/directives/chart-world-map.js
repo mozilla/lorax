@@ -155,7 +155,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
             }
           })
           .attr('d', path)
-          .style('mask', 'url(#maskStripe)')
           .on('mouseover', countryOver);
 
         var labelContainer = map.append('div')
@@ -203,7 +202,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
         legendLabel.append('div')
             .style('width', 15 + 'px')
             .style('height', 15 + 'px')
-            .style('mask', 'url(#maskStripe)')
             .style('background', function(d, i) { return colorScale(shadeValues[i]-0.01);}); // subtract 0.01 to take scale offset into consideration
 
         legendLabel.append('p')
@@ -244,7 +242,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
       map.select('.worldmap__label-data')
         .text('');
       g.selectAll('path')
-        .style('mask', 'url(#maskStripe)')
         .style('fill', function(d) {
           if (infographicData[d.id] && infographicData[d.id].displayData) {
             return colorScale(infographicData[d.id].shadeData);

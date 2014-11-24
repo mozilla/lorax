@@ -105,7 +105,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         }
 
         // scroll to offset
-        this._scrollService.go('top', {offset: offset, duration: 500, animate: animate});
+        this._scrollService.go('top', {offset: offset, duration: 500, animate: false});
 
         this._$scope.detail.currentIssue = issue;
     };
@@ -116,6 +116,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         }
         var topic = newParam.params.topic;
         var issue = newParam.params.issue;
+
         this.scrollToIssue(issue, topic);
     };
 
@@ -141,8 +142,9 @@ define(['jquery', 'jquery-scrollie'], function ($) {
 
         // wait for everything to be rendered
         controller._$timeout(function () {
-            var topic = controller._$location.search().topic;
-            var issue = controller._$location.search().issue;
+            var topic = controller._$route.current.params.topic;
+            var issue = controller._$route.current.params.issue;
+
 
             controller.scrollToIssue(issue, topic, false);
 
@@ -150,6 +152,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
             controller._$scope.$on('$destroy', controller.onRouteChange.bind(controller));
 
             controller.init();
+
 
             // change bg mode according to issue
             var $body = $('body');
