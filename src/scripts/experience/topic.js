@@ -118,7 +118,11 @@ define([
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setMode(Issue.MODE_TOPICS);
-            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY, issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(
+                this.elm.x + issue.topicX,
+                this.elm.y + issue.topicY,
+                issue._resumeStaticAnimation.bind(issue),
+                {alpha: 1});
             issue.topicMouseOver = this._mouseOverIssue.bind(this);
             issue.topicMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.topicMouseOver);
@@ -134,7 +138,7 @@ define([
                     alpha: issue.implodeAlpha,
                     x: this.elm.x + issue.topicX,
                     y: this.elm.y + issue.topicY,
-                    overwrite: 1
+                    overwrite: true
                 }
             );
         }
@@ -146,7 +150,6 @@ define([
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
-            gs.TweenMax.to(issue.elm, 0.3, {alpha: 1, overwrite: 1});
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
         }
@@ -198,21 +201,21 @@ define([
             posX = this.elm.x + this._linearArea.x;
             posY = this.elm.y + this._linearArea.y;
             posY += (((this._linearDist * i) - this._linearDist * this._issues.length / 2));
-            issue.moveTo(Math.round(posX), Math.round(posY));
+            issue.moveTo(Math.round(posX), Math.round(posY), {alpha: 1});
         }
 
         // hide fakes
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
             issue.implodeAlpha = issue.elm.alpha;
-            gs.TweenMax.to(issue.elm, 0.3, {alpha: 0, overwrite: 1});
+            gs.TweenMax.to(issue.elm, 0.3, {alpha: 0, overwrite: true});
         }
 
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
         posY -= this._topicTitle.height + 50;
-        gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: 1});
-        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, overwrite: true});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: true});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
         setTimeout(function () {
@@ -239,45 +242,51 @@ define([
         gs.TweenMax.to(
             this._topicTitle,
             0.3,
-            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, overwrite: 1}
+            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, overwrite: true}
         );
-        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: true});
 
         // show fakes
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
-            gs.TweenMax.to(issue.elm, 0.3, {alpha: issue.implodeAlpha, overwrite: 1});
+            gs.TweenMax.to(issue.elm, 0.3, {alpha: issue.implodeAlpha, overwrite: true});
         }
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.mouseOut();
             issue.setTextAlwaysVisible(false);
-            issue.moveTo(this.elm.x + issue.topicX, this.elm.y + issue.topicY, issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(
+                this.elm.x + issue.topicX,
+                this.elm.y + issue.topicY,
+                issue._resumeStaticAnimation.bind(issue),
+                {alpha: 1});
         }
 
-        this.elm.addChild(this._topicArea);
-        this.isOver = false;
-        Topic.SELECTED_TOPIC = null;
+        setTimeout(function () {
+            this.elm.addChild(this._topicArea);
+            this.isOver = false;
+            Topic.SELECTED_TOPIC = null;
+        }.bind(this), 600);
 
         this.mouseOutS.dispatch(this);
     };
 
     Topic.prototype.toneDown = function () {
-        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5, overwrite: 1});
-        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            gs.TweenMax.to(this._issues[i].elm, 0.3, {alpha: 0.5, overwrite: 1});
+            gs.TweenMax.to(this._issues[i].elm, 0.3, {alpha: 0.5});
         }
     };
 
     Topic.prototype.endToneDown = function () {
-        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 1, overwrite: 1});
-        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 1});
+        gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1});
 
         for(var i = 0; i < this._issues.length; i ++) {
-            gs.TweenMax.to(this._issues[i].elm, 1, {alpha: 0.5, overwrite: 1});
+            gs.TweenMax.to(this._issues[i].elm, 1, {alpha: 1});
         }
     };
 
@@ -291,7 +300,7 @@ define([
         gs.TweenMax.to(
             this.elm,
             0.3,
-            {x:position.x, y:position.y, overwrite: 1, ease: gs.Elastic.easeOut.config(2, 0.7)}
+            {x:position.x, y:position.y, overwrite: true, ease: gs.Elastic.easeOut.config(2, 0.7)}
         );
 
         for(i = 0; i < this._issues.length; i ++) {
@@ -308,7 +317,7 @@ define([
                     alpha: issue.implodeAlpha,
                     x: position.x + issue.topicX,
                     y: position.y + issue.topicY,
-                    overwrite: 1
+                    overwrite: true
                 }
             );
         }

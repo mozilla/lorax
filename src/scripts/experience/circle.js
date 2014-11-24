@@ -1,10 +1,12 @@
 /* global define:true */
 define([
     'pixi',
-    'gs'
+    'gs',
+    'jquery'
 ], function (
     PIXI,
-    gs
+    gs,
+    $
 ) {
     'use strict';
 
@@ -45,10 +47,10 @@ define([
             this._circle.scale,
             0.6 + Math.random() * 0.5,
             {x: 1, y: 1},
-            {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d), repeat: -1, yoyo: true, overwrite: 1}
+            {x:1.2 + (0.2 * d), y:1.2 + (0.2 * d), repeat: -1, yoyo: true}
         );
 
-        this._positionTween = new gs.TimelineMax({repeat:-1, overwrite: 1})
+        this._positionTween = new gs.TimelineMax({repeat:-1})
         .fromTo(
             this.elm,
             1 + Math.random() * 0.5,
@@ -162,7 +164,7 @@ define([
                 alpha: 0,
                 x: center.x + Math.cos(angle) * (radius + 200),
                 y: center.y + Math.sin(angle) * (radius + 200),
-                overwrite: 1, delay: Math.random() * 0.1
+                delay: Math.random() * 0.1
             }
         );
     };
@@ -178,7 +180,7 @@ define([
                 alpha: this.implodeAlpha,
                 x: this._x0,
                 y: this._y0,
-                overwrite: 1, delay: Math.random() * 0.1,
+                delay: Math.random() * 0.1,
                 onComplete: this._resumeStaticAnimation.bind(this)
             }
         );
@@ -208,7 +210,7 @@ define([
         this._drawCircle(this.color);
 
         this.elm.addChild(this._title);
-        gs.TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._title, 0.2, {alpha: 1});
     };
 
     Circle.prototype.lightDown = function () {
@@ -220,7 +222,7 @@ define([
                     this.elm.removeChild(this._title);
                 }
             }.bind(this);
-            gs.TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onLightDown});
+            gs.TweenMax.to(this._title, 0.2, {alpha: 0, onComplete: onLightDown});
         }
     };
 
@@ -230,19 +232,21 @@ define([
      * @param  {number} y desired y position
      * @return {object} Tween for chaining
      */
-    Circle.prototype.moveTo = function (x, y, onComplete) {
+    Circle.prototype.moveTo = function (x, y, onComplete, extraParams) {
         this._x0 = x;
         this._y0 = y;
 
-        if (!onComplete) {
-            onComplete = function () {};
+        var params = {x: x, y: y, overwrite: true};
+
+        if (extraParams) {
+            $.extend(params, extraParams);
         }
 
-        gs.TweenMax.to(
-            this.elm,
-            0.3 + Math.random() * 0.1,
-            {x: x, y: y, overwrite: 1, onComplete: onComplete}
-        );
+        if (onComplete) {
+            params.onComplete = onComplete;
+        }
+
+        gs.TweenMax.to(this.elm, 0.3 + Math.random() * 0.1, params);
     };
 
     /**

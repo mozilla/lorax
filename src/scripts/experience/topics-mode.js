@@ -160,10 +160,6 @@ define([
 
         var i;
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            this._canvas.issues[i].elm.alpha = 1;
-        }
-
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].show();
             this._topics[i].mouseOverS.add(this.mouseOverB);

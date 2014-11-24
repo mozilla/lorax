@@ -43,15 +43,15 @@ define([
     };
 
     IntroMode.prototype._onStartShow = function () {
-        gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: 1, delay: 2.5});
-        gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: 1});
+        gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: true, delay: 2.5});
+        gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: true});
 
         setTimeout(this._onShow.bind(this), 6000);
     };
 
     IntroMode.prototype._onStartHide = function () {
-        gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: 1});
-        gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: 1});
+        gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: true});
+        gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: true});
 
         setTimeout(this._onHide.bind(this), 100);
     };

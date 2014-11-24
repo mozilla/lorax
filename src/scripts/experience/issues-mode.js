@@ -156,6 +156,7 @@ define([
         for (i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setMode(Issue.MODE_ISSUES);
+            issue.elm.alpha = 1;
             issue.moveTo(issue.issueX, issue.issueY);
             // so mouse over doesnt block animation
             setTimeout(this._setIssueMouseEvents.bind(this), 500, issue);

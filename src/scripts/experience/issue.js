@@ -191,14 +191,14 @@ define([
 
         if (isVisible) {
             this.elm.addChild(this._title);
-            gs.TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: 1});
+            gs.TweenMax.to(this._title, 0.2, {alpha: 1, overwrite: true});
         } else if(!this.isOver) {
             var onOut = function () {
                 if (this._title.parent) {
                     this.elm.removeChild(this._title);
                 }
             }.bind(this);
-            gs.TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: 1, onComplete: onOut});
+            gs.TweenMax.to(this._title, 0.2, {alpha: 0, overwrite: true, onComplete: onOut});
         }
     };
 
@@ -227,7 +227,7 @@ define([
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             this.elm.addChild(this._subtitle);
             this._subtitle.y = Math.round(this._title.y + this._title.height + 2);
-            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: 1});
+            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: true});
         }
     };
 
@@ -242,7 +242,7 @@ define([
                 this.elm, 1,
                 {
                     x: this._x0, y: this._y0, ease: gs.Elastic.easeOut.config(2, 0.7),
-                    overwrite: 1, onComplete: this._resumeStaticAnimation.bind(this)
+                    overwrite: true, onComplete: this._resumeStaticAnimation.bind(this)
                 }
             );
 
@@ -254,7 +254,7 @@ define([
                     this.elm.removeChild(this._subtitle);
                 }
             }.bind(this);
-            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 0, overwrite: 1, onComplete: onHide});
+            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 0, overwrite: true, onComplete: onHide});
         }
 
         this.lightDown();
@@ -267,7 +267,7 @@ define([
     Issue.prototype.openIssue = function () {
         this.elm.removeChild(this._subtitle);
 
-        gs.TweenMax.to(this._openCircle.scale, 0.3, {x: 1, y: 1, overwrite: 1});
+        gs.TweenMax.to(this._openCircle.scale, 0.3, {x: 1, y: 1, overwrite: true});
     };
 
     Issue.prototype.closeIssue = function () {

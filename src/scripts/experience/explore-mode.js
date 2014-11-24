@@ -208,7 +208,11 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_EXPLORE);
-            issue.moveTo(issue.exploreX, issue.exploreY, issue._resumeStaticAnimation.bind(issue));
+            issue.moveTo(
+                issue.exploreX,
+                issue.exploreY,
+                issue._resumeStaticAnimation.bind(issue),
+                {alpha: 1});
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
@@ -270,7 +274,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         this._endAutoMode();
 
-        setTimeout(this._onHide.bind(this), 100);
+        setTimeout(this._onHide.bind(this), 0);
     };
 
     return ExploreMode;
