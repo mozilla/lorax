@@ -30,7 +30,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             elm = this._canvas.issues[i];
 
             do {
-                seed = Math.random() * Math.PI * 2;
+                // make it evenly distributed
+                seed = (i / this._canvas.issues.length) * Math.PI * 2;
                 rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
                 elm.exploreX = Math.sin(seed) * rSeed;
                 elm.exploreY = Math.cos(seed) * rSeed;
