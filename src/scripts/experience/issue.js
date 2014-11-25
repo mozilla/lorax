@@ -137,7 +137,7 @@ define([
             } break;
             case Issue.MODE_TOPICS: {
                 this.setTextAlwaysVisible(false);
-                this.setIsInteractive(false);
+                this.setIsInteractive(true);
                 this._title.setStyle(this._topicStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 this._drawCircle(0x222222);
@@ -145,25 +145,25 @@ define([
             case Issue.MODE_ISSUES: {
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
-                this.setIsInteractive(false);
+                this.setIsInteractive(true);
                 this._title.setStyle(this._issuesStyle);
                 this._title.y = Math.round(-this._title.height / 2);
-                if (!this._issueModeArea) {
-                    this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-                }
-                this.elm.hitArea = this._issueModeArea;
+                // if (!this._issueModeArea) {
+                //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+                // }
+                // this.elm.hitArea = this._issueModeArea;
                 this._drawCircle(0x222222);
             } break;
             case Issue.MODE_TAG_ISSUES: {
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
-                this.setIsInteractive(false);
+                this.setIsInteractive(true);
                 this._title.setStyle(this._tagIssuesStyle);
                 this._title.y = Math.round(-this._title.height / 2);
-                if (!this._issueModeArea) {
-                    this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-                }
-                this.elm.hitArea = this._issueModeArea;
+                // if (!this._issueModeArea) {
+                //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
+                // }
+                // this.elm.hitArea = this._issueModeArea;
                 this._drawCircle(0xffffff);
             } break;
             case Issue.MODE_DETAIL: {
@@ -239,15 +239,22 @@ define([
     Issue.prototype.mouseOut = function () {
         Circle.prototype.mouseOut.call(this);
 
-        if (this.mode === Issue.MODE_EXPLORE) {
+        if (this.isInteractive) {
+            var onComplete = null;
+            if (this.mode === Issue.MODE_EXPLORE) {
+                onComplete = this._resumeStaticAnimation.bind(this);
+            }
+
             gs.TweenMax.to(
                 this.elm, 1,
                 {
                     x: this._x0, y: this._y0, ease: gs.Elastic.easeOut.config(2, 0.7),
-                    overwrite: true, onComplete: this._resumeStaticAnimation.bind(this)
+                    overwrite: true, onComplete: onComplete, roundProps: 'x,y'
                 }
             );
+        }
 
+        if (this.mode === Issue.MODE_EXPLORE) {
             this._title.setStyle(this._titleStyle);
             this._title.y = Math.round(-this._title.height / 2);
 
@@ -283,12 +290,12 @@ define([
      */
     Issue.prototype.update = function (mousePosition) {
         if (this.isOver && this.isInteractive) {
-            this.elm.x = Math.round(mousePosition.x);
-            this.elm.y = Math.round(mousePosition.y);
+            this.elm.x = Math.round(mousePosition.x - this.mouseOverPosition.x);
+            this.elm.y = Math.round(mousePosition.y - this.mouseOverPosition.y);
 
-            var stickyRadius = 30;
-            if (Math.abs(this.elm.x - this._x0) > stickyRadius ||
-                    Math.abs(this.elm.y - this._y0) > stickyRadius) {
+            var stickyRadius = 15;
+            if (Math.abs(this.elm.x - this._x0) > stickyRadius + this.elm.width / 2 ||
+                    Math.abs(this.elm.y - this._y0) > stickyRadius + this.elm.height / 2) {
                 this.mouseOut();
             }
         }

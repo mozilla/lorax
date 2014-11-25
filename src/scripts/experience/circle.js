@@ -164,7 +164,7 @@ define([
                 alpha: 0,
                 x: center.x + Math.cos(angle) * (radius + 200),
                 y: center.y + Math.sin(angle) * (radius + 200),
-                delay: Math.random() * 0.1
+                delay: Math.random() * 0.1, roundProps: 'x,y'
             }
         );
     };
@@ -180,7 +180,7 @@ define([
                 alpha: this.implodeAlpha,
                 x: this._x0,
                 y: this._y0,
-                delay: Math.random() * 0.1,
+                delay: Math.random() * 0.1, roundProps: 'x,y',
                 onComplete: this._resumeStaticAnimation.bind(this)
             }
         );
@@ -191,6 +191,7 @@ define([
      */
     Circle.prototype.mouseOver = function () {
         this.isOver = true;
+        this.mouseOverPosition = this.elm.toLocal(this.elm.stage.getMousePosition());
         if (this.mouseOverCallback) {
             this.mouseOverCallback(this);
         }
@@ -236,7 +237,7 @@ define([
         this._x0 = x;
         this._y0 = y;
 
-        var params = {x: x, y: y, overwrite: true};
+        var params = {x: x, y: y, overwrite: true, roundProps: 'x,y'};
 
         if (extraParams) {
             $.extend(params, extraParams);

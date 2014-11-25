@@ -138,7 +138,7 @@ define([
                     alpha: issue.implodeAlpha,
                     x: this.elm.x + issue.topicX,
                     y: this.elm.y + issue.topicY,
-                    overwrite: true
+                    overwrite: true, roundProps: 'x,y'
                 }
             );
         }
@@ -242,7 +242,7 @@ define([
         gs.TweenMax.to(
             this._topicTitle,
             0.3,
-            {y: -this._topicTitle.height / 2, tint: 0xFFFFFF, alpha: 1, overwrite: true}
+            {y: Math.round(-this._topicTitle.height / 2), tint: 0xFFFFFF, alpha: 1, overwrite: true}
         );
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: true});
 
@@ -300,7 +300,7 @@ define([
         gs.TweenMax.to(
             this.elm,
             0.3,
-            {x:position.x, y:position.y, overwrite: true, ease: gs.Elastic.easeOut.config(2, 0.7)}
+            {x:position.x, y:position.y, overwrite: true, roundProps: 'x,y', ease: gs.Elastic.easeOut.config(2, 0.7)}
         );
 
         for(i = 0; i < this._issues.length; i ++) {
@@ -317,7 +317,7 @@ define([
                     alpha: issue.implodeAlpha,
                     x: position.x + issue.topicX,
                     y: position.y + issue.topicY,
-                    overwrite: true
+                    overwrite: true, roundProps: 'x,y'
                 }
             );
         }
