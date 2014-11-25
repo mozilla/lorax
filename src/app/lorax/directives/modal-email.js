@@ -2,7 +2,7 @@
  * @fileOverview Email Modal directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['angular'], function (angular) {
+define(['angular', 'jquery', 'jquery-selectric'], function (angular, $) {
     'use strict';
 
     /**
@@ -24,21 +24,32 @@ define(['angular'], function (angular) {
     */
     var ModalEmailController = function (
         $scope,
-        windowService
+        windowService,
+        dataService
     ) {
         this._$scope = $scope;
         this._windowService = windowService;
+        this._dataService = dataService;
 
         $scope.modalEmail = {
             open: false,
             closeModal: this.closeModal.bind(this),
             email: null,
+            terms: null,
             onInputChange: this.onInputChange.bind(this),
             showSubmitBtn: false
         };
 
         // listen for $broadcast of 'openEmailModal'
         $scope.$on('openEmailModal', this.openModal.bind(this));
+
+        this._dataService.getMain().then(function (model) {
+            this._$scope.modalEmail.content = model.getModals().email;
+        }.bind(this));
+
+        this._dataService.getMap().then(function (model) {
+            this._$scope.modalEmail.countries = model.countryData;
+        }.bind(this));
     };
 
     /**
@@ -47,7 +58,8 @@ define(['angular'], function (angular) {
     */
     ModalEmailController.$inject = [
         '$scope',
-        'windowService'
+        'windowService',
+        'dataService'
     ];
 
     ModalEmailController.prototype.openModal = function () {
@@ -59,6 +71,7 @@ define(['angular'], function (angular) {
         );
 
         this._windowService.setModalOpen(true);
+        $('.enter-email__country select').selectric('init');
     };
 
     ModalEmailController.prototype.closeModal = function () {
@@ -68,8 +81,11 @@ define(['angular'], function (angular) {
     };
 
     ModalEmailController.prototype.onInputChange = function () {
+        // this._$scope.modalEmail.showSubmitBtn =
+        //  (this._$scope.modalEmail.email) ? true : false;
+
         this._$scope.modalEmail.showSubmitBtn =
-         (this._$scope.modalEmail.email) ? true : false;
+         (this._$scope.modalEmail.terms && this._$scope.modalEmail.email) ? true : false;
     };
 
     return ModalEmailDirective;

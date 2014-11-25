@@ -654,6 +654,12 @@
         "That's why we created this site: to show you where the Web stands today, the issues that impact it and what you can do to get involved."
       ]
     },
+    "email": {
+        "title": "Keep Me Informed",
+        "copy": "Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.",
+        "label": "Enter Your Email",
+        "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy"
+    },
     "legend": {
       "title": "Explore the most important issues on the web today and what shape they're in.",
       "copy": [

@@ -24,6 +24,14 @@
         top: auto;
         left: 5%;
     });
+
+    .enter-email__country & {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        margin: 0;
+    }
 }
 
 .selectricResponsive {
@@ -34,6 +42,23 @@
     border: 1px solid #DDD;
     background: #F8F8F8;
     border-radius: 2px;
+
+    .enter-email__country & {
+        background: none;
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        display: block;
+        outline: none;
+        padding: 12px 0;
+        text-align: center;
+        width: 100%;
+        line-height: normal;
+
+        .at-medium({
+            .font-size(3.2);
+        });
+    }
 }
 
 .selectric .label {
@@ -46,6 +71,17 @@
     line-height: 18px;
     color: @dark-grey;
     min-height: 18px;
+
+    .enter-email__country & {
+        color: @white;
+        .fira-sans-light;
+        .font-size(2.2);
+        line-height: 32px;
+
+        .at-medium({
+            .font-size(3.2);
+        });
+    }
 }
 
 .selectric .button {
@@ -57,6 +93,10 @@
     height: 30px;
     color: #BBB;
     text-align: center;
+
+    .enter-email__country & {
+        color: rgba(255,255,255,0.2)
+    }
 }
 
 .selectric .button:after {
@@ -75,10 +115,20 @@
 
 .selectricHover .selectric {
     border-color: #CCC;
+
+    .enter-email__country & {
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
 }
 
 .selectricHover .selectric .button {
     color: #888;
+
+    .enter-email__country & {
+        color: rgba(255,255,255,0.2)
+    }
 }
 
 .selectricHover .selectric .button:after {
@@ -92,6 +142,13 @@
 .selectricOpen .selectric {
     border-color: #CCC;
     background: #F0F0F0;
+
+    .enter-email__country & {
+        background: @extra-dark-grey;
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
 }
 
 .selectricOpen .selectricItems {
@@ -166,6 +223,27 @@
         top: auto;
         bottom: 100%;
     });
+
+    .enter-email__country & {
+        width: 100%;
+        color: @dark-grey;
+        color: rgba(255,255,255,0.2);
+        .fira-sans-light;
+        .font-size(2.2);
+        background: @extra-dark-grey;
+        padding: 12px 0;
+        border: none;
+
+        .at-medium({
+            top: 100%;
+            bottom: auto;
+        });
+
+        .at-large({
+            top: 100%;
+            bottom: auto;
+        });
+    }
 }
 
 .selectricItems .selectricScroll {
@@ -173,10 +251,10 @@
     overflow: auto;
 }
 
-.selectricAbove .selectricItems {
-    top: auto;
-    bottom: 100%;
-}
+// .selectricAbove .selectricItems {
+//     top: auto;
+//     bottom: 100%;
+// }
 
 .selectricItems ul, .selectricItems li {
     list-style: none;
@@ -194,6 +272,12 @@
     border-bottom: 1px solid #EEE;
     color: #666;
     cursor: pointer;
+
+    .enter-email__country & {
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
 }
 
 .selectricItems li.selected {
