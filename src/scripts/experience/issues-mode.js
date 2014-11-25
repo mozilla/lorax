@@ -47,6 +47,10 @@ define([
     };
 
     IssuesMode.prototype._updateScroll = function () {
+        this._issues = this._issues.sort(function(a,b) {
+            return (a.data.getId() > b.data.getId()) ? 1 : ((b.data.getId() > a.data.getId()) ? -1 : 0);
+        });
+
         this._scrollArea = new PIXI.Rectangle(
             -((this._canvas.canvasSize.x - this._margin.left) / 2),
             -((this._canvas.canvasSize.y - this._margin.top) / 2),
