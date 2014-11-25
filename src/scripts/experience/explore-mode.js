@@ -101,12 +101,12 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         this._canvas.autoModePosition = null;
 
         clearTimeout(this._autoModeTimeout);
-        // if (startAnother) {
-        //     this._autoModeTimeout = setTimeout(
-        //         this._startAutoMode.bind(this),
-        //         ExploreMode.AUTO_MODE_TIME
-        //     );
-        // }
+        if (startAnother) {
+            this._autoModeTimeout = setTimeout(
+                this._startAutoMode.bind(this),
+                ExploreMode.AUTO_MODE_TIME
+            );
+        }
     };
 
     ExploreMode.prototype._drawLines = function () {
