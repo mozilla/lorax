@@ -80,10 +80,12 @@ define([
     };
 
     IssuesMode.prototype._mouseOverIssue = function (issue) {
+        this.selectedIssue = issue;
         issue.mouseOver(this._canvas.mousePosition);
     };
 
     IssuesMode.prototype._mouseOutIssue = function (issue) {
+        this.selectedIssue = null;
         issue.mouseOut();
     };
 
@@ -121,6 +123,17 @@ define([
         }.bind(this), 1000 / 15);
     };
 
+    IssuesMode.prototype._tapIssue = function (issue) {
+        if (!this.selectedIssue) {
+            issue._onMouseOver();
+        } else if (this.selectedIssue === issue) {
+            issue._onPress();
+        } else {
+            this.selectedIssue._onMouseOut();
+            issue._onMouseOver();
+        }
+    };
+
     IssuesMode.prototype._scrollTo = function (delta) {
         this._scrollFinalPosition += delta;
 
@@ -142,8 +155,10 @@ define([
     IssuesMode.prototype._setIssueMouseEvents = function (issue) {
         issue.issueMouseOver = this._mouseOverIssue.bind(this);
         issue.issueMouseOut = this._mouseOutIssue.bind(this);
+        issue.issueTap = this._tapIssue.bind(this);
         issue.mouseOverS.add(issue.issueMouseOver);
         issue.mouseOutS.add(issue.issueMouseOut);
+        issue.tapS.add(issue.issueTap);
     };
 
     IssuesMode.prototype._onStartShow = function () {

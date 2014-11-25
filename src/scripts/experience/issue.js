@@ -20,6 +20,7 @@ define([
         this.mouseOverS = new signals.Signal();
         this.mouseOutS = new signals.Signal();
         this.pressS = new signals.Signal();
+        this.tapS = new signals.Signal();
 
         this._tagStyle = {font: '400 8px "Fira Sans", sans-serif', fill: '#222222'};
         this._tagTitleStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
@@ -85,9 +86,10 @@ define([
         this._openCircle.endFill();
         this.elm.addChild(this._openCircle);
 
-        this.elm.mouseover = this.elm.touchstart = this._onMouseOver.bind(this);
+        this.elm.mouseover = this._onMouseOver.bind(this);
         this.elm.mouseout = this._onMouseOut.bind(this);
         this.elm.mousedown = this._onPress.bind(this);
+        this.elm.tap = this._onTap.bind(this);
     };
 
     Issue.prototype._onMouseOver = function () {
@@ -100,6 +102,10 @@ define([
 
     Issue.prototype._onPress = function () {
         this.pressS.dispatch(this);
+    };
+
+    Issue.prototype._onTap = function () {
+        this.tapS.dispatch(this);
     };
 
     Issue.prototype.setMode = function (mode) {
@@ -309,7 +315,7 @@ define([
             var stickyRadius = 15;
             if (Math.abs(this.elm.x - this._x0) > stickyRadius + this.elm.width / 2 ||
                     Math.abs(this.elm.y - this._y0) > stickyRadius + this.elm.height / 2) {
-                this.mouseOut();
+                this._onMouseOut();
             }
         }
         // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;

@@ -52,7 +52,7 @@ define([
         this._topicArea.buttonMode = true;
         this.elm.addChild(this._topicArea);
         this._topicArea.mouseover = this._mouseOver.bind(this);
-        this._topicArea.touchstart = this._delayTouchOver.bind(this);
+        this._topicArea.tap = this._mouseOver.bind(this);
 
         // topic mouse out area
         var aMargin = 20;
@@ -125,8 +125,10 @@ define([
                 {alpha: 1});
             issue.topicMouseOver = this._mouseOverIssue.bind(this);
             issue.topicMouseOut = this._mouseOutIssue.bind(this);
+            issue.topicTap = this._tapIssue.bind(this);
             issue.mouseOverS.add(issue.topicMouseOver);
             issue.mouseOutS.add(issue.topicMouseOut);
+            issue.tapS.add(issue.topicTap);
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
@@ -152,6 +154,7 @@ define([
             issue = this._issues[i];
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
+            issue.tapS.remove(issue.topicTap);
         }
 
         for(i = 0; i < this._fakes.length; i ++) {
@@ -161,20 +164,27 @@ define([
 
     Topic.prototype._mouseOverIssue = function (issue) {
         if (this.isOver) {
+            this.selectedIssue = issue;
             issue.mouseOver(this.mousePosition);
         }
     };
 
     Topic.prototype._mouseOutIssue = function (issue) {
         if (this.isOver) {
+            this.selectedIssue = null;
             issue.mouseOut();
         }
     };
 
-    Topic.prototype._delayTouchOver = function () {
-        this._timeoutTouchOver = setTimeout(function () {
-            this._mouseOver();
-        }.bind(this), 1500);
+    Topic.prototype._tapIssue = function (issue) {
+        if (!this.selectedIssue) {
+            issue._onMouseOver();
+        } else if (this.selectedIssue === issue) {
+            issue._onPress();
+        } else {
+            this.selectedIssue._onMouseOut();
+            issue._onMouseOver();
+        }
     };
 
     /**
@@ -294,7 +304,6 @@ define([
         var i;
         var issue;
 
-        clearTimeout(this._timeoutTouchOver);
         this._topicArea.mouseover = this._topicArea.touchstart = null;
 
         gs.TweenMax.to(

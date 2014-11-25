@@ -101,12 +101,12 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         this._canvas.autoModePosition = null;
 
         clearTimeout(this._autoModeTimeout);
-        if (startAnother) {
-            this._autoModeTimeout = setTimeout(
-                this._startAutoMode.bind(this),
-                ExploreMode.AUTO_MODE_TIME
-            );
-        }
+        // if (startAnother) {
+        //     this._autoModeTimeout = setTimeout(
+        //         this._startAutoMode.bind(this),
+        //         ExploreMode.AUTO_MODE_TIME
+        //     );
+        // }
     };
 
     ExploreMode.prototype._drawLines = function () {
@@ -144,6 +144,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
     };
 
     ExploreMode.prototype._mouseOverIssue = function (issue) {
+        this.selectedIssue = issue;
+
         var related = issue.data.getRelated();
         var tags;
         var relatedIssue;
@@ -175,6 +177,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
     };
 
     ExploreMode.prototype._mouseOutIssue = function (issue) {
+        this.selectedIssue = null;
+
         var related = issue.data.getRelated();
         var tags;
         var relatedIssue;
@@ -208,6 +212,17 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         }
     };
 
+    ExploreMode.prototype._tapIssue = function (issue) {
+        if (!this.selectedIssue) {
+            issue._onMouseOver();
+        } else if (this.selectedIssue === issue) {
+            issue._onPress();
+        } else {
+            this.selectedIssue._onMouseOut();
+            issue._onMouseOver();
+        }
+    };
+
     ExploreMode.prototype._onStartShow = function () {
         // set position for issues
         var issue;
@@ -223,8 +238,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 {alpha: 1});
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
+            issue.exploreTap = this._tapIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
             issue.mouseOutS.add(issue.exploreMouseOut);
+            issue.tapS.add(issue.exploreTap);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
@@ -235,8 +252,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.implode();
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
+            issue.exploreTap = this._tapIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
             issue.mouseOutS.add(issue.exploreMouseOut);
+            issue.tapS.add(issue.exploreTap);
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
@@ -264,6 +283,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.explode(this._exploreRadius);
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);
+            issue.tapS.remove(issue.exploreTap);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
@@ -271,6 +291,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.explode(this._exploreRadius);
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);
+            issue.tapS.remove(issue.exploreTap);
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
