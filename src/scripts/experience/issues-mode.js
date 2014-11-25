@@ -80,7 +80,7 @@ define([
     };
 
     IssuesMode.prototype._mouseOverIssue = function (issue) {
-        issue.mouseOver();
+        issue.mouseOver(this._canvas.mousePosition);
     };
 
     IssuesMode.prototype._mouseOutIssue = function (issue) {

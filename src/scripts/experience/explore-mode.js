@@ -5,8 +5,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
     var ExploreMode = function (canvas) {
         this._canvas = canvas;
 
-        ExploreMode.AUTO_MODE_TIME = 3000;
-        ExploreMode.AUTO_MODE_TIMEOUT = 1500;
+        ExploreMode.AUTO_MODE_TIME = 4000;
+        ExploreMode.AUTO_MODE_TIMEOUT = 4000;
 
         return this;
     };
@@ -157,7 +157,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             this._endAutoMode();
         }
 
-        issue.mouseOver();
+        issue.mouseOver(this._canvas.mousePosition);
 
         for(i = 0; i < related.length; i ++) {
             relatedIssue = this._canvas.getElementByData(related[i]);

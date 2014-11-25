@@ -191,7 +191,6 @@ define([
      */
     Circle.prototype.mouseOver = function () {
         this.isOver = true;
-        this.mouseOverPosition = this.elm.toLocal(this.elm.stage.getMousePosition());
         if (this.mouseOverCallback) {
             this.mouseOverCallback(this);
         }

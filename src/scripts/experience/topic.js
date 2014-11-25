@@ -161,7 +161,7 @@ define([
 
     Topic.prototype._mouseOverIssue = function (issue) {
         if (this.isOver) {
-            issue.mouseOver();
+            issue.mouseOver(this.mousePosition);
         }
     };
 
@@ -328,6 +328,7 @@ define([
     };
 
     Topic.prototype.update = function (mousePosition) {
+        this.mousePosition = mousePosition;
         if (this.isOver) {
             // check for mouse out
             var x0 = this.elm.x + this._linearArea.x + this._linearArea.hitArea.x;

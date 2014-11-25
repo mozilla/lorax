@@ -209,8 +209,14 @@ define([
     /**
      * Sets mouse over
      */
-    Issue.prototype.mouseOver = function () {
+    Issue.prototype.mouseOver = function (mousePosition) {
         Circle.prototype.mouseOver.call(this);
+
+        if (mousePosition) {
+            this.mouseOverPosition = mousePosition.clone();
+            this.mouseOverPosition.x -= this.elm.x;
+            this.mouseOverPosition.y -= this.elm.y;
+        }
 
         this.stopMoving();
         this.lightUp();
@@ -238,6 +244,7 @@ define([
      */
     Issue.prototype.mouseOut = function () {
         Circle.prototype.mouseOut.call(this);
+        this.mouseOverPosition = null;
 
         if (this.isInteractive) {
             var onComplete = null;
@@ -289,9 +296,15 @@ define([
      * @param  {Point} mousePosition current mouse position
      */
     Issue.prototype.update = function (mousePosition) {
+        this.mousePosition = mousePosition;
+
         if (this.isOver && this.isInteractive) {
-            this.elm.x = Math.round(mousePosition.x - this.mouseOverPosition.x);
-            this.elm.y = Math.round(mousePosition.y - this.mouseOverPosition.y);
+            if (!this.mouseOverPosition) {
+                this.mouseOverPosition = new PIXI.Point();
+            }
+
+            this.elm.x = Math.round(this.mousePosition.x - this.mouseOverPosition.x);
+            this.elm.y = Math.round(this.mousePosition.y - this.mouseOverPosition.y);
 
             var stickyRadius = 15;
             if (Math.abs(this.elm.x - this._x0) > stickyRadius + this.elm.width / 2 ||

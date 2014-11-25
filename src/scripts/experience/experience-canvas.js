@@ -272,7 +272,7 @@ define([
             mousePosition = this.autoModePosition.clone();
         }
 
-        this.mousePosition = mousePosition.clone();
+        this.mousePosition = mousePosition;
     };
 
     /**
