@@ -229,6 +229,8 @@ define([
             this._subtitle.y = Math.round(this._title.y + this._title.height + 2);
             gs.TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: true});
         }
+
+        this.elm.parent.setChildIndex(this.elm, 0);
     };
 
     /**
