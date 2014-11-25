@@ -120,12 +120,7 @@ define([
     };
 
     IssueModel.prototype.getRelated = function () {
-        var related = _.uniq(_.reduce(this._tags, function (result, tag) {
-            result = result.concat(tag.getIssues());
-            return result;
-        }, []));
-
-        return related.concat(this._parent.getIssues());
+        return this._parent.getIssues();
     };
 
     IssueModel.prototype.getStatus = function () {
