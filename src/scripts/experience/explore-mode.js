@@ -47,12 +47,19 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         // set tags positions
         for (i = 0; i < this._canvas.tags.length; i ++) {
-            seed = Math.random() * Math.PI * 2;
-            rSeed = this._exploreRadius + (Math.random() * 5);
-
             elm = this._canvas.tags[i];
-            elm.exploreX = Math.sin(seed) * rSeed;
-            elm.exploreY = Math.cos(seed) * rSeed;
+
+            do {
+                seed = Math.random() * Math.PI * 2;
+                rSeed = this._exploreRadius + (Math.random() * 5);
+                elm.exploreX = Math.sin(seed) * rSeed;
+                elm.exploreY = Math.cos(seed) * rSeed;
+            } while (
+                !(elm.exploreX > -this._canvas.canvasSize.x / 2 &&
+                elm.exploreX < this._canvas.canvasSize.x / 2 &&
+                elm.exploreY > -this._canvas.canvasSize.y / 2 &&
+                elm.exploreY < this._canvas.canvasSize.y / 2)
+            );
         }
 
         // set fakes positions

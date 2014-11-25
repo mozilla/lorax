@@ -119,19 +119,19 @@ define([
 
         var tag;
         var i;
-        // var j;
+        var j;
         for (i = 0; i < this._tagData.length; i ++) {
-            // for (j = 0; j < 5; j ++) { // multiply current tags
-            tag = new Issue(i, this.canvasSize);
-            tag.setIsInteractive(false);
+            for (j = 0; j < 3; j ++) { // multiply current tags
+                tag = new Issue(i, this.canvasSize);
+                tag.setIsInteractive(false);
 
-            this.tags.push(tag);
-            this._particlesContainer.addChild(tag.elm);
+                this.tags.push(tag);
+                this._particlesContainer.addChild(tag.elm);
 
-            tag.setData(this._tagData[i]);
-            tag.draw(2);
-            tag.pressS.add(this._onPressIssue.bind(this));
-            // }
+                tag.setData(this._tagData[i]);
+                tag.draw(2);
+                tag.pressS.add(this._onPressIssue.bind(this));
+            }
         }
     };
 
