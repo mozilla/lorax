@@ -40,7 +40,7 @@
     </ul>
     <div class="detail-tags detail-tags--more" ng-if="::issueDetails.issue.getTags()">
       <span class="detail-tags__title">Related Tags:</span>
-      <a href="#" class="detail-tags__tag" ng-repeat="tag in ::issueDetails.issue.getTags()">{{tag.getName()}}</a>
+      <a href="#" class="detail-tags__tag" ng-repeat="tag in ::issueDetails.issue.getTags()">{{tag.getName()}}<span ng-show="!$last">, </span></a>
     </div>
   </section>
 </article>

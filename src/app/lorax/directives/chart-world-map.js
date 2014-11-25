@@ -285,8 +285,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
   };
 
   function setShading(shadeValues, shadeInvert) {
-    var opacity = 1.0;
-    var minOpacity = 1.0;
+    var opacity = 0.8;
+    var minOpacity = 0.8;
     var opacityMod = minOpacity/(shadeValues.length);
     var countryColors = [];
     for (var i = 0; i < shadeValues.length; i++) {

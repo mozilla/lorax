@@ -12,7 +12,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Afghanistan",
@@ -27,7 +27,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 80,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Angola",
@@ -42,7 +42,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 100,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Anguilla",
@@ -57,7 +57,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Åland Islands",
@@ -72,7 +72,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Albania",
@@ -87,7 +87,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 29,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Andorra",
@@ -102,7 +102,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "United Arab Emirates",
@@ -117,7 +117,7 @@
     "governmentControl": null,
     "percentBitTorrent": 35,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Argentina",
@@ -132,7 +132,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 21,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Armenia",
@@ -147,7 +147,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "American Samoa",
@@ -162,7 +162,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Antarctica",
@@ -177,7 +177,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "French Southern Territories",
@@ -192,7 +192,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Antigua and Barbuda",
@@ -207,7 +207,7 @@
     "governmentControl": null,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Australia",
@@ -222,7 +222,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 18,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Austria",
@@ -237,7 +237,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 10,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Azerbaijan",
@@ -252,7 +252,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Burundi",
@@ -267,7 +267,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Belgium",
@@ -282,7 +282,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 13,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Benin",
@@ -297,7 +297,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Bonaire, Sint Eustatius and Saba",
@@ -312,7 +312,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Burkina Faso",
@@ -327,7 +327,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Bangladesh",
@@ -342,7 +342,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 19,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bulgaria",
@@ -357,7 +357,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 17,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Bahrain",
@@ -372,7 +372,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 65,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bahamas",
@@ -387,7 +387,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 79,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bosnia and Herzegovina",
@@ -402,7 +402,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Saint Barthélemy",
@@ -417,7 +417,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Belarus",
@@ -432,7 +432,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 20,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Belize",
@@ -447,7 +447,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bermuda",
@@ -462,7 +462,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 17,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bolivia, Plurinational State of",
@@ -477,7 +477,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Brazil",
@@ -492,7 +492,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 14,
     "dataRegulationStatus": 0,
-    "dataRegulationType": "Self"
+    "dataRegulationType": "Light touch / Self-regulation"
   },
   {
     "displayName": "Barbados",
@@ -507,7 +507,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Brunei Darussalam",
@@ -522,7 +522,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 33,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bhutan",
@@ -537,7 +537,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Bouvet Island",
@@ -552,7 +552,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Botswana",
@@ -567,7 +567,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Central African Republic",
@@ -582,7 +582,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Canada",
@@ -597,7 +597,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 17,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Cocos (Keeling) Islands",
@@ -612,7 +612,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Switzerland",
@@ -627,7 +627,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 14,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Chile",
@@ -642,7 +642,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 17,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "China",
@@ -657,7 +657,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 44,
     "dataRegulationStatus": 0,
-    "dataRegulationType": "Self"
+    "dataRegulationType": "Light touch / Self-regulation"
   },
   {
     "displayName": "Côte d'Ivoire",
@@ -672,7 +672,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Cameroon",
@@ -687,7 +687,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Congo, the Democratic Republic of the",
@@ -702,7 +702,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Congo",
@@ -717,7 +717,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Cook Islands",
@@ -732,7 +732,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Colombia",
@@ -747,7 +747,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 11,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Comoros",
@@ -762,7 +762,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Cabo Verde",
@@ -777,7 +777,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Costa Rica",
@@ -792,7 +792,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 20,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Cuba",
@@ -807,7 +807,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Curaçao",
@@ -822,7 +822,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Christmas Island",
@@ -837,7 +837,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Cayman Islands",
@@ -852,7 +852,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Cyprus",
@@ -867,7 +867,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 4,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Czech Republic",
@@ -882,7 +882,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 16,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Germany",
@@ -897,7 +897,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 10,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Djibouti",
@@ -912,7 +912,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Dominica",
@@ -927,7 +927,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Denmark",
@@ -942,7 +942,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 4,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Dominican Republic",
@@ -957,7 +957,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 27,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Algeria",
@@ -972,7 +972,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 22,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Ecuador",
@@ -987,7 +987,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Egypt",
@@ -1002,7 +1002,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 31,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Eritrea",
@@ -1017,7 +1017,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Western Sahara",
@@ -1032,7 +1032,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Spain",
@@ -1047,7 +1047,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 27,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Estonia",
@@ -1062,7 +1062,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 69,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Ethiopia",
@@ -1077,7 +1077,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Finland",
@@ -1092,7 +1092,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 20,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Fiji",
@@ -1107,7 +1107,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 7,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Falkland Islands (Malvinas)",
@@ -1122,7 +1122,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "France",
@@ -1137,7 +1137,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 22,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Faroe Islands",
@@ -1152,7 +1152,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Micronesia, Federated States of",
@@ -1167,7 +1167,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Gabon",
@@ -1182,7 +1182,7 @@
     "governmentControl": 0,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "United Kingdom",
@@ -1197,7 +1197,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 28,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Georgia",
@@ -1212,7 +1212,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guernsey",
@@ -1227,7 +1227,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Ghana",
@@ -1242,7 +1242,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 25,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Gibraltar",
@@ -1257,7 +1257,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guinea",
@@ -1272,7 +1272,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guadeloupe",
@@ -1287,7 +1287,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Gambia",
@@ -1302,7 +1302,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guinea-Bissau",
@@ -1317,7 +1317,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Equatorial Guinea",
@@ -1332,7 +1332,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Greece",
@@ -1347,7 +1347,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 7,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Grenada",
@@ -1362,7 +1362,7 @@
     "governmentControl": null,
     "percentBitTorrent": 33,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Greenland",
@@ -1377,7 +1377,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guatemala",
@@ -1392,7 +1392,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 20,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "French Guiana",
@@ -1407,7 +1407,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guam",
@@ -1422,7 +1422,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 20,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Guyana",
@@ -1437,7 +1437,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Hong Kong",
@@ -1452,7 +1452,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 25,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Heard Island and McDonald Islands",
@@ -1467,7 +1467,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Honduras",
@@ -1482,7 +1482,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 36,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Croatia",
@@ -1497,7 +1497,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 18,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Haiti",
@@ -1512,7 +1512,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Hungary",
@@ -1527,7 +1527,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 10,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Indonesia",
@@ -1542,7 +1542,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 36,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Isle of Man",
@@ -1557,7 +1557,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "India",
@@ -1572,7 +1572,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 24,
     "dataRegulationStatus": 0,
-    "dataRegulationType": "Self"
+    "dataRegulationType": "Light touch / Self-regulation"
   },
   {
     "displayName": "British Indian Ocean Territory",
@@ -1587,7 +1587,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Ireland",
@@ -1602,7 +1602,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 15,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Iran, Islamic Republic of",
@@ -1617,7 +1617,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 20,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Iraq",
@@ -1632,7 +1632,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 21,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Iceland",
@@ -1647,7 +1647,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Israel",
@@ -1662,7 +1662,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 11,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Italy",
@@ -1677,7 +1677,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 22,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Jamaica",
@@ -1692,7 +1692,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 48,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Jersey",
@@ -1707,7 +1707,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Jordan",
@@ -1722,7 +1722,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 57,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Japan",
@@ -1737,7 +1737,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 42,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Kazakhstan",
@@ -1752,7 +1752,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Kenya",
@@ -1767,7 +1767,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 36,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Kyrgyzstan",
@@ -1782,7 +1782,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 50,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Cambodia",
@@ -1797,7 +1797,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 9,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Kiribati",
@@ -1812,7 +1812,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Kitts and Nevis",
@@ -1827,7 +1827,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Korea, Republic of",
@@ -1842,7 +1842,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 74,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Kuwait",
@@ -1857,7 +1857,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 48,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Lao People's Democratic Republic",
@@ -1872,7 +1872,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Lebanon",
@@ -1887,7 +1887,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 45,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Liberia",
@@ -1902,7 +1902,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Libya",
@@ -1917,7 +1917,7 @@
     "governmentControl": 0,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Lucia",
@@ -1932,7 +1932,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Liechtenstein",
@@ -1947,7 +1947,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Sri Lanka",
@@ -1962,7 +1962,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 54,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Lesotho",
@@ -1977,7 +1977,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Lithuania",
@@ -1992,7 +1992,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 29,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Luxembourg",
@@ -2007,7 +2007,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 13,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Latvia",
@@ -2022,7 +2022,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Macao",
@@ -2037,7 +2037,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 40,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Martin (French part)",
@@ -2052,7 +2052,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Morocco",
@@ -2067,7 +2067,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 9,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Monaco",
@@ -2082,7 +2082,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Moldova, Republic of",
@@ -2097,7 +2097,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Madagascar",
@@ -2112,7 +2112,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 89,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Maldives",
@@ -2127,7 +2127,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 67,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Mexico",
@@ -2142,7 +2142,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 35,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Marshall Islands",
@@ -2157,7 +2157,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Macedonia, the former Yugoslav Republic of",
@@ -2172,7 +2172,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 15,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Mali",
@@ -2187,7 +2187,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Malta",
@@ -2202,7 +2202,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 18,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Myanmar",
@@ -2217,7 +2217,7 @@
     "governmentControl": null,
     "percentBitTorrent": 75,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Montenegro",
@@ -2232,7 +2232,7 @@
     "governmentControl": 1,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Mongolia",
@@ -2247,7 +2247,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 60,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Northern Mariana Islands",
@@ -2262,7 +2262,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Mozambique",
@@ -2277,7 +2277,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Mauritania",
@@ -2292,7 +2292,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Montserrat",
@@ -2307,7 +2307,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Martinique",
@@ -2322,7 +2322,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Mauritius",
@@ -2337,7 +2337,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Malawi",
@@ -2352,7 +2352,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Malaysia",
@@ -2367,7 +2367,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 61,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Mayotte",
@@ -2382,7 +2382,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Namibia",
@@ -2397,7 +2397,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 44,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "New Caledonia",
@@ -2412,7 +2412,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Niger",
@@ -2427,7 +2427,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Norfolk Island",
@@ -2442,7 +2442,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Nigeria",
@@ -2457,7 +2457,7 @@
     "governmentControl": 2,
     "percentBitTorrent": 13,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Nicaragua",
@@ -2472,7 +2472,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 62,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Niue",
@@ -2487,7 +2487,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Netherlands",
@@ -2502,7 +2502,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 13,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Norway",
@@ -2517,7 +2517,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 8,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Nepal",
@@ -2532,7 +2532,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 48,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Nauru",
@@ -2547,7 +2547,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "New Zealand",
@@ -2562,7 +2562,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 24,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Oman",
@@ -2577,7 +2577,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Pakistan",
@@ -2592,7 +2592,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 35,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Panama",
@@ -2607,7 +2607,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 24,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Pitcairn",
@@ -2622,7 +2622,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Peru",
@@ -2637,7 +2637,7 @@
     "governmentControl": 0,
     "percentBitTorrent": 18,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Philippines",
@@ -2652,7 +2652,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 39,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Palau",
@@ -2667,7 +2667,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Papua New Guinea",
@@ -2682,7 +2682,7 @@
     "governmentControl": 2,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Poland",
@@ -2697,7 +2697,7 @@
     "governmentControl": 1,
     "percentBitTorrent": 35,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Puerto Rico",
@@ -2712,7 +2712,7 @@
     "governmentControl": null,
     "percentBitTorrent": 4,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Korea, Democratic People's Republic of",
@@ -2727,7 +2727,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Portugal",
@@ -2742,7 +2742,7 @@
     "governmentControl": null,
     "percentBitTorrent": 24,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Paraguay",
@@ -2757,7 +2757,7 @@
     "governmentControl": null,
     "percentBitTorrent": 25,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Palestine, State of",
@@ -2772,7 +2772,7 @@
     "governmentControl": null,
     "percentBitTorrent": 25,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "French Polynesia",
@@ -2787,7 +2787,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Qatar",
@@ -2802,7 +2802,7 @@
     "governmentControl": null,
     "percentBitTorrent": 75,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Réunion",
@@ -2817,7 +2817,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Romania",
@@ -2832,7 +2832,7 @@
     "governmentControl": null,
     "percentBitTorrent": 9,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Russian Federation",
@@ -2847,7 +2847,7 @@
     "governmentControl": null,
     "percentBitTorrent": 17,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Rwanda",
@@ -2862,7 +2862,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saudi Arabia",
@@ -2877,7 +2877,7 @@
     "governmentControl": null,
     "percentBitTorrent": 36,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Sudan",
@@ -2892,7 +2892,7 @@
     "governmentControl": null,
     "percentBitTorrent": 29,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Senegal",
@@ -2907,7 +2907,7 @@
     "governmentControl": null,
     "percentBitTorrent": 67,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Singapore",
@@ -2922,7 +2922,7 @@
     "governmentControl": null,
     "percentBitTorrent": 53,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "South Georgia and the South Sandwich Islands",
@@ -2937,7 +2937,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Helena, Ascension and Tristan da Cunha",
@@ -2952,7 +2952,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Svalbard and Jan Mayen",
@@ -2967,7 +2967,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Solomon Islands",
@@ -2982,7 +2982,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Sierra Leone",
@@ -2997,7 +2997,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "El Salvador",
@@ -3012,7 +3012,7 @@
     "governmentControl": null,
     "percentBitTorrent": 60,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "San Marino",
@@ -3027,7 +3027,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Somalia",
@@ -3042,7 +3042,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Pierre and Miquelon",
@@ -3057,7 +3057,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Serbia",
@@ -3072,7 +3072,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "South Sudan",
@@ -3087,7 +3087,7 @@
     "governmentControl": null,
     "percentBitTorrent": 28,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Sao Tome and Principe",
@@ -3102,7 +3102,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Suriname",
@@ -3117,7 +3117,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Slovakia",
@@ -3132,7 +3132,7 @@
     "governmentControl": null,
     "percentBitTorrent": 6,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Slovenia",
@@ -3147,7 +3147,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Sweden",
@@ -3162,7 +3162,7 @@
     "governmentControl": null,
     "percentBitTorrent": 13,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "Swaziland",
@@ -3177,7 +3177,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Sint Maarten (Dutch part)",
@@ -3192,7 +3192,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Seychelles",
@@ -3207,7 +3207,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Syrian Arab Republic",
@@ -3222,7 +3222,7 @@
     "governmentControl": null,
     "percentBitTorrent": 60,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Turks and Caicos Islands",
@@ -3237,7 +3237,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Chad",
@@ -3252,7 +3252,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Togo",
@@ -3267,7 +3267,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Thailand",
@@ -3282,7 +3282,7 @@
     "governmentControl": null,
     "percentBitTorrent": 38,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Tajikistan",
@@ -3297,7 +3297,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Tokelau",
@@ -3312,7 +3312,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Turkmenistan",
@@ -3327,7 +3327,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Timor-Leste",
@@ -3342,7 +3342,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Tonga",
@@ -3357,7 +3357,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Trinidad and Tobago",
@@ -3372,7 +3372,7 @@
     "governmentControl": null,
     "percentBitTorrent": 60,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Tunisia",
@@ -3387,7 +3387,7 @@
     "governmentControl": null,
     "percentBitTorrent": 26,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Turkey",
@@ -3402,7 +3402,7 @@
     "governmentControl": null,
     "percentBitTorrent": 11,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Tuvalu",
@@ -3417,7 +3417,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Taiwan, Province of China",
@@ -3432,7 +3432,7 @@
     "governmentControl": null,
     "percentBitTorrent": 28,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Tanzania, United Republic of",
@@ -3447,7 +3447,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Uganda",
@@ -3462,7 +3462,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Ukraine",
@@ -3477,7 +3477,7 @@
     "governmentControl": null,
     "percentBitTorrent": 12,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "United States Minor Outlying Islands",
@@ -3492,7 +3492,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Uruguay",
@@ -3507,7 +3507,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": 2,
-    "dataRegulationType": "Strict"
+    "dataRegulationType": "Strict ex-ante requirements"
   },
   {
     "displayName": "United States",
@@ -3522,7 +3522,7 @@
     "governmentControl": null,
     "percentBitTorrent": 14,
     "dataRegulationStatus": 0,
-    "dataRegulationType": "Self"
+    "dataRegulationType": "Light touch / Self-regulation"
   },
   {
     "displayName": "Uzbekistan",
@@ -3537,7 +3537,7 @@
     "governmentControl": null,
     "percentBitTorrent": 50,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Holy See (Vatican City State)",
@@ -3552,7 +3552,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Saint Vincent and the Grenadines",
@@ -3567,7 +3567,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Venezuela, Bolivarian Republic of",
@@ -3582,7 +3582,7 @@
     "governmentControl": null,
     "percentBitTorrent": 47,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Virgin Islands, British",
@@ -3597,7 +3597,7 @@
     "governmentControl": null,
     "percentBitTorrent": 100,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Virgin Islands, U.S.",
@@ -3612,7 +3612,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Viet Nam",
@@ -3627,7 +3627,7 @@
     "governmentControl": null,
     "percentBitTorrent": 17,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Vanuatu",
@@ -3642,7 +3642,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Wallis and Futuna",
@@ -3657,7 +3657,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Samoa",
@@ -3672,7 +3672,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Yemen",
@@ -3687,7 +3687,7 @@
     "governmentControl": null,
     "percentBitTorrent": null,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "South Africa",
@@ -3702,7 +3702,7 @@
     "governmentControl": null,
     "percentBitTorrent": 38,
     "dataRegulationStatus": 1,
-    "dataRegulationType": "Minimum"
+    "dataRegulationType": "Minimum standard setting"
   },
   {
     "displayName": "Zambia",
@@ -3717,7 +3717,7 @@
     "governmentControl": null,
     "percentBitTorrent": 0,
     "dataRegulationStatus": null,
-    "dataRegulationType": null
+    "dataRegulationType": ""
   },
   {
     "displayName": "Zimbabwe",
@@ -3732,6 +3732,6 @@
     "governmentControl": null,
     "percentBitTorrent": 70,
     "dataRegulationStatus": 0,
-    "dataRegulationType": "Self"
+    "dataRegulationType": "Light touch / Self-regulation"
   }
 ]
