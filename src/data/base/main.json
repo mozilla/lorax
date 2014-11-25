@@ -5,7 +5,7 @@
         "available":{
           "status":0,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Mobile",
@@ -15,7 +15,7 @@
         "affordable":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Mobile",
@@ -26,7 +26,7 @@
         "localization":{
           "status":1,
           "infographicType":"data-lorax-chart-common-languages",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "User rights",
@@ -40,7 +40,7 @@
           "infographicMap":false,
           "tags":[
             "User rights",
-            "Emerging economies"
+            "Regulation"
           ]
         },
         "infrastructure":{
@@ -100,7 +100,7 @@
         "dataTracking":{
           "status":1,
           "infographicType":"data-lorax-chart-data-tracking",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Internet companies",
@@ -113,7 +113,7 @@
         "surveillance":{
           "status":2,
           "infographicType":"data-lorax-chart-surveillance",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Network operators",
@@ -128,7 +128,7 @@
         "userAgreements":{
           "status":2,
           "infographicType":"data-lorax-chart-terms-and-conditions",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Internet companies",
@@ -158,7 +158,7 @@
         "dataRegulation":{
           "status":2,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Government",
@@ -182,7 +182,7 @@
         "censorship":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Government",
@@ -196,7 +196,7 @@
         "cyberThreats":{
           "status":1,
           "infographicType":"data-lorax-chart-cyber-threats",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
           ]
@@ -215,7 +215,7 @@
         "networkDecentralization":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Network operators",
@@ -242,7 +242,7 @@
         "netNeutrality":{
           "status":1,
           "infographicType":"data-lorax-chart-world-map",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
             "Network operators",
@@ -254,7 +254,7 @@
         "zeroRating":{
           "status":1,
           "infographicType":"data-lorax-chart-zero-rating",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Mobile",
@@ -270,7 +270,7 @@
         "platformNeutrality":{
           "status":1,
           "infographicType":"data-lorax-chart-platform-neutrality",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Mobile",
@@ -284,7 +284,7 @@
         "concentrationOfPower":{
           "status":2,
           "infographicType":"data-lorax-chart-concentration-power",
-          "infographicOverflow":true,
+          "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
             "Internet companies",
