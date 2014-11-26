@@ -41,16 +41,18 @@ define([
     * @param  {object} DOM object
     */
     ExperienceCanvas.prototype.init = function (container) {
-        this.canvasSize.x = container.width();
-        this.canvasSize.y = container.height();
+        Responsive.RATIO = window.devicePixelRatio;
+        Responsive.SIZE = new PIXI.Point(container.width(), container.height());
+        // Responsive.SIZE.x /= Responsive.RATIO;
+        // Responsive.SIZE.y /= Responsive.RATIO;
 
-        Responsive.SIZE = this.canvasSize;
+        this.canvasSize = Responsive.SIZE;
 
         // create pixijs renderer and stage
-        this._renderer = new PIXI.autoDetectRenderer(
+        this._renderer = new PIXI.CanvasRenderer(
             this.canvasSize.x,
             this.canvasSize.y,
-            {transparent: true, antialias: true});
+            {transparent: true, antialias: true, resolution: 1});
         this._stage = new PIXI.Stage();
         this._stage.interactive = true;
         container.append(this._renderer.view);
