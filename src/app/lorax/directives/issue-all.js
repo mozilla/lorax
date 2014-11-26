@@ -72,7 +72,7 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
     };
 
     IssueAllCtrl.prototype.onFontsLoaded = function () {
-        this.initialized = true;
+        this.fontsLoaded = true;
 
         if (this._$scope.detail.model) {
             this.setOffsets();
@@ -82,7 +82,7 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
     IssueAllCtrl.prototype.onModelLoaded = function (model) {
         this._$scope.detail.model = model;
 
-        if (this.initialized) {
+        if (this.fontsLoaded) {
             this.setOffsets();
         }
     };
@@ -110,6 +110,9 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
             $('#detail').addClass('ng-hide');
         }
 
+        this.initialized = true;
+
+        this.onScroll();
         if (this.issue || this.topic) {
             this._doScrollToIssue();
         }
@@ -119,7 +122,7 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
         this.issue = issue;
         this.topic = topic;
 
-        if (this._$scope.detail.model) {
+        if (this.initialized) {
             this._doScrollToIssue();
         }
     };
@@ -137,13 +140,13 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
         }
 
         // scroll to offset
-        this._scrollService.go('top', {offset: offset, duration: 500, animate: false});
+        this._scrollService.go('top', {offset: offset, animate: false});
 
         this._$scope.detail.currentIssue = this.issue;
     };
 
-    IssueAllCtrl.prototype.onScroll = function (event) {
-        this._experienceService.onScroll($(event.target).scrollTop());
+    IssueAllCtrl.prototype.onScroll = function () {
+        this._experienceService.onScroll($(window, 'body').scrollTop());
     };
 
     IssueAllCtrl.prototype.nextIssue = function () {
@@ -182,7 +185,7 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));
 
             controller.init();
-        }.bind(controller), 500);
+        }, 500);
     };
 
     return IssueAllDirective;

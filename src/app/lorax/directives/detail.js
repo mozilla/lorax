@@ -23,12 +23,14 @@ define(['jquery'], function ($) {
      */
     var DetailCtrl = function (
         $scope,
+        $timeout,
         routesService,
         windowService,
         pubSubService
         )
     {
         this._$scope = $scope;
+        this._$timeout = $timeout;
         this._routesService = routesService;
         this._windowService = windowService;
         this._pubSubService = pubSubService;
@@ -44,6 +46,7 @@ define(['jquery'], function ($) {
      */
     DetailCtrl.$inject = [
         '$scope',
+        '$timeout',
         'routesService',
         'windowService',
         'pubSubService'
@@ -94,7 +97,9 @@ define(['jquery'], function ($) {
      * @param {object} controller Controller reference.
      */
     var DetailLinkFn = function (scope, iElem, iAttrs, controller) {
-        controller.init();
+        controller._$timeout(function () {
+            controller.init();
+        }, 500);
     };
 
     return DetailDirective;
