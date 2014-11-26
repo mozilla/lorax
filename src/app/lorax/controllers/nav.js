@@ -9,11 +9,10 @@ define([], function () {
 
     var NavCtrl = function (
         $scope,
-        $route
+        routesService
     ) {
 
         this._$scope = $scope;
-        this._$route = $route;
 
         this._$scope.nav = {
             active : 'access'
@@ -22,12 +21,12 @@ define([], function () {
         this._$scope.nav.handleClick = function () {
         }.bind(this);
 
-        this._$scope.nav.active = this._$route.current.params.topic;
+        // this._$scope.nav.active = this._$route.current.params.topic;
     };
 
     NavCtrl.$inject = [
         '$scope',
-        '$route'
+        'routesService'
     ];
 
     return NavCtrl;

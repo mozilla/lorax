@@ -18,7 +18,8 @@
   </head>
 
   <body ng-controller="CoreCtrl" data-lorax-window>
-    <div data-lorax-experience-canvas></div>
+    <div data-lorax-experience></div>
+
     <header role="banner" class="banner">
       <h1 class="banner__logo"><a href="/" class="icon-circle">Shape of the Web</a></h1>
     </header>
@@ -27,7 +28,7 @@
     <a href="#" class="banner-info icon-info" ng-click="core.openAboutModal()" data-lorax-prevent-default>About</a>
     <a href="#" class="banner-info banner-info--menu icon-menu-dark" ng-click="core.siteInfo()" data-lorax-prevent-default>Information</a>
 
-    <div class="container" data-ng-view data-ng-cloak></div>
+    <div data-lorax-detail></div>
 
     <footer class="footer-links">
       <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" data-lorax-prevent-default>Keep me informed</a>

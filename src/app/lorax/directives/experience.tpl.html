@@ -1,0 +1,10 @@
+<section id="experience">
+  <div id="experience-canvas" class="experience-canvas"></div>
+  <div ng-show="experience.isOpen">
+    <ul class="experience-menu">
+      <li><a href="/explore" ng-class="{'is-active': (experience.currentView === 'explore')}" class="experience-menu__link experience-menu__link--explore"><span class="icon-explore-dark">Ecosystem</span></a></li>
+      <li><a href="/topics" ng-class="{'is-active': (experience.currentView === 'topics')}" class="experience-menu__link experience-menu__link--topic"><span class="icon-topic-dark">Vitals</span></a></li>
+      <li><a href="/issues" ng-class="{'is-active': (experience.currentView === 'issues')}" class="experience-menu__link experience-menu__link--issues"><span class="icon-issues-dark">Checklist</span></a></li>
+    </ul>
+  </div>
+</section>

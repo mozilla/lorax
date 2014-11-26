@@ -24,24 +24,20 @@ define(['jquery', 'jquery-scrollie'], function ($) {
      */
     var IssueAllCtrl = function (
         $scope,
-        $route,
         $timeout,
-        $rootScope,
-        $location,
         dataService,
         windowService,
         scrollService,
+        pubSubService,
         experienceService
     ) {
 
         this._$scope = $scope;
-        this._$route = $route;
         this._$timeout = $timeout;
-        this._$rootScope = $rootScope;
-        this._$location = $location;
         this._dataService = dataService;
         this._windowService = windowService;
         this._scrollService = scrollService;
+        this._pubSubService = pubSubService;
         this._experienceService = experienceService;
 
         this._$scope.detail = {
@@ -51,73 +47,92 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         };
 
         this._issueOffset = 138;
-        // dirty hack: force explore to wait for init call
-        this._experienceService.switchView('');
-
-        $scope.$on('$destroy', function () {
-            // set detail mode off, removes body class
-            windowService.setDetailMode(false);
-            experienceService.switchView('explore');
-        });
 
         // get model
-        this._dataService.getMain().then(function (model) {
-            this._$scope.detail.model = model;
-        }.bind(this));
+        this._dataService.getMain().then(this.onModelLoaded.bind(this));
+
+        this._pubSubService.subscribe('detail.scrollToIssue', this.scrollToIssue.bind(this));
     };
 
     IssueAllCtrl.$inject = [
         '$scope',
-        '$route',
         '$timeout',
-        '$rootScope',
-        '$location',
         'dataService',
         'windowService',
         'scrollService',
+        'pubSubService',
         'experienceService'
     ];
 
     IssueAllCtrl.prototype.init = function () {
-        // set detail mode on, adds body class
-        this._windowService.setDetailMode(true);
-        this._experienceService.switchView('detail');
+        this.initialized = true;
 
-        // set bg color
-        var status = $('.detail').eq(0).attr('data-issue-status');
-        this._windowService.setBgMode(status, false);
+        if (this._$scope.detail.model) {
+            this.setOffsets();
+        }
     };
 
-    IssueAllCtrl.prototype.scrollToIssue = function (issue, topic, animate) {
-        if (animate !== false) {
-            animate = true;
+    IssueAllCtrl.prototype.onModelLoaded = function (model) {
+        this._$scope.detail.model = model;
+
+        if (this.initialized) {
+            this.setOffsets();
+        }
+    };
+
+    IssueAllCtrl.prototype.setOffsets = function () {
+        var issues = this._$scope.detail.model.getIssues();
+        var issue;
+        var issueElm;
+        var issueTitle;
+
+        // hack
+        var detailIsHidden = $('#detail').hasClass('ng-hide');
+        $('#detail').removeClass('ng-hide');
+
+        // set offset property of all issues
+        for (var i = 0; i < issues.length; i ++) {
+            issue = issues[i];
+            issueElm = $('#' + issue.getId());
+            issueTitle = $('.detail-header-section', issueElm);
+            issue.offset = issueElm.offset();
+            issue.titleOffset = issueTitle.offset();
         }
 
+        if (detailIsHidden) {
+            $('#detail').addClass('ng-hide');
+        }
+
+        if (this.issue || this.topic) {
+            this._doScrollToIssue();
+        }
+    };
+
+    IssueAllCtrl.prototype.scrollToIssue = function (issue, topic) {
+        this.issue = issue;
+        this.topic = topic;
+
+        if (this._$scope.detail.model) {
+            this._doScrollToIssue();
+        }
+    };
+
+    IssueAllCtrl.prototype._doScrollToIssue = function () {
         // get first issue from topic
-        if (topic && !issue) {
-            issue = this._$scope.detail.model.getTopicById(topic).getIssues()[0].getId();
+        if (this.topic && !this.issue) {
+            this.issue = this._$scope.detail.model.getTopicById(this.topic).getIssues()[0].getId();
         }
 
         // find issue offset
         var offset = 0;
-        if (issue && $('#' + issue).length) {
-            offset = $('#' + issue).offset().top - this._issueOffset;
+        if (this.issue) {
+            offset = this._$scope.detail.model.getIssueById(this.issue).offset.top;
         }
 
         // scroll to offset
         this._scrollService.go('top', {offset: offset, duration: 500, animate: false});
 
-        this._$scope.detail.currentIssue = issue;
-    };
-
-    IssueAllCtrl.prototype.onRouteChange = function (evt, newParam) {
-        if (!newParam) {
-            return;
-        }
-        var topic = newParam.params.topic;
-        var issue = newParam.params.issue;
-
-        this.scrollToIssue(issue, topic);
+        this._$scope.detail.currentIssue = this.issue;
     };
 
     IssueAllCtrl.prototype.onScroll = function (event) {
@@ -142,17 +157,6 @@ define(['jquery', 'jquery-scrollie'], function ($) {
 
         // wait for everything to be rendered
         controller._$timeout(function () {
-            var topic = controller._$route.current.params.topic;
-            var issue = controller._$route.current.params.issue;
-
-
-            controller.scrollToIssue(issue, topic, false);
-
-            controller._$rootScope.$on('$routeUpdate', controller.onRouteChange.bind(controller));
-            controller._$scope.$on('$destroy', controller.onRouteChange.bind(controller));
-
-            controller.init();
-
 
             // change bg mode according to issue
             var $body = $('body');
@@ -167,21 +171,10 @@ define(['jquery', 'jquery-scrollie'], function ($) {
                 }
             });
 
-            var issues = scope.detail.model.getIssues();
-            var issue;
-            var issueTitle;
-
-            // set offset property of all issues
-            for (var i = 0; i < issues.length; i ++) {
-                issue = issues[i];
-                issueTitle = $('.detail-header-section', '#' + issue.getId());
-                issue.offset = issueTitle.offset();
-            }
-
-            // update explore on scroll
+            // update experience scroll
             $(window, 'body').on('scroll', controller.onScroll.bind(controller));
-            controller._experienceService.onScroll(0);
 
+            controller.init();
         }.bind(controller), 500);
     };
 

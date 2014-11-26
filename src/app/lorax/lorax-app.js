@@ -10,8 +10,6 @@ define([
 
     // controller
     'lorax/controllers/core',
-    'lorax/controllers/experience',
-    'lorax/controllers/detail',
     'lorax/controllers/nav',
 
     // directives
@@ -46,7 +44,8 @@ define([
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
     'lorax/directives/chart-zero-rating',
-    'lorax/directives/experience-canvas',
+    'lorax/directives/experience',
+    'lorax/directives/detail',
     'lorax/directives/add-infographic-directive',
 
     // services
@@ -56,6 +55,7 @@ define([
     'lorax/services/pubsub',
     'lorax/services/data',
     'lorax/services/experience',
+    'lorax/services/routes',
 
     // filters
     'lorax/filters/encode-uri',
@@ -67,8 +67,6 @@ define([
 
     // controllers
     CoreCtrl,
-    ExperienceCtrl,
-    DetailCtrl,
     NavCtrl,
 
     // directives
@@ -103,7 +101,8 @@ define([
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
     ChartZeroRatingDirective,
-    ExperienceCanvasDirective,
+    ExperienceDirective,
+    DetailDirective,
     AddInfographicDirective,
 
     // services
@@ -113,6 +112,7 @@ define([
     pubSubService,
     dataService,
     experienceService,
+    routesService,
 
     // filters
     EncodeUriFilter,
@@ -133,18 +133,6 @@ define([
          * @method lorax/loraxApp~controller
          */
         .controller('CoreCtrl', CoreCtrl)
-
-        /**
-         * Injects {@link lorax/controllers/ExperienceCtrl} as 'ExperienceCtrl'
-         * @method lorax/loraxApp~controller
-         */
-        .controller('ExperienceCtrl', ExperienceCtrl)
-
-        /**
-         * Injects {@link lorax/controllers/DetailCtrl} as 'DetailCtrl'
-         * @method lorax/loraxApp~controller
-         */
-        .controller('DetailCtrl', DetailCtrl)
 
         /**
          * Injects {@link lorax/controllers/NavCtrl} as 'NavCtrl'
@@ -360,11 +348,18 @@ define([
         .directive('loraxChartZeroRating', ChartZeroRatingDirective)
 
         /**
-         * Injects {@link lorax/directives/ExperienceCanvasDirective}
-         * as 'ExperienceCanvasDirective'
+         * Injects {@link lorax/directives/ExperienceDirective}
+         * as 'ExperienceDirective'
          * @method lorax/loraxApp~directive
          */
-        .directive('loraxExperienceCanvas', ExperienceCanvasDirective)
+        .directive('loraxExperience', ExperienceDirective)
+
+        /**
+         * Injects {@link lorax/directives/DetailDirective}
+         * as 'DetailDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxDetail', DetailDirective)
 
         /**
          * Injects {@link lorax/directives/AddInfographicDirective}
@@ -396,6 +391,12 @@ define([
          * @method lorax/loraxApp~service
          */
         .service('experienceService', experienceService)
+
+        /**
+         * Inject {@link lorax/services/routesService} as 'routesService'
+         * @method lorax/loraxApp~service
+         */
+        .service('routesService', routesService)
 
         /**
          * Inject {@link lorax/services/pubSubService} as 'pubSubService'

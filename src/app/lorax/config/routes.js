@@ -17,26 +17,24 @@ define(function () {
             /* --------- Experience -------- */
 
             .when('/', {
-                templateUrl: '/app/lorax/templates/experience.tpl.html'
+                redirectTo: '/explore'
             })
 
-            .when('/intro', {
-                templateUrl: '/app/lorax/templates/experience.tpl.html'
+            .when('/:mode', {
+                controller: 'CoreCtrl',
+                page: 'experience'
             })
 
             /* -------------------- Detail -------------------- */
 
             .when('/detail/:topic', {
-                templateUrl: '/app/lorax/templates/issues.tpl.html',
+                controller: 'CoreCtrl',
+                page: 'detail'
             })
 
             .when('/detail/:topic/:issue', {
-                templateUrl: '/app/lorax/templates/issues.tpl.html',
-            })
-
-            .when('/detail/', {
-                templateUrl: '/app/lorax/templates/issues.tpl.html',
-                reloadOnSearch: false
+                controller: 'CoreCtrl',
+                page: 'detail'
             })
 
             /* -------------------- Error -------------------- */

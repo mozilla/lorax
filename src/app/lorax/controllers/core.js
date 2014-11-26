@@ -33,7 +33,8 @@ define(function () {
     CoreCtrl.$inject = [
         '$scope',
         'windowService',
-        'pubSubService'
+        'pubSubService',
+        'routesService'
     ];
 
     CoreCtrl.prototype.openEmailModal = function () {

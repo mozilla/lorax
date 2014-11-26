@@ -52,7 +52,7 @@ define([
 
         var position = {x: 0, y: 0};
         // relative vertical position
-        position.y = issue.data.offset.top - offset;
+        position.y = issue.data.titleOffset.top - offset;
         position.y -= this._canvas.canvasSize.y / 2;
 
         // 0 -> 1
@@ -64,7 +64,7 @@ define([
 
         // relative horizontal position based on offset
         position.x = issue.detailOffset * offsetPercent;
-        position.x += issue.data.offset.left - (this._canvas.canvasSize.x / 2);
+        position.x += issue.data.titleOffset.left - (this._canvas.canvasSize.x / 2);
 
         // align text
         position.x -= 20;
