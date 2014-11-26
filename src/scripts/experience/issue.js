@@ -116,6 +116,7 @@ define([
             case Issue.MODE_EXPLORE: {
                 this.setTextAlwaysVisible(false);
                 this.setIsInteractive(true);
+                this.setRadiusChange(true);
                 this._title.setStyle(this._titleStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 this._drawCircle(0x222222);
@@ -123,6 +124,8 @@ define([
             case Issue.MODE_TAG: {
                 this.setTextAlwaysVisible(false);
                 this.setIsInteractive(false);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this._title.setStyle(this._tagStyle);
                 this._title.x = 10;
                 this._title.y = Math.round(-this._title.height / 2);
@@ -131,6 +134,8 @@ define([
             case Issue.MODE_TAG_TITLE: {
                 this.setTextAlwaysVisible(true);
                 this.setIsInteractive(false);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this.elm.addChild(this._tagTitle);
                 var tagTitleText = this.data.getRelated().length;
                 tagTitleText += ' issues related to';
@@ -144,6 +149,8 @@ define([
             case Issue.MODE_TOPICS: {
                 this.setTextAlwaysVisible(false);
                 this.setIsInteractive(true);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this._title.setStyle(this._topicStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 this._drawCircle(0x222222);
@@ -152,6 +159,8 @@ define([
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
                 this.setIsInteractive(true);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this._title.setStyle(this._issuesStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 // if (!this._issueModeArea) {
@@ -164,6 +173,8 @@ define([
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
                 this.setIsInteractive(true);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this._title.setStyle(this._tagIssuesStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 // if (!this._issueModeArea) {
@@ -176,6 +187,8 @@ define([
                 this.stopMoving();
                 this.setIsInteractive(false);
                 this.setTextAlwaysVisible(true);
+                this.setRadiusChange(false);
+                this.radius = this.initRadius;
                 this._title.setStyle(this._detailStyle);
                 this._title.y = Math.round(-this._title.height / 2);
                 this._drawCircle(0xffffff);
@@ -210,6 +223,24 @@ define([
 
     Issue.prototype.setIsInteractive = function (value) {
         this.isInteractive = value;
+    };
+
+    Issue.prototype.setRadiusChange = function (value) {
+        this.radiusChange = value;
+    };
+
+    /**
+     * Sets circle radius based on position
+     * Min radius: 2, Max Radius: 10
+     */
+    Issue.prototype.setRadius = function () {
+        if (this.radiusChange) {
+            var biggestSize = Math.max(this._canvasSize.x, this._canvasSize.y);
+            var d = Math.sqrt(Math.pow(this.elm.x,2) + Math.pow(this.elm.y,2));
+            var r = 2 + (8 - 2) * (d - biggestSize/2) / (0 - biggestSize/2);
+            this.radius = r;
+            this._drawCircle(this._color);
+        }
     };
 
     /**
@@ -305,6 +336,7 @@ define([
         this.mousePosition = mousePosition;
 
         if (this.isOver && this.isInteractive) {
+
             if (!this.mouseOverPosition) {
                 this.mouseOverPosition = new PIXI.Point();
             }
@@ -318,7 +350,6 @@ define([
                 this._onMouseOut();
             }
         }
-        // this.elm.aplha = isOver && !circle.isOver ? 0.5 : 1;
     };
 
     return Issue;

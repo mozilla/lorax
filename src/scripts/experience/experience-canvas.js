@@ -124,12 +124,13 @@ define([
             for (j = 0; j < 3; j ++) { // multiply current tags
                 tag = new Issue(i, this.canvasSize);
                 tag.setIsInteractive(false);
+                tag.initRadius = 2;
 
                 this.tags.push(tag);
                 this._particlesContainer.addChild(tag.elm);
 
                 tag.setData(this._tagData[i]);
-                tag.draw(2);
+                tag.draw(tag.initRadius);
                 tag.pressS.add(this._onPressIssue.bind(this));
             }
         }
@@ -144,12 +145,12 @@ define([
         var issue;
         for (var i = 0; i < this._issueData.length; i ++) {
             issue = new Issue(i, this.canvasSize);
-
+            issue.initRadius = 5;
             this.issues.push(issue);
             this._particlesContainer.addChild(issue.elm);
 
             issue.setData(this._issueData[i]);
-            issue.draw(3 + Math.random() * 5);
+            issue.draw(issue.initRadius);
             issue.pressS.add(this._onPressIssue.bind(this));
         }
     };
@@ -174,6 +175,7 @@ define([
 
         for (i = 0; i < this.issues.length; i ++) {
             this.issues[i].update(this.mousePosition);
+            this.issues[i].setRadius();
         }
 
         for (i = 0; i < this.tags.length; i ++) {

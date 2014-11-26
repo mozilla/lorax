@@ -211,7 +211,7 @@ define([
             posX = this.elm.x + this._linearArea.x;
             posY = this.elm.y + this._linearArea.y;
             posY += (((this._linearDist * i) - this._linearDist * this._issues.length / 2));
-            issue.moveTo(Math.round(posX), Math.round(posY), {alpha: 1});
+            issue.moveTo(Math.round(posX), Math.round(posY), null, {alpha: 1});
         }
 
         // hide fakes

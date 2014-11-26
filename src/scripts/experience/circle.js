@@ -113,7 +113,7 @@ define([
         if (!color) {
             color = 0x222222;
         }
-
+        this._color = color;
         this._circle.clear();
         this._circle.beginFill(color);
         this._circle.drawCircle(0, 0, this.radius);

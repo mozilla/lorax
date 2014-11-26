@@ -95,6 +95,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
           var map = d3.select('#' + issueId + ' .infographic__wrapper div')
             .attr('class', 'worldmap');
           var mapWidth = $('#' + issueId + ' .infographic__wrapper div').width();
+
           var width = 938;
           var height = 500;
 
