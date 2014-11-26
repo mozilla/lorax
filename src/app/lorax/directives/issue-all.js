@@ -2,7 +2,7 @@
  * @fileOverview Issue all directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['jquery', 'jquery-scrollie'], function ($) {
+define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
     'use strict';
 
     /**
@@ -65,6 +65,13 @@ define(['jquery', 'jquery-scrollie'], function ($) {
     ];
 
     IssueAllCtrl.prototype.init = function () {
+        WebFont.load({
+            active: this.onFontsLoaded.bind(this),
+            custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
+        });
+    };
+
+    IssueAllCtrl.prototype.onFontsLoaded = function () {
         this.initialized = true;
 
         if (this._$scope.detail.model) {
@@ -126,7 +133,7 @@ define(['jquery', 'jquery-scrollie'], function ($) {
         // find issue offset
         var offset = 0;
         if (this.issue) {
-            offset = this._$scope.detail.model.getIssueById(this.issue).offset.top;
+            offset = this._$scope.detail.model.getIssueById(this.issue).offset.top - this._issueOffset;
         }
 
         // scroll to offset
