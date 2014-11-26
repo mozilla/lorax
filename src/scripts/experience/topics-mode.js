@@ -167,6 +167,10 @@ define([
             this._topics[i].mouseOutS.add(this.mouseOutB);
         }
 
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            this._canvas.tags[i].explode();
+        }
+
         this._drawLinesBind = this._drawLines.bind(this);
         this._updateTopicsBind = this._updateTopics.bind(this);
         this._swipeToNextTopicBind = this._swipeToNextTopic.bind(this);

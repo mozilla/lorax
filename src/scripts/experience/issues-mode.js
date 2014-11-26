@@ -182,6 +182,11 @@ define([
             setTimeout(this._setIssueMouseEvents.bind(this), 500, issue);
         }
 
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            issue = this._canvas.tags[i];
+            issue.explode();
+        }
+
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
