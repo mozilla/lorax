@@ -36,7 +36,7 @@ define(['jquery'], function ($) {
         this._pubSubService = pubSubService;
 
         this._$scope.detail = {
-            isOpen: true
+            isOpen: false
         };
     };
 
