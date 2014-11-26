@@ -67,11 +67,12 @@ define([
 
         this._hasInitialized = true;
         if (this._onInitMode) {
-            this._onInitMode();
+            this._onInitMode(this._onInitData);
         }
     };
 
     Experience.prototype.setData = function (data) {
+        this._mainData = data;
         this._issueData = data.getIssues();
         this._tagData = data.getTags();
         this._topicsModeData = data.getTopics();
@@ -165,11 +166,12 @@ define([
         if (this._hasInitialized) {
             this._canvas.show();
             this._mode = Issue.MODE_TAG_ISSUES;
-            this._tagIssuesMode.setTag(tag);
+            this._tagIssuesMode.setTag(this._mainData.getTagByURLId(tag));
             this._tagIssuesMode.show();
             this._setBgMode('tag');
         } else {
             this._onInitMode = this.showTagIssues;
+            this._onInitData = tag;
         }
     };
 
@@ -200,7 +202,7 @@ define([
 
     Experience.prototype._openIssue = function (issue) {
         if (TagModel.prototype.isPrototypeOf(issue.data)) {
-            this.showTagIssues(issue.data);
+            this.showTagIssues(issue.data.getURLId());
             return;
         }
 

@@ -4,6 +4,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
     var ExploreMode = function (canvas) {
         this._canvas = canvas;
+        Mode.MODES.push(this);
+        Mode.DEFAULT_MODE = this;
 
         ExploreMode.AUTO_MODE_TIME = 4000;
         ExploreMode.AUTO_MODE_TIMEOUT = 4000;

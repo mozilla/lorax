@@ -13,9 +13,10 @@ define([
     'use strict';
 
     var TopicsMode = function (canvas) {
-        TopicsMode.FAKES_PER_TOPIC = 20;
-
         this._canvas = canvas;
+        Mode.MODES.push(this);
+
+        TopicsMode.FAKES_PER_TOPIC = 20;
 
         this.mouseOverB = this._onMouseOver.bind(this);
         this.mouseOutB = this._onMouseOut.bind(this);

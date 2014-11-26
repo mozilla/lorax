@@ -18,6 +18,10 @@ define([
         return this._id;
     };
 
+    TagModel.prototype.getURLId = function () {
+        return this._id.replace(' ', '-').toLowerCase();
+    };
+
     TagModel.prototype.getName = function () {
         return this._name;
     };

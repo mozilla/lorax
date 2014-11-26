@@ -1,10 +1,12 @@
 /* global define:true */
 define([
     'pixi',
+    'experience/mode',
     'experience/issues-mode',
     'experience/issue'
 ], function (
     PIXI,
+    Mode,
     IssuesMode,
     Issue
 ) {
@@ -12,6 +14,7 @@ define([
 
     var TagIssuesMode = function (canvas) {
         this._canvas = canvas;
+        Mode.MODES.push(this);
 
         return this;
     };

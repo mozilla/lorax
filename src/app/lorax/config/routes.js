@@ -25,6 +25,12 @@ define(function () {
                 page: 'experience'
             })
 
+            .when('/tag/:tag', {
+                controller: 'CoreCtrl',
+                mode: 'tag',
+                page: 'experience'
+            })
+
             /* -------------------- Detail -------------------- */
 
             .when('/detail/:topic', {

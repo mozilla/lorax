@@ -46,6 +46,12 @@ define([
         });
     };
 
+    MainModel.prototype.getTagByURLId = function (id) {
+        return _.find(this.getTags(), function (tag) {
+            return tag.getURLId() === id;
+        });
+    };
+
     MainModel.prototype.getTags = function () {
         return this._tags;
     };

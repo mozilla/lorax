@@ -65,7 +65,11 @@ define(['jquery'], function ($) {
         if (this._routesService.page === 'detail') {
             this.switchView('detail');
         } else if (this._routesService.page === 'experience') {
-            this.switchView(this._routesService.params.mode);
+            if (this._routesService.params.tag) {
+                this._experienceService.switchView('tag', this._routesService.params.tag);
+            } else {
+                this.switchView(this._routesService.params.mode);
+            }
         }
     };
 

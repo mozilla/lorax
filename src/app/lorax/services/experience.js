@@ -34,7 +34,7 @@ define(['experience/experience'], function (Experience) {
             this._experience.setData(this._data);
 
             if (this._view) {
-                this.switchView(this._view);
+                this.switchView(this._view, this._viewData);
             }
 
             this._experience.init();
@@ -45,7 +45,7 @@ define(['experience/experience'], function (Experience) {
         }
     };
 
-    ExperienceService.prototype.switchView = function (view) {
+    ExperienceService.prototype.switchView = function (view, data) {
         if (this._experience) {
             switch (view) {
                 case 'intro':
@@ -60,6 +60,9 @@ define(['experience/experience'], function (Experience) {
                 case 'issues':
                     this._experience.showIssues();
                     break;
+                case 'tag':
+                    this._experience.showTagIssues(data);
+                    break;
                 case 'detail':
                     this._experience.showDetail();
                     break;
@@ -69,6 +72,7 @@ define(['experience/experience'], function (Experience) {
         }
 
         this._view = view;
+        this._viewData = data;
     };
 
     ExperienceService.prototype.onScroll = function (offset) {

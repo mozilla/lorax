@@ -3,13 +3,13 @@ define(['signals'], function (signals) {
     'use strict';
 
     var Mode = function () {
-        Mode.MODES.push(this);
     };
 
     if (!Mode.MODES) {
         Mode.MODES = [];
         Mode.OPEN_MODE = null;
         Mode.LAST_MODE = null;
+        Mode.DEFAULT_MODE = null;
     }
 
     Mode.prototype.init = function () {
@@ -53,6 +53,9 @@ define(['signals'], function (signals) {
             this._hideCallback = null;
         } else {
             // open last mode if no callback was provided
+            if (!Mode.LAST_MODE) {
+                Mode.LAST_MODE = Mode.DEFAULT_MODE;
+            }
             Mode.LAST_MODE.show();
         }
 

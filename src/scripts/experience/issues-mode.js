@@ -17,6 +17,7 @@ define([
 
     var IssuesMode = function (canvas) {
         this._canvas = canvas;
+        Mode.MODES.push(this);
 
         return this;
     };
