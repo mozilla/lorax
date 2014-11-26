@@ -2,7 +2,7 @@
  * @fileOverview Issue all directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
+define(['jquery', 'webfontloader'], function ($, WebFont) {
     'use strict';
 
     /**
@@ -47,11 +47,14 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
         };
 
         this._issueOffset = 138;
+        this._onScrollBind = this.onScroll.bind(this);
 
         // get model
         this._dataService.getMain().then(this.onModelLoaded.bind(this));
 
         this._pubSubService.subscribe('detail.scrollToIssue', this.scrollToIssue.bind(this));
+        this._pubSubService.subscribe('detail.open', this.open.bind(this));
+        this._pubSubService.subscribe('detail.close', this.close.bind(this));
     };
 
     IssueAllCtrl.$inject = [
@@ -69,6 +72,14 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
             active: this.onFontsLoaded.bind(this),
             custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
         });
+    };
+
+    IssueAllCtrl.prototype.open = function () {
+        $(window).on('scroll', this._onScrollBind);
+    };
+
+    IssueAllCtrl.prototype.close = function () {
+        $(window).off('scroll', this._onScrollBind);
     };
 
     IssueAllCtrl.prototype.onFontsLoaded = function () {
@@ -112,7 +123,6 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
 
         this.initialized = true;
 
-        this.onScroll();
         if (this.issue || this.topic) {
             this._doScrollToIssue();
         }
@@ -128,6 +138,8 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
     };
 
     IssueAllCtrl.prototype._doScrollToIssue = function () {
+        this.onScroll();
+
         // get first issue from topic
         if (this.topic && !this.issue) {
             this.issue = this._$scope.detail.model.getTopicById(this.topic).getIssues()[0].getId();
@@ -141,12 +153,7 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
 
         // scroll to offset
         this._scrollService.go('top', {offset: offset, animate: false});
-
         this._$scope.detail.currentIssue = this.issue;
-    };
-
-    IssueAllCtrl.prototype.onScroll = function () {
-        this._experienceService.onScroll($(window, 'body').scrollTop());
     };
 
     IssueAllCtrl.prototype.nextIssue = function () {
@@ -158,6 +165,26 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
         }
     };
 
+    IssueAllCtrl.prototype.onScroll = function () {
+        var scrollTop = $(window).scrollTop();
+        this._experienceService.onScroll(scrollTop);
+
+        var currentElm = $('.detail')[0];
+        $('.detail').each(function (index, elm) {
+            if (elm.offsetTop - 58 >= scrollTop) {
+                return false;
+            }
+            currentElm = elm;
+        });
+
+        var status = $(currentElm).attr('data-issue-status');
+        if (status !== this._currentStatus) {
+            this._windowService.setBgMode(status);
+        }
+
+        this._currentStatus = status;
+    };
+
     /**
      * Link function for Issue All directive
      * @param {object} scope      Angular scope.
@@ -167,23 +194,6 @@ define(['jquery', 'webfontloader', 'jquery-scrollie'], function ($, WebFont) {
 
         // wait for everything to be rendered
         controller._$timeout(function () {
-
-            // change bg mode according to issue
-            var $body = $('body');
-            var $detail = $('.detail');
-            var status;
-
-            $detail.scrollie({
-                scrollOffset : controller._issueOffset,
-                ScrollingOutOfView : function onScrollOutOfView (elem) {
-                    status = elem.attr('data-issue-status');
-                    controller._windowService.setBgMode(status);
-                }
-            });
-
-            // update experience scroll
-            $(window, 'body').on('scroll', controller.onScroll.bind(controller));
-
             controller.init();
         }, 500);
     };

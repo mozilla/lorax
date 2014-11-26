@@ -79,6 +79,7 @@ define(['jquery'], function ($) {
         var topic = this._routesService.params.topic;
         var issue = this._routesService.params.issue;
 
+        this._pubSubService.publish('detail.open', [issue, topic]);
         this._pubSubService.publish('detail.scrollToIssue', [issue, topic]);
     };
 
@@ -87,6 +88,8 @@ define(['jquery'], function ($) {
             this._windowService.setDetailMode(false);
             this._$scope.detail.isOpen = false;
         }
+
+        this._pubSubService.publish('detail.close', [issue, topic]);
     };
 
     /**

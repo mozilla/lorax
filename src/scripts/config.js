@@ -12,7 +12,6 @@
             'angular-route': '../scripts/components/angular-route/angular-route',
             'jquery': '../scripts/components/jquery/jquery',
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
-            'jquery-scrollie': '../scripts/libs/jquery.scrollie.min',
             'jquery-selectric': '../scripts/components/jquery-selectric/jquery.selectric',
             'jquery-mousewheel': '../scripts/components/jquery-mousewheel/jquery.mousewheel',
             'modernizr': '../scripts/modernizr',
