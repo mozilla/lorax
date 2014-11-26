@@ -154,8 +154,11 @@ define([
 
         this.implodeAlpha = this.elm.alpha;
 
-        var angle = Math.atan2(this._y0, this._x0);
-        angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
+        var angle = 0;
+        if (this._x0 !== undefined) {
+            angle = Math.atan2(this._y0, this._x0);
+            angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
+        }
 
         gs.TweenMax.to(
             this.elm,
