@@ -21,7 +21,6 @@ define([
     'lorax/directives/modal-legend',
     'lorax/directives/modal-mobile-options',
     'lorax/directives/issue-details',
-    'lorax/directives/issue-scroll',
     'lorax/directives/issue-all',
     'lorax/directives/chart-top-internet-companies',
     'lorax/directives/chart-terms-and-conditions',
@@ -78,7 +77,6 @@ define([
     ModalLegendDirective,
     ModalMobileOptionsDirective,
     IssueDetailsDirective,
-    IssueScrollDirective,
     IssueAllDirective,
     ChartTopInternetCompaniesDirective,
     ChartTermsAndConditionsDirective,
@@ -187,12 +185,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxIssueDetails', IssueDetailsDirective)
-
-        /**
-         * Injects {@link lorax/directives/IssueScrollDirective} as 'IssueScrollDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxIssueScroll', IssueScrollDirective)
 
         /**
          * Injects {@link lorax/directives/IssueAll} as 'IssueAllDirective'
