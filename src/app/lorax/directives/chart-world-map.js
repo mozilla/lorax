@@ -276,11 +276,24 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
             .text(infographicData[countryId].displayData + infographicData[countryId].displayUnits);
         }
 
-        $(window).resize(function() {
+        var hasWidth = false;
+        var updateSize = function () {
             var w = $('#' + issueId + ' .infographic__wrapper div').width();
-            svg.attr('width', w);
-            svg.attr('height', w * height / width);
-        });
+            hasWidth = w > 0;
+            if (hasWidth) {
+                svg.attr('width', w);
+                svg.attr('height', w * height / width);
+            }
+        }
+
+        $(window).resize(updateSize);
+
+        var resizeInterval = setInterval(function () {
+            updateSize();
+            if (hasWidth) {
+                clearTimeout(resizeInterval);
+            }
+        }, 5000);
         }.bind(controller));
     }.bind(controller));
   };
