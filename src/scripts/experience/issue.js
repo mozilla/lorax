@@ -148,7 +148,7 @@ define([
             } break;
             case Issue.MODE_TOPICS: {
                 this.setTextAlwaysVisible(false);
-                this.setIsInteractive(true);
+                this.setIsInteractive(false);
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._topicStyle);
@@ -158,7 +158,7 @@ define([
             case Issue.MODE_ISSUES: {
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
-                this.setIsInteractive(true);
+                this.setIsInteractive(false);
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._issuesStyle);
@@ -172,7 +172,7 @@ define([
             case Issue.MODE_TAG_ISSUES: {
                 this.stopMoving();
                 this.setTextAlwaysVisible(true);
-                this.setIsInteractive(true);
+                this.setIsInteractive(false);
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._tagIssuesStyle);
