@@ -130,24 +130,6 @@ define([
     };
 
     DetailMode.prototype._onStartHide = function () {
-        var i;
-        var issue;
-
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
-            issue.implode();
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
-            issue.implode();
-        }
-
-        for (i = 0; i < this._canvas.fakes.length; i ++) {
-            issue = this._canvas.fakes[i];
-            issue.implode();
-        }
-
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 100);

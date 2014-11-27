@@ -89,7 +89,7 @@ define(['jquery'], function ($) {
             this._$scope.detail.isOpen = false;
         }
 
-        this._pubSubService.publish('detail.close', [issue, topic]);
+        this._pubSubService.publish('detail.close');
     };
 
     /**

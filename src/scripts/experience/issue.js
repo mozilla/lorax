@@ -236,9 +236,9 @@ define([
     Issue.prototype.setRadius = function () {
         if (this.radiusChange) {
             var biggestSize = Math.max(this._canvasSize.x, this._canvasSize.y);
-            var d = Math.min(biggestSize, Math.sqrt(Math.pow(this.elm.x,2) + Math.pow(this.elm.y,2)));
+            var d = Math.sqrt(Math.pow(this.elm.x,2) + Math.pow(this.elm.y,2));
             var r = 2 + (8 - 2) * (d - biggestSize / 2) / (0 - biggestSize / 2);
-            this.radius = r;
+            this.radius = Math.max(r, 2);
             this._drawCircle(this._color);
         }
     };
