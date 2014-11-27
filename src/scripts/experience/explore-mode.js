@@ -22,7 +22,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         Mode.prototype.init.call(this);
         // set explore radius based on smallest canvas dimension
         var dimension = Math.min(this._canvas.canvasSize.x, this._canvas.canvasSize.y);
-        this._exploreRadius = dimension / 1.5;
+        this._exploreRadius = dimension / 1.7;
 
         var seed;
         var rSeed;
