@@ -72,6 +72,10 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             pubSubService.publish('windowService.bgMode', [status, animate]);
         }
 
+        function setTopic(topic) {
+            $.publish('windowService.topic', [topic]);
+        }
+
         function subscribe(eventType, callback) {
             $.subscribe('windowService.' + eventType, function (e, res) {
                 callback(res);
@@ -128,6 +132,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             setScrollTop: setScrollTop,
             scrollTop: getScrollTop,
             setBgMode: setBgMode,
+            setTopic: setTopic,
             subscribe: subscribe,
             unsubscribe: unsubscribe,
             mq: matchMedia,

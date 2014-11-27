@@ -9,10 +9,13 @@ define([], function () {
 
     var NavCtrl = function (
         $scope,
-        routesService
+        $timeout,
+        windowService
     ) {
 
         this._$scope = $scope;
+        this._$timeout = $timeout;
+        this._windowService = windowService;
 
         this._$scope.nav = {
             active : 'access'
@@ -21,13 +24,20 @@ define([], function () {
         this._$scope.nav.handleClick = function () {
         }.bind(this);
 
-        // this._$scope.nav.active = this._$route.current.params.topic;
+        windowService.subscribe('topic', this._onChangeTopic.bind(this));
     };
 
     NavCtrl.$inject = [
         '$scope',
-        'routesService'
+        '$timeout',
+        'windowService'
     ];
+
+    NavCtrl.prototype._onChangeTopic = function (topic) {
+        this._$timeout(function () {
+            this._$scope.nav.active = topic;
+        }.bind(this));
+    };
 
     return NavCtrl;
 });

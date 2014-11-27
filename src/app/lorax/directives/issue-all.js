@@ -171,18 +171,25 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         var currentElm = $('.detail')[0];
         $('.detail').each(function (index, elm) {
-            if (elm.offsetTop - 58 >= scrollTop) {
+            if (elm.offsetTop - 100 >= scrollTop) {
                 return false;
             }
             currentElm = elm;
         });
 
-        var status = $(currentElm).attr('data-issue-status');
+        var data = this._$scope.detail.model.getIssueById(currentElm.id);
+
+        var status = currentElm.attributes['data-issue-status'].value;
         if (status !== this._currentStatus) {
             this._windowService.setBgMode(status);
+            this._currentStatus = status;
         }
 
-        this._currentStatus = status;
+        var topic = data.getParentId();
+        if (topic !== this._currentTopic) {
+            this._windowService.setTopic(topic);
+            this._currentTopic = topic;
+        }
     };
 
     /**
