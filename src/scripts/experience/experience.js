@@ -62,7 +62,7 @@ define([
         this._detailMode.init();
         this._introMode.init();
 
-        this._introMode.showS.add(this._onEndIntro.bind(this));
+        this._introMode.hideS.add(this._onEndIntro.bind(this));
         this._tagIssuesMode.hideS.add(this._onHideTagIssues.bind(this));
 
         this._hasInitialized = true;

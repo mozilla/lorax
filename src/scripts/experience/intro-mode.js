@@ -23,9 +23,18 @@ define([
         Mode.prototype.init.call(this);
 
         this._introContainer = new PIXI.DisplayObjectContainer();
-        this._introContainer.x = this._canvas.canvasSize.x / 2;
-        this._introContainer.y = this._canvas.canvasSize.y / 2;
+        this._introContainer.x = Math.round(this._canvas.canvasSize.x / 2);
+        this._introContainer.y = Math.round(this._canvas.canvasSize.y / 2);
         this._canvas.addChild(this._introContainer);
+
+        this._clickArea = new PIXI.Graphics();
+        this._clickArea.hitArea = new PIXI.Rectangle(0, 0, this._canvas.canvasSize.x, this._canvas.canvasSize.y);
+        this._clickArea.x = -this._introContainer.x;
+        this._clickArea.y = -this._introContainer.y;
+        this._clickArea.interactive = true;
+        this._clickArea.interactive = true;
+        this._clickArea.buttonMode = true;
+        this._clickArea.mousedown = this._onPressClose.bind(this);
 
         var messageStyle = {font: '200 24px "Fira Sans", sans-serif', fill: '#222222'};
         this._message = new PIXI.Text('The world’s most powerful tool, is the most fragile', messageStyle);
@@ -42,16 +51,22 @@ define([
         this._introContainer.addChild(this._internet);
     };
 
+    IntroMode.prototype._onPressClose = function () {
+        this.hide();
+    };
+
     IntroMode.prototype._onStartShow = function () {
         gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: true, delay: 2.5});
         gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: true});
+        this._introContainer.addChild(this._clickArea);
 
-        setTimeout(this._onShow.bind(this), 6000);
+        setTimeout(this._onShow.bind(this), 500);
     };
 
     IntroMode.prototype._onStartHide = function () {
         gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: true});
         gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: true});
+        this._introContainer.removeChild(this._clickArea);
 
         setTimeout(this._onHide.bind(this), 100);
     };
