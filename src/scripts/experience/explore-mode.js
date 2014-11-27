@@ -10,6 +10,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         ExploreMode.AUTO_MODE_TIME = 4000;
         ExploreMode.AUTO_MODE_TIMEOUT = 4000;
 
+        this._safeZone = {x: 0, y: 0, width: 0, height: 0};
+
         return this;
     };
 
@@ -26,10 +28,14 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var rSeed;
         var elm;
         var i;
+        var isInsideBounds;
+        var isOnSafeZone;
+        var tries;
 
         // set issue positions
         for (i = 0; i < this._canvas.issues.length; i ++) {
             elm = this._canvas.issues[i];
+            tries = 0;
 
             do {
                 // make it evenly distributed
@@ -37,12 +43,21 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
                 elm.exploreX = Math.sin(seed) * rSeed;
                 elm.exploreY = Math.cos(seed) * rSeed;
-            } while (
-                !(elm.exploreX > -this._canvas.canvasSize.x / 2 &&
-                elm.exploreX < this._canvas.canvasSize.x / 2 &&
-                elm.exploreY > -this._canvas.canvasSize.y / 2 &&
-                elm.exploreY < this._canvas.canvasSize.y / 2)
-            );
+
+                isInsideBounds = (
+                    elm.exploreX > -this._canvas.canvasSize.x / 2 &&
+                    elm.exploreX < this._canvas.canvasSize.x / 2 &&
+                    elm.exploreY > -this._canvas.canvasSize.y / 2 &&
+                    elm.exploreY < this._canvas.canvasSize.y / 2
+                );
+
+                isOnSafeZone = (
+                    elm.exploreX > this._safeZone.x &&
+                    elm.exploreX < this._safeZone.x + this._safeZone.width &&
+                    elm.exploreY > this._safeZone.y &&
+                    elm.exploreY < this._safeZone.y + this._safeZone.height
+                );
+            } while ((!isInsideBounds || isOnSafeZone) && tries++ < 64);
 
             elm.moveTo(0, 0);
         }
@@ -60,7 +75,11 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 !(elm.exploreX > -this._canvas.canvasSize.x / 2 &&
                 elm.exploreX < this._canvas.canvasSize.x / 2 &&
                 elm.exploreY > -this._canvas.canvasSize.y / 2 &&
-                elm.exploreY < this._canvas.canvasSize.y / 2)
+                elm.exploreY < this._canvas.canvasSize.y / 2) && // outside bounds
+                !((elm.exploreX > this._safeZone.x &&
+                elm.exploreX < this._safeZone.x + this._safeZone.width) ||
+                (elm.exploreY > this._safeZone.y &&
+                elm.exploreY < this._safeZone.y + this._safeZone.height)) // inside the safe zone
             );
         }
 
@@ -74,6 +93,15 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             elm.exploreX = Math.sin(seed) * rSeed;
             elm.exploreY = Math.cos(seed) * rSeed;
         }
+
+        // var sZ = new PIXI.Graphics();
+        // sZ.beginFill(0xFF0000);
+        // sZ.drawRect(this._safeZone.x, this._safeZone.y, this._safeZone.width, this._safeZone.height);
+        // this._canvas._particlesContainer.addChild(sZ);
+    };
+
+    ExploreMode.prototype.setSafeZone = function (safeZone) {
+        this._safeZone = safeZone;
     };
 
     ExploreMode.prototype._startAutoMode = function () {

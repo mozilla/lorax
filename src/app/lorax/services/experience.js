@@ -3,7 +3,7 @@
  *
  * @class lorax/services/ExploreService
  */
-define(['experience/experience'], function (Experience) {
+define(['jquery', 'experience/experience'], function ($, Experience) {
     'use strict';
 
     var ExperienceService = function ($location, $timeout, $window, windowService, dataService) {
@@ -17,6 +17,15 @@ define(['experience/experience'], function (Experience) {
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
         this._experience.setGoBackCallBack(this._goBack.bind(this));
         this._experience.setOpenTagCallBack(this._openTag.bind(this));
+
+        var menu = $('.experience-menu');
+        var menuRect = {
+            x: menu.offset().left - $('#experience-canvas').width() / 2,
+            y: menu.offset().top - $('#experience-canvas').height() / 2,
+            width: menu.outerWidth(),
+            height: menu.outerHeight()
+        };
+        this._experience.setExploreSafezone(menuRect);
 
         dataService.getMain().then(this.setData.bind(this));
     };

@@ -100,6 +100,10 @@ define([
         this._goBack = goBackCallback;
     };
 
+    Experience.prototype.setExploreSafezone = function (safeZone) {
+        this._exploreMode.setSafeZone(safeZone);
+    };
+
     /**
     * Shows FPS count
     */
