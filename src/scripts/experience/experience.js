@@ -141,6 +141,7 @@ define([
             this._canvas.show();
             this._mode = Issue.MODE_ISSUES;
             this._issuesMode.show();
+            this._setBgMode('');
         } else {
             this._onInitMode = this.showIssues;
         }
@@ -151,6 +152,7 @@ define([
             this._canvas.show();
             this._mode = Issue.MODE_TOPICS;
             this._topicsMode.show();
+            this._setBgMode('');
         } else {
             this._onInitMode = this.showTopics;
         }

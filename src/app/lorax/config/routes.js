@@ -17,7 +17,7 @@ define(function () {
             /* --------- Experience -------- */
 
             .when('/', {
-                redirectTo: '/explore'
+                redirectTo: '/ecosystem'
             })
 
             .when('/:mode', {

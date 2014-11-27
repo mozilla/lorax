@@ -34,7 +34,7 @@ define(['jquery'], function ($) {
 
         this._$scope = $scope;
         this._$scope.experience = {
-            currentView: 'explore',
+            currentView: 'ecosystem',
             isOpen: false
         };
 

@@ -54,13 +54,13 @@ define(['experience/experience'], function (Experience) {
                 case 'intro':
                     this._experience.showIntro();
                     break;
-                case 'explore':
+                case 'ecosystem':
                     this._experience.showExplore();
                     break;
-                case 'topics':
+                case 'vitals':
                     this._experience.showTopics();
                     break;
-                case 'issues':
+                case 'checklist':
                     this._experience.showIssues();
                     break;
                 case 'tag':
