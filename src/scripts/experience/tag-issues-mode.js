@@ -15,6 +15,7 @@ define([
     var TagIssuesMode = function (canvas) {
         this._canvas = canvas;
         Mode.MODES.push(this);
+        this.MODE = Mode;
 
         return this;
     };

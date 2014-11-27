@@ -48,18 +48,19 @@ define(['signals'], function (signals) {
     };
 
     Mode.prototype._onHide = function () {
+        Mode.OPEN_MODE = null;
         if (this._hideCallback) {
             this._hideCallback();
             this._hideCallback = null;
-        } else {
-            // open last mode if no callback was provided
-            if (!Mode.LAST_MODE) {
-                Mode.LAST_MODE = Mode.DEFAULT_MODE;
-            }
-            Mode.LAST_MODE.show();
         }
-
         this.hideS.dispatch();
+        // } else {
+        //     // open last mode if no callback was provided
+        //     if (!Mode.LAST_MODE) {
+        //         Mode.LAST_MODE = Mode.DEFAULT_MODE;
+        //     }
+        //     Mode.LAST_MODE.show();
+        // }
     };
 
     return Mode;

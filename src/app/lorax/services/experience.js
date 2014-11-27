@@ -6,14 +6,17 @@
 define(['experience/experience'], function (Experience) {
     'use strict';
 
-    var ExperienceService = function ($location, $timeout, windowService, dataService) {
+    var ExperienceService = function ($location, $timeout, $window, windowService, dataService) {
         this._$location = $location;
         this._$timeout = $timeout;
+        this._$window = $window;
         this._windowService = windowService;
 
         this._experience = new Experience();
         this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
+        this._experience.setGoBackCallBack(this._goBack.bind(this));
+        this._experience.setOpenTagCallBack(this._openTag.bind(this));
 
         dataService.getMain().then(this.setData.bind(this));
     };
@@ -93,9 +96,20 @@ define(['experience/experience'], function (Experience) {
         this._windowService.setBgMode(status, animate);
     };
 
+    ExperienceService.prototype._goBack = function () {
+        this._$window.history.back();
+    };
+
+    ExperienceService.prototype._openTag = function (tag) {
+        this._$timeout(function () {
+            this._$location.url('/tag/' + tag);
+        }.bind(this));
+    };
+
     ExperienceService.$inject = [
         '$location',
         '$timeout',
+        '$window',
         'windowService',
         'dataService'
     ];

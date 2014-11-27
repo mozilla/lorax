@@ -92,6 +92,14 @@ define([
         this._setBgMode = bgModeCallback;
     };
 
+    Experience.prototype.setOpenTagCallBack = function (openTagCallBack) {
+        this._openTag = openTagCallBack;
+    };
+
+    Experience.prototype.setGoBackCallBack = function (goBackCallback) {
+        this._goBack = goBackCallback;
+    };
+
     /**
     * Shows FPS count
     */
@@ -187,7 +195,7 @@ define([
     };
 
     Experience.prototype._onHideTagIssues = function () {
-        this._setBgMode('');
+        this._goBack();
     };
 
     Experience.prototype._onEndIntro = function () {
@@ -202,7 +210,8 @@ define([
 
     Experience.prototype._openIssue = function (issue) {
         if (TagModel.prototype.isPrototypeOf(issue.data)) {
-            this.showTagIssues(issue.data.getURLId());
+            // this.showTagIssues(issue.data.getURLId());
+            this._openTag(issue.data.getURLId());
             return;
         }
 
