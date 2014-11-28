@@ -71,16 +71,14 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 rSeed = this._exploreRadius + (Math.random() * 5);
                 elm.exploreX = Math.sin(seed) * rSeed;
                 elm.exploreY = Math.cos(seed) * rSeed;
-            } while (
-                !(elm.exploreX > -this._canvas.canvasSize.x / 2 &&
-                elm.exploreX < this._canvas.canvasSize.x / 2 &&
-                elm.exploreY > -this._canvas.canvasSize.y / 2 &&
-                elm.exploreY < this._canvas.canvasSize.y / 2) && // outside bounds
-                !((elm.exploreX > this._safeZone.x &&
-                elm.exploreX < this._safeZone.x + this._safeZone.width) ||
-                (elm.exploreY > this._safeZone.y &&
-                elm.exploreY < this._safeZone.y + this._safeZone.height)) // inside the safe zone
-            );
+
+                isInsideBounds = (
+                    elm.exploreX > -this._canvas.canvasSize.x / 2 &&
+                    elm.exploreX < this._canvas.canvasSize.x / 2 &&
+                    elm.exploreY > -this._canvas.canvasSize.y / 2 &&
+                    elm.exploreY < this._canvas.canvasSize.y / 2
+                );
+            } while (!isInsideBounds);
         }
 
         // set fakes positions
