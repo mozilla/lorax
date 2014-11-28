@@ -54,15 +54,17 @@ define([
         var before;
         var after;
         for (var item in this._topicElms) {
-            topic = this._topicElms[item];
-            before = offset < topic._startY;
-            after = topic._endY !== undefined && offset >= topic._endY;
-            if (before) {
-                topic.y = topic._startY - offset;
-            } else if (after) {
-                topic.y = topic._endY - offset;
-            } else {
-                topic.y = topic._y0;
+            if (this._topicElms.hasOwnProperty(item)) {
+                topic = this._topicElms[item];
+                before = offset < topic._startY;
+                after = topic._endY !== undefined && offset >= topic._endY;
+                if (before) {
+                    topic.y = topic._startY - offset;
+                } else if (after) {
+                    topic.y = topic._endY - offset;
+                } else {
+                    topic.y = topic._y0;
+                }
             }
         }
     };
@@ -93,16 +95,18 @@ define([
         // var topicOffset;
         // set elements position
         for (var item in positions) {
-            position = positions[item];
-            topic = this._topicElms[item];
-            topic.x = topic._x0 = position.x;
-            topic.y = topic._y0 = position.y;
-            // topicOffset = topic._y0 - this._topics[0].getIssues()[0].offset.top;
-            topic._startY = topic.data.getIssues()[0].offset.top - 138;
-            if (lastTopic) {
-                lastTopic._endY = topic._startY;
+            if (positions.hasOwnProperty(item)) {
+                position = positions[item];
+                topic = this._topicElms[item];
+                topic.x = topic._x0 = position.x;
+                topic.y = topic._y0 = position.y;
+                // topicOffset = topic._y0 - this._topics[0].getIssues()[0].offset.top;
+                topic._startY = topic.data.getIssues()[0].offset.top - 138;
+                if (lastTopic) {
+                    lastTopic._endY = topic._startY;
+                }
+                lastTopic = topic;
             }
-            lastTopic = topic;
         }
     };
 
