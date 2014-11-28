@@ -14,6 +14,8 @@ define([
         this._canvas = canvas;
         Mode.MODES.push(this);
 
+        this._detailContainer = new PIXI.DisplayObjectContainer();
+
         return this;
     };
 
@@ -30,6 +32,10 @@ define([
             issue.detailOffset = Math.random() * (this._canvas.canvasSize.x / 30);
             issue.detailOffset -= this._canvas.canvasSize.x / 60;
         }
+
+        this._detailContainer.x = Math.round(this._canvas.canvasSize.x / 2);
+        this._detailContainer.y = Math.round(this._canvas.canvasSize.y / 2);
+        this._canvas.addChild(this._detailContainer);
     };
 
     DetailMode.prototype.onScroll = function (offset) {
@@ -43,6 +49,57 @@ define([
             issue.elm.x = position.x;
             issue.elm.y = position.y;
             issue.elm.alpha = 1;
+        }
+
+        var topic;
+        var before;
+        var after;
+        for (var item in this._topicElms) {
+            topic = this._topicElms[item];
+            before = offset < topic._startY;
+            after = topic._endY !== undefined && offset >= topic._endY;
+            if (before) {
+                topic.y = topic._startY - offset - 125;
+            } else if (after) {
+                topic.y = topic._endY - offset - 125;
+            } else {
+                topic.y = topic._y0;
+            }
+        }
+    };
+
+    DetailMode.prototype.setTopics = function (data) {
+        this._topics = data;
+        this._topicElms = {};
+
+        var topic;
+        for (var i = 0; i < data.length; i ++) {
+            topic = new PIXI.Graphics();
+            topic.beginFill(0xFFFFFF);
+            topic.drawCircle(0, 0, 5);
+            topic.endFill();
+            topic.data = data[i];
+            topic.elm = topic;
+            this._topicElms[data[i].getId()] = topic;
+            this._detailContainer.addChild(topic);
+        }
+    };
+
+    DetailMode.prototype.setTopicMenuPositions = function (positions) {
+        var lastTopic;
+        var topic;
+        var position;
+
+        for (var item in positions) {
+            position = positions[item];
+            topic = this._topicElms[item];
+            topic.x = topic._x0 = position.x;
+            topic.y = topic._y0 = position.y;
+            topic._startY = topic.data.getIssues()[0].offset.top - 138;
+            if (lastTopic) {
+                lastTopic._endY = topic._startY;
+            }
+            lastTopic = topic;
         }
     };
 
@@ -79,26 +136,23 @@ define([
     };
 
     DetailMode.prototype._drawLines = function () {
+        this._canvas.clearLines();
+
         var i;
         var j;
         var issue;
-        var related;
-        var relatedItem;
-        var isSameTopic;
+        var topic;
+        var topicElm;
 
         this._canvas.clearLines();
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
-            issue = this._canvas.issues[i];
-            related = issue.data.getRelated();
+        for (i = 0; i < this._topics.length; i ++) {
+            topic = this._topics[i];
+            topicElm = this._topicElms[topic.getId()];
 
-            // draw lines connecting related issues
-            for (j = 0; j < related.length; j ++) {
-                relatedItem = this._canvas.getElementByData(related[j]);
-                isSameTopic = issue.data.getParent().getId() === related[j].getParent().getId();
-                if (isSameTopic) {
-                    this._canvas.drawLine(issue, relatedItem, 0xFFFFFF, 0.1);
-                }
+            for (j = 0; j < topic._issues.length; j ++) {
+                issue = this._canvas.getElementByData(topic._issues[j]);
+                this._canvas.drawLine(issue, topicElm, 0xFFFFFF, 0.2);
             }
         }
     };

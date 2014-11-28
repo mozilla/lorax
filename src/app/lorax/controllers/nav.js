@@ -18,7 +18,7 @@ define([], function () {
         this._windowService = windowService;
 
         this._$scope.nav = {
-            active : 'access'
+            active : null
         };
 
         this._$scope.nav.handleClick = function () {

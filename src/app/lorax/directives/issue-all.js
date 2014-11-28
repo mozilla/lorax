@@ -117,6 +117,8 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
             issue.titleOffset = issueTitle.offset();
         }
 
+        this._experienceService.setMenuPositions();
+
         if (detailIsHidden) {
             $('#detail').addClass('ng-hide');
         }

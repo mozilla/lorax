@@ -78,6 +78,7 @@ define([
         this._topicsModeData = data.getTopics();
 
         this._topicsMode.setData(this._topicsModeData);
+        this._detailMode.setTopics(this._topicsModeData);
     };
 
     Experience.prototype.setContainer = function (container) {
@@ -102,6 +103,10 @@ define([
 
     Experience.prototype.setExploreSafezone = function (safeZone) {
         this._exploreMode.setSafeZone(safeZone);
+    };
+
+    Experience.prototype.setTopicMenuPositions = function (positions) {
+        this._detailMode.setTopicMenuPositions(positions);
     };
 
     /**
