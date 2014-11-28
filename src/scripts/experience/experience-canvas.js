@@ -76,7 +76,7 @@ define([
         this._drawFakes();
 
         // touch events
-        this._stage.touchstart = this._onTouchStart.bind(this);
+        this._stage.tap = this._stage.touchstart = this._onTouchStart.bind(this);
         $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
         $(document).on('swiperight', container, this._onSwipeRight.bind(this));
     };
@@ -246,6 +246,7 @@ define([
 
     ExperienceCanvas.prototype._onTouchStart = function (event) {
         this._touchPosition = event.global;
+        this._updateMousePosition();
     };
 
     ExperienceCanvas.prototype._onSwipeLeft = function () {

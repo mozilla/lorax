@@ -89,7 +89,7 @@ define([
         this.elm.mouseover = this._onMouseOver.bind(this);
         this.elm.mouseout = this._onMouseOut.bind(this);
         this.elm.mousedown = this._onPress.bind(this);
-        this.elm.tap = this._onTap.bind(this);
+        this.elm.touchstart = this._onTap.bind(this);
     };
 
     Issue.prototype._onMouseOver = function () {
