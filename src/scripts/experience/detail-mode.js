@@ -35,7 +35,6 @@ define([
 
         this._detailContainer.x = Math.round(this._canvas.canvasSize.x / 2);
         this._detailContainer.y = Math.round(this._canvas.canvasSize.y / 2);
-        this._canvas.addChild(this._detailContainer);
     };
 
     DetailMode.prototype.onScroll = function (offset) {
@@ -179,12 +178,14 @@ define([
 
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
+        this._canvas.addChild(this._detailContainer);
 
         setTimeout(this._onShow.bind(this), 500);
     };
 
     DetailMode.prototype._onStartHide = function () {
         this._canvas.renderStartS.remove(this._drawLinesBind);
+        this._canvas.removeChild(this._detailContainer);
 
         setTimeout(this._onHide.bind(this), 100);
     };
