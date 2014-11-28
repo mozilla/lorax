@@ -58,9 +58,9 @@ define([
             before = offset < topic._startY;
             after = topic._endY !== undefined && offset >= topic._endY;
             if (before) {
-                topic.y = topic._startY - offset - 125;
+                topic.y = topic._startY - offset;
             } else if (after) {
-                topic.y = topic._endY - offset - 125;
+                topic.y = topic._endY - offset;
             } else {
                 topic.y = topic._y0;
             }
@@ -69,19 +69,6 @@ define([
 
     DetailMode.prototype.setTopics = function (data) {
         this._topics = data;
-        this._topicElms = {};
-
-        var topic;
-        for (var i = 0; i < data.length; i ++) {
-            topic = new PIXI.Graphics();
-            topic.beginFill(0xFFFFFF);
-            topic.drawCircle(0, 0, 5);
-            topic.endFill();
-            topic.data = data[i];
-            topic.elm = topic;
-            this._topicElms[data[i].getId()] = topic;
-            this._detailContainer.addChild(topic);
-        }
     };
 
     DetailMode.prototype.setTopicMenuPositions = function (positions) {
@@ -89,11 +76,28 @@ define([
         var topic;
         var position;
 
+        this._topicElms = {};
+
+        // draw elements
+        for (var i = 0; i < this._topics.length; i ++) {
+            topic = new PIXI.Graphics();
+            topic.beginFill(0xFFFFFF);
+            topic.drawCircle(0, 0, 5);
+            topic.endFill();
+            topic.data = this._topics[i];
+            topic.elm = topic;
+            this._topicElms[this._topics[i].getId()] = topic;
+            this._detailContainer.addChild(topic);
+        }
+
+        // var topicOffset;
+        // set elements position
         for (var item in positions) {
             position = positions[item];
             topic = this._topicElms[item];
             topic.x = topic._x0 = position.x;
             topic.y = topic._y0 = position.y;
+            // topicOffset = topic._y0 - this._topics[0].getIssues()[0].offset.top;
             topic._startY = topic.data.getIssues()[0].offset.top - 138;
             if (lastTopic) {
                 lastTopic._endY = topic._startY;
@@ -124,8 +128,8 @@ define([
         position.x += issue.data.titleOffset.left - (this._canvas.canvasSize.x / 2);
 
         // align text
-        position.x -= 20;
-        position.y += 10;
+        // position.x -= 20;
+        // position.y += 10;
 
         // round it
         position.x = Math.round(position.x);
@@ -145,13 +149,15 @@ define([
 
         this._canvas.clearLines();
 
-        for (i = 0; i < this._topics.length; i ++) {
-            topic = this._topics[i];
-            topicElm = this._topicElms[topic.getId()];
+        if (this._topicElms) {
+            for (i = 0; i < this._topics.length; i ++) {
+                topic = this._topics[i];
+                topicElm = this._topicElms[topic.getId()];
 
-            for (j = 0; j < topic._issues.length; j ++) {
-                issue = this._canvas.getElementByData(topic._issues[j]);
-                this._canvas.drawLine(issue, topicElm, 0xFFFFFF, 0.2);
+                for (j = 0; j < topic._issues.length; j ++) {
+                    issue = this._canvas.getElementByData(topic._issues[j]);
+                    this._canvas.drawLine(issue, topicElm, 0xFFFFFF, 0.2);
+                }
             }
         }
     };

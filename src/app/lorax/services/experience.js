@@ -31,15 +31,17 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
     };
 
     ExperienceService.prototype.setMenuPositions = function () {
-        var detailMenuPositions = {};
+        if (this._windowService.breakpoint() !== 'small') {
+            var detailMenuPositions = {};
 
-        $('.banner-nav li a').each(function (index, elm) {
-            elm = $(elm);
-            detailMenuPositions[$(elm).attr('data-topic')] = {
-                x: $(elm).offset().left + ($(elm).width() / 2) - ($('#experience-canvas').width() / 2),
-                y: $(elm).offset().top + ($(elm).height() / 2) - ($('#experience-canvas').height() / 2)
-            };
-        });
+            $('.banner-nav li a').each(function (index, elm) {
+                elm = $(elm);
+                detailMenuPositions[$(elm).attr('data-topic')] = {
+                    x: $(elm).offset().left + ($(elm).innerWidth() / 2) - ($('#experience-canvas').width() / 2),
+                    y: $(elm).offset().top + ($(elm).innerHeight() / 2) - ($('#experience-canvas').height() / 2)
+                };
+            });
+        }
 
         this._experience.setTopicMenuPositions(detailMenuPositions);
     };
