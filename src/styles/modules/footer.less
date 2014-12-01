@@ -115,3 +115,26 @@
     text-indent: -9999px;
     width: 30px;
 }
+
+.down-arrow-nav {
+    background-position: 50%;
+    background-size: 100%;
+    width: 50px;
+    height: 26px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -25px;
+
+    display: none;
+
+    .at-medium({
+        display: block;
+    });
+
+    [data-bg-mode="tag"] &,
+    [data-bg-mode="intro"] &,
+    [data-bg-mode=""] & {
+        display: none;
+    }
+}

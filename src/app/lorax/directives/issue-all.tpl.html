@@ -1,4 +1,3 @@
-<div class="down-arrow-nav icon-arrow"></div>
 <div id="{{::issue.getId()}}" ng-repeat="issue in ::detail.model.getIssues()" data-lorax-issue-details data-issue-status="{{::issue.getStatusDescription()}}" data-issue-name="{{::issue.getId()}}">
   <header class="infographic__header">
     <h1>{{::issue.getInfographic().getHeader()}} <span>{{::issue.getInfographic().getSubheader()}}</span></h1>
