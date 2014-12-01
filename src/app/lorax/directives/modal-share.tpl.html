@@ -1,4 +1,4 @@
-<section class="modal modal--share" ng-if="modalShare.open" ng-class="{true: 'fadeIn', false: 'fadeOut'}[modalShare.open]">
+<section class="modal modal--fade-if" ng-if="modalShare.open" ng-class="{true: 'fadeIn', false: 'fadeOut'}[modalShare.open]">
   <header class="modal__header">
     <h1>#openinternet</h1>
   </header>
@@ -10,13 +10,13 @@
           <blockquote class="sharing-quote__text">
             <p>{{::issue.getTitle()}}</p>
           </blockquote>
-          <a ng-href="mailto:?subject={{::issue.getTitle() | encodeUri}}" class="sharing-quote__btn btn" ng-click="modalShare.onShare($event, issue)">Share</a>
+          <a class="sharing-quote__btn btn" ng-click="modalShare.onShare($event, issue)">Share</a>
           <a ng-href="{{::issue.getUrl()}}" class="sharing-quote__more" ng-click="modalShare.closeModal()">Learn more<span class="is-hidden-sm"> about this issue</span></a>
         </div>
       </li>
     </ul>
   </div>
-  <div class="modal" ng-if="modalShare.onSecondStep">
+  <div class="modal modal--fade-if modal--share-second-step" ng-if="modalShare.onSecondStep">
     <a href="#" class="modal__back icon-back" data-lorax-prevent-default ng-click="modalShare.backToFirstStep()">Back</a>
     <a href="#" class="modal__close icon-close" data-lorax-prevent-default ng-click="modalShare.closeModal()">Close</a>
     <div class="modal__content">

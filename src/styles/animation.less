@@ -49,29 +49,6 @@
     }
 }
 
-/* Share Modal
-   ========================================================================== */
-
-.modal--share {
-    .transition(0.2s ease-in-out all);
-}
-
-.modal--share.ng-enter {
-    opacity: 0;
-}
-
-.modal--share.ng-enter.ng-enter.active {
-    opacity: 1;
-}
-
-.modal--share.ng-leave {
-    opacity: 1;
-}
-
-.modal--share.ng-leave.ng-leave-active {
-    opacity: 0;
-}
-
 /* Email Modal
    ========================================================================== */
 
@@ -93,4 +70,27 @@
 
 .modal--email.ng-hide-remove.ng-hide-remove-active {
     opacity: 1;
+}
+
+/* Fade (with ng-if)
+   ========================================================================== */
+
+.modal--fade-if {
+    .transition(0.2s ease-in-out all);
+}
+
+.modal--fade-if.ng-enter {
+    opacity: 0;
+}
+
+.modal--fade-if.ng-enter.ng-enter.active {
+    opacity: 1;
+}
+
+.modal--fade-if.ng-leave {
+    opacity: 1;
+}
+
+.modal--fade-if.ng-leave.ng-leave-active {
+    opacity: 0;
 }

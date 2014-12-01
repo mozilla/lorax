@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Open Internet Project</title>
+    <title>Shape of the Web</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -24,15 +24,15 @@
       <h1 class="banner__logo"><a href="/" class="icon-circle">Shape of the Web</a></h1>
     </header>
 
-    <a href="#" class="banner-legend icon-question" ng-click="core.openLegendModal()" data-lorax-prevent-default>Legend</a>
-    <a href="#" class="banner-info icon-info" ng-click="core.openAboutModal()" data-lorax-prevent-default>About</a>
     <a href="#" class="banner-info banner-info--menu icon-menu-dark" ng-click="core.siteInfo()" data-lorax-prevent-default>Information</a>
 
     <div data-lorax-detail></div>
 
     <footer class="footer-links">
+      <a href="#" class="footer-links__link footer-links__link--legend icon-question" ng-click="core.openLegendModal()" data-lorax-prevent-default>Legend</a>
+      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" data-lorax-prevent-default>About</a>
       <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" data-lorax-prevent-default>Keep me informed</a>
-      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-show="!core.shareOptions" ng-click="core.openShareOptions()" data-lorax-prevent-default>Sharing options</a>
+      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" data-lorax-prevent-default>Sharing options</a>
       <div class="footer-links__share-options" ng-show="core.shareOptions">
         <ul class="share-options">
           <li class="share-option share-option--twitter icon-twitter" >

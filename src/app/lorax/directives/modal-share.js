@@ -94,6 +94,8 @@ define(['angular', 'jquery'], function (angular, $) {
             }
         );
 
+        console.log(service);
+
         this._windowService.setModalOpen(true);
 
         // get the current issue that the user is viewing,

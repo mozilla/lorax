@@ -71,7 +71,9 @@ define(['angular', 'jquery', 'jquery-selectric'], function (angular, $) {
         );
 
         this._windowService.setModalOpen(true);
-        $('.enter-email__country select').selectric('init');
+        $('.enter-email__country select').selectric('init', {
+            disableOnMobile: false
+        });
     };
 
     ModalEmailController.prototype.closeModal = function () {
