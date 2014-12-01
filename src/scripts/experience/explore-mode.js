@@ -205,7 +205,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
     };
 
     ExploreMode.prototype._mouseOutIssue = function (issue) {
-        this.selectedIssue = null;
+        if (!this._tapped) {
+            this.selectedIssue = null;
+        }
+        this._tapped = null;
 
         var related = issue.data.getRelated();
         var tags;
@@ -241,6 +244,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
     };
 
     ExploreMode.prototype._tapIssue = function (issue) {
+        this._tapped = true;
         if (!this.selectedIssue) {
             issue._onMouseOver();
         } else if (this.selectedIssue === issue) {
