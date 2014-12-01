@@ -3,12 +3,14 @@ define([
     'pixi',
     'gs',
     'signals',
-    'experience/issue'
+    'experience/issue',
+    'experience/responsive'
 ], function (
     PIXI,
     gs,
     signals,
-    Issue
+    Issue,
+    Responsive
 ) {
     'use strict';
 
@@ -71,8 +73,9 @@ define([
         this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
             {font: '300 22px "Fira Sans", sans-serif', fill: '#222222'});
         this.elm.addChild(this._topicTitle);
-        this._topicTitle.x = Math.round(-this._topicTitle.width / 2);
-        this._topicTitle.y = Math.round(-this._topicTitle.height / 2);
+        this._topicTitle.resolution = Responsive.RATIO;
+        this._topicTitle.x = Math.round(-(this._topicTitle.width / Responsive.RATIO) / 2);
+        this._topicTitle.y = Math.round(-(this._topicTitle.height / Responsive.RATIO) / 2);
 
         // description
         this._topicDesc = new PIXI.Text(this._data.getTagline(),
@@ -84,13 +87,14 @@ define([
                 align: 'center'
         });
         this.elm.addChild(this._topicDesc);
-        this._topicDesc.x = Math.round(-this._topicDesc.width / 2);
+        this._topicDesc.resolution = Responsive.RATIO;
+        this._topicDesc.x = Math.round(-(this._topicDesc.width / Responsive.RATIO) / 2);
         this._topicDesc.y = Math.round(this._radius + 50);
 
         // topic issue elements
         var issue;
         var i;
-        var tH = (this._topicTitle.height / 2) + 5; // half title height
+        var tH = ((this._topicTitle.height / Responsive.RATIO) / 2) + 5; // half title height
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setTextAlwaysVisible(false);
@@ -223,7 +227,7 @@ define([
 
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
-        posY -= this._topicTitle.height + 50;
+        posY -= (this._topicTitle.height / Responsive.RATIO) + 50;
         gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, alpha: 0, overwrite: true});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: true});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
@@ -252,7 +256,12 @@ define([
         gs.TweenMax.to(
             this._topicTitle,
             0.3,
-            {y: Math.round(-this._topicTitle.height / 2), tint: 0xFFFFFF, alpha: 1, overwrite: true}
+            {
+                y: Math.round(-(this._topicTitle.height / Responsive.RATIO) / 2),
+                tint: 0xFFFFFF,
+                alpha: 1,
+                overwrite: true
+            }
         );
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1, overwrite: true});
 

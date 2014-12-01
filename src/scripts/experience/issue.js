@@ -1,11 +1,13 @@
 /* global define:true */
 define([
     'experience/circle',
+    'experience/responsive',
     'pixi',
     'signals',
     'gs'
 ], function (
     Circle,
+    Responsive,
     PIXI,
     signals,
     gs
@@ -118,7 +120,7 @@ define([
                 this.setIsInteractive(true);
                 this.setRadiusChange(true);
                 this._title.setStyle(this._titleStyle);
-                this._title.y = Math.round(-this._title.height / 2);
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
             case Issue.MODE_TAG: {
@@ -128,7 +130,7 @@ define([
                 this.radius = this.initRadius;
                 this._title.setStyle(this._tagStyle);
                 this._title.x = 10;
-                this._title.y = Math.round(-this._title.height / 2);
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
             case Issue.MODE_TAG_TITLE: {
@@ -142,7 +144,7 @@ define([
                 this._tagTitle.setText(tagTitleText.toUpperCase());
                 this._title.setStyle(this._tagTitleStyle);
                 this._title.x = 10;
-                this._title.y = Math.round(-this._title.height / 2);
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xFFFFFF);
                 this.elm.alpha = 1;
             } break;
@@ -152,7 +154,7 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._topicStyle);
-                this._title.y = Math.round(-this._title.height / 2);
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
             case Issue.MODE_ISSUES: {
@@ -162,11 +164,7 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._issuesStyle);
-                this._title.y = Math.round(-this._title.height / 2);
-                // if (!this._issueModeArea) {
-                //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-                // }
-                // this.elm.hitArea = this._issueModeArea;
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
             case Issue.MODE_TAG_ISSUES: {
@@ -176,11 +174,7 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._tagIssuesStyle);
-                this._title.y = Math.round(-this._title.height / 2);
-                // if (!this._issueModeArea) {
-                //     this._issueModeArea = new PIXI.Rectangle(0, -40, this.elm.width, 80);
-                // }
-                // this.elm.hitArea = this._issueModeArea;
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
             } break;
             case Issue.MODE_DETAIL: {
@@ -190,7 +184,7 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._detailStyle);
-                this._title.y = Math.round(-this._title.height / 2);
+                this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
             } break;
         }
@@ -258,10 +252,10 @@ define([
         this.stopMoving();
         this.lightUp();
 
-        var totalHeight = this._title.height;
+        var totalHeight = Math.round(this._title.height / Responsive.RATIO);
 
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
-            totalHeight += this._subtitle.height + 2;
+            totalHeight += Math.round(this._subtitle.height / Responsive.RATIO) + 2;
             this._title.setStyle(this._titleOverStyle);
         }
 
@@ -269,7 +263,7 @@ define([
 
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             this.elm.addChild(this._subtitle);
-            this._subtitle.y = Math.round(this._title.y + this._title.height + 2);
+            this._subtitle.y = Math.round(this._title.y + (this._title.height / Responsive.RATIO) + 2);
             gs.TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: true});
         }
 
@@ -300,7 +294,7 @@ define([
 
         if (this.mode === Issue.MODE_EXPLORE) {
             this._title.setStyle(this._titleStyle);
-            this._title.y = Math.round(-this._title.height / 2);
+            this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
 
             var onHide = function () {
                 if (this._subtitle.parent) {

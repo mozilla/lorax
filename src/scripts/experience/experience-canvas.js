@@ -43,8 +43,6 @@ define([
     ExperienceCanvas.prototype.init = function (container) {
         Responsive.RATIO = window.devicePixelRatio;
         Responsive.SIZE = new PIXI.Point(container.width(), container.height());
-        // Responsive.SIZE.x /= Responsive.RATIO;
-        // Responsive.SIZE.y /= Responsive.RATIO;
 
         this.canvasSize = Responsive.SIZE;
 
@@ -52,15 +50,19 @@ define([
         this._renderer = new PIXI.CanvasRenderer(
             this.canvasSize.x,
             this.canvasSize.y,
-            {transparent: true, antialias: true, resolution: 1});
+            {transparent: true, antialias: true, resolution: Responsive.RATIO});
         this._stage = new PIXI.Stage();
         this._stage.interactive = true;
         container.append(this._renderer.view);
 
+        if (Responsive.RATIO !== 1) {
+            this._renderer.view.style.width = '100%';
+        }
+
         // lines
         this._linesContainer = new PIXI.Graphics();
-        this._linesContainer.x = Math.round(this._renderer.width / 2);
-        this._linesContainer.y = Math.round(this._renderer.height / 2);
+        this._linesContainer.x = Math.round(Responsive.SIZE.x / 2);
+        this._linesContainer.y = Math.round(Responsive.SIZE.y / 2);
         this._stage.addChild(this._linesContainer);
 
         // particles

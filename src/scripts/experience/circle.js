@@ -2,11 +2,13 @@
 define([
     'pixi',
     'gs',
-    'jquery'
+    'jquery',
+    'experience/responsive'
 ], function (
     PIXI,
     gs,
-    $
+    $,
+    Responsive
 ) {
     'use strict';
 
@@ -123,8 +125,10 @@ define([
     Circle.prototype._drawTitle = function () {
         //.split('').join(String.fromCharCode(8202))
         this._title = new PIXI.Text(this.data.getName().toUpperCase(), this._titleStyle);
+        this._title.resolution = Responsive.RATIO;
         this._title.x = 20;
-        this._title.y = -this._title.height / 2;
+        this._title.y = -(this._title.height / Responsive.RATIO) / 2;
+        this._title.y = Math.round(this._title.y);
         this._title.alpha = 0;
 
         if (this.data.getParent) {
@@ -132,14 +136,18 @@ define([
                 this.data.getParent().getName().toUpperCase(),
                 this._subtitleStyle
             );
+            this._subtitle.resolution = Responsive.RATIO;
             this._subtitle.x = this._title.x;
-            this._subtitle.y = -this._subtitle.height / 2;
+            this._subtitle.y = -(this._subtitle.height / Responsive.RATIO) / 2;
+            this._subtitle.y = Math.round(this._subtitle.y);
             this._subtitle.alpha = 0;
         }
 
         this._tagTitle = new PIXI.Text(' ', {font: '200 12px "Fira Sans", sans-serif', fill: '#999999'});
+        this._tagTitle.resolution = Responsive.RATIO;
         this._tagTitle.x = 10;
-        this._tagTitle.y = -this._tagTitle.height - 15;
+        this._tagTitle.y = -(this._tagTitle.height / Responsive.RATIO) - 15;
+        this._tagTitle.y = Math.round(this._tagTitle.y);
     };
 
     /**

@@ -2,11 +2,13 @@
 define([
     'pixi',
     'gs',
-    'experience/mode'
+    'experience/mode',
+    'experience/responsive'
 ], function (
     PIXI,
     gs,
-    Mode
+    Mode,
+    Responsive
 ) {
     'use strict';
 
@@ -38,14 +40,16 @@ define([
 
         var messageStyle = {font: '200 24px "Fira Sans", sans-serif', fill: '#222222'};
         this._message = new PIXI.Text('The world’s most powerful tool, is the most fragile', messageStyle);
-        this._message.x = Math.round(-this._message.width / 2);
+        this._message.resolution = Responsive.RATIO;
+        this._message.x = Math.round(-(this._message.width / Responsive.RATIO) / 2);
         this._message.y = -90;
         this._message.alpha = 0;
         this._introContainer.addChild(this._message);
 
         var internetStyle = {font: '300 12px "Fira Sans", sans-serif', fill: '#222222'};
         this._internet = new PIXI.Text('( THE INTERNET )', internetStyle);
-        this._internet.x = Math.round(-this._internet.width / 2);
+        this._internet.resolution = Responsive.RATIO;
+        this._internet.x = Math.round(-(this._internet.width / Responsive.RATIO) / 2);
         this._internet.y = 25;
         this._internet.alpha = 0;
         this._introContainer.addChild(this._internet);
