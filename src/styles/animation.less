@@ -1,0 +1,96 @@
+/* Side Panel Modal
+   ========================================================================== */
+
+.modal--side-panel {
+    .transition(0.2s ease-in-out all);
+
+    & .side-panel {
+        .transition(0.2s ease-in-out all);
+    }
+}
+
+.modal--side-panel.ng-enter {
+    & .side-panel--legend {
+        left: -40%;
+    }
+
+    & .side-panel--about {
+        right: -40%;
+    }
+}
+
+.modal--side-panel.ng-enter.ng-enter-active {
+    & .side-panel--legend {
+        left: 0%;
+    }
+
+    & .side-panel--about {
+        right: 0%;
+    }
+}
+
+.modal--side-panel.ng-leave {
+    & .side-panel--legend {
+        left: 0%;
+    }
+
+    & .side-panel--about {
+        right: 0%;
+    }
+}
+
+.modal--side-panel.ng-leave.ng-leave-active {
+    & .side-panel--legend {
+        left: -40%;
+    }
+
+    & .side-panel--about {
+        right: -40%;
+    }
+}
+
+/* Share Modal
+   ========================================================================== */
+
+.modal--share {
+    .transition(0.2s ease-in-out all);
+}
+
+.modal--share.ng-enter {
+    opacity: 0;
+}
+
+.modal--share.ng-enter.ng-enter.active {
+    opacity: 1;
+}
+
+.modal--share.ng-leave {
+    opacity: 1;
+}
+
+.modal--share.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+/* Email Modal
+   ========================================================================== */
+
+.modal--email {
+    .transition(0.2s ease-in-out all);
+}
+
+.modal--email.ng-hide-add {
+    opacity: 1;
+}
+
+.modal--email.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+
+.modal--email.ng-hide-remove {
+    opacity: 0;
+}
+
+.modal--email.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}

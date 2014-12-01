@@ -10,6 +10,7 @@
         paths: {
             'angular': '../scripts/components/angular/angular',
             'angular-route': '../scripts/components/angular-route/angular-route',
+            'angular-animate': '../scripts/components/angular-animate/angular-animate',
             'jquery': '../scripts/components/jquery/jquery',
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
             'jquery-selectric': '../scripts/components/jquery-selectric/jquery.selectric',
@@ -38,6 +39,9 @@
                 deps: ['jquery']
             },
             'angular-route': {
+                deps: ['angular']
+            },
+            'angular-animate': {
                 deps: ['angular']
             },
             'jquery-mobile': {

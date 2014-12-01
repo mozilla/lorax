@@ -60,7 +60,8 @@ define([
     'lorax/filters/encode-uri',
 
     'angular',
-    'angular-route'
+    'angular-route',
+    'angular-animate'
 ], function (
     RouteConfig,
 
@@ -120,7 +121,8 @@ define([
     'use strict';
 
     angular.module('loraxApp', [
-        'ngRoute'
+        'ngRoute',
+        'ngAnimate'
     ])
 
         // Set up routing

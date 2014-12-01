@@ -25,10 +25,12 @@ define(function () {
     */
     var ModalLegendController = function (
         $scope,
+        $animate,
         dataService,
         windowService
     ) {
         this._$scope = $scope;
+        this._$animate = $animate;
         this._dataService = dataService;
         this._windowService = windowService;
 
@@ -52,6 +54,7 @@ define(function () {
     */
     ModalLegendController.$inject = [
         '$scope',
+        '$animate',
         'dataService',
         'windowService'
     ];
