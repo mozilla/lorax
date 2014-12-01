@@ -129,14 +129,7 @@ define([
     };
 
     IssuesMode.prototype._tapIssue = function (issue) {
-        if (!this.selectedIssue) {
-            issue._onMouseOver();
-        } else if (this.selectedIssue === issue) {
-            issue._onPress();
-        } else {
-            this.selectedIssue._onMouseOut();
-            issue._onMouseOver();
-        }
+        issue._onPress();
     };
 
     IssuesMode.prototype._scrollTo = function (delta) {
