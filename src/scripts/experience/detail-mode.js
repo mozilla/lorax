@@ -58,13 +58,7 @@ define([
                 topic = this._topicElms[item];
                 before = offset < topic._startY;
                 after = topic._endY !== undefined && offset >= topic._endY;
-                if (before) {
-                    topic.y = topic._startY - offset;
-                } else if (after) {
-                    topic.y = topic._endY - offset;
-                } else {
-                    topic.y = topic._y0;
-                }
+                topic.alpha = (before || after) ? 0 : 1;
             }
         }
     };
@@ -158,9 +152,11 @@ define([
                 topic = this._topics[i];
                 topicElm = this._topicElms[topic.getId()];
 
-                for (j = 0; j < topic._issues.length; j ++) {
-                    issue = this._canvas.getElementByData(topic._issues[j]);
-                    this._canvas.drawLine(issue, topicElm, 0xFFFFFF, 0.2);
+                if (topicElm.alpha > 0) {
+                    for (j = 0; j < topic._issues.length; j ++) {
+                        issue = this._canvas.getElementByData(topic._issues[j]);
+                        this._canvas.drawLine(issue, topicElm, 0xFFFFFF, 0.2);
+                    }
                 }
             }
         }
