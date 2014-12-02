@@ -132,6 +132,7 @@ define([
             issue.topicTap = this._tapIssue.bind(this);
             issue.mouseOverS.add(issue.topicMouseOver);
             issue.mouseOutS.add(issue.topicMouseOut);
+            issue.pressS.add(issue.topicTap);
             issue.tapS.add(issue.topicTap);
         }
 
@@ -158,6 +159,7 @@ define([
             issue = this._issues[i];
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
+            issue.pressS.remove(issue.topicTap);
             issue.tapS.remove(issue.topicTap);
         }
 
@@ -181,6 +183,7 @@ define([
     };
 
     Topic.prototype._tapIssue = function (issue) {
+        this._mouseOut();
         issue._onPress();
     };
 
