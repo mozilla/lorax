@@ -1,5 +1,5 @@
 /* global define:true */
-define([''], function () {
+define([], function () {
     'use strict';
 
     var Responsive = {};
