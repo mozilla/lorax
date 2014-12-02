@@ -57,8 +57,8 @@ define(['jquery', 'd3'], function ($, d3) {
       var width = 600;
       var height = 600;
 
-      var circleSize = width/5.5;
-      var circleFromCenter = height/2.6;
+      var circleSize = width/5.75;
+      var circleFromCenter = height/2.75;
       var twoPi = (Math.PI*2);
 
       var threatData = {};
