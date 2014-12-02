@@ -339,8 +339,15 @@ define([
             this.elm.y = Math.round(this.mousePosition.y - this.mouseOverPosition.y);
 
             var stickyRadius = 15;
-            if (Math.abs(this.elm.x - this._x0) > stickyRadius + this.elm.width / 2 ||
-                    Math.abs(this.elm.y - this._y0) > stickyRadius + this.elm.height / 2) {
+            if (Responsive.IS_TOUCH) {
+                stickyRadius = 0;
+            }
+
+            var maxX = stickyRadius + this.elm.width / 2;
+            var maxY = stickyRadius + this.elm.height / 2;
+            
+            if (Math.abs(this.elm.x - this._x0) > maxX ||
+                    Math.abs(this.elm.y - this._y0) > maxY) {
                 this._onMouseOut();
             }
         }

@@ -1,5 +1,5 @@
 /* global define:true */
-define([], function () {
+define([''], function () {
     'use strict';
 
     var Responsive = {};
@@ -7,6 +7,8 @@ define([], function () {
     Responsive.AT_LARGE = 960;
     Responsive.AT_MEDIUM = 560;
     Responsive.SIZE = {x:0, y:0};
+    Responsive.IS_TOUCH = false;
+    Responsive.RATIO = 1;
 
     Responsive.IS_LARGE = function () {
         return Responsive.SIZE.x > Responsive.AT_LARGE;

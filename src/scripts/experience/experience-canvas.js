@@ -4,6 +4,7 @@ define([
     'pixi',
     'signals',
     'gs',
+    'modernizr',
     'experience/issue',
     'experience/circle',
     'experience/responsive',
@@ -13,6 +14,7 @@ define([
     PIXI,
     signals,
     gs,
+    Modernizr,
     Issue,
     Circle,
     Responsive
@@ -43,6 +45,7 @@ define([
     ExperienceCanvas.prototype.init = function (container) {
         Responsive.RATIO = window.devicePixelRatio;
         Responsive.SIZE = new PIXI.Point(container.width(), container.height());
+        Responsive.IS_TOUCH = Modernizr.touch;
 
         this.canvasSize = Responsive.SIZE;
 
