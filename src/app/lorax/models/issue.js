@@ -144,7 +144,7 @@ define([
     };
 
     IssueModel.prototype.getUrl = function () {
-        return '/detail/?topic=' + this.getParentId() + '&issue=' + this.getId();
+        return '/detail/' + this.getParentId() + '/' + this.getId();
     };
 
     return IssueModel;
