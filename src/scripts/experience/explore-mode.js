@@ -28,14 +28,22 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var rSeed;
         var elm;
         var i;
+        var j;
         var isInsideBounds;
         var isOnSafeZone;
         var tries;
+        var lines = [];
+        var line;
+        var isLineFree;
+
+        var issueWidth = 100;
+        var issueHeight = 20;
 
         // set issue positions
         for (i = 0; i < this._canvas.issues.length; i ++) {
             elm = this._canvas.issues[i];
             tries = 0;
+            isLineFree = true;
 
             do {
                 // make it evenly distributed
@@ -43,6 +51,18 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 rSeed = Math.pow(Math.random(), 1/2) * (this._exploreRadius - 20);
                 elm.exploreX = Math.sin(seed) * rSeed;
                 elm.exploreY = Math.cos(seed) * rSeed;
+
+                line = Math.floor(elm.exploreY / issueWidth);
+                elm.exploreY = line * issueWidth;
+
+                // makes sure issues don't overlap
+                if (!lines[line]) {
+                    lines[line] = [];
+                } else {
+                    for (j = 0; j < lines[line].length; j ++) {
+                        isLineFree = isLineFree && Math.abs(lines[line][j].exploreX - elm.exploreX) > issueHeight;
+                    }
+                }
 
                 isInsideBounds = (
                     elm.exploreX > -this._canvas.canvasSize.x / 2 &&
@@ -57,8 +77,9 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                     elm.exploreY > this._safeZone.y &&
                     elm.exploreY < this._safeZone.y + this._safeZone.height
                 );
-            } while ((!isInsideBounds || isOnSafeZone) && tries++ < 64);
+            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries++ < 64);
 
+            lines[line].push(elm);
             elm.moveTo(0, 0);
         }
 
