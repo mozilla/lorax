@@ -11,11 +11,14 @@ define(function () {
     var CoreCtrl = function (
         $scope,
         windowService,
-        pubSubService
+        pubSubService,
+        routesSerivce,
+        dataService
     ) {
         this._$scope = $scope;
         this._windowService = windowService;
         this._pubSubService = pubSubService;
+        this._dataService = dataService;
 
         $scope.core = {
             openEmailModal: this.openEmailModal.bind(this),
@@ -27,6 +30,10 @@ define(function () {
             siteInfo: this.siteInfo.bind(this)
         };
 
+        this._dataService.getMain().then(function (model) {
+            this._$scope.core.miscData = model.getMiscLocale();
+        }.bind(this));
+
         pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));
     };
 
@@ -34,7 +41,8 @@ define(function () {
         '$scope',
         'windowService',
         'pubSubService',
-        'routesService'
+        'routesService',
+        'dataService'
     ];
 
     CoreCtrl.prototype.openEmailModal = function () {

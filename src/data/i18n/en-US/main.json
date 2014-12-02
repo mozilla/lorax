@@ -715,6 +715,8 @@
     }
   },
   "misc": {
+        "siteTitle": "Shape of the Bib",
+        "siteHeader": "Shape of the Web",
         "sourceLabel": "Source:",
         "tagsLabel": "Tags:",
         "mozDoingLabel": "What Mozilla Is Doing",

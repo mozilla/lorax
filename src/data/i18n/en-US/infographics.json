@@ -562,7 +562,13 @@
           "tracker": "adnxs.com",
           "percent": 17
         }
-      ]
+      ],
+      "labels": {
+        "copy": [
+            "Google possesses eight domains belonging to the top trackers, of which they own ten.",
+            "Google could possibly know 80.13% of a user's visited sites on average."
+        ]
+      }
     }
   },
   "surveillance": {

@@ -32,9 +32,11 @@ define(['jquery'], function ($) {
         this._$timeout = $timeout;
 
         this._data = $scope.issue.getInfographic().getDataPoints().tracking;
+        this._localeData = $scope.issue.getInfographic().getDataPoints().labels;
 
         $scope.tracking = {
-            data: this._data
+            data: this._data,
+            localeData: this._localeData
         };
     };
 
