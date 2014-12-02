@@ -52,15 +52,15 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 elm.exploreX = Math.sin(seed) * rSeed;
                 elm.exploreY = Math.cos(seed) * rSeed;
 
-                line = Math.floor(elm.exploreY / issueWidth);
-                elm.exploreY = line * issueWidth;
+                line = Math.floor(elm.exploreY / issueHeight);
+                elm.exploreY = line * issueHeight;
 
                 // makes sure issues don't overlap
                 if (!lines[line]) {
                     lines[line] = [];
                 } else {
                     for (j = 0; j < lines[line].length; j ++) {
-                        isLineFree = isLineFree && Math.abs(lines[line][j].exploreX - elm.exploreX) > issueHeight;
+                        isLineFree = isLineFree && Math.abs(lines[line][j].exploreX - elm.exploreX) > issueWidth;
                     }
                 }
 
