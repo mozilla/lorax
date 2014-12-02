@@ -10,10 +10,10 @@
       <rect width="100%" height="100%" fill="url(#banner-nav-bg__gradient)" />
     </svg>
     <ul class="banner-nav">
-      <li><a href="/detail/access" data-topic="access" class="banner-nav__link" ng-class="{'is-active': nav.active==='access'}" ng-click="nav.handleClick('access')">Access</a></li>
-      <li><a href="/detail/control" data-topic="control" class="banner-nav__link" ng-class="{'is-active': nav.active==='control'}" ng-click="nav.handleClick('control')">Control</a></li>
-      <li><a href="/detail/safety" data-topic="safety" class="banner-nav__link" ng-class="{'is-active': nav.active==='safety'}" ng-click="nav.handleClick('safety')">Safety</a></li>
-      <li><a href="/detail/fairness" data-topic="fairness" class="banner-nav__link" ng-class="{'is-active': nav.active==='fairness'}" ng-click="nav.handleClick('fairness')">Fairness</a></li>
+      <li><a href="/detail/access" data-topic="access" class="banner-nav__link" ng-class="{'is-active': nav.active==='access'}" ng-click="nav.handleClick('access')">{{::nav.content.navLabels.access}}</a></li>
+      <li><a href="/detail/control" data-topic="control" class="banner-nav__link" ng-class="{'is-active': nav.active==='control'}" ng-click="nav.handleClick('control')">{{::nav.content.navLabels.control}}</a></li>
+      <li><a href="/detail/safety" data-topic="safety" class="banner-nav__link" ng-class="{'is-active': nav.active==='safety'}" ng-click="nav.handleClick('safety')">{{::nav.content.navLabels.safety}}</a></li>
+      <li><a href="/detail/fairness" data-topic="fairness" class="banner-nav__link" ng-class="{'is-active': nav.active==='fairness'}" ng-click="nav.handleClick('fairness')">{{::nav.content.navLabels.fairness}}</a></li>
     </ul>
   </nav>
   <section class="main--detail" data-lorax-issue-all></section>

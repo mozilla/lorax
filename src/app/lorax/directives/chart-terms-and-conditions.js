@@ -36,6 +36,7 @@ define(['jquery', 'd3'], function ($, d3) {
         this._windowService = windowService;
 
         this._data = $scope.issue.getInfographic().getDataPoints().termsAndConditions;
+        this._localeData = $scope.issue.getInfographic().getDataPoints().labels;
 
         $scope.tAndC = {
             data: this._data,
@@ -66,11 +67,11 @@ define(['jquery', 'd3'], function ($, d3) {
         var minutes = mins % 60;
 
         if (hours === 0) {
-            return minutes + 'min';
+            return minutes + this._localeData.minutes;
         } else if (hours === 1) {
-            return '1 hour ' + minutes + ' min';
+            return this._localeData.hour + minutes + this._localeData.minutes;
         } else {
-            return hours + ' hours ' + minutes + ' min';
+            return hours + this._localeData.hours + minutes + this._localeData.minutes;
         }
     };
 

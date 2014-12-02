@@ -76,7 +76,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
       lineGraph.append('div')
         .attr('class', 'linegraph__revolvers')
-        .html('* Revolvers are former members of Congress, congressional staffers, or executive branch officials.');
+        .html(data.revolverDescription);
 
       function drawFirstAndLast() {
         var first = svg.append('g');

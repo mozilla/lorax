@@ -60,6 +60,8 @@ define(['angular', 'jquery'], function (angular, $) {
 
         // get model
         this._dataService.getMain().then(function (model) {
+            this._$scope.modalShare.content = model.getModals().share;
+
             var issuesArray = [];
 
             angular.forEach(model._topics, function (topic) {

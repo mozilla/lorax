@@ -39,7 +39,7 @@ define([
         this._clickArea.mousedown = this._onPressClose.bind(this);
 
         var messageStyle = {font: '200 24px "Fira Sans", sans-serif', fill: '#222222'};
-        this._message = new PIXI.Text('The world’s most powerful tool, is the most fragile', messageStyle);
+        this._message = new PIXI.Text(this._introData.message, messageStyle);
         this._message.resolution = Responsive.RATIO;
         this._message.x = Math.round(-(this._message.width / Responsive.RATIO) / 2);
         this._message.y = -90;
@@ -47,12 +47,16 @@ define([
         this._introContainer.addChild(this._message);
 
         var internetStyle = {font: '300 12px "Fira Sans", sans-serif', fill: '#222222'};
-        this._internet = new PIXI.Text('( THE INTERNET )', internetStyle);
+        this._internet = new PIXI.Text(this._introData.internet, internetStyle);
         this._internet.resolution = Responsive.RATIO;
         this._internet.x = Math.round(-(this._internet.width / Responsive.RATIO) / 2);
         this._internet.y = 25;
         this._internet.alpha = 0;
         this._introContainer.addChild(this._internet);
+    };
+
+    IntroMode.prototype.setData = function (data) {
+        this._introData = data;
     };
 
     IntroMode.prototype._onPressClose = function () {

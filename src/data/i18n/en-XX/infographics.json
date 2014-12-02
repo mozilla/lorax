@@ -1,14 +1,14 @@
 {
   "available": {
-    "header": "NEEDS CONTENT PLEASE",
-    "subheader": "NEEDS CONTENT PLEASE",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "Freedom House",
       "src": "http://test.com"
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "internetPopPercentage",
           "invert": false,
@@ -20,31 +20,31 @@
             100.0
           ],
           "legend": [
-            "Less than 20%",
-            "20-40%",
-            "40-60%",
-            "60-80%",
-            "Greater than 80%"
+            "Legend 1",
+            "Legend 2",
+            "Legend 3",
+            "Legend 4",
+            "Legend 5"
           ]
         },
         "display": {
           "name": "internetPopPercentage",
-          "units": "%",
+          "units": "x",
           "reduceSize": false
         }
       }
     }
   },
   "affordable": {
-    "header": "NEEDS CONTENT",
-    "subheader": "NEEDS CONTENT",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "salaryPercentage",
           "invert": true,
@@ -55,22 +55,22 @@
             99999999.0
           ],
           "legend": [
-            "Less than 50%",
-            "50-70%",
-            "70-100%",
-            "Greater than 100%"
+            "Legend 1",
+            "Legend 2",
+            "Legend 3",
+            "Legend 4"
           ]
         },
         "display": {
           "name": "hoursOfWork",
-          "units": ""
+          "units": "x"
         }
       }
     }
   },
   "localization": {
-    "header": "Languages on the Web",
-    "subheader": "Percent of users",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -80,115 +80,110 @@
       "commonLanguages": [
         {
           "spoken": {
-            "lang": "Chinese",
+            "lang": "Locale Test",
             "pct": 26
           },
           "internet": {
-            "lang": "English",
+            "lang": "Locale Test",
             "pct": 26
           }
         },
         {
           "spoken": {
-            "lang": "Spanish",
+            "lang": "Locale Test",
             "pct": 20
           },
           "internet": {
-            "lang": "Chinese",
+            "lang": "Locale Test",
             "pct": 20
           }
         },
         {
           "spoken": {
-            "lang": "English",
+            "lang": "Locale Test",
             "pct": 16
           },
           "internet": {
-            "lang": "Spanish",
+            "lang": "Locale Test",
             "pct": 16
           }
         },
         {
           "spoken": {
-            "lang": "Hindi",
+            "lang": "Locale Test",
             "pct": 14
           },
           "internet": {
-            "lang": "Japanese",
+            "lang": "Locale Test",
             "pct": 14
           }
         },
         {
           "spoken": {
-            "lang": "Arabic",
+            "lang": "Locale Test",
             "pct": 12
           },
           "internet": {
-            "lang": "Portuguese",
+            "lang": "Locale Test",
             "pct": 12
           }
         },
         {
           "spoken": {
-            "lang": "Portuguese",
+            "lang": "Locale Test",
             "pct": 10
           },
           "internet": {
-            "lang": "German",
+            "lang": "Locale Test",
             "pct": 10
           }
         },
         {
           "spoken": {
-            "lang": "Bengali",
+            "lang": "Locale Test",
             "pct": 9
           },
           "internet": {
-            "lang": "Arabic",
+            "lang": "Locale Test",
             "pct": 9
           }
         },
         {
           "spoken": {
-            "lang": "Russian",
+            "lang": "Locale Test",
             "pct": 8
           },
           "internet": {
-            "lang": "French",
+            "lang": "Locale Test",
             "pct": 8
           }
         },
         {
           "spoken": {
-            "lang": "Japanese",
+            "lang": "Locale Test",
             "pct": 5
           },
           "internet": {
-            "lang": "Russian",
+            "lang": "Locale Test",
             "pct": 5
           }
         },
         {
           "spoken": {
-            "lang": "Punjabi",
+            "lang": "Locale Test",
             "pct": 3
           },
           "internet": {
-            "lang": "Korean",
+            "lang": "Locale Test",
             "pct": 3
           }
         }
-      ],
-      "labels": {
-        "spokenLanguages": "Spoken Languages",
-        "vs": "vs",
-        "internetLanguages": "Internet Languages"
-      }
+      ]
     }
   },
   "accessible": {
-    "header": "How to make content more accessible",
-    "subheader": "NEEDS CONTENT",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -196,31 +191,31 @@
     "dataPoints": {
       "sections": [
         {
-          "title": "1/9 of Internet users have a vision impairment",
+          "title": "Locale Test",
           "imageUrl": "/images/accessible-1.png",
           "fullWidth": true
         },
         {
-          "title": "Screen readers",
+          "title": "Locale Test",
           "imageUrl": "/images/accessible-2.png",
-          "copy": "This sends information to a speech synthesizer to be spoken or to a Braille display. When designing a site, make sure your content divisions are friendly for screen readers to access.",
-          "linkCopy": "Learn more",
+          "copy": "Locale copy",
+          "linkCopy": "Locale link",
           "linkUrl": "#",
           "fullWidth": false
         },
         {
-          "title": "Special browsers",
+          "title": "Locale Test",
           "imageUrl": "/images/accessible-3.png",
-          "copy": "A browser is designed specifically for blind users. It should be able to discriminate the structure of your page, to the extent that the page has a structure, and pass the information on to the user in a meaningful way.",
-          "linkCopy": "Learn more",
+          "copy": "Locale copy",
+          "linkCopy": "Locale link",
           "linkUrl": "#",
           "fullWidth": false
         },
         {
-          "title": "Screen magnification",
+          "title": "Locale Test",
           "imageUrl": "/images/accessible-4.png",
-          "copy": "Some users will use a screen magnification program. For these users, your choice of color and layout can make an enormous difference in their experience of your page.",
-          "linkCopy": "Learn more",
+          "copy": "Locale copy",
+          "linkCopy": "Locale link",
           "linkUrl": "#",
           "fullWidth": false
         }
@@ -228,83 +223,83 @@
     }
   },
   "infrastructure": {
-    "header": "Stock prices of internet and mobile operators",
-    "subheader": "Share prices by year",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "dataLabels": [
-        "Internet Companies",
-        "Mobile Companies"
+        "Test 1",
+        "Test 2"
       ],
       "lineGraphData": [
         {
-          "label": "2004",
+          "label": "Test",
           "data": [
             43.23,
             53.36
           ]
         },
         {
-          "label": "2005",
+          "label": "Test",
           "data": [
             60.01,
             55.13
           ]
         },
         {
-          "label": "2006",
+          "label": "Test",
           "data": [
             73.92,
             61.34
           ]
         },
         {
-          "label": "2007",
+          "label": "Test",
           "data": [
             110.76,
             91.27
           ]
         },
         {
-          "label": "2008",
+          "label": "Test",
           "data": [
             107.17,
             81.29
           ]
         },
         {
-          "label": "2009",
+          "label": "Test",
           "data": [
             108.92,
             60.96
           ]
         },
         {
-          "label": "2010",
+          "label": "Test",
           "data": [
             155.98,
             67.43
           ]
         },
         {
-          "label": "2011",
+          "label": "Test",
           "data": [
             186.40,
             75.46
           ]
         },
         {
-          "label": "2012",
+          "label": "Test",
           "data": [
             230.62,
             69.98
           ]
         },
         {
-          "label": "2013",
+          "label": "Test",
           "data": [
             262.03,
             70.56
@@ -314,8 +309,8 @@
     }
   },
   "contentCreation": {
-    "header": "Availability of self-publishing tools with ability to retain ownership of content",
-    "subheader": "Excerpt from Instagram's Terms of Service",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -325,8 +320,8 @@
     }
   },
   "identityControl": {
-    "header": "Market share of social login providers",
-    "subheader": "Percent per Q3 of 2014",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -334,142 +329,142 @@
     "dataPoints": {
       "marketShare": [
         {
-          "company": "Other",
+          "company": "Test",
           "value": 5
         },
         {
-          "company": "LinkedIn",
+          "company": "Test",
           "value": 3
         },
         {
-          "company": "Yahoo",
+          "company": "Test",
           "value": 4
         },
         {
-          "company": "Microsoft",
+          "company": "Test",
           "value": 2
         },
         {
-          "company": "Twitter",
+          "company": "Test",
           "value": 7
         },
         {
-          "company": "Google",
+          "company": "Test",
           "value": 34
         },
         {
-          "company": "Facebook",
+          "company": "Test",
           "value": 45
         }
       ]
     }
   },
   "publicTrust": {
-    "header": "Net positive view of industries",
-    "subheader": "Percent by Year",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "dataLabels": [
-        "Internet",
-        "Computing"
+        "Test 1",
+        "Test 2"
       ],
       "lineGraphData": [
         {
-          "label": "2001",
+          "label": "Test",
           "data": [
             17,
             57
           ]
         },
         {
-          "label": "2002",
+          "label": "Test",
           "data": [
             22,
             55
           ]
         },
         {
-          "label": "2003",
+          "label": "Test",
           "data": [
             31,
             64
           ]
         },
         {
-          "label": "2004",
+          "label": "Test",
           "data": [
             23,
             52
           ]
         },
         {
-          "label": "2005",
+          "label": "Test",
           "data": [
             24,
             47
           ]
         },
         {
-          "label": "2006",
+          "label": "Test",
           "data": [
             29,
             50
           ]
         },
         {
-          "label": "2007",
+          "label": "Test",
           "data": [
             35,
             51
           ]
         },
         {
-          "label": "2008",
+          "label": "Test",
           "data": [
             32,
             54
           ]
         },
         {
-          "label": "2009",
+          "label": "Test",
           "data": [
             30,
             53
           ]
         },
         {
-          "label": "2010",
+          "label": "Test",
           "data": [
             28,
             49
           ]
         },
         {
-          "label": "2011",
+          "label": "Test",
           "data": [
             40,
             62
           ]
         },
         {
-          "label": "2012",
+          "label": "Test",
           "data": [
             36,
             63
           ]
         },
         {
-          "label": "2013",
+          "label": "Test",
           "data": [
             34,
             56
           ]
         },
         {
-          "label": "2014",
+          "label": "Test",
           "data": [
             27,
             58
@@ -479,8 +474,8 @@
     }
   },
   "dataTracking": {
-    "header": "Top 15 Data Trackers",
-    "subheader": "Percentage of User History",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -488,86 +483,86 @@
     "dataPoints": {
       "tracking": [
         {
-          "company": "Google",
-          "tracker": "google-analytics.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 56
         },
         {
-          "company": "Google",
-          "tracker": "doubleclick.net",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 50
         },
         {
-          "company": "comScore",
-          "tracker": "scorecardresearch.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 38
         },
         {
-          "company": "Facebook",
-          "tracker": "facebook.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 31
         },
         {
-          "company": "Google",
-          "tracker": "google.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 24
         },
         {
-          "company": "Google",
-          "tracker": "googleapis.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 23
         },
         {
-          "company": "Facebook",
-          "tracker": "facebook.net",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 23
         },
         {
-          "company": "Quantcast",
-          "tracker": "quantserve.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 23
         },
         {
-          "company": "Twitter",
-          "tracker": "twitter.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 22
         },
         {
-          "company": "Google",
-          "tracker": "googleadservices.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 20
         },
         {
-          "company": "Google",
-          "tracker": "googlesyndication.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 20
         },
         {
-          "company": "Google",
-          "tracker": "2mdn.net",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 18
         },
         {
-          "company": "Facebook",
-          "tracker": "fbcdn.net",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 17
         },
         {
-          "company": "Google",
-          "tracker": "gstatic.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 17
         },
         {
-          "company": "Ad Nexus",
-          "tracker": "adnxs.com",
+          "company": "Test",
+          "tracker": "Test tracker",
           "percent": 17
         }
       ]
     }
   },
   "surveillance": {
-    "header": "Surveillance as a Business Model",
-    "subheader": "Vicious cycle of data collection",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -575,43 +570,43 @@
     "dataPoints": {
       "surveillance": [
         {
-          "name": "No Scarcity",
-          "description": "In the offline world, inventory of a space is constrained. In the online world, inventory is theoretically infinite. Web companies make money by selling more and more page views, in turn making online advertising cheaper."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Advertising",
-          "description": "For most web companies, advertising is the sole viable business model as they are competing with \"free\" alternatives."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Further Entrenched",
-          "description": "With little pressure from government, or for users addicted to \"free\", web advertising becomes further entrenched."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Lack of Regulation",
-          "description": "Governments have no incentives to regulate data collection and usage."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Surveillance",
-          "description": "Government agencies tap into it with (or without) companies cooperation with little to no oversight."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Government Access",
-          "description": "There is little courts can do to block government from accessing this data for security purposes when private companies already do so for commerical purposes."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Data Storage",
-          "description": "Massive amounts of data on individuals are collected, stored, and exchanged by web companies."
+          "name": "Locale Test",
+          "description": "Locale description."
         },
         {
-          "name": "Data Collection",
-          "description": "Web advertising competes with offline advertising by promising advertisers that they can perfectly target messages to individuals. This requires that advertising companies collect data useful for identifying individuals and their interests."
+          "name": "Locale Test",
+          "description": "Locale description."
         }
       ]
     }
   },
   "userAgreements": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -621,80 +616,75 @@
         {
           "length": 36275,
           "minutes": 201,
-          "name": "Paypal",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 30066,
           "minutes": 167,
-          "name": "Hamlet",
+          "name": "Test",
           "shakespeare": true
         },
         {
           "length": 19972,
           "minutes": 110,
-          "name": "Apple iTunes",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 18110,
           "minutes": 100,
-          "name": "Macbeth",
+          "name": "Test",
           "shakespeare": true
         },
         {
           "length": 14714,
           "minutes": 81,
-          "name": "Windows Live",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 13366,
           "minutes": 74,
-          "name": "Apple iOS 5",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 11195,
           "minutes": 62,
-          "name": "Facebook",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 10724,
           "minutes": 60,
-          "name": "Apple iCloud",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 10640,
           "minutes": 60,
-          "name": "Google",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 7115,
           "minutes": 39,
-          "name": "Amazon Kindle",
+          "name": "Test",
           "shakespeare": false
         },
         {
           "length": 4445,
           "minutes": 24,
-          "name": "Twitter",
+          "name": "Test",
           "shakespeare": false
         }
-      ],
-      "labels": {
-        "minutes": " min",
-        "hour": "1 hour ",
-        "hours": " hours "
-      }
+      ]
     }
   },
   "openSource": {
-    "header": "Operating system (OS) vs. browser source usage",
-    "subheader": "Percent by Year",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -702,19 +692,19 @@
     "dataPoints": {
       "dataLabels": {
         "os": [
-          "OS Closed Source",
-          "OS Open Source",
-          "OS Free and Open Source"
+            "Test 1",
+            "Test 2",
+            "Test 3"
         ],
         "browser": [
-          "Browser Closed Source",
-          "Browser Open Source",
-          "Browser Free and Open Source"
+            "Test 1",
+            "Test 2",
+            "Test 3"
         ]
       },
       "lineGraphData": [
         {
-          "label": "2008",
+          "label": "Test",
           "data": [
             99.10,
             0.01,
@@ -725,7 +715,7 @@
           ]
         },
         {
-          "label": "2009",
+          "label": "Test",
           "data": [
             99.00,
             0.01,
@@ -736,7 +726,7 @@
           ]
         },
         {
-          "label": "2010",
+          "label": "Test",
           "data": [
             97.75,
             0.25,
@@ -747,7 +737,7 @@
           ]
         },
         {
-          "label": "2011",
+          "label": "Test",
           "data": [
             94.90,
             1.70,
@@ -758,7 +748,7 @@
           ]
         },
         {
-          "label": "2012",
+          "label": "Test",
           "data": [
             92.70,
             3.95,
@@ -769,7 +759,7 @@
           ]
         },
         {
-          "label": "2013",
+          "label": "Test",
           "data": [
             88.75,
             8.15,
@@ -780,7 +770,7 @@
           ]
         },
         {
-          "label": "2014",
+          "label": "Test",
           "data": [
             80.30,
             16.35,
@@ -794,8 +784,8 @@
     }
   },
   "openDataStandards": {
-    "header": "Do key online services allow data portability?",
-    "subheader": "Can you extract data?",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -803,72 +793,68 @@
     "dataPoints": {
       "dataStandards": [
         {
-          "service": "Google",
-          "answer": "Partial",
-          "comments": "An impressive number of products and services, but not search history"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Facebook",
-          "answer": "Partial",
-          "comments": "Almost all of your data (deserve credit for this), but not your search history"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Twitter",
-          "answer": "Yes",
-          "comments": "NEEDS CONTENT"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "WhatsApp",
-          "answer": "Yes",
-          "comments": "NEEDS CONTENT"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "LinkedIn",
-          "answer": "Partial",
-          "comments": "Can export your contacts, which is core to LinkedIn's offer"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Reddit",
-          "answer": "No",
-          "comments": "Not supported, but Reddit community offers hacks to help you do this"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Tumblr",
-          "answer": "No",
-          "comments": "Not supported, but Tumblr community offers hacks to help you do this"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Pinterest",
-          "answer": "No",
-          "comments": "Not supported, but Pinterest community offers hacks to help you do this"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Instagram",
-          "answer": "No",
-          "comments": "Not supported, but Instagram community offers hacks to help you do this"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         },
         {
-          "service": "Wordpress",
-          "answer": "Yes",
-          "comments": "NEEDS CONTENT"
+          "service": "Test 1",
+          "answer": "Test 2",
+          "comments": "Test description here."
         }
-      ],
-      "labels": {
-        "services": "Services",
-        "dataExtractable": "Data Extractable?"
-      }
+      ]
     }
   },
   "dataRegulation": {
-    "header": "NEEDS CONTENT",
-    "subheader": "NEEDS CONTENT",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "dataRegulationStatus",
           "invert": false,
@@ -878,140 +864,139 @@
             2.01
           ],
           "legend": [
-            "Low",
-            "Medium",
-            "High"
+            "Test 1",
+            "Test 2",
+            "Test 3"
           ]
         },
         "display": {
           "name": "dataRegulationType",
-          "units": "",
+          "units": "x",
           "reduceSize": true
         }
       }
     }
   },
   "lobbyPower": {
-    "header": "Lobbying Expenditures vs. Revolvers*",
-    "subheader": "in $ and % per year",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "dataLabels": [
-        "Expenditures",
-        "Revolvers"
+        "Test 1",
+        "Test 2"
       ],
-      "revolverDescription": "* Revolvers are former members of Congress, congressional staffers, or executive branch officials.",
       "lineGraphData": [
         {
-          "label": "1998",
+          "label": "Test",
           "data": [
             1450000000,
             44.70
           ]
         },
         {
-          "label": "1999",
+          "label": "Test",
           "data": [
             1450000000,
             43.70
           ]
         },
         {
-          "label": "2000",
+          "label": "Test",
           "data": [
             1570000000,
             48.20
           ]
         },
         {
-          "label": "2001",
+          "label": "Test",
           "data": [
             1640000000,
             50.90
           ]
         },
         {
-          "label": "2002",
+          "label": "Test",
           "data": [
             1830000000,
             54.90
           ]
         },
         {
-          "label": "2003",
+          "label": "Test",
           "data": [
             2060000000,
             57.00
           ]
         },
         {
-          "label": "2004",
+          "label": "Test",
           "data": [
             2200000000,
             56.80
           ]
         },
         {
-          "label": "2005",
+          "label": "Test",
           "data": [
             2440000000,
             57.50
           ]
         },
         {
-          "label": "2006",
+          "label": "Test",
           "data": [
             2630000000,
             60.10
           ]
         },
         {
-          "label": "2007",
+          "label": "Test",
           "data": [
             2870000000,
             60.70
           ]
         },
         {
-          "label": "2008",
+          "label": "Test",
           "data": [
             3300000000,
             63.70
           ]
         },
         {
-          "label": "2009",
+          "label": "Test",
           "data": [
             3500000000,
             66.60
           ]
         },
         {
-          "label": "2010",
+          "label": "Test",
           "data": [
             3550000000,
             67.50
           ]
         },
         {
-          "label": "2011",
+          "label": "Test",
           "data": [
             3330000000,
             68.50
           ]
         },
         {
-          "label": "2012",
+          "label": "Test",
           "data": [
             3310000000,
             68.60
           ]
         },
         {
-          "label": "2013",
+          "label": "Test",
           "data": [
             3240000000,
             68.90
@@ -1021,15 +1006,15 @@
     }
   },
   "censorship": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "levelOfFreedom",
           "invert": true,
@@ -1039,22 +1024,22 @@
             2.01
           ],
           "legend": [
-            "Not Free",
-            "Partly Free",
-            "Free"
+            "Test 1",
+            "Test 2",
+            "Test 3"
           ]
         },
         "display": {
           "name": "freedomScore",
-          "units": "",
+          "units": "x",
           "reduceSize": false
         }
       }
     }
   },
   "cyberThreats": {
-    "header": "The Different Types of Cyber-Threats",
-    "subheader": "Vulnerabilities, Malware, and Exploits",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1062,76 +1047,71 @@
     "dataPoints": {
       "cyberThreats": [
         {
-          "name": "Phishing",
-          "description": "A high-tech scam that frequently uses spam or pop-up messages to deceive people into disclosing sensitive information. Internet scammers use e-mail bait to \"phish\" for passwords and financial information from the sea of internet users.",
-          "category": 0
+          "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Viruses",
-          "description": "Viruses are programs that “infect” other programs, and when those programs are run, the virus is able to spread. It is possible for a virus to be benign, but they are usually designed maliciously.",
-          "category": 1
+        "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Malware"
         },
         {
-          "name": "Zero-day Exploit",
-          "description": "A \"zero-day\" exploit is a technique developed to take advantage of a security vulnerability that was previously unknown.",
-          "category": 2
+                  "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Exploits"
         },
         {
-          "name": "Spamming",
-          "description": "Spam is \"junk\" email - unsolicited advertising. Because of the very low cost of sending email, a lot of spam is delivered, from reasonably reputable promotional emails to more malicious and potentially damaging material.",
-          "category": 0
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Worms",
-          "description": "Worms are similar to viruses, but they are able to reproduce themselves independently of other software programs and propogate themselves across a network of machines.",
-          "category": 1
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Malware"
         },
         {
-          "name": "Cross-site Scripting",
-          "description": "Cross site scripting (\"XSS\") is an exploit where a trusted website is also hosting a third party's code (often unwittingly) that a user will execute.",
-          "category": 2
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Exploits"
         },
         {
-          "name": "Weak Passwords",
-          "description": "More and more Internet services require users choose more complex passwords. That is because weaker passwords (which may seem more memorable to the user) can easily be auto-generated in \"brute force\" methods to crack passwords.",
-          "category": 0
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Trojan Horses",
-          "description": "A trojan horse is a program that conceals its true purpose. It may appear to be useful for the user, but have a true purpose to leak data, for example.",
-          "category": 1
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Malware"
         },
         {
-          "name": "Denial of Service Attack",
-          "description": "A Denial of Service attack is a method whereby a sytem is flooded with inbound requests, consuming all its resources and effectively taking the system out of action. A distributed denial of service attack (DDOS) is such an attack where multiple systems are attacking the target.",
-          "category": 2
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Exploits"
         },
         {
-          "name": "Removable Media",
-          "description": "It is easily overlooked, but removable media (such as USB drives) may be used to transmit malicious software.",
-          "category": 0
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Vulnerabilities"
         },
         {
-          "name": "Spyware",
-          "description": "Spyware is software that is installed on a user's machine, frequently without their knowledge, which transmits data about the user. Spyware may be a trojan horse, or it may not be visible to the user.",
-          "category": 1
+                    "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Malware"
         },
         {
-          "name": "Packet Sniffing",
-          "description": "Packet sniffners are program that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
-          "category": 2
+                   "name": "Test Name",
+          "description": "Test description here.",
+          "category": "Exploits"
         }
-      ],
-      "labels": {
-        "vulnerabilities": "Vulnerabilities",
-        "malware": "Malware",
-        "exploits": "Exploits"
-      }
+      ]
     }
   },
   "cyberBullying": {
-    "header": "NEEDS CONTENT",
-    "subheader": "Needs more content.",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1139,34 +1119,34 @@
     "dataPoints": {
       "cyberBullyingData": {
         "socialNetwork": {
-          "title": "Social Network Rise",
+          "title": "Test Title",
           "lineData": [
             {
-              "label": "2010",
+              "label": "Test",
               "data": [
                 85
               ]
             },
             {
-              "label": "2011",
+              "label": "Test",
               "data": [
                 86
               ]
             },
             {
-              "label": "2012",
+              "label": "Test",
               "data": [
                 93
               ]
             },
             {
-              "label": "2013",
+              "label": "Test",
               "data": [
                 89
               ]
             },
             {
-              "label": "2014",
+              "label": "Test",
               "data": [
                 90
               ]
@@ -1174,35 +1154,35 @@
           ]
         },
         "cyberStalking": {
-          "title": "Around 6.5 out of 10 students experienced cyberstalking in 2013.",
-          "copy": "Cyberstalking is the use of the Internet or other electronic means to stalk or harass an individual, a group, or an organization.",
+          "title": "Locale Test Title",
+          "copy": "Locale Test copy",
           "imageUrl": "/images/cyber-bullying-stalking.png"
         },
         "onlineHarassment": {
-          "title": "Online Harassment",
+          "title": "Locale Test",
           "circleData": [
             {
-              "name": "Online Dating",
+              "name": "Test Title",
               "value": 6
             },
             {
-              "name": "Discussion Site",
+              "name": "Test Title",
               "value": 10
             },
             {
-              "name": "Email",
+              "name": "Test Title",
               "value": 16
             },
             {
-              "name": "Online Gaming",
+              "name": "Test Title",
               "value": 17
             },
             {
-              "name": "Website Comments Section",
+              "name": "Test Title",
               "value": 22
             },
             {
-              "name": "Social Networking Site",
+              "name": "Test Title",
               "value": 66
             }
           ]
@@ -1211,15 +1191,15 @@
     }
   },
   "networkDecentralization": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "governmentControl",
           "invert": false,
@@ -1229,22 +1209,22 @@
             2.01
           ],
           "legend": [
-            "Easy",
-            "Moderate",
-            "Difficult"
+            "Test 1",
+            "Test 2",
+            "Test 3"
           ]
         },
         "display": {
           "name": "pointsOfControl",
-          "units": "",
+          "units": "x",
           "reduceSize": false
         }
       }
     }
   },
   "cloudSecurity": {
-    "header": "News headlines post-iCloud leaks",
-    "subheader": "International News Sources",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1252,42 +1232,42 @@
     "dataPoints": {
       "newsSource": [
         {
-          "headline": "Apple says it will add new iCloud security measures after celebrity hack",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-nytimes.png",
           "inverted": false
         },
         {
-          "headline": "Apple actively investigating iCloud link to celeb photo leak",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-cnet.png",
           "inverted": true
         },
         {
-          "headline": "Is it safe for you to use the cloud after celebrity hack?",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-time.png",
           "inverted": false
         },
         {
-          "headline": "iCloud celebrity photo hack: texts, address books and more also accessible",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-sydney.png",
           "inverted": true
         },
         {
-          "headline": "Nuove foto di star nude sul web",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-cds.png",
           "inverted": false
         },
         {
-          "headline": "Continua o vazamento de imagens de famosos enquanto a Apple nega ataque",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-elpais.png",
           "inverted": true
         },
         {
-          "headline": "Apple \"indigné\", va revoir la sécurité des comptes iCloud",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-lemonde.png",
           "inverted": false
         },
         {
-          "headline": "Apple erklärt Nackfoto-Skandal mit passwortklau",
+          "headline": "Locale Test Headline",
           "logoUrl": "/images/cloud-security-diewelt.png",
           "inverted": true
         }
@@ -1295,15 +1275,15 @@
     }
   },
   "netNeutrality": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
     },
     "dataPoints": {
       "countryData": {
-        "findCountry": "Find a country",
+        "findCountry": "Test country",
         "shading": {
           "name": "percentBitTorrent",
           "invert": true,
@@ -1315,24 +1295,24 @@
             100.0
           ],
           "legend": [
-            "Less than 20%",
-            "20-40%",
-            "40-60%",
-            "60-80%",
-            "Greater than 80%"
+            "Test 1",
+            "Test 2",
+            "Test 3",
+            "Test 4",
+            "Test 5"
           ]
         },
         "display": {
           "name": "percentBitTorrent",
-          "units": "%",
+          "units": "x",
           "reduceSize": false
         }
       }
     }
   },
   "zeroRating": {
-    "header": "Zero-rating cycle",
-    "subheader": "From operators to consumers to content providers",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1340,23 +1320,23 @@
     "dataPoints": {
         "cycle" : {
             "mainTriangle" : [
-                "Operators",
-                "Consumers",
-                "Content Providers"
+                "Test 1",
+                "Test 2",
+                "Test 3"
             ],
             "outsideCircle" : [
-                "Zero-rated services are accessible at no charge",
-                "Content providers gain new users",
-                "Negotiate referential access for online content"
+                "Locale 1",
+                "Locale 2",
+                "Locale 3"
             ],
-            "sideTriangle": "Users have to pay to access the rest of the Web",
-            "insideTriangle": "For users coming online for the first time, their services become their only experience"
+            "sideTriangle": "Content 1",
+            "insideTriangle": "Content 2"
         }
     }
   },
   "platformNeutrality": {
-    "header": "Developers that target Mobile Web vs. Native platform",
-    "subheader": "Percentage per Q3 of 2014",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1364,23 +1344,23 @@
     "dataPoints": {
       "percentOfUsers": [
         {
-          "type": "Mobile",
+          "type": "Test 1",
           "value": 15
         },
         {
-          "type": "Android",
+          "type": "Test 2",
           "value": 30
         },
         {
-          "type": "iOS",
+          "type": "Test 3",
           "value": 49
         }
       ]
     }
   },
   "concentrationOfPower": {
-    "header": "Revenue by top internet companies vs. countries",
-    "subheader": "Total reserves in US$ for 2013",
+    "header": "Locale Test Header",
+    "subheader": "Locale Test Subheader",
     "source": {
       "name": "",
       "src": ""
@@ -1388,42 +1368,42 @@
     "dataPoints": {
       "totalRevenue": [
         {
-          "name": "Apple",
+          "name": "Test",
           "amount": 155,
           "tech": true
         },
         {
-          "name": "Italy",
+          "name": "Test",
           "amount": 146,
           "tech": false
         },
         {
-          "name": "United Kingdom",
+          "name": "Test",
           "amount": 104,
           "tech": false
         },
         {
-          "name": "Microsoft",
+          "name": "Test",
           "amount": 89,
           "tech": true
         },
         {
-          "name": "Philippines",
+          "name": "Test",
           "amount": 83,
           "tech": false
         },
         {
-          "name": "Canada",
+          "name": "Test",
           "amount": 72,
           "tech": false
         },
         {
-          "name": "Google",
+          "name": "Test",
           "amount": 62,
           "tech": true
         },
         {
-          "name": "South Africa",
+          "name": "Test",
           "amount": 50,
           "tech": false
         }

@@ -226,8 +226,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
                 .attr('class', 'worldmap__dropdown');
 
             dropDown.append('option')
-                .attr('value', 'Find a country')
-                .text('Find a country');
+                .attr('value', function() { return controller._$scope.issue.getInfographic().getDataPoints().countryData.findCountry; })
+                .text(function() { return controller._$scope.issue.getInfographic().getDataPoints().countryData.findCountry; });
 
             $.each(countryData, function(key, data) {
                 if (infographicData[data.id] && infographicData[data.id].displayData) {

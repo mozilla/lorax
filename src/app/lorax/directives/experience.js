@@ -25,18 +25,24 @@ define(['jquery'], function ($) {
     var ExperienceCtrl = function (
         $scope,
         experienceService,
-        routesService
+        routesService,
+        dataService
         )
     {
         this._$scope = $scope;
         this._experienceService = experienceService;
         this._routesService = routesService;
+        this._dataService = dataService;
 
         this._$scope = $scope;
         this._$scope.experience = {
             currentView: 'ecosystem',
-            isOpen: false
+            isOpen: false,
         };
+
+        this._dataService.getMain().then( function (model) {
+            this._$scope.experience.localeData = model.getMiscLocale();
+        }.bind(this));
 
         // listen to route change
         this._routesService.subscribe('change', this.onRouteChange.bind(this));
@@ -52,7 +58,8 @@ define(['jquery'], function ($) {
     ExperienceCtrl.$inject = [
         '$scope',
         'experienceService',
-        'routesService'
+        'routesService',
+        'dataService'
     ];
 
     ExperienceCtrl.prototype.switchView = function (view) {

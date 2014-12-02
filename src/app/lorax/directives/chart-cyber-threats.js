@@ -50,6 +50,7 @@ define(['jquery', 'd3'], function ($, d3) {
   var ChartCyberThreatsLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
       var circleData = controller._$scope.issue.getInfographic().getDataPoints().cyberThreats;
+      var labelData = controller._$scope.issue.getInfographic().getDataPoints().labels;
       var id = controller._$scope.issue.getId();
       var circleChart = d3.select('#' + id + ' .infographic__wrapper div');
 
@@ -100,13 +101,13 @@ define(['jquery', 'd3'], function ($, d3) {
           .style('height', circleSize + 'px')
           .style('border-radius', circleSize + 'px')
           .style('background', function(d) {
-            if ( d.category === 'Vulnerabilities') {
+            if ( d.category === 0) {
               return 'rgba(0,0,0,0.7)';
             }
-            else if ( d.category === 'Malware') {
+            else if ( d.category === 1) {
               return 'rgba(0,0,0,0.45)';
             }
-            else if ( d.category === 'Exploits') {
+            else if ( d.category === 2) {
               return 'rgba(0,0,0,0.2)';
             }
           })
@@ -138,15 +139,15 @@ define(['jquery', 'd3'], function ($, d3) {
           .attr('class', 'cyberthreat__legend');
 
         legend.append('div')
-          .text('Vulnerabilities')
+          .text(labelData.vulnerabilities)
           .style('border-left', '15px solid rgba(0,0,0,0.7)');
 
         legend.append('div')
-          .text('Malware')
+          .text(labelData.malware)
           .style('border-left', '15px solid rgba(0,0,0,0.45)');
 
         legend.append('div')
-          .text('Exploits')
+          .text(labelData.exploits)
           .style('border-left', '15px solid rgba(0,0,0,0.2)');
 
       }

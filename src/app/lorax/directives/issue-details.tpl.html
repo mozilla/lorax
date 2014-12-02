@@ -20,7 +20,7 @@
       <li>
         <section class="detail-link">
           <header class="detail-link__header">
-            <h1>What Mozilla is doing</h1>
+            <h1>{{::issueDetails.issue.getMiscLocale().mozDoingLabel}}</h1>
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getMozActionCopy()}}</p>
           <a ng-if="::issueDetails.issue.getMozActionLink().length === 1" href="{{::issueDetails.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getMozActionLink()[0].copy}}</a>
@@ -30,7 +30,7 @@
       <li>
         <section class="detail-link">
           <header class="detail-link__header">
-            <h1>What you can do</h1>
+            <h1>{{::issueDetails.issue.getMiscLocale().yourDoingLabel}}</h1>
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getYourActionCopy()}}</p>
           <a ng-if="::issueDetails.issue.getYourActionLink().length === 1" href="{{::issueDetails.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getYourActionLink()[0].copy}}</a>
@@ -39,7 +39,7 @@
       </li>
     </ul>
     <div class="detail-tags detail-tags--more" ng-if="::issueDetails.issue.getTags()">
-      <span class="detail-tags__title">Related Tags:</span>
+      <span class="detail-tags__title">{{::issueDetails.issue.getMiscLocale().tagsLabel}}</span>
       <a ng-repeat="tag in ::issueDetails.issue.getTags()" href="/tag/{{tag.getURLId()}}" class="detail-tags__tag">{{tag.getName()}}<span ng-show="!$last">, </span></a>
     </div>
   </section>

@@ -11,6 +11,7 @@ define([
         this._tags = [];
         this._topics = [];
         this._modals = localeData.modals;
+        this._miscLocale = localeData.misc;
 
         for (var idxTopic in data.topics) {
             this._topics.push(new TopicModel(
@@ -18,7 +19,8 @@ define([
                 data.topics[idxTopic],
                 this._tags,
                 localeData.topics[idxTopic],
-                infographicData
+                infographicData,
+                localeData
             ));
         }
     };
@@ -58,6 +60,10 @@ define([
 
     MainModel.prototype.getModals = function () {
         return this._modals;
+    };
+
+    MainModel.prototype.getMiscLocale = function () {
+        return this._miscLocale;
     };
 
     return MainModel;

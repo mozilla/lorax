@@ -76,9 +76,11 @@ define([
         this._issueData = data.getIssues();
         this._tagData = data.getTags();
         this._topicsModeData = data.getTopics();
+        this._miscData = data.getMiscLocale();
 
         this._topicsMode.setData(this._topicsModeData);
         this._detailMode.setTopics(this._topicsModeData);
+        this._introMode.setData(this._miscData.intro);
     };
 
     Experience.prototype.setContainer = function (container) {

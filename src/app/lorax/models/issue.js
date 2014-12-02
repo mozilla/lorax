@@ -15,7 +15,8 @@ define([
         data,
         tags,
         localeData,
-        infographicData
+        infographicData,
+        localeDataAll
     ) {
         this._parent = parentInstance;
         this._id = id;
@@ -36,6 +37,7 @@ define([
             this._infographicType,
             infographicData
         );
+        this._miscLocale = localeDataAll.misc;
 
         for (var tagIdx in data.tags) {
             //TODO: consider changing this to an object instead of an array
@@ -47,7 +49,7 @@ define([
                 this._tags.push(tagObjs[0]);
                 tagObjs[0].addIssue(this);
             } else {
-                var newTag = new TagModel(data.tags[tagIdx], localeData);
+                var newTag = new TagModel(data.tags[tagIdx], localeDataAll);
                 this._tags.push(newTag);
                 newTag.addIssue(this);
                 tags.push(newTag);
@@ -145,6 +147,10 @@ define([
 
     IssueModel.prototype.getUrl = function () {
         return '/detail/' + this.getParentId() + '/' + this.getId();
+    };
+
+    IssueModel.prototype.getMiscLocale = function () {
+        return this._miscLocale;
     };
 
     return IssueModel;

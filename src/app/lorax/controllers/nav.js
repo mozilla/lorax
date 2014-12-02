@@ -10,19 +10,22 @@ define([], function () {
     var NavCtrl = function (
         $scope,
         $timeout,
-        windowService
+        windowService,
+        dataService
     ) {
 
         this._$scope = $scope;
         this._$timeout = $timeout;
         this._windowService = windowService;
+        this._dataService = dataService;
 
         this._$scope.nav = {
             active : null
         };
 
-        this._$scope.nav.handleClick = function () {
-        }.bind(this);
+        this._dataService.getMain().then(function (model) {
+            this._$scope.nav.content = model.getMiscLocale();
+        }.bind(this));
 
         windowService.subscribe('topic', this._onChangeTopic.bind(this));
     };
@@ -30,7 +33,8 @@ define([], function () {
     NavCtrl.$inject = [
         '$scope',
         '$timeout',
-        'windowService'
+        'windowService',
+        'dataService'
     ];
 
     NavCtrl.prototype._onChangeTopic = function (topic) {

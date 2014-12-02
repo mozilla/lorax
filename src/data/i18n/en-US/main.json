@@ -643,6 +643,9 @@
     },
     "openness": {
       "name": "Openness"
+    },
+    "userData": {
+      "name": "User Data"
     }
   },
   "modals": {
@@ -658,7 +661,8 @@
         "title": "Keep Me Informed",
         "copy": "Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.",
         "label": "Enter Your Email",
-        "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy"
+        "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy",
+        "submitButton": "Submit"
     },
     "legend": {
       "title": "Explore the most important issues on the web today and what shape they're in.",
@@ -702,6 +706,33 @@
           }
         ]
       ]
+    },
+    "share": {
+        "shareButton": "Share",
+        "learnMore": "Learn More",
+        "aboutIssue": " about this issue",
+        "email": "Email"
     }
+  },
+  "misc": {
+        "sourceLabel": "Source:",
+        "tagsLabel": "Tags:",
+        "mozDoingLabel": "What Mozilla Is Doing",
+        "yourDoingLabel": "What You Can Do",
+        "modeNames": {
+            "ecosystem": "Ecosystem",
+            "vitals": "Vitals",
+            "checklist": "Checklist"
+        },
+        "navLabels": {
+            "access": "Access",
+            "control": "Control",
+            "safety": "Safety",
+            "fairness": "Fairness"
+        },
+        "intro": {
+            "internet": "( THE INTERNET )",
+            "message": "The world's most powerful tool is the most fragile."
+        }
   }
 }

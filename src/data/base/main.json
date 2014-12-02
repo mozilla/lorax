@@ -8,8 +8,8 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Mobile",
-            "Emerging economies"
+            "mobile",
+            "emergingEconomies"
           ]
         },
         "affordable":{
@@ -18,9 +18,9 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Mobile",
-            "Emerging economies",
-            "Network operators"
+            "mobile",
+            "emergingEconomies",
+            "networkOperators"
           ]
         },
         "localization":{
@@ -29,8 +29,8 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "User rights",
-            "Emerging economies"
+            "userRights",
+            "emergingEconomies"
           ]
         },
         "accessible":{
@@ -39,8 +39,8 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "User rights",
-            "Regulation"
+            "userRights",
+            "regulation"
           ]
         },
         "infrastructure":{
@@ -49,10 +49,10 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Mobile",
-            "Network operators",
-            "Internet companies",
-            "Private internet"
+            "mobile",
+            "networkOperators",
+            "internetCompanies",
+            "privateInternet"
           ]
         }
       }
@@ -65,12 +65,12 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "Apple",
-            "User rights",
-            "Regulation"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "apple",
+            "userRights",
+            "regulation"
           ]
         },
         "identityControl":{
@@ -79,11 +79,11 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "User data",
-            "User rights"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "userData",
+            "userRights"
           ]
         },
         "publicTrust":{
@@ -92,9 +92,9 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Government",
-            "Internet companies",
-            "Privacy"
+            "government",
+            "internetCompanies",
+            "privacy"
           ]
         },
         "dataTracking":{
@@ -103,11 +103,11 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "User data",
-            "Privacy"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "userData",
+            "privacy"
           ]
         },
         "surveillance":{
@@ -116,13 +116,13 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Network operators",
-            "Government",
-            "Internet companies",
-            "User data",
-            "Privacy",
-            "User rights",
-            "Regulation"
+            "networkOperators",
+            "government",
+            "internetCompanies",
+            "userData",
+            "privacy",
+            "userRights",
+            "regulation"
           ]
         },
         "userAgreements":{
@@ -131,12 +131,12 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "Apple",
-            "User rights",
-            "Regulation"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "apple",
+            "userRights",
+            "regulation"
           ]
         },
         "openSource":{
@@ -161,10 +161,10 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Government",
-            "User data",
-            "User rights",
-            "Regulation"
+            "government",
+            "userData",
+            "userRights",
+            "regulation"
           ]
         },
         "lobbyPower":{
@@ -173,10 +173,10 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Government",
-            "Internet companies",
-            "Google",
-            "Facebook"
+            "government",
+            "internetCompanies",
+            "google",
+            "facebook"
           ]
         },
         "censorship":{
@@ -185,8 +185,8 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Government",
-            "User rights"
+            "government",
+            "userRights"
           ]
         }
       }
@@ -207,9 +207,9 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Facebook",
-            "User rights",
-            "Regulation"
+            "facebook",
+            "userRights",
+            "regulation"
           ]
         },
         "networkDecentralization":{
@@ -218,8 +218,8 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Network operators",
-            "Government"
+            "networkOperators",
+            "government"
           ]
         },
         "cloudSecurity":{
@@ -228,11 +228,11 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "Apple",
-            "User data"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "apple",
+            "userData"
           ]
         }
       }
@@ -245,10 +245,10 @@
           "infographicOverflow":false,
           "infographicMap":true,
           "tags":[
-            "Network operators",
-            "Internet companies",
-            "Net neutrality",
-            "Regulation"
+            "networkOperators",
+            "internetCompanies",
+            "netNeutrality",
+            "regulation"
           ]
         },
         "zeroRating":{
@@ -257,14 +257,14 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Mobile",
-            "Network operators",
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "Net neutrality",
-            "Emerging economies",
-            "Private internet"
+            "mobile",
+            "networkOperators",
+            "internetCompanies",
+            "google",
+            "facebook",
+            "netNeutrality",
+            "emergingEconomies",
+            "privateInternet"
           ]
         },
         "platformNeutrality":{
@@ -273,12 +273,12 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Mobile",
-            "Internet companies",
-            "Google",
-            "Apple",
-            "Net neutrality",
-            "Private internet"
+            "mobile",
+            "internetCompanies",
+            "google",
+            "apple",
+            "netNeutrality",
+            "privateInternet"
           ]
         },
         "concentrationOfPower":{
@@ -287,11 +287,11 @@
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[
-            "Internet companies",
-            "Google",
-            "Facebook",
-            "Apple",
-            "Regulation"
+            "internetCompanies",
+            "google",
+            "facebook",
+            "apple",
+            "regulation"
           ]
         }
       }

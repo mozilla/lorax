@@ -29,6 +29,14 @@ define(['jquery', 'd3'], function ($, d3) {
     ) {
         this._$scope = $scope;
         this._$timeout = $timeout;
+
+        this._data = this._$scope.issue.getInfographic().getDataPoints().commonLanguages;
+        this._localeData = this._$scope.issue.getInfographic().getDataPoints().labels;
+
+        $scope.languages = {
+            data: this._data,
+            localeData: this._localeData
+        };
     };
 
     /**

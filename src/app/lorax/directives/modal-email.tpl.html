@@ -23,7 +23,7 @@
           <input name="terms" type="checkbox" id="check-terms" ng-model="modalEmail.terms" ng-change="modalEmail.onInputChange()">
           <p class="keep-informed__body-text">{{::modalEmail.content.terms}}</p>
         </div>
-        <input type="submit" class="enter-email__submit btn" value="Submit" ng-show="modalEmail.showSubmitBtn">
+        <input type="submit" class="enter-email__submit btn" value="{{::modalEmail.content.submitButton}}" ng-show="modalEmail.showSubmitBtn">
       </form>
     </section>
   </div>
