@@ -2,7 +2,7 @@
  * @fileOverview World Map Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
-define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojson) {
+define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, topojson) {
   'use strict';
 
   /**
@@ -67,6 +67,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
           var shadeLegend = controller._$scope.issue.getInfographic().getDataPoints().countryData.shading.legend;
           var displayDataset = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.name;
           var displayUnits = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.units;
+          var displayReduceSize = controller._$scope.issue.getInfographic().getDataPoints().countryData.display.reduceSize;
           var colorScale = setShading(shadeValues, shadeInvert);
           var enableHover = {
             'small': false,
@@ -174,14 +175,22 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
             .attr('class', 'worldmap__label worldmap__label-country');
 
           labelContainer.append('div')
-            .attr('class', 'worldmap__label worldmap__label-data');
+            .attr('class', function() {
+                if (displayReduceSize) {
+                    return 'worldmap__label worldmap__label-data worldmap__label-data-font-small';
+                } else {
+                    return 'worldmap__label worldmap__label-data worldmap__label-data-font-normal';
+                }
+            });
 
 
             selectCountry(defaultCountry);
           initializeSvgFilters(svg);
           drawLegend();
 
-          $('#' + issueId + ' .infographic__wrapper div select').selectric('init');
+          $('#' + issueId + ' .infographic__wrapper div select').customSelect({
+            customClass: 'worldmap__dropdown-select'
+          });
 
           function countryOver (d) {
             if (d) {
@@ -284,7 +293,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-selectric'], function ($, d3, topojs
                 svg.attr('width', w);
                 svg.attr('height', w * height / width);
             }
-        }
+        };
 
         $(window).resize(updateSize);
 

@@ -510,6 +510,10 @@
 
 /* Email Modal
    ========================================================================== */
+.modal--email.ng-hide {
+    display: block !important;
+    visibility: hidden;
+}
 
 .keep-informed {
     padding-top: 20px;
@@ -577,6 +581,7 @@
     });
 
     > input {
+        height: 40px;
         background: none;
         border: 0;
         border-bottom: 1px solid @light-grey;
@@ -593,6 +598,7 @@
         width: 100%;
 
         .at-medium({
+            height: 70px;
             .font-size(3.2);
         });
     }
@@ -605,6 +611,57 @@
     .at-medium({
         width: 47%;
         float: right;
+    });
+
+    select {
+        z-index: @selectbox-z-index;
+    }
+}
+
+.enter-email__country-dropdown {
+    display: block;
+    position: relative;
+    z-index: @detail-z-index;
+    height: 40px;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid @light-grey;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 12px 0;
+    text-align: center;
+    width: 100%;
+    line-height: normal;
+    color: @white;
+    .fira-sans-light;
+    .font-size(1.2);
+
+    .at-medium({
+        height: 70px;
+    });
+
+    &::after {
+        content: "";
+        right: 10px;
+        top: 50%;
+        margin-top: -4px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 4px 0 4px;
+        border-color: @white transparent transparent transparent;
+        position: absolute;
+    }
+}
+
+.enter-email__country-dropdownInner {
+    max-width: 100%;
+    .font-size(2.2);
+    line-height: 32px;
+    margin-top: -6px;
+
+    .at-medium({
+        width: 100%;
+        .font-size(3.2);
     });
 }
 

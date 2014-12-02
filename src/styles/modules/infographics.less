@@ -309,7 +309,7 @@
 }
 
 .worldmap__label-data {
-    .font-size(3.5);
+
     padding-top: 10px;
     text-align: center;
     line-height: 32px;
@@ -322,10 +322,79 @@
     });
 }
 
+.worldmap__label-data-font-small {
+    .font-size(2.2);
+    line-height: normal;
+}
+
+.worldmap__label-data-font-normal {
+    .font-size(3.5);
+
+    .at-large ({
+        .font-size(3.0);
+    });
+}
+
 .worldmap__dropdown {
-    position: absolute;
-    top: 100px;
-    left: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: @selectbox-z-index;
+
+    .at-medium ({
+        position: relative;
+        top: 0;
+        left: 0;
+    });
+
+    .at-large ({
+        position: absolute;
+        bottom: 0%;
+        top: auto;
+        left: 5%;
+    });
+}
+
+.worldmap__dropdown-select {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: @detail-z-index;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #DDD;
+    background: #F8F8F8;
+    .border-radius(2px);
+    .font-size(1.2);
+    color: @dark-grey;
+
+    .at-medium ({
+        width: 25%;
+        position: relative;
+        top: 0;
+        left: 0;
+    });
+
+    .at-large ({
+        width: 150px;
+        position: absolute;
+        bottom: 0%;
+        top: auto;
+        left: 5%;
+    });
+
+    &::after {
+        content: "";
+        right: 10px;
+        top: 50%;
+        margin-top: -4px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 4px 0 4px;
+        border-color: @extra-dark-grey transparent transparent transparent;
+        position: absolute;
+    }
 }
 
 /* Accessibiity / Vision Impairment

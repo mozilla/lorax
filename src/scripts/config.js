@@ -13,8 +13,8 @@
             'angular-animate': '../scripts/components/angular-animate/angular-animate',
             'jquery': '../scripts/components/jquery/jquery',
             'jquery-mobile': '../scripts/libs/jquery.mobile.min',
-            'jquery-selectric': '../scripts/components/jquery-selectric/jquery.selectric',
             'jquery-mousewheel': '../scripts/components/jquery-mousewheel/jquery.mousewheel',
+            'jquery-customselect': '../scripts/libs/jquery.customSelect.min',
             'modernizr': '../scripts/modernizr',
             'd3': '../scripts/components/d3/d3',
             'topojson': '../scripts/libs/topojson.v1.min',
@@ -50,7 +50,7 @@
             'jquery-scrollie': {
                 deps: ['jquery']
             },
-            'jquery-selectric': {
+            'jquery-customselect': {
                 deps: ['jquery']
             },
             'jquery-mousewheel': {

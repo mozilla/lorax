@@ -28,7 +28,8 @@
         },
         "display": {
           "name": "internetPopPercentage",
-          "units": "%"
+          "units": "%",
+          "reduceSize": false
         }
       }
     }
@@ -867,7 +868,8 @@
         },
         "display": {
           "name": "dataRegulationType",
-          "units": ""
+          "units": "",
+          "reduceSize": true
         }
       }
     }
@@ -1025,7 +1027,8 @@
         },
         "display": {
           "name": "freedomScore",
-          "units": ""
+          "units": "",
+          "reduceSize": false
         }
       }
     }
@@ -1208,7 +1211,8 @@
         },
         "display": {
           "name": "pointsOfControl",
-          "units": ""
+          "units": "",
+          "reduceSize": false
         }
       }
     }
@@ -1294,7 +1298,8 @@
         },
         "display": {
           "name": "percentBitTorrent",
-          "units": "%"
+          "units": "%",
+          "reduceSize": false
         }
       }
     }

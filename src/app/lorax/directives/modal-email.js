@@ -2,7 +2,7 @@
  * @fileOverview Email Modal directive
  * @author <a href="mailto:chris@work.co">Chris James</a>
  */
-define(['angular', 'jquery', 'jquery-selectric'], function (angular, $) {
+define(['angular', 'jquery', 'jquery-customselect'], function (angular, $) {
     'use strict';
 
     /**
@@ -71,9 +71,12 @@ define(['angular', 'jquery', 'jquery-selectric'], function (angular, $) {
         );
 
         this._windowService.setModalOpen(true);
-        $('.enter-email__country select').selectric('init', {
-            disableOnMobile: false
+
+
+        $('.enter-email__country select').customSelect({
+            customClass: 'enter-email__country-dropdown'
         });
+
     };
 
     ModalEmailController.prototype.closeModal = function () {
