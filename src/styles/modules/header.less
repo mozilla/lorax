@@ -129,10 +129,8 @@
 /* Banner Nav
    ========================================================================== */
 .banner-nav-wrap {
-    background-color: @body-bg;
     height: 60px;
     margin: 0 0 24px;
-    padding: 0 20px;
     .transition(background-color 0.3s ease-in-out);
     .transition(background 0.3s ease-in-out);
 
@@ -140,31 +138,41 @@
         height: 80px;
         left: 0;
         margin: 0;
-        padding: 0 30px;
         position: fixed;
         top: 0;
         width: 100%;
         z-index: @header-z-index - 1;
     });
+}
+
+.banner-nav-bg {
+    position: absolute;
+    top: 0;
+}
+
+.banner-nav-bg__stop {
+    stop-color: @body-bg;
+    .transition(stop-color 0.3s ease-in-out);
 
     .no-anim & {
         .transition(none);
     }
 
     [data-bg-mode="stop"] & {
-        .nav-gradient(@stop);
+        stop-color: @stop;
     }
 
     [data-bg-mode="wait"] & {
-        .nav-gradient(@wait);
+        stop-color: @wait;
     }
 
     [data-bg-mode="go"] & {
-        .nav-gradient(@go);
+        stop-color: @go;
     }
 }
 
 .banner-nav {
+    position: relative;
     .reset-list;
 
     .at-medium({
