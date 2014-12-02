@@ -316,13 +316,18 @@ section#detail {
 }
 
 .detail-link__multiple {
-    display: inline-block;
+    display: block;
+    width: 75%;
     color: @white;
     .fira-sans-semibold;
     .font-size(1.1);
     letter-spacing: 1px;
     text-transform: uppercase;
     padding: 3px 15px 5px 0px;
+
+    .at-medium({
+        width: 100%;
+    });
 
     .no-touch &:hover,
     &:focus {
