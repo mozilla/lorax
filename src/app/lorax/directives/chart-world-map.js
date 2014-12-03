@@ -84,6 +84,9 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
             ]
         };
 
+        this.map.map = d3.select('#' + this._$scope.issue.getId() + ' .infographic__wrapper div')
+            .attr('class', 'worldmap');
+        this.map.mapWidth = $('#' + this._$scope.issue.getId() + ' .infographic__wrapper div').width();
         this.map.colorScale = this._setShading(this.map.shadeValues, this.map.shadeInvert);
 
         $.each(this.map.countryData, function(key, data) {
@@ -217,10 +220,6 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
             }
           }.bind(this);
 
-        this.map.map = d3.select('#' + this._$scope.issue.getId() + ' .infographic__wrapper div')
-            .attr('class', 'worldmap');
-        this.map.mapWidth = $('#' + this._$scope.issue.getId() + ' .infographic__wrapper div').width();
-
         var projection = d3.geo.mercator()
           .scale(150)
           .translate([this.map.width / 2, this.map.height / 1.5]);
@@ -353,8 +352,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
             this._selectCountry(countryId);
         }.bind(this);
 
-        if (this.map.demoMode) {
-            this._selectCountry(this.map.defaultCountry);
+        if (this.map.demoMode && this.map.enableHover[this._windowService.breakpoint()]) {
             this.map.demoTimer  = setInterval(switchCountry, 2500);
         }
         else {
@@ -384,13 +382,14 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         controller._getMap.then( function (model) {
             controller._$timeout( function() {
                 controller._init(model.geoData, model.countryData);
+                controller._drawDropdown();
                 controller._drawMap();
                 controller._drawLabel();
                 controller._drawLegend();
-                controller._drawDropdown();
                 controller._resize();
                 controller._demoMode();
 
+                this._selectCountry(this.map.defaultCountry);
                 $('#' + controller._$scope.issue.getId() + ' .infographic__wrapper div select').customSelect({
                     customClass: 'worldmap__dropdown-select'
                 });
