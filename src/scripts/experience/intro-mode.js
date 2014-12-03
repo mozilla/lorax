@@ -64,6 +64,19 @@ define([
     };
 
     IntroMode.prototype._onStartShow = function () {
+        var issue;
+        var i;
+
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+            issue.elm.interactive = false;
+        }
+
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            issue = this._canvas.tags[i];
+            issue.elm.interactive = false;
+        }
+
         gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: true, delay: 2.5});
         gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: true});
         this._introContainer.addChild(this._clickArea);
@@ -72,6 +85,19 @@ define([
     };
 
     IntroMode.prototype._onStartHide = function () {
+        var issue;
+        var i;
+
+        for (i = 0; i < this._canvas.issues.length; i ++) {
+            issue = this._canvas.issues[i];
+            issue.elm.interactive = true;
+        }
+
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            issue = this._canvas.tags[i];
+            issue.elm.interactive = true;
+        }
+
         gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: true});
         gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: true});
         this._introContainer.removeChild(this._clickArea);
