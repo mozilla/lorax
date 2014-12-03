@@ -63,7 +63,7 @@ define([
         this._introMode.init();
 
         this._introMode.hideS.add(this._onEndIntro.bind(this));
-        this._tagIssuesMode.hideS.add(this._onHideTagIssues.bind(this));
+        this._tagIssuesMode.closeS.add(this._onCloseTagIssues.bind(this));
 
         this._hasInitialized = true;
         if (this._onInitMode) {
@@ -207,7 +207,7 @@ define([
         }
     };
 
-    Experience.prototype._onHideTagIssues = function () {
+    Experience.prototype._onCloseTagIssues = function () {
         this._goBack();
     };
 

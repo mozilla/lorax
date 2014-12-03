@@ -1,11 +1,13 @@
 /* global define:true */
 define([
     'pixi',
+    'signals',
     'experience/mode',
     'experience/issues-mode',
     'experience/issue'
 ], function (
     PIXI,
+    signals,
     Mode,
     IssuesMode,
     Issue
@@ -16,7 +18,7 @@ define([
         this._canvas = canvas;
         Mode.MODES.push(this);
         this.MODE = Mode;
-
+        this.closeS = new signals.Signal();
         return this;
     };
 
@@ -71,6 +73,7 @@ define([
 
     TagIssuesMode.prototype._onPressClose = function () {
         this.hide();
+        this.closeS.dispatch();
     };
 
     TagIssuesMode.prototype._drawLines = function () {
