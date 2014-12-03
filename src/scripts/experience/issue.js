@@ -166,6 +166,7 @@ define([
                 this._title.setStyle(this._issuesStyle);
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
+                this.elm.alpha = 1;
             } break;
             case Issue.MODE_TAG_ISSUES: {
                 this.stopMoving();
