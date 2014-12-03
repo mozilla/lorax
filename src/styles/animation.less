@@ -10,43 +10,53 @@
 }
 
 .modal--side-panel.ng-enter {
-    & .side-panel--legend {
-        left: -40%;
-    }
 
-    & .side-panel--about {
-        right: -40%;
-    }
+    .at-medium({
+        & .side-panel--legend {
+            left: -40%;
+        }
+
+        & .side-panel--about {
+            right: -40%;
+        }
+    });
+
 }
 
 .modal--side-panel.ng-enter.ng-enter-active {
-    & .side-panel--legend {
-        left: 0%;
-    }
+    .at-medium({
+        & .side-panel--legend {
+            left: 0%;
+        }
 
-    & .side-panel--about {
-        right: 0%;
-    }
+        & .side-panel--about {
+            right: 0%;
+        }
+    })
 }
 
 .modal--side-panel.ng-leave {
-    & .side-panel--legend {
-        left: 0%;
-    }
+    .at-medium({
+        & .side-panel--legend {
+            left: 0%;
+        }
 
-    & .side-panel--about {
-        right: 0%;
-    }
+        & .side-panel--about {
+            right: 0%;
+        }
+    })
 }
 
 .modal--side-panel.ng-leave.ng-leave-active {
-    & .side-panel--legend {
-        left: -40%;
-    }
+    .at-medium({
+        & .side-panel--legend {
+            left: -40%;
+        }
 
-    & .side-panel--about {
-        right: -40%;
-    }
+        & .side-panel--about {
+            right: -40%;
+        }
+    })
 }
 
 /* Email Modal
