@@ -45,6 +45,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         this.map = {
             mapData: mapData,
             countryData: countryData,
+            demoMode: true,
+            demoTimer: null,
             shadeName: this._$scope.issue.getInfographic().getDataPoints().countryData.shading.name,
             shadeValues: this._$scope.issue.getInfographic().getDataPoints().countryData.shading.values,
             shadeInvert: this._$scope.issue.getInfographic().getDataPoints().countryData.shading.invert,
@@ -122,7 +124,10 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
 
         $('#' + this._$scope.issue.getId() + ' .infographic__wrapper div select').change( function(evt) {
             if ( this.map.infographicData[evt.target.value] && this.map.infographicData[evt.target.value].displayData ) {
-                console.log(evt.target.value);
+                if (this.map.demoMode){
+                    this.map.demoMode = false;
+                    this._demoMode();
+                }
                 this._selectCountry(evt.target.value);
 
             }
@@ -202,9 +207,13 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
     ChartWorldMapController.prototype._drawMap = function () {
           var countryOver = function (d) {
             if (d) {
-              if ( this.map.infographicData[d.id] && this.map.infographicData[d.id].displayData && this.map.enableHover[this._windowService.breakpoint()] ) {
-                this._selectCountry(d.id);
-              }
+                if ( this.map.infographicData[d.id] && this.map.infographicData[d.id].displayData && this.map.enableHover[this._windowService.breakpoint()] ) {
+                    if (this.map.demoMode){
+                        this.map.demoMode = false;
+                        this._demoMode();
+                    }
+                    this._selectCountry(d.id);
+                }
             }
           }.bind(this);
 
@@ -328,6 +337,32 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
     };
 
     /**
+     * Rotates through country data until the user interacts with the map.
+     */
+    ChartWorldMapController.prototype._demoMode = function () {
+        var switchCountry = function() {
+            var validCountry = false;
+            var countryId = '';
+            while (!validCountry){
+                var countryIndex = Math.floor(Math.random() * this.map.countryData.length);
+                countryId = this.map.countryData[countryIndex].id;
+                if (this.map.infographicData[countryId].displayData && this.map.infographicData[countryId].labelArea) {
+                    validCountry = true;
+                }
+            }
+            this._selectCountry(countryId);
+        }.bind(this);
+
+        if (this.map.demoMode) {
+            this._selectCountry(this.map.defaultCountry);
+            this.map.demoTimer  = setInterval(switchCountry, 2500);
+        }
+        else {
+            clearInterval(this.map.demoTimer);
+        }
+    };
+
+    /**
     * Array of dependencies to be injected into controller
     * @type {Array}
     */
@@ -354,8 +389,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
                 controller._drawLegend();
                 controller._drawDropdown();
                 controller._resize();
-
-                controller._selectCountry(controller.map.defaultCountry);
+                controller._demoMode();
 
                 $('#' + controller._$scope.issue.getId() + ' .infographic__wrapper div select').customSelect({
                     customClass: 'worldmap__dropdown-select'
