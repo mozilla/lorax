@@ -17,7 +17,8 @@ define(function () {
             /* --------- Experience -------- */
 
             .when('/', {
-                redirectTo: '/ecosystem'
+                controller: 'CoreCtrl',
+                page: 'experience'
             })
 
             .when('/:mode', {

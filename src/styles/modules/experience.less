@@ -51,8 +51,12 @@
 
     > li {
         float: left;
-        max-width: 140px;
-        width: 33.3333%;
+        width: 50%;
+
+        .at-medium({
+            max-width: 140px;
+            width: 33.3333%;
+        });
 
         @media (min-width: 420px) {
             &:first-child a {

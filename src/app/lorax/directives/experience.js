@@ -26,18 +26,21 @@ define(['jquery'], function ($) {
         $scope,
         experienceService,
         routesService,
-        dataService
+        dataService,
+        windowService
         )
     {
         this._$scope = $scope;
         this._experienceService = experienceService;
         this._routesService = routesService;
         this._dataService = dataService;
+        this._windowService = windowService;
 
         this._$scope = $scope;
         this._$scope.experience = {
             currentView: 'ecosystem',
             isOpen: false,
+            isSmall: true
         };
 
         this._dataService.getMain().then( function (model) {
@@ -49,6 +52,8 @@ define(['jquery'], function ($) {
         if (this._routesService.page) {
             this.onRouteChange();
         }
+
+        this._windowService.subscribe('breakpoint', this.onBreakpointChange.bind(this));
     };
 
     /**
@@ -59,10 +64,15 @@ define(['jquery'], function ($) {
         '$scope',
         'experienceService',
         'routesService',
-        'dataService'
+        'dataService',
+        'windowService'
     ];
 
     ExperienceCtrl.prototype.switchView = function (view) {
+        this._$scope.experience.isSmall = this._windowService.breakpoint() === 'small';
+        if (view === 'ecosystem' &&  this._$scope.experience.isSmall) {
+            view = 'vitals';
+        }
         this._$scope.experience.isOpen = view !== 'detail';
         this._$scope.experience.currentView = view;
         this._experienceService.switchView(view);
@@ -75,9 +85,13 @@ define(['jquery'], function ($) {
             if (this._routesService.params.tag) {
                 this._experienceService.switchView('tag', this._routesService.params.tag);
             } else {
-                this.switchView(this._routesService.params.mode);
+                this.switchView(this._routesService.params.mode || 'ecosystem');
             }
         }
+    };
+
+    ExperienceCtrl.prototype.onBreakpointChange = function (breakpoint) {
+        this._$scope.experience.isSmall = breakpoint === 'small';
     };
 
     /**

@@ -31,6 +31,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
         function setBreakpoint(newBreakpoint) {
             _window.breakpoint = newBreakpoint;
             pubSubService.publish('windowService.breakpoint', [newBreakpoint]);
+            $.publish('windowService.breakpoint', [newBreakpoint]);
         }
 
         /**
