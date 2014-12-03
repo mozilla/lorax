@@ -157,17 +157,17 @@ define(['jquery', 'd3'], function ($, d3) {
               .attr('cy', function(d) { return y(+d.data[i]); })
               .attr('r', 3);
 
-
-          var xAxisScale = d3.scale.ordinal()
+        var xAxisScale = d3.scale.ordinal()
             .domain(lineData.map( function(d) { return d.data[i].toString(); }))
             .rangePoints([margin.left, width-margin.right], 0.0);
 
-          var xAxisValue = d3.svg.axis()
+        var xAxisValue = d3.svg.axis()
             .scale(xAxisScale)
             .orient('bottom')
             .tickSize(0);
 
-          var xAxisInfo = svg.append('g')
+
+        var xAxisInfo = svg.append('g')
             .attr('class', 'linegraph__xaxis_info')
             .attr('transform', 'translate(0,' + (height - 30 +( i * 17)) + ')')
             .call(xAxisValue);

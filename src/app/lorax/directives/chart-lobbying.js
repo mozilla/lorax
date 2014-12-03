@@ -59,7 +59,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var dollarFormat = d3.format('.3s');
 
       var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
-
+      var mobileStyle = graphWidth < 420 ? true : false;
       var margin = {top: 20, right: 20, bottom: 50, left: 10};
       var width = graphWidth;
       var height = graphWidth * 0.7;
@@ -153,12 +153,46 @@ define(['jquery', 'd3'], function ($, d3) {
             d3.max( lineData, function(d) { return d.label; })
           ]);
 
-        var xAxis = d3.svg.axis()
-          .scale(x)
-          .orient('bottom')
-          .tickFormat( function(d) { return d.toString(); })
-          .tickValues( lineData.map( function (d) { return d.label; }) )
-          .tickSize(0);
+        var xAxis;
+        if (mobileStyle) {
+            xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom')
+            .tickFormat( function(d, i) {
+                if (i%2 === 0) {
+                    return d.toString();
+                }
+                else {
+                    return null;
+                }
+            })
+            .tickValues( lineData.map( function (d, i) {
+                if (i%2 === 0) {
+                    return d.label;
+                }
+                else {
+                    return null;
+                }
+            }))
+            .tickSize(0);
+        } else {
+            xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom')
+            .tickFormat( function(d) { return d.toString(); })
+            .tickValues( lineData.map( function (d) { return d.label; }))
+            .tickSize(0);
+        }
+
+        // filter out null values (d3 scales are terrible sometimes)
+        for(var i = xAxis.tickValues.length-1; i--;){
+            if (xAxis.tickValues[i] === null) {
+                xAxis.tickValues.splice(i, 1);
+            }
+            if (xAxis.tickFormat[i] === null) {
+                xAxis.tickFormat.splice(i, 1);
+            }
+        }
 
         svg.append('g')
           .attr('class', 'linegraph__xaxis_year')
