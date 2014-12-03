@@ -217,7 +217,7 @@ define([
 
     Experience.prototype.onScroll = function (offset) {
         if (this._mode === Issue.MODE_DETAIL) {
-            this._detailMode.onScroll(Math.max(offset, 0));
+            this._detailMode.onScroll(Math.max(Math.round(offset), 0));
         }
     };
 

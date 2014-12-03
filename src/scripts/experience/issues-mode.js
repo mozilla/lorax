@@ -183,7 +183,8 @@ define([
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
 
-        $(document).on('mousewheel', this._onMouseWheel.bind(this));
+        this._onMouseWheelBind = this._onMouseWheel.bind(this);
+        $(document).on('mousewheel', this._onMouseWheelBind);
         this._canvas._stage.touchstart = this._onTouchStart.bind(this);
         this._canvas._stage.touchend = this._onTouchEnd.bind(this);
         this._canvas._stage.touchmove = this._onTouching.bind(this);
@@ -201,6 +202,7 @@ define([
             issue.mouseOutS.remove(issue.issueMouseOut);
         }
 
+        $(document).off('mousewheel', this._onMouseWheelBind);
         this._canvas.clearLines();
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
