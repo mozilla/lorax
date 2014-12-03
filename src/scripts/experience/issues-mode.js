@@ -180,6 +180,10 @@ define([
             issue.explode();
         }
 
+        for (i = 0; i < this._canvas.fakes.length; i ++) {
+            this._canvas.fakes[i].explode();
+        }
+
         this._drawLinesBind = this._drawLines.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
 

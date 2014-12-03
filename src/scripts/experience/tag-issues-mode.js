@@ -110,6 +110,10 @@ define([
             issue.explode();
         }
 
+        for (i = 0; i < this._canvas.fakes.length; i ++) {
+            this._canvas.fakes[i].explode();
+        }
+
         for (i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
             issue.setMode(Issue.MODE_TAG_ISSUES);

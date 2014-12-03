@@ -161,14 +161,18 @@ define([
 
         var i;
 
+        for (i = 0; i < this._canvas.tags.length; i ++) {
+            this._canvas.tags[i].explode();
+        }
+
+        for (i = 0; i < this._canvas.fakes.length; i ++) {
+            this._canvas.fakes[i].explode();
+        }
+
         for (i = 0; i < this._topics.length; i ++) {
             this._topics[i].show();
             this._topics[i].mouseOverS.add(this.mouseOverB);
             this._topics[i].mouseOutS.add(this.mouseOutB);
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            this._canvas.tags[i].explode();
         }
 
         this._drawLinesBind = this._drawLines.bind(this);

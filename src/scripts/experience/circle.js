@@ -154,19 +154,21 @@ define([
      * Moves elements away from center
      */
     Circle.prototype.explode = function (radius, center) {
-        if (this.elm.alpha === 0) {
+        if (this.exploded === true) {
             return;
         }
+        this.exploded = true;
+
         center = center || {x:0, y:0};
         radius = radius || 500;
 
-        this.implodeAlpha = this.elm.alpha;
-
         var angle = 0;
-        if (this._x0 !== undefined) {
+        if (this._x0 === undefined) {
+            angle = Math.random() * radius;
+        } else {
             angle = Math.atan2(this._y0, this._x0);
-            angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
         }
+        angle += (Math.random() * Math.PI / 16) - (Math.PI / 32);
 
         gs.TweenMax.to(
             this.elm,
@@ -188,13 +190,15 @@ define([
             this.elm,
             0.2 + Math.random() * 0.15,
             {
-                alpha: this.implodeAlpha,
+                alpha: 1,
                 x: this._x0,
                 y: this._y0,
                 delay: Math.random() * 0.1, roundProps: 'x,y',
                 onComplete: this._resumeStaticAnimation.bind(this)
             }
         );
+
+        this.exploded = false;
     };
 
     /**

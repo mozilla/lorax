@@ -138,11 +138,12 @@ define([
 
         for(i = 0; i < this._fakes.length; i ++) {
             issue = this._fakes[i];
+            issue.exploded = false;
             gs.TweenMax.to(
                 issue.elm,
                 0.3,
                 {
-                    alpha: issue.implodeAlpha,
+                    alpha: 1,
                     x: this.elm.x + issue.topicX,
                     y: this.elm.y + issue.topicY,
                     overwrite: true, roundProps: 'x,y'

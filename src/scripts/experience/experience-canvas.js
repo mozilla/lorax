@@ -114,7 +114,8 @@ define([
             this._particlesContainer.addChild(circle.elm);
 
             circle.draw(1);
-            circle.elm.alpha = 0.3;
+            circle._circle.alpha = 0.3;
+            circle.elm.alpha = 0;
         }
     };
 
@@ -139,6 +140,7 @@ define([
                 tag.setData(this._tagData[i]);
                 tag.draw(tag.initRadius);
                 tag.pressS.add(this._onPressIssue.bind(this));
+                tag.elm.alpha = 0;
             }
         }
     };

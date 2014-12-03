@@ -36,7 +36,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var line;
         var isLineFree;
 
-        var issueWidth = 100;
+        var issueWidth = 80;
         var issueHeight = 20;
 
         // set issue positions
@@ -77,7 +77,11 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                     elm.exploreY > this._safeZone.y &&
                     elm.exploreY < this._safeZone.y + this._safeZone.height
                 );
-            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries++ < 64);
+
+                // if (tries >= 255) {
+                //     console.log(tries);
+                // }
+            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries++ < 256);
 
             lines[line].push(elm);
             elm.moveTo(0, 0);
@@ -112,11 +116,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             elm.exploreX = Math.sin(seed) * rSeed;
             elm.exploreY = Math.cos(seed) * rSeed;
         }
-
-        // var sZ = new PIXI.Graphics();
-        // sZ.beginFill(0xFF0000);
-        // sZ.drawRect(this._safeZone.x, this._safeZone.y, this._safeZone.width, this._safeZone.height);
-        // this._canvas._particlesContainer.addChild(sZ);
     };
 
     ExploreMode.prototype.setSafeZone = function (safeZone) {
