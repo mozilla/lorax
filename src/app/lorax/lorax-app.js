@@ -22,12 +22,9 @@ define([
     'lorax/directives/modal-mobile-options',
     'lorax/directives/issue-details',
     'lorax/directives/issue-all',
-    'lorax/directives/chart-top-internet-companies',
     'lorax/directives/chart-terms-and-conditions',
     'lorax/directives/chart-common-languages',
-    'lorax/directives/chart-line-graph',
     'lorax/directives/chart-world-map',
-    'lorax/directives/chart-static-image',
     'lorax/directives/chart-accessible',
     'lorax/directives/chart-platform-neutrality',
     'lorax/directives/chart-lobbying',
@@ -80,12 +77,9 @@ define([
     ModalMobileOptionsDirective,
     IssueDetailsDirective,
     IssueAllDirective,
-    ChartTopInternetCompaniesDirective,
     ChartTermsAndConditionsDirective,
     ChartCommonLanguagesDirective,
-    ChartLineGraphDirective,
     ChartWorldMapDirective,
-    ChartStaticImageDirective,
     ChartAccessibleDirective,
     ChartPlatformNeutralityDirective,
     ChartLobbyingDirective,
@@ -197,13 +191,6 @@ define([
         .directive('loraxIssueAll', IssueAllDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartTopInternetCompaniesDirective}
-         * as 'ChartTopInternetCompaniesDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartTopInternetCompanies', ChartTopInternetCompaniesDirective)
-
-        /**
          * Injects {@link lorax/directives/ChartTermsAndConditionsDirective}
          * as 'ChartTermsAndConditionsDirective'
          * @method lorax/loraxApp~directive
@@ -218,25 +205,11 @@ define([
         .directive('loraxChartCommonLanguages', ChartCommonLanguagesDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartLineGraphDirective}
-         * as 'ChartLineGraphDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartLineGraph', ChartLineGraphDirective)
-
-        /**
          * Injects {@link lorax/directives/ChartWorldMapDirective}
          * as 'ChartLineGraphDirective'
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartWorldMap', ChartWorldMapDirective)
-
-        /**
-         * Injects {@link lorax/directives/ChartStaticImageDirective}
-         * as 'ChartStaticImageDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartStaticImage', ChartStaticImageDirective)
 
         /**
          * Injects {@link lorax/directives/ChartAccessibleDirective}
