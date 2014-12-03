@@ -682,11 +682,13 @@
    ========================================================================== */
 
 .opensource__svg {
-    // position: absolute;
-    // left: 20%;
-    // top: 30%;
+    margin-left: 80px;
+    margin-top: 5px;
 
-    margin-left: 110px;
+    .at-medium({
+        margin-left: 110px;
+        margin-top: 0;
+    });
 }
 
 .opensource__line_0, .opensource__line_1 {
@@ -751,6 +753,13 @@
     color: @black;
     list-style-type: none;
     float: left;
+    .font-size(0.9);
+    line-height: normal;
+
+    .at-medium({
+        .font-size(1.2);
+        line-height: 16px;
+    });
 
     li:nth-child(1) {
       div {
@@ -777,9 +786,13 @@
     color: @white;
     list-style-type: none;
     float: right;
+    .font-size(0.9);
+    line-height: normal;
 
     .at-medium({
-      margin-top: 52%;
+        margin-top: 52%;
+        .font-size(1.2);
+        line-height: 16px;
     });
 
     .at-large({
@@ -809,15 +822,23 @@
 
 .opensource__label {
     position: absolute;
-    width: 100px;
+    width: 80px;
+
+    .at-medium({
+        width: 100px;
+    });
 
     h3 {
-      .font-size(2.0);
-      margin: 5px 0;
+        .font-size(1.6);
+        margin: 5px 0;
+
+        .at-medium({
+            .font-size(2.0);
+        })
     }
 
     p {
-      margin: 5px 0;
+        margin: 5px 0;
     }
 }
 
