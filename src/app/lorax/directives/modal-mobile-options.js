@@ -25,11 +25,13 @@ define(['angular'], function (angular) {
     var ModalMobileOptionsController = function (
         $scope,
         $rootScope,
-        windowService
+        windowService,
+        dataService
     ) {
         this._$scope = $scope;
         this._$rootScope = $rootScope;
         this._windowService = windowService;
+        this._dataService = dataService;
 
         $scope.modalOptions = {
             open: false,
@@ -39,6 +41,10 @@ define(['angular'], function (angular) {
             openShare: this.openShare.bind(this),
             openAbout: this.openAbout.bind(this)
         };
+
+        this._dataService.getMain().then( function (model) {
+            $scope.modalOptions.miscData = model.getMiscLocale();
+        });
 
         // listen for $broadcast of 'openEmailModal'
         $scope.$on('openMobileOptions', this.openModal.bind(this));
@@ -51,7 +57,8 @@ define(['angular'], function (angular) {
     ModalMobileOptionsController.$inject = [
         '$scope',
         '$rootScope',
-        'windowService'
+        'windowService',
+        'dataService'
     ];
 
     ModalMobileOptionsController.prototype.openModal = function (e, isOpen) {

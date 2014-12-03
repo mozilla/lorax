@@ -1,4 +1,5 @@
 <section class="modal modal--mobile-options" ng-if="modalOptions.open">
+  <h1 class="mobile-options__banner-logo"><a href="/" class="icon-circle">{{::modalOptions.miscData.siteHeader}}</a></h1>
   <ul class="mobile-options">
     <li class="mobile-options__mobile-option">
       <a href="#" class="mobile-option mobile-option--close icon-close" data-lorax-prevent-default ng-click="modalOptions.closeModal()">Close</a>
@@ -17,3 +18,5 @@
     </li>
   </ul>
 </section>
+
+

@@ -760,7 +760,7 @@
 }
 
 
-/* Legend Modal
+/* Mobile Options Modal
    ========================================================================== */
 
 .mobile-options {
@@ -794,6 +794,27 @@
 
     .no-touch &:hover {
         .opacity(1);
+    }
+}
+
+.mobile-options__banner-logo {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 15px;
+    float: left;
+
+    > a {
+        background-position: 0 50%;
+        background-size: 10px;
+        color: @black;
+        display: block;
+        .fira-sans-ultra;
+        .font-size(1.8);
+        line-height: 40px;
+        padding-left: 20px;
+        text-transform: uppercase;
     }
 }
 
