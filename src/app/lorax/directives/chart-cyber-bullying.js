@@ -169,12 +169,11 @@ define(['jquery', 'd3'], function ($, d3) {
                 var pieSvg = pieChart.append('svg')
                     .attr('class', 'cyberbullying__pie-svg')
                     .attr('width', width)
-                    .attr('height', height)
-                    .style('margin-top', height * (-0.5));
+                    .attr('height', height);
 
                 var group = pieSvg.append('g')
                     .attr('class', 'cyberbullying__piechart')
-                    .attr('transform', 'translate(' + (width * 0.70) + ',' + (height * 0.4) + ')');
+                    .attr('transform', 'translate(' + (width * 0.73) + ',' + (height * 0.4) + ')');
 
                 var arc = d3.svg.arc()
                     .innerRadius(innerR)

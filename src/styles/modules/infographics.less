@@ -1078,7 +1078,7 @@
     .font-size(1.0);
   }
 
-  .at-large {
+  .at-large({
     img {
       padding: 50px 0;
     }
@@ -1087,11 +1087,27 @@
       margin: 0;
       .font-size(1.2);
     }
-  }
+  });
 }
 
 .cyberbullying__piechart {
   margin-top: 5%;
+}
+
+.cyberbullying__pie-svg {
+    margin-top: -170px;
+
+    .at-medium({
+        margin-top: -190px;
+    });
+
+    .at-large({
+        margin-top: -190px;
+    });
+
+    .at-xlarge({
+        margin-top: -230px;
+    });
 }
 
 .cyberbullying__title {
@@ -1107,8 +1123,12 @@
     height: 15px;
     margin: 15px 0;
     padding-left: 10px;
-    font-size: 12px;
+    .font-size(1.0);
     color: #fff;
+
+    .at-medium({
+        .font-size(1.2);
+    });
 }
 
 /* Zero Rating
