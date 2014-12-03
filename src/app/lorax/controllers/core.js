@@ -32,6 +32,7 @@ define(function () {
 
         this._dataService.getMain().then(function (model) {
             this._$scope.core.miscData = model.getMiscLocale();
+            document.title = this._$scope.core.miscData.siteTitle;
         }.bind(this));
 
         pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));

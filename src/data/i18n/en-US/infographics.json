@@ -321,7 +321,10 @@
       "src": ""
     },
     "dataPoints": {
-      "url": "/images/content-creation-infographic.png"
+      "quote": {
+        "copy": "hereby grant[s] to Instagram a non-exclusive, fully paid and royalty-free, transferable, sub-licensable, worldwide license to use the content that [he or she] post[s].",
+        "source": "Instagram"
+      }
     }
   },
   "identityControl": {
@@ -1217,8 +1220,8 @@
     }
   },
   "networkDecentralization": {
-    "header": "Top 5 Internet Companies",
-    "subheader": "by Revenue",
+    "header": "NEEDS CONTENT",
+    "subheader": "NEEDS CONTENT",
     "source": {
       "name": "",
       "src": ""

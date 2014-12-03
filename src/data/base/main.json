@@ -61,7 +61,7 @@
       "issues":{
         "contentCreation":{
           "status":2,
-          "infographicType":"data-lorax-chart-static-image",
+          "infographicType":"data-lorax-chart-content-creation",
           "infographicOverflow":false,
           "infographicMap":false,
           "tags":[

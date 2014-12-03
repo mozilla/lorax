@@ -43,6 +43,7 @@ define([
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
     'lorax/directives/chart-zero-rating',
+    'lorax/directives/chart-content-creation',
     'lorax/directives/experience',
     'lorax/directives/detail',
     'lorax/directives/add-infographic-directive',
@@ -100,6 +101,7 @@ define([
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
     ChartZeroRatingDirective,
+    ChartContentCreationDirective,
     ExperienceDirective,
     DetailDirective,
     AddInfographicDirective,
@@ -340,6 +342,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartZeroRating', ChartZeroRatingDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartContentCreationDirective}
+         * as 'ChartContentCreationDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartContentCreation', ChartContentCreationDirective)
 
         /**
          * Injects {@link lorax/directives/ExperienceDirective}

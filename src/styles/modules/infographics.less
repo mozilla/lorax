@@ -1269,3 +1269,76 @@
     right: 25%;
     margin-right: 30px;
 }
+
+/* Content Creation
+   ========================================================================== */
+
+.content-creation__quote-quotation-open {
+    float: left;
+    margin-top: -15px;
+    .fira-sans-ultra;
+    .font-size(8);
+    line-height: 85px;
+    color: @white;
+
+    .at-medium({
+
+    });
+
+    .at-large({
+        .font-size(9);
+    });
+
+    .at-xlarge({
+        .font-size(10);
+    });
+}
+
+.content-creation__quote-text {
+    margin: 0;
+    margin-left: 55px;
+    .fira-sans-medium;
+    color: fade(@extra-dark-grey, 30%);
+    .font-size(2.5);
+    line-height: 30px;
+
+    &:after {
+        content:"\0022";
+        .fira-sans-ultra;
+        .font-size(8);
+        margin: 0;
+        line-height: 85px;
+        color: @white;
+        vertical-align: top;
+        position: relative;
+        top: 5px;
+        left: 10px;
+    }
+
+    .at-medium({
+        margin-left: 65px;
+        .font-size(3);
+        line-height: 33px;
+
+        &:after {
+            top: 12px;
+            .font-size(9);
+        }
+    });
+
+    .at-xlarge({
+        margin-left: 70px;
+        .font-size(4);
+        line-height: 44px;
+
+        &:after {
+            top: 20px;
+            .font-size(10);
+        }
+    });
+}
+
+.content-creation__quote-source {
+    .font-size(1.4);
+    margin-left: 70px;
+}
