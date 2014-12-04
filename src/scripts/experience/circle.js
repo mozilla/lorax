@@ -15,7 +15,7 @@ define([
     var Circle = function () {
         this.elm = new PIXI.DisplayObjectContainer();
         this._titleStyle = {font: '400 10px "Fira Sans", sans-serif', fill: '#222222'};
-        this._subtitleStyle = {font: '600 10px "Fira Sans", sans-serif', fill: '#AAAAAA'};
+        this._subtitleStyle = {font: '400 10px "Fira Sans", sans-serif', fill: '#222222'};
 
         return this;
     };

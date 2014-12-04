@@ -323,7 +323,7 @@ define([
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             this.elm.addChild(this._subtitle);
             this._subtitle.y = Math.round(this._title.y + (this._title.height / Responsive.RATIO) + 2);
-            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 1, overwrite: true});
+            gs.TweenMax.to(this._subtitle, 0.2, {alpha: 0.5, overwrite: true});
         }
 
         this.elm.parent.setChildIndex(this.elm, 0);
