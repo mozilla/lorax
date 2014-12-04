@@ -59,7 +59,7 @@ define(['webfontloader'], function (WebFont) {
     CoreCtrl.prototype.onLoaded = function () {
         document.title = this._$scope.core.miscData.siteTitle;
         this._$scope.core.isLoaded = true;
-        this._pubSubService.dispatch('window.onLoaded');
+        this._pubSubService.publish('window.onLoaded');
         this._pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));
     };
 

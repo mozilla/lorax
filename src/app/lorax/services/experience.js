@@ -15,7 +15,7 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
         this._experience = new Experience();
         this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
-        this._experience.setGoBackCallBack(this._goBack.bind(this));
+        this._experience.setGoToIndexCallBack(this._goToIndex.bind(this));
         this._experience.setOpenTagCallBack(this._openTag.bind(this));
 
         var menu = $('.experience-menu');
@@ -121,8 +121,10 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
         this._windowService.setBgMode(status, animate);
     };
 
-    ExperienceService.prototype._goBack = function () {
-        this._$window.history.back();
+    ExperienceService.prototype._goToIndex = function () {
+        this._$timeout(function () {
+            this._$location.url('/');
+        }.bind(this));
     };
 
     ExperienceService.prototype._openTag = function (tag) {

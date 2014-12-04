@@ -99,8 +99,8 @@ define([
         this._openTag = openTagCallBack;
     };
 
-    Experience.prototype.setGoBackCallBack = function (goBackCallback) {
-        this._goBack = goBackCallback;
+    Experience.prototype.setGoToIndexCallBack = function (callback) {
+        this._goToIndex = callback;
     };
 
     Experience.prototype.setExploreSafezone = function (safeZone) {
@@ -208,11 +208,11 @@ define([
     };
 
     Experience.prototype._onCloseTagIssues = function () {
-        this._goBack();
+        this._goToIndex();
     };
 
     Experience.prototype._onEndIntro = function () {
-        this.showExplore();
+        this._goToIndex();
     };
 
     Experience.prototype.onScroll = function (offset) {
