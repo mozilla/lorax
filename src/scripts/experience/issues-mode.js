@@ -129,6 +129,8 @@ define([
     };
 
     IssuesMode.prototype._tapIssue = function (issue) {
+        issue._onMouseOver();
+        issue._onMouseOut();
         issue._onPress();
     };
 
