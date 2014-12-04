@@ -36,7 +36,7 @@ define([
 
         this._margin = {
             top: 200,
-            left: 400
+            left: 500
         };
 
         if (Responsive.IS_SMALL()) {
