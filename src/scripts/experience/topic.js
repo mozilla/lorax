@@ -184,10 +184,12 @@ define([
     };
 
     Topic.prototype._tapIssue = function (issue) {
-        this._mouseOut();
         issue._onMouseOver();
-        issue._onMouseOut();
-        issue._onPress();
+        setTimeout(function () {
+            this._mouseOut();
+            issue._onMouseOut();
+            issue._onPress();
+        }.bind(this), 200);
     };
 
     /**
