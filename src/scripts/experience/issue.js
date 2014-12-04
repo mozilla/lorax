@@ -134,6 +134,7 @@ define([
                 this.setIsInteractive(false);
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
+                this._title.alpha = 0;
                 this._title.setStyle(this._tagStyle);
                 this._title.hitArea = new PIXI.Rectangle(
                     0,
