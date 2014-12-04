@@ -7,7 +7,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         Mode.MODES.push(this);
         Mode.DEFAULT_MODE = this;
 
-        ExploreMode.AUTO_MODE_TIME = 4000;
+        ExploreMode.AUTO_MODE_TIME = 5000;
         ExploreMode.AUTO_MODE_TIMEOUT = 4000;
 
         this._safeZone = {x: 0, y: 0, width: 0, height: 0};
