@@ -148,8 +148,6 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
     IssueAllCtrl.prototype._doScrollToIssue = function () {
         this._currentStatus = null;
 
-        this.onScroll();
-
         // get first issue from topic
         if (this.topic && !this.issue) {
             this.issue = this._$scope.detail.model.getTopicById(this.topic).getIssues()[0].getId();
@@ -162,7 +160,10 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         }
 
         // scroll to offset
-        this._scrollService.go('top', {offset: offset, animate: false});
+        if (!this._scrolled) {
+            this._scrollService.go('top', {offset: offset, animate: false});
+        }
+        this._scrolled = false;
         this._$scope.detail.currentIssue = this.issue;
     };
 
@@ -189,6 +190,13 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         var data = this._$scope.detail.model.getIssueById(currentElm.id);
         var status = currentElm.attributes['data-issue-status'].value;
+
+        // if issue changed and it's not right after a scrollToIssue
+        if (currentElm.id !== this.issue && this._currentStatus !== null) {
+            this._scrolled = true;
+            this.issue = currentElm.id;
+            this._windowService.setIssue(data);
+        }
 
         if (status !== this._currentStatus) {
             this._windowService.setBgMode(status);
