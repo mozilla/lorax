@@ -223,13 +223,12 @@
 
 
 .sharing-quote {
-    color: rgba(255,255,255,0.4);
     padding: 10px 0;
     position: relative;
     .transition(all 0.1s ease-in-out);
 
     .at-large({
-        padding: 15px 100px 15px 200px;
+        padding: 15px 100px 15px 225px;
     });
 
     .at-xlarge({
@@ -245,8 +244,13 @@
         });
 
         .at-large({
-            padding: 10px 100px 10px 175px;
+            padding: 10px 100px 10px 200px;
         });
+
+        .sharing-quote__text-link {
+            color: @white;
+            cursor: pointer;
+        }
     }
 
     .flexbox & {
@@ -256,6 +260,10 @@
             .align-items(center);
             .justify-content(space-between);
         });
+    }
+
+    .sharing-quote__text-link {
+        color: rgba(255,255,255,0.4);
     }
 }
 
@@ -282,7 +290,7 @@
         });
     }
 
-    > p {
+    .sharing-quote__text-link {
         .fira-sans-light;
         .font-size(1.6);
         line-height: 24px;

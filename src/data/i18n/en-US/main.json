@@ -709,6 +709,7 @@
       ]
     },
     "share": {
+        "title": "#shapeoftheweb",
         "shareButton": "Share",
         "learnMore": "Learn More",
         "aboutIssue": " about this issue",

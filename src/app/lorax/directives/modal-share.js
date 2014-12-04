@@ -43,11 +43,19 @@ define(['angular', 'jquery'], function (angular, $) {
             'xlarge': -35
         };
 
+        this._clickPhrase = {
+            'small': false,
+            'medium': false,
+            'large': true,
+            'xlarge': true
+        };
+
         $scope.modalShare = {
             open: false,
             service: null,
             closeModal: this.closeModal.bind(this),
             onShare: this.onShare.bind(this),
+            onPhraseClick: this.onPhraseClick.bind(this),
             shareFacebook: this.shareFacebook.bind(this),
             shareTwitter: this.shareTwitter.bind(this),
             onSecondStep: false,
@@ -96,8 +104,6 @@ define(['angular', 'jquery'], function (angular, $) {
             }
         );
 
-        console.log(service);
-
         this._windowService.setModalOpen(true);
 
         // get the current issue that the user is viewing,
@@ -136,6 +142,29 @@ define(['angular', 'jquery'], function (angular, $) {
             e.preventDefault();
             this.secondStep(issue);
             break;
+        }
+    };
+
+    ModalShareController.prototype.onPhraseClick = function (e, issue) {
+        if ( this._clickPhrase[this._windowService.breakpoint()]) {
+            // if modal service is 'twitter' or 'fb'
+            // prevent the default mailto behavior
+            // open new sharing tab/window
+            switch (this._$scope.modalShare.service) {
+            case 'twitter':
+                e.preventDefault();
+                this.shareTwitter(issue);
+                break;
+            case 'fb':
+                e.preventDefault(issue);
+                this.shareFacebook();
+                break;
+            // if null, open second step
+            case null:
+                e.preventDefault();
+                this.secondStep(issue);
+                break;
+            }
         }
     };
 
