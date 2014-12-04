@@ -146,6 +146,8 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
     };
 
     IssueAllCtrl.prototype._doScrollToIssue = function () {
+        this._currentStatus = null;
+
         this.onScroll();
 
         // get first issue from topic
@@ -186,8 +188,8 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         });
 
         var data = this._$scope.detail.model.getIssueById(currentElm.id);
-
         var status = currentElm.attributes['data-issue-status'].value;
+
         if (status !== this._currentStatus) {
             this._windowService.setBgMode(status);
             this._currentStatus = status;
