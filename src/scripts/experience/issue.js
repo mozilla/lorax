@@ -159,6 +159,7 @@ define([
             } break;
             case Issue.MODE_ISSUES: {
                 this.stopMoving();
+                this.stopPulsing();
                 this.setTextAlwaysVisible(true);
                 this.setIsInteractive(false);
                 this.setRadiusChange(false);
@@ -170,6 +171,7 @@ define([
             } break;
             case Issue.MODE_TAG_ISSUES: {
                 this.stopMoving();
+                this.stopPulsing();
                 this.setTextAlwaysVisible(true);
                 this.setIsInteractive(false);
                 this.setRadiusChange(false);
@@ -181,6 +183,7 @@ define([
             } break;
             case Issue.MODE_DETAIL: {
                 this.stopMoving();
+                this.stopPulsing();
                 this.setIsInteractive(false);
                 this.setTextAlwaysVisible(true);
                 this.setRadiusChange(false);

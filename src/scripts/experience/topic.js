@@ -209,6 +209,7 @@ define([
             issue = this._issues[i];
             issue.setTextAlwaysVisible(true);
             issue.stopMoving();
+            issue.stopPulsing();
             posX = this.elm.x + this._linearArea.x;
             posY = this.elm.y + this._linearArea.y;
             posY += (((this._linearDist * i) - this._linearDist * this._issues.length / 2));

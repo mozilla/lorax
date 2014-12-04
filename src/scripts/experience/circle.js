@@ -101,6 +101,7 @@ define([
      */
     Circle.prototype._resumeStaticAnimation = function () {
         this.stopMoving();
+        this.stopPulsing();
         this._setStaticAnimation();
     };
 
@@ -269,9 +270,15 @@ define([
      */
     Circle.prototype.stopMoving = function () {
         gs.TweenMax.killTweensOf(this.elm);
-        gs.TweenMax.killTweensOf(this._circle.scale);
         this.elm.x = Math.round(this.elm.x);
         this.elm.y = Math.round(this.elm.y);
+    };
+
+    /**
+     * Stops static movement
+     */
+    Circle.prototype.stopPulsing = function () {
+        gs.TweenMax.killTweensOf(this._circle.scale);
     };
 
     return Circle;

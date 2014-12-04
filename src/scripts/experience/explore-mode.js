@@ -322,7 +322,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         // start a new autoMode timeout
         this._endAutoMode(true);
-
+        console.log('show');
         setTimeout(this._onShow.bind(this), 500);
     };
 
