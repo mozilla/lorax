@@ -277,10 +277,6 @@ section#detail {
         max-width: 200px;
     });
 
-    .icon-arrow-right {
-        background-position: right;
-    }
-
     .detail__more--map & {
         .at-xlarge({
             margin-right: 0;
@@ -322,7 +318,7 @@ section#detail {
 
 .detail-link__multiple {
     display: block;
-    width: 75%;
+    width: 100%;
     color: @white;
     .fira-sans-semibold;
     .font-size(1.1);
@@ -337,6 +333,15 @@ section#detail {
     .no-touch &:hover,
     &:focus {
         color: @white;
+    }
+
+    .icon-arrow-right {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        background-position-y: 2px;
     }
 }
 

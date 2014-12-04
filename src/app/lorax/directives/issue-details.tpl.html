@@ -24,7 +24,7 @@
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getMozActionCopy()}}</p>
           <a ng-if="::issueDetails.issue.getMozActionLink().length === 1" href="{{::issueDetails.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getMozActionLink()[0].copy}}</a>
-          <a ng-if="::issueDetails.issue.getMozActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getMozActionLink()" href="{{link.url}}" class="detail-link__multiple icon-arrow-right">{{link.copy}}</a>
+          <a ng-if="::issueDetails.issue.getMozActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getMozActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
         </section>
       </li>
       <li>
@@ -34,7 +34,7 @@
           </header>
           <p class="detail-link__copy">{{::issueDetails.issue.getYourActionCopy()}}</p>
           <a ng-if="::issueDetails.issue.getYourActionLink().length === 1" href="{{::issueDetails.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{::issueDetails.issue.getYourActionLink()[0].copy}}</a>
-          <a ng-if="::issueDetails.issue.getYourActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getYourActionLink()" href="{{link.url}}" class="detail-link__multiple icon-arrow-right">{{link.copy}}</a>
+          <a ng-if="::issueDetails.issue.getYourActionLink().length > 1" ng-repeat="link in ::issueDetails.issue.getYourActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
         </section>
       </li>
     </ul>
