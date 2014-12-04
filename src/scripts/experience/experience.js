@@ -65,10 +65,12 @@ define([
         this._introMode.hideS.add(this._onEndIntro.bind(this));
         this._tagIssuesMode.closeS.add(this._onCloseTagIssues.bind(this));
 
-        this._hasInitialized = true;
-        if (this._onInitMode) {
-            this._onInitMode(this._onInitData);
-        }
+        setTimeout(function () {
+            this._hasInitialized = true;
+            if (this._onInitMode) {
+                this._onInitMode(this._onInitData);
+            }
+        }.bind(this), 500);
     };
 
     Experience.prototype.setData = function (data) {
