@@ -2,11 +2,13 @@
 define([
     'pixi',
     'gs',
+    'experience/circle',
     'experience/mode',
     'experience/responsive'
 ], function (
     PIXI,
     gs,
+    Circle,
     Mode,
     Responsive
 ) {
@@ -54,6 +56,13 @@ define([
         this._internet.alpha = 0;
         this._introContainer.addChild(this._internet);
 
+        this._circle = new Circle();
+        this._circle.draw(6);
+        this._introContainer.addChild(this._circle.elm);
+        this._circle._resumeStaticAnimation();
+        this._circle.stopMoving();
+        this._circle.elm.alpha = 0;
+
         if (Responsive.IS_SMALL()) {
             this._message.setStyle({
                 font: '200 16px "Fira Sans", sans-serif',
@@ -89,6 +98,7 @@ define([
             issue.elm.interactive = false;
         }
 
+        gs.TweenMax.to(this._circle.elm, 0.4, {alpha: 1, overwrite: true});
         gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: true, delay: 2.5});
         gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: true});
         this._introContainer.addChild(this._clickArea);
@@ -110,6 +120,7 @@ define([
             issue.elm.interactive = true;
         }
 
+        this._circle.elm.alpha = 0;
         gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: true});
         gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: true});
         this._introContainer.removeChild(this._clickArea);
