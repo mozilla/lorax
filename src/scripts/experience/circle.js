@@ -58,32 +58,32 @@ define([
             1 + Math.random() * 0.5,
             {x: this._x0, y: this._y0},
             {
-                x: this._x0 + (-10 + Math.random() * 20) * d,
-                y: this._y0 + (-10 + Math.random() * 20) * d,
+                x: this._x0 + (-5 + Math.random() * 10) * d,
+                y: this._y0 + (-5 + Math.random() * 10) * d,
                 ease:gs.Linear.easeNone
             }
         ).to(
             this.elm,
             1 + Math.random() * 0.5,
             {
-                x: this._x0 + (-10 + Math.random() * 20) * d,
-                y: this._y0 + (-10 + Math.random() * 20) * d,
+                x: this._x0 + (-5 + Math.random() * 10) * d,
+                y: this._y0 + (-5 + Math.random() * 10) * d,
                 ease:gs.Linear.easeNone
             }
         ).to(
             this.elm,
             1 + Math.random() * 0.5,
             {
-                x: this._x0 + (-10 + Math.random() * 20) * d,
-                y: this._y0 + (-10 + Math.random() * 20) * d,
+                x: this._x0 + (-5 + Math.random() * 10) * d,
+                y: this._y0 + (-5 + Math.random() * 10) * d,
                 ease:gs.Linear.easeNone
             })
         .to(
             this.elm,
             1 + Math.random() * 0.5,
             {
-                x: this._x0 + (-10 + Math.random() * 20) * d,
-                y: this._y0 + (-10 + Math.random() * 20) * d,
+                x: this._x0 + (-5 + Math.random() * 10) * d,
+                y: this._y0 + (-5 + Math.random() * 10) * d,
                 ease:gs.Linear.easeNone
             })
         .to(

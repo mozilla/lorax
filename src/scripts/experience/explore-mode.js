@@ -36,8 +36,9 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var line;
         var isLineFree;
 
-        var issueWidth = 80;
+        var issueWidth = 150;
         var issueHeight = 20;
+        var displaceY = 0;
 
         // set issue positions
         for (i = 0; i < this._canvas.issues.length; i ++) {
@@ -53,7 +54,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 elm.exploreY = Math.cos(seed) * rSeed;
 
                 line = Math.floor(elm.exploreY / issueHeight);
-                elm.exploreY = line * issueHeight;
+                elm.exploreY = (line * issueHeight) + displaceY;
 
                 // makes sure issues don't overlap
                 if (!lines[line]) {
@@ -78,10 +79,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                     elm.exploreY < this._safeZone.y + this._safeZone.height
                 );
 
-                // if (tries >= 255) {
-                //     console.log(tries);
-                // }
-            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries++ < 256);
+                if (tries === 256) {
+                    displaceY = 10;
+                }
+            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries ++ < 512);
 
             lines[line].push(elm);
             elm.moveTo(0, 0);
