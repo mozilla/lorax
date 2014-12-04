@@ -36,7 +36,7 @@ define([
         this._clickArea.interactive = true;
         this._clickArea.interactive = true;
         this._clickArea.buttonMode = true;
-        this._clickArea.mousedown = this._onPressClose.bind(this);
+        this._clickArea.mousedown = this._clickArea.tap = this._onPressClose.bind(this);
 
         var messageStyle = {font: '200 24px "Fira Sans", sans-serif', fill: '#222222'};
         this._message = new PIXI.Text(this._introData.message, messageStyle);
@@ -53,6 +53,18 @@ define([
         this._internet.y = 25;
         this._internet.alpha = 0;
         this._introContainer.addChild(this._internet);
+
+        if (Responsive.IS_SMALL()) {
+            this._message.setStyle({
+                font: '200 16px "Fira Sans", sans-serif',
+                fill: '#222222',
+                align: 'center',
+                wordWrap: true,
+                wordWrapWidth: Responsive.SIZE.x - 80
+            });
+            this._message.x = Math.round(-(this._message.width / Responsive.RATIO) / 2);
+            this._message.y = -(this._message.height / Responsive.RATIO) - 30;
+        }
     };
 
     IntroMode.prototype.setData = function (data) {
