@@ -178,7 +178,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 relatedItem = this._canvas.getElementByData(related[j]);
                 isOver = (issue.isOver || relatedItem.isOver);
 
-                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
+                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.05 : 0.02);
             }
 
             // draw lines connecting related tags
@@ -186,7 +186,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                 relatedItem = this._canvas.getElementByData(tags[j]);
                 isOver = (issue.isOver || relatedItem.isOver);
 
-                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.10 : 0.02);
+                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.05 : 0.02);
             }
         }
     };
