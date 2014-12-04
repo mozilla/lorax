@@ -28,6 +28,8 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
         this._experience.setExploreSafezone(menuRect);
 
         dataService.getMain().then(this.setData.bind(this));
+
+        this._windowService.subscribe('modalOpen', this.onModalOpen.bind(this));
     };
 
     ExperienceService.prototype.setMenuPositions = function () {
@@ -54,6 +56,14 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
     ExperienceService.prototype.setContainer = function (container) {
         this._container = container;
         this._checkIfReady();
+    };
+
+    ExperienceService.prototype.onModalOpen = function (isOpen) {
+        if (isOpen) {
+            this._experience.endAutoPlay();
+        } else {
+            this._experience.startAutoPlay();
+        }
     };
 
     ExperienceService.prototype._checkIfReady = function () {

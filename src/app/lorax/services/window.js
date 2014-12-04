@@ -115,6 +115,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
          */
         function setModalOpen(modalOpen) {
             pubSubService.publish('windowService.modalOpen', [modalOpen]);
+            $.publish('windowService.modalOpen', [modalOpen]);
         }
 
         /**

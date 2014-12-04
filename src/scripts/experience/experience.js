@@ -111,6 +111,18 @@ define([
         this._detailMode.setTopicMenuPositions(positions);
     };
 
+    Experience.prototype.endAutoPlay = function () {
+        if (this._mode === Issue.MODE_EXPLORE) {
+            this._exploreMode._endAutoMode();
+        }
+    };
+
+    Experience.prototype.startAutoPlay = function () {
+        if (this._mode === Issue.MODE_EXPLORE) {
+            this._exploreMode._endAutoMode(true);
+        }
+    };
+
     /**
     * Shows FPS count
     */
