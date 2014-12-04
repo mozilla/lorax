@@ -159,6 +159,8 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
             offset = this._$scope.detail.model.getIssueById(this.issue).offset.top - this._issueOffset[this._windowService.breakpoint()];
         }
 
+        offset = Math.max(1, offset);
+
         // scroll to offset
         if (!this._scrolled) {
             this._scrollService.go('top', {offset: offset, animate: false});

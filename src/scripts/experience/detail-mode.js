@@ -77,9 +77,6 @@ define([
         // draw elements
         for (var i = 0; i < this._topics.length; i ++) {
             topic = new PIXI.Graphics();
-            topic.beginFill(0xFFFFFF);
-            topic.drawCircle(0, 0, 5);
-            topic.endFill();
             topic.data = this._topics[i];
             topic.elm = topic;
             this._topicElms[this._topics[i].getId()] = topic;

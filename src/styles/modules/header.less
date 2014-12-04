@@ -219,6 +219,7 @@
     height: 60px;
     letter-spacing: 1px;
     line-height: 60px;
+    position: relative;
     text-align: center;
     text-transform: uppercase;
     width: 60px;
@@ -247,6 +248,17 @@
         .at-medium({
             .font-size(1.6);
             letter-spacing: 2px;
+
+            &:after {
+                content: '\2022';
+                display: block;
+                position: absolute;
+                left: 50%;
+                bottom: -20px;
+                .font-size(4);
+                color: @white;
+                margin-left: -5px;
+            }
         });
 
         .no-touch &:hover,
