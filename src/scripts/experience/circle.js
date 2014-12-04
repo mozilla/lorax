@@ -173,9 +173,6 @@ define([
      * Moves elements away from center
      */
     Circle.prototype.explode = function (radius, center) {
-        if (this.exploded === true) {
-            return;
-        }
         this.exploded = true;
 
         center = center || {x:0, y:0};

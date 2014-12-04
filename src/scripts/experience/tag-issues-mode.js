@@ -124,6 +124,7 @@ define([
 
         var x0 = this._tag._x0;
         var y0 = this._tag._y0;
+        this._tag.exploded = false;
         this._tag.setMode(Issue.MODE_TAG_TITLE);
         this._tag.issueX = this._scrollArea.x - 40;
         this._tag.issueY = this._scrollArea.y - this._issueMargin;
@@ -155,6 +156,7 @@ define([
         }
 
         this._tag.setMode(Issue.MODE_TAG);
+        this._tag.explode();
 
         $(document).off('mousewheel', this._onMouseWheelBind);
         this._canvas.clearLines();

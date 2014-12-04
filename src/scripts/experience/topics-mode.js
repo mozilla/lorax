@@ -203,7 +203,7 @@ define([
         this._canvas.swipeLeftS.remove(this._swipeToNextTopicBind);
         this._canvas.swipeRightS.remove(this._swipeToPrevTopicBind);
 
-        setTimeout(this._onHide.bind(this), 0);
+        setTimeout(this._onHide.bind(this), 100);
     };
 
     TopicsMode.prototype._swipeToNextTopic = function () {
