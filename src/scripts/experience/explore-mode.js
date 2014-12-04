@@ -105,6 +105,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                     elm.exploreY < this._canvas.canvasSize.y / 2
                 );
             } while (!isInsideBounds);
+
+            if (elm.exploreX < 0) {
+                elm.setLeftSidedText();
+            }
         }
 
         // set fakes positions
