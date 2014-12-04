@@ -4,7 +4,7 @@
  * @class lorax/controllers/CoreCtrl
  * @param $scope
  */
-define(function () {
+define(['webfontloader'], function (WebFont) {
     'use strict';
 
     /*jshint unused: false */
@@ -27,15 +27,11 @@ define(function () {
             closeShareOptions: this.closeShareOptions.bind(this),
             openAboutModal: this.openAboutModal.bind(this),
             openLegendModal: this.openLegendModal.bind(this),
-            siteInfo: this.siteInfo.bind(this)
+            siteInfo: this.siteInfo.bind(this),
+            isLoaded: false
         };
 
-        this._dataService.getMain().then(function (model) {
-            this._$scope.core.miscData = model.getMiscLocale();
-            document.title = this._$scope.core.miscData.siteTitle;
-        }.bind(this));
-
-        pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));
+        this.init();
     };
 
     CoreCtrl.$inject = [
@@ -45,6 +41,27 @@ define(function () {
         'routesService',
         'dataService'
     ];
+
+    CoreCtrl.prototype.init = function () {
+        WebFont.load({
+            active: this.loadMain.bind(this),
+            custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
+        });
+    };
+
+    CoreCtrl.prototype.loadMain = function () {
+        this._dataService.getMain().then(function (model) {
+            this._$scope.core.miscData = model.getMiscLocale();
+            this.onLoaded();
+        }.bind(this));
+    };
+
+    CoreCtrl.prototype.onLoaded = function () {
+        document.title = this._$scope.core.miscData.siteTitle;
+        this._$scope.core.isLoaded = true;
+        this._pubSubService.dispatch('window.onLoaded');
+        this._pubSubService.subscribe('windowService.breakpoint', this.onBreakpointChange.bind(this));
+    };
 
     CoreCtrl.prototype.openEmailModal = function () {
         this._$scope.$broadcast('openEmailModal');

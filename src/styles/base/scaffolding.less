@@ -33,6 +33,11 @@ body {
         padding-top: 80px;
     });
 
+    &.ng-hide:not(.ng-hide-animate) {
+        display: block !important;
+        visibility: hidden;
+    }
+
     &.no-anim {
         .transition(none);
     }
