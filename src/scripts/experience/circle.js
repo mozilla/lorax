@@ -127,6 +127,12 @@ define([
         //.split('').join(String.fromCharCode(8202))
         this._title = new PIXI.Text(this.data.getName().toUpperCase(), this._titleStyle);
         this._title.resolution = Responsive.RATIO;
+        this._title.hitArea = new PIXI.Rectangle(
+            0,
+            0,
+            this._title.width / Responsive.RATIO,
+            this._title.height / Responsive.RATIO
+        );
         this._title.x = 20;
         this._title.y = -(this._title.height / Responsive.RATIO) / 2;
         this._title.y = Math.round(this._title.y);
@@ -138,6 +144,12 @@ define([
                 this._subtitleStyle
             );
             this._subtitle.resolution = Responsive.RATIO;
+            this._subtitle.hitArea = new PIXI.Rectangle(
+                0,
+                0,
+                this._subtitle.width / Responsive.RATIO,
+                this._subtitle.height / Responsive.RATIO
+            );
             this._subtitle.x = this._title.x;
             this._subtitle.y = -(this._subtitle.height / Responsive.RATIO) / 2;
             this._subtitle.y = Math.round(this._subtitle.y);
@@ -146,6 +158,12 @@ define([
 
         this._tagTitle = new PIXI.Text(' ', {font: '200 12px "Fira Sans", sans-serif', fill: '#999999'});
         this._tagTitle.resolution = Responsive.RATIO;
+        this._tagTitle.hitArea = new PIXI.Rectangle(
+            0,
+            0,
+            this._tagTitle.width / Responsive.RATIO,
+            this._tagTitle.height / Responsive.RATIO
+        );
         this._tagTitle.x = 10;
         this._tagTitle.y = -(this._tagTitle.height / Responsive.RATIO) - 15;
         this._tagTitle.y = Math.round(this._tagTitle.y);

@@ -91,7 +91,7 @@ define([
         this.elm.mouseover = this._onMouseOver.bind(this);
         this.elm.mouseout = this._onMouseOut.bind(this);
         this.elm.mousedown = this._onPress.bind(this);
-        this.elm.touchstart = this._onTap.bind(this);
+        this.elm.tap = this._onTap.bind(this);
     };
 
     Issue.prototype._onMouseOver = function () {
@@ -120,6 +120,12 @@ define([
                 this.setIsInteractive(true);
                 this.setRadiusChange(true);
                 this._title.setStyle(this._titleStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
@@ -129,6 +135,12 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._tagStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.x = 10;
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
@@ -143,6 +155,12 @@ define([
                 tagTitleText += ' issues related to';
                 this._tagTitle.setText(tagTitleText.toUpperCase());
                 this._title.setStyle(this._tagTitleStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.x = 10;
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xFFFFFF);
@@ -154,6 +172,12 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._topicStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
@@ -165,6 +189,12 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._issuesStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
                 this.elm.alpha = 1;
@@ -177,6 +207,12 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._tagIssuesStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
                 this.elm.alpha = 1;
@@ -189,6 +225,12 @@ define([
                 this.setRadiusChange(false);
                 this.radius = this.initRadius;
                 this._title.setStyle(this._detailStyle);
+                this._title.hitArea = new PIXI.Rectangle(
+                    0,
+                    0,
+                    this._title.width / Responsive.RATIO,
+                    this._title.height / Responsive.RATIO
+                );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
             } break;
@@ -262,6 +304,12 @@ define([
         if (this.mode === Issue.MODE_EXPLORE && this._subtitle) {
             totalHeight += Math.round(this._subtitle.height / Responsive.RATIO) + 2;
             this._title.setStyle(this._titleOverStyle);
+            this._title.hitArea = new PIXI.Rectangle(
+                0,
+                0,
+                this._title.width / Responsive.RATIO,
+                this._title.height / Responsive.RATIO
+            );
         }
 
         this._title.y = Math.round(-totalHeight / 2);
@@ -299,6 +347,12 @@ define([
 
         if (this.mode === Issue.MODE_EXPLORE) {
             this._title.setStyle(this._titleStyle);
+            this._title.hitArea = new PIXI.Rectangle(
+                0,
+                0,
+                this._title.width / Responsive.RATIO,
+                this._title.height / Responsive.RATIO
+            );
             this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
 
             var onHide = function () {
@@ -350,7 +404,7 @@ define([
 
             var maxX = stickyRadius + this.elm.width / 2;
             var maxY = stickyRadius + this.elm.height / 2;
-            
+
             if (Math.abs(this.elm.x - this._x0) > maxX ||
                     Math.abs(this.elm.y - this._y0) > maxY) {
                 this._onMouseOut();
