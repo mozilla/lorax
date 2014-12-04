@@ -665,7 +665,8 @@
         "submitButton": "Submit"
     },
     "legend": {
-      "title": "Explore the most important issues on the web today and what shape they're in.",
+      "title": "Legend",
+      "description": "Explore the most important issues on the web today and what shape they're in.",
       "copy": [
         [
           {

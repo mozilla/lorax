@@ -5,6 +5,7 @@
     <div class="side-panel__content">
       <h1 class="side-panel-title">{{::modalLegend.content.title}}</h1>
       <div class="side-panel-copy">
+        <p>{{::modalLegend.content.description}}</p>
         <div class="legend-group" ng-repeat="group in modalLegend.content.copy">
           <div class="cf" ng-repeat="paragraph in group">
             <div class="legend-symbol {{paragraph.class}}"></div>

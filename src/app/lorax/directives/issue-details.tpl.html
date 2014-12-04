@@ -7,8 +7,8 @@
     <div class="detail-main">
       <div class="detail-main__copy">{{::issueDetails.issue.getNarrative()}}</div>
       <div class="detail-tags detail-tags--main" ng-if="::issueDetails.issue.getTags()">
-        <span class="detail-tags__title">Related Tags:</span>
-        <a href="#" class="detail-tags__tag" ng-repeat="tag in ::issueDetails.issue.getTags()">{{tag.getName()}}</a>
+        <span class="detail-tags__title">{{::issueDetails.issue.getMiscLocale().tagsLabel}}</span>
+        <a ng-repeat="tag in ::issueDetails.issue.getTags()" href="/tag/{{tag.getURLId()}}" class="detail-tags__tag">{{tag.getName()}}<span ng-show="!$last">, </span></a>
       </div>
     </div>
   </section>

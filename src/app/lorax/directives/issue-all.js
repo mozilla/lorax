@@ -46,7 +46,13 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
             nextIssue: this.nextIssue.bind(this)
         };
 
-        this._issueOffset = 138;
+        this._issueOffset = {
+            'small': 35,
+            'medium': 100,
+            'large': 125,
+            'xlarge': 138
+        };
+
         this._onScrollBind = this.onScroll.bind(this);
 
         // get model
@@ -150,7 +156,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         // find issue offset
         var offset = 0;
         if (this.issue) {
-            offset = this._$scope.detail.model.getIssueById(this.issue).offset.top - this._issueOffset;
+            offset = this._$scope.detail.model.getIssueById(this.issue).offset.top - this._issueOffset[this._windowService.breakpoint()];
         }
 
         // scroll to offset

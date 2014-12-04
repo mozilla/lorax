@@ -86,9 +86,6 @@ define(['angular', 'jquery', 'jquery-customselect'], function (angular, $) {
     };
 
     ModalEmailController.prototype.onInputChange = function () {
-        // this._$scope.modalEmail.showSubmitBtn =
-        //  (this._$scope.modalEmail.email) ? true : false;
-
         this._$scope.modalEmail.showSubmitBtn =
          (this._$scope.modalEmail.terms && this._$scope.modalEmail.email) ? true : false;
     };
