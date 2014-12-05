@@ -45,8 +45,19 @@ This file has four main sections: **topics**, **tags**, **modals**, and **misc**
 
 ##### country-data.json
 
-Contains a list of all countries their data for the world map infographics.
+Contains a list of all countries and their data for the world map infographics.
 
 ##### infographics.json
 
 This file is organized by issue. Each issue has a header, subheader, and source, as well as data that pertains to its specific infographic.
+
+## Email Sign-Up Feature
+
+Code for the email sign-up page is located at:
+
+**/app/lorax/directives/modal-email.js**<br>
+and <br>
+**/app/lorax/directives/modal-email.tpl.html**<br/>
+
+You can find the inputs for email, country, and ToS in the HTML file. They are all under the form tag with the class "keep-informed__form"
+
