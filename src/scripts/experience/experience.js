@@ -247,14 +247,13 @@ define([
 
         if (this._enterIssueCallback) {
             var issueData = issue.data;
-            issue.openIssue();
 
             if (this._setBgMode) {
                 this._setBgMode(issueData.getStatusDescription());
             }
 
+            issue.openIssue();
             this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
-
             this.showDetail();
         }
     };

@@ -68,11 +68,6 @@ define(['jquery'], function ($) {
         if (!this._$scope.detail.isOpen) {
             // set detail mode on, adds body class
             this._windowService.setDetailMode(true);
-
-            // set bg color
-            var status = $('.detail').eq(0).attr('data-issue-status');
-            this._windowService.setBgMode(status, false);
-
             this._$scope.detail.isOpen = true;
         }
 
