@@ -24,11 +24,10 @@ section#detail {
 }
 
 .detail__header {
-    margin: 0 0 30px;
+    margin: 0 0 15px;
     padding: 0 20px;
 
     .at-medium({
-        margin: 0;
         padding: 0 70px;
     });
 
@@ -200,12 +199,12 @@ section#detail {
     .at-medium({
         .font-size(1.8);
         line-height: 32px;
+        margin: 0 0 48px;
     });
 
     .at-large({
         .font-size(1.6);
         line-height: 30px;
-        margin: 0 0 0;
     });
 
     > p {
@@ -375,9 +374,10 @@ section#detail {
 
 .detail-tags__title {
     color: @white;
+    padding-right: 5px;
 }
 
-    .detail-tags__tag {
+.detail-tags__tag {
     display: inline-block;
     margin-right: 3px;
     .transition(all 0.1s ease-in-out);

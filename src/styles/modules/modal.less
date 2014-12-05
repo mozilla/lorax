@@ -226,6 +226,14 @@
 /* Share Modal
    ========================================================================== */
 
+.modal__header-share {
+    position: absolute;
+
+    .at-large({
+        position: fixed;
+    });
+}
+
 .sharing-list {
     .reset-list;
 
@@ -332,7 +340,7 @@
 
     .flexbox & {
         .at-medium({
-            width: 66%;
+            width: 60%;
         });
 
         .at-large({
@@ -380,6 +388,7 @@
         position: static;
         text-align: left;
         width: auto;
+        display: inline-block;
     });
 
     .flexbox & {
@@ -398,7 +407,6 @@
     }
 
     .sharing-quote:hover & {
-        // .transition(opacity 0.2s ease-in-out);
         .opacity(1);
         cursor: pointer;
     }
@@ -423,7 +431,7 @@
     });
 
     .at-large({
-        display: block;
+        display: inline-block;
 
         .is-hidden-sm {
             display:inline-block;
@@ -443,24 +451,16 @@
 
 .sharing-quote__buttons {
     .flexbox & {
-        .at-large({
+        .at-medium({
             width: 40%;
             display: table-cell;
             vertical-align: middle;
 
             > a {
                 margin: 0 15px;
-                display: inline-block;
             }
         });
     }
-}
-
-.modal__back-share {
-    left: 50%;
-    margin-left: -15px;
-    bottom: 20px;
-    top: auto;
 }
 
 .second-step__sharing {
