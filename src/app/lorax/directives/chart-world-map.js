@@ -71,14 +71,14 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
               },
               {
                 'left': 41,
-                'top': 74
+                'top': 68
               },
               {
                 'left': 66,
                 'top': 65
               },
               {
-                'left': 85,
+                'left': 87,
                 'top': 50
               }
             ]
