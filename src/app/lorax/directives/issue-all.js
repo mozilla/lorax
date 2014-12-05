@@ -49,7 +49,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         this._downArrowOpacity = 1.0;
 
         this._issueOffset = {
-            'small': 35,
+            'small': 60,
             'medium': 100,
             'large': 125,
             'xlarge': 138
