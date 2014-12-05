@@ -69,7 +69,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var width = graphWidth/2.25;
       var height = graphWidth/2.0;
 
-      var svg = lineGraph.append('svg')
+      var svg = lineGraph.insert('svg', '.opensource__legend-os')
         .attr('class', 'opensource__svg')
         .attr('width', width)
         .attr('height', height);
@@ -140,10 +140,7 @@ define(['jquery', 'd3'], function ($, d3) {
         for ( var i = 0; i < numDatasets; i++ ) {
           var y = d3.scale.linear()
           .range([height-margin.bottom, margin.top])
-          .domain([
-            d3.min( lineData, function(d) { return (d.data[i] * 0.50); }),
-            d3.max( lineData, function(d) { return (d.data[i] * 1.25); })
-          ]);
+          .domain([0, 110]);
 
           var line = d3.svg.line()
             .x(function(d) { return x(d.label); })
@@ -164,16 +161,55 @@ define(['jquery', 'd3'], function ($, d3) {
             .attr('class', 'linegraph__line opensource__line_' + i)
             .attr('d', line);
 
-          datasetGroup.selectAll('.point__' + i)
-            .data(lineData)
-            .enter()
-            .append('g')
-            .attr('class', 'opensource__point_' + i)
-            .append('circle')
-              .attr('class', 'opensource__point_' + i + '_circle')
-              .attr('cx', function(d) { return x(d.label); })
-              .attr('cy', function(d) { return y(+d.data[i]); })
-              .attr('r', 3);
+            switch (i) {
+                case 0:
+                case 3:
+                    datasetGroup.selectAll('.point__' + i)
+                        .data(lineData)
+                        .enter()
+                        .append('g')
+                        .attr('class', 'opensource__point_' + i + ' opensource__point_circle')
+                        .append('circle')
+                          .attr('class', 'opensource__point_' + i + '_circle')
+                          .attr('cx', function(d) { return x(d.label); })
+                          .attr('cy', function(d) { return y(+d.data[i]); })
+                          .attr('r', 3);
+                    break;
+
+                case 1:
+                case 4:
+                    datasetGroup.selectAll('.point__' + i)
+                        .data(lineData)
+                        .enter()
+                        .append('g')
+                        .attr('class', 'opensource__point_' + i + ' opensource__point_square')
+                        .append('rect')
+                          .attr('class', 'opensource__point_' + i + '_circle')
+                          .attr('x', function(d) { return x(d.label) - 3; })
+                          .attr('y', function(d) { return y(+d.data[i]) - 3; })
+                          .attr('width', 6)
+                          .attr('height', 6);
+                    break;
+
+                case 2:
+                case 5:
+                    datasetGroup.selectAll('.point__' + i)
+                        .data(lineData)
+                        .enter()
+                        .append('g')
+                        .attr('class', 'opensource__point_' + i + ' opensource__point_triangle')
+                        .append('polygon')
+                          .attr('class', 'opensource__point_' + i + '_circle')
+                          .attr('points', function(d) {
+                            var p1 = x(d.label) + ',' + (y(+d.data[i])-4);
+                            var p2 = (x(d.label)+4) + ',' + (y(+d.data[i])+4);
+                            var p3 = (x(d.label)-4) + ',' + (y(+d.data[i])+4);
+                            var points = [p1, p2, p3];
+                            return points.join(' ');
+                          });
+                    break;
+
+            }
         }
       }
 
