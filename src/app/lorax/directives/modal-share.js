@@ -28,19 +28,23 @@ define(['angular', 'jquery'], function (angular, $) {
         $timeout,
         dataService,
         windowService,
-        utilsService
+        utilsService,
+        routesService
     ) {
         this._$scope = $scope;
         this._$timeout = $timeout;
         this._dataService = dataService;
         this._windowService = windowService;
         this._utilsService = utilsService;
+        this._routesService = routesService;
+
+        this._onScrollBind = this.onScroll.bind(this);
 
         this._offset = {
             'small': -60,
             'medium': -60,
-            'large': -35,
-            'xlarge': -35
+            'large': -30,
+            'xlarge': -30
         };
 
         this._clickPhrase = {
@@ -59,8 +63,8 @@ define(['angular', 'jquery'], function (angular, $) {
             shareFacebook: this.shareFacebook.bind(this),
             shareTwitter: this.shareTwitter.bind(this),
             onSecondStep: false,
-            secondStepIssue: null,
-            backToFirstStep: this.backToFirstStep.bind(this)
+            backToFirstStep: this.backToFirstStep.bind(this),
+            currentIssue: null
         };
 
         // listen for $broadcast of 'openShareModal'
@@ -91,10 +95,13 @@ define(['angular', 'jquery'], function (angular, $) {
         '$timeout',
         'dataService',
         'windowService',
-        'utilsService'
+        'utilsService',
+        'routesService'
     ];
 
     ModalShareController.prototype.openModal = function (e, service) {
+        $(window).on('scroll', this._onScrollBind);
+
         // service = 'twitter', 'email', or 'fb'
         angular.extend(
             this._$scope.modalShare,
@@ -108,20 +115,33 @@ define(['angular', 'jquery'], function (angular, $) {
 
         // get the current issue that the user is viewing,
         // from the url parameters
-        var currentIssue = this._utilsService.getURLParameter('issue');
+        // var currentIssue = this._utilsService.getURLParameter('issue');
+
+        $.each( this._$scope.modalShare.issues, function(key, data) {
+            if (data.getId() === this._routesService.params.issue) {
+                this._$scope.modalShare.currentIssue = data;
+            }
+        }.bind(this));
 
         // scroll to issue
         // if no issue in focus, e.g. user is on experience, we do nothing
-        if (currentIssue) {
+        if (this._$scope.modalShare.currentIssue) {
+            var currentIssue = this._$scope.modalShare.currentIssue.getId();
+            this._$scope.modalShare.onSecondStep = true;
             this.scrollToIssue(currentIssue);
         }
     };
 
     ModalShareController.prototype.closeModal = function () {
+        $(window).off('scroll', this._onScrollBind);
         this._$scope.modalShare.open = false;
         this._$scope.modalShare.onSecondStep = false;
-
+        this._$scope.modalShare.currentIssue = null;
         this._windowService.setModalOpen(false);
+    };
+
+    ModalShareController.prototype.onScroll = function () {
+        this._fadeText();
     };
 
     ModalShareController.prototype.onShare = function (e, issue) {
@@ -178,22 +198,51 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalShareController.prototype.secondStep = function (issue) {
-        this._$scope.modalShare.onSecondStep = true;
-        this._$scope.modalShare.secondStepIssue = issue;
+        if (!this._$scope.modalShare.onSecondStep) {
+            this._$scope.modalShare.onSecondStep = true;
+            var currentIssue = issue.getId();
+            this._$scope.modalShare.currentIssue = issue;
+            $('.sharing-list__item').addClass('sharing-quote__normal').addClass('sharing-quote__inactive').removeClass('sharing-quote__active');
+            var $el = $('[data-id="' + currentIssue + '"]');
+            $el.addClass('sharing-quote__active').removeClass('sharing-quote__inactive').removeClass('sharing-quote__normal');
+        }
     };
 
     ModalShareController.prototype.backToFirstStep = function () {
-        this._$scope.modalShare.onSecondStep = false;
+        if (this._$scope.modalShare.onSecondStep) {
+            this._$scope.modalShare.onSecondStep = false;
+            $('.sharing-list__item').addClass('sharing-quote__normal').removeClass('sharing-quote__active').removeClass('sharing-quote__inactive');
+        }
+    };
+
+    ModalShareController.prototype.fadeText = function () {
+        $.each($('.sharing-quote__text-link'), function (key, data) {
+            var textOffset = $(data).offset().top;
+            var textTop = $(data).position().top;
+
+            console.log(textOffset - $('.sharing-list').scrollTop());
+            // var diff = Math.abs(elOffset - textOffset) - textTop;
+
+            // var windowHeight = this._windowService.getDeviceWindowHeight();
+            // var minOpacity = 0.0;
+            // var opacity = 1.0 + (minOpacity - 1.0) * (diff - 0.0) / (windowHeight/2 - 0.0);
+
+            // $(data).css('opacity', opacity);
+        }.bind(this));
     };
 
     var ModalShareLinkFn = function (scope, iElem, iAttrs, controller) {
+
         controller.scrollToIssue = function (issue) {
             controller._$timeout(function () {
                 var $el = $('[data-id="' + issue + '"]');
                 var top = $el.position().top;
-                var offset = controller._offset[controller._windowService.breakpoint()];
-
+                var windowHeight = controller._windowService.getDeviceWindowHeight();
+                var offset = -windowHeight/2;
                 $('.modal').scrollTop(top + offset);
+
+                $('.sharing-list__item').addClass('sharing-quote__normal').addClass('sharing-quote__inactive').removeClass('sharing-quote__active');
+                $el.addClass('sharing-quote__active').removeClass('sharing-quote__inactive').removeClass('sharing-quote__normal');
             });
 
         };
