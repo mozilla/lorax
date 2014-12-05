@@ -238,6 +238,8 @@
     .reset-list;
 
     > li {
+        .transition(all 0.2s ease-in-out);
+
         &:first-child {
             .at-large({
                 padding-top: 40px;
@@ -257,14 +259,13 @@
     });
 
     .at-xlarge({
-        padding: 15px 200px;
+        padding: 15px 120px 15px 200px;
     });
 
     &:hover {
-        color: @white;
 
         .sharing-quote__text-link {
-            color: @white;
+            color: fade(@white, 70%);
             cursor: pointer;
         }
     }
@@ -279,22 +280,25 @@
     }
 }
 
-.sharing-list__cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: @sharecover-z-index;
-}
-
 .sharing-quote__active {
-    .sharing-quote {
-        z-index: @shareissue-z-index;
-    }
+    padding: 10px 0;
+
+    .at-large({
+        padding: 10px 0;
+    });
+
+    .at-xlarge({
+        padding: 25px 0;
+    });
 
     .sharing-quote__text-link {
         color: @white;
+    }
+
+    &:hover {
+        .sharing-quote__text-link {
+            color: @white;
+        }
     }
 }
 
@@ -302,23 +306,6 @@
     .sharing-quote__text-link {
         color: fade(@white, 40%);
     }
-}
-
-.sharing-quote__inactive {
-    .sharing-quote__text-link {
-        color: fade(@white, 5%);
-    }
-
-    &:hover {
-        .sharing-quote__text-link {
-            color: fade(@white, 5%);
-            cursor: auto;
-        }
-    }
-}
-
-.sharing-quote__z-index {
-    z-index: @shareissue-z-index;
 }
 
 .sharing-quote__text-link {
@@ -371,47 +358,6 @@
     }
 }
 
-.sharing-quote__btn {
-    bottom: 10px;
-    display: block;
-    left: 0;
-    .opacity(0);
-    padding: 0;
-    position: absolute;
-    text-align: center;
-    width: 86px;
-
-    .at-medium({
-        bottom: auto;
-        left: auto;
-        padding: 0: 30px;
-        position: static;
-        text-align: left;
-        width: auto;
-        display: inline-block;
-    });
-
-    .flexbox & {
-        .at-medium({
-            .flex-basis(100px);
-            width: 100px;
-            padding: 0;
-            text-align: center;
-        });
-    }
-
-    .no-touch &:hover,
-    &:focus {
-        border: 2px solid rgba(255,255,255,0.4);
-        color: rgba(255,255,255,0.4);
-    }
-
-    .sharing-quote:hover & {
-        .opacity(1);
-        cursor: pointer;
-    }
-}
-
 .sharing-quote__more {
     bottom: 22px;
     color: @white;
@@ -419,7 +365,7 @@
     .font-size(1.1);
     left: 106px;
     letter-spacing: 0.5px;
-    .opacity(0);
+    .opacity(1.0);
     position: absolute;
     text-transform: uppercase;
 
@@ -432,6 +378,7 @@
 
     .at-large({
         display: inline-block;
+        margin: 0 25%;
 
         .is-hidden-sm {
             display:inline-block;
@@ -439,13 +386,13 @@
         }
     });
 
+    .at-xlarge({
+        margin: 0 10%;
+    });
+
     .no-touch &:hover,
     &:focus {
         .opacity(0.8);
-    }
-
-    .sharing-quote:hover & {
-        .opacity(1);
     }
 }
 
@@ -455,10 +402,10 @@
             width: 40%;
             display: table-cell;
             vertical-align: middle;
+        });
 
-            > a {
-                margin: 0 15px;
-            }
+        .at-xlarge({
+            width: 60%;
         });
     }
 }
@@ -489,28 +436,27 @@
         }
     }
 
-    .flexbox & {
-        .at-large({
-            border-top: 0;
-            width: 40%;
-            display: table-cell;
-            vertical-align: middle;
+    .at-large({
+        border-top: 0;
+        width: 40%;
+        display: table-cell;
+        vertical-align: middle;
+        padding-bottom: 15px;
 
-            > li {
-                border-bottom: none;
-                padding: 0 15px;
-                display: inline-block;
-                > a {
+        > li {
+            border-bottom: none;
+            padding: 0 15px;
+            display: inline-block;
+            > a {
+                .transition(all 0.1s ease-in-out);
+                &:hover {
                     .transition(all 0.1s ease-in-out);
-                    &:hover {
-                        .transition(all 0.1s ease-in-out);
-                        text-decoration: none;
-                        opacity: 0.7;
-                    }
+                    text-decoration: none;
+                    opacity: 0.7;
                 }
             }
-        });
-    }
+        }
+    });
 }
 
 

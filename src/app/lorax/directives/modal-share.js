@@ -198,21 +198,17 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalShareController.prototype.secondStep = function (issue) {
-        if (!this._$scope.modalShare.onSecondStep) {
-            this._$scope.modalShare.onSecondStep = true;
-            var currentIssue = issue.getId();
-            this._$scope.modalShare.currentIssue = issue;
-            $('.sharing-list__item').addClass('sharing-quote__normal').addClass('sharing-quote__inactive').removeClass('sharing-quote__active');
-            var $el = $('[data-id="' + currentIssue + '"]');
-            $el.addClass('sharing-quote__active').removeClass('sharing-quote__inactive').removeClass('sharing-quote__normal');
-        }
+        this._$scope.modalShare.onSecondStep = true;
+        var currentIssue = issue.getId();
+        this._$scope.modalShare.currentIssue = issue;
+        $('.sharing-list__item').addClass('sharing-quote__normal').removeClass('sharing-quote__active');
+        var $el = $('[data-id="' + currentIssue + '"]');
+        $el.addClass('sharing-quote__active').removeClass('sharing-quote__normal');
     };
 
     ModalShareController.prototype.backToFirstStep = function () {
-        if (this._$scope.modalShare.onSecondStep) {
-            this._$scope.modalShare.onSecondStep = false;
-            $('.sharing-list__item').addClass('sharing-quote__normal').removeClass('sharing-quote__active').removeClass('sharing-quote__inactive');
-        }
+        this._$scope.modalShare.onSecondStep = false;
+        $('.sharing-list__item').addClass('sharing-quote__normal').removeClass('sharing-quote__active');
     };
 
     ModalShareController.prototype.fadeText = function () {
@@ -241,8 +237,8 @@ define(['angular', 'jquery'], function (angular, $) {
                 var offset = -windowHeight/2;
                 $('.modal').scrollTop(top + offset);
 
-                $('.sharing-list__item').addClass('sharing-quote__normal').addClass('sharing-quote__inactive').removeClass('sharing-quote__active');
-                $el.addClass('sharing-quote__active').removeClass('sharing-quote__inactive').removeClass('sharing-quote__normal');
+                $('.sharing-list__item').addClass('sharing-quote__normal').removeClass('sharing-quote__active');
+                $el.addClass('sharing-quote__active').removeClass('sharing-quote__normal');
             });
 
         };

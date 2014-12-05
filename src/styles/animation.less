@@ -85,4 +85,31 @@
     opacity: 0;
 }
 
+/* Fade Fast (with ng-if)
+   ========================================================================== */
+
+.modal--fade-if-fast {
+    .transition(0.1s ease-in-out all);
+
+    .no-anim & {
+        .transition(none);
+    }
+}
+
+.modal--fade-if-fast.ng-enter {
+    opacity: 0;
+}
+
+.modal--fade-if-fast.ng-enter.ng-enter.active {
+    opacity: 1;
+}
+
+.modal--fade-if-fast.ng-leave {
+    opacity: 1;
+}
+
+.modal--fade-if-fast.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
 
