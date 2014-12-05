@@ -58,6 +58,10 @@ body {
         background-color: @extra-dark-grey;
     }
 
+     &[data-bg-mode=""] {
+        overflow: hidden !important;
+    }
+
     &.is-modal-open,
     &.is-side-panel-open {
         overflow: hidden !important;

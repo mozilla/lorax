@@ -4,7 +4,7 @@
  * @class lorax/controllers/DetailCtrl
  * @param $scope
  */
-define([], function () {
+define(['jquery'], function ($) {
     'use strict';
 
     var NavCtrl = function (
@@ -28,6 +28,8 @@ define([], function () {
         }.bind(this));
 
         windowService.subscribe('topic', this._onChangeTopic.bind(this));
+
+        $(window).on('scroll', this._onScroll.bind(this));
     };
 
     NavCtrl.$inject = [
@@ -36,6 +38,27 @@ define([], function () {
         'windowService',
         'dataService'
     ];
+
+    NavCtrl.prototype._onScroll = function () {
+        var scrollTop = $(window).scrollTop();
+        var nav = $('.banner-nav-wrap');
+        if (!nav.hasClass('fixed') && scrollTop > nav.offset().top) {
+            this._navOffset = nav.offset();
+            $('body').addClass('no-anim');
+            $('#detail').css('padding-top', nav.outerHeight(true));
+            nav.addClass('fixed');
+            setTimeout(function () {
+                 $('body').removeClass('no-anim');
+            }, 100);
+        } else if (nav.hasClass('fixed') && scrollTop < this._navOffset.top) {
+            nav.removeClass('fixed');
+            $('body').addClass('no-anim');
+            $('#detail').css('padding-top', 0);
+            setTimeout(function () {
+                 $('body').removeClass('no-anim');
+            }, 100);
+        }
+    };
 
     NavCtrl.prototype._onChangeTopic = function (topic) {
         this._$timeout(function () {

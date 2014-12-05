@@ -23,6 +23,22 @@
 
 .modal--mobile-options {
     background: fade(@neutral, 90%);
+
+    [data-bg-mode="stop"] & {
+        background: fade(@stop, 90%);
+    }
+
+    [data-bg-mode="wait"] & {
+        background: fade(@wait, 90%);
+    }
+
+    [data-bg-mode="go"] & {
+        background: fade(@go, 90%);
+    }
+
+    [data-bg-mode="tag"] & {
+        background: fade(@extra-dark-grey, 90%);
+    }
 }
 
 .modal--old-ie {
