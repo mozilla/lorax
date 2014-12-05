@@ -133,6 +133,12 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         this._experienceService.setMenuPositions();
 
+        // FIXME: redirect svg fill so it works on ff
+        var fill = $('rect', '.banner-nav-bg');
+        var fillValue = fill.attr('fill');
+        fill.attr('fill', '');
+        fill.attr('fill', fillValue);
+
         if (detailIsHidden) {
             $('#detail').addClass('ng-hide');
         }

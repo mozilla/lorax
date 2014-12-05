@@ -2,12 +2,12 @@
   <nav class="banner-nav-wrap" ng-controller="NavCtrl">
     <svg class="banner-nav-bg" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <defs>
-          <linearGradient id="banner-nav-bg__gradient" x1="0" x2="0" y1="0" y2="1">
+          <linearGradient id="bg_gradient" x1="0" x2="0" y1="0" y2="1">
               <stop class="banner-nav-bg__stop" offset="60%" stop-opacity="0.9" />
               <stop class="banner-nav-bg__stop" offset="100%" stop-opacity="0" />
           </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill="url(#banner-nav-bg__gradient)" />
+      <rect width="100%" height="100%" fill="url(#bg_gradient)" />
     </svg>
     <ul class="banner-nav">
       <li><a href="/detail/access" data-topic="access" class="banner-nav__link" ng-class="{'is-active': nav.active==='access'}" ng-click="nav.handleClick('access')">{{::nav.content.navLabels.access}}</a></li>
