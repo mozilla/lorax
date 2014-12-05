@@ -29,7 +29,7 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
 
         dataService.getMain().then(this.setData.bind(this));
 
-        this._windowService.subscribe('modalOpen', this.onModalOpen.bind(this));
+        this._windowService.subscribe('onOpenModal', this.onModalOpen.bind(this));
     };
 
     ExperienceService.prototype.setMenuPositions = function () {

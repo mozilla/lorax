@@ -91,6 +91,10 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             $.unsubscribe('windowService.' + eventType, callback);
         }
 
+        function publish(eventType, data) {
+            $.publish('windowService.' + eventType, data);
+        }
+
         function matchMedia(query) {
             return Modernizr.mq(query);
         }
@@ -119,7 +123,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
          */
         function setModalOpen(modalOpen) {
             pubSubService.publish('windowService.modalOpen', [modalOpen]);
-            $.publish('windowService.modalOpen', [modalOpen]);
+            $.publish('windowService.onOpenModal', [modalOpen]);
         }
 
         /**
@@ -142,6 +146,7 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             setIssue: setIssue,
             subscribe: subscribe,
             unsubscribe: unsubscribe,
+            publish: publish,
             mq: matchMedia,
             getDeviceWindowHeight: getDeviceWindowHeight,
             setDetailMode: setDetailMode,

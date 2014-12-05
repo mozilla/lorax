@@ -61,14 +61,14 @@ define(function () {
 
     ModalLegendController.prototype.openModal = function () {
         this._$scope.modalLegend.open = true;
-
         this._windowService.setSidePanelOpen(true);
+        this._windowService.publish('onOpenModal', [true]);
     };
 
     ModalLegendController.prototype.closeModal = function () {
         this._$scope.modalLegend.open = false;
-
         this._windowService.setSidePanelOpen(false);
+        this._windowService.publish('onOpenModal', [false]);
     };
 
     return ModalLegendDirective;

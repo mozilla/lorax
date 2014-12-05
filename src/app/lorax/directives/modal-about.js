@@ -57,14 +57,14 @@ define(function () {
 
     ModalAboutController.prototype.openModal = function () {
         this._$scope.modalAbout.open = true;
-
         this._windowService.setSidePanelOpen(true);
+        this._windowService.publish('onOpenModal', [true]);
     };
 
     ModalAboutController.prototype.closeModal = function () {
         this._$scope.modalAbout.open = false;
-
         this._windowService.setSidePanelOpen(false);
+        this._windowService.publish('onOpenModal', [false]);
     };
 
     return ModalAboutDirective;
