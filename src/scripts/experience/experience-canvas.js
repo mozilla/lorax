@@ -44,6 +44,7 @@ define([
     */
     ExperienceCanvas.prototype.init = function (container) {
         Responsive.RATIO = window.devicePixelRatio;
+        // Responsive.RATIO = 2;
         Responsive.SIZE = new PIXI.Point(container.width(), container.height());
         Responsive.IS_TOUCH = Modernizr.touch;
 
@@ -53,7 +54,7 @@ define([
         this._renderer = new PIXI.CanvasRenderer(
             this.canvasSize.x,
             this.canvasSize.y,
-            {transparent: true, antialias: false, resolution: Responsive.RATIO});
+            {transparent: true, antialias: true, resolution: Responsive.RATIO});
         this._stage = new PIXI.Stage();
         this._stage.interactive = true;
         container.append(this._renderer.view);

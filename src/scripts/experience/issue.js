@@ -142,7 +142,7 @@ define([
                     this._title.width / Responsive.RATIO,
                     this._title.height / Responsive.RATIO
                 );
-                this._title.x = this.leftSided ? -(this._title.width * Responsive.RATIO) - 10 : 10;
+                this._title.x = this.leftSided ? -(this._title.width / Responsive.RATIO) - 10 : 10;
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
             } break;
