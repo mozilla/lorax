@@ -116,6 +116,12 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         var detailIsHidden = $('#detail').hasClass('ng-hide');
         $('#detail').removeClass('ng-hide');
 
+        // don't do it unless needed
+        var lastIssue = issues[issues.length - 1];
+        if (lastIssue.offset && lastIssue.offset.y === $('#' + lastIssue.getId()).offset().y) {
+            return;
+        }
+
         // set offset property of all issues
         for (var i = 0; i < issues.length; i ++) {
             issue = issues[i];

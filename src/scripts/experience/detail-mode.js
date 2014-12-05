@@ -92,11 +92,13 @@ define([
                 topic.x = topic._x0 = position.x;
                 topic.y = topic._y0 = position.y;
                 // topicOffset = topic._y0 - this._topics[0].getIssues()[0].offset.top;
-                topic._startY = topic.data.getIssues()[0].offset.top - 138;
-                if (lastTopic) {
-                    lastTopic._endY = topic._startY;
+                if (topic.data.getIssues()[0].offset) {
+                    topic._startY = topic.data.getIssues()[0].offset.top - 138;
+                    if (lastTopic) {
+                        lastTopic._endY = topic._startY;
+                    }
+                    lastTopic = topic;
                 }
-                lastTopic = topic;
             }
         }
     };

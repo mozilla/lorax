@@ -53,7 +53,7 @@ define([
         this._renderer = new PIXI.CanvasRenderer(
             this.canvasSize.x,
             this.canvasSize.y,
-            {transparent: true, antialias: true, resolution: Responsive.RATIO});
+            {transparent: true, antialias: false, resolution: Responsive.RATIO});
         this._stage = new PIXI.Stage();
         this._stage.interactive = true;
         container.append(this._renderer.view);
