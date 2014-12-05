@@ -143,6 +143,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         this.topic = topic;
 
         if (this.initialized) {
+            this.setOffsets(); // just to be sure
             this._doScrollToIssue();
         }
     };
