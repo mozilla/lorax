@@ -29,16 +29,6 @@ define([
         this._introContainer = new PIXI.DisplayObjectContainer();
         this._introContainer.x = Math.round(this._canvas.canvasSize.x / 2);
         this._introContainer.y = Math.round(this._canvas.canvasSize.y / 2);
-        this._canvas.addChild(this._introContainer);
-
-        this._clickArea = new PIXI.Graphics();
-        this._clickArea.hitArea = new PIXI.Rectangle(0, 0, this._canvas.canvasSize.x, this._canvas.canvasSize.y);
-        this._clickArea.x = -this._introContainer.x;
-        this._clickArea.y = -this._introContainer.y;
-        this._clickArea.interactive = true;
-        this._clickArea.interactive = true;
-        this._clickArea.buttonMode = true;
-        this._clickArea.mousedown = this._clickArea.tap = this._onPressClose.bind(this);
 
         var messageStyle = {font: '200 24px "Fira Sans", sans-serif', fill: '#222222'};
         this._message = new PIXI.Text(this._introData.message, messageStyle);
@@ -62,6 +52,15 @@ define([
         this._circle._resumeStaticAnimation();
         this._circle.stopMoving();
         this._circle.elm.alpha = 0;
+
+        this._clickArea = new PIXI.Graphics();
+        this._clickArea.hitArea = new PIXI.Rectangle(0, 0, this._canvas.canvasSize.x, this._canvas.canvasSize.y);
+        this._clickArea.x = -this._introContainer.x;
+        this._clickArea.y = -this._introContainer.y;
+        this._clickArea.interactive = true;
+        this._clickArea.buttonMode = true;
+        this._clickArea.mousedown = this._clickArea.tap = this._onPressClose.bind(this);
+        this._introContainer.addChild(this._clickArea);
 
         if (Responsive.IS_SMALL()) {
             this._message.setStyle({
@@ -98,10 +97,10 @@ define([
             issue.elm.interactive = false;
         }
 
+        this._canvas.addChild(this._introContainer);
         gs.TweenMax.to(this._circle.elm, 0.4, {alpha: 1, overwrite: true});
         gs.TweenMax.to(this._message, 0.4, {alpha: 1, overwrite: true, delay: 2.5});
         gs.TweenMax.to(this._internet, 0.4, {alpha: 1, overwrite: true});
-        this._introContainer.addChild(this._clickArea);
 
         setTimeout(this._onShow.bind(this), 500);
     };
@@ -123,7 +122,10 @@ define([
         this._circle.elm.alpha = 0;
         gs.TweenMax.to(this._message, 0.2, {alpha: 0, overwrite: true});
         gs.TweenMax.to(this._internet, 0.2, {alpha: 0, overwrite: true});
-        this._introContainer.removeChild(this._clickArea);
+
+        setTimeout(function () {
+            this._canvas.removeChild(this._introContainer);
+        }.bind(this), 200);
 
         setTimeout(this._onHide.bind(this), 100);
     };
