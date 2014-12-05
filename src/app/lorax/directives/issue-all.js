@@ -215,7 +215,6 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         // Fade out the down arrow as we scroll
         this._downArrowOpacity -= 0.005;
-        console.log(this._downArrowOpacity);
         $('.down-arrow-nav').css('opacity', this._downArrowOpacity);
     };
 
