@@ -154,6 +154,23 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         this.issue = issue;
         this.topic = topic;
 
+        var scrollTop = $(window).scrollTop();
+
+        var currentElm = $('.detail')[0];
+        $('.detail').each(function (index, elm) {
+            if (elm.offsetTop - 100 >= scrollTop) {
+                return false;
+            }
+            currentElm = elm;
+        });
+
+        var status = currentElm.attributes['data-issue-status'].value;
+
+        if (status !== this._currentStatus) {
+            this._windowService.setBgMode(status);
+            this._currentStatus = status;
+        }
+
         if (this.initialized) {
             this.setOffsets(); // just to be sure
             this._doScrollToIssue();
