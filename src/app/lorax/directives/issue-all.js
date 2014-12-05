@@ -46,6 +46,8 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
             nextIssue: this.nextIssue.bind(this)
         };
 
+        this._downArrowOpacity = 1.0;
+
         this._issueOffset = {
             'small': 35,
             'medium': 100,
@@ -210,6 +212,11 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
             this._windowService.setTopic(topic);
             this._currentTopic = topic;
         }
+
+        // Fade out the down arrow as we scroll
+        this._downArrowOpacity -= 0.005;
+        console.log(this._downArrowOpacity);
+        $('.down-arrow-nav').css('opacity', this._downArrowOpacity);
     };
 
     /**
