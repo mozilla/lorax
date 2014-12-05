@@ -68,6 +68,7 @@ define([
                 topic.elm.x = (this._canvas.canvasSize.x - 400) /
                     (this._topicsData.length - 1) * i;
                 topic.elm.x -= ((this._canvas.canvasSize.x - 400) / 2);
+                topic.elm.y = -40;
             } else if (Responsive.IS_MEDIUM()) {
                 topic.elm.x = (this._canvas.canvasSize.x - 500) * (i % 2);
                 topic.elm.x -= ((this._canvas.canvasSize.x - 500) / 2);
