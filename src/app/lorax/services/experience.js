@@ -40,7 +40,7 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
                 elm = $(elm);
                 detailMenuPositions[$(elm).attr('data-topic')] = {
                     x: elm.offset().left + (elm.innerWidth() / 2) - 5 - ($('#experience-canvas').width() / 2),
-                    y: (elm.innerHeight() / 2) - ($('#experience-canvas').height() / 2)
+                    y: (elm.innerHeight() / 2) + 15 - ($('#experience-canvas').height() / 2)
                 };
             });
         }
