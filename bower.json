@@ -1,0 +1,56 @@
+{
+  "name": "lorax",
+  "version": "0.0.0",
+  "homepage": "https://github.com/chrisjames-work/lorax",
+  "authors": [
+    "Chris James <chris@work.co>",
+    "Leandro Ferreira <leandroferreira@moco.to>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.3",
+    "requirejs": "~2.1.14",
+    "d3": "~3.4.12",
+    "jquery-tiny-pubsub": "~0.7.0",
+    "angular-route": "~1.3.0",
+    "lodash": "~2.4.1",
+    "stats.js": "*",
+    "pixi": "~2.1.1",
+    "js-signals": "git://github.com/WebSpellChecker/js-signals.git#~1.0.0",
+    "d3plus": "~1.6.5",
+    "jquery-selectric": "~1.8.4",
+    "jquery-mousewheel": "~3.1.12",
+    "webfontloader": "~1.5.8",
+    "greensock": "~1.14.2",
+    "angular-animate": "~1.3.2"
+  },
+  "devDependencies": {
+    "almond": "~0.3.0",
+    "angular": "~1.3.0"
+  },
+  "exportsOverride": {
+    "jquery-tiny-pubsub": {
+      "": "src/tiny-pubsub.js"
+    },
+    "modernizr": {
+      "": "modernizr.js"
+    },
+    "numericjs": {
+      "": "src/numeric.js"
+    },
+    "simplify-js": {
+      "": "simplify.js"
+    },
+    "static-kdtree": {
+      "": "kdtree.js"
+    }
+  }
+}

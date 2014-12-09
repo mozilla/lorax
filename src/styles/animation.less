@@ -1,0 +1,115 @@
+/* Side Panel Modal
+   ========================================================================== */
+
+.modal--side-panel {
+    .transition(0.2s ease-in-out all);
+
+    & .side-panel {
+        .transition(0.2s ease-in-out all);
+    }
+}
+
+.modal--side-panel.ng-enter {
+
+    .at-medium({
+        left: -40%;
+    });
+
+}
+
+.modal--side-panel.ng-enter.ng-enter-active {
+    .at-medium({
+        left: 0%;
+    })
+}
+
+.modal--side-panel.ng-leave {
+    .at-medium({
+        left: 0%;
+    })
+}
+
+.modal--side-panel.ng-leave.ng-leave-active {
+    .at-medium({
+        left: -40%;
+    })
+}
+
+/* Email Modal
+   ========================================================================== */
+
+.modal--fade-show {
+    .transition(0.2s ease-in-out all);
+}
+
+.modal--fade-show.ng-hide-add {
+    opacity: 1;
+}
+
+.modal--fade-show.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+
+.modal--fade-show.ng-hide-remove {
+    opacity: 0;
+}
+
+.modal--fade-show.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+/* Fade (with ng-if)
+   ========================================================================== */
+
+.modal--fade-if {
+    .transition(0.2s ease-in-out all);
+
+    .no-anim & {
+        .transition(none);
+    }
+}
+
+.modal--fade-if.ng-enter {
+    opacity: 0;
+}
+
+.modal--fade-if.ng-enter.ng-enter.active {
+    opacity: 1;
+}
+
+.modal--fade-if.ng-leave {
+    opacity: 1;
+}
+
+.modal--fade-if.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+/* Fade Fast (with ng-if)
+   ========================================================================== */
+
+.modal--fade-if-fast {
+    .transition(0.1s ease-in-out all);
+
+    .no-anim & {
+        .transition(none);
+    }
+}
+
+.modal--fade-if-fast.ng-enter {
+    opacity: 0;
+}
+
+.modal--fade-if-fast.ng-enter.ng-enter.active {
+    opacity: 1;
+}
+
+.modal--fade-if-fast.ng-leave {
+    opacity: 1;
+}
+
+.modal--fade-if-fast.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+

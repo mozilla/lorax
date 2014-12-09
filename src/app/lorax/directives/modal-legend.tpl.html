@@ -1,0 +1,18 @@
+<section class="modal modal--side-panel" ng-if="modalLegend.open">
+  <div class="side-panel-overlay" ng-click="modalLegend.closeModal()"></div>
+  <div class="side-panel side-panel--legend" >
+    <a href="#" class="modal__close modal__close-absolute modal__close--legend icon-close-inv" data-lorax-prevent-default ng-click="modalLegend.closeModal()">Close</a>
+    <div class="side-panel__content">
+      <h1 class="side-panel-title">{{::modalLegend.content.title}}</h1>
+      <div class="side-panel-copy">
+        <p>{{::modalLegend.content.description}}</p>
+        <div class="legend-group" ng-repeat="group in modalLegend.content.copy">
+          <div class="cf" ng-repeat="paragraph in group">
+            <div class="legend-symbol {{paragraph.class}}"></div>
+            <p>{{paragraph.text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

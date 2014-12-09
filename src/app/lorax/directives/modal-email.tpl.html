@@ -1,0 +1,30 @@
+<section class="modal modal--fade-show modal--email" ng-show="modalEmail.open" >
+  <a href="#" class="modal__close modal__close-absolute icon-close" data-lorax-prevent-default ng-click="modalEmail.closeModal()">Close</a>
+  <div class="modal__content">
+    <section class="keep-informed">
+      <header class="keep-informed__header">
+        <h1>{{::modalEmail.content.title}}</h1>
+      </header>
+      <p class="keep-informed__copy keep-informed__body-text">{{::modalEmail.content.copy}}</p>
+      <form id="enter-email" class="keep-informed__form" method="post" action="https://sendto.mozilla.org/page/s/sign-up-for-mozilla" ng-submit="modalEmail.onFormSubmit()">
+        <div class="enter-email__user-input cf">
+          <div class="enter-email__email">
+            <label for="email" class="is-vishidden">{{::modalEmail.content.label}}</label>
+            <input name="email" type="email" id="email" autocorrect="off" autocapitalize="off" spellcheck="false" required aria-required="true" placeholder="{{::modalEmail.content.label}}" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()">
+          </div>
+          <div class="enter-email__country">
+            <select>
+              <option>United States</option>
+              <option ng-repeat="country in ::modalEmail.countries">{{country.displayName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="enter-email__terms">
+          <input name="terms" type="checkbox" id="check-terms" ng-model="modalEmail.terms" ng-change="modalEmail.onInputChange()">
+          <p class="keep-informed__body-text">{{::modalEmail.content.terms}}</p>
+        </div>
+        <input type="submit" class="enter-email__submit btn" value="{{::modalEmail.content.submitButton}}" ng-show="modalEmail.showSubmitBtn">
+      </form>
+    </section>
+  </div>
+</section>

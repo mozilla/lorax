@@ -1,0 +1,116 @@
+/* ==========================================================================
+   experience page
+   ========================================================================== */
+
+.experience-canvas {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: @experience-z-index;
+
+    .is-detail & {
+        z-index: 0;
+
+        display: none;
+
+        .at-medium({
+            display: block;
+        });
+    }
+}
+
+.experience-menu {
+    .reset-list;
+    .clearfix;
+    bottom: 0;
+    margin: 0 auto;
+    max-width: 420px;
+    min-width: 320px;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: @experience-z-index + 1;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+
+    [data-bg-mode="tag"] &,
+    [data-bg-mode="intro"] & {
+        display: none;
+    }
+
+    @media (min-width: 420px) {
+        left: 50%;
+        margin-left: -190px;
+        width: 380px;
+    }
+
+    .at-medium({
+        bottom: 80px;
+        padding: 0;
+    });
+
+    > li {
+        float: left;
+        width: 50%;
+        position: relative;
+
+        .at-medium({
+            max-width: 140px;
+            width: 33.3333%;
+        });
+
+        @media (min-width: 420px) {
+            &:first-child a {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-right: 1px solid fade(@dark-grey, 10%);
+            }
+
+            &:last-child a {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                border-left: 1px solid fade(@dark-grey, 10%);
+            }
+        }
+    }
+}
+
+.experience-menu__link {
+    background-color: @white;
+    color: @extra-dark-grey;
+    display: inline-block;
+    padding: 12px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+
+    .at-medium({
+        padding: 16px 0;
+
+    });
+
+    > span {
+        background-position: 0 50%;
+        background-size: 16px;
+        display: inline-block;
+        .fira-sans-medium;
+        .font-size(1);
+        line-height: 16px;
+        padding-left: 20px;
+
+        .at-medium({
+            background-size: 18px;
+            .font-size(1.1);
+            line-height: 18px;
+            padding-left: 24px;
+        });
+    }
+
+    .no-touch &:hover,
+    &:focus,
+    &.is-active {
+        color: @white;
+        background-color: @extra-dark-grey;
+    }
+}

@@ -1,0 +1,299 @@
+/*======================================================================
+  Selectric
+======================================================================*/
+
+.selectricWrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 0 10px;
+    width: 100%;
+    cursor: pointer;
+
+    .at-medium ({
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 25%;
+    });
+
+    .at-large ({
+        width: 140px;
+        position: absolute;
+        bottom: 0%;
+        top: auto;
+        left: 5%;
+    });
+
+    .enter-email__country & {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.selectricResponsive {
+    width: 100%;
+}
+
+.selectric {
+    border: 1px solid #DDD;
+    background: #F8F8F8;
+    border-radius: 2px;
+
+    .enter-email__country & {
+        background: none;
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        display: block;
+        outline: none;
+        padding: 12px 0;
+        text-align: center;
+        width: 100%;
+        line-height: normal;
+
+        .at-medium({
+            .font-size(3.2);
+        });
+    }
+}
+
+.selectric .label {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 30px 0 0;
+    padding: 6px 10px;
+    font-size: 12px;
+    line-height: 18px;
+    color: @dark-grey;
+    min-height: 18px;
+
+    .enter-email__country & {
+        color: @white;
+        .fira-sans-light;
+        .font-size(2.2);
+        line-height: 32px;
+
+        .at-medium({
+            .font-size(3.2);
+        });
+    }
+}
+
+.selectric .button {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 30px;
+    height: 30px;
+    color: #BBB;
+    text-align: center;
+
+    .enter-email__country & {
+        color: rgba(255,255,255,0.2)
+    }
+}
+
+.selectric .button:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    border-top-color: #BBB;
+    border-bottom: none;
+}
+
+.selectricHover .selectric {
+    border-color: #CCC;
+
+    .enter-email__country & {
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+}
+
+.selectricHover .selectric .button {
+    color: #888;
+
+    .enter-email__country & {
+        color: rgba(255,255,255,0.2)
+    }
+}
+
+.selectricHover .selectric .button:after {
+    border-top-color: #888;
+}
+
+.selectricOpen {
+    z-index: 9999;
+}
+
+.selectricOpen .selectric {
+    border-color: #CCC;
+    background: #F0F0F0;
+
+    .enter-email__country & {
+        background: @extra-dark-grey;
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+}
+
+.selectricOpen .selectricItems {
+    display: block;
+}
+
+.selectricDisabled {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selectricHideSelect {
+    position: relative;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+
+.selectricHideSelect select {
+    position: absolute;
+    left: -100%;
+    display: none;
+}
+
+.selectricInput {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    outline: none !important;
+    border: none !important;
+    *font: 0/0 a !important;
+    background: none !important;
+}
+
+.selectricTempShow {
+    position: absolute !important;
+    visibility: hidden !important;
+    display: block !important;
+}
+
+/* Items box */
+.selectricItems {
+    display: none;
+    position: absolute;
+    top: 100%;
+    bottom: auto;
+    left: 0;
+    height: 200px;
+    background: #F9F9F9;
+    border: 1px solid #CCC;
+    z-index: -1;
+    box-shadow: 0 0 10px -6px;
+
+    .at-medium ({
+        top: 100%;
+        bottom: auto;
+    });
+
+    .at-large ({
+        top: auto;
+        bottom: 100%;
+    });
+
+    .enter-email__country & {
+        width: 100%;
+        color: @dark-grey;
+        color: rgba(255,255,255,0.2);
+        .fira-sans-light;
+        .font-size(2.2);
+        background: @extra-dark-grey;
+        padding: 12px 0;
+        border: none;
+
+        .at-medium({
+            top: 100%;
+            bottom: auto;
+        });
+
+        .at-large({
+            top: 100%;
+            bottom: auto;
+        });
+    }
+}
+
+.selectricItems .selectricScroll {
+    height: 100%;
+    overflow: auto;
+}
+
+// .selectricAbove .selectricItems {
+//     top: auto;
+//     bottom: 100%;
+// }
+
+.selectricItems ul, .selectricItems li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 20px;
+}
+
+.selectricItems li {
+    display: block;
+    padding: 5px 10px;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #EEE;
+    color: #666;
+    cursor: pointer;
+
+    .enter-email__country & {
+        border: 0;
+        border-bottom: 1px solid @light-grey;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+}
+
+.selectricItems li.selected {
+    background: #EFEFEF;
+    color: #444;
+    border-top-color: #E0E0E0;
+}
+
+.selectricItems li:hover {
+    background: #F0F0F0;
+    color: #444;
+}
+
+.selectricItems li.disabled {
+    background: #F5F5F5;
+    color: #BBB;
+    border-top-color: #FAFAFA;
+    cursor: default;
+}
