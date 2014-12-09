@@ -99,6 +99,10 @@ define([
     };
 
     IssuesMode.prototype._onTouching = function (event) {
+        if (!this.isOpen) {
+            return;
+        }
+
         var newPosition = event.getLocalPosition(this._canvas._stage).y;
         newPosition -= this._canvas.canvasSize.y / 2;
 
@@ -109,6 +113,10 @@ define([
     };
 
     IssuesMode.prototype._onTouchStart = function (event) {
+        if (!this.isOpen) {
+            return;
+        }
+
         if (this._touchInterval) {
             clearInterval(this._touchInterval);
         }
@@ -118,6 +126,10 @@ define([
     };
 
     IssuesMode.prototype._onTouchEnd = function () {
+        if (!this.isOpen) {
+            return;
+        }
+
         this._touchInterval = setInterval(function () {
             this._touchDelta += (this._touchFinalDelta - this._touchDelta) / 5;
             this._scrollTo(this._touchDelta);

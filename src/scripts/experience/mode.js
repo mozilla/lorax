@@ -35,6 +35,7 @@ define(['signals'], function (signals) {
 
     Mode.prototype._onShow = function () {
         Mode.OPEN_MODE = this;
+        this.isOpen = true;
         this.showS.dispatch();
     };
 
@@ -49,6 +50,7 @@ define(['signals'], function (signals) {
 
     Mode.prototype._onHide = function () {
         Mode.OPEN_MODE = null;
+        this.isOpen = false;
         if (this._hideCallback) {
             this._hideCallback();
             this._hideCallback = null;

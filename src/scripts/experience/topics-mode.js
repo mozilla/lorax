@@ -40,6 +40,8 @@ define([
         this._topicsContainer.x = Math.round(this._canvas.canvasSize.x / 2);
         this._topicsContainer.y = Math.round(this._canvas.canvasSize.y / 2);
 
+        TopicsMode.DISTANCE_BETWEEN_TOPICS = this._canvas.canvasSize.x * 0.6;
+
         var i;
         var j;
         var issue;
@@ -74,7 +76,8 @@ define([
                 topic.elm.x -= ((this._canvas.canvasSize.x - 500) / 2);
                 topic.elm.y =  (350 * Math.floor(i / 2)) - 350;
             } else {
-                topic.elm.x = this._canvas.canvasSize.x * i;
+                topic.elm.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * i;
+                topic.elm.y = -40;
             }
 
             topic.elm.x = Math.round(topic.elm.x);
@@ -212,7 +215,8 @@ define([
         this._currentTopic = Math.min(this._currentTopic + 1, 3);
 
         for(var i = 0; i < this._topics.length; i ++) {
-            position.x = this._canvas.canvasSize.x * (i - this._currentTopic);
+            position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
+            position.y = -40;
             this._topics[i].moveTo(position.clone());
         }
     };
@@ -222,7 +226,8 @@ define([
         this._currentTopic = Math.max(this._currentTopic - 1, 0);
 
         for(var i = 0; i < this._topics.length; i ++) {
-            position.x = this._canvas.canvasSize.x * (i - this._currentTopic);
+            position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
+            position.y = -40;
             this._topics[i].moveTo(position.clone());
         }
     };
