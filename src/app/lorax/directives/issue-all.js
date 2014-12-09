@@ -118,7 +118,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         // don't do it unless needed
         var lastIssue = issues[issues.length - 1];
-        if (lastIssue.offset && lastIssue.offset.y === $('#' + lastIssue.getId()).offset().y) {
+        if (lastIssue.offset && lastIssue.offset.top === $('#' + lastIssue.getId()).offset().top) {
             return;
         }
 
@@ -133,7 +133,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
 
         this._experienceService.setMenuPositions();
 
-        // FIXME: redirect svg fill so it works on ff
+        // redirect svg fill so it works on ff
         var fill = $('rect', '.banner-nav-bg');
         var fillValue = fill.attr('fill');
         fill.attr('fill', '');
@@ -154,6 +154,10 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         this.issue = issue;
         this.topic = topic;
 
+        if ($('.detail').length === 0) {
+            return;
+        }
+
         var scrollTop = $(window).scrollTop();
 
         var currentElm = $('.detail')[0];
@@ -172,12 +176,13 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         }
 
         if (this.initialized) {
-            this.setOffsets(); // just to be sure
             this._doScrollToIssue();
         }
     };
 
     IssueAllCtrl.prototype._doScrollToIssue = function () {
+        this.setOffsets(); // just to be sure
+
         this._currentStatus = null;
 
         // get first issue from topic
