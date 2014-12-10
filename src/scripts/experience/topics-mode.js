@@ -185,8 +185,10 @@ define([
         this._swipeToPrevTopicBind = this._swipeToPrevTopic.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
         this._canvas.renderStartS.add(this._updateTopicsBind);
-        this._canvas.swipeLeftS.add(this._swipeToNextTopicBind);
-        this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
+        if (Responsive.IS_SMALL) {
+            this._canvas.swipeLeftS.add(this._swipeToNextTopicBind);
+            this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
+        }
 
          setTimeout(this._onShow.bind(this), 500);
     };
