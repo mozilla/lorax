@@ -197,9 +197,9 @@ define([
     */
     Topic.prototype._mouseOver = function () {
         // dont mouse in if theres another one still selected
-        if (Topic.SELECTED_TOPIC) {
-            return;
-        }
+        // if (Topic.SELECTED_TOPIC) {
+        //     return;
+        // }
 
         Topic.SELECTED_TOPIC = this;
 
@@ -284,9 +284,10 @@ define([
                 {alpha: 1});
         }
 
+        this.isOver = false;
+
         setTimeout(function () {
             this.elm.addChild(this._topicArea);
-            this.isOver = false;
             Topic.SELECTED_TOPIC = null;
         }.bind(this), 600);
 
