@@ -41,23 +41,38 @@ define(['jquery'], function ($) {
 
     NavCtrl.prototype._onScroll = function () {
         var scrollTop = $(window).scrollTop();
-        var nav = $('.banner-nav-wrap');
-        if (!nav.hasClass('fixed') && scrollTop > nav.offset().top) {
-            this._navOffset = nav.offset();
-            $('body').addClass('no-anim');
-            $('#detail').css('padding-top', nav.outerHeight(true));
-            nav.addClass('fixed');
-            setTimeout(function () {
-                 $('body').removeClass('no-anim');
-            }, 100);
-        } else if (nav.hasClass('fixed') && scrollTop < this._navOffset.top) {
-            nav.removeClass('fixed');
-            $('body').addClass('no-anim');
-            $('#detail').css('padding-top', 0);
-            setTimeout(function () {
-                 $('body').removeClass('no-anim');
-            }, 100);
+        if (!this.navElm) {
+            this.navElm = $('.banner-nav-wrap');
+            this.navTop = parseInt(this.navElm.css('top'));
+            this.bannerElm = $('.banner');
+            this.bannerTop = parseInt(this.bannerElm.css('top'));
+            this.bannerInfoElm = $('.banner-info');
+            this.bannerInfoTop = parseInt(this.bannerInfoElm.css('top'));
         }
+
+        // save scrollStartPos
+        if (scrollTop > this.lastScroll) {
+            if (!this.scrollStartPos) {
+                this.scrollStartPos = scrollTop;
+            }
+            if (scrollTop - this.scrollStartPos > this.bannerElm.height()) {
+                this.scrollStartPos = scrollTop - this.bannerElm.height();
+            }
+        } else if (scrollTop < this.lastScroll) {
+            if (scrollTop - this.scrollStartPos > 0) {
+                this.scrollStartPos -= scrollTop - this.lastScroll;
+            } else {
+                this.scrollStartPos = scrollTop;
+            }
+        }
+
+        // update positions
+        this.navElm.css('top', Math.max(0, this.navTop - (scrollTop - this.scrollStartPos)));
+        this.bannerElm.css('top', this.bannerTop - (scrollTop - this.scrollStartPos));
+        this.bannerInfoElm.css('top', this.bannerInfoTop - (scrollTop - this.scrollStartPos));
+
+        this.scrollingDown = scrollTop - this.lastScroll > 0;
+        this.lastScroll = scrollTop;
     };
 
     NavCtrl.prototype._onChangeTopic = function (topic) {

@@ -116,7 +116,7 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         var detailIsHidden = $('#detail').hasClass('ng-hide');
         $('#detail').removeClass('ng-hide');
 
-        // redirect svg fill so it works on ff
+        // reset svg fill so it works on ff
         var fill = $('rect', '.banner-nav-bg');
         var fillValue = fill.attr('fill');
         fill.attr('fill', '');
