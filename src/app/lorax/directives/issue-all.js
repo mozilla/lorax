@@ -116,6 +116,12 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         var detailIsHidden = $('#detail').hasClass('ng-hide');
         $('#detail').removeClass('ng-hide');
 
+        // redirect svg fill so it works on ff
+        var fill = $('rect', '.banner-nav-bg');
+        var fillValue = fill.attr('fill');
+        fill.attr('fill', '');
+        fill.attr('fill', fillValue);
+
         // don't do it unless needed
         var lastIssue = issues[issues.length - 1];
         if (lastIssue.offset && lastIssue.offset.top === $('#' + lastIssue.getId()).offset().top) {
@@ -132,12 +138,6 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         }
 
         this._experienceService.setMenuPositions();
-
-        // redirect svg fill so it works on ff
-        var fill = $('rect', '.banner-nav-bg');
-        var fillValue = fill.attr('fill');
-        fill.attr('fill', '');
-        fill.attr('fill', fillValue);
 
         if (detailIsHidden) {
             $('#detail').addClass('ng-hide');
