@@ -36,9 +36,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var line;
         var isLineFree;
 
-        var issueWidth = 150;
-        var issueHeight = 20;
+        var issueWidth = 100;
+        var issueHeight = 10;
         var displaceY = 0;
+        var maxTries = 2048;
 
         // set issue positions
         for (i = 0; i < this._canvas.issues.length; i ++) {
@@ -79,10 +80,13 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
                     elm.exploreY < this._safeZone.y + this._safeZone.height
                 );
 
-                if (tries === 256) {
-                    displaceY = 10;
+                if (tries === Math.round(maxTries / 2)) {
+                    displaceY = issueHeight / 2;
                 }
-            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries ++ < 512);
+                if (tries === maxTries - 1) {
+                    console.log(elm.data.getId(), elm.exploreX, elm.exploreY);
+                }
+            } while ((!isInsideBounds || isOnSafeZone || !isLineFree) && tries ++ < maxTries);
 
             lines[line].push(elm);
             elm.moveTo(0, 0);
