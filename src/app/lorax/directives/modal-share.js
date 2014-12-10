@@ -152,12 +152,12 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalShareController.prototype.shareFacebook = function (issue) {
-        window.open('https://www.facebook.com/sharer/sharer.php?u=' + issue.getUrl(), '_blank');
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + issue.getShareUrl(), '_blank');
     };
 
     ModalShareController.prototype.shareTwitter = function (issue) {
         window.open('http://twitter.com/share?text=' + issue.getTitle() + '&url=' +
-            issue.getUrl() + '/&hashtags=shapeoftheweb', '_blank');
+            issue.getShareUrl() + '&hashtags=' + this._$scope.modalShare.content.hashtag, '_blank');
     };
 
     ModalShareController.prototype.secondStep = function (issue) {

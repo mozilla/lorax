@@ -39,7 +39,7 @@ i18n is the localization folder. In it are subfolders which represent each langu
 ##### main.json
 This file has four main sections: **topics**, **tags**, **modals**, and **misc**. <br>
 
-* The **topics** section contains text for each issue on the detail page (name, title, copy, links, etc.)
+* The **topics** section contains text for each issue on the detail page (name, title, copy, links, etc.). This is also where you'll find the data for **shareUrl**, which controls each issue's links for Twitter, Facebook, and email.
 
 * The **tags** section contains the display name for each issue tag.
 
@@ -65,3 +65,7 @@ and <br>
 
 You can find the inputs for email, country, and ToS in the HTML file. They are all under the form tag with the class "keep-informed__form"
 
+### Success / Fail Buttons
+The styling and basic functionality for these buttons is implemented. There are variables for each button, **showFailedBtn** and **showSuccessBtn**. If there are set to true, the buttons will appear.<br>
+
+The functions **onSubmitFail()** and **onSubmitSuccess()** provide functionality to turn these variables to true and set the other buttons to false. For example, running **onSubmitFail()** will show the "Failed" button and hide the "Submit" and "Success" buttons. Feel free to change the functionality as needed.

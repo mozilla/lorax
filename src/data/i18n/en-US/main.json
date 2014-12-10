@@ -25,7 +25,8 @@
               "copy": "Why Mobile matters",
               "url": "https://www.youtube.com/watch?v=TMP45DupbhI&list=PLFlAJDI87Jg2vk3THSt8RBoD7vLG2tnwH"
             }
-          ]
+          ],
+          "shareUrl": "http://bit.ly/1x35Ymu"
         },
         "affordable": {
           "name": "Affordability",
@@ -48,7 +49,8 @@
               "copy": "Why Mobile matters",
               "url": "https://www.youtube.com/watch?v=TMP45DupbhI&list=PLFlAJDI87Jg2vk3THSt8RBoD7vLG2tnwH"
             }
-          ]
+          ],
+          "shareUrl": "http://mozilla.org"
         },
         "localization": {
           "name": "Localization",
@@ -71,7 +73,8 @@
               "copy": "Contribute",
               "url": "https://www.mozilla.org/en-US/contribute/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/access/localization"
         },
         "accessible": {
           "name": "Accessibility",
@@ -94,7 +97,8 @@
               "copy": "Learn more",
               "url": "http://webaim.org/intro/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/access/accessible"
         },
         "infrastructure": {
           "name": "Infrastructure",
@@ -117,7 +121,8 @@
               "copy": "Learn more",
               "url": "http://webaim.org/intro/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/access/infrastructure"
         }
       }
     },
@@ -142,7 +147,8 @@
               "copy": "Learn more",
               "url": "http://webaim.org/intro/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/contentCreation"
         },
         "identityControl": {
           "name": "Identity control",
@@ -165,7 +171,8 @@
               "copy": "Learn more",
               "url": "http://webaim.org/intro/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/identityControl"
         },
         "publicTrust": {
           "name": "Public trust",
@@ -192,7 +199,8 @@
               "copy": "Privacy Best Practices",
               "url": "https://support.mozilla.org/kb/how-stay-safe-web#w_follow-best-practices-to-protect-your-information"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/publicTrust"
         },
         "dataTracking": {
           "name": "Data tracking",
@@ -231,7 +239,8 @@
               "copy": "Personal data",
               "url": "http://projects.aljazeera.com/2014/terms-of-service/#1"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/dataTracking"
         },
         "surveillance": {
           "name": "Surveillance",
@@ -258,7 +267,8 @@
               "copy": "Watch \"Citizenfour\"",
               "url": "https://citizenfourfilm.com/"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/surveillance"
         },
         "userAgreements": {
           "name": "User Agreements",
@@ -281,7 +291,8 @@
               "copy": "Watch Film",
               "url": "http://vimeo.com/93664881"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/userAgreements"
         },
         "openSource": {
           "name": "Open Source",
@@ -308,7 +319,8 @@
               "copy": "Watch \"Open Source in LEGO\"",
               "url": "http://www.youtube.com/watch?v=a8fHgx9mE5U"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/openSource"
         },
         "openDataStandards": {
           "name": "Open Data Standards",
@@ -331,7 +343,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/openDataStandards"
         },
         "dataRegulation": {
           "name": "Data Regulation",
@@ -354,7 +367,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/dataRegulation"
         },
         "lobbyPower": {
           "name": "Lobby Power",
@@ -377,7 +391,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/lobbyPower"
         },
         "censorship": {
           "name": "Censorship",
@@ -400,7 +415,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/control/censorship"
         }
       }
     },
@@ -429,7 +445,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/safety/cyberThreats"
         },
         "cyberBullying": {
           "name": "Cyber Bullying",
@@ -452,7 +469,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/safety/cyberBullying"
         },
         "networkDecentralization": {
           "name": "Network Decentralisation",
@@ -475,7 +493,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/safety/networkDecentralization"
         },
         "cloudSecurity": {
           "name": "Cloud Security",
@@ -498,7 +517,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/safety/cloudSecurity"
         }
       }
     },
@@ -527,7 +547,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/fairness/netNeutrality"
         },
         "zeroRating": {
           "name": "Zero Rating",
@@ -550,7 +571,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/fairness/zeroRating"
         },
         "platformNeutrality": {
           "name": "Platform neutrality",
@@ -573,7 +595,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/fairness/platformNeutrality"
         },
         "concentrationOfPower": {
           "name": "Concentration of power",
@@ -596,7 +619,8 @@
               "copy": "Watch video",
               "url": "http://www.youtube.com/watch?v=VbWkhMKS6mg"
             }
-          ]
+          ],
+          "shareUrl": "http://lorax.work.co/detail/fairness/concentrationOfPower"
         }
       }
     }
@@ -658,11 +682,13 @@
       ]
     },
     "email": {
-        "title": "Keep Me Informed",
-        "copy": "Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.",
-        "label": "Enter Your Email",
-        "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy",
-        "submitButton": "Submit"
+      "title": "Keep Me Informed",
+      "copy": "Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.",
+      "label": "Enter Your Email",
+      "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy",
+      "submitButton": "Submit",
+      "failedButton": "Failed",
+      "successButton": "Success"
     },
     "legend": {
       "title": "Legend",
@@ -709,34 +735,35 @@
       ]
     },
     "share": {
-        "title": "#shapeoftheweb",
-        "shareButton": "Share",
-        "learnMore": "Learn More",
-        "aboutIssue": " about this issue",
-        "email": "Email"
+      "title": "#shapeoftheweb",
+      "shareButton": "Share",
+      "learnMore": "Learn More",
+      "aboutIssue": " about this issue",
+      "email": "Email",
+      "hashtag": "shapeoftheweb"
     }
   },
   "misc": {
-        "siteTitle": "Shape of the Web",
-        "siteHeader": "Shape of the Web",
-        "sourceLabel": "Source:",
-        "tagsLabel": "Tags:",
-        "mozDoingLabel": "What Mozilla Is Doing",
-        "yourDoingLabel": "What You Can Do",
-        "modeNames": {
-            "ecosystem": "Ecosystem",
-            "vitals": "Vitals",
-            "checklist": "Checklist"
-        },
-        "navLabels": {
-            "access": "Access",
-            "control": "Control",
-            "safety": "Safety",
-            "fairness": "Fairness"
-        },
-        "intro": {
-            "internet": "( THE INTERNET )",
-            "message": "The world's most powerful tool is the most fragile."
-        }
+    "siteTitle": "Shape of the Web",
+    "siteHeader": "Shape of the Web",
+    "sourceLabel": "Source:",
+    "tagsLabel": "Tags:",
+    "mozDoingLabel": "What Mozilla Is Doing",
+    "yourDoingLabel": "What You Can Do",
+    "modeNames": {
+      "ecosystem": "Ecosystem",
+      "vitals": "Vitals",
+      "checklist": "Checklist"
+    },
+    "navLabels": {
+      "access": "Access",
+      "control": "Control",
+      "safety": "Safety",
+      "fairness": "Fairness"
+    },
+    "intro": {
+      "internet": "( THE INTERNET )",
+      "message": "The world's most powerful tool is the most fragile."
+    }
   }
 }

@@ -31,6 +31,7 @@ define([
         this._infographicType = data.infographicType;
         this._infographicOverflow = data.infographicOverflow;
         this._infographicIsMap = data.infographicMap;
+        this._shareUrl = localeData.shareUrl;
         this._tags = [];
         this._infographic = new InfographicModel(
             this._id,
@@ -147,6 +148,10 @@ define([
 
     IssueModel.prototype.getUrl = function () {
         return '/detail/' + this.getParentId() + '/' + this.getId();
+    };
+
+    IssueModel.prototype.getShareUrl = function () {
+        return this._shareUrl;
     };
 
     IssueModel.prototype.getMiscLocale = function () {

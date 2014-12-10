@@ -24,6 +24,8 @@
           <p class="keep-informed__body-text">{{::modalEmail.content.terms}}</p>
         </div>
         <input type="submit" class="enter-email__submit btn" value="{{::modalEmail.content.submitButton}}" ng-show="modalEmail.showSubmitBtn">
+        <div class="enter-email__failed btn" ng-show="modalEmail.showFailedBtn">{{::modalEmail.content.failedButton}}</div>
+        <div class="enter-email__success btn" ng-show="modalEmail.showSuccessBtn">{{::modalEmail.content.successButton}}</div>
       </form>
     </section>
   </div>
