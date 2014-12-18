@@ -170,8 +170,12 @@ define([
         this.pressIssueS.dispatch(issue);
     };
 
-    ExperienceCanvas.prototype.addChild = function (child) {
-        this._stage.addChild(child);
+    ExperienceCanvas.prototype.addChild = function (child, index) {
+        if (index) {
+            this._stage.addChildAt(child, index);
+        } else {
+            this._stage.addChild(child);
+        }
     };
 
     ExperienceCanvas.prototype.removeChild = function (child) {

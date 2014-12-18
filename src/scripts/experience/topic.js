@@ -254,6 +254,12 @@ define([
     * When the mouse leaves a topic
     */
     Topic.prototype._mouseOut = function () {
+        // make sure it's really a mouse out
+        if (this._isMouseOver()) {
+            this._mouseOver();
+            return;
+        }
+
         var i;
         var issue;
 

@@ -161,7 +161,7 @@ define([
     };
 
     TopicsMode.prototype._onStartShow = function () {
-        this._canvas.addChild(this._topicsContainer);
+        this._canvas.addChild(this._topicsContainer, this._canvas._stage.getChildIndex(this._canvas._particlesContainer));
 
         var i;
 
