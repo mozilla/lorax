@@ -13,6 +13,10 @@
 
     .at-medium({
         left: -40%;
+
+        & .side-panel--about {
+            right: -40%;
+        }
     });
 
 }
@@ -20,18 +24,30 @@
 .modal--side-panel.ng-enter.ng-enter-active {
     .at-medium({
         left: 0%;
+
+        & .side-panel--about {
+            right: 0%;
+        }
     })
 }
 
 .modal--side-panel.ng-leave {
     .at-medium({
         left: 0%;
+
+        & .side-panel--about {
+            right: 0%;
+        }
     })
 }
 
 .modal--side-panel.ng-leave.ng-leave-active {
     .at-medium({
         left: -40%;
+
+        & .side-panel--about {
+            right: -40%;
+        }
     })
 }
 

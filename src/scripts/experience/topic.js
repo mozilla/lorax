@@ -53,7 +53,11 @@ define([
         this._topicArea.interactive = true;
         this._topicArea.buttonMode = true;
         this.elm.addChild(this._topicArea);
-        this._topicArea.mouseover = this._mouseOver.bind(this);
+        this._topicArea.mouseover = function () {
+            setTimeout(function () {
+                this._mouseOver();
+            }.bind(this), 1);
+        }.bind(this);
         this._topicArea.tap = this._mouseOver.bind(this);
 
         // topic mouse out area
@@ -196,6 +200,7 @@ define([
     * When hovering a topic
     */
     Topic.prototype._mouseOver = function () {
+        console.log('_mouseOver', this._data.getId());
         // dont mouse in if theres another one still selected
         // if (Topic.SELECTED_TOPIC) {
         //     return;
@@ -235,9 +240,11 @@ define([
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
         setTimeout(function () {
-            this.elm.removeChild(this._topicArea);
-            this.isOver = true;
-        }.bind(this), 600);
+            // if (Topic.SELECTED_TOPIC === this) {
+                this.elm.removeChild(this._topicArea);
+                this.isOver = true;
+            // }
+        }.bind(this), 400);
 
         this.mouseOverS.dispatch(this);
     };
@@ -246,10 +253,11 @@ define([
     * When the mouse leaves a topic
     */
     Topic.prototype._mouseOut = function () {
+        console.log('_mouseOut', this._data.getId());
         // dont mouse out if it's animating in
-        if (Topic.SELECTED_TOPIC && !this.isOver) {
-            return;
-        }
+        // if (Topic.SELECTED_TOPIC && !this.isOver) {
+        //     return;
+        // }
 
         var i;
         var issue;
@@ -287,14 +295,17 @@ define([
         this.isOver = false;
 
         setTimeout(function () {
-            this.elm.addChild(this._topicArea);
-            Topic.SELECTED_TOPIC = null;
-        }.bind(this), 600);
+            // if (Topic.SELECTED_TOPIC === this) {
+                this.elm.addChild(this._topicArea);
+                Topic.SELECTED_TOPIC = null;
+            // }
+        }.bind(this), 400);
 
         this.mouseOutS.dispatch(this);
     };
 
     Topic.prototype.toneDown = function () {
+        console.log('toneDown', this._data.getId());
         gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5});
 
@@ -304,6 +315,7 @@ define([
     };
 
     Topic.prototype.endToneDown = function () {
+        console.log('endToneDown', this._data.getId());
         gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 1});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1});
 

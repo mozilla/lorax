@@ -1,6 +1,6 @@
 <section class="modal modal--side-panel" ng-if="modalAbout.open">
   <div class="side-panel-overlay" ng-click="modalAbout.closeModal()"></div>
-  <div class="side-panel side-panel--about" ng-class="{true: 'moveToLeft', false: 'moveFromLeft'}[modalAbout.open]">
+  <div class="side-panel side-panel--about" ng-class="{true: 'moveToRight', false: 'moveFromRight'}[modalAbout.open]">
     <a href="#" class="modal__close modal__close-absolute icon-close-inv" data-lorax-prevent-default ng-click="modalAbout.closeModal()">Close</a>
     <div class="side-panel__content">
       <h1 class="side-panel-title">{{::modalAbout.content.title}}</h1>
