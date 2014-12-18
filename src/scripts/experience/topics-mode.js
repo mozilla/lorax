@@ -183,8 +183,10 @@ define([
         this._updateTopicsBind = this._updateTopics.bind(this);
         this._swipeToNextTopicBind = this._swipeToNextTopic.bind(this);
         this._swipeToPrevTopicBind = this._swipeToPrevTopic.bind(this);
+        this._onTouchStartBind = this._onTouchStart.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
         this._canvas.renderStartS.add(this._updateTopicsBind);
+        this._canvas.touchStartS.add(this._onTouchStartBind);
         if (Responsive.IS_SMALL()) {
             this._canvas.swipeLeftS.add(this._swipeToNextTopicBind);
             this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
@@ -231,6 +233,14 @@ define([
             position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
             position.y = -40;
             this._topics[i].moveTo(position.clone());
+        }
+    };
+
+    TopicsMode.prototype._onTouchStart = function () {
+        if (this.selectedTopic && !this.selectedTopic._isMouseOver()) {
+            setTimeout(function (topic) {
+                topic._mouseOut();
+            }.bind(this), 400, this.selectedTopic);
         }
     };
 

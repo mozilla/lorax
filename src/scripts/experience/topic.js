@@ -42,24 +42,6 @@ define([
     Topic.SELECTED_TOPIC = null;
 
     Topic.prototype.setup = function () {
-        // topic mouse over
-        this._topicArea = new PIXI.Graphics();
-        this._topicArea.i = this._index;
-        this._topicArea.hitArea = new PIXI.Rectangle(
-            -this._radius,
-            -this._radius,
-            this._radius * 2,
-            this._radius * 2);
-        this._topicArea.interactive = true;
-        this._topicArea.buttonMode = true;
-        this.elm.addChild(this._topicArea);
-        this._topicArea.mouseover = function () {
-            setTimeout(function () {
-                this._mouseOver();
-            }.bind(this), 1);
-        }.bind(this);
-        this._topicArea.tap = this._mouseOver.bind(this);
-
         // topic mouse out area
         var aMargin = 20;
         this._linearArea = new PIXI.Graphics();
@@ -72,6 +54,24 @@ define([
             -(this._linearDist * this._issues.length / 2) - aMargin,
             this._linearWidth + 100 + aMargin,
             (this._linearDist * this._issues.length) + aMargin);
+        // this._linearArea.beginFill(0xFF0000, 0.8);
+        // this._linearArea.drawRect(this._linearArea.hitArea.x, this._linearArea.hitArea.y, this._linearArea.hitArea.width, this._linearArea.hitArea.height);
+        this._linearArea.mouseout = this._mouseOut.bind(this);
+
+        // topic mouse over area
+        this._topicArea = new PIXI.Graphics();
+        this._topicArea.i = this._index;
+        this._topicArea.hitArea = new PIXI.Rectangle(
+            -this._radius,
+            -this._radius,
+            this._radius * 2,
+            this._radius * 2);
+        // this._topicArea.beginFill(0x0000FF, 0.8);
+        // this._topicArea.drawRect(this._topicArea.hitArea.x, this._topicArea.hitArea.y, this._topicArea.hitArea.width, this._topicArea.hitArea.height);
+        this._topicArea.interactive = true;
+        this._topicArea.buttonMode = true;
+        this.elm.addChild(this._topicArea);
+        this._topicArea.mouseover = this._topicArea.tap = this._mouseOver.bind(this);
 
         // title
         this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
@@ -200,12 +200,6 @@ define([
     * When hovering a topic
     */
     Topic.prototype._mouseOver = function () {
-        console.log('_mouseOver', this._data.getId());
-        // dont mouse in if theres another one still selected
-        // if (Topic.SELECTED_TOPIC) {
-        //     return;
-        // }
-
         Topic.SELECTED_TOPIC = this;
 
         var i;
@@ -240,11 +234,18 @@ define([
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
 
         setTimeout(function () {
-            // if (Topic.SELECTED_TOPIC === this) {
-                this.elm.removeChild(this._topicArea);
-                this.isOver = true;
-            // }
+            this.isOver = true;
         }.bind(this), 400);
+
+        this.elm.removeChild(this._topicArea);
+        this.elm.addChild(this._linearArea);
+
+        // make sure mouse is over
+        setTimeout(function () {
+            if (!this._isMouseOver()) {
+                this._mouseOut();
+            }
+        }.bind(this), 100);
 
         this.mouseOverS.dispatch(this);
     };
@@ -253,12 +254,6 @@ define([
     * When the mouse leaves a topic
     */
     Topic.prototype._mouseOut = function () {
-        console.log('_mouseOut', this._data.getId());
-        // dont mouse out if it's animating in
-        // if (Topic.SELECTED_TOPIC && !this.isOver) {
-        //     return;
-        // }
-
         var i;
         var issue;
 
@@ -297,6 +292,7 @@ define([
         setTimeout(function () {
             // if (Topic.SELECTED_TOPIC === this) {
                 this.elm.addChild(this._topicArea);
+                this.elm.removeChild(this._linearArea);
                 Topic.SELECTED_TOPIC = null;
             // }
         }.bind(this), 400);
@@ -305,7 +301,6 @@ define([
     };
 
     Topic.prototype.toneDown = function () {
-        console.log('toneDown', this._data.getId());
         gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 0.5});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0.5});
 
@@ -315,7 +310,6 @@ define([
     };
 
     Topic.prototype.endToneDown = function () {
-        console.log('endToneDown', this._data.getId());
         gs.TweenMax.to(this._topicTitle, 0.3, {alpha: 1});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 1});
 
@@ -360,20 +354,19 @@ define([
         }.bind(this), 5000);
     };
 
+    Topic.prototype._isMouseOver = function () {
+        var element = this._linearArea;
+        var x0 = this.elm.x + element.x + element.hitArea.x;
+        var x1 = x0 + element.hitArea.width;
+        var y0 = this.elm.y + element.y + element.hitArea.y;
+        var y1 = y0 + element.hitArea.height;
+
+        return !(this.mousePosition.x < x0 || this.mousePosition.x > x1 ||
+            this.mousePosition.y < y0 || this.mousePosition.y > y1);
+    };
+
     Topic.prototype.update = function (mousePosition) {
         this.mousePosition = mousePosition;
-        if (this.isOver) {
-            // check for mouse out
-            var x0 = this.elm.x + this._linearArea.x + this._linearArea.hitArea.x;
-            var x1 = x0 + this._linearArea.hitArea.width;
-            var y0 = this.elm.y + this._linearArea.y + this._linearArea.hitArea.y;
-            var y1 = y0 + this._linearArea.hitArea.height;
-
-            if (mousePosition.x < x0 || mousePosition.x > x1 ||
-                mousePosition.y < y0 || mousePosition.y > y1) {
-                this._mouseOut();
-            }
-        }
     };
 
     return Topic;

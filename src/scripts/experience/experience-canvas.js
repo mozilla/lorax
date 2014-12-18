@@ -31,6 +31,7 @@ define([
         this.renderStartS = new signals.Signal();
         this.renderEndS = new signals.Signal();
 
+        this.touchStartS = new signals.Signal();
         this.swipeLeftS = new signals.Signal();
         this.swipeRightS = new signals.Signal();
         this.pressIssueS = new signals.Signal();
@@ -255,6 +256,7 @@ define([
     ExperienceCanvas.prototype._onTouchStart = function (event) {
         this._touchPosition = event.global;
         this._updateMousePosition();
+        this.touchStartS.dispatch();
     };
 
     ExperienceCanvas.prototype._onSwipeLeft = function () {
