@@ -32,7 +32,7 @@
     position: fixed;
     width: 100%;
     z-index: @experience-z-index + 1;
-    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
 
     [data-bg-mode="tag"] &,
     [data-bg-mode="intro"] & {
@@ -41,13 +41,14 @@
 
     @media (min-width: 420px) {
         left: 50%;
-        margin-left: -190px;
+        margin-left: -220px;
         width: 380px;
     }
 
     .at-medium({
-        bottom: 80px;
-        padding: 0;
+        max-width: 480px;
+        width: 480px;
+        bottom: 60px;
     });
 
     > li {
