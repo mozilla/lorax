@@ -126,6 +126,7 @@ define([
         var i;
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
+            issue.mouseEnabled = this.isCurrent;
             issue.setMode(Issue.MODE_TOPICS);
             issue.moveTo(
                 this.elm.x + issue.topicX,
@@ -163,6 +164,7 @@ define([
 
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
+            issue.mouseEnabled = true;
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
             issue.pressS.remove(issue.topicTap);
@@ -171,6 +173,13 @@ define([
 
         for(i = 0; i < this._fakes.length; i ++) {
             this._fakes[i].explode();
+        }
+    };
+
+    Topic.prototype.setCurrent = function (isCurrent) {
+        this.isCurrent = isCurrent;
+        for(var i = 0; i < this._issues.length; i ++) {
+            this._issues[i].mouseEnabled = this.isCurrent;
         }
     };
 

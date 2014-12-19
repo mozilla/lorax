@@ -15,6 +15,7 @@ define([
     'use strict';
 
     var Issue = function (index, canvasSize) {
+        this.mouseEnabled = true;
         this._index = index;
         this._canvasSize = canvasSize;
         this.elm = new PIXI.DisplayObjectContainer();
@@ -95,19 +96,27 @@ define([
     };
 
     Issue.prototype._onMouseOver = function () {
-        this.mouseOverS.dispatch(this);
+        if (this.mouseEnabled) {
+            this.mouseOverS.dispatch(this);
+        }
     };
 
     Issue.prototype._onMouseOut = function () {
-        this.mouseOutS.dispatch(this);
+        if (this.mouseEnabled) {
+            this.mouseOutS.dispatch(this);
+        }
     };
 
     Issue.prototype._onPress = function () {
-        this.pressS.dispatch(this);
+        if (this.mouseEnabled) {
+            this.pressS.dispatch(this);
+        }
     };
 
     Issue.prototype._onTap = function () {
-        this.tapS.dispatch(this);
+        if (this.mouseEnabled) {
+            this.tapS.dispatch(this);
+        }
     };
 
     Issue.prototype.setMode = function (mode) {

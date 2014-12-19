@@ -65,6 +65,7 @@ define([
             // create a new topic
             topic = this._topics[i] = new Topic(this._topicsData[i], i, issues, fakes);
             this._topicsContainer.addChild(topic.elm);
+            topic.setCurrent(i === this._currentTopic);
 
             if (Responsive.IS_LARGE()) {
                 topic.elm.x = (this._canvas.canvasSize.x - 400) /
@@ -217,6 +218,7 @@ define([
     TopicsMode.prototype._swipeToNextTopic = function () {
         var position = new PIXI.Point();
         this._currentTopic = Math.min(this._currentTopic + 1, 3);
+        this._topics[this._currentTopic].setCurrent();
 
         var mouseOutTopic = function (topic) {
             topic._mouseOut(true);
@@ -227,6 +229,7 @@ define([
             position.y = -40;
             this._topics[i].moveTo(position.clone());
             setTimeout(mouseOutTopic, 300, this._topics[i]);
+            this._topics[i].setCurrent(i === this._currentTopic);
         }
     };
 
@@ -243,6 +246,7 @@ define([
             position.y = -40;
             this._topics[i].moveTo(position.clone());
             setTimeout(mouseOutTopic, 300, this._topics[i]);
+            this._topics[i].setCurrent(i === this._currentTopic);
         }
     };
 
