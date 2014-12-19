@@ -229,7 +229,7 @@ define([
 
         // move selected title and desc
         posY = -this._linearDist * this._issues.length / 2;
-        posY -= (this._topicTitle.height / Responsive.RATIO) + 50;
+        posY -= (this._topicTitle.height / Responsive.RATIO) + 50 - this._linearArea.y;
         gs.TweenMax.to(this._topicTitle, 0.3, {y: posY, alpha: 0, overwrite: true});
         gs.TweenMax.to(this._topicDesc, 0.3, {alpha: 0, overwrite: true});
         // this._linearArea.mouseout = this._linearArea.touchend = this._mouseOut.bind(this);
