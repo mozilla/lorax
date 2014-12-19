@@ -16,8 +16,8 @@ define([
 
     var Topic = function (data, index, issues, fakes) {
         this._radius = 70;
-        this._linearDist = 40;
-        this._linearWidth = 100;
+        this._linearDist = 35;
+        this._linearWidth = 80;
         this.isOver = false;
 
         this._data = data;
@@ -47,6 +47,7 @@ define([
         this._linearArea = new PIXI.Graphics();
         this._linearArea.i = this._index;
         this._linearArea.x = - 100 - aMargin / 2;
+        this._linearArea.y = 60;
         this._linearArea.interactive = true;
         this._linearArea.buttonMode = true;
         this._linearArea.hitArea = new PIXI.Rectangle(
