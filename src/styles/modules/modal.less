@@ -226,6 +226,22 @@
     right: 0%;
 }
 
+body.side-panel-about {
+    @media screen and (max-width: 560px) {
+        .banner {
+            display: none;
+        }
+
+        #tabzilla {
+            visibility: visible;
+            z-index: @tabzilla-z-index;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+    }
+}
+
 
 /* Share Modal
    ========================================================================== */

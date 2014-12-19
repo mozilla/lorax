@@ -166,9 +166,9 @@ define(['angular', 'jquery'], function (angular, $) {
             iElem[classMethod]('is-modal-open');
         }
 
-        function onSidePanelOpenChange(panelOpen) {
+        function onSidePanelOpenChange(panelOpen, id) {
             var classMethod = (panelOpen === true) ? 'addClass' : 'removeClass';
-            iElem[classMethod]('is-side-panel-open');
+            iElem[classMethod]('is-side-panel-open side-panel-' + id);
         }
 
         windowEl

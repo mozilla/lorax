@@ -130,8 +130,8 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
          * @method core/services/windowService~setSidePanelOpen
          * @param panelOpen {Bool} modal open true/false
          */
-        function setSidePanelOpen(panelOpen) {
-            pubSubService.publish('windowService.sidePanelOpen', [panelOpen]);
+        function setSidePanelOpen(panelOpen, id) {
+            pubSubService.publish('windowService.sidePanelOpen', [panelOpen, id]);
         }
 
         return {
