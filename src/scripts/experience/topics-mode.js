@@ -218,10 +218,15 @@ define([
         var position = new PIXI.Point();
         this._currentTopic = Math.min(this._currentTopic + 1, 3);
 
+        var mouseOutTopic = function (topic) {
+            topic._mouseOut(true);
+        };
+
         for(var i = 0; i < this._topics.length; i ++) {
             position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
             position.y = -40;
             this._topics[i].moveTo(position.clone());
+            setTimeout(mouseOutTopic, 300, this._topics[i]);
         }
     };
 
@@ -229,18 +234,25 @@ define([
         var position = new PIXI.Point();
         this._currentTopic = Math.max(this._currentTopic - 1, 0);
 
+        var mouseOutTopic = function (topic) {
+            topic._mouseOut(true);
+        };
+
         for(var i = 0; i < this._topics.length; i ++) {
             position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
             position.y = -40;
             this._topics[i].moveTo(position.clone());
+            setTimeout(mouseOutTopic, 300, this._topics[i]);
         }
     };
 
     TopicsMode.prototype._onTouchStart = function () {
-        if (this.selectedTopic && !this.selectedTopic._isMouseOver()) {
+        if (this.selectedTopic) {
             setTimeout(function (topic) {
-                topic._mouseOut();
-            }.bind(this), 400, this.selectedTopic);
+                if (!topic._isMouseOver()) {
+                    topic._mouseOut();
+                }
+            }.bind(this), 100, this.selectedTopic);
         }
     };
 

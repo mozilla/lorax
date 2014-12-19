@@ -191,7 +191,7 @@ define([
     Topic.prototype._tapIssue = function (issue) {
         issue._onMouseOver();
         setTimeout(function () {
-            this._mouseOut();
+            this._mouseOut(true);
             issue._onMouseOut();
             issue._onPress();
         }.bind(this), 200);
@@ -236,7 +236,7 @@ define([
 
         setTimeout(function () {
             this.isOver = true;
-        }.bind(this), 400);
+        }.bind(this), 300);
 
         this.elm.removeChild(this._topicArea);
         this.elm.addChild(this._linearArea);
@@ -254,9 +254,9 @@ define([
     /**
     * When the mouse leaves a topic
     */
-    Topic.prototype._mouseOut = function () {
+    Topic.prototype._mouseOut = function (force) {
         // make sure it's really a mouse out
-        if (this._isMouseOver()) {
+        if (force !== true && this._isMouseOver()) {
             this._mouseOver();
             return;
         }
@@ -302,7 +302,7 @@ define([
                 this.elm.removeChild(this._linearArea);
                 Topic.SELECTED_TOPIC = null;
             // }
-        }.bind(this), 400);
+        }.bind(this), 300);
 
         this.mouseOutS.dispatch(this);
     };

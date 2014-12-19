@@ -168,6 +168,7 @@ define([
                 this.elm.alpha = 1;
             } break;
             case Issue.MODE_TOPICS: {
+                this.stopMoving();
                 this.setTextAlwaysVisible(false);
                 this.setIsInteractive(false);
                 this.setRadiusChange(false);
