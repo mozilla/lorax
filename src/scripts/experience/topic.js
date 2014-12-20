@@ -126,7 +126,9 @@ define([
         var i;
         for(i = 0; i < this._issues.length; i ++) {
             issue = this._issues[i];
-            issue.mouseEnabled = this.isCurrent;
+            if (Responsive.IS_SMALL()) {
+                issue.mouseEnabled = this.isCurrent;
+            }
             issue.setMode(Issue.MODE_TOPICS);
             issue.moveTo(
                 this.elm.x + issue.topicX,
@@ -136,9 +138,10 @@ define([
             issue.topicMouseOver = this._mouseOverIssue.bind(this);
             issue.topicMouseOut = this._mouseOutIssue.bind(this);
             issue.topicTap = this._tapIssue.bind(this);
+            issue.topicPress = this._pressIssue.bind(this);
             issue.mouseOverS.add(issue.topicMouseOver);
             issue.mouseOutS.add(issue.topicMouseOut);
-            issue.pressS.add(issue.topicTap);
+            issue.pressS.add(issue.topicPress, this, 100);
             issue.tapS.add(issue.topicTap);
         }
 
@@ -167,7 +170,7 @@ define([
             issue.mouseEnabled = true;
             issue.mouseOverS.remove(issue.topicMouseOver);
             issue.mouseOutS.remove(issue.topicMouseOut);
-            issue.pressS.remove(issue.topicTap);
+            issue.pressS.remove(issue.topicPress);
             issue.tapS.remove(issue.topicTap);
         }
 
@@ -177,9 +180,11 @@ define([
     };
 
     Topic.prototype.setCurrent = function (isCurrent) {
-        this.isCurrent = isCurrent;
-        for(var i = 0; i < this._issues.length; i ++) {
-            this._issues[i].mouseEnabled = this.isCurrent;
+        if (Responsive.IS_SMALL()) {
+            this.isCurrent = isCurrent;
+            for(var i = 0; i < this._issues.length; i ++) {
+                this._issues[i].mouseEnabled = this.isCurrent;
+            }
         }
     };
 
@@ -204,6 +209,10 @@ define([
             issue._onMouseOut();
             issue._onPress();
         }.bind(this), 200);
+    };
+
+    Topic.prototype._pressIssue = function (issue) {
+        this._mouseOut(true);
     };
 
     /**
