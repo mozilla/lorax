@@ -211,7 +211,7 @@ define([
         }.bind(this), 200);
     };
 
-    Topic.prototype._pressIssue = function (issue) {
+    Topic.prototype._pressIssue = function () {
         this._mouseOut(true);
     };
 
