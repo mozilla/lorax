@@ -127,6 +127,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
+                        'CNAME',
                         'robots.txt',
                         //'sitemap.xml',
                         'scripts/data/{,*/}*.{js,json}',
@@ -308,6 +309,13 @@ module.exports = function (grunt) {
                     'app/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
                 ]
             }
+        },
+
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
         }
     });
 
