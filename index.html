@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shape of the Web</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:image" content="/images/fb-share.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+
+    <script src="/scripts/lorax-head.min.js"></script>
+  </head>
+
+  <body class="ng-hide" ng-controller="CoreCtrl" data-lorax-window data-ng-cloak ng-show="core.isLoaded">
+    <div data-lorax-experience></div>
+
+    <header role="banner" class="banner">
+      <h1 class="banner__logo"><a href="/" class="icon-circle">{{::core.miscData.siteHeader}}</a></h1>
+    </header>
+
+    <a href="#" class="banner-info banner-info--menu icon-menu-dark" ng-click="core.siteInfo()" data-lorax-prevent-default>Information</a>
+
+    <div data-lorax-detail></div>
+
+    <footer class="footer-links">
+      <div class="down-arrow-nav icon-arrow"></div>
+      <a href="#" class="footer-links__link footer-links__link--legend icon-question" ng-click="core.openLegendModal()" data-lorax-prevent-default>Legend</a>
+      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" data-lorax-prevent-default>About</a>
+      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" data-lorax-prevent-default>Keep me informed</a>
+      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" data-lorax-prevent-default>Sharing options</a>
+      <div class="footer-links__share-options" ng-show="core.shareOptions">
+        <ul class="share-options">
+          <li class="share-option share-option--twitter icon-twitter" >
+            <a href="#"ng-click="core.openShareModal('twitter')" data-lorax-prevent-default>Twitter</a>
+          </li>
+          <li class="share-option share-option--email icon-mail">
+            <a href="#" ng-click="core.openShareModal('email')" data-lorax-prevent-default>Email</a>
+          </li>
+          <li class="share-option share-option--fb icon-fb">
+            <a href="#" ng-click="core.openShareModal('fb')" data-lorax-prevent-default>Facebook</a>
+          </li>
+        </ul>
+        <a href="#" class="share-options-close icon-close-sm" ng-click="core.closeShareOptions()" data-lorax-prevent-default>Close</a>
+      </div>
+    </footer>
+
+    <div data-lorax-modal-email></div>
+    <div data-lorax-modal-share></div>
+    <div data-lorax-modal-about></div>
+    <div data-lorax-modal-legend></div>
+    <div data-lorax-modal-mobile-options></div>
+
+    <a href="https://www.mozilla.org/" id="tabzilla">mozilla</a>
+
+    <!--[if lte IE 9]>
+    <div class="modal modal--old-ie">
+      <section class="old-ie">
+        <header class="old-ie__header">
+          <span class="icon-warning"></span>
+          <h1>Your browser is not supported</h1>
+        </header>
+        <div class="old-ie__main">
+          <p>Please update your current browser to the latest version, or install Firefox.</p>
+          <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" class="download-ie">
+            Internet Explorer
+            <em>Free Download</em>
+            <span class="icon-arrow-right"></span>
+          </a>
+          <p>Or install Firefox</p>
+          <a href="https://www.mozilla.org/en-US/firefox/new/" class="download-firefox">Download Firefox - Free Download</a>
+          <ul class="download-links">
+            <li><a href="https://www.mozilla.org/en-US/firefox/all/">Systems &amp; Languages</a> |</li>
+            <li><a href="https://www.mozilla.org/en-US/firefox/notes/">What's New</a> |</li>
+            <li><a href="https://www.mozilla.org/en-US/privacy/firefox/">Privacy</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <![endif]-->
+  </body>
+
+  <script src="/scripts/lorax.min.js"></script>
+</html>
