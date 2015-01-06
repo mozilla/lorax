@@ -1,7 +1,11 @@
 {
   "name": "Lorax",
   "version": "0.1.0",
-  "description": "https://github.com/chrisjames-work/lorax",
+  "description": "https://github.com/mozilla/lorax",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mozilla/lorax.git"
+  },
   "devDependencies": {
     "connect-modrewrite": "~0.7.9",
     "grunt": "~0.4.5",
