@@ -103,14 +103,11 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 port: 9000,
-                open: true,
-                livereload: 35729,
                 // Change this to '0.0.0.0' to access the server from outside
                 hostname: '0.0.0.0'
             },
             server: {
                 options: {
-                    open: 'http://localhost:<%= connect.options.port%>',
                     middleware: connectMiddleware,
                     base: ['<%= config.temp %>', '<%= config.src %>']
                 }
@@ -201,24 +198,6 @@ module.exports = function (grunt) {
             }
         },
 
-        notify: {
-            less: {
-                options: {
-                    message: 'Less refresh complete'
-                }
-            },
-            grunticon: {
-                options: {
-                    message: 'Grunticon refresh complete'
-                }
-            },
-            server: {
-                options: {
-                    message: 'Server started'
-                }
-            }
-        },
-
         requirejs: {
             dist: {
                 options: {
@@ -278,7 +257,6 @@ module.exports = function (grunt) {
                 files: ['<%= config.src %>/styles/**/*.less'],
                 tasks: [
                     'less:server',
-                    'notify:less'
                 ]
             },
             grunticon: {
@@ -289,25 +267,12 @@ module.exports = function (grunt) {
                 tasks: [
                     'clean:grunticon',
                     'svgmin',
-                    'grunticon:server',
-                    'notify:grunticon'
+                    'grunticon:server'
                 ]
             },
             jshint: {
                 files: ['<%= jshint.all %>'],
                 tasks: ['jshint']
-            },
-            livereload: {
-                options: {
-                    livereload: true
-                },
-                files: [
-                    '<%= config.src %>/*.html', // Core pages
-                    '<%= config.src %>/styles/**/*.less', // Styles
-                    '<%= config.src %>/scripts/{,*/}*.js', // Global scripts
-                    'app/{,**/}*.{js,html}', // ng JS and templates
-                    'app/images/{,*/}*.{png,jpg,jpeg,gif}' // Images
-                ]
             }
         },
 
@@ -328,11 +293,9 @@ module.exports = function (grunt) {
             'clean:grunticon',
             'svgmin',
             'grunticon:server',
-            'notify:grunticon',
             'bower:install',
             'less:server',
             'connect:server',
-            'notify:server',
             'watch'
         ]);
     });
@@ -361,7 +324,6 @@ module.exports = function (grunt) {
             'clean:grunticon',
             'svgmin',
             'grunticon:server',
-            'notify:grunticon'
         ]);
     });
 };
