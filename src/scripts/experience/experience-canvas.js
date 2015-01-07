@@ -78,7 +78,7 @@ define([
         this._stage.addChild(this._particlesContainer);
 
         // start rendering
-        requestAnimationFrame(this._render.bind(this));
+        setInterval(this._render.bind(this), 50);
 
         this._drawFakes();
 
@@ -306,7 +306,6 @@ define([
 
         // render canvas
         this._renderer.render(this._stage);
-        requestAnimationFrame(this._render.bind(this));
 
         this.renderEndS.dispatch();
     };
