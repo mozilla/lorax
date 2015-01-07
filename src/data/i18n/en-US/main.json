@@ -764,6 +764,17 @@
     "intro": {
       "internet": "( THE INTERNET )",
       "message": "The world's most powerful tool is the most fragile."
-    }
+    },
+    "information": "Information",
+    "legend": "Legend",
+    "about": "About",
+    "keepMeInformed": "Keep me informed",
+    "sharingOptions": "Sharing options",
+    "email": "Email",
+    "close": "Close",
+    "notSupported": "Your browser may not be supported",
+    "pleaseUpdate": "Your system may not meet the requirements for Shape of the Web. Please update your browser to the latest version, or install Firefox.",
+    "freeDownload": "Free Download",
+    "viewSiteAnyway": "View site anyway"
   }
 }
