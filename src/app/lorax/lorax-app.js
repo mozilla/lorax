@@ -57,6 +57,9 @@ define([
     // filters
     'lorax/filters/encode-uri',
 
+    // Extras
+    'lorax/browser-detection',
+
     'angular',
     'angular-route',
     'angular-animate'
@@ -111,6 +114,9 @@ define([
 
     // filters
     EncodeUriFilter,
+
+    // Extras
+    browserDetection,
 
     angular
 ) {
@@ -391,6 +397,9 @@ define([
          * @method lorax/loraxApp~filter
          */
         .filter('encodeUri', EncodeUriFilter);
+
+    // Initialize extras before the app is started.
+    browserDetection.init();
 
     /**
     * Bootstrap the application

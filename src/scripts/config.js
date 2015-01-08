@@ -26,6 +26,7 @@
             'signals': '../scripts/components/js-signals/signals',
             'webfontloader': '../scripts/components/webfontloader/webfontloader',
             'gs': '../scripts/components/greensock/TweenMax',
+            'bowser': '../scripts/components/bowser/bowser',
             'experience': '../scripts/experience'
         },
 
