@@ -27,6 +27,7 @@
             'webfontloader': '../scripts/components/webfontloader/webfontloader',
             'gs': '../scripts/components/greensock/TweenMax',
             'bowser': '../scripts/components/bowser/bowser',
+            'mousetrap': '../scripts/components/mousetrap/mousetrap',
             'experience': '../scripts/experience'
         },
 
