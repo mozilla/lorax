@@ -41,6 +41,9 @@ define([
         this._topicsContainer.y = Math.round(this._canvas.canvasSize.y / 2);
 
         TopicsMode.DISTANCE_BETWEEN_TOPICS = this._canvas.canvasSize.x * 0.6;
+        if (Responsive.IS_MEDIUM()) {
+            TopicsMode.DISTANCE_BETWEEN_TOPICS /= 2;
+        }
 
         var i;
         var j;
@@ -71,20 +74,37 @@ define([
                 topic.elm.x = (this._canvas.canvasSize.x - 400) /
                     (this._topicsData.length - 1) * i;
                 topic.elm.x -= ((this._canvas.canvasSize.x - 400) / 2);
-                topic.elm.y = -40;
-            } else if (Responsive.IS_MEDIUM()) {
-                topic.elm.x = (this._canvas.canvasSize.x - 500) * (i % 2);
-                topic.elm.x -= ((this._canvas.canvasSize.x - 500) / 2);
-                topic.elm.y =  (350 * Math.floor(i / 2)) - 350;
             } else {
                 topic.elm.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * i;
-                topic.elm.y = -40;
             }
 
             topic.elm.x = Math.round(topic.elm.x);
-            topic.elm.y = Math.round(topic.elm.y);
+            topic.elm.y = -40;
 
             topic.setup();
+        }
+    };
+
+    TopicsMode.prototype._onResize = function() {
+        var position = new PIXI.Point();
+
+        this._topicsContainer.x = Math.round(this._canvas.canvasSize.x / 2);
+        this._topicsContainer.y = Math.round(this._canvas.canvasSize.y / 2);
+        TopicsMode.DISTANCE_BETWEEN_TOPICS = this._canvas.canvasSize.x * 0.6;
+        if (Responsive.IS_MEDIUM()) {
+            TopicsMode.DISTANCE_BETWEEN_TOPICS /= 2;
+        }
+
+        for (var k = 0; k < this._topics.length; k++) {
+            if (Responsive.IS_LARGE()) {
+                position.x = ((this._canvas.canvasSize.x - 400) /
+                              (this._topics.length - 1) * k);
+                position.x -= ((this._canvas.canvasSize.x - 400) / 2);
+            } else {
+                position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (k - this._currentTopic);
+            }
+            position.y = -40;
+            this._topics[k].moveTo(position.clone());
         }
     };
 
@@ -185,15 +205,18 @@ define([
         this._swipeToNextTopicBind = this._swipeToNextTopic.bind(this);
         this._swipeToPrevTopicBind = this._swipeToPrevTopic.bind(this);
         this._onTouchStartBind = this._onTouchStart.bind(this);
+        this._onResizeBind = this._onResize.bind(this);
         this._canvas.renderStartS.add(this._drawLinesBind);
         this._canvas.renderStartS.add(this._updateTopicsBind);
         this._canvas.touchStartS.add(this._onTouchStartBind);
-        if (Responsive.IS_SMALL()) {
+        this._canvas.resizeS.add(this._onResizeBind);
+        if (Responsive.IS_SMALL() || Responsive.IS_MEDIUM()) {
             this._canvas.swipeLeftS.add(this._swipeToNextTopicBind);
             this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
         }
 
-         setTimeout(this._onShow.bind(this), 500);
+        this._onResize();
+        setTimeout(this._onShow.bind(this), 500);
     };
 
     TopicsMode.prototype._onStartHide = function () {
@@ -211,6 +234,7 @@ define([
         this._canvas.renderStartS.remove(this._updateTopicsBind);
         this._canvas.swipeLeftS.remove(this._swipeToNextTopicBind);
         this._canvas.swipeRightS.remove(this._swipeToPrevTopicBind);
+        this._canvas.resizeS.remove(this._onResizeBind);
 
         setTimeout(this._onHide.bind(this), 100);
     };

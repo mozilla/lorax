@@ -35,6 +35,7 @@ define([
         this.swipeLeftS = new signals.Signal();
         this.swipeRightS = new signals.Signal();
         this.pressIssueS = new signals.Signal();
+        this.resizeS = new signals.Signal();
 
         return this;
     };
@@ -44,6 +45,8 @@ define([
     * @param  {object} DOM object
     */
     ExperienceCanvas.prototype.init = function (container) {
+        this._container = container;
+
         Responsive.RATIO = window.devicePixelRatio;
         // Responsive.RATIO = 2;
         Responsive.SIZE = new PIXI.Point(container.width(), container.height());
@@ -86,6 +89,9 @@ define([
         this._stage.tap = this._stage.touchstart = this._onTouchStart.bind(this);
         $(document).on('swipeleft', container, this._onSwipeLeft.bind(this));
         $(document).on('swiperight', container, this._onSwipeRight.bind(this));
+
+        // Other events
+        $(window).on('resize', container, this._onResize.bind(this));
     };
 
     ExperienceCanvas.prototype.hide = function () {
@@ -269,6 +275,27 @@ define([
 
     ExperienceCanvas.prototype._onSwipeRight = function () {
         this.swipeRightS.dispatch();
+    };
+
+    /**
+     * Reposition containers and resize canvas when the window resizes.
+     */
+    ExperienceCanvas.prototype._onResize = function () {
+        var width = this._container.width();
+        var height = this._container.height();
+
+        Responsive.SIZE.x = width;
+        Responsive.SIZE.y = height;
+
+        this._linesContainer.x = Math.round(width / 2);
+        this._linesContainer.y = Math.round(height / 2);
+        this._particlesContainer.x = this._linesContainer.x;
+        this._particlesContainer.y = this._linesContainer.y;
+
+        this._renderer.resize(width, height);
+
+        // Notify listeners that a resize just happened.
+        this.resizeS.dispatch();
     };
 
     /**

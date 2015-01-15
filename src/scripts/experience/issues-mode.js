@@ -33,17 +33,8 @@ define([
         this._issueMargin = 80;
 
         this._issues = this._canvas.issues;
-
-        this._margin = {
-            top: 200,
-            left: 500
-        };
-
-        if (Responsive.IS_SMALL()) {
-            this._margin.top = 250;
-            this._margin.left = 100;
-        }
-
+        this._margin = {};
+        this._scrollArea = new PIXI.Rectangle(0, 0, 0, 0);
         this._updateScroll();
     };
 
@@ -52,21 +43,7 @@ define([
             return (a.data.getId() > b.data.getId()) ? 1 : ((b.data.getId() > a.data.getId()) ? -1 : 0);
         });
 
-        this._scrollArea = new PIXI.Rectangle(
-            -((this._canvas.canvasSize.x - this._margin.left) / 2),
-            -((this._canvas.canvasSize.y - this._margin.top) / 2),
-            this._canvas.canvasSize.x - this._margin.left,
-            this._canvas.canvasSize.y - this._margin.top
-        );
-
-        var i;
-        var issue;
-
-        for (i = 0; i < this._issues.length; i ++) {
-            issue = this._issues[i];
-            issue.issueX = this._scrollArea.x;
-            issue.issueY = this._scrollArea.y + (this._issueMargin * i);
-        }
+        this._onResize();
     };
 
     IssuesMode.prototype._drawLines = function () {
@@ -148,6 +125,30 @@ define([
         }, 200);
     };
 
+    IssuesMode.prototype._onResize = function() {
+        if (Responsive.IS_SMALL()) {
+            this._margin.top = 250;
+            this._margin.left = 100;
+        } else {
+            this._margin.top = 200;
+            this._margin.left = 500;
+        }
+
+        this._scrollArea.x = -((this._canvas.canvasSize.x - this._margin.left) / 2);
+        this._scrollArea.y = -((this._canvas.canvasSize.y - this._margin.top) / 2);
+        this._scrollArea.width = this._canvas.canvasSize.x - this._margin.left;
+        this._scrollArea.height = this._canvas.canvasSize.y - this._margin.top;
+
+        var i, issue;
+        for (i = 0; i < this._issues.length; i ++) {
+            issue = this._issues[i];
+            issue.issueX = this._scrollArea.x;
+            issue.issueY = this._scrollArea.y + (this._issueMargin * i);
+            issue.elm.x = issue.issueX;
+            issue.elm.y = issue.issueY;
+        }
+    };
+
     IssuesMode.prototype._scrollTo = function (delta) {
         this._scrollFinalPosition += delta;
 
@@ -161,8 +162,8 @@ define([
 
         var i, issue;
         for (i = 0; i < this._canvas.issues.length; i ++) {
-          issue = this._canvas.issues[i];
-          issue.elm.y = Math.round(issue.issueY + this._scrollPosition);
+            issue = this._canvas.issues[i];
+            issue.elm.y = Math.round(issue.issueY + this._scrollPosition);
         }
     };
 
@@ -209,6 +210,9 @@ define([
         this._canvas._stage.touchend = this._onTouchEnd.bind(this);
         this._canvas._stage.touchmove = this._onTouching.bind(this);
 
+        this._onResizeBind = this._onResize.bind(this);
+        this._canvas.resizeS.add(this._onResizeBind);
+
         setTimeout(this._onShow.bind(this), 500);
     };
 
@@ -225,6 +229,7 @@ define([
         $(document).off('mousewheel', this._onMouseWheelBind);
         this._canvas.clearLines();
         this._canvas.renderStartS.remove(this._drawLinesBind);
+        this._canvas.resizeS.remove(this._onResizeBind);
 
         setTimeout(this._onHide.bind(this), 100);
     };
