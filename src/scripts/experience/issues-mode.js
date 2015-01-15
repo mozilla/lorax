@@ -149,6 +149,31 @@ define([
         }
     };
 
+    IssuesMode.prototype._focusIssue = function (issue) {
+        // Issue's current Y position normalized (first issue is at 0).
+        var issueY = issue.issueY - this._scrollArea.y;
+
+        // Current top and bottom of the "visible" area, Y origin at the top of
+        // the list and increasing downwards.
+        // 80 pixel adjustment is a band-aid to solve focusing on issues off the
+        // top of the screen.
+        var currentTop = -this._scrollPosition + 80;
+        var currentBottom = currentTop + this._scrollArea.height - 80;
+
+        // If the issue is out of bounds, scroll the distance necessary to bring
+        // it into view. _scrollTo has some weird behavior and doesn't scroll
+        // exactly as far as you ask, so we double the requested distance to
+        // make it scroll a reasonable amount.
+        if (issueY > currentBottom) {
+            this._scrollTo(-(issueY - currentBottom) * 2);
+        } else if (issueY < currentTop) {
+            this._scrollTo((currentTop - issueY) * 2);
+        }
+    };
+
+    /**
+     * Scroll the list by a specific amount of space.
+     */
     IssuesMode.prototype._scrollTo = function (delta) {
         this._scrollFinalPosition += delta;
 
@@ -190,6 +215,12 @@ define([
             issue.moveTo(issue.issueX, issue.issueY);
             // so mouse over doesnt block animation
             setTimeout(this._setIssueMouseEvents.bind(this), 500, issue);
+
+            issue.issuesFocus = this._focusIssue.bind(this);
+            issue.focusS.add(issue.issuesFocus);
+
+            // Append issue to DOM for keyboard navigation.
+            this._canvas.appendDomIssue(this._issues[i]);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
@@ -224,6 +255,7 @@ define([
             issue = this._issues[i];
             issue.mouseOverS.remove(issue.issueMouseOver);
             issue.mouseOutS.remove(issue.issueMouseOut);
+            issue.focusS.remove(issue.issuesFocus);
         }
 
         $(document).off('mousewheel', this._onMouseWheelBind);
@@ -232,6 +264,8 @@ define([
         this._canvas.resizeS.remove(this._onResizeBind);
 
         setTimeout(this._onHide.bind(this), 100);
+
+        this._canvas.clearDomIssues();
     };
 
     return IssuesMode;

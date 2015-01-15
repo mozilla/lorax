@@ -181,10 +181,18 @@ define([
         this.selectedTopic = null;
     };
 
+    TopicsMode.prototype._focusIssue = function(issue) {
+        issue.topic._mouseOver(true);
+    };
+
+    TopicsMode.prototype._blurIssue = function(issue) {
+        issue.topic._mouseOut(true);
+    };
+
     TopicsMode.prototype._onStartShow = function () {
         this._canvas.addChild(this._topicsContainer, this._canvas._stage.getChildIndex(this._canvas._particlesContainer));
 
-        var i;
+        var i, k;
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             this._canvas.tags[i].explode();
@@ -195,9 +203,23 @@ define([
         }
 
         for (i = 0; i < this._topics.length; i ++) {
-            this._topics[i].show();
-            this._topics[i].mouseOverS.add(this.mouseOverB);
-            this._topics[i].mouseOutS.add(this.mouseOutB);
+            var topic = this._topics[i];
+            topic.show();
+            topic.mouseOverS.add(this.mouseOverB);
+            topic.mouseOutS.add(this.mouseOutB);
+
+            for (k = 0; k < topic._issues.length; k++) {
+                var issue = topic._issues[k];
+
+                // Append issue to DOM for keyboard navigation.
+                this._canvas.appendDomIssue(issue);
+
+                // Bind signal handlers.
+                issue.topicsFocus = this._focusIssue.bind(this);
+                issue.topicsBlur = this._blurIssue.bind(this);
+                issue.focusS.add(issue.topicsFocus);
+                issue.blurS.add(issue.topicsBlur);
+            }
         }
 
         this._drawLinesBind = this._drawLines.bind(this);
@@ -222,11 +244,20 @@ define([
     TopicsMode.prototype._onStartHide = function () {
         this._canvas.removeChild(this._topicsContainer);
 
-        var i;
+        var i, k;
         for (i = 0; i < this._topics.length; i ++) {
-            this._topics[i].hide();
-            this._topics[i].mouseOverS.remove(this.mouseOverB);
-            this._topics[i].mouseOutS.remove(this.mouseOutB);
+            var topic = this._topics[i];
+            topic.hide();
+            topic.mouseOverS.remove(this.mouseOverB);
+            topic.mouseOutS.remove(this.mouseOutB);
+
+            for (k = 0; k < topic._issues.length; k++) {
+                var issue = topic._issues[k];
+
+                // Remove signal handlers.
+                issue.focusS.remove(issue.topicsFocus);
+                issue.blurS.remove(issue.topicsBlur);
+            }
         }
 
         this._canvas.clearLines();
@@ -237,6 +268,8 @@ define([
         this._canvas.resizeS.remove(this._onResizeBind);
 
         setTimeout(this._onHide.bind(this), 100);
+
+        this._canvas.clearDomIssues();
     };
 
     TopicsMode.prototype._swipeToNextTopic = function () {

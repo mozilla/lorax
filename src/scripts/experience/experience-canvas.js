@@ -67,6 +67,11 @@ define([
             this._renderer.view.style.width = '100%';
         }
 
+        // DOM nodes within canvas for a11y
+        this._domIssues = document.createElement('ul');
+        this._domIssues.classList.add('issues');
+        this._renderer.view.appendChild(this._domIssues);
+
         // lines
         this._linesContainer = new PIXI.Graphics();
         this._linesContainer.x = Math.round(Responsive.SIZE.x / 2);
@@ -92,6 +97,34 @@ define([
 
         // Other events
         $(window).on('resize', container, this._onResize.bind(this));
+
+        // Trigger press event when the DOM element for an issue is "clicked".
+        $(document).on('click', '.issues a', (function(e) {
+            var id = e.target.dataset.issueId;
+            if (id) {
+                e.preventDefault();
+                Issue.get(id)._onPress();
+            }
+        }).bind(this));
+
+        // Call focus and blur functions on issues when their matching DOM node
+        // is focused or blurred.
+        this._selectedIssue = null;
+        $(document).on('focus', '.issues a', (function(e) {
+            var id = e.target.dataset.issueId;
+            if (id) {
+                this._selectedIssue = Issue.get(id);
+                this._selectedIssue.focus();
+            }
+        }).bind(this));
+
+        $(document).on('blur', '.issues a', (function(e) {
+            var id = e.target.dataset.issueId;
+            if (id) {
+                Issue.get(id).blur();
+                this._selectedIssue = null;
+            }
+        }).bind(this));
     };
 
     ExperienceCanvas.prototype.hide = function () {
@@ -170,6 +203,25 @@ define([
             issue.draw(issue.initRadius);
             issue.pressS.add(this._onPressIssue.bind(this));
         }
+    };
+
+    /**
+     * Remove all nodes from the list of issues stored within the canvas' DOM
+     * for accessibility.
+     */
+    ExperienceCanvas.prototype.clearDomIssues = function() {
+        $(this._domIssues).empty();
+        if (this._selectedIssue) {
+            this._selectedIssue.blur();
+            this._selectedIssue = null;
+        }
+    };
+
+    /**
+     * Append an issue to the list of issues in the canvas' DOM.
+     */
+    ExperienceCanvas.prototype.appendDomIssue = function(issue) {
+        this._domIssues.appendChild(issue._domElement);
     };
 
     ExperienceCanvas.prototype._onPressIssue = function (issue) {

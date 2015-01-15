@@ -4,13 +4,15 @@ define([
     'experience/responsive',
     'pixi',
     'signals',
-    'gs'
+    'gs',
+    'lodash'
 ], function (
     Circle,
     Responsive,
     PIXI,
     signals,
-    gs
+    gs,
+    _
 ) {
     'use strict';
 
@@ -20,10 +22,16 @@ define([
         this._canvasSize = canvasSize;
         this.elm = new PIXI.DisplayObjectContainer();
 
+        // Track in global list of issues.
+        this.id = _.uniqueId();
+        Issue._allIssues[this.id] = this;
+
         this.mouseOverS = new signals.Signal();
         this.mouseOutS = new signals.Signal();
         this.pressS = new signals.Signal();
         this.tapS = new signals.Signal();
+        this.focusS = new signals.Signal();
+        this.blurS = new signals.Signal();
 
         this._tagStyle = {font: '400 8px "Fira Sans", sans-serif', fill: '#222222'};
         this._tagTitleStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
@@ -33,7 +41,25 @@ define([
         this._tagIssuesStyle = {font: '200 20px "Fira Sans", sans-serif', fill: '#FFFFFF'};
         this._detailStyle = {font: '400 14px "Fira Sans", sans-serif', fill: '#FFFFFF'};
 
+        // DOM element used to represent this issue for accessibility purposes.
+        this._domElement = document.createElement('li');
+        this._domLink = document.createElement('a');
+        this._domElement.appendChild(this._domLink);
+        this._domLink.setAttribute('tabindex', '1');
+        this._domLink.setAttribute('data-issue-id', this.id);
+        this._domLink.setAttribute('href', '#issue-' + this.id);
+        this._domLink.textContent = '';
+
+        this._square = new PIXI.Graphics();
+        this._squareAdded = false;
+
         return this;
+    };
+
+    // Track all created issues in a global list that can be queried.
+    Issue._allIssues = {};
+    Issue.get = function(id) {
+        return Issue._allIssues[id];
     };
 
     Issue.prototype = new Circle();
@@ -63,6 +89,10 @@ define([
         this.color = colors[this.data._status];
 
         this._textAlwaysVisible = false;
+
+        if (data.getName) {
+            this._domLink.textContent = data.getName();
+        }
     };
 
     /**
@@ -93,6 +123,8 @@ define([
         this.elm.mouseout = this._onMouseOut.bind(this);
         this.elm.mousedown = this._onPress.bind(this);
         this.elm.tap = this._onTap.bind(this);
+
+        this._drawSquare(0x222222);
     };
 
     Issue.prototype._onMouseOver = function () {
@@ -119,6 +151,19 @@ define([
         }
     };
 
+    /**
+     * Draw a square that will surround the issue when it is focused. Line size
+     * and square size are proprtional to the issue's radius.
+     */
+    Issue.prototype._drawSquare = function(color) {
+        this._square.clear();
+        this._square.lineStyle(this.initRadius / 2, color || 0x222222);
+        this._square.beginFill(0, 0);
+        this._square.drawRect(-this.initRadius * 2, -this.initRadius * 2,
+                              (this.initRadius * 4) - 1, (this.initRadius * 4) - 1);
+        this._square.endFill();
+    };
+
     Issue.prototype.setMode = function (mode) {
         var lastMode = this.mode;
         this.mode = mode;
@@ -137,6 +182,7 @@ define([
                 );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
+                this._drawSquare(0x222222);
             } break;
             case Issue.MODE_TAG: {
                 this.setTextAlwaysVisible(false);
@@ -154,6 +200,7 @@ define([
                 this._title.x = this.leftSided ? -(this._title.width / Responsive.RATIO) - 10 : 10;
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
+                this._drawSquare(0x222222);
             } break;
             case Issue.MODE_TAG_TITLE: {
                 this.setTextAlwaysVisible(true);
@@ -174,6 +221,7 @@ define([
                 this._title.x = 10;
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xFFFFFF);
+                this._drawSquare(0xFFFFFF);
                 this.elm.alpha = 1;
             } break;
             case Issue.MODE_TOPICS: {
@@ -191,6 +239,7 @@ define([
                 );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
+                this._drawSquare(0x222222);
             } break;
             case Issue.MODE_ISSUES: {
                 this.stopMoving();
@@ -208,6 +257,7 @@ define([
                 );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0x222222);
+                this._drawSquare(0x222222);
                 this.elm.alpha = 1;
             } break;
             case Issue.MODE_TAG_ISSUES: {
@@ -226,6 +276,7 @@ define([
                 );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
+                this._drawSquare(0xffffff);
                 this.elm.alpha = 1;
             } break;
             case Issue.MODE_DETAIL: {
@@ -244,6 +295,7 @@ define([
                 );
                 this._title.y = Math.round(-(this._title.height / Responsive.RATIO) / 2);
                 this._drawCircle(0xffffff);
+                this._drawSquare(0xffffff);
             } break;
         }
 
@@ -426,6 +478,16 @@ define([
                 this._onMouseOut();
             }
         }
+    };
+
+    Issue.prototype.focus = function() {
+        this.elm.addChild(this._square);
+        this.focusS.dispatch(this);
+    };
+
+    Issue.prototype.blur = function() {
+        this.elm.removeChild(this._square);
+        this.blurS.dispatch(this);
     };
 
     return Issue;

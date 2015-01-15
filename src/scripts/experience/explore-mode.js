@@ -286,13 +286,24 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         }
     };
 
+    ExploreMode.prototype._focusIssue = function(issue) {
+        issue.setTextAlwaysVisible(true);
+    };
+
+    ExploreMode.prototype._blurIssue = function(issue) {
+        issue.setTextAlwaysVisible(false);
+    };
+
     ExploreMode.prototype._onStartShow = function () {
         // set position for issues
         var issue;
         var i;
+        var focusableIssues = [];
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
+            focusableIssues.push(issue);
+
             issue.setMode(Issue.MODE_EXPLORE);
             issue.moveTo(
                 issue.exploreX,
@@ -302,13 +313,19 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
             issue.exploreTap = this._tapIssue.bind(this);
+            issue.exploreFocus = this._focusIssue.bind(this);
+            issue.exploreBlur = this._blurIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
             issue.mouseOutS.add(issue.exploreMouseOut);
             issue.tapS.add(issue.exploreTap);
+            issue.focusS.add(issue.exploreFocus);
+            issue.blurS.add(issue.exploreBlur);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
             issue = this._canvas.tags[i];
+            focusableIssues.push(issue);
+
             issue.setMode(Issue.MODE_TAG);
             issue._x0 = issue.exploreX;
             issue._y0 = issue.exploreY;
@@ -316,9 +333,13 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.exploreMouseOver = this._mouseOverIssue.bind(this);
             issue.exploreMouseOut = this._mouseOutIssue.bind(this);
             issue.exploreTap = this._tapIssue.bind(this);
+            issue.exploreFocus = this._focusIssue.bind(this);
+            issue.exploreBlur = this._blurIssue.bind(this);
             issue.mouseOverS.add(issue.exploreMouseOver);
             issue.mouseOutS.add(issue.exploreMouseOut);
             issue.tapS.add(issue.exploreTap);
+            issue.focusS.add(issue.exploreFocus);
+            issue.blurS.add(issue.exploreBlur);
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
@@ -334,6 +355,15 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         // start a new autoMode timeout
         this._endAutoMode(true);
         setTimeout(this._onShow.bind(this), 500);
+
+        // Append issues to DOM for keyboard navigation.
+        // Sort issues and tags by position.
+        focusableIssues.sort(function(a, b) {
+            return a.exploreY - b.exploreY;
+        });
+        for (i = 0; i < focusableIssues.length; i++) {
+            this._canvas.appendDomIssue(focusableIssues[i]);
+        }
     };
 
     ExploreMode.prototype._onStartHide = function () {
@@ -346,6 +376,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);
             issue.tapS.remove(issue.exploreTap);
+            issue.focusS.remove(issue.exploreFocus);
+            issue.blurS.remove(issue.exploreBlur);
         }
 
         for (i = 0; i < this._canvas.tags.length; i ++) {
@@ -354,6 +386,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);
             issue.tapS.remove(issue.exploreTap);
+            issue.focusS.remove(issue.exploreFocus);
+            issue.blurS.remove(issue.exploreBlur);
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
@@ -366,6 +400,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         this._endAutoMode();
 
         setTimeout(this._onHide.bind(this), 100);
+
+        this._canvas.clearDomIssues();
     };
 
     return ExploreMode;

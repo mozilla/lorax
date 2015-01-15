@@ -25,6 +25,10 @@ define([
         this._issues = issues;
         this._fakes = fakes;
 
+        for (var i  = 0; i < this._issues.length; i++) {
+            this._issues[i].topic = this;
+        }
+
         this.elm = new PIXI.DisplayObjectContainer();
 
         this.mouseOverS = new signals.Signal();
@@ -216,9 +220,10 @@ define([
     };
 
     /**
-    * When hovering a topic
+    * When hovering a topic. If force is true, ignore the check to see if this is
+    * a valid mouseOver.
     */
-    Topic.prototype._mouseOver = function () {
+    Topic.prototype._mouseOver = function (force) {
         Topic.SELECTED_TOPIC = this;
 
         var i;
@@ -260,17 +265,20 @@ define([
         this.elm.addChild(this._linearArea);
 
         // make sure mouse is over
-        setTimeout(function () {
-            if (!this._isMouseOver()) {
-                this._mouseOut();
-            }
-        }.bind(this), 100);
+        if (!force) {
+            setTimeout(function () {
+                if (!this._isMouseOver()) {
+                    this._mouseOut();
+                }
+            }.bind(this), 100);
+        }
 
         this.mouseOverS.dispatch(this);
     };
 
     /**
-    * When the mouse leaves a topic
+    * When the mouse leaves a topic. If force is true, ignore the check to see
+    * if this is a valid mouseOut.
     */
     Topic.prototype._mouseOut = function (force) {
         // make sure it's really a mouse out

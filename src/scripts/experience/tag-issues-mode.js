@@ -4,13 +4,15 @@ define([
     'signals',
     'experience/mode',
     'experience/issues-mode',
-    'experience/issue'
+    'experience/issue',
+    'mousetrap'
 ], function (
     PIXI,
     signals,
     Mode,
     IssuesMode,
-    Issue
+    Issue,
+    Mousetrap
 ) {
     'use strict';
 
@@ -57,7 +59,7 @@ define([
         this._closeButtonContainer.y = this._canvas.canvasSize.y / 2;
         this._closeButtonContainer.addChild(this._closeButton);
         this._canvas.addChild(this._closeButtonContainer);
-     };
+    };
 
     TagIssuesMode.prototype.setTag = function (data) {
         this._tag = this._canvas.getElementByData(data);
@@ -120,6 +122,9 @@ define([
             issue.moveTo(issue.issueX, issue.issueY);
             // so mouse over doesnt block animation
             setTimeout(this._setIssueMouseEvents.bind(this), 500, issue);
+
+            // Append issue to DOM for keyboard navigation.
+            this._canvas.appendDomIssue(issue);
         }
 
         var x0 = this._tag._x0;
@@ -144,6 +149,11 @@ define([
         this._canvas._stage.touchmove = this._onTouching.bind(this);
 
         setTimeout(this._onShow.bind(this), 500);
+
+        // When ESC is pressed, close this view.
+        Mousetrap.bind('esc', (function() {
+            this._onPressClose();
+        }).bind(this));
     };
 
     TagIssuesMode.prototype._onStartHide = function () {
@@ -164,6 +174,9 @@ define([
         this._canvas.renderStartS.remove(this._drawLinesBind);
 
         setTimeout(this._onHide.bind(this), 100);
+
+        this._canvas.clearDomIssues();
+        Mousetrap.unbind('esc');
     };
 
     return TagIssuesMode;
