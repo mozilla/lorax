@@ -72,7 +72,7 @@ define([
     };
 
     IssuesMode.prototype._onMouseWheel = function (event) {
-        this._scrollTo(event.deltaY / 5);
+        this._scrollTo(event.deltaY * event.deltaFactor);
     };
 
     IssuesMode.prototype._onTouching = function (event) {
