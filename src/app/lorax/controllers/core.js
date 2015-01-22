@@ -65,10 +65,12 @@ define(['webfontloader'], function (WebFont) {
 
     CoreCtrl.prototype.openEmailModal = function () {
         this._$scope.$broadcast('openEmailModal');
+        ga('send','pageview','/email/');
     };
 
     CoreCtrl.prototype.openShareModal = function (service) {
         this._$scope.$broadcast('openShareModal', service);
+        ga('send','pageview','/share/');
     };
 
     CoreCtrl.prototype.openShareOptions = function () {
@@ -81,14 +83,17 @@ define(['webfontloader'], function (WebFont) {
 
     CoreCtrl.prototype.openAboutModal = function () {
         this._$scope.$broadcast('openAboutModal');
+        ga('send','pageview','/about/');
     };
 
     CoreCtrl.prototype.openLegendModal = function () {
         this._$scope.$broadcast('openLegendModal');
+        ga('send','pageview','/legend/');
     };
 
     CoreCtrl.prototype.siteInfo = function () {
         this._$scope.$broadcast('openMobileOptions', true);
+        ga('send','pageview','/mobileOptions/');
     };
 
     CoreCtrl.prototype.onBreakpointChange = function (bp) {

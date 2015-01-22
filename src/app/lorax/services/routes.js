@@ -20,6 +20,22 @@ define([], function () {
         this.page = route.page;
         this.params = route.params;
         this._pubSubService.publish('routesService.change', [this.page, this.params]);
+        var pg = '';
+        if (this.page == 'experience') {
+            if (!this.params.mode) {
+                pg = '/';
+            } else {
+                pg = '/' + this.params.mode + '/';
+            }
+        } else if (this.page == 'detail') {
+            if (!this.params.issue) {
+                pg = '/detail/' + this.params.topic + '/';
+            } else {
+                pg = '/detail/' + this.params.topic + '/' + this.params.issue + '/';    
+            }
+        }
+
+        ga('send', 'pageview', pg);
     };
 
     RoutesService.prototype._onIssueChange = function (data) {

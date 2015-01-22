@@ -59,6 +59,7 @@ define(['angular', 'jquery'], function (angular, $) {
             onShare: this.onShare.bind(this),
             shareFacebook: this.shareFacebook.bind(this),
             shareTwitter: this.shareTwitter.bind(this),
+            shareEmail: this.shareEmail.bind(this),
             onSecondStep: false,
             backToFirstStep: this.backToFirstStep.bind(this),
             currentIssue: null
@@ -152,12 +153,19 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalShareController.prototype.shareFacebook = function (issue) {
+        ga('send', 'pageview', '/share' + issue.getUrl() + '/facebook/');
         window.open('https://www.facebook.com/sharer/sharer.php?u=' + issue.getShareUrl(), '_blank');
     };
 
     ModalShareController.prototype.shareTwitter = function (issue) {
+        ga('send', 'pageview', '/share' + issue.getUrl() + '/twitter/');
         window.open('http://twitter.com/share?text=' + issue.getTitle() + '&url=' +
             issue.getShareUrl() + '&hashtags=' + this._$scope.modalShare.content.hashtag, '_blank');
+    };
+
+    ModalShareController.prototype.shareEmail = function (issue) {
+        ga('send', 'pageview', '/share' + issue.getUrl() + '/email/');
+        window.open('mailto:?subject=' + encodeURIComponent(issue.getTitle()) + '&body=' + encodeURIComponent(issue.getShareUrl()));
     };
 
     ModalShareController.prototype.secondStep = function (issue) {

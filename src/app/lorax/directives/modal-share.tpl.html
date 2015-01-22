@@ -15,7 +15,7 @@
             <ul class="second-step__sharing">
               <li><a href="#" class="icon-twitter-sq" data-lorax-prevent-default ng-click="modalShare.shareTwitter(modalShare.currentIssue)">Twitter</a></li>
               <li><a href="#" class="icon-fb-sq" data-lorax-prevent-default ng-click="modalShare.shareFacebook(modalShare.currentIssue)">Facebook</a></li>
-              <li><a ng-href="mailto:?subject={{modalShare.currentIssue.getTitle() | encodeUri}}" class="icon-email-sq ">{{::modalShare.content.email}}</a></li>
+              <li><a href="#" class="icon-email-sq" data-lorax-prevent-default ng-click="modalShare.shareEmail(modalShare.currentIssue)">{{::modalShare.content.email}}</a></li>
             </ul>
           </div>
         </div>
