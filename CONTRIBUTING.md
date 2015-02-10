@@ -35,27 +35,19 @@ The following steps assume you have [Git](http://git-scm.com/) and
    git clone https://github.com/mozilla/lorax.git
    ```
 
-2. Install [LESS](http://lesscss.org/), [Grunt](http://gruntjs.com/), and
-   [Bower](http://bower.io/).
+2. Download and install dependencies via bower and npm.
 
     ```sh
-    npm install -g less bower grunt-cli
+    npm install && bower install
     ```
 
-3. Download dependencies via bower and npm.
-
-    ```sh
-    bower install
-    npm install
-    ```
-
-4. Start the development server.
+3. Start the development server.
 
    ```sh
    grunt server
    ```
 
-5. Open http://127.0.0.1:9000 in your browser.
+4. Open http://127.0.0.1:9000 in your browser.
 
 
 ## Development Guidelines
