@@ -281,6 +281,32 @@ module.exports = function (grunt) {
                 base: 'dist'
             },
             src: ['**']
+        },
+
+        s3: {
+            options: {
+                bucket: process.env.AWS_S3_BUCKET,
+                access: 'public-read',
+                headers: {
+                    // Two Hour cache policy (1000 * 60 * 60 * 2)
+                    'Cache-Control': 'max-age=7200, public',
+                    'Expires': new Date(Date.now() + 7200000).toUTCString()
+                }
+            },
+            prod: {
+                sync: [
+                    {
+                        src: 'dist/**',
+                        dest: '',
+                        rel: 'dist',
+                        options: {
+                            verify: true,
+                            gzip: true,
+                            gzipExclude: ['.png', '.ico', '.txt', '.jpg', '.woff']
+                        }
+                    }
+                ]
+            }
         }
     });
 
