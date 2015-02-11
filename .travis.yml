@@ -2,10 +2,6 @@ sudo: false
 language: node_js
 node_js:
   - "0.10"
-env:
-  - AWS_S3_BUCKET=lorax
-  - secure: "AKlWt93iVTfCgisuqqA/r0r0nmmtuCzPqw67mMHqOKBh7V3FXFY6mquLcwqs2cCJYU7wBbM4BGmOv3CPF2LThLluBbc2n2zbDAFmPHfcRx8xd0jhUhYo2b6x3nNYqM1qLVnpIbwW/zCr9JdpGP4KMBpvRcEpBZ9OWIacAMolUSw="
-  - secure: "AN6quZQT9DGpt7cXqOcSN7CWR0G6tNV9D4SO7REjR+FaaTtDdG108o7Gb5p/dm0Kg2XYb92t5pHEjXkStOexwqTwjP+3JdCBB4euYJGg8yeLJGj1qBxEtnVb8J6LaNtOGRYHiJiBar3P10ut60wIuJT9dJjkT6OuLroHkm/OAzs="
 install:
   - npm install
   - bower install
