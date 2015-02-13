@@ -9,5 +9,7 @@ cache:
 install:
   - npm install
   - bower install
-script: grunt build
-after_success: grunt s3
+script: grunt build s3
+branches:
+  only:
+    - master
