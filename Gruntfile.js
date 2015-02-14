@@ -294,7 +294,7 @@ module.exports = function (grunt) {
                 }
             },
             prod: {
-                sync: [
+                upload: [
                     {
                         src: 'dist/**',
                         dest: '',
