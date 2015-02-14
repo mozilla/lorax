@@ -9,7 +9,14 @@ cache:
 install:
   - npm install
   - bower install
-script: grunt build s3
+script: grunt build && grunt s3
 branches:
   only:
     - master
+notifications:
+  irc:
+    channels:
+      - "irc.mozilla.org#www"
+    on_success: always
+    on_failure: always
+    use_notice: true
