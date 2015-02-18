@@ -64,8 +64,8 @@ define([
                 this._mainDefer = this._$q.defer();
 
                 var req = this._$http.get(_buildMainEndpoint());
-                var localeReq = this._$http.get(_buildLocaleMainEndpoint(locale));
-                var infographicReq = this._$http.get(_buildInfographicEndpoint(locale));
+                var localeReq = this._$http.get(_buildLocaleMainEndpoint());
+                var infographicReq = this._$http.get(_buildInfographicEndpoint());
 
                 req.then(function (res) {
                     if (res.data) {
@@ -100,7 +100,7 @@ define([
                 this._mapDefer = this._$q.defer();
 
                 var req = this._$http.get(_buildMapEndpoint());
-                var countryReq = this._$http.get(_buildCountryDataEndpoint(locale));
+                var countryReq = this._$http.get(_buildCountryDataEndpoint());
 
                 req.then(function (res) {
                     if ( res.data ) {
