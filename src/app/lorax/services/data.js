@@ -20,6 +20,18 @@ define([
         this._mainData, this._requestingMain, this._mainDefer;
         this._mapData, this._requestingMap, this._mapDefer;
 
+        function _buildLocaleMainEndpoint() {
+            return 'https://www.mozilla.org/shapeoftheweb/main.json';
+        }
+
+        function _buildInfographicEndpoint() {
+            return 'https://www.mozilla.org/shapeoftheweb/infographics.json';
+        }
+
+        function _buildCountryDataEndpoint() {
+            return 'https://www.mozilla.org/shapeoftheweb/country-data.json';
+        }
+
         function _buildMainEndpoint() {
             return [
                 '/data',
@@ -28,38 +40,11 @@ define([
             ].join('/');
         }
 
-        function _buildLocaleMainEndpoint(locale) {
-            return [
-                '/data',
-                'i18n',
-                locale,
-                'main.json'
-            ].join('/');
-        }
-
-        function _buildInfographicEndpoint(locale) {
-            return [
-                '/data',
-                'i18n',
-                locale,
-                'infographics.json'
-            ].join('/');
-        }
-
         function _buildMapEndpoint() {
             return [
                 '/data',
                 'base',
                 'countries.topo.json'
-            ].join('/');
-        }
-
-        function _buildCountryDataEndpoint(locale) {
-            return [
-                '/data',
-                'i18n',
-                locale,
-                'country-data.json'
             ].join('/');
         }
 
