@@ -170,11 +170,7 @@
 }
 
 .side-panel__content {
-    padding-top: 80px;
-
-    .at-large({
-        padding-top: 120px;
-    });
+    padding-top: 60px;
 
     @media (min-height: 700px) {
         .at-xlarge({
@@ -208,6 +204,10 @@
     line-height: 25px;
     margin: 0 0 25px;
 
+    h2 {
+        margin-top: 4rem;
+    }
+
     .at-large({
         .font-size(1.8);
         line-height: 28px;
@@ -221,10 +221,6 @@
             margin-bottom: 32px;
         });
     }
-}
-
-.side-panel--about {
-    right: 0%;
 }
 
 body.side-panel-about {
