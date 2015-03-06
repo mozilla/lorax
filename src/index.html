@@ -31,10 +31,9 @@
 
     <footer class="footer-links">
       <div class="down-arrow-nav icon-arrow"></div>
-      <a href="#" class="footer-links__link footer-links__link--legend icon-question" ng-click="core.openLegendModal()" data-lorax-prevent-default>{{::core.miscData.legend}}</a>
-      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" data-lorax-prevent-default>{{::core.miscData.about}}</a>
-      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" data-lorax-prevent-default>{{::core.miscData.keepMeInformed}}</a>
-      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" data-lorax-prevent-default>{{::core.miscData.sharingOptions}}</a>
+      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.about}}</a>
+      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.keepMeInformed}}</a>
+      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.sharingOptions}}</a>
       <div class="footer-links__share-options" ng-show="core.shareOptions">
         <ul class="share-options">
           <li class="share-option share-option--twitter icon-twitter" >

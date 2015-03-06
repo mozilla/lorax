@@ -26,7 +26,6 @@ define(['webfontloader'], function (WebFont) {
             openShareOptions: this.openShareOptions.bind(this),
             closeShareOptions: this.closeShareOptions.bind(this),
             openAboutModal: this.openAboutModal.bind(this),
-            openLegendModal: this.openLegendModal.bind(this),
             siteInfo: this.siteInfo.bind(this),
             isLoaded: false
         };
@@ -84,11 +83,6 @@ define(['webfontloader'], function (WebFont) {
     CoreCtrl.prototype.openAboutModal = function () {
         this._$scope.$broadcast('openAboutModal');
         ga('send','pageview','/about/');
-    };
-
-    CoreCtrl.prototype.openLegendModal = function () {
-        this._$scope.$broadcast('openLegendModal');
-        ga('send','pageview','/legend/');
     };
 
     CoreCtrl.prototype.siteInfo = function () {

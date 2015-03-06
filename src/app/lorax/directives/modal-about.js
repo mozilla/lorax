@@ -32,8 +32,9 @@ define(function () {
         this._dataService = dataService;
         this._windowService = windowService;
 
+        $scope.modalLegend = {};
         $scope.modalAbout = {
-            open: false,
+            open: true,
             closeModal: this.closeModal.bind(this)
         };
 
@@ -42,6 +43,7 @@ define(function () {
 
         this._dataService.getMain().then(function (model) {
             this._$scope.modalAbout.content = model.getModals().about;
+            this._$scope.modalLegend.content = model.getModals().legend;
         }.bind(this));
     };
 
