@@ -21,7 +21,6 @@ define([
     'lorax/directives/modal-mobile-options',
     'lorax/directives/issue-details',
     'lorax/directives/issue-all',
-    'lorax/directives/chart-terms-and-conditions',
     'lorax/directives/chart-common-languages',
     'lorax/directives/chart-world-map',
     'lorax/directives/chart-accessible',
@@ -38,8 +37,6 @@ define([
     'lorax/directives/chart-identity-control',
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
-    'lorax/directives/chart-zero-rating',
-    'lorax/directives/chart-content-creation',
     'lorax/directives/experience',
     'lorax/directives/detail',
     'lorax/directives/add-infographic-directive',
@@ -78,7 +75,6 @@ define([
     ModalMobileOptionsDirective,
     IssueDetailsDirective,
     IssueAllDirective,
-    ChartTermsAndConditionsDirective,
     ChartCommonLanguagesDirective,
     ChartWorldMapDirective,
     ChartAccessibleDirective,
@@ -95,8 +91,6 @@ define([
     ChartIdentityControlDirective,
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
-    ChartZeroRatingDirective,
-    ChartContentCreationDirective,
     ExperienceDirective,
     DetailDirective,
     AddInfographicDirective,
@@ -187,13 +181,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxIssueAll', IssueAllDirective)
-
-        /**
-         * Injects {@link lorax/directives/ChartTermsAndConditionsDirective}
-         * as 'ChartTermsAndConditionsDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartTermsAndConditions', ChartTermsAndConditionsDirective)
 
         /**
          * Injects {@link lorax/directives/ChartCommonLanguagesDirective}
@@ -306,20 +293,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartCyberBullying', ChartCyberBullyingDirective)
-
-        /**
-         * Injects {@link lorax/directives/ChartZeroRatingDirective}
-         * as 'ChartZeroRatingDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartZeroRating', ChartZeroRatingDirective)
-
-        /**
-         * Injects {@link lorax/directives/ChartContentCreationDirective}
-         * as 'ChartContentCreationDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartContentCreation', ChartContentCreationDirective)
 
         /**
          * Injects {@link lorax/directives/ExperienceDirective}

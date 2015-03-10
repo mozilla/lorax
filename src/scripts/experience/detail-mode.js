@@ -162,21 +162,15 @@ define([
     };
 
     DetailMode.prototype._onStartShow = function () {
-        var i;
         var issue;
 
-        for (i = 0; i < this._canvas.issues.length; i ++) {
+        for (var i = 0, l = this._canvas.issues.length; i < l; i ++) {
             issue = this._canvas.issues[i];
             issue.setMode(Issue.MODE_DETAIL);
             issue.elm.alpha = 0;
         }
 
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
-            issue.explode();
-        }
-
-        for (i = 0; i < this._canvas.fakes.length; i ++) {
+        for (i = 0, l = this._canvas.fakes.length; i < l; i ++) {
             issue = this._canvas.fakes[i];
             issue.explode();
         }

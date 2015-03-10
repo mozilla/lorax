@@ -20,33 +20,12 @@ define([
         this._mainData, this._requestingMain, this._mainDefer;
         this._mapData, this._requestingMap, this._mapDefer;
 
-        function _buildLocaleMainEndpoint() {
-            return 'https://www.mozilla.org/shapeoftheweb/main.json';
-        }
+        this._mainEndpoint = '/data/base/main.json';
+        this._mapEndpoint = '/data/base/countries.topo.json';
+        this._countryDataEndpoint = '/data/base/country-data.json';
 
-        function _buildInfographicEndpoint() {
-            return 'https://www.mozilla.org/shapeoftheweb/infographics.json';
-        }
-
-        function _buildCountryDataEndpoint() {
-            return 'https://www.mozilla.org/shapeoftheweb/country-data.json';
-        }
-
-        function _buildMainEndpoint() {
-            return [
-                '/data',
-                'base',
-                'main.json'
-            ].join('/');
-        }
-
-        function _buildMapEndpoint() {
-            return [
-                '/data',
-                'base',
-                'countries.topo.json'
-            ].join('/');
-        }
+        this._localeMainEndpoint = '/data/i18n/main.json';
+        this._infographicEndpoint = '/data/i18n/infographics.json';
 
         /**
          * @method core/services/dataService~getMain
@@ -63,9 +42,10 @@ define([
                 this._requestingMain = true;
                 this._mainDefer = this._$q.defer();
 
-                var req = this._$http.get(_buildMainEndpoint());
-                var localeReq = this._$http.get(_buildLocaleMainEndpoint());
-                var infographicReq = this._$http.get(_buildInfographicEndpoint());
+                var req = this._$http.get(this._mainEndpoint);
+                // TODO: prepend locale to the below once i18n has started
+                var localeReq = this._$http.get(this._localeMainEndpoint);
+                var infographicReq = this._$http.get(this._infographicEndpoint);
 
                 req.then(function (res) {
                     if (res.data) {
@@ -99,8 +79,8 @@ define([
                 this._requestingMap = true;
                 this._mapDefer = this._$q.defer();
 
-                var req = this._$http.get(_buildMapEndpoint());
-                var countryReq = this._$http.get(_buildCountryDataEndpoint());
+                var req = this._$http.get(this._mapEndpoint);
+                var countryReq = this._$http.get(this._countryDataEndpoint);
 
                 req.then(function (res) {
                     if ( res.data ) {
