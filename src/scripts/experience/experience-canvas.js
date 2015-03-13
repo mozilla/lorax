@@ -154,7 +154,7 @@ define([
             this.fakes.push(circle);
             this._particlesContainer.addChild(circle.elm);
 
-            circle.draw(1);
+            circle.draw(2);
             circle._circle.alpha = 0.3;
             circle.elm.alpha = 0;
         }

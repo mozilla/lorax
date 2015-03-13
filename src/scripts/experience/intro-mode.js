@@ -84,16 +84,12 @@ define([
     };
 
     IntroMode.prototype._onStartShow = function () {
+
         var issue;
         var i;
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-            issue.elm.interactive = false;
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
             issue.elm.interactive = false;
         }
 

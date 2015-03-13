@@ -162,6 +162,9 @@ define([
     };
 
     DetailMode.prototype._onStartShow = function () {
+
+        console.log('DetailMode.prototype._onStartShow');
+
         var issue;
 
         for (var i = 0, l = this._canvas.issues.length; i < l; i ++) {

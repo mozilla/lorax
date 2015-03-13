@@ -202,6 +202,9 @@ define([
     };
 
     IssuesMode.prototype._onStartShow = function () {
+
+        console.log('IssuesMode.prototype._onStartShow');
+
         var i;
         var issue;
 

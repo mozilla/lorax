@@ -194,10 +194,6 @@ define([
 
         var i, k;
 
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            this._canvas.tags[i].explode();
-        }
-
         for (i = 0; i < this._canvas.fakes.length; i ++) {
             this._canvas.fakes[i].explode();
         }
