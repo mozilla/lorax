@@ -16,7 +16,6 @@ branches:
 notifications:
   irc:
     channels:
-      - "irc.mozilla.org#www"
+      - "irc.mozilla.org#SOTW"
     on_success: always
     on_failure: always
-    use_notice: true
