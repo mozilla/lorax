@@ -2,12 +2,10 @@
 define([
     'stats',
     'webfontloader',
-    'lorax/models/tag',
     'experience/experience-canvas',
     'experience/explore-mode',
     'experience/topics-mode',
     'experience/issues-mode',
-    'experience/tag-issues-mode',
     'experience/detail-mode',
     'experience/intro-mode',
     'experience/issue',
@@ -15,12 +13,10 @@ define([
 ], function (
     Stats,
     WebFont,
-    TagModel,
     ExperienceCanvas,
     ExploreMode,
     TopicsMode,
     IssuesMode,
-    TagIssuesMode,
     DetailMode,
     IntroMode,
     Issue
@@ -32,7 +28,6 @@ define([
         this._exploreMode = new ExploreMode(this._canvas);
         this._topicsMode = new TopicsMode(this._canvas);
         this._issuesMode = new IssuesMode(this._canvas);
-        this._tagIssuesMode = new TagIssuesMode(this._canvas);
         this._detailMode = new DetailMode(this._canvas);
         this._introMode = new IntroMode(this._canvas);
     };
@@ -51,19 +46,16 @@ define([
 
     Experience.prototype._onFontsLoaded = function () {
         this._canvas.drawIssues(this._issueData);
-        this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
         this._canvas.hide();
 
         this._exploreMode.init();
         this._topicsMode.init();
         this._issuesMode.init();
-        this._tagIssuesMode.init();
         this._detailMode.init();
         this._introMode.init();
 
         this._introMode.hideS.add(this._onEndIntro.bind(this));
-        this._tagIssuesMode.closeS.add(this._onCloseTagIssues.bind(this));
 
         setTimeout(function () {
             this._hasInitialized = true;
@@ -197,19 +189,6 @@ define([
         }
     };
 
-    Experience.prototype.showTagIssues = function (tag) {
-        if (this._hasInitialized) {
-            this._canvas.show();
-            this._mode = Issue.MODE_TAG_ISSUES;
-            this._tagIssuesMode.setTag(this._mainData.getTagByURLId(tag));
-            this._tagIssuesMode.show();
-            this._setBgMode('tag');
-        } else {
-            this._onInitMode = this.showTagIssues;
-            this._onInitData = tag;
-        }
-    };
-
     Experience.prototype.showIntro = function () {
         if (this._hasInitialized) {
             this._canvas.show();
@@ -236,12 +215,6 @@ define([
     };
 
     Experience.prototype._openIssue = function (issue) {
-        if (TagModel.prototype.isPrototypeOf(issue.data)) {
-            // this.showTagIssues(issue.data.getURLId());
-            this._openTag(issue.data.getURLId());
-            return;
-        }
-
         this._mode = Issue.MODE_DETAIL;
         this._currentIssue = issue;
 

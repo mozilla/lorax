@@ -1,10 +1,8 @@
 define([
     'lodash',
-    'lorax/models/tag',
     'lorax/models/infographic'
 ], function (
     _,
-    TagModel,
     InfographicModel
 ) {
     'use strict';
@@ -39,23 +37,6 @@ define([
             infographicData
         );
         this._miscLocale = localeDataAll.misc;
-
-        for (var tagIdx in data.tags) {
-            //TODO: consider changing this to an object instead of an array
-            var tagObjs = _.filter(tags, function (tag) {
-                return (tag.getId() === data.tags[tagIdx]);
-            });
-
-            if (tagObjs.length > 0) {
-                this._tags.push(tagObjs[0]);
-                tagObjs[0].addIssue(this);
-            } else {
-                var newTag = new TagModel(data.tags[tagIdx], localeDataAll);
-                this._tags.push(newTag);
-                newTag.addIssue(this);
-                tags.push(newTag);
-            }
-        }
     };
 
     IssueModel.prototype.getParent = function () {

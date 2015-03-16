@@ -72,6 +72,12 @@ define([
         this._domIssues.classList.add('issues');
         this._renderer.view.appendChild(this._domIssues);
 
+        // circle
+        this._backgroundContainer = new PIXI.Graphics();
+        this._backgroundContainer.position.x = Math.round(Responsive.SIZE.x / 2);
+        this._backgroundContainer.position.y = Math.round(Responsive.SIZE.y / 2);
+        this._stage.addChild(this._backgroundContainer);
+
         // lines
         this._linesContainer = new PIXI.Graphics();
         this._linesContainer.x = Math.round(Responsive.SIZE.x / 2);
@@ -88,6 +94,7 @@ define([
         // start rendering
         setInterval(this._render.bind(this), 50);
 
+        this._drawBackground();
         this._drawFakes();
 
         // touch events
@@ -129,6 +136,7 @@ define([
 
     ExperienceCanvas.prototype.hide = function () {
         if (!this._isHidden) {
+            this._stage.removeChild(this._backgroundContainer);
             this._stage.removeChild(this._linesContainer);
             this._stage.removeChild(this._particlesContainer);
         }
@@ -137,10 +145,21 @@ define([
 
     ExperienceCanvas.prototype.show = function () {
         if (this._isHidden) {
+            this._stage.addChild(this._backgroundContainer);
             this._stage.addChild(this._linesContainer);
             this._stage.addChild(this._particlesContainer);
         }
         this._isHidden = false;
+    };
+
+    /**
+     * Draws large circular background to contain and define the experience.
+     */
+     ExperienceCanvas.prototype._drawBackground = function() {
+        var dimension = Math.min(this.canvasSize.x, this.canvasSize.y);
+        this._backgroundContainer.beginFill(0xf3f1e7);
+        this._backgroundContainer.drawCircle(40, 40, Math.round(dimension / 1.5));
+        this._backgroundContainer.endFill();
     };
 
     /**
@@ -154,35 +173,14 @@ define([
             this.fakes.push(circle);
             this._particlesContainer.addChild(circle.elm);
 
-            circle.draw(1);
-            circle._circle.alpha = 0.3;
-            circle.elm.alpha = 0;
-        }
-    };
-
-    /**
-    * Draw tags on canvas
-    */
-    ExperienceCanvas.prototype.drawTags = function (tagData) {
-        this._tagData = tagData;
-
-        var tag;
-        var i;
-        var j;
-        for (i = 0; i < this._tagData.length; i ++) {
-            for (j = 0; j < 3; j ++) { // multiply current tags
-                tag = new Issue(i, this.canvasSize);
-                tag.setIsInteractive(false);
-                tag.initRadius = 2;
-
-                this.tags.push(tag);
-                this._particlesContainer.addChild(tag.elm);
-
-                tag.setData(this._tagData[i]);
-                tag.draw(tag.initRadius);
-                tag.pressS.add(this._onPressIssue.bind(this));
-                tag.elm.alpha = 0;
+            if(i <= 100) {
+                circle.draw(2);
+                circle._circle.alpha = 0.2;
+            } else {
+                circle.draw(3);
+                circle._circle.alpha = 0.3;
             }
+            circle.elm.alpha = 0;
         }
     };
 
@@ -339,6 +337,8 @@ define([
         Responsive.SIZE.x = width;
         Responsive.SIZE.y = height;
 
+        this._backgroundContainer.x = Math.round(width / 2);
+        this._backgroundContainer.y = Math.round(height / 2);
         this._linesContainer.x = Math.round(width / 2);
         this._linesContainer.y = Math.round(height / 2);
         this._particlesContainer.x = this._linesContainer.x;
