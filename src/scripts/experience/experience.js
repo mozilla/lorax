@@ -46,7 +46,6 @@ define([
 
     Experience.prototype._onFontsLoaded = function () {
         this._canvas.drawIssues(this._issueData);
-        this._canvas.drawTags(this._tagData);
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
         this._canvas.hide();
 
