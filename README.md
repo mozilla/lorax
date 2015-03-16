@@ -5,6 +5,7 @@ audience to educate themselves about the state of the Web, learn more about
 Mozilla and show their support.
 
 - [Project Lorax on wiki.mozilla.org](https://wiki.mozilla.org/Engagement/Campaigns/Project_Lorax)
+- [Development site on AWS](http://lorax.s3-website-us-west-2.amazonaws.com/)
 
 ## Contributing
 
