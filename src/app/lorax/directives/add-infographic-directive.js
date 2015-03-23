@@ -6,7 +6,7 @@ define([], function () {
     'use strict';
 
     /**
-     * Issue Details directive
+     * Add Infographic directive
      */
     var AddInfographicDirective = function () {
         return {
@@ -18,7 +18,7 @@ define([], function () {
     };
 
     /**
-     * Controller for detail directive
+     * Controller for AddInfographic directive
      * @constructor
      */
     var AddInfographicController = function (
@@ -40,7 +40,7 @@ define([], function () {
     ];
 
     /**
-     * Link function for Detail Section directive
+     * Link function for Add Infographic Section directive
      * @param {object} scope      Angular scope.
      * @param {JQuery} iElem      jQuery element.
      * @param {object} iAttrs     Directive attributes.

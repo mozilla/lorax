@@ -19,7 +19,6 @@ define([], function () {
     };
 
     RoutesService.prototype._onRouteChange = function (route) {
-        console.log('_onRouteChange');
         this.page = route.page;
         this.params = route.params;
         this._pubSubService.publish('routesService.change', [this.page, this.params]);

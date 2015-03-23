@@ -101,10 +101,6 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
     var IssueAllLinkFn = function (scope, iElem, iAttrs, controller) {
 
         // wait for everything to be rendered
-        // controller._$timeout(function () {
-        //     console.log($('.main--detail').children());
-        //     controller.init();
-        // }, 500);
         var checkRenderedInterval = setInterval(function () {
             controller._$timeout(function () {
                 var children = $('.main--detail').children();

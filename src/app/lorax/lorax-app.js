@@ -10,7 +10,6 @@ define([
 
     // controller
     'lorax/controllers/core',
-    'lorax/controllers/nav',
 
     // directives
     'lorax/directives/window',
@@ -39,7 +38,6 @@ define([
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
     'lorax/directives/experience',
-    'lorax/directives/detail',
     'lorax/directives/add-infographic-directive',
 
     // services
@@ -64,7 +62,6 @@ define([
 
     // controllers
     CoreCtrl,
-    NavCtrl,
 
     // directives
     WindowDirective,
@@ -93,7 +90,6 @@ define([
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
     ExperienceDirective,
-    DetailDirective,
     AddInfographicDirective,
 
     // services
@@ -127,12 +123,6 @@ define([
          * @method lorax/loraxApp~controller
          */
         .controller('CoreCtrl', CoreCtrl)
-
-        /**
-         * Injects {@link lorax/controllers/NavCtrl} as 'NavCtrl'
-         * @method lorax/loraxApp~controller
-         */
-        .controller('NavCtrl', NavCtrl)
 
         /**
          * Injects {@link lorax/directives/WindowDirective} as 'WindowDirective'
@@ -306,13 +296,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxExperience', ExperienceDirective)
-
-        /**
-         * Injects {@link lorax/directives/DetailDirective}
-         * as 'DetailDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxDetail', DetailDirective)
 
         /**
          * Injects {@link lorax/directives/AddInfographicDirective}

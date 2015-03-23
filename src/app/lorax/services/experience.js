@@ -26,7 +26,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
         this._experience.setEnterIssueCallback(this._onPressIssue.bind(this));
         this._experience.setBgModeCallback(this._onChangeBgMode.bind(this));
         this._experience.setGoToIndexCallBack(this._goToIndex.bind(this));
-        this._experience.setOpenTagCallBack(this._openTag.bind(this));
 
         var menu = $('.experience-menu');
         var menuRect = {
@@ -80,9 +79,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
     ExperienceService.prototype.switchView = function (view, data) {
         if (this._experience) {
             switch (view) {
-                case 'intro':
-                    this._experience.showIntro();
-                    break;
                 case 'ecosystem':
                     this._experience.showExplore();
                     break;
@@ -91,9 +87,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
                     break;
                 case 'checklist':
                     this._experience.showIssues();
-                    break;
-                case 'tag':
-                    this._experience.showTagIssues(data);
                     break;
                 case 'detail':
                     console.log('case: detail calls');
@@ -135,12 +128,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
     ExperienceService.prototype._goToIndex = function () {
         this._$timeout(function () {
             this._$location.url('/');
-        }.bind(this));
-    };
-
-    ExperienceService.prototype._openTag = function (tag) {
-        this._$timeout(function () {
-            this._$location.url('/tag/' + tag);
         }.bind(this));
     };
 

@@ -134,11 +134,6 @@ define(['angular', 'jquery'], function (angular, $) {
                 .addClass('bp-' + newBreakpoint);
         }
 
-        function onDetailModeChange(isDetail) {
-            var classMethod = (isDetail === true) ? 'addClass' : 'removeClass';
-            iElem[classMethod]('is-detail');
-        }
-
         /**
          * Sets the background color of the issue modal container based on the
          * status of the current issue. @see getStatusDescription in:
@@ -180,11 +175,6 @@ define(['angular', 'jquery'], function (angular, $) {
         controller.pubSubService.subscribe(
             'windowService.breakpoint',
             onBreakpointChange
-        );
-
-        controller.pubSubService.subscribe(
-            'windowService.detailMode',
-            onDetailModeChange
         );
 
         controller.pubSubService.subscribe(

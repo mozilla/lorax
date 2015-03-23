@@ -110,14 +110,6 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
         }
 
         /**
-         * @method core/services/windowService~setDetailMode
-         * @param detailMode {Bool} Detail mode on/off
-         */
-        function setDetailMode(detailMode) {
-            pubSubService.publish('windowService.detailMode', [detailMode]);
-        }
-
-        /**
          * @method core/services/windowService~setIssueMode
          * @param issuelMode {Bool} Issue mode on/off
          */
@@ -157,7 +149,6 @@ define(['jquery', 'modernizr', 'pubsub'], function ($, Modernizr) {
             publish: publish,
             mq: matchMedia,
             getDeviceWindowHeight: getDeviceWindowHeight,
-            setDetailMode: setDetailMode,
             setIssueMode: setIssueMode,
             setModalOpen: setModalOpen,
             setSidePanelOpen: setSidePanelOpen
