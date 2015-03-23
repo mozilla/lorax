@@ -1,4 +1,4 @@
-<div id="{{::issue.getId()}}" ng-repeat="issue in ::detail.model.getIssues()" data-lorax-issue-details data-issue-status="{{::issue.getStatusDescription()}}" data-issue-name="{{::issue.getId()}}">
+<div id="{{::issue.getId()}}" ng-repeat="issue in ::detail.model.getIssues()" data-lorax-issue-details data-issue-status="{{::issue.getStatusDescription()}}" data-issue-name="{{::issue.getId()}}" ng-show="::issue.isVisible()">
   <header class="infographic__header">
     <h1>{{::issue.getInfographic().getHeader()}} <span>{{::issue.getInfographic().getSubheader()}}</span></h1>
   </header>

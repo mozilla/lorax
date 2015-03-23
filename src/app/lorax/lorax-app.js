@@ -16,6 +16,7 @@ define([
     'lorax/directives/window',
     'lorax/directives/prevent-default',
     'lorax/directives/modal-email',
+    'lorax/directives/modal-issue',
     'lorax/directives/modal-share',
     'lorax/directives/modal-about',
     'lorax/directives/modal-mobile-options',
@@ -43,7 +44,6 @@ define([
 
     // services
     'lorax/services/window',
-    'lorax/services/scroll',
     'lorax/services/utils',
     'lorax/services/pubsub',
     'lorax/services/data',
@@ -70,6 +70,7 @@ define([
     WindowDirective,
     PreventDefaultDirective,
     ModalEmailDirective,
+    ModalIssueDirective,
     ModalShareDirective,
     ModalAboutDirective,
     ModalMobileOptionsDirective,
@@ -97,7 +98,6 @@ define([
 
     // services
     windowService,
-    scrollService,
     utilsService,
     pubSubService,
     dataService,
@@ -151,6 +151,12 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalEmail', ModalEmailDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalIssueDirective} as 'ModalIssueDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalIssue', ModalIssueDirective)
 
         /**
          * Injects {@link lorax/directives/ModalShareDirective} as 'ModalShareDirective'
@@ -320,12 +326,6 @@ define([
          * @method lorax/loraxApp~service
          */
         .service('windowService', windowService)
-
-        /**
-         * Inject {@link lorax/services/scrollService} as 'scrollService'
-         * @method lorax/loraxApp~service
-         */
-        .service('scrollService', scrollService)
 
         /**
          * Inject {@link lorax/services/utilsService} as 'utilsService'

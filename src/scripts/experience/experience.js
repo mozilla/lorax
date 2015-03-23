@@ -175,20 +175,6 @@ define([
         }
     };
 
-    Experience.prototype.showDetail = function () {
-        if (this._hasInitialized) {
-            this._canvas.show();
-            this._mode = Issue.MODE_DETAIL;
-            this._detailMode.show();
-
-            if (this._currentIssue) {
-                this._currentIssue.closeIssue();
-            }
-        } else {
-            this._onInitMode = this.showDetail;
-        }
-    };
-
     Experience.prototype.showIntro = function () {
         if (this._hasInitialized) {
             this._canvas.show();
@@ -214,21 +200,19 @@ define([
         }
     };
 
+    /**
+     * When one of the issue circles are clicked on the canvas it triggers this
+     * function, and is passed the issue that was clicked.
+     *
+     * This then sets the _enterIssueCallback which is handled by _onPressIssue
+     * in src/app/lorax/services/experience.js
+     */
     Experience.prototype._openIssue = function (issue) {
-        this._mode = Issue.MODE_DETAIL;
-        this._currentIssue = issue;
 
-        if (this._enterIssueCallback) {
-            var issueData = issue.data;
+        var issueData = issue.data;
 
-            if (this._setBgMode) {
-                this._setBgMode(issueData.getStatusDescription());
-            }
-
-            issue.openIssue();
-            this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
-            this.showDetail();
-        }
+        this._mode = Issue.MODE_ISSUES;
+        this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
     };
 
     Experience.prototype._updateScroller = function (mousePosition) {

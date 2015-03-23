@@ -53,6 +53,9 @@ define(['jquery'], function ($) {
     ];
 
     DetailCtrl.prototype.init = function () {
+
+        console.log('init: Detail Controller');
+
         // listen to route change
         this._routesService.subscribe('change', this.onRouteChange.bind(this));
         if (this._routesService.page) {
@@ -75,7 +78,6 @@ define(['jquery'], function ($) {
         var issue = this._routesService.params.issue;
 
         this._pubSubService.publish('detail.open', [issue, topic]);
-        this._pubSubService.publish('detail.scrollToIssue', [issue, topic]);
     };
 
     DetailCtrl.prototype.close = function () {
