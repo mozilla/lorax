@@ -89,7 +89,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
                     this._experience.showIssues();
                     break;
                 case 'detail':
-                    console.log('case: detail calls');
                     this._experience.showDetail();
                     break;
                 default:

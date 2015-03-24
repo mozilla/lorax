@@ -36,7 +36,7 @@ define(['angular', 'jquery'], function (angular, $) {
 
         $scope.modalIssue = {
             open: false,
-            closeModal: this.closeModal.bind(this),
+            closeModal: this.closeModal.bind(this)
         };
 
         // listen for $broadcast of 'openIssueModal'

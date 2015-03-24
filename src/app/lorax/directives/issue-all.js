@@ -80,7 +80,6 @@ define(['jquery', 'webfontloader'], function ($, WebFont) {
         var issueModel = this._$scope.detail.model.getIssueById(this.issue);
         this._windowService.setIssueMode(true);
         issueModel._isVisible = true;
-        console.log(issueModel);
     };
 
     IssueAllCtrl.prototype.close = function () {};
