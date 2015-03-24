@@ -1,0 +1,23 @@
+.modal-issue {
+    padding: 10rem;
+    h1 {
+        font-weight: normal;
+        letter-spacing: 0.05rem;
+    }
+    .action {
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
+    }
+}
+[data-bg-mode="stop"] & {
+    background: fade(@stop, 90%);
+}
+
+[data-bg-mode="wait"] & {
+    background: fade(@wait, 90%);
+}
+
+[data-bg-mode="go"] & {
+    background: fade(@go, 90%);
+}

@@ -32,16 +32,16 @@ define(function () {
                 page: 'experience'
             })
 
-            /* -------------------- Detail -------------------- */
+            /* -------------------- Issue Modal -------------------- */
 
             .when('/detail/:topic', {
                 controller: 'CoreCtrl',
-                page: 'detail'
+                page: 'modal-issue'
             })
 
             .when('/detail/:topic/:issue', {
                 controller: 'CoreCtrl',
-                page: 'detail'
+                page: 'modal-issue'
             })
 
             /* -------------------- Error -------------------- */

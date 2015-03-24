@@ -469,12 +469,6 @@
             "vitals": "Vitals",
             "checklist": "Checklist"
         },
-        "navLabels": {
-            "access": "Access",
-            "trust": "Trust",
-            "control": "Control",
-            "openness": "Openness"
-        },
         "intro": {
             "internet": "( THE WEB )",
             "message": "Massive. Powerful. Delicate"

@@ -13,6 +13,8 @@ define([], function () {
             this._onRouteChange(newValue);
         }.bind(this));
 
+        // listens for an issue update event fired from setIssue in:
+        // /src/app/lorax/services/window.js
         this._pubSubService.subscribe('windowService.issue', this._onIssueChange.bind(this));
     };
 
@@ -27,11 +29,11 @@ define([], function () {
             } else {
                 pg = '/' + this.params.mode + '/';
             }
-        } else if (this.page == 'detail') {
+        } else if (this.page == 'modal-issue') {
             if (!this.params.issue) {
                 pg = '/detail/' + this.params.topic + '/';
             } else {
-                pg = '/detail/' + this.params.topic + '/' + this.params.issue + '/';    
+                pg = '/detail/' + this.params.topic + '/' + this.params.issue + '/';
             }
         }
 

@@ -87,10 +87,6 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            /*styles: {
-                src: ['<%= config.temp %>/styles/main.css'],
-                dest: '<%= config.dist %>/styles/main.css'
-            },*/
             headScripts: {
                 src: [
                     '<%= config.src %>/scripts/components/modernizr/modernizr.js',
@@ -126,7 +122,6 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'CNAME',
                         'robots.txt',
-                        //'sitemap.xml',
                         'scripts/data/{,*/}*.{js,json}',
                         'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
                         'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',

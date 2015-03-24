@@ -23,7 +23,6 @@ define([
 
     var ExperienceCanvas = function () {
         this.issues = [];
-        this.tags = [];
         this.fakes = [];
 
         this.canvasSize = new PIXI.Point();
@@ -111,25 +110,6 @@ define([
             if (id) {
                 e.preventDefault();
                 Issue.get(id)._onPress();
-            }
-        }).bind(this));
-
-        // Call focus and blur functions on issues when their matching DOM node
-        // is focused or blurred.
-        this._selectedIssue = null;
-        $(document).on('focus', '.issues a', (function(e) {
-            var id = e.target.dataset.issueId;
-            if (id) {
-                this._selectedIssue = Issue.get(id);
-                this._selectedIssue.focus();
-            }
-        }).bind(this));
-
-        $(document).on('blur', '.issues a', (function(e) {
-            var id = e.target.dataset.issueId;
-            if (id) {
-                Issue.get(id).blur();
-                this._selectedIssue = null;
             }
         }).bind(this));
     };
@@ -247,10 +227,6 @@ define([
         for (i = 0; i < this.issues.length; i ++) {
             this.issues[i].update(this.mousePosition);
             this.issues[i].setRadius();
-        }
-
-        for (i = 0; i < this.tags.length; i ++) {
-            this.tags[i].update(this.mousePosition);
         }
     };
 

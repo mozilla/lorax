@@ -6,8 +6,6 @@ define([
     'experience/explore-mode',
     'experience/topics-mode',
     'experience/issues-mode',
-    'experience/detail-mode',
-    'experience/intro-mode',
     'experience/issue',
     'jquery-mobile'
 ], function (
@@ -17,8 +15,6 @@ define([
     ExploreMode,
     TopicsMode,
     IssuesMode,
-    DetailMode,
-    IntroMode,
     Issue
 ) {
     'use strict';
@@ -28,8 +24,6 @@ define([
         this._exploreMode = new ExploreMode(this._canvas);
         this._topicsMode = new TopicsMode(this._canvas);
         this._issuesMode = new IssuesMode(this._canvas);
-        this._detailMode = new DetailMode(this._canvas);
-        this._introMode = new IntroMode(this._canvas);
     };
 
     Experience.prototype.init = function (isDebug) {
@@ -46,16 +40,13 @@ define([
 
     Experience.prototype._onFontsLoaded = function () {
         this._canvas.drawIssues(this._issueData);
+        // adds an event listener to the clickable issue dots
         this._canvas.pressIssueS.add(this._openIssue.bind(this));
         this._canvas.hide();
 
         this._exploreMode.init();
         this._topicsMode.init();
         this._issuesMode.init();
-        this._detailMode.init();
-        this._introMode.init();
-
-        this._introMode.hideS.add(this._onEndIntro.bind(this));
 
         setTimeout(function () {
             this._hasInitialized = true;
@@ -68,13 +59,10 @@ define([
     Experience.prototype.setData = function (data) {
         this._mainData = data;
         this._issueData = data.getIssues();
-        this._tagData = data.getTags();
         this._topicsModeData = data.getTopics();
         this._miscData = data.getMiscLocale();
 
         this._topicsMode.setData(this._topicsModeData);
-        this._detailMode.setTopics(this._topicsModeData);
-        this._introMode.setData(this._miscData.intro);
     };
 
     Experience.prototype.setContainer = function (container) {
@@ -89,20 +77,12 @@ define([
         this._setBgMode = bgModeCallback;
     };
 
-    Experience.prototype.setOpenTagCallBack = function (openTagCallBack) {
-        this._openTag = openTagCallBack;
-    };
-
     Experience.prototype.setGoToIndexCallBack = function (callback) {
         this._goToIndex = callback;
     };
 
     Experience.prototype.setExploreSafezone = function (safeZone) {
         this._exploreMode.setSafeZone(safeZone);
-    };
-
-    Experience.prototype.setTopicMenuPositions = function (positions) {
-        this._detailMode.setTopicMenuPositions(positions);
     };
 
     Experience.prototype.endAutoPlay = function () {
@@ -115,27 +95,6 @@ define([
         if (this._mode === Issue.MODE_EXPLORE) {
             this._exploreMode._endAutoMode(true);
         }
-    };
-
-    /**
-    * Shows FPS count
-    */
-    Experience.prototype._showStats = function () {
-        this._stats = new Stats();
-
-        this._stats.setMode(0);
-        this._stats.domElement.style.position = 'absolute';
-        this._stats.domElement.style.left = '0px';
-        this._stats.domElement.style.top = '0px';
-        document.body.appendChild(this._stats.domElement);
-
-        this._canvas.renderStartS.add(function () {
-            this._stats.begin();
-        }.bind(this));
-
-        this._canvas.renderEndS.add(function () {
-            this._stats.end();
-        }.bind(this));
     };
 
     Experience.prototype.hold = function () {
@@ -175,94 +134,19 @@ define([
         }
     };
 
-    Experience.prototype.showDetail = function () {
-        if (this._hasInitialized) {
-            this._canvas.show();
-            this._mode = Issue.MODE_DETAIL;
-            this._detailMode.show();
-
-            if (this._currentIssue) {
-                this._currentIssue.closeIssue();
-            }
-        } else {
-            this._onInitMode = this.showDetail;
-        }
-    };
-
-    Experience.prototype.showIntro = function () {
-        if (this._hasInitialized) {
-            this._canvas.show();
-            this._mode = Issue.MODE_INTRO;
-            this._introMode.show();
-            this._setBgMode('intro');
-        } else {
-            this._onInitMode = this.showIntro;
-        }
-    };
-
-    Experience.prototype._onCloseTagIssues = function () {
-        this._goToIndex();
-    };
-
-    Experience.prototype._onEndIntro = function () {
-        this._goToIndex();
-    };
-
-    Experience.prototype.onScroll = function (offset) {
-        if (this._mode === Issue.MODE_DETAIL) {
-            this._detailMode.onScroll(Math.max(Math.round(offset), 0));
-        }
-    };
-
+    /**
+     * When one of the issue circles are clicked on the canvas it triggers this
+     * function, and is passed the issue that was clicked.
+     *
+     * This then sets the _enterIssueCallback which is handled by _onPressIssue
+     * in src/app/lorax/services/experience.js
+     */
     Experience.prototype._openIssue = function (issue) {
-        this._mode = Issue.MODE_DETAIL;
-        this._currentIssue = issue;
 
-        if (this._enterIssueCallback) {
-            var issueData = issue.data;
+        var issueData = issue.data;
 
-            if (this._setBgMode) {
-                this._setBgMode(issueData.getStatusDescription());
-            }
-
-            issue.openIssue();
-            this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
-            this.showDetail();
-        }
-    };
-
-    Experience.prototype._updateScroller = function (mousePosition) {
-        // no movement if mouse is out of the canvas
-        if (mousePosition.y > this._canvasSize.y ||
-            mousePosition.y < -this._canvasSize.y) {
-            mousePosition.y = 0;
-        }
-
-        // using tan so the movement is smoother
-        var tanMouse = Math.tan(mousePosition.y / this._canvasSize.y * Math.PI / 2);
-
-        // no movement if mouse is near the center
-        if (Math.abs(tanMouse) < 0.5) {
-            tanMouse = 0;
-        }
-
-        this._scrollFinalPosition -= tanMouse * 8;
-
-        this._scrollFinalPosition = Math.max(
-            Math.min(this._scrollFinalPosition, 0),
-            (-(this._scrollArea.y + (this._issueMargin * this._issuesMode.length)) +
-            this._scrollArea.height - 200)
-        );
-
-        this._scrollPosition += (this._scrollFinalPosition - this._scrollPosition) / 5;
-
-        var i;
-        var issue;
-        for (i = 0; i < this._issuesMode.length; i ++) {
-            issue = this._issuesMode[i];
-            issue.elm.y = issue.issueY + this._scrollPosition;
-            // issue.elm.alpha = ((1 - Math.abs(issue.elm.y / this._scrollArea.height))) + 0.3;
-        }
+        this._mode = Issue.MODE_ISSUES;
+        this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());
     };
 
     return Experience;

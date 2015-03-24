@@ -92,29 +92,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             elm.moveTo(0, 0);
         }
 
-        // set tags positions
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            elm = this._canvas.tags[i];
-
-            do {
-                seed = Math.random() * Math.PI * 2;
-                rSeed = this._exploreRadius + (Math.random() * 5);
-                elm.exploreX = Math.sin(seed) * rSeed;
-                elm.exploreY = Math.cos(seed) * rSeed;
-
-                isInsideBounds = (
-                    elm.exploreX > -this._canvas.canvasSize.x / 2 &&
-                    elm.exploreX < this._canvas.canvasSize.x / 2 &&
-                    elm.exploreY > -this._canvas.canvasSize.y / 2 &&
-                    elm.exploreY < this._canvas.canvasSize.y / 2
-                );
-            } while (!isInsideBounds);
-
-            if (elm.exploreX < 0) {
-                elm.setLeftSidedText();
-            }
-        }
-
         // set fakes positions
         for (i = 0; i < this._canvas.fakes.length; i ++) {
             seed = Math.random() * Math.PI * 2;
@@ -174,7 +151,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         var issue;
         var related;
         var relatedItem;
-        var tags;
         var isOver;
 
         this._canvas.clearLines();
@@ -182,19 +158,10 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
             related = issue.data.getRelated();
-            tags = issue.data.getTags();
 
             // draw lines connecting related issues
             for (j = 0; j < related.length; j ++) {
                 relatedItem = this._canvas.getElementByData(related[j]);
-                isOver = (issue.isOver || relatedItem.isOver);
-
-                this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.05 : 0.02);
-            }
-
-            // draw lines connecting related tags
-            for (j = 0; j < tags.length; j ++) {
-                relatedItem = this._canvas.getElementByData(tags[j]);
                 isOver = (issue.isOver || relatedItem.isOver);
 
                 this._canvas.drawLine(issue, relatedItem, 0x0, isOver ? 0.05 : 0.02);
@@ -206,13 +173,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         this.selectedIssue = issue;
 
         var related = issue.data.getRelated();
-        var tags;
         var relatedIssue;
         var i;
-
-        if (issue.data.getTags) {
-            tags =  issue.data.getTags();
-        }
 
         if (this._autoModeIssue && issue !== this._autoModeIssue) {
             this._endAutoMode();
@@ -225,14 +187,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             relatedIssue.lightUp();
             relatedIssue.stopMoving();
         }
-
-        if (tags) {
-            for(i = 0; i < tags.length; i ++) {
-                relatedIssue = this._canvas.getElementByData(tags[i]);
-                relatedIssue.lightUp();
-                relatedIssue.stopMoving();
-            }
-        }
     };
 
     ExploreMode.prototype._mouseOutIssue = function (issue) {
@@ -242,13 +196,8 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         this._tapped = null;
 
         var related = issue.data.getRelated();
-        var tags;
         var relatedIssue;
         var i;
-
-        if (issue.data.getTags) {
-            tags =  issue.data.getTags();
-        }
 
         if (this._autoModeIssue && issue !== this._autoModeIssue) {
             this._endAutoMode(true);
@@ -263,14 +212,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             relatedIssue = this._canvas.getElementByData(related[i]);
             relatedIssue.lightDown();
             relatedIssue._resumeStaticAnimation();
-        }
-
-        if (tags) {
-            for(i = 0; i < tags.length; i ++) {
-                relatedIssue = this._canvas.getElementByData(tags[i]);
-                relatedIssue.lightDown();
-                relatedIssue._resumeStaticAnimation();
-            }
         }
     };
 
@@ -322,26 +263,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
             issue.blurS.add(issue.exploreBlur);
         }
 
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
-            focusableIssues.push(issue);
-
-            issue.setMode(Issue.MODE_TAG);
-            issue._x0 = issue.exploreX;
-            issue._y0 = issue.exploreY;
-            issue.implode();
-            issue.exploreMouseOver = this._mouseOverIssue.bind(this);
-            issue.exploreMouseOut = this._mouseOutIssue.bind(this);
-            issue.exploreTap = this._tapIssue.bind(this);
-            issue.exploreFocus = this._focusIssue.bind(this);
-            issue.exploreBlur = this._blurIssue.bind(this);
-            issue.mouseOverS.add(issue.exploreMouseOver);
-            issue.mouseOutS.add(issue.exploreMouseOut);
-            issue.tapS.add(issue.exploreTap);
-            issue.focusS.add(issue.exploreFocus);
-            issue.blurS.add(issue.exploreBlur);
-        }
-
         for (i = 0; i < this._canvas.fakes.length; i ++) {
             issue = this._canvas.fakes[i];
             issue._x0 = issue.exploreX;
@@ -357,7 +278,7 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
         setTimeout(this._onShow.bind(this), 500);
 
         // Append issues to DOM for keyboard navigation.
-        // Sort issues and tags by position.
+        // Sort issues by position.
         focusableIssues.sort(function(a, b) {
             return a.exploreY - b.exploreY;
         });
@@ -372,16 +293,6 @@ define(['pixi', 'experience/mode', 'experience/issue'], function (PIXI, Mode, Is
 
         for (i = 0; i < this._canvas.issues.length; i ++) {
             issue = this._canvas.issues[i];
-            issue.explode(this._exploreRadius);
-            issue.mouseOverS.remove(issue.exploreMouseOver);
-            issue.mouseOutS.remove(issue.exploreMouseOut);
-            issue.tapS.remove(issue.exploreTap);
-            issue.focusS.remove(issue.exploreFocus);
-            issue.blurS.remove(issue.exploreBlur);
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
             issue.explode(this._exploreRadius);
             issue.mouseOverS.remove(issue.exploreMouseOver);
             issue.mouseOutS.remove(issue.exploreMouseOut);

@@ -10,12 +10,12 @@ define([
 
     // controller
     'lorax/controllers/core',
-    'lorax/controllers/nav',
 
     // directives
     'lorax/directives/window',
     'lorax/directives/prevent-default',
     'lorax/directives/modal-email',
+    'lorax/directives/modal-issue',
     'lorax/directives/modal-share',
     'lorax/directives/modal-about',
     'lorax/directives/modal-mobile-options',
@@ -38,12 +38,10 @@ define([
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
     'lorax/directives/experience',
-    'lorax/directives/detail',
     'lorax/directives/add-infographic-directive',
 
     // services
     'lorax/services/window',
-    'lorax/services/scroll',
     'lorax/services/utils',
     'lorax/services/pubsub',
     'lorax/services/data',
@@ -64,12 +62,12 @@ define([
 
     // controllers
     CoreCtrl,
-    NavCtrl,
 
     // directives
     WindowDirective,
     PreventDefaultDirective,
     ModalEmailDirective,
+    ModalIssueDirective,
     ModalShareDirective,
     ModalAboutDirective,
     ModalMobileOptionsDirective,
@@ -92,12 +90,10 @@ define([
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
     ExperienceDirective,
-    DetailDirective,
     AddInfographicDirective,
 
     // services
     windowService,
-    scrollService,
     utilsService,
     pubSubService,
     dataService,
@@ -129,12 +125,6 @@ define([
         .controller('CoreCtrl', CoreCtrl)
 
         /**
-         * Injects {@link lorax/controllers/NavCtrl} as 'NavCtrl'
-         * @method lorax/loraxApp~controller
-         */
-        .controller('NavCtrl', NavCtrl)
-
-        /**
          * Injects {@link lorax/directives/WindowDirective} as 'WindowDirective'
          * @method lorax/loraxApp~directive
          */
@@ -151,6 +141,12 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalEmail', ModalEmailDirective)
+
+        /**
+         * Injects {@link lorax/directives/ModalIssueDirective} as 'ModalIssueDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxModalIssue', ModalIssueDirective)
 
         /**
          * Injects {@link lorax/directives/ModalShareDirective} as 'ModalShareDirective'
@@ -302,13 +298,6 @@ define([
         .directive('loraxExperience', ExperienceDirective)
 
         /**
-         * Injects {@link lorax/directives/DetailDirective}
-         * as 'DetailDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxDetail', DetailDirective)
-
-        /**
          * Injects {@link lorax/directives/AddInfographicDirective}
          * as 'AddInfographicDirective'
          * @method lorax/loraxApp~directive
@@ -320,12 +309,6 @@ define([
          * @method lorax/loraxApp~service
          */
         .service('windowService', windowService)
-
-        /**
-         * Inject {@link lorax/services/scrollService} as 'scrollService'
-         * @method lorax/loraxApp~service
-         */
-        .service('scrollService', scrollService)
 
         /**
          * Inject {@link lorax/services/utilsService} as 'utilsService'

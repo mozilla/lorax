@@ -203,8 +203,6 @@ define([
 
     IssuesMode.prototype._onStartShow = function () {
 
-        console.log('IssuesMode.prototype._onStartShow');
-
         var i;
         var issue;
 
@@ -224,11 +222,6 @@ define([
 
             // Append issue to DOM for keyboard navigation.
             this._canvas.appendDomIssue(this._issues[i]);
-        }
-
-        for (i = 0; i < this._canvas.tags.length; i ++) {
-            issue = this._canvas.tags[i];
-            issue.explode();
         }
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {

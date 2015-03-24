@@ -105,14 +105,6 @@ define(['angular', 'jquery'], function (angular, $) {
         this.evaluateBreakpoint();
     };
 
-    WindowController.prototype.onScroll = function (e) {
-        var offset = this._hasPageYOffset ?
-            e.originalEvent.currentTarget.pageYOffset :
-            (document.documentElement || document.body).scrollTop;
-
-        this.windowService.setScrollTop(offset);
-    };
-
     WindowController.prototype.getBreakpoint = function () {
         return this.windowService.breakpoint;
     };
@@ -142,21 +134,23 @@ define(['angular', 'jquery'], function (angular, $) {
                 .addClass('bp-' + newBreakpoint);
         }
 
-        function onDetailModeChange(isDetail) {
-            var classMethod = (isDetail === true) ? 'addClass' : 'removeClass';
-            iElem[classMethod]('is-detail');
-        }
-
+        /**
+         * Sets the background color of the issue modal container based on the
+         * status of the current issue. @see getStatusDescription in:
+         * /src/app/lorax/models/issue.js
+         */
         function onBgModeChange(status, animate) {
+            var modelIssueContainer = $('.modal-issue', iElem);
+
             if (!animate) {
-                iElem.addClass('no-anim');
+                modelIssueContainer.addClass('no-anim');
             }
 
-            iElem.attr('data-bg-mode', status);
+            modelIssueContainer.attr('data-bg-mode', status);
 
             if (!animate) {
                 setTimeout(function () {
-                    iElem.removeClass('no-anim');
+                    modelIssueContainer.removeClass('no-anim');
                 }, 500);
             }
         }
@@ -171,9 +165,7 @@ define(['angular', 'jquery'], function (angular, $) {
             iElem[classMethod]('is-side-panel-open side-panel-' + id);
         }
 
-        windowEl
-            .on('scroll', controller.onScroll.bind(controller))
-            .on('resize', onResize).trigger('resize');
+        windowEl.on('resize', onResize).trigger('resize');
 
         // init
         onBreakpointChange(
@@ -183,11 +175,6 @@ define(['angular', 'jquery'], function (angular, $) {
         controller.pubSubService.subscribe(
             'windowService.breakpoint',
             onBreakpointChange
-        );
-
-        controller.pubSubService.subscribe(
-            'windowService.detailMode',
-            onDetailModeChange
         );
 
         controller.pubSubService.subscribe(
