@@ -1,0 +1,35 @@
+{
+    "topic-0": [
+        ".icon-topic-white",
+        ".experience-menu__link--topic.is-active > span",
+        ".experience-menu__link--topic:focus > span",
+        ".no-touch .experience-menu__link--topic:hover > span"
+    ],
+    "topic-1": [
+        ".icon-topic-dark"
+    ],
+    "explore-0": [
+        ".icon-explore-white",
+        ".experience-menu__link--explore.is-active > span",
+        ".experience-menu__link--explore:focus > span",
+        ".no-touch .experience-menu__link--explore:hover > span"
+    ],
+    "explore-1": [
+        ".icon-explore-dark"
+    ],
+    "issues-0": [
+        ".icon-issues-white",
+        ".experience-menu__link--issues.is-active > span",
+        ".experience-menu__link--issues:focus > span",
+        ".no-touch .experience-menu__link--issues:hover > span"
+    ],
+    "issues-1": [
+        ".icon-issues-dark"
+    ],
+    "menu-0": [
+        ".icon-menu-dark"
+    ],
+    "close-inv": [
+        ".no-touch .mobile-option--close:hover"
+    ]
+}

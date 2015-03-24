@@ -1,0 +1,1356 @@
+/* ==========================================================================
+   Detail Page Infographics
+   ========================================================================== */
+
+/* Top 5 Internet Companies by Revenue
+   ========================================================================== */
+.internet-company {
+    margin: 0 0 24px;
+    position: relative;
+}
+
+.internet-company__revenue {
+    color: @extra-dark-grey;
+    float: left;
+    .fira-sans-light;
+    .font-size(2.8);
+    line-height: 40px;
+    margin-right: 13px;
+}
+
+.internet-company__title {
+    float: left;
+    .font-size(1.4);
+    line-height: 20px;
+    padding-top: 13px;
+}
+
+.internet-company__diff {
+    .font-size(1.0);
+    line-height: 20px;
+    position: absolute;
+    right: 30%;
+    top: 13px;
+}
+
+.internet-company__max-rev {
+    bottom: 0;
+    color: @extra-dark-grey;
+    .font-size(1.0);
+    line-height: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.internet-company__scale {
+    clear: both;
+    height: 5px;
+    margin-right: 30px;
+}
+
+.internet-company__scale--actual {
+    background: @extra-dark-grey;
+}
+
+.internet-company__scale--full {
+    background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
+    margin-left: 5px;
+}
+
+.internet-company__scale--marker {
+    border-right: 1px solid @white;
+    bottom: 5px;
+    left: 0;
+    position: absolute;
+}
+
+
+/* Length of Terms & Conditions
+   ========================================================================== */
+.terms-and-conditions {
+    width: 1034px;
+
+    //.touch & { // scrollbar
+        padding-bottom: 20px;
+    //}
+}
+
+.terms-company {
+    float: left;
+    width: 94px;
+}
+
+.terms-company__length {
+    color: @extra-dark-grey;
+    .fira-sans-medium;
+    .font-size(1);
+    height: 24px;
+    line-height: 12px;
+    margin-bottom: 18px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    width: 40px;
+
+    .flexbox & {
+        .flexbox;
+        .align-items(end);
+    }
+}
+
+.terms-company__title {
+    .font-size(1.4);
+    height: 32px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    width: 50px;
+}
+
+.terms-company__stacks {
+    margin-bottom: 8px;
+    width: 44px;
+}
+
+.stacks-item {
+    background: @extra-dark-grey;
+    height: 3px;
+    margin-bottom: 2px;
+
+    .terms-company--shakespeare & {
+        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
+    }
+
+    &:nth-of-type(14n+1),
+    &:nth-of-type(14n+3),
+    &:nth-of-type(14n+7),
+    &:nth-of-type(14n+9) {
+        width: 40px;
+    }
+
+    &:nth-of-type(14n+2),
+    &:nth-of-type(14n+4),
+    &:nth-of-type(14n+8),
+    &:nth-of-type(14n+10) {
+        width: 31px;
+    }
+
+    &:nth-of-type(14n+6),
+    &:nth-of-type(14n+12),
+    &:nth-of-type(14n+14) {
+        width: 41px;
+    }
+}
+
+.terms-company__words {
+    color: @extra-dark-grey;
+    .font-size(1.4);
+    line-height: 16px;
+}
+
+
+/* Common spoken and internet languages
+   ========================================================================== */
+.common-languages {
+    width: 100%;
+
+    > th,
+    > td {
+
+    }
+
+    th {
+        .fira-sans-medium;
+        .font-size(1.4);
+        height: 60px;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: top;
+
+        &:first-child {
+            color: @extra-dark-grey;
+        }
+
+        &:nth-of-type(2) {
+            .font-size(1);
+            text-transform: lowercase;
+        }
+    }
+
+    td {
+        .font-size(1.2);
+        height: 32px;
+        padding: 0;
+        vertical-align: middle;
+
+        &:first-child {
+            color: @extra-dark-grey;
+        }
+
+        &:nth-of-type(2) {
+            color: @extra-dark-grey;
+            width: 22.5%;
+        }
+
+        &:nth-of-type(3) {
+            color: @extra-dark-grey;
+            .fira-sans-medium;
+            text-align: right;
+        }
+
+        &:nth-of-type(4) {
+            text-align: center;
+            .fira-sans-medium;
+            width: 10%;
+        }
+
+        &:nth-of-type(5) {
+            .fira-sans-medium;
+        }
+
+        &:nth-of-type(6) {
+            width: 22.5%;
+        }
+
+        &:nth-of-type(7) {
+            text-align: right;
+        }
+    }
+}
+
+.common-languages-bar {
+    border-bottom: @light-grey;
+    border-bottom: 1px solid fade(@extra-dark-grey, 20%);
+}
+
+.common-languages-bar__inner {
+    background: @extra-dark-grey;
+    height: 4px;
+}
+
+.common-languages-bar__inner--spoken {
+    background: @extra-dark-grey;
+    float: right;
+}
+
+.common-languages-bar__inner--internet {
+    background: @white;
+}
+
+/* World Map - Generic Styles
+   ========================================================================== */
+
+.worldmap {
+    position: relative;
+}
+
+.worldmap__background {
+    fill: none;
+}
+
+.worldmap__country {
+    .transition(0.1s all ease-in-out);
+}
+
+.worldmap__legend {
+    display: none;
+    position: absolute;
+    bottom: 0%;
+    right: 10%;
+    width: 50%;
+
+    .at-medium ({
+        display: none;
+    });
+
+    .at-large ({
+        display: block;
+    });
+}
+
+.worldmap__legend-label {
+    display: inline-block;
+    padding: 2px 8px;
+
+    div {
+        display: inline-block;
+    }
+
+    p {
+        .font-size(1.0);
+        display : inline-block;
+        top: -5px;
+        padding-left: 5px;
+        margin: 0;
+        vertical-align: super;
+    }
+}
+
+.worldmap__label-container {
+    position: absolute;
+    fill: @white;
+    left: 35%;
+    top: 35%;
+    width: 250px;
+    margin-left: -125px;
+
+    .at-large({
+        width: initial;
+        margin-left: 0;
+    });
+}
+
+.worldmap__label-country {
+    .fira-sans-regular;
+    .font-size(1.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+
+    .at-large ({
+        .font-size(1.3);
+        letter-spacing: 1px;
+        text-align: left;
+    });
+}
+
+.worldmap__label-data {
+
+    padding-top: 10px;
+    text-align: center;
+    line-height: 32px;
+
+    .at-large ({
+        .font-size(3.0);
+        padding-top: 5px;
+        text-align: left;
+        line-height: 26px;
+    });
+}
+
+.worldmap__label-data-font-small {
+    .font-size(2.2);
+    line-height: normal;
+}
+
+.worldmap__label-data-font-normal {
+    .font-size(3.5);
+
+    .at-large ({
+        .font-size(3.0);
+    });
+}
+
+.worldmap__dropdown {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: @selectbox-z-index;
+
+    .at-medium ({
+        position: relative;
+        top: 0;
+        left: 0;
+    });
+
+    .at-large ({
+        position: absolute;
+        bottom: 0%;
+        top: auto;
+        left: 5%;
+    });
+}
+
+.worldmap__dropdown-select {
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: @detail-z-index;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #DDD;
+    background: #F8F8F8;
+    .border-radius(2px);
+    .font-size(1.2);
+    color: @dark-grey;
+
+    .at-medium ({
+        width: 25%;
+        position: relative;
+        top: 0;
+        left: 0;
+    });
+
+    .at-large ({
+        width: 150px;
+        position: absolute;
+        bottom: 0%;
+        top: auto;
+        left: 5%;
+    });
+
+    &::after {
+        content: "";
+        right: 10px;
+        top: 50%;
+        margin-top: -4px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 4px 0 4px;
+        border-color: @extra-dark-grey transparent transparent transparent;
+        position: absolute;
+    }
+}
+
+/* Accessibiity / Vision Impairment
+   ========================================================================== */
+
+.accessible-section {
+    display: block;
+    width: 100%;
+    padding: 0 5% 10% 5%;
+    vertical-align: top;
+
+    &:nth-child(odd) {
+        border-right: none;
+    }
+
+    .at-medium ({
+        display: inline-block;
+        width: 50%;
+
+        &:nth-child(odd) {
+            border-right: 1px solid @white;
+        }
+    });
+}
+
+.accessible-section__title {
+    .font-size(1.4);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    clear: both;
+
+    .at-medium ({
+        margin-bottom: 40px;
+    })
+}
+
+.accessible-section__copy {
+    float: right;
+    width: 60%;
+    .font-size(1.0);
+}
+
+.accessible-section__image {
+    float: left;
+    width: 40%;
+    padding-right: 10%;
+}
+
+.accessible-section__fullwidth {
+    width: 100%;
+    float: none;
+    padding-right: 0;
+}
+
+.accessible-section__link {
+    clear: both;
+    float: right;
+    width: 60%;
+    padding-top: 3%;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    a {
+        color: rgba(0,0,0,0.7);
+    }
+
+    .at-medium ({
+        margin-bottom: 0;
+    })
+}
+
+
+/* Line Graph - General
+   ========================================================================== */
+
+.linegraph__svg {
+    fill: @white;
+}
+
+.linegraph__line {
+    fill: none;
+    stroke: @white;
+    stroke-width: 1px;
+}
+
+.linegraph__point_0_circle {
+    fill: none;
+    stroke: @white;
+    stroke-width: 1.5px;
+}
+
+.linegraph__xaxis_year {
+    .font-size(0.9);
+    fill: @extra-dark-grey;
+
+    .at-medium({
+      .font-size(1.0);
+    });
+}
+
+.linegraph__xaxis_info {
+    .font-size(1.1);
+
+    .at-medium ({
+        .font-size(1.2);
+    })
+}
+
+.linegraph__legendtext {
+    .font-size(1.0);
+}
+
+.linegraph__pattern {
+    stroke: rgba(0,0,0,0.15);
+    stroke-width: 1px;
+}
+
+/* Platform Neutrality Pie Chart
+   ========================================================================== */
+.platformneutrality__users {
+    fill: #000000;
+}
+
+.platformneutrality__wedge {
+    fill: none;
+    stroke: rgba(0,0,0,0.2);
+}
+
+.platformneutrality__others {
+    fill: rgba(0,0,0,0.2);
+}
+
+.platformneutrality__value {
+    fill: #FFFFFF;
+    font-size: 10px;
+}
+
+.platformneutrality__legend {
+    margin-top: 0;
+}
+
+.platformneutrality__legendbox {
+    .font-size(1.0);
+    display: inline-block;
+    padding-right: 10px;
+
+    div {
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .mobile-web {
+      background: @extra-dark-grey;
+      width: 8px;
+      height: 8px;
+    }
+
+    .native-app {
+      background: rgba(0,0,0,0.2);
+      width: 8px;
+      height: 8px;
+    }
+}
+
+/* Cyber Threats Circle Chart
+   ========================================================================== */
+
+.cyberthreat__background {
+   position: relative;
+}
+
+.cyberthreat__circlecontainer {
+    position: absolute;
+}
+
+.cyberthreat__descriptionbox {
+    position: absolute;
+    .font-size(1.2);
+    width: 220px;
+    height: 220px;
+}
+
+.cyberthreat__label {
+    display: table;
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    width: 110px;
+    height: 110px;
+    border-radius: 110px;
+    .transition(all 0.1s ease-in-out);
+}
+
+.cyberthreat__label div {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    color: #fff;
+    .font-size(1.4);
+}
+
+.cyberthreat__legend {
+    display: block;
+}
+
+.cyberthreat__legend div {
+    height: 15px;
+    margin: 10px 0;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Data Portability
+   ========================================================================== */
+
+.data-portability {
+    border-collapse: separate;
+
+    th {
+      .font-size(1.4);
+      color: @extra-dark-grey;
+      padding: 0;
+      text-align: left;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+    }
+
+    td {
+      padding-bottom: 35px;
+    }
+}
+
+.data-portability__company {
+   padding: 0px;
+  .font-size(1.1);
+}
+
+.data-portability__service {
+    width: 11%;
+}
+
+.data-portability__line {
+    width: 12%;
+
+    div {
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+    }
+}
+
+.data-portability__symbol {
+    width: 2%;
+    padding: 0 15px;
+    div {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    .data-portability__symbol-yes {
+      background: @white;
+    }
+
+    .data-portability__symbol-partial {
+      background: transparent;
+      border: 2px solid @white;
+    }
+
+    .data-portability__symbol-no {
+      background: @extra-dark-grey;
+    }
+}
+
+.data-portability__answer {
+    width: 75%;
+}
+
+/* Open Source
+   ========================================================================== */
+
+.opensource__svg {
+    margin-left: 80px;
+    margin-top: 5px;
+    display: block;
+
+    .at-medium({
+        margin-left: 110px;
+        margin-top: 0;
+    });
+}
+
+.opensource__line_0, .opensource__line_1 {
+   stroke: @extra-dark-grey;
+}
+
+.opensource__line_3, .opensource__line_4 {
+    stroke: @white;
+}
+
+
+.opensource__line_2 {
+    stroke: rgba(0,0,0,0.4)
+}
+
+.opensource__line_5 {
+    stroke: rgba(255,255,255,0.6);
+}
+
+.opensource__point_0, .opensource__point_1, .opensource__point_2 {
+    fill: @extra-dark-grey;
+}
+
+.opensource__point_3, .opensource__point_4, .opensource__point_5 {
+    fill: @white;
+}
+
+.opensource__point_square {
+    opacity: 0.7
+}
+
+.opensource__point_triangle {
+    opacity: 0.4;
+}
+
+.opensource__legend-os, .opensource__legend-browser {
+    padding: 0;
+    list-style-type: none;
+    .font-size(0.9);
+    line-height: 18px;
+
+    div {
+      display: inline-block;
+      margin: 0 6px 1px 0;
+      width: 6px;
+      height: 6px;
+    }
+
+    li:nth-child(1) div {
+        border-radius: 6px;
+    }
+
+    li:nth-child(2) div {
+        opacity: 0.7;
+    }
+
+    li:nth-child(3) div {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 4px 6.9px 4px;
+        opacity: 0.4
+    }
+
+    .at-medium({
+        .font-size(1.2);
+        line-height: 22px;
+    });
+}
+
+.opensource__legend-os {
+    color: @extra-dark-grey;
+    list-style-type: none;
+    float: left;
+    margin-right: 25px;
+
+    div {
+        background: @extra-dark-grey;
+    }
+
+    li:nth-child(3) {
+      div {
+        background: transparent;
+        border-color: transparent transparent @extra-dark-grey transparent;
+      }
+    }
+}
+
+.opensource__legend-browser {
+    color: @white;
+    list-style-type: none;
+
+    div {
+        background: @white;
+    }
+
+    li:nth-child(3) {
+      div {
+        background: transparent;
+        border-color: transparent transparent @white transparent;
+      }
+    }
+}
+
+.opensource__label {
+    position: absolute;
+    width: 80px;
+
+    .at-medium({
+        width: 100px;
+    });
+
+    h3 {
+        .font-size(1.6);
+        margin: 5px 0;
+        padding-bottom: 9px;
+
+        .at-medium({
+            .font-size(2.0);
+        })
+    }
+
+    p {
+        margin: 5px 0;
+    }
+}
+
+.opensource__label-os {
+    margin-top: 15px;
+    color: @extra-dark-grey;
+
+    .at-medium({
+      margin-top: 28px;
+    });
+
+    .at-large({
+      margin-top: 20px;
+    });
+
+    .at-xlarge({
+      margin-top: 25px;
+    });
+
+    h3 {
+      border-bottom: 1px dashed @extra-dark-grey;
+    }
+}
+
+.opensource__label-browser {
+    margin-top: 15%;
+    margin-left: 61%;
+    color: @white;
+    text-align: right;
+
+    .at-medium({
+      margin-top: 18%;
+      margin-left: 50%;
+    });
+
+    .at-large({
+      margin-top: 120px;
+      margin-left: 360px;
+    });
+
+    .at-xlarge({
+      margin-top: 150px;
+      margin-left: 410px;
+    });
+
+    h3 {
+      border-bottom: 1px dashed @white;
+    }
+}
+
+
+/* Cyber Threats Circle Chart
+   ========================================================================== */
+
+.surveillance__background {
+    position: relative;
+}
+
+.surveillance__circlecontainer {
+    position: absolute;
+}
+
+.surveillance__descriptionbox {
+    position: absolute;
+    .font-size(1.2);
+    width: 220px;
+    height: 220px;
+}
+
+.surveillance__label {
+    display: table;
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    width: 110px;
+    height: 110px;
+    border-radius: 110px;
+    .transition(all 0.1s ease-in-out);
+
+    &:nth-child(odd) {
+      background: rgba(0,0,0,0.45);
+    }
+}
+
+.surveillance__label div {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    color: #fff;
+    .font-size(1.4);
+}
+
+.surveillance__legend div {
+    height: 15px;
+    margin: 10px 0;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Data Tracking
+   ========================================================================== */
+
+.data-tracking {
+    width: 615px;
+    height: 500px;
+    padding-left: 15px;
+}
+
+.data-tracking__info {
+    color: @extra-dark-grey;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    p {
+      margin: 10px 0;
+      text-align: center;
+      text-transform: uppercase;
+      .font-size(1.4);
+    }
+}
+
+.data-tracking__tracker {
+    float: left;
+    width: 40px;
+}
+
+.data-tracking__tracker-percent {
+    margin-bottom: 10px;
+}
+
+.data-tracking__tracker-bar {
+    width: 5px;
+    height: 200px;
+    background: @extra-dark-grey;
+}
+
+.data-tracking__tracker-bar-percent {
+    width: 5px;
+    background: @white;
+}
+
+.data-tracking__company__title {
+    width: 100px;
+    .transform(translate(-80px, 40px) rotate(-45deg));
+    text-align: right;
+    color: @extra-dark-grey;
+}
+
+/* Concentration of Power
+   ========================================================================== */
+
+.concentration-power {
+    width: 680px;
+    padding-bottom: 20px;
+}
+
+.concentration-power__organization {
+    float: left;
+    width: 85px;
+}
+
+.concentration-power__name {
+    .font-size(1.4);
+    height: 32px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    width: 50px;
+}
+
+.concentration-power__dollar {
+  border: 2px solid @extra-dark-grey;
+  width: 45px;
+  padding: 1px 0;
+  color: @extra-dark-grey;
+  text-align: center;
+  .font-size(0.9);
+  font-weight: 900;
+}
+
+.concentration-power__stacks {
+    margin-bottom: 8px;
+    width: 45px;
+}
+
+.concentration-power__stacks-item {
+    background: @extra-dark-grey;
+    height: 3px;
+    width: 45px;
+    margin-bottom: 2px;
+
+    .concentration-power__tech & {
+        background: url('../images/slash-pattern.png') repeat-x 0 0 rgba(0,0,0,0.2);
+    }
+}
+
+.concentration-power__amount {
+    color: @extra-dark-grey;
+    .font-size(1.4);
+    line-height: 16px;
+}
+
+/* Identity Control
+   ========================================================================== */
+
+.identity__svg {
+    margin-top: -170px;
+    margin-left: 15px;
+}
+
+.identity__legend div {
+    height: 15px;
+    margin: 10px 0;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.identity__label-text {
+    fill: @white;
+    .font-size(0.9);
+
+    .at-medium {
+      .font-size(1.2);
+    }
+
+    .at-large {
+      .font-size(1.4);
+    }
+}
+
+/* Cloud Security
+   ========================================================================== */
+
+.cloud-news {
+    td {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      width: 50%;
+      padding: 5px 15px;
+    }
+
+    p {
+      .font-size(1.6);
+      color: @extra-dark-grey;
+    }
+}
+
+.cloud-news__leftcol {
+  text-align: right;
+}
+
+/* Cyber Bullying
+   ========================================================================== */
+
+.cyberbullying__linechart {
+  width: 50%;
+  display: inline-block;
+  border-right: 1px solid @white;
+}
+
+.cyberbullying__imagechart {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 25px;
+
+  img {
+    padding: 15px 0;
+  }
+
+  p {
+    margin: 0;
+    .font-size(1.0);
+  }
+
+  .at-large({
+    img {
+      padding: 50px 0;
+    }
+
+      p {
+      margin: 0;
+      .font-size(1.2);
+    }
+  });
+}
+
+.cyberbullying__piechart {
+  margin-top: 5%;
+}
+
+.cyberbullying__pie-svg {
+    margin-top: -170px;
+
+    .at-medium({
+        margin-top: -190px;
+    });
+
+    .at-large({
+        margin-top: -190px;
+    });
+
+    .at-xlarge({
+        margin-top: -230px;
+    });
+}
+
+.cyberbullying__title {
+  margin: 0;
+}
+
+.cyberbullying__legend {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.cyberbullying__legend div {
+    height: 15px;
+    margin: 15px 0;
+    padding-left: 10px;
+    .font-size(1.0);
+    color: #fff;
+
+    .at-medium({
+        .font-size(1.2);
+    });
+}
+
+/* Zero Rating
+   ========================================================================== */
+
+.zero-rating {
+    position: relative;
+    width: 620px;
+    height: 620px;
+    color: @extra-dark-grey;
+}
+
+.zero-rating__content {
+
+    div {
+        width: 120px;
+        height: 120px;
+        border-radius: 120px;
+        display: table;
+        position: absolute;
+        padding: 15px;
+    }
+
+    p {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .zero-rating__triangle-inside {
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+    }
+}
+
+
+
+.zero-rating__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: transparent;
+    stroke: rgba(0,0,0,0.1);
+}
+
+.zero-rating__triangle-main {
+    background: rgba(0,0,0,0.55);
+    color: @white;
+    .font-size(1.5);
+    text-transform: uppercase;
+
+    &:nth-child(1) {
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    &:nth-child(2) {
+        right: 0;
+        margin-right: 30px;
+        top: 75%;
+        margin-top: -90px;
+    }
+
+    &:nth-child(3) {
+        left: 0;
+        margin-left: 30px;
+        top: 75%;
+        margin-top: -90px;
+    }
+}
+
+.zero-rating__circle-outside {
+    background-image: url('../images/stripe_pattern.png');
+    background-color: rgba(0,0,0,0.075);
+    .font-size(1.1);
+
+    &:nth-child(4) {
+        right: 0;
+        margin-right: 33px;
+        top: 25%;
+        margin-top: -30px;
+    }
+
+    &:nth-child(5) {
+        left: 50%;
+        margin-left: -60px;
+        bottom: 0;
+    }
+
+    &:nth-child(6) {
+        left: 0;
+        margin-left: 33px;
+        top: 25%;
+        margin-top: -30px;
+    }
+}
+
+.zero-rating__triangle-sides {
+    background-image: url('../images/stripe_pattern.png');
+    background-color: rgba(0,0,0,0.075);
+    .font-size(0.9);
+
+    &:nth-child(7) {
+        top: 37.5%;
+        margin-top: -45px;
+        right: 25%;
+        margin-right: -15px;
+    }
+
+    &:nth-child(8) {
+        top: 75%;
+        margin-top: -90px;
+        left: 50%;
+        margin-left: -60px;
+        background: transparent;
+    }
+
+    &:nth-child(9) {
+        top: 37.5%;
+        margin-top: -45px;
+        left: 25%;
+        margin-left: -15px;
+    }
+}
+
+.zero-rating__triangle-inside {
+    left: 50%;
+    margin-left: -75px;
+    top: 50%;
+    .font-size(0.9);
+    text-align: center;
+}
+
+.zero-rating__triangle-side-detail {
+    top: 18.75%;
+    margin-top: -15px;
+    right: 25%;
+    margin-right: 30px;
+}
+
+/* Content Creation
+   ========================================================================== */
+
+.content-creation__quote-quotation-open {
+    float: left;
+    margin-top: -15px;
+    .fira-sans-ultra;
+    .font-size(8);
+    line-height: 85px;
+    color: @white;
+
+    .at-medium({
+
+    });
+
+    .at-large({
+        .font-size(9);
+    });
+
+    .at-xlarge({
+        .font-size(10);
+    });
+}
+
+.content-creation__quote-text {
+    margin: 0;
+    margin-left: 55px;
+    .fira-sans-medium;
+    color: fade(@extra-dark-grey, 30%);
+    .font-size(2.5);
+    line-height: 30px;
+
+    &:after {
+        content:"\0022";
+        .fira-sans-ultra;
+        .font-size(8);
+        margin: 0;
+        line-height: 85px;
+        color: @white;
+        vertical-align: top;
+        position: relative;
+        top: 5px;
+        left: 10px;
+    }
+
+    .at-medium({
+        margin-left: 65px;
+        .font-size(3);
+        line-height: 33px;
+
+        &:after {
+            top: 12px;
+            .font-size(9);
+        }
+    });
+
+    .at-xlarge({
+        margin-left: 70px;
+        .font-size(4);
+        line-height: 44px;
+
+        &:after {
+            top: 20px;
+            .font-size(10);
+        }
+    });
+}
+
+.content-creation__quote-source {
+    .font-size(1.4);
+    margin-left: 70px;
+}

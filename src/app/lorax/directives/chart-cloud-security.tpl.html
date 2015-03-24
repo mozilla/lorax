@@ -1,0 +1,12 @@
+<table class="cloud-security">
+  <tr class="cloud-news" ng-repeat="source in ::news.data">
+    <td class="cloud-news__leftcol">
+    	<img ng-if="source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
+    	<p ng-if="!source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
+    </td>
+    <td class="cloud-news__rightcol">
+    	<img ng-if="!source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
+    	<p ng-if="source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
+    </td>
+  </tr>
+</table>

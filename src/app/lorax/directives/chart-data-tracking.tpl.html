@@ -1,0 +1,10 @@
+<div class="data-tracking">
+	<div class="data-tracking__info">
+		<p ng-repeat="text in ::tracking.localeData.copy">{{::text}}</p>
+	</div>
+  	<div class="data-tracking__tracker" ng-repeat="tracker in ::tracking.data">
+    <div class="data-tracking__tracker-percent">{{::tracker.percent}}%</div>
+    <div class="data-tracking__tracker-bar"></div>
+    <div class="data-tracking__company__title">{{::tracker.company}}</div>
+  </div>
+</div>

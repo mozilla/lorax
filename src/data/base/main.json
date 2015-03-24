@@ -1,0 +1,146 @@
+{
+    "topics": {
+        "access": {
+            "issues": {
+                "adoption": {
+                    "status": 0,
+                    "infographicType": "data-lorax-chart-world-map",
+                    "infographicOverflow": false,
+                    "infographicMap": true,
+                    "tags": []
+                },
+                "affordable": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-world-map",
+                    "infographicOverflow": false,
+                    "infographicMap": true,
+                    "tags": []
+                },
+                "localization": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-common-languages",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "accessible": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-accessible",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "speed": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-infrastructure",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                }
+            }
+        },
+        "control": {
+            "issues": {
+                "digitalIdentities": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-identity-control",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "dataPortability": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-public-trust",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "dataProtection": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-data-tracking",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "governmentCensorship": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-world-map",
+                    "infographicOverflow": false,
+                    "infographicMap": true,
+                    "tags": []
+                }
+            }
+        },
+        "trust": {
+            "issues": {
+                "governmentSurveillance": {
+                    "status": 2,
+                    "infographicType": "data-lorax-chart-surveillance",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "adTracking": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-zero-rating",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "security": {
+                    "status": 2,
+                    "infographicType": "data-lorax-chart-cloud-security",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "civility": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-cyber-bullying",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                }
+            }
+        },
+        "openness": {
+            "issues": {
+                "openSource": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-open-source",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "netNeutrality": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-world-map",
+                    "infographicOverflow": false,
+                    "infographicMap": true,
+                    "tags": []
+                },
+                "platformIndependence": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-platform-neutrality",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "softwarePatents": {
+                    "status": 1,
+                    "infographicType": "data-lorax-chart-data-portability",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                },
+                "concentrationOfPower": {
+                    "status": 2,
+                    "infographicType": "data-lorax-chart-concentration-power",
+                    "infographicOverflow": false,
+                    "infographicMap": false,
+                    "tags": []
+                }
+            }
+        }
+    }
+}

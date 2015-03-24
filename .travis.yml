@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+  - "0.10"
+cache:
+  directories:
+    - node_modules
+    - bower_components
+install:
+  - npm install
+  - bower install
+script: grunt build && grunt s3
+branches:
+  only:
+    - master
+notifications:
+  irc:
+    channels:
+      - "irc.mozilla.org#SOTW"
+    on_success: always
+    on_failure: always

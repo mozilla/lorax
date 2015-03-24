@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.footer-links {
+    bottom: 0;
+    height: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: @header-z-index;
+
+    [data-bg-mode="tag"] &,
+    [data-bg-mode="intro"] & {
+        display: none;
+    }
+}
+
+.footer-links__link {
+    background-size: 30px;
+    bottom: 20px;
+    display: none;
+    .fira-sans-regular;
+    .font-size(1.2);
+    height: 30px;
+    line-height: 30px;
+    min-width: 30px;
+    position: absolute;
+    text-transform: uppercase;
+
+    .at-medium({
+        display: block;
+    });
+}
+
+.footer-links__link--about {
+    left: 20px;
+    text-indent: -9999px;
+    width: 30px;
+}
+
+.footer-links__link--email {
+    right: 70px;
+    text-indent: -9999px;
+    width: 30px;
+}
+
+.footer-links__link--share {
+    right: 20px;
+    text-indent: -9999px;
+    width: 30px;
+}
+
+.footer-links__share-options {
+    bottom: 20px;
+    display: none;
+    height: 84px;
+    position: absolute;
+    right: 20px;
+    width: 78px;
+
+    .at-medium({
+        display: block;
+    });
+}
+
+.share-options {
+    .reset-list;
+}
+
+.share-option {
+    background-size: 30px;
+    display: block;
+    height: 30px;
+    position: absolute;
+    text-indent: -9999px;
+    width: 30px;
+
+    > a {
+        display: block;
+        height: 100%;
+    }
+}
+
+.share-option--twitter {
+    bottom: 0;
+    left: 0;
+}
+
+.share-option--email {
+    left: 16px;
+    top: 20px;
+}
+
+.share-option--fb {
+    right: 0;
+    top: 0;
+}
+
+.share-options-close {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    bottom: 0;
+    display: block;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px;
+    width: 30px;
+}
+
+.down-arrow-nav {
+    background-position: 50%;
+    background-size: 100%;
+    width: 50px;
+    height: 26px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -25px;
+
+    display: none;
+
+    .at-medium({
+        display: block;
+    });
+
+    [data-bg-mode="tag"] &,
+    [data-bg-mode="intro"] &,
+    [data-bg-mode=""] & {
+        display: none;
+    }
+}

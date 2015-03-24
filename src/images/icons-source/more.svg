@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+
+      .cls-3 {
+        fill: #ffffff;
+        filter: url(#color-overlay-1);
+      }
+
+      .cls-4 {
+        fill: #ffffff;
+      }
+    </style>
+
+    <filter id="color-overlay-1" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#333333" flood-opacity="1"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend mode="normal" in2="SourceGraphic" result="colorOverlay"/>
+    </filter>
+  </defs>
+  <g id="main-cta">
+    <circle id="circle-1" class="cls-3" cx="24" cy="24" r="24"/>
+    <path d="M31.000,25.000 C31.000,25.000 26.000,25.000 26.000,25.000 C26.000,25.000 26.000,30.000 26.000,30.000 C26.000,30.000 23.000,30.000 23.000,30.000 C23.000,30.000 23.000,25.000 23.000,25.000 C23.000,25.000 18.000,25.000 18.000,25.000 C18.000,25.000 18.000,22.000 18.000,22.000 C18.000,22.000 23.000,22.000 23.000,22.000 C23.000,22.000 23.000,17.000 23.000,17.000 C23.000,17.000 26.000,17.000 26.000,17.000 C26.000,17.000 26.000,22.000 26.000,22.000 C26.000,22.000 31.000,22.000 31.000,22.000 C31.000,22.000 31.000,25.000 31.000,25.000 Z" id="path-1" class="cls-4" fill-rule="evenodd"/>
+  </g>
+</svg>

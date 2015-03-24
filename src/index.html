@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shape of the Web</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:image" content="/images/fb-share.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+
+    <!-- build:js /scripts/lorax-head.min.js -->
+    <script src="/scripts/components/modernizr/modernizr.js"></script>
+    <script src="/scripts/grunticon.js"></script>
+    <!-- endbuild -->
+  </head>
+
+  <body class="ng-hide" ng-controller="CoreCtrl" data-lorax-window data-ng-cloak ng-show="core.isLoaded">
+    <div data-lorax-experience></div>
+
+    <header role="banner" class="banner">
+      <h1 class="banner__logo"><a href="/" class="icon-circle">{{::core.miscData.siteHeader}}</a></h1>
+    </header>
+
+    <a href="#" class="banner-info banner-info--menu icon-menu-dark" ng-click="core.siteInfo()" data-lorax-prevent-default>{{::core.miscData.information}}</a>
+
+    <div data-lorax-modal-issue></div>
+
+    <footer class="footer-links">
+      <div class="down-arrow-nav icon-arrow"></div>
+      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.about}}</a>
+      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.keepMeInformed}}</a>
+      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.sharingOptions}}</a>
+      <div class="footer-links__share-options" ng-show="core.shareOptions">
+        <ul class="share-options">
+          <li class="share-option share-option--twitter icon-twitter" >
+            <a href="#"ng-click="core.openShareModal('twitter')" data-lorax-prevent-default>Twitter</a>
+          </li>
+          <li class="share-option share-option--email icon-mail">
+            <a href="#" ng-click="core.openShareModal('email')" data-lorax-prevent-default>{{::core.miscData.email}}</a>
+          </li>
+          <li class="share-option share-option--fb icon-fb">
+            <a href="#" ng-click="core.openShareModal('fb')" data-lorax-prevent-default>Facebook</a>
+          </li>
+        </ul>
+        <a href="#" class="share-options-close icon-close-sm" ng-click="core.closeShareOptions()" data-lorax-prevent-default>{{::core.miscData.close}}</a>
+      </div>
+    </footer>
+
+    <div data-lorax-modal-email></div>
+    <div data-lorax-modal-share></div>
+    <div data-lorax-modal-about></div>
+    <div data-lorax-modal-mobile-options></div>
+
+    <a href="https://www.mozilla.org/" id="tabzilla">Mozilla</a>
+
+    <div class="modal modal--old-ie">
+      <section class="old-ie">
+        <header class="old-ie__header">
+          <span class="icon-warning"></span>
+          <h1>{{::core.miscData.notSupported}}</h1>
+        </header>
+        <div class="old-ie__main">
+          <p>{{::core.miscData.pleaseUpdate}}</p>
+          <a class="download-link" href="https://www.mozilla.org/firefox/new/">
+            <span class="download-content">
+              <strong class="download-title">Firefox</strong>
+              <span class="download-subtitle">{{::core.miscData.freeDownload}}</span>
+            </span>
+          </a>
+          <p><button class="btn close-modal">{{::core.miscData.viewSiteAnyway}}</button></p>
+        </div>
+      </section>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-56583731-1', 'auto');
+    </script>
+  </body>
+
+  <!-- build:js /scripts/lorax.min.js -->
+  <script src="/scripts/components/requirejs/require.js"></script>
+  <script src="/scripts/config.js"></script>
+  <!-- endbuild -->
+</html>
