@@ -49,13 +49,14 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartPublicTrustLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout( function() {
-      var data = controller._$scope.issue.getInfographic().getDataPoints();
+      var infographic = scope.modalIssue.issue.getInfographic();
+      var data = infographic.getDataPoints();
       var lineData = data.lineGraphData;
-      var id = controller._$scope.issue.getId();
-      var lineGraph = d3.select('#' + id + ' .infographic__wrapper div');
+
+      var lineGraph = d3.select('#modal-issue .infographic__wrapper div');
       var numDatasets = lineData[0].data.length;
 
-      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
+      var graphWidth = $('#modal-issue .infographic__wrapper div').width();
       var mobileStyle = graphWidth < 420 ? true : false;
       var margin = {top: 20, right: 20, bottom: 50, left: 20};
       var width = graphWidth;

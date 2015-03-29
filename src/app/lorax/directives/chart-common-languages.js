@@ -30,8 +30,9 @@ define(['jquery', 'd3'], function ($, d3) {
         this._$scope = $scope;
         this._$timeout = $timeout;
 
-        this._data = this._$scope.issue.getInfographic().getDataPoints().commonLanguages;
-        this._localeData = this._$scope.issue.getInfographic().getDataPoints().labels;
+        var infographic = this._$scope.modalIssue.issue.getInfographic();
+        this._data = infographic.getDataPoints().commonLanguages;
+        this._localeData = infographic.getDataPoints().labels;
 
         $scope.languages = {
             data: this._data,
@@ -57,10 +58,12 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartCommonLanguagesLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._$timeout(function() {
-            var data = scope.issue.getInfographic().getDataPoints().commonLanguages;
+
+            var infographic = scope.modalIssue.issue.getInfographic();
+            var data = infographic.getDataPoints().commonLanguages;
             var chart = d3.selectAll('.common-languages-content');
 
-            var maxPercent = scope.issue.getInfographic().getDataPoints().topPercentageOfLanguages;
+            var maxPercent = infographic.getDataPoints().topPercentageOfLanguages;
             var maxScale = maxPercent + 5;
 
             var topLanguages = chart.selectAll('div')

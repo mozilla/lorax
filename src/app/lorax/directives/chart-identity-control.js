@@ -49,11 +49,12 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartIdentityControlLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
-      var pieData = controller._$scope.issue.getInfographic().getDataPoints().marketShare;
-      var id = controller._$scope.issue.getId();
-      var pieChart = d3.select('#' + id + ' .infographic__wrapper div');
+      var infographic = scope.modalIssue.issue.getInfographic();
+      var pieData = infographic.getDataPoints().marketShare;
 
-      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
+      var pieChart = d3.select('#modal-issue .infographic__wrapper div');
+
+      var graphWidth = $('#modal-issue .infographic__wrapper div').width();
       var width = graphWidth;
       var height = graphWidth;
 

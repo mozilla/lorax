@@ -43,12 +43,16 @@ define(['jquery'], function ($) {
             isSmall: true
         };
 
+        // calls the data service in /src/app/lorax/services/data.js
+        // which loads all data from /src/data/i18n/main.json
         this._dataService.getMain().then( function (model) {
+            // this get's the misc data such as siteTitle, siteHeader
             this._$scope.experience.localeData = model.getMiscLocale();
         }.bind(this));
 
         // listen to route change
         this._routesService.subscribe('change', this.onRouteChange.bind(this));
+
         if (this._routesService.page) {
             this.onRouteChange();
         }
@@ -79,14 +83,10 @@ define(['jquery'], function ($) {
     };
 
     ExperienceCtrl.prototype.onRouteChange = function () {
-        if (this._routesService.page === 'detail') {
-            this.switchView('detail');
+        if (this._routesService.page === 'modal-issue') {
+            this.switchView('modal-issue');
         } else if (this._routesService.page === 'experience') {
-            if (this._routesService.params.tag) {
-                this._experienceService.switchView('tag', this._routesService.params.tag);
-            } else {
-                this.switchView(this._routesService.params.mode || 'ecosystem');
-            }
+            this.switchView(this._routesService.params.mode || 'ecosystem');
         }
     };
 

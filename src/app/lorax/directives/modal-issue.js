@@ -22,6 +22,7 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     var ModalIssueController = function (
         $scope,
+        $compile,
         $location,
         $timeout,
         windowService,
@@ -29,6 +30,7 @@ define(['angular', 'jquery'], function (angular, $) {
     ) {
 
         this._$scope = $scope;
+        this._$compile = $compile;
         this._$location = $location;
         this._$timeout = $timeout;
         this._windowService = windowService;
@@ -49,6 +51,7 @@ define(['angular', 'jquery'], function (angular, $) {
     */
     ModalIssueController.$inject = [
         '$scope',
+        '$compile',
         '$location',
         '$timeout',
         'windowService',
@@ -66,8 +69,6 @@ define(['angular', 'jquery'], function (angular, $) {
             this._$scope.modalIssue.open = true;
             this._$scope.modalIssue.issue = model.getIssueById(issue);
 
-            this._$scope.issue = model.getIssueById(issue);
-
             // causes _onIssueChange in /src/app/lorax/services/routes.js to
             // be called which then updates the url to the new topic and issue
             this._windowService.setIssue(this._$scope.modalIssue.issue);
@@ -77,7 +78,26 @@ define(['angular', 'jquery'], function (angular, $) {
             // in /src/app/lorax/directives/window.js (onBgModeChange) which in turn
             // sets the background color of the issue modal based on the status of
             // the current issue.
-            this._windowService.setBgMode(this._$scope.issue.getStatusDescription(), false);
+            this._windowService.setBgMode(this._$scope.modalIssue.issue.getStatusDescription(), false);
+
+            var figure = $('figure');
+            // get and store the InfographicType, which will be something like:
+            // data-lorax-chart-open-source
+            // this would then map to, using the above example, the following:
+            // /src/app/lorax/directives/chart-open-source.js
+            var infographicDirective = this._$scope.modalIssue.issue.getInfographicType();
+            // create the infographic container element
+            var infographicContainer = $('<div />', { class: 'infographic-container' });
+
+            // set the chart directive as an attribure on the infographicContainer
+            infographicContainer.attr(infographicDirective,'');
+            // append the infographic container to the parent figure element.
+            figure.append(infographicContainer);
+
+            // compile the new element based on it's new directive.
+            // this will then call a directive such as:
+            // /src/app/lorax/directives/chart-open-source.js
+            this._$compile(infographicContainer)(this._$scope);
 
             this._windowService.setIssueMode(true);
             this._windowService.setModalOpen(true);
@@ -90,6 +110,9 @@ define(['angular', 'jquery'], function (angular, $) {
 
         this._windowService.setIssueMode(false);
         this._windowService.setModalOpen(false);
+
+        // remove the infographic container added in openModal above.
+        $('.infographic-container').remove();
 
         this._$timeout(function () {
             this._$location.url('/');

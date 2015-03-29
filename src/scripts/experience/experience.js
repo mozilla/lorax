@@ -27,11 +27,17 @@ define([
     };
 
     Experience.prototype.init = function (isDebug) {
+
         // FPS count for debugging
         if (isDebug) {
             this._showStats();
         }
 
+        // There is a bug to remove this @see
+        // https://bugzilla.mozilla.org/show_bug.cgi?id=1148901
+        // besides the fact that we probably do not need it, the CoreCtrl
+        // is called before this and also loods the fonts in:
+        // /src/app/lorax/controllers/core.js
         WebFont.load({
             active: this._onFontsLoaded.bind(this),
             custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}

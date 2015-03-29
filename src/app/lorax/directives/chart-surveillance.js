@@ -49,9 +49,9 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartSurveillanceLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
-      var circleData = controller._$scope.issue.getInfographic().getDataPoints().surveillance;
-      var id = controller._$scope.issue.getId();
-      var circleChart = d3.select('#' + id + ' .infographic__wrapper div');
+      var infographic = scope.modalIssue.issue.getInfographic();
+      var circleData = infographic.getDataPoints().surveillance;
+      var circleChart = d3.select('#modal-issue .infographic__wrapper div');
 
       var width = 600;
       var height = 600;

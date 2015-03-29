@@ -49,9 +49,10 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartPlatformNeutralityLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
-      var pieData = controller._$scope.issue.getInfographic().getDataPoints().percentOfUsers;
-      var id = controller._$scope.issue.getId();
-      var pieChart = d3.select('#' + id + ' .infographic__wrapper div');
+      var infographic = scope.modalIssue.issue.getInfographic();
+      var pieData = infographic.getDataPoints().percentOfUsers;
+
+      var pieChart = d3.select('#modal-issue .infographic__wrapper div');
 
       var graphWidth = 600;
       var width = graphWidth;

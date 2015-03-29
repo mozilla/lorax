@@ -289,12 +289,6 @@ define([
         }
     };
 
-    ExperienceCanvas.prototype._onTouchStart = function (event) {
-        this._touchPosition = event.global;
-        this._updateMousePosition();
-        this.touchStartS.dispatch();
-    };
-
     ExperienceCanvas.prototype._onSwipeLeft = function () {
         this.swipeLeftS.dispatch();
     };
@@ -324,6 +318,12 @@ define([
 
         // Notify listeners that a resize just happened.
         this.resizeS.dispatch();
+    };
+
+    ExperienceCanvas.prototype._onTouchStart = function (event) {
+        this._touchPosition = event.global;
+        this._updateMousePosition();
+        this.touchStartS.dispatch();
     };
 
     /**

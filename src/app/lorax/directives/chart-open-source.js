@@ -31,9 +31,11 @@ define(['jquery', 'd3'], function ($, d3) {
         this._$scope = $scope;
         this._$timeout = $timeout;
 
+
+        var infographic = $scope.modalIssue.issue.getInfographic();
         $scope.lineGraph = {
-          data: $scope.issue.getInfographic().getDataPoints(),
-          dataLabels: $scope.issue.getInfographic().getDataPoints().dataLabels
+          data: infographic.getDataPoints(),
+          dataLabels: infographic.getDataPoints().dataLabels
         };
     };
 
@@ -57,12 +59,12 @@ define(['jquery', 'd3'], function ($, d3) {
     controller._$timeout( function() {
       var data = controller._$scope.lineGraph.data;
       var lineData = data.lineGraphData;
-      var id = controller._$scope.issue.getId();
-      var lineGraph = d3.select('#' + id + ' .infographic__wrapper div');
+
+      var lineGraph = d3.select('#modal-issue .infographic__wrapper div');
 
       var numDatasets = lineData[0].data.length;
 
-      var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
+      var graphWidth = $('#modal-issue .infographic__wrapper div').width();
       var mobileStyle = graphWidth < 420 ? true : false;
 
       var margin = {top: 20, right: 20, bottom: 50, left: 10};

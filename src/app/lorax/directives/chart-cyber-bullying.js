@@ -48,13 +48,18 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartCyberBullyingLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._$timeout(function() {
-            var pieData = scope.issue.getInfographic().getDataPoints().cyberBullyingData.onlineHarassment.circleData;
-            var lineData = scope.issue.getInfographic().getDataPoints().cyberBullyingData.socialNetwork.lineData;
-            var imageChartData = scope.issue.getInfographic().getDataPoints().cyberBullyingData.cyberStalking;
-            var id = scope.issue.getId();
-            var cyberBullyingChart = d3.select('#' + id + ' .infographic__wrapper div');
+            var infographic = scope.modalIssue.issue.getInfographic();
+            var pieData = infographic.getDataPoints().cyberBullyingData.onlineHarassment.circleData;
+            var lineData = infographic.getDataPoints().cyberBullyingData.socialNetwork.lineData;
+            var imageChartData = infographic.getDataPoints().cyberBullyingData.cyberStalking;
 
-            var graphWidth = $('#' + id + ' .infographic__wrapper div').width();
+            var socialNetworkTitle = infographic.getDataPoints().cyberBullyingData.socialNetwork.title;
+            var harassmentTitle = infographic.getDataPoints().cyberBullyingData.onlineHarassment.title;
+
+            var modalIssue = $('#modal-issue');
+            var cyberBullyingChart = d3.select('.infographic__wrapper div', modalIssue);
+
+            var graphWidth = $('.infographic__wrapper div', modalIssue).width();
 
             drawLineChart();
             drawImageChart();
@@ -76,7 +81,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
                 lineChart.append('h3')
                     .attr('class', 'cyberbullying__title')
-                    .text(scope.issue.getInfographic().getDataPoints().cyberBullyingData.socialNetwork.title);
+                    .text(socialNetworkTitle);
 
                 var lineSvg = lineChart.append('svg')
                     .attr('class', 'cyberbullying__line-svg')
@@ -152,7 +157,7 @@ define(['jquery', 'd3'], function ($, d3) {
                     .attr('class', 'cyberbullying__piechart');
                 pieChart.append('h3')
                     .attr('class', 'cyberbullying__title')
-                    .text(scope.issue.getInfographic().getDataPoints().cyberBullyingData.onlineHarassment.title);
+                    .text(harassmentTitle);
 
                 var color = d3.scale.ordinal()
                     .range([
