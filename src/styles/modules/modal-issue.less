@@ -1,11 +1,22 @@
 .modal-issue {
     margin: 0 auto;
     padding: 10rem;
-    height: auto;
     min-height: 100%;
     h1 {
+        .font-size(2rem);
         font-weight: normal;
         letter-spacing: 0.05rem;
+    }
+    h2 {
+        .font-size(3.5rem);
+        letter-spacing: 0.1rem;
+    }
+    h3 {
+        .font-size(2.5rem);
+    }
+    p {
+        .font-size(2rem);
+        line-height: 1.5;
     }
     .action-container,
     .action-links-container,
@@ -17,11 +28,27 @@
     figure {
         float: right;
     }
+    figcaption {
+        .font-size(2.5rem);
+        line-height: 1.5;
+        span {
+            display: block;
+            color: #333;
+            .font-size(1.5rem);
+        }
+    }
     .mozilla-action,
     .your-action {
         display: inline-block;
-        width: 40%;
+        margin-right: 5%;
+        width: 43%;
         vertical-align: top;
+    }
+}
+.action-container {
+    margin-top: 3rem;
+    p {
+        .font-size(1.6rem);
     }
 }
 [data-bg-mode="stop"] & {

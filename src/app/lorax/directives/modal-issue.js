@@ -80,7 +80,7 @@ define(['angular', 'jquery'], function (angular, $) {
             // the current issue.
             this._windowService.setBgMode(this._$scope.modalIssue.issue.getStatusDescription(), false);
 
-            var figure = $('figure');
+            var figure = $('.infographic__wrapper');
             // get and store the InfographicType, which will be something like:
             // data-lorax-chart-open-source
             // this would then map to, using the above example, the following:
