@@ -31,8 +31,9 @@ define(['jquery'], function ($) {
         this._$scope = $scope;
         this._$timeout = $timeout;
 
-        this._data = $scope.issue.getInfographic().getDataPoints().tracking;
-        this._localeData = $scope.issue.getInfographic().getDataPoints().labels;
+        var infographic = $scope.modalIssue.issue.getInfographic();
+        this._data = infographic.getDataPoints().tracking;
+        this._localeData = infographic.getDataPoints().labels;
 
         $scope.tracking = {
             data: this._data,

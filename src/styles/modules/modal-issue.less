@@ -1,13 +1,62 @@
 .modal-issue {
-    padding: 10rem;
+    margin: 0 auto;
+    padding: 5rem 10rem;
+    min-height: 100%;
     h1 {
+        .font-size(2rem);
         font-weight: normal;
         letter-spacing: 0.05rem;
     }
-    .action {
+    h2 {
+        .font-size(3.5rem);
+        letter-spacing: 0.1rem;
+    }
+    h3 {
+        .font-size(2.5rem);
+    }
+    p {
+        .font-size(2rem);
+        line-height: 1.5;
+    }
+    .action-container,
+    .action-links-container,
+    figure {
         display: inline-block;
-        width: 40%;
+        width: 49%;
         vertical-align: top;
+    }
+    figure {
+        float: right;
+        margin-top: 4rem;
+    }
+    figcaption {
+        .font-size(2.5rem);
+        line-height: 1.5;
+        span {
+            display: block;
+            color: #333;
+            .font-size(1.5rem);
+        }
+    }
+    .mozilla-action,
+    .your-action {
+        display: inline-block;
+        margin-right: 5%;
+        width: 43%;
+        list-style: none;
+        vertical-align: top;
+    }
+    ul.mozilla-action,
+    ul.your-action {
+        margin: 0 5% 0 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+.action-container {
+    margin-top: 3rem;
+    p {
+        .font-size(1.6rem);
     }
 }
 [data-bg-mode="stop"] & {

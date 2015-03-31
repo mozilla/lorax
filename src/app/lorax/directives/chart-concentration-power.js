@@ -35,7 +35,8 @@ define(['jquery', 'd3'], function ($, d3) {
         this._pubSubService = pubSubService;
         this._windowService = windowService;
 
-        this._data = $scope.issue.getInfographic().getDataPoints().totalRevenue;
+        var infographic = $scope.modalIssue.issue.getInfographic();
+        this._data = infographic.getDataPoints().totalRevenue;
 
         $scope.revenue = {
             data: this._data

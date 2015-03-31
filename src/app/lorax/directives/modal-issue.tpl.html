@@ -1,28 +1,41 @@
-<article class="modal modal--fade-show modal-issue" ng-show="modalIssue.open" >
+<article id="modal-issue" class="modal modal--fade-show modal-issue" ng-show="modalIssue.open" >
   <a href="#" class="modal__close modal__close-absolute icon-close" data-lorax-prevent-default ng-click="modalIssue.closeModal()">Close</a>
-  <div class="container">
+  <div class="content-container">
     <h1>{{modalIssue.issue.getName()}}</h1>
     <h2 class="detail-header-title">{{modalIssue.issue.getTitle()}}</h2>
 
     <p class="detail-main__copy">{{modalIssue.issue.getNarrative()}}</p>
 
-    <section class="action">
-      <header class="detail-link__header">
-        <h1>{{modalIssue.issue.getMiscLocale().mozDoingLabel}}</h1>
-      </header>
-      <p>{{modalIssue.issue.getMozActionCopy()}}</p>
-      <a ng-if="modalIssue.issue.getMozActionLink().length === 1" href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getMozActionLink()[0].copy}}</a>
-      <a ng-if="modalIssue.issue.getMozActionLink().length > 1" ng-repeat="link in modalIssue.issue.getMozActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
+    <section class="action-container">
+      <div class="mozilla-action">
+        <h3 class="detail-link__header">{{modalIssue.issue.getMiscLocale().mozDoingLabel}}</h3>
+        <p>{{modalIssue.issue.getMozActionCopy()}}</p>
+      </div>
+
+      <div class="your-action">
+        <h3 class="detail-link__header">{{modalIssue.issue.getMiscLocale().yourDoingLabel}}</h3>
+        <p>{{modalIssue.issue.getYourActionCopy()}}</p>
+      </div>
     </section>
 
+    <figure class="infographic__wrapper">
+      <figcaption class="infographic__header">
+        {{modalIssue.issue.getInfographic().getHeader()}} <span>{{modalIssue.issue.getInfographic().getSubheader()}}</span>
+      </figcaption>
+    </figure>
 
-    <section class="action">
-      <header class="detail-link__header">
-        <h1>{{modalIssue.issue.getMiscLocale().yourDoingLabel}}</h1>
-      </header>
-      <p>{{modalIssue.issue.getYourActionCopy()}}</p>
-      <a ng-if="modalIssue.issue.getYourActionLink().length === 1" href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getYourActionLink()[0].copy}}</a>
-      <a ng-if="modalIssue.issue.getYourActionLink().length > 1" ng-repeat="link in modalIssue.issue.getYourActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
+    <section class="action-links-container">
+      <ul class="mozilla-action">
+        <li ng-if="modalIssue.issue.getMozActionLink().length === 1"><a href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getMozActionLink()[0].copy}}</a></li>
+        <li ng-if="modalIssue.issue.getMozActionLink().length > 1" ng-repeat="link in modalIssue.issue.getMozActionLink()"><a href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a></li>
+      </ul>
+
+      <ul class="your-action">
+        <li ng-if="modalIssue.issue.getYourActionLink().length === 1"><a href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getYourActionLink()[0].copy}}</a></li>
+        <li ng-if="modalIssue.issue.getYourActionLink().length > 1" ng-repeat="link in modalIssue.issue.getYourActionLink()"><a href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a></li>
+      </ul>
     </section>
   </div>
+
+
 </article>

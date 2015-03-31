@@ -49,12 +49,12 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartSurveillanceLinkFn = function (scope, iElem, iAttrs, controller) {
     controller._$timeout(function() {
-      var circleData = controller._$scope.issue.getInfographic().getDataPoints().surveillance;
-      var id = controller._$scope.issue.getId();
-      var circleChart = d3.select('#' + id + ' .infographic__wrapper div');
+      var infographic = scope.modalIssue.issue.getInfographic();
+      var circleData = infographic.getDataPoints().surveillance;
+      var circleChart = d3.select('#modal-issue .infographic__wrapper div');
 
-      var width = 600;
-      var height = 600;
+      var width = 650;
+      var height = 650;
 
       var circleSize = width/5.5;
       var circleFromCenter = height/3;
@@ -76,10 +76,10 @@ define(['jquery', 'd3'], function ($, d3) {
         .style('width', width + 'px')
         .style('height', height + 'px');
 
-      background.append('div')
+      background.append('p')
         .attr('class', 'surveillance__descriptionbox')
         .style('left', width/2 - (circleFromCenter - circleFromCenter/5)/2 - circleSize/2 + 'px')
-        .style('top', height/2 - circleFromCenter/5 + 'px');
+        .style('top', height/2 - circleFromCenter/2.5 + 'px');
 
       var circleContainer = background.append('div')
         .attr('class', 'surveillance__circlecontainer')

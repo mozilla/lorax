@@ -28,6 +28,9 @@ define([
         this._infographicEndpoint = '/data/i18n/infographics.json';
 
         /**
+         * Called from experience.js in:
+         * /src/app/lorax/directives/experience.js
+         *
          * @method core/services/dataService~getMain
          * @param locale {String} Locale code
          */
@@ -35,6 +38,7 @@ define([
             locale = locale || this._defaultLocale;
 
             if (!this._mainData) {
+                // if we are already loading the data just return
                 if (this._requestingMain) {
                     return this._mainDefer.promise;
                 }

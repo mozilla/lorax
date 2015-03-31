@@ -19,14 +19,11 @@ define([
     'lorax/directives/modal-share',
     'lorax/directives/modal-about',
     'lorax/directives/modal-mobile-options',
-    'lorax/directives/issue-details',
-    'lorax/directives/issue-all',
     'lorax/directives/chart-common-languages',
     'lorax/directives/chart-world-map',
     'lorax/directives/chart-accessible',
     'lorax/directives/chart-platform-neutrality',
     'lorax/directives/chart-lobbying',
-    'lorax/directives/chart-cyber-threats',
     'lorax/directives/chart-data-portability',
     'lorax/directives/chart-open-source',
     'lorax/directives/chart-surveillance',
@@ -38,7 +35,6 @@ define([
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
     'lorax/directives/experience',
-    'lorax/directives/add-infographic-directive',
 
     // services
     'lorax/services/window',
@@ -71,14 +67,11 @@ define([
     ModalShareDirective,
     ModalAboutDirective,
     ModalMobileOptionsDirective,
-    IssueDetailsDirective,
-    IssueAllDirective,
     ChartCommonLanguagesDirective,
     ChartWorldMapDirective,
     ChartAccessibleDirective,
     ChartPlatformNeutralityDirective,
     ChartLobbyingDirective,
-    ChartCyberThreatsDirective,
     ChartDataPortabilityDirective,
     ChartOpenSourceDirective,
     ChartSurveillanceDirective,
@@ -90,7 +83,6 @@ define([
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
     ExperienceDirective,
-    AddInfographicDirective,
 
     // services
     windowService,
@@ -167,18 +159,6 @@ define([
         .directive('loraxModalMobileOptions', ModalMobileOptionsDirective)
 
         /**
-         * Injects {@link lorax/directives/IssueDetails} as 'IssueDetails'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxIssueDetails', IssueDetailsDirective)
-
-        /**
-         * Injects {@link lorax/directives/IssueAll} as 'IssueAllDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxIssueAll', IssueAllDirective)
-
-        /**
          * Injects {@link lorax/directives/ChartCommonLanguagesDirective}
          * as 'ChartCommonLanguagesDirective'
          * @method lorax/loraxApp~directive
@@ -212,13 +192,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartLobbying', ChartLobbyingDirective)
-
-        /**
-         * Injects {@link lorax/directives/ChartCyberThreatsDirective}
-         * as 'ChartCyberThreatsDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxChartCyberThreats', ChartCyberThreatsDirective)
 
         /**
          * Injects {@link lorax/directives/ChartDataPortabilityDirective}
@@ -296,13 +269,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxExperience', ExperienceDirective)
-
-        /**
-         * Injects {@link lorax/directives/AddInfographicDirective}
-         * as 'AddInfographicDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxAddInfographicDirective', AddInfographicDirective)
 
         /**
          * Inject {@link lorax/services/windowService} as 'windowService'

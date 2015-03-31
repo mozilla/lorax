@@ -82,7 +82,7 @@
                 },
                 "adTracking": {
                     "status": 1,
-                    "infographicType": "data-lorax-chart-zero-rating",
+                    "infographicType": "data-lorax-chart-concentration-power",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []
@@ -128,7 +128,7 @@
                 },
                 "softwarePatents": {
                     "status": 1,
-                    "infographicType": "data-lorax-chart-data-portability",
+                    "infographicType": "data-lorax-chart-open-source",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []

@@ -27,7 +27,8 @@ define(function () {
     ) {
         this._$scope = $scope;
 
-        this._data = $scope.issue.getInfographic().getDataPoints().sections;
+        var infographic = $scope.modalIssue.issue.getInfographic();
+        this._data = infographic.getDataPoints().sections;
 
         $scope.accessible = {
             data: this._data

@@ -30,7 +30,8 @@ define(['jquery', 'd3'], function ($, d3) {
         this._$scope = $scope;
         this._$timeout = $timeout;
 
-        this._data = $scope.issue.getInfographic().getDataPoints().newsSource;
+        var infographic = $scope.modalIssue.issue.getInfographic();
+        this._data = infographic.getDataPoints().newsSource;
 
         $scope.news = {
             data: this._data
