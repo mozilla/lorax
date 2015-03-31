@@ -25,15 +25,15 @@
     </figure>
 
     <section class="action-links-container">
-      <div class="mozilla-action">
-        <a ng-if="modalIssue.issue.getMozActionLink().length === 1" href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getMozActionLink()[0].copy}}</a>
-        <a ng-if="modalIssue.issue.getMozActionLink().length > 1" ng-repeat="link in modalIssue.issue.getMozActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
-      </div>
+      <ul class="mozilla-action">
+        <li ng-if="modalIssue.issue.getMozActionLink().length === 1"><a href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getMozActionLink()[0].copy}}</a></li>
+        <li ng-if="modalIssue.issue.getMozActionLink().length > 1" ng-repeat="link in modalIssue.issue.getMozActionLink()"><a href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a></li>
+      </ul>
 
-      <div class="your-action">
-        <a ng-if="modalIssue.issue.getYourActionLink().length === 1" href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getYourActionLink()[0].copy}}</a>
-        <a ng-if="modalIssue.issue.getYourActionLink().length > 1" ng-repeat="link in modalIssue.issue.getYourActionLink()" href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a>
-      </div>
+      <ul class="your-action">
+        <li ng-if="modalIssue.issue.getYourActionLink().length === 1"><a href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link__btn">{{modalIssue.issue.getYourActionLink()[0].copy}}</a></li>
+        <li ng-if="modalIssue.issue.getYourActionLink().length > 1" ng-repeat="link in modalIssue.issue.getYourActionLink()"><a href="{{link.url}}" class="detail-link__multiple">{{link.copy}}<span class="icon-arrow-right"></span></a></li>
+      </ul>
     </section>
   </div>
 
