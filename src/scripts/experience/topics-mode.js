@@ -153,31 +153,15 @@ define([
     };
 
     TopicsMode.prototype._onMouseOver = function (selectedTopic) {
-        this.selectedTopic = selectedTopic;
-        var i;
-        var topic;
-
-        // tone down other topics
-        for(i = 0; i < Topic.TOPICS.length; i ++) {
-            topic = Topic.TOPICS[i];
-            if (topic._index !== selectedTopic._index) {
-                topic.toneDown();
-            }
+        // there can be only one
+        if (this.selectedTopic && this.selectedTopic._index !== selectedTopic._index) {
+            this.selectedTopic._mouseOut();
         }
+
+        this.selectedTopic = selectedTopic;
     };
 
     TopicsMode.prototype._onMouseOut = function (selectedTopic) {
-        var i;
-        var topic;
-
-        // set other issues alpha back to 1
-        for(i = 0; i < Topic.TOPICS.length; i ++) {
-            topic = Topic.TOPICS[i];
-            if (topic._index !== selectedTopic._index) {
-                topic.endToneDown();
-            }
-        }
-
         this.selectedTopic = null;
     };
 
@@ -233,7 +217,6 @@ define([
             this._canvas.swipeRightS.add(this._swipeToPrevTopicBind);
         }
 
-        this._onResize();
         setTimeout(this._onShow.bind(this), 500);
     };
 
@@ -269,37 +252,41 @@ define([
     };
 
     TopicsMode.prototype._swipeToNextTopic = function () {
-        var position = new PIXI.Point();
-        this._currentTopic = Math.min(this._currentTopic + 1, 3);
-        this._topics[this._currentTopic].setCurrent();
+        if (Responsive.IS_SMALL()) {
+            var position = new PIXI.Point();
+            this._currentTopic = Math.min(this._currentTopic + 1, 3);
+            this._topics[this._currentTopic].setCurrent();
 
-        var mouseOutTopic = function (topic) {
-            topic._mouseOut(true);
-        };
+            var mouseOutTopic = function (topic) {
+                topic._mouseOut(true);
+            };
 
-        for(var i = 0; i < this._topics.length; i ++) {
-            position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
-            position.y = -40;
-            this._topics[i].moveTo(position.clone());
-            setTimeout(mouseOutTopic, 300, this._topics[i]);
-            this._topics[i].setCurrent(i === this._currentTopic);
+            for(var i = 0; i < this._topics.length; i ++) {
+                position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
+                position.y = -40;
+                this._topics[i].moveTo(position.clone());
+                setTimeout(mouseOutTopic, 300, this._topics[i]);
+                this._topics[i].setCurrent(i === this._currentTopic);
+            }
         }
     };
 
     TopicsMode.prototype._swipeToPrevTopic = function () {
-        var position = new PIXI.Point();
-        this._currentTopic = Math.max(this._currentTopic - 1, 0);
+        if (Responsive.IS_SMALL()) {
+            var position = new PIXI.Point();
+            this._currentTopic = Math.max(this._currentTopic - 1, 0);
 
-        var mouseOutTopic = function (topic) {
-            topic._mouseOut(true);
-        };
+            var mouseOutTopic = function (topic) {
+                topic._mouseOut(true);
+            };
 
-        for(var i = 0; i < this._topics.length; i ++) {
-            position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
-            position.y = -40;
-            this._topics[i].moveTo(position.clone());
-            setTimeout(mouseOutTopic, 300, this._topics[i]);
-            this._topics[i].setCurrent(i === this._currentTopic);
+            for(var i = 0; i < this._topics.length; i ++) {
+                position.x = TopicsMode.DISTANCE_BETWEEN_TOPICS * (i - this._currentTopic);
+                position.y = -40;
+                this._topics[i].moveTo(position.clone());
+                setTimeout(mouseOutTopic, 300, this._topics[i]);
+                this._topics[i].setCurrent(i === this._currentTopic);
+            }
         }
     };
 
