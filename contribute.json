@@ -1,0 +1,16 @@
+{
+  "name": "State of the Web",
+  "description": "Educate yourself about the state of the Web and your role in it",
+  "repository": {
+    "url": "https://github.com/mozilla/lorax",
+    "license": "MPL2"
+  },
+  "keywords": [
+    "JSON",
+    "Angularjs",
+    "JavaScript",
+    "d3js",
+    "Pixi",
+    "CSS"
+  ]
+}
