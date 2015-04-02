@@ -32,28 +32,35 @@
     <div data-lorax-modal-issue></div>
 
     <footer class="footer-links">
-      <div class="down-arrow-nav icon-arrow"></div>
-      <a href="#" class="footer-links__link footer-links__link--about icon-info" ng-click="core.openAboutModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.about}}</a>
-      <a href="#" class="footer-links__link footer-links__link--email icon-email" ng-click="core.openEmailModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.keepMeInformed}}</a>
-      <a href="#" class="footer-links__link footer-links__link--share icon-share" ng-click="core.openShareModal(null)" role="button" aria-haspopup="true" data-lorax-prevent-default>{{::core.miscData.sharingOptions}}</a>
-      <div class="footer-links__share-options" ng-show="core.shareOptions">
-        <ul class="share-options">
-          <li class="share-option share-option--twitter icon-twitter" >
-            <a href="#"ng-click="core.openShareModal('twitter')" data-lorax-prevent-default>Twitter</a>
-          </li>
-          <li class="share-option share-option--email icon-mail">
-            <a href="#" ng-click="core.openShareModal('email')" data-lorax-prevent-default>{{::core.miscData.email}}</a>
-          </li>
-          <li class="share-option share-option--fb icon-fb">
-            <a href="#" ng-click="core.openShareModal('fb')" data-lorax-prevent-default>Facebook</a>
-          </li>
-        </ul>
-        <a href="#" class="share-options-close icon-close-sm" ng-click="core.closeShareOptions()" data-lorax-prevent-default>{{::core.miscData.close}}</a>
-      </div>
+
+      <ul class="information">
+        <li class="icon-info">
+          <a href="#"  ng-click="core.openAboutModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>
+            <span>{{::core.miscData.about}}</span>
+          </a>
+        </li>
+        <li class="icon-email">
+          <a href="#" ng-click="core.openEmailModal()" role="button" aria-haspopup="true" data-lorax-prevent-default>
+            <span>{{::core.miscData.keepMeInformed}}</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="share-options">
+        <li class="icon-twitter" >
+          <a href="#" ng-click="core.shareUrl('twitter')" role="button" aria-haspopup="true" data-lorax-prevent-default>
+            <span>{{::core.miscData.shareTwitter}}</span>
+          </a>
+        </li>
+        <li class="icon-fb">
+          <a href="#" ng-click="core.shareUrl('fb')" role="button" aria-haspopup="true" data-lorax-prevent-default>
+            <span>{{::core.miscData.shareFacebook}}</span>
+          </a>
+        </li>
+      </ul>
     </footer>
 
     <div data-lorax-modal-email></div>
-    <div data-lorax-modal-share></div>
     <div data-lorax-modal-about></div>
     <div data-lorax-modal-mobile-options></div>
 

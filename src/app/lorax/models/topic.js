@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    var TopicModel = function (id, data, tags, localeData, infographicData, localeDataAll) {
+    var TopicModel = function (id, data, localeData, infographicData, localeDataAll) {
         this._id = id;
         this._name = localeData.name;
         this._tagline = localeData.tagline;
@@ -16,7 +16,6 @@ define([
                 this,
                 idxIssue,
                 data.issues[idxIssue],
-                tags,
                 localeData.issues[idxIssue],
                 infographicData[idxIssue],
                 localeDataAll
@@ -42,4 +41,3 @@ define([
 
     return TopicModel;
 });
-

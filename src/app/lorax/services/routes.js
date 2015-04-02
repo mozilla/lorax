@@ -31,9 +31,9 @@ define([], function () {
             }
         } else if (this.page == 'modal-issue') {
             if (!this.params.issue) {
-                pg = '/detail/' + this.params.topic + '/';
+                pg = this.params.topic;
             } else {
-                pg = '/detail/' + this.params.topic + '/' + this.params.issue + '/';
+                pg = this.params.topic + '/' + this.params.issue;
             }
         }
 
@@ -44,7 +44,7 @@ define([], function () {
         var topic = data.getParent().getId();
         var issue = data.getId();
         this._$timeout(function () {
-            this._$location.url('/detail/' + topic + '/' + issue).replace();
+            this._$location.url('/' + topic + '/' + issue).replace();
         }.bind(this));
     };
 

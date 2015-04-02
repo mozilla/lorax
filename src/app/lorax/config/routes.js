@@ -34,12 +34,12 @@ define(function () {
 
             /* -------------------- Issue Modal -------------------- */
 
-            .when('/detail/:topic', {
+            .when('/:topic', {
                 controller: 'CoreCtrl',
                 page: 'modal-issue'
             })
 
-            .when('/detail/:topic/:issue', {
+            .when('/:topic/:issue', {
                 controller: 'CoreCtrl',
                 page: 'modal-issue'
             })

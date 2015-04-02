@@ -27,7 +27,8 @@ define(['jquery'], function ($) {
         experienceService,
         routesService,
         dataService,
-        windowService
+        windowService,
+        shareService
         )
     {
         this._$scope = $scope;
@@ -35,6 +36,7 @@ define(['jquery'], function ($) {
         this._routesService = routesService;
         this._dataService = dataService;
         this._windowService = windowService;
+        this._shareService = shareService;
 
         this._$scope = $scope;
         this._$scope.experience = {
@@ -42,6 +44,8 @@ define(['jquery'], function ($) {
             isOpen: false,
             isSmall: true
         };
+
+        $scope.$on('share', this._shareService.share.bind(this));
 
         // calls the data service in /src/app/lorax/services/data.js
         // which loads all data from /src/data/i18n/main.json
@@ -69,7 +73,8 @@ define(['jquery'], function ($) {
         'experienceService',
         'routesService',
         'dataService',
-        'windowService'
+        'windowService',
+        'shareService'
     ];
 
     ExperienceCtrl.prototype.switchView = function (view) {

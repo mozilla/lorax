@@ -16,7 +16,6 @@ define([
     'lorax/directives/prevent-default',
     'lorax/directives/modal-email',
     'lorax/directives/modal-issue',
-    'lorax/directives/modal-share',
     'lorax/directives/modal-about',
     'lorax/directives/modal-mobile-options',
     'lorax/directives/chart-common-languages',
@@ -43,6 +42,7 @@ define([
     'lorax/services/data',
     'lorax/services/experience',
     'lorax/services/routes',
+    'lorax/services/share',
 
     // filters
     'lorax/filters/encode-uri',
@@ -64,7 +64,6 @@ define([
     PreventDefaultDirective,
     ModalEmailDirective,
     ModalIssueDirective,
-    ModalShareDirective,
     ModalAboutDirective,
     ModalMobileOptionsDirective,
     ChartCommonLanguagesDirective,
@@ -91,6 +90,7 @@ define([
     dataService,
     experienceService,
     routesService,
+    shareService,
 
     // filters
     EncodeUriFilter,
@@ -139,12 +139,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalIssue', ModalIssueDirective)
-
-        /**
-         * Injects {@link lorax/directives/ModalShareDirective} as 'ModalShareDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxModalShare', ModalShareDirective)
 
         /**
          * Injects {@link lorax/directives/ModalAboutDirective} as 'ModalAboutDirective'
@@ -293,6 +287,12 @@ define([
          * @method lorax/loraxApp~service
          */
         .service('routesService', routesService)
+
+        /**
+         * Inject {@link lorax/services/shareService} as 'shareService'
+         * @method lorax/loraxApp~service
+         */
+        .service('shareService', shareService)
 
         /**
          * Inject {@link lorax/services/pubSubService} as 'pubSubService'

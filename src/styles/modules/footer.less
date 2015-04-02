@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Header
+   Footer
    ========================================================================== */
 
 .footer-links {
@@ -10,125 +10,54 @@
     width: 100%;
     z-index: @header-z-index;
 
-    [data-bg-mode="tag"] &,
     [data-bg-mode="intro"] & {
         display: none;
     }
 }
-
-.footer-links__link {
-    background-size: 30px;
-    bottom: 20px;
-    display: none;
-    .fira-sans-regular;
-    .font-size(1.2rem);
-    height: 30px;
-    line-height: 30px;
-    min-width: 30px;
+.information {
     position: absolute;
-    text-transform: uppercase;
-
-    .at-medium({
-        display: block;
-    });
-}
-
-.footer-links__link--about {
+    bottom: 20px;
     left: 20px;
-    text-indent: -9999px;
-    width: 30px;
+    .reset-list();
 }
-
-.footer-links__link--email {
-    right: 70px;
-    text-indent: -9999px;
-    width: 30px;
-}
-
-.footer-links__link--share {
-    right: 20px;
-    text-indent: -9999px;
-    width: 30px;
-}
-
-.footer-links__share-options {
-    bottom: 20px;
-    display: none;
-    height: 84px;
-    position: absolute;
-    right: 20px;
-    width: 78px;
-
-    .at-medium({
-        display: block;
-    });
-}
-
 .share-options {
-    .reset-list;
-}
-
-.share-option {
-    background-size: 30px;
-    display: block;
-    height: 30px;
     position: absolute;
-    text-indent: -9999px;
-    width: 30px;
-
-    > a {
+    right: 20px;
+    bottom: 20px;
+    .reset-list();
+}
+.information,
+.share-options {
+    li {
+        display: inline-block;
+        margin-right: 16px;
+        width: 30px;
+        height: 30px;
+        span {
+            .visually-hidden();
+        }
+    }
+    a {
         display: block;
-        height: 100%;
+        height: 30px;
     }
 }
-
-.share-option--twitter {
-    bottom: 0;
-    left: 0;
-}
-
-.share-option--email {
-    left: 16px;
-    top: 20px;
-}
-
-.share-option--fb {
-    right: 0;
-    top: 0;
-}
-
-.share-options-close {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 12px;
-    bottom: 0;
-    display: block;
-    height: 30px;
-    position: absolute;
-    right: 0;
-    text-indent: -9999px;
-    width: 30px;
-}
-
-.down-arrow-nav {
-    background-position: 50%;
-    background-size: 100%;
-    width: 50px;
-    height: 26px;
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    margin-left: -25px;
-
-    display: none;
-
-    .at-medium({
-        display: block;
-    });
-
-    [data-bg-mode="tag"] &,
-    [data-bg-mode="intro"] &,
-    [data-bg-mode=""] & {
-        display: none;
+/**
+ * Specific styling changes required when the issue modal is active.
+ */
+.issue-modal-active {
+    z-index: @modal-z-index;
+    .information {
+        li:first-child {
+            display: none;
+        }
     }
 }
+/**
+ * Hide footer links on mobile viewports
+ */
+ .bp-small {
+     .footer-links {
+         display: none;
+     }
+ }

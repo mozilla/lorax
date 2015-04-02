@@ -149,7 +149,13 @@ define([
      */
     Experience.prototype._openIssue = function (issue) {
 
+        var footer = $('.footer-links');
         var issueData = issue.data;
+
+        // add the modal-issue-active class to the footer.
+        // This is used in the CSS to bump up the z-index of
+        // some of the sharing icons.
+        footer.addClass('issue-modal-active');
 
         this._mode = Issue.MODE_ISSUES;
         this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());

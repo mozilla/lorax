@@ -16,7 +16,8 @@
                             "url": "https://www.mozilla.org/firefox/os/"
                         }
                     ],
-                    "yourActionLink": []
+                    "yourActionLink": [],
+                    "shareUrl": "http://shapeoftheweb.org/access/adoption"
                 },
                 "affordable": {
                     "name": "Affordability",
@@ -35,7 +36,8 @@
                             "copy": "Watch now",
                             "url": "https://www.youtube.com/watch?v=TMP45DupbhI&list=PLFlAJDI87Jg2vk3THSt8RBoD7vLG2tnw"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/access/affordable"
                 },
                 "localization": {
                     "name": "Local content",
@@ -66,7 +68,8 @@
                             "copy": "Translate video subtitles",
                             "url": "http://amara.org/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/access/localization"
                 },
                 "accessible": {
                     "name": "Accessibility",
@@ -85,7 +88,8 @@
                             "copy": "Read this article",
                             "url": "http://webaim.org/intro/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/access/accessible"
                 },
                 "speed": {
                     "name": "Speed",
@@ -103,7 +107,8 @@
                             "copy": "On your desktop",
                             "url": "http://www.speedtest.net"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/access/speed"
                 }
             }
         },
@@ -132,7 +137,8 @@
                             "copy": "Firefox account",
                             "url": "https://accounts.firefox.com/signup"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/control/digitalIdentities"
                 },
                 "dataPortability": {
                     "name": "Data portability",
@@ -146,7 +152,8 @@
                             "url": "https://support.mozilla.org/kb/import-bookmarks-data-another-browser"
                         }
                     ],
-                    "yourActionLink": []
+                    "yourActionLink": [],
+                    "shareUrl": "http://shapeoftheweb.org/control/dataPortability"
                 },
                 "dataProtection": {
                     "name": "Data protection",
@@ -160,7 +167,8 @@
                             "copy": "Get smart on privacy",
                             "url": "https://www.mozilla.org/privacy/tips/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/control/dataProtection"
                 },
                 "governmentCensorship": {
                     "name": "Government censorship",
@@ -183,7 +191,8 @@
                             "copy": "How Social Media Can Make History",
                             "url": "http://www.ted.com/talks/clay_shirky_how_cellphones_twitter_facebook_can_make_history"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/control/governmentCensorship"
                 }
             }
         },
@@ -216,7 +225,8 @@
                             "copy": "Citizenfour",
                             "url": "https://citizenfourfilm.com/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/trust/governmentSurveillance"
                 },
                 "adTracking": {
                     "name": "Ad tracking",
@@ -239,7 +249,8 @@
                             "copy": "Get smart on privacy",
                             "url": "https://www.mozilla.org/privacy/tips/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/trust/adTracking"
                 },
                 "security": {
                     "name": "Security",
@@ -258,7 +269,8 @@
                             "copy": "Read more",
                             "url": "https://support.mozilla.org/kb/how-stay-safe-web#w_follow-best-practices-to-protect-your-information"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/trust/security"
                 },
                 "civility": {
                     "name": "Civility",
@@ -277,7 +289,8 @@
                             "copy": "Learn more",
                             "url": "http://www.staysafeonline.org/stay-safe-online/for-parents/cyberbullying-and-harassment"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/trust/civility"
                 }
             }
         },
@@ -306,7 +319,8 @@
                             "copy": "Use open-source tools",
                             "url": "http://www.thesimpledollar.com/30-essential-pieces-of-free-and-open-software-for-windows/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/openness/openSource"
                 },
                 "netNeutrality": {
                     "name": "Net neutrality",
@@ -325,7 +339,8 @@
                             "copy": "Watch video",
                             "url": "https://amara.org/videos/ZpNyeDbGO3lw/info/last-week-tonight-with-john-oliver-hbo-net-neutrality/"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/openness/netNeutrality"
                 },
                 "platformIndependence": {
                     "name": "Platform independence",
@@ -344,7 +359,8 @@
                             "copy": "Learn more",
                             "url": "https://developer.mozilla.org/Apps"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/openness/platformIndependence"
                 },
                 "softwarePatents": {
                     "name": "Software patents",
@@ -358,7 +374,8 @@
                             "copy": "Read more",
                             "url": "http://www.vox.com/2014/7/7/5862284/9-charts-that-show-patents-are-bad-for-the-software-industry"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/openness/softwarePatents"
                 },
                 "concentrationOfPower": {
                     "name": "Concentration of power",
@@ -377,9 +394,20 @@
                             "copy": "Visit web we want",
                             "url": "https://webwewant.mozilla.org//#video"
                         }
-                    ]
+                    ],
+                    "shareUrl": "http://shapeoftheweb.org/openness/concentrationOfPower"
                 }
             }
+        }
+    },
+    "services": {
+        "share": {
+            "hashtag": "shapeoftheweb",
+            "shareButton": "Share",
+            "learnMore": "Learn More",
+            "aboutIssue": " about this issue",
+            "fbShareUrl": "https://www.facebook.com/sharer/sharer.php?u=",
+            "twitterShareUrl": "https://twitter.com/intent/tweet"
         }
     },
     "modals": {
@@ -448,20 +476,16 @@
                     "text": "Fair and transparent rules preserve our independence"
                 }
             ]
-        },
-        "share": {
-            "title": "#shapeoftheweb",
-            "shareButton": "Share",
-            "learnMore": "Learn More",
-            "aboutIssue": " about this issue",
-            "email": "Email"
         }
     },
     "misc": {
         "siteTitle": "Shape of the Web",
         "siteHeader": "Shape of the Web",
         "sourceLabel": "Source:",
-        "tagsLabel": "Tags:",
+        "about": "More About State of the Web",
+        "keepMeInformed": "Keep me informed",
+        "shareTwitter": "Share on Twitter",
+        "shareFacebook": "Share on Facebook",
         "mozDoingLabel": "What Mozilla Is Doing",
         "yourDoingLabel": "What You Can Do",
         "modeNames": {

@@ -161,7 +161,7 @@ define([
         this.selectedTopic = selectedTopic;
     };
 
-    TopicsMode.prototype._onMouseOut = function (selectedTopic) {
+    TopicsMode.prototype._onMouseOut = function () {
         this.selectedTopic = null;
     };
 

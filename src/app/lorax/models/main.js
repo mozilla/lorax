@@ -8,16 +8,15 @@ define([
     'use strict';
 
     var MainModel = function (data, localeData, infographicData) {
-        this._tags = [];
         this._topics = [];
         this._modals = localeData.modals;
+        this._services = localeData.services;
         this._miscLocale = localeData.misc;
 
         for (var idxTopic in data.topics) {
             this._topics.push(new TopicModel(
                 idxTopic,
                 data.topics[idxTopic],
-                this._tags,
                 localeData.topics[idxTopic],
                 infographicData,
                 localeData
@@ -48,18 +47,14 @@ define([
         });
     };
 
-    MainModel.prototype.getTagByURLId = function (id) {
-        return _.find(this.getTags(), function (tag) {
-            return tag.getURLId() === id;
-        });
-    };
-
-    MainModel.prototype.getTags = function () {
-        return this._tags;
-    };
-
     MainModel.prototype.getModals = function () {
         return this._modals;
+    };
+
+    // gets the list of available services and their related
+    // content from the JSON in /src/data/i18n/[locale]/main.json
+    MainModel.prototype.getServices = function () {
+        return this._services;
     };
 
     MainModel.prototype.getMiscLocale = function () {
@@ -68,4 +63,3 @@ define([
 
     return MainModel;
 });
-
