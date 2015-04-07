@@ -21,8 +21,6 @@ This file has four main sections: **topics**, **tags**, **modals**, and **misc**
 
 * The **topics** section contains text for each issue on the detail page (name, title, copy, links, etc.). This is also where you'll find the data for **shareUrl**, which controls each issue's links for Twitter, Facebook, and email.
 
-* The **tags** section contains the display name for each issue tag.
-
 * The **modals** section is organized by the type of modal (about, legend, etc.) and contains all copy and relevant information for that modal.
 
 * The **misc** section contains just that: miscellaneous information that doesn't warrant its own category. Example data includes the site header, labels for the nav, and text for the intro.

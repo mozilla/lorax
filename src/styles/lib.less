@@ -16,3 +16,29 @@
     font-size: unit(@value * 16, px);
     font-size: @value;
 }
+
+.reset-list() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/****************************************************************************/
+// Classes used to hide content from users. Choose wisely!
+
+// Hide visually, but not to screen readers
+.visually-hidden() {
+    position: absolute!important;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    padding: 0;
+    border: 0;
+}
+
+// Hide visually & from screen readers
+.hidden() {
+    display: none;
+}

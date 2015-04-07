@@ -22,10 +22,8 @@ define(['webfontloader'], function (WebFont) {
 
         $scope.core = {
             openEmailModal: this.openEmailModal.bind(this),
-            openShareModal: this.openShareModal.bind(this),
-            openShareOptions: this.openShareOptions.bind(this),
-            closeShareOptions: this.closeShareOptions.bind(this),
             openAboutModal: this.openAboutModal.bind(this),
+            shareUrl: this.shareUrl.bind(this),
             siteInfo: this.siteInfo.bind(this),
             isLoaded: false
         };
@@ -67,22 +65,14 @@ define(['webfontloader'], function (WebFont) {
         ga('send','pageview','/email/');
     };
 
-    CoreCtrl.prototype.openShareModal = function (service) {
-        this._$scope.$broadcast('openShareModal', service);
-        ga('send','pageview','/share/');
-    };
-
-    CoreCtrl.prototype.openShareOptions = function () {
-        this._$scope.core.shareOptions = true;
-    };
-
-    CoreCtrl.prototype.closeShareOptions = function () {
-        this._$scope.core.shareOptions = false;
-    };
-
     CoreCtrl.prototype.openAboutModal = function () {
         this._$scope.$broadcast('openAboutModal');
         ga('send','pageview','/about/');
+    };
+
+    // triggered by clicks on the facebook and twiiter icons
+    CoreCtrl.prototype.shareUrl = function (service) {
+        this._$scope.$broadcast('share', service);
     };
 
     CoreCtrl.prototype.siteInfo = function () {

@@ -110,7 +110,7 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
 
     /**
      * This function is called by _openIssue in src/scripts/experience/experience.js
-     * It then updates the URL to /detail/topic/issue and emits the openIssueModal
+     * It then updates the URL to /topic/issue and emits the openIssueModal
      * event that is handled by ModalIssueController in:
      * src/app/lorax/directives/model-issue.js passing the topic and issue
      */

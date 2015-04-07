@@ -37,8 +37,6 @@ define(['angular'], function (angular) {
             open: false,
             closeModal: this.closeModal.bind(this),
             openEmail: this.openEmail.bind(this),
-            openLegend: this.openLegend.bind(this),
-            openShare: this.openShare.bind(this),
             openAbout: this.openAbout.bind(this)
         };
 
@@ -75,18 +73,6 @@ define(['angular'], function (angular) {
 
     ModalMobileOptionsController.prototype.openEmail = function () {
         this._$rootScope.$broadcast('openEmailModal');
-
-        this._$scope.modalOptions.open = false;
-    };
-
-    ModalMobileOptionsController.prototype.openLegend = function () {
-        this._$rootScope.$broadcast('openLegendModal');
-
-        this._$scope.modalOptions.open = false;
-    };
-
-    ModalMobileOptionsController.prototype.openShare = function () {
-        this._$rootScope.$broadcast('openShareModal', null);
 
         this._$scope.modalOptions.open = false;
     };

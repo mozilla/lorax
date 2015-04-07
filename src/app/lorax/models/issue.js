@@ -11,7 +11,6 @@ define([
         parentInstance,
         id,
         data,
-        tags,
         localeData,
         infographicData,
         localeDataAll
@@ -30,7 +29,6 @@ define([
         this._infographicOverflow = data.infographicOverflow;
         this._infographicIsMap = data.infographicMap;
         this._shareUrl = localeData.shareUrl;
-        this._tags = [];
         this._infographic = new InfographicModel(
             this._id,
             this._infographicType,
@@ -99,10 +97,6 @@ define([
         return this._infographic;
     };
 
-    IssueModel.prototype.getTags = function () {
-        return this._tags;
-    };
-
     IssueModel.prototype.getRelated = function () {
         return this._parent.getIssues();
     };
@@ -128,7 +122,7 @@ define([
     };
 
     IssueModel.prototype.getUrl = function () {
-        return '/detail/' + this.getParentId() + '/' + this.getId();
+        return this.getParentId() + '/' + this.getId();
     };
 
     IssueModel.prototype.getShareUrl = function () {
