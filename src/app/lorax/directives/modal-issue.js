@@ -113,7 +113,7 @@ define(['angular', 'jquery'], function (angular, $) {
 
         // remove the infographic container added in openModal above.
         $('.infographic-container').remove();
-        $('.footer-links').removeClass('issue-modal-active');
+        $('.colophon').removeClass('issue-modal-active');
 
         this._$timeout(function () {
             this._$location.url('/');

@@ -33,6 +33,16 @@ define([
             this._showStats();
         }
 
+        var colophon = $('.colophon');
+        colophon.on('click', 'a', function(event) {
+            // only handle clicks triggered from the colophon trigger
+            if ($(event.target).hasClass('colophon-trigger-mobile')) {
+                event.preventDefault();
+                // show or hide the list of links.
+                $('ul', colophon).toggleClass('colophon-show-mobile');
+            }
+        });
+
         // There is a bug to remove this @see
         // https://bugzilla.mozilla.org/show_bug.cgi?id=1148901
         // besides the fact that we probably do not need it, the CoreCtrl
@@ -149,13 +159,13 @@ define([
      */
     Experience.prototype._openIssue = function (issue) {
 
-        var footer = $('.footer-links');
+        var $colophon = $('.colophon');
         var issueData = issue.data;
 
         // add the modal-issue-active class to the footer.
         // This is used in the CSS to bump up the z-index of
         // some of the sharing icons.
-        footer.addClass('issue-modal-active');
+        $colophon.addClass('issue-modal-active');
 
         this._mode = Issue.MODE_ISSUES;
         this._enterIssueCallback(issueData.getParent().getId(), issueData.getId());

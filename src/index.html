@@ -27,11 +27,13 @@
       <h1 class="banner__logo"><a href="/" class="icon-circle">{{::core.miscData.siteHeader}}</a></h1>
     </header>
 
-    <a href="#" class="banner-info banner-info--menu icon-menu-dark" ng-click="core.siteInfo()" data-lorax-prevent-default>{{::core.miscData.information}}</a>
-
     <div data-lorax-modal-issue></div>
 
-    <footer class="footer-links">
+    <section class="colophon">
+
+      <a href="#" class="colophon-trigger-mobile icon-menu-dark">
+        <span>{{::core.miscData.information}}</span>
+      </a>
 
       <ul class="information">
         <li class="icon-info">
@@ -58,7 +60,7 @@
           </a>
         </li>
       </ul>
-    </footer>
+    </section>
 
     <div data-lorax-modal-email></div>
     <div data-lorax-modal-about></div>

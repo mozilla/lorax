@@ -17,7 +17,6 @@ define([
     'lorax/directives/modal-email',
     'lorax/directives/modal-issue',
     'lorax/directives/modal-about',
-    'lorax/directives/modal-mobile-options',
     'lorax/directives/chart-common-languages',
     'lorax/directives/chart-world-map',
     'lorax/directives/chart-accessible',
@@ -65,7 +64,6 @@ define([
     ModalEmailDirective,
     ModalIssueDirective,
     ModalAboutDirective,
-    ModalMobileOptionsDirective,
     ChartCommonLanguagesDirective,
     ChartWorldMapDirective,
     ChartAccessibleDirective,
@@ -145,12 +143,6 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxModalAbout', ModalAboutDirective)
-
-        /**
-         * Injects {@link lorax/directives/ModalMobileOptionsDirective} as 'ModalMobileOptionsDirective'
-         * @method lorax/loraxApp~directive
-         */
-        .directive('loraxModalMobileOptions', ModalMobileOptionsDirective)
 
         /**
          * Injects {@link lorax/directives/ChartCommonLanguagesDirective}
