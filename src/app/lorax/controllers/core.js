@@ -4,7 +4,7 @@
  * @class lorax/controllers/CoreCtrl
  * @param $scope
  */
-define(['webfontloader'], function (WebFont) {
+define(function () {
     'use strict';
 
     /*jshint unused: false */
@@ -40,13 +40,6 @@ define(['webfontloader'], function (WebFont) {
     ];
 
     CoreCtrl.prototype.init = function () {
-        WebFont.load({
-            active: this.loadMain.bind(this),
-            custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
-        });
-    };
-
-    CoreCtrl.prototype.loadMain = function () {
         this._dataService.getMain().then(function (model) {
             this._$scope.core.miscData = model.getMiscLocale();
             this.onLoaded();

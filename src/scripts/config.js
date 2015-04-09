@@ -24,7 +24,6 @@
             'pixi': '../scripts/components/pixi/pixi.dev',
             'stats': '../scripts/components/stats.js/stats.min',
             'signals': '../scripts/components/js-signals/signals',
-            'webfontloader': '../scripts/components/webfontloader/webfontloader',
             'gs': '../scripts/components/greensock/TweenMax',
             'bowser': '../scripts/components/bowser/bowser',
             'mousetrap': '../scripts/components/mousetrap/mousetrap',
@@ -66,9 +65,6 @@
             },
             'stats': {
                 exports: 'Stats'
-            },
-            'webfontloader': {
-                exports: 'WebFont'
             },
             'gs': {
                 exports: 'gs',

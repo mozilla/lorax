@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.banner {
+    height: 65px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: @header-z-index;
+
+    [data-bg-mode="intro"] & {
+        display: none;
+    }
+
+    .is-side-panel-open & {
+        height: 70px;
+        width: 260px;
+        z-index: @modal-z-index + 1;
+
+        .at-medium({
+            height: 0;
+            width: 100%;
+            z-index: @header-z-index;
+        });
+    }
+}
+.banner-logo {
+    position: relative;
+    top: 15px;
+    display: inline-block;
+    margin: 0;
+    padding: 0 20px;
+    .fira-sans-ultra;
+    .font-size(1.8rem);
+    text-transform: uppercase;
+    a {
+        display: block;
+        background-position: 0 50%;
+        background-size: 10px;
+        padding-left: @baseLine;
+    }
+
+    .at-xlarge({
+        position: fixed;
+        top: @baseLine;
+        left: 0;
+        .font-size(2.2rem);
+        z-index: @header-z-index;
+    });
+
+    .at-medium({
+        padding: 0 25px;
+        top: 10px;
+    });
+}

@@ -140,17 +140,17 @@ define(['angular', 'jquery'], function (angular, $) {
          * /src/app/lorax/models/issue.js
          */
         function onBgModeChange(status, animate) {
-            var modelIssueContainer = $('.modal-issue', iElem);
+            var modalIssueContainer = $('.modal-issue', iElem);
 
             if (!animate) {
-                modelIssueContainer.addClass('no-anim');
+                modalIssueContainer.addClass('no-anim');
             }
 
-            modelIssueContainer.attr('data-bg-mode', status);
+            modalIssueContainer.attr('data-bg-mode', status);
 
             if (!animate) {
                 setTimeout(function () {
-                    modelIssueContainer.removeClass('no-anim');
+                    modalIssueContainer.removeClass('no-anim');
                 }, 500);
             }
         }
