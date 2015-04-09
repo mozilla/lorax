@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Colophon
+   ========================================================================== */
+
+.colophon {
+    bottom: 0;
+    height: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: @header-z-index;
+
+    [data-bg-mode="intro"] & {
+        display: none;
+    }
+}
+.information {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    .reset-list();
+}
+.share-options {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    .reset-list();
+}
+.information,
+.share-options {
+    li {
+        display: inline-block;
+        margin-right: 16px;
+        width: 30px;
+        height: 30px;
+        span {
+            .visually-hidden();
+        }
+    }
+    a {
+        display: block;
+        height: 30px;
+    }
+}
+.colophon-trigger-mobile {
+    display: none;
+    width: @baseLine * 2;
+    height: @baseLine * 2;
+}
+/**
+ * Hide footer links on mobile viewports
+ */
+.bp-small {
+    .colophon {
+        top: @baseLine;
+        right: @baseLine;
+        bottom: auto;
+        left: auto;
+        height: auto;
+        width: auto;
+        ul {
+            position: relative;
+            display: none;
+            right: 0;
+            bottom: auto;
+            left: 3px;
+            li {
+                display: block;
+                margin: 16px 0 0 0;
+            }
+        }
+    }
+    .issue-modal-active.colophon {
+        // move the colophon down to avoid obscuring the modal close button
+        top: 70px;
+        right: 13px;
+    }
+    .colophon-trigger-mobile {
+        display: block;
+        span {
+            .visually-hidden();
+        }
+    }
+    /**
+    * Because we use the same HTML for the desktop and mobile views,
+    * we need the following class, that will be used to show the lists
+    * but, will only take effect when on mobile.
+    */
+    ul.colophon-show-mobile {
+        display: block;
+    }
+}
+
+/**
+ * Specific styling changes required when the issue modal is active.
+ */
+.issue-modal-active {
+    z-index: @modal-z-index;
+    .information {
+        li:first-child {
+            display: none;
+        }
+    }
+}

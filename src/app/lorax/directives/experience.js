@@ -45,6 +45,11 @@ define(['jquery'], function ($) {
             isSmall: true
         };
 
+        // share event is broadcast from CoreCtrl in:
+        // /src/app/lorax/controllers/core.js
+        // Here we listen for the event and once triggered, we call
+        // the share function in:
+        // /src/app/lorax/services/share.js
         $scope.$on('share', this._shareService.share.bind(this));
 
         // calls the data service in /src/app/lorax/services/data.js
