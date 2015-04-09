@@ -24,8 +24,8 @@
         .font-size(2rem);
         line-height: 1.5;
     }
-    .action-container,
-    .action-links-container {
+    header,
+    .action-container {
         width: 49%;
     }
     figure {
@@ -49,14 +49,9 @@
         width: 43%;
         list-style: none;
         vertical-align: top;
-    }
-    ul.mozilla-action,
-    ul.your-action {
-        margin: 0 5% 0 0;
-        padding: 0;
-        .font-size(1.5rem);
-        letter-spacing: .03rem;
-        list-style: none;
+        ul {
+            .reset-list();
+        }
         li {
             margin-bottom: 16px;
         }
@@ -81,4 +76,22 @@
 
 [data-bg-mode="go"] & {
     background: fade(@go, 90%);
+}
+/* mobile phones */
+.bp-small {
+    .modal-issue {
+        padding: 1rem;
+        .action-container {
+            width: 90%;
+        }
+        .mozilla-action,
+        .your-action {
+            display: block;
+            width: 90%;
+        }
+        figure {
+            position: static;
+            width: 100%;
+        }
+    }
 }

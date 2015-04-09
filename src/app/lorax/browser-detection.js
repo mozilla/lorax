@@ -1,6 +1,18 @@
 define(['jquery', 'bowser'], function($, bowser) {
     'use strict';
 
+    /**
+     * Browser support is currently as follows:
+     * IE 10+
+     * Firefox 31+
+     * Chrome 31+
+     * Safari 7+
+     * iOS Safari 7.1+
+     * Android Browser 4.4+
+     * Chrome for Android 39+
+     * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1113349#c0
+     */
+
     function init() {
         bindEvents();
 
