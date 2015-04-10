@@ -77,12 +77,13 @@
 [data-bg-mode="go"] & {
     background: fade(@go, 90%);
 }
-/* mobile phones */
-.bp-small {
+
+@media only screen and (max-width: @breakMobileLandscape) {
     .modal-issue {
-        padding: 1rem;
+        padding: 4rem 2rem 1rem;
+        header,
         .action-container {
-            width: 90%;
+            width: 85%;
         }
         .mozilla-action,
         .your-action {
@@ -91,7 +92,7 @@
         }
         figure {
             position: static;
-            width: 100%;
+            width: 90%;
         }
     }
 }
