@@ -1,5 +1,5 @@
 .modal-issue {
-    color: @black;
+    color: @white;
     margin: 0 auto;
     padding: 10rem;
     min-height: 100%;
@@ -42,6 +42,10 @@
             .font-size(1.5rem);
         }
     }
+    .btn {
+        color: @white;
+        border-color: @white;
+    }
     .mozilla-action,
     .your-action {
         display: inline-block;
@@ -49,6 +53,9 @@
         width: 43%;
         list-style: none;
         vertical-align: top;
+        p {
+            color: @black;
+        }
         ul {
             .reset-list();
         }
