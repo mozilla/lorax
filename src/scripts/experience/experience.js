@@ -1,7 +1,6 @@
 /* global define:true */
 define([
     'stats',
-    'webfontloader',
     'experience/experience-canvas',
     'experience/explore-mode',
     'experience/topics-mode',
@@ -10,7 +9,6 @@ define([
     'jquery-mobile'
 ], function (
     Stats,
-    WebFont,
     ExperienceCanvas,
     ExploreMode,
     TopicsMode,
@@ -33,28 +31,16 @@ define([
             this._showStats();
         }
 
-        var colophon = $('.colophon');
-        colophon.on('click', 'a', function(event) {
+        var $colophon = $('.colophon');
+        $colophon.on('click', 'a', function(event) {
             // only handle clicks triggered from the colophon trigger
             if ($(event.target).hasClass('colophon-trigger-mobile')) {
                 event.preventDefault();
                 // show or hide the list of links.
-                $('ul', colophon).toggleClass('colophon-show-mobile');
+                $('ul', $colophon).toggleClass('colophon-show-mobile');
             }
         });
 
-        // There is a bug to remove this @see
-        // https://bugzilla.mozilla.org/show_bug.cgi?id=1148901
-        // besides the fact that we probably do not need it, the CoreCtrl
-        // is called before this and also loods the fonts in:
-        // /src/app/lorax/controllers/core.js
-        WebFont.load({
-            active: this._onFontsLoaded.bind(this),
-            custom: {families: ['Fira Sans:n2,n3,n4,n5,n6,n7,n8,n9']}
-        });
-    };
-
-    Experience.prototype._onFontsLoaded = function () {
         this._canvas.drawIssues(this._issueData);
         // adds an event listener to the clickable issue dots
         this._canvas.pressIssueS.add(this._openIssue.bind(this));

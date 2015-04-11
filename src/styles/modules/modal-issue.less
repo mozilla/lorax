@@ -1,7 +1,11 @@
 .modal-issue {
+    color: @white;
     margin: 0 auto;
-    padding: 5rem 10rem;
+    padding: 10rem;
     min-height: 100%;
+    .content-container {
+        position: relative;
+    }
     h1 {
         .font-size(2rem);
         font-weight: normal;
@@ -10,33 +14,37 @@
     h2 {
         .font-size(3.5rem);
         letter-spacing: 0.1rem;
+        line-height: 1.2;
     }
     h3 {
         .font-size(2.5rem);
+        line-height: 1.2;
     }
     p {
         .font-size(2rem);
         line-height: 1.5;
     }
-    .action-container,
-    .action-links-container,
-    figure {
-        display: inline-block;
+    header,
+    .action-container {
         width: 49%;
-        vertical-align: top;
     }
     figure {
-        float: right;
-        margin-top: 4rem;
+        position: absolute;
+        top: 0;
+        left: 55%;
+        width: 40%;
     }
     figcaption {
         .font-size(2.5rem);
         line-height: 1.5;
         span {
             display: block;
-            color: #333;
             .font-size(1.5rem);
         }
+    }
+    .btn {
+        color: @white;
+        border-color: @white;
     }
     .mozilla-action,
     .your-action {
@@ -45,12 +53,18 @@
         width: 43%;
         list-style: none;
         vertical-align: top;
-    }
-    ul.mozilla-action,
-    ul.your-action {
-        margin: 0 5% 0 0;
-        padding: 0;
-        list-style: none;
+        p {
+            color: @black;
+        }
+        ul {
+            .reset-list();
+        }
+        li {
+            margin-bottom: 16px;
+        }
+        a:after {
+            content: ' \00BB';
+        }
     }
 }
 .action-container {
@@ -69,4 +83,23 @@
 
 [data-bg-mode="go"] & {
     background: fade(@go, 90%);
+}
+
+@media only screen and (max-width: @breakMobileLandscape) {
+    .modal-issue {
+        padding: 4rem 2rem 1rem;
+        header,
+        .action-container {
+            width: 85%;
+        }
+        .mozilla-action,
+        .your-action {
+            display: block;
+            width: 90%;
+        }
+        figure {
+            position: static;
+            width: 90%;
+        }
+    }
 }
