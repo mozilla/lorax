@@ -106,6 +106,9 @@ define(['angular', 'jquery'], function (angular, $) {
     };
 
     ModalIssueController.prototype.closeModal = function () {
+
+        var $colophon = $('.colophon');
+
         this._$scope.modalIssue.open = false;
 
         this._windowService.setIssueMode(false);
@@ -113,10 +116,10 @@ define(['angular', 'jquery'], function (angular, $) {
 
         // remove the infographic container added in openModal above.
         $('.infographic-container').remove();
-        $('.colophon').removeClass('issue-modal-active');
+        $colophon.removeClass('issue-modal-active');
 
         this._$timeout(function () {
-            this._$location.url('/');
+            this._$location.url($colophon.data('previous-state'));
         }.bind(this));
     };
 
