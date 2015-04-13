@@ -1,0 +1,59 @@
+/* Accessibiity / Vision Impairment
+   ========================================================================== */
+
+.accessible-section {
+    display: block;
+    width: 100%;
+    padding: 0 5% 5% 0;
+    vertical-align: top;
+
+    @media only screen and (min-width: @breakDesktop) {
+        display: inline-block;
+        width: 50%;
+        &:nth-child(even) {
+            padding-left: 5%;
+            border-left: 1px solid @white;
+        }
+    }
+
+    &:nth-child(odd) {
+        border-left: none;
+    }
+    h3 {
+        color: @black;
+        margin-bottom: 20px;
+        .font-size(1.7rem);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+
+        @media only screen and (min-width: @breakTablet) {
+            margin-bottom: 40px;
+        }
+    }
+    p,
+    a {
+        .font-size(1.5rem);
+        line-height: 1.6;
+    }
+    a {
+        color: @black;
+        margin-bottom: 20px;
+        padding-top: 3%;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+
+        @media only screen and (min-width: @breakTablet) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.accessible-section-copy {
+    width: 100%;
+}
+
+.accessible-section-fullwidth {
+    padding-right: 0;
+}

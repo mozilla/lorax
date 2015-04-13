@@ -187,41 +187,44 @@
         }
     },
     "accessible": {
-        "header": "How to make content more accessible",
-        "subheader": "NEEDS CONTENT",
+        "header": "Making content more accessible",
+        "subheader": "Types of impairments and assorted strategies to navigate Web content.",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Wikipedia",
+            "src": "http://en.wikipedia.org/wiki/Computer_accessibility#Visual_impairment"
         },
         "dataPoints": {
             "sections": [
                 {
-                    "title": "1/9 of Internet users have a vision impairment",
-                    "imageUrl": "/images/accessible-1.png",
-                    "fullWidth": true
-                },
-                {
-                    "title": "Screen readers",
-                    "imageUrl": "/images/accessible-2.png",
-                    "copy": "This sends information to a speech synthesizer to be spoken or to a Braille display. When designing a site, make sure your content divisions are friendly for screen readers to access.",
+                    "title": "Visual",
+                    "imageUrl": "/images/infographics/accessible/visual.png",
+                    "copy": "For mild to medium vision impairment large fonts, high DPI displays and high-contrast themes and icons are helpful in addition to screen magnifying software and auditory feedback. For severe vision impairment such as blindness screen readers is necessary.",
                     "linkCopy": "Learn more",
-                    "linkUrl": "#",
+                    "linkUrl": "http://en.wikipedia.org/wiki/Computer_accessibility#Visual_impairment",
                     "fullWidth": false
                 },
                 {
-                    "title": "Special browsers",
-                    "imageUrl": "/images/accessible-3.png",
-                    "copy": "A browser is designed specifically for blind users. It should be able to discriminate the structure of your page, to the extent that the page has a structure, and pass the information on to the user in a meaningful way.",
+                    "title": "Hearing",
+                    "imageUrl": "/images/infographics/accessible/hearing.png",
+                    "copy": "While multimedia content can be used to communicate information visually, audio content needs to have alternatives, such as transcripts and captions, so that it is accessible for people with auditory disabilities.",
                     "linkCopy": "Learn more",
-                    "linkUrl": "#",
+                    "linkUrl": "http://www.w3.org/WAI/intro/people-use-web/diversity#auditory",
                     "fullWidth": false
                 },
                 {
-                    "title": "Screen magnification",
-                    "imageUrl": "/images/accessible-4.png",
-                    "copy": "Some users will use a screen magnification program. For these users, your choice of color and layout can make an enormous difference in their experience of your page.",
+                    "title": "Motor and dexterity",
+                    "imageUrl": "/images/infographics/accessible/motor.png",
+                    "copy": "Some people may not be able to use a conventional input device, such as the mouse or the keyboard, making it important for content to be accessible using both. More specialized solutions include on-screen keyboards, joysticks, trackballs and speech recognition technology.",
                     "linkCopy": "Learn more",
-                    "linkUrl": "#",
+                    "linkUrl": "http://en.wikipedia.org/wiki/Computer_accessibility#Motor_and_dexterity_impairments",
+                    "fullWidth": false
+                },
+                {
+                    "title": "Cognitive and illiteracy",
+                    "imageUrl": "/images/infographics/accessible/cognative.png",
+                    "copy": "People with cognitive disabilities can use different strategies to navigate web content. Depending on their particular needs, they can access information in text, audio, or other formats and use formatting and spellchecking tools to assist them with reading and writing.",
+                    "linkCopy": "Learn more",
+                    "linkUrl": "http://www.w3.org/WAI/intro/people-use-web/diversity#cognitive",
                     "fullWidth": false
                 }
             ]
