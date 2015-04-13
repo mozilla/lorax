@@ -148,6 +148,10 @@ define([
         var $colophon = $('.colophon');
         var issueData = issue.data;
 
+        // store the previous view so we can go back to it when the
+        // modal is closed.
+        $colophon.data('previous-state', window.location.pathname);
+
         // add the modal-issue-active class to the footer.
         // This is used in the CSS to bump up the z-index of
         // some of the sharing icons.
