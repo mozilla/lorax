@@ -105,7 +105,13 @@ define([
 
     Experience.prototype.showExplore = function () {
         if (this._hasInitialized) {
-            this._canvas.show();
+
+            var canvas = this._canvas;
+            // ensure the circular background is visible
+            // when in explore mode.
+            canvas._backgroundContainer.visible = true;
+            canvas.show();
+
             this._mode = Issue.MODE_EXPLORE;
             this._exploreMode.show();
             this._setBgMode('');
@@ -116,7 +122,12 @@ define([
 
     Experience.prototype.showIssues = function () {
         if (this._hasInitialized) {
-            this._canvas.show();
+
+            var canvas = this._canvas;
+            // hide the circular background when not in explore mode.
+            canvas._backgroundContainer.visible = false;
+            canvas.show();
+
             this._mode = Issue.MODE_ISSUES;
             this._issuesMode.show();
             this._setBgMode('');
@@ -127,7 +138,12 @@ define([
 
     Experience.prototype.showTopics = function () {
         if (this._hasInitialized) {
-            this._canvas.show();
+
+            var canvas = this._canvas;
+            // hide the circular background when not in explore mode.
+            canvas._backgroundContainer.visible = false;
+            canvas.show();
+
             this._mode = Issue.MODE_TOPICS;
             this._topicsMode.show();
             this._setBgMode('');
