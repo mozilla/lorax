@@ -26,18 +26,7 @@ define(function () {
                 page: 'experience'
             })
 
-            .when('/tag/:tag', {
-                controller: 'CoreCtrl',
-                mode: 'tag',
-                page: 'experience'
-            })
-
             /* -------------------- Issue Modal -------------------- */
-
-            .when('/:topic', {
-                controller: 'CoreCtrl',
-                page: 'modal-issue'
-            })
 
             .when('/:topic/:issue', {
                 controller: 'CoreCtrl',

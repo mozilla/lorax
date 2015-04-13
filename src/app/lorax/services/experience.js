@@ -88,9 +88,6 @@ define(['jquery', 'experience/experience'], function ($, Experience) {
                 case 'checklist':
                     this._experience.showIssues();
                     break;
-                case 'detail':
-                    this._experience.showDetail();
-                    break;
                 default:
                     this._experience.hold();
             }

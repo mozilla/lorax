@@ -26,17 +26,25 @@ define(function () {
     var ModalAboutController = function (
         $scope,
         dataService,
+        experienceService,
         windowService
     ) {
         this._$scope = $scope;
         this._dataService = dataService;
+        this._experienceService = experienceService;
         this._windowService = windowService;
 
         $scope.modalLegend = {};
         $scope.modalAbout = {
-            open: true,
+            open: false,
             closeModal: this.closeModal.bind(this)
         };
+
+        // only set the about modal to open if the current view
+        // is the ecosystem view.
+        if (this._experienceService._view === 'ecosystem') {
+            $scope.modalAbout.open = true;
+        }
 
         // listen for $broadcast of 'openAboutModal'
         $scope.$on('openAboutModal', this.openModal.bind(this));
@@ -54,6 +62,7 @@ define(function () {
     ModalAboutController.$inject = [
         '$scope',
         'dataService',
+        'experienceService',
         'windowService'
     ];
 
