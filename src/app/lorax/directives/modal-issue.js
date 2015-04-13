@@ -25,6 +25,7 @@ define(['angular', 'jquery'], function (angular, $) {
         $compile,
         $location,
         $timeout,
+        routesService,
         windowService,
         dataService
     ) {
@@ -33,6 +34,7 @@ define(['angular', 'jquery'], function (angular, $) {
         this._$compile = $compile;
         this._$location = $location;
         this._$timeout = $timeout;
+        this._routesService = routesService;
         this._windowService = windowService;
         this._dataService = dataService;
 
@@ -43,6 +45,14 @@ define(['angular', 'jquery'], function (angular, $) {
 
         // listen for $broadcast of 'openIssueModal'
         $scope.$on('openIssueModal', this.openModal.bind(this));
+
+        // If an issue is accessed directly, with a URL such as:
+        // ...trust/governmentSurveillance, the routeService's page
+        // property will be set to 'modal-issue'.
+        if (this._routesService.page === 'modal-issue') {
+            // open the issue modal
+            this.openModal();
+        }
     };
 
     /**
@@ -54,6 +64,7 @@ define(['angular', 'jquery'], function (angular, $) {
         '$compile',
         '$location',
         '$timeout',
+        'routesService',
         'windowService',
         'dataService'
     ];
@@ -63,6 +74,10 @@ define(['angular', 'jquery'], function (angular, $) {
      * src/app/lorax/services/experience.js and recieves the issue to show.
      */
     ModalIssueController.prototype.openModal = function (e, issue) {
+
+        // on direct access of an issue, the issue is not passed to the
+        // function so, test for this and get it from the routeService.
+        var issue = issue ? issue : this._routesService.params.issue;
 
         this._dataService.getMain().then(function (model) {
 
