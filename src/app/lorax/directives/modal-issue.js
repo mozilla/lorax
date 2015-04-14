@@ -123,6 +123,9 @@ define(['angular', 'jquery'], function (angular, $) {
     ModalIssueController.prototype.closeModal = function () {
 
         var $colophon = $('.colophon');
+        // if an issue was accessed from a direct URL the previous
+        // state will not be set. Fallback to root
+        var referrer = $colophon.data('previous-state') || '/';
 
         this._$scope.modalIssue.open = false;
 
@@ -134,7 +137,7 @@ define(['angular', 'jquery'], function (angular, $) {
         $colophon.removeClass('issue-modal-active');
 
         this._$timeout(function () {
-            this._$location.url($colophon.data('previous-state'));
+            this._$location.url(referrer);
         }.bind(this));
     };
 
