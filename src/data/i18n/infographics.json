@@ -357,117 +357,69 @@
         }
     },
     "dataPortability": {
-        "header": "Net positive view of industries",
-        "subheader": "Percent by Year",
+        "header": "Do key online services allow data portability?",
+        "subheader": "Ability to export user data from a given Internet service or application.",
         "source": {
-            "name": "",
+            "name": "Analysis by Mozilla",
             "src": ""
         },
         "dataPoints": {
-            "dataLabels": [
-                "Internet",
-                "Computing"
-            ],
-            "lineGraphData": [
+            "dataStandards": [
                 {
-                    "label": "2001",
-                    "data": [
-                        17,
-                        57
-                    ]
+                    "service": "Twitter",
+                    "answer": "Yes",
+                    "comments": ""
                 },
                 {
-                    "label": "2002",
-                    "data": [
-                        22,
-                        55
-                    ]
+                    "service": "WhatsApp",
+                    "answer": "Yes",
+                    "comments": ""
                 },
                 {
-                    "label": "2003",
-                    "data": [
-                        31,
-                        64
-                    ]
+                    "service": "Wordpress",
+                    "answer": "Yes",
+                    "comments": ""
                 },
                 {
-                    "label": "2004",
-                    "data": [
-                        23,
-                        52
-                    ]
+                    "service": "Google",
+                    "answer": "Partial",
+                    "comments": "An impressive number of products and services, but not search history"
                 },
                 {
-                    "label": "2005",
-                    "data": [
-                        24,
-                        47
-                    ]
+                    "service": "Facebook",
+                    "answer": "Partial",
+                    "comments": "Almost all of your data, but not your search history"
                 },
                 {
-                    "label": "2006",
-                    "data": [
-                        29,
-                        50
-                    ]
+                    "service": "LinkedIn",
+                    "answer": "Partial",
+                    "comments": "Contact export is allowed, which is core to LinkedIn's offer"
                 },
                 {
-                    "label": "2007",
-                    "data": [
-                        35,
-                        51
-                    ]
+                    "service": "Reddit",
+                    "answer": "No",
+                    "comments": ""
                 },
                 {
-                    "label": "2008",
-                    "data": [
-                        32,
-                        54
-                    ]
+                    "service": "Tumblr",
+                    "answer": "No",
+                    "comments": ""
                 },
                 {
-                    "label": "2009",
-                    "data": [
-                        30,
-                        53
-                    ]
+                    "service": "Pinterest",
+                    "answer": "No",
+                    "comments": ""
                 },
                 {
-                    "label": "2010",
-                    "data": [
-                        28,
-                        49
-                    ]
-                },
-                {
-                    "label": "2011",
-                    "data": [
-                        40,
-                        62
-                    ]
-                },
-                {
-                    "label": "2012",
-                    "data": [
-                        36,
-                        63
-                    ]
-                },
-                {
-                    "label": "2013",
-                    "data": [
-                        34,
-                        56
-                    ]
-                },
-                {
-                    "label": "2014",
-                    "data": [
-                        27,
-                        58
-                    ]
+                    "service": "Instagram",
+                    "answer": "No",
+                    "comments": ""
                 }
-            ]
+            ],
+            "labels": {
+                "services": "Service",
+                "dataExtractable": "Extractable Data?"
+            }
         }
     },
     "dataProtection": {

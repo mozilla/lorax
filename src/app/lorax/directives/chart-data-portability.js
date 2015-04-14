@@ -2,11 +2,11 @@
  * @fileOverview Data Portability Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
  */
-define(['jquery', 'd3'], function ($, d3) {
+define(function() {
     'use strict';
 
     /**
-     * Terms & Conditions Chart directive
+     * Data Portability Chart directive
      */
     var ChartDataPortabilityDirective = function () {
         return {
@@ -14,7 +14,6 @@ define(['jquery', 'd3'], function ($, d3) {
             replace: true,
             scope: true,
             controller: ChartDataPortabilityController,
-            link: ChartDataPortabilityLinkFn,
             templateUrl: '/app/lorax/directives/chart-data-portability.tpl.html'
         };
     };
@@ -49,30 +48,6 @@ define(['jquery', 'd3'], function ($, d3) {
         '$scope',
         '$timeout'
     ];
-
-    /**
-     * Link function for Data Portability Chart directive
-     * @param {object} scope      Angular scope.
-     * @param {JQuery} iElem      jQuery element.
-     * @param {object} iAttrs     Directive attributes.
-     * @param {object} controller Controller reference.
-     */
-    var ChartDataPortabilityLinkFn = function (scope, iElem, iAttrs, controller) {
-        controller._$timeout(function() {
-            d3.selectAll('.data-portability__symbol')
-                .append('div')
-                    .attr('class', function(d, i) {
-                        var answer = controller._$scope.dataStandards.data[i].answer;
-                        if (answer === 'Yes') {
-                            return 'data-portability__symbol-yes';
-                        } else if (answer === 'Partial') {
-                            return 'data-portability__symbol-partial';
-                        } else if (answer === 'No') {
-                            return 'data-portability__symbol-no';
-                        }
-                    });
-        }.bind(controller));
-    };
 
     return ChartDataPortabilityDirective;
 });

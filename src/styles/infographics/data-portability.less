@@ -1,0 +1,43 @@
+/* Data Portability
+   ========================================================================== */
+
+.data-portability {
+    margin-left: @baseLine * 3;
+    border-collapse: collapse;
+    width: 80%;
+    th {
+      color: @black;
+      padding: 24px 32px 24px 0;
+      .font-size(1.7rem);
+      font-weight: 600;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 10px 10px 35px 0;
+      width: 10%;
+      .font-size(1.7rem);
+      text-align: center;
+      &:first-child {
+          width: 10%;
+          text-align: left;
+      }
+      &:last-child {
+          width: 80%;
+          font-weight: 600;
+          text-align: left;
+          text-transform: uppercase;
+      }
+      span {
+          display: block;
+          margin-top: 8px;
+          .font-size(1.4rem);
+          font-weight: 400;
+          text-transform: none;
+      }
+    }
+    .data-portability-line {
+        border-bottom: 1px solid @black;
+        width:80%;
+    }
+}
