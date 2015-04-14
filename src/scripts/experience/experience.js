@@ -64,6 +64,7 @@ define([
         this._topicsModeData = data.getTopics();
         this._miscData = data.getMiscLocale();
 
+        this._topicsModeData.description = data._modals.vitals.description;
         this._topicsMode.setData(this._topicsModeData);
     };
 

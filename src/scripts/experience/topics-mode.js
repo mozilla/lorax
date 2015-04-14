@@ -50,6 +50,18 @@ define([
         var issue;
         var topic;
 
+        // add the vitals main description
+        this._vitalsDescription = new PIXI.Text(this._topicsData.description, {
+            font: '300 20px "Fira Sans", sans-serif',
+            fill: '#222222',
+            wordWrap: true,
+            wordWrapWidth: 550,
+            align: 'center'
+        });
+        this._canvas.addChild(this._vitalsDescription);
+        this._vitalsDescription.x = Math.round(this._canvas.canvasSize.x / 3);
+        this._vitalsDescription.y = Math.round(this._canvas.canvasSize.y / 5);
+
         for(i = 0; i < this._topicsData.length; i ++) {
             // get all issues for this topic
             var issues = [];
@@ -87,6 +99,11 @@ define([
 
     TopicsMode.prototype._onResize = function() {
         var position = new PIXI.Point();
+
+        this._vitalsDescription.x = Math.round(this._canvas.canvasSize.x / 3);
+        if (this._vitalsDescription.x < 400) {
+            this._vitalsDescription.x = Math.round(this._canvas.canvasSize.x / 4);
+        }
 
         this._topicsContainer.x = Math.round(this._canvas.canvasSize.x / 2);
         this._topicsContainer.y = Math.round(this._canvas.canvasSize.y / 2);
@@ -175,6 +192,7 @@ define([
 
     TopicsMode.prototype._onStartShow = function () {
         this._canvas.addChild(this._topicsContainer, this._canvas._stage.getChildIndex(this._canvas._particlesContainer));
+        this._canvas.addChild(this._vitalsDescription);
 
         var i, k;
 
@@ -222,6 +240,7 @@ define([
 
     TopicsMode.prototype._onStartHide = function () {
         this._canvas.removeChild(this._topicsContainer);
+        this._canvas.removeChild(this._vitalsDescription);
 
         var i, k;
         for (i = 0; i < this._topics.length; i ++) {

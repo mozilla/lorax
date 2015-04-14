@@ -34,11 +34,6 @@ define([
         this.mouseOverS = new signals.Signal();
         this.mouseOutS = new signals.Signal();
 
-        // this._topicArea;
-        // this._linearArea;
-        // this._topicTitle;
-        // this._topicDesc;
-
         Topic.TOPICS.push(this);
     };
 
@@ -47,7 +42,7 @@ define([
 
     Topic.prototype.setup = function () {
         var aMargin = 20;
-        
+
         // initial topic area
         var topicArea = new PIXI.Rectangle(
             -this._radius,
@@ -77,9 +72,6 @@ define([
         this._area.buttonMode = true;
         this.elm.addChild(this._area);
         this._area.mouseover = this._area.tap = this._mouseOver.bind(this);
-        // DEBUG show areas
-        // this._area.beginFill(0x00FF00, 0.8);
-        // this._area.drawRect(this._area.hitArea.x, this._area.hitArea.y, this._area.hitArea.width, this._area.hitArea.height);
 
         // title
         this._topicTitle = new PIXI.Text(this._data.getName().toUpperCase(),
