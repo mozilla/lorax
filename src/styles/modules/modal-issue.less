@@ -20,18 +20,19 @@
         letter-spacing: 0.05rem;
     }
     h2 {
-        color: @black;
-        .font-size(3.5rem);
+        .font-size(4.2rem);
+        font-weight: 300;
         letter-spacing: 0.1rem;
         line-height: 1.2;
     }
     h3 {
-        color: @black;
-        .font-size(2.5rem);
+        .font-size(2rem);
+        font-weight: 500;
+        text-transform: uppercase;
         line-height: 1.2;
     }
     p {
-        .font-size(2rem);
+        .font-size(1.6rem);
         line-height: 1.5;
     }
     header,
@@ -58,6 +59,7 @@
         .font-size(2.5rem);
         line-height: 1.5;
         span {
+            color: @black;
             display: block;
             .font-size(1.5rem);
         }
@@ -87,6 +89,12 @@
         }
         li {
             margin-bottom: 16px;
+        }
+        a {
+            color: @white;
+            .font-size(1.2rem);
+            font-weight: 600;
+            text-transform: uppercase;
         }
         a:after {
             content: ' \00BB';
