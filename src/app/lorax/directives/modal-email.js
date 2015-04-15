@@ -37,6 +37,7 @@ define(['angular', 'jquery', 'jquery-customselect'], function (angular, $) {
             email: null,
             terms: null,
             onInputChange: this.onInputChange.bind(this),
+            onFormSubmit: this.onFormSubmit.bind(this),
             showSubmitBtn: false,
             showFailedBtn: false,
             showSuccessBtn: false
@@ -78,7 +79,6 @@ define(['angular', 'jquery', 'jquery-customselect'], function (angular, $) {
         $('.enter-email__country select').customSelect({
             customClass: 'enter-email__country-dropdown'
         });
-
     };
 
     ModalEmailController.prototype.closeModal = function () {
@@ -92,12 +92,38 @@ define(['angular', 'jquery', 'jquery-customselect'], function (angular, $) {
          (this._$scope.modalEmail.terms && this._$scope.modalEmail.email) ? true : false;
     };
 
-    ModalEmailController.prototype.onSubmitFail = function () {
-        this._$scope.modalEmail.showFailedBtn = true;
-    };
+    ModalEmailController.prototype.onFormSubmit = function () {
+        var url = 'https://basket.mozilla.org/news/subscribe/';
+        var newsletters = 'shape-web';
+        var source_url = 'https://shapeoftheweb.mozilla.org';
+        source_url = encodeURIComponent(source_url);
+        // store a reference to the controller
+        var controller = this;
+        var email = controller._$scope.modalEmail.email;
+        var country = controller._$scope.modalEmail.country;
+        if (country === undefined) {
+            country = 'USA';
+        }
+        var lang = 'en'
+        var fmt = 'H';
+        var privacy = 'on';
+        var params = 'newsletters=' + newsletters + '&source_url=' + source_url + '&email=' + email +
+            '&country=' + country + '&lang=' + lang + '&fmt=' + fmt + '&privacy=' + privacy;
+        var request_url = url + '?' + params;
+        controller._$scope.modalEmail.showSubmitBtn = false;
 
-    ModalEmailController.prototype.onSubmitSuccess = function () {
-        this._$scope.modalEmail.showSuccessBtn = true;
+
+        $.post(url, { newsletters: newsletters, source_url : source_url, email : email, country : country, lang : lang, fmt : fmt, privacy : privacy}, function(response) {
+            controller._$scope.modalEmail.showSuccessBtn = true;
+            controller._$scope.modalEmail.showSubmitBtn = false;
+            ga('send','pageview','/email/submit/');
+            controller._$scope.$apply();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            controller._$scope.modalEmail.showFailedBtn = true;
+            controller._$scope.modalEmail.showSubmitBtn = true;
+            controller._$scope.$apply();
+        });
     };
 
     return ModalEmailDirective;
