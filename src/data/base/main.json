@@ -128,7 +128,7 @@
                 },
                 "softwarePatents": {
                     "status": 1,
-                    "infographicType": "data-lorax-chart-open-source",
+                    "infographicType": "data-lorax-chart-intellectual-property",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []

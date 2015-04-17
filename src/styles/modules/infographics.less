@@ -424,7 +424,10 @@
 
 .linegraph__xaxis_year {
     .font-size(.9rem);
-    fill: @extra-dark-grey;
+    fill: @black;
+    .tick {
+        transform: rotate(75deg);
+    }
 
     .at-medium({
       .font-size(1rem);

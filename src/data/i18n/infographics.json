@@ -963,129 +963,92 @@
         }
     },
     "softwarePatents": {
-        "header": "Lobbying Expenditures vs. Revolvers*",
-        "subheader": "in $ and % per year",
+        "header": "Patent litigation is going through the roof",
+        "subheader": "Number of patent cases filed in U.S. District Courts.",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "United States Courts",
+            "src": "http://www.uscourts.gov/Statistics.aspx"
         },
         "dataPoints": {
             "dataLabels": [
-                "Expenditures",
-                "Revolvers"
+                "Fiscal Year",
+                "Total"
             ],
-            "revolverDescription": "* Revolvers are former members of Congress, congressional staffers, or executive branch officials.",
+            "labels": [
+                "1990",
+                "1995",
+                "2000",
+                "2005",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013"
+            ],
+            "values": [
+                1187,
+                1723,
+                2484,
+                2720,
+                2792,
+                3260,
+                4015,
+                5189,
+                6497
+            ],
             "lineGraphData": [
                 {
-                    "label": "1998",
+                    "label": "1990",
                     "data": [
-                        1450000000,
-                        44.7
+                        1187
                     ]
                 },
                 {
-                    "label": "1999",
+                    "label": "1995",
                     "data": [
-                        1450000000,
-                        43.7
+                        1723
                     ]
                 },
                 {
                     "label": "2000",
                     "data": [
-                        1570000000,
-                        48.2
-                    ]
-                },
-                {
-                    "label": "2001",
-                    "data": [
-                        1640000000,
-                        50.9
-                    ]
-                },
-                {
-                    "label": "2002",
-                    "data": [
-                        1830000000,
-                        54.9
-                    ]
-                },
-                {
-                    "label": "2003",
-                    "data": [
-                        2060000000,
-                        57
-                    ]
-                },
-                {
-                    "label": "2004",
-                    "data": [
-                        2200000000,
-                        56.8
+                        2484
                     ]
                 },
                 {
                     "label": "2005",
                     "data": [
-                        2440000000,
-                        57.5
-                    ]
-                },
-                {
-                    "label": "2006",
-                    "data": [
-                        2630000000,
-                        60.1
-                    ]
-                },
-                {
-                    "label": "2007",
-                    "data": [
-                        2870000000,
-                        60.7
-                    ]
-                },
-                {
-                    "label": "2008",
-                    "data": [
-                        3300000000,
-                        63.7
+                        2720
                     ]
                 },
                 {
                     "label": "2009",
                     "data": [
-                        3500000000,
-                        66.6
+                        2792
                     ]
                 },
                 {
                     "label": "2010",
                     "data": [
-                        3550000000,
-                        67.5
+                        3260
                     ]
                 },
                 {
                     "label": "2011",
                     "data": [
-                        3330000000,
-                        68.5
+                        4015
                     ]
                 },
                 {
                     "label": "2012",
                     "data": [
-                        3310000000,
-                        68.6
+                        5189
                     ]
                 },
                 {
                     "label": "2013",
                     "data": [
-                        3240000000,
-                        68.9
+                        6497
                     ]
                 }
             ]

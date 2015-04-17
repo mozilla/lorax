@@ -1,0 +1,26 @@
+.axis {
+    text {
+        .font-size(1rem);
+    }
+    path,
+    line {
+        fill: none;
+        stroke: @black;
+        shape-rendering: crispEdges;
+    }
+}
+.x {
+    .tick {
+        text {
+            transform: rotate(-45deg);
+        }
+    }
+}
+.grid {
+    .tick {
+        stroke: @black;
+    }
+    path {
+          stroke-width: 0;
+    }
+}
