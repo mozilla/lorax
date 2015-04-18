@@ -39,7 +39,6 @@ define(['d3'], function (d3) {
     };
 
     InfographicModel.prototype.drawInfographic = function () {
-        // console.log(this._id);
         switch ( this._type ) {
         case 'line-graph':
             this.drawLineGraph();
@@ -57,19 +56,7 @@ define(['d3'], function (d3) {
             this.drawStaticImage();
             break;
         }
-        // console.log(this._drawingFunctions[this._type]);
-        // var draw = {
-        //   "line-graph": function () {
-        //     return this.drawLineGraph();
-        //   },
-        //   "bar-graph": function () {
-        //     return this.drawBarGraph();
-        //   }
-        // }
-
-
     };
 
     return InfographicModel;
 });
-
