@@ -10,7 +10,7 @@
                     "tags": []
                 },
                 "affordable": {
-                    "status": 1,
+                    "status": 0,
                     "infographicType": "data-lorax-chart-world-map",
                     "infographicOverflow": false,
                     "infographicMap": true,
@@ -31,7 +31,7 @@
                     "tags": []
                 },
                 "speed": {
-                    "status": 1,
+                    "status": 0,
                     "infographicType": "data-lorax-chart-infrastructure",
                     "infographicOverflow": false,
                     "infographicMap": false,
@@ -56,7 +56,7 @@
                     "tags": []
                 },
                 "dataProtection": {
-                    "status": 1,
+                    "status": 2,
                     "infographicType": "data-lorax-chart-data-tracking",
                     "infographicOverflow": false,
                     "infographicMap": false,
@@ -81,14 +81,14 @@
                     "tags": []
                 },
                 "adTracking": {
-                    "status": 1,
+                    "status": 2,
                     "infographicType": "data-lorax-chart-concentration-power",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []
                 },
                 "security": {
-                    "status": 2,
+                    "status": 1,
                     "infographicType": "data-lorax-chart-cloud-security",
                     "infographicOverflow": false,
                     "infographicMap": false,
@@ -113,7 +113,7 @@
                     "tags": []
                 },
                 "netNeutrality": {
-                    "status": 1,
+                    "status": 0,
                     "infographicType": "data-lorax-chart-world-map",
                     "infographicOverflow": false,
                     "infographicMap": true,
