@@ -71,6 +71,73 @@ define(['jquery', 'd3'], function ($, d3) {
         }
     };
 
+    /**
+     * Draws the xAxis off the graph and optionally the associated grid lines.
+     */
+    ChartIntellectualPropertyController.prototype.xAxis = function(options) {
+        var x = d3.scale.linear()
+            .domain([d3.min(options.labels), d3.max(options.labels)])
+            .range([0, options.innerWidth]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom')
+            .tickFormat(d3.format("d"));
+
+        if (options.axis) {
+            options.svg.append('g')
+                .attr('class', 'x axis')
+                .attr('transform', 'translate(0,' + options.innerHeight + ')')
+                .call(xAxis);
+
+            d3.select('.x')
+              .selectAll('.tick text')
+              .attr('y', '5')
+              .attr('x', '-20');
+        }
+
+        if (options.grid) {
+            options.svg.append('g')
+                .attr('class', 'grid')
+                .attr('transform', 'translate(0,' + options.innerHeight + ')')
+                .style('opacity', '0.1')
+                .call(xAxis.tickSize(-options.innerHeight, 0, 0)
+                    .tickFormat(''));
+        }
+
+         return options.svg;
+    };
+
+    /**
+     * Draws the yAxis off the graph and optionally the associated grid lines.
+     */
+    ChartIntellectualPropertyController.prototype.yAxis = function(options) {
+        var y = d3.scale.linear()
+            .domain([d3.min(options.values), d3.max(options.values)])
+            .range([options.innerHeight, 0]);
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient('left')
+            .tickFormat(d3.format("d"));
+
+        if (options.axis) {
+            options.svg.append('g')
+                .attr('class', 'y axis')
+                .call(yAxis);
+        }
+
+        if(options.grid) {
+            options.svg.append('g')
+                .attr('class', 'grid')
+                .style('opacity', '0.1')
+                .call(yAxis.tickSize(-options.innerWidth, 0, 0)
+                    .tickFormat(''));
+        }
+
+        return options.svg;
+    };
+
 
     /**
      * Array of dependencies to be injected into controller
@@ -107,56 +174,31 @@ define(['jquery', 'd3'], function ($, d3) {
             var innerWidth = width - margin.left - margin.right;
             var innerHeight = height - margin.top - margin.bottom;
 
-            var x = d3.scale.linear()
-                .domain([d3.min(labels), d3.max(labels)])
-                .range([0, innerWidth]);
-
-            var y = d3.scale.linear()
-                .domain([d3.min(values), d3.max(values)])
-                .range([innerHeight, 0]);
-
-            var xAxis = d3.svg.axis()
-                .scale(x)
-                .orient('bottom')
-                .tickFormat(d3.format("d"));
-
-            var yAxis = d3.svg.axis()
-                .scale(y)
-                .orient('left')
-                .tickFormat(d3.format("d"));
-
             var svg = ipGraph.append('svg')
                 .attr('width', width)
                 .attr('height', height)
               .append('g')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-            svg.append('g')
-                .attr('class', 'x axis')
-                .attr('transform', 'translate(0,' + innerHeight + ')')
-                .call(xAxis);
+            var xAxisOptions = {
+                grid: false,
+                axis: true,
+                svg: svg,
+                labels: labels,
+                innerWidth: innerWidth,
+                innerHeight: innerHeight
+            };
+            svg = controller.xAxis(xAxisOptions);
 
-            d3.select('.x')
-              .selectAll('.tick text')
-              .attr('y', '5')
-              .attr('x', '-20');
-
-            svg.append('g')
-                .attr('class', 'y axis')
-                .call(yAxis);
-
-            svg.append('g')
-                .attr('class', 'grid')
-                .attr('transform', 'translate(0,' + innerHeight + ')')
-                .style('opacity', '0.1')
-                .call(xAxis.tickSize(-innerHeight, 0, 0)
-                    .tickFormat(''));
-
-            svg.append('g')
-                .attr('class', 'grid')
-                .style('opacity', '0.1')
-                .call(yAxis.tickSize(-innerWidth, 0, 0)
-                    .tickFormat(''));
+            var yAxisOptions = {
+                grid: true,
+                axis: false,
+                svg: svg,
+                values: values,
+                innerWidth: innerWidth,
+                innerHeight: innerHeight
+            };
+            svg = controller.yAxis(yAxisOptions);
 
             var options = {
                 svg: svg,
