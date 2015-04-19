@@ -6,7 +6,7 @@
     left: 0;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 30%;
     z-index: @header-z-index;
 
     [data-bg-mode="intro"] & {
@@ -51,6 +51,11 @@
 
     .at-medium({
         padding: 0 25px;
-        top: 10px;
+        top: 30px;
     });
+}
+.is-modal-open {
+    .banner {
+        z-index: @infront;
+    }
 }
