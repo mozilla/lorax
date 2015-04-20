@@ -95,8 +95,8 @@ define(['jquery', 'd3'], function ($, d3) {
           .style('left', function(d, i) { return Math.cos( twoPi * i/circleData.length) * circleFromCenter + 'px'; })
           .style('top', function(d, i) { return Math.sin( twoPi * i/circleData.length) * circleFromCenter + 'px'; })
           .on('mouseover', addDescription)
-          .append('div')
-            .text( function(d) { return d.name; });
+          .append('p')
+            .html( function(d, index) { return '<span>' + (index + 1) + '</span>' + d.name; });
 
       d3.select('#surveillance__name-advertising')
         .style('border', '3px solid #fff');
