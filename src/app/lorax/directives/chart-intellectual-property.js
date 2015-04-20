@@ -181,7 +181,7 @@ define(['jquery', 'd3'], function ($, d3) {
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
             var xAxisOptions = {
-                grid: false,
+                grid: true,
                 axis: true,
                 svg: svg,
                 labels: labels,
@@ -192,7 +192,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
             var yAxisOptions = {
                 grid: true,
-                axis: false,
+                axis: true,
                 svg: svg,
                 values: values,
                 innerWidth: innerWidth,
