@@ -29,6 +29,7 @@ define([
     'lorax/directives/chart-concentration-power',
     'lorax/directives/chart-public-trust',
     'lorax/directives/chart-infrastructure',
+    'lorax/directives/chart-intellectual-property',
     'lorax/directives/chart-identity-control',
     'lorax/directives/chart-cloud-security',
     'lorax/directives/chart-cyber-bullying',
@@ -76,6 +77,7 @@ define([
     ChartConcentrationPowerDirective,
     ChartPublicTrustDirective,
     ChartInfrastructureDirective,
+    ChartIntellectualPropertyDirective,
     ChartIdentityControlDirective,
     ChartCloudSecurityDirective,
     ChartCyberBullyingDirective,
@@ -227,6 +229,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartInfrastructure', ChartInfrastructureDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartIntellectualPropertyDirective}
+         * as 'ChartIntellectualPropertyDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartIntellectualProperty', ChartIntellectualPropertyDirective)
 
         /**
          * Injects {@link lorax/directives/ChartIdentityControlDirective}
