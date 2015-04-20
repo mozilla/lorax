@@ -231,89 +231,38 @@
         }
     },
     "speed": {
-        "header": "Stock prices of internet and mobile operators",
-        "subheader": "Share prices by year",
+        "header": "Connection speed by country",
+        "subheader": "Average Mbit/s",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Akamai State of the Internet 2014",
+            "src": "http://www.akamai.com/dl/akamai/akamai-soti-q114.pdf?WT.mc_id=soti_Q114"
         },
         "dataPoints": {
-            "dataLabels": [
-                "Internet Companies",
-                "Mobile Companies"
-            ],
-            "lineGraphData": [
-                {
-                    "label": "2004",
-                    "data": [
-                        43.23,
-                        53.36
+            "countryData": {
+                "findCountry": "Find a country",
+                "shading": {
+                    "name": "salaryPercentage",
+                    "invert": true,
+                    "values": [
+                        25,
+                        50,
+                        70,
+                        100,
+                        99999999
+                    ],
+                    "legend": [
+                        "Less than 3",
+                        "3 to 5",
+                        "5 to 8",
+                        "8 to 11",
+                        "Greater than 11"
                     ]
                 },
-                {
-                    "label": "2005",
-                    "data": [
-                        60.01,
-                        55.13
-                    ]
-                },
-                {
-                    "label": "2006",
-                    "data": [
-                        73.92,
-                        61.34
-                    ]
-                },
-                {
-                    "label": "2007",
-                    "data": [
-                        110.76,
-                        91.27
-                    ]
-                },
-                {
-                    "label": "2008",
-                    "data": [
-                        107.17,
-                        81.29
-                    ]
-                },
-                {
-                    "label": "2009",
-                    "data": [
-                        108.92,
-                        60.96
-                    ]
-                },
-                {
-                    "label": "2010",
-                    "data": [
-                        155.98,
-                        67.43
-                    ]
-                },
-                {
-                    "label": "2011",
-                    "data": [
-                        186.4,
-                        75.46
-                    ]
-                },
-                {
-                    "label": "2012",
-                    "data": [
-                        230.62,
-                        69.98
-                    ]
-                },
-                {
-                    "label": "2013",
-                    "data": [
-                        262.03,
-                        70.56
-                    ]
+                "display": {
+                    "name": "speed",
+                    "units": ""
                 }
-            ]
+            }
         }
     },
     "digitalIdentities": {
