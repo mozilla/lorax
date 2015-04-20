@@ -8,7 +8,6 @@
     left: 0;
     position: fixed;
     width: 100%;
-    z-index: @header-z-index;
 
     [data-bg-mode="intro"] & {
         display: none;
@@ -94,11 +93,13 @@
 /**
  * Specific styling changes required when the issue modal is active.
  */
-.issue-modal-active {
-    z-index: @infront;
-    .information {
-        li:first-child {
-            display: none;
+ .is-modal-open {
+    .colophon {
+        z-index: @infront;
+        .information {
+            li:first-child {
+                display: none;
+            }
         }
     }
 }
