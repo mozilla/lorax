@@ -104,6 +104,10 @@ define(['angular', 'jquery'], function (angular, $) {
             // create the infographic container element
             var infographicContainer = $('<div />', { class: 'infographic-container' });
 
+            // is this infographic a map style infographic?
+            var isMap = this._$scope.modalIssue.issue.getInfographicIsMap() || false;
+            this._$scope.modalIssue.isMap = isMap;
+
             // set the chart directive as an attribure on the infographicContainer
             infographicContainer.attr(infographicDirective,'');
             // append the infographic container to the parent figure element.

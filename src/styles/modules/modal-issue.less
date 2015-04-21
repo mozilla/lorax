@@ -1,20 +1,19 @@
 .modal-issue {
     color: @white;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 6rem 2rem;
     min-height: 100%;
+    line-height: 1.7;
 
     @media only screen and (min-width: @breakTablet) {
-        padding: 5rem;
+        padding: 3rem;
     }
 
     @media only screen and (min-width: @breakDesktopWide) {
-        padding: 10rem 5rem;
+        padding: 5rem;
     }
     .content-container {
         position: relative;
-        margin: 0 auto;
-        max-width: 1600px;
     }
     h1 {
         margin-left: .3rem;
@@ -24,6 +23,7 @@
         text-transform: uppercase;
     }
     h2 {
+        margin-bottom: 16px;
         .font-size(4.2rem);
         font-weight: 300;
         letter-spacing: 0.1rem;
@@ -37,7 +37,11 @@
     }
     p {
         .font-size(1.6rem);
-        line-height: 1.5;
+    }
+    hr {
+        margin: 5rem auto;
+        border: 1px solid rgba(255, 255, 255, .3);
+        width: 80%;
     }
     header,
     .action-container {
@@ -45,13 +49,13 @@
 
         @media only screen and (min-width: @breakTablet) {
             margin-top: 6rem;
-            padding: 0 30px 0 220px;
+            padding: 0 30px 0 160px;
             width: 49%;
         }
     }
     figure {
         position: absolute;
-        top: 55px;
+        top: 70px;
         right: 0;
         padding: 0 6rem 0 1.8rem;
         width: 50%;
@@ -109,8 +113,26 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-        a:after {
+        .detail-link-multiple:after {
             content: ' \00BB';
+        }
+    }
+    /* when the infographic is a map type infographic we
+     * need to adjust the columns widths */
+    .map {
+        header,
+        .action-container {
+            @media only screen and (min-width: @breakTablet) {
+                padding: 0 30px 0 120px;
+                width: 35%;
+            }
+
+            @media only screen and (min-width: @breakDesktopWide) {
+                padding: 0 30px 0 160px;
+            }
+        }
+        figure {
+            width: 64%;
         }
     }
 }
