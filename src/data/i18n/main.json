@@ -424,7 +424,9 @@
             "copy": "Add your email to receive updates about the state of the internet project and other related initiatives from Mozilla.",
             "label": "Enter Your Email",
             "terms": "I'm okay with Mozilla handling my info as explained in this Privacy Policy",
-            "submitButton": "Submit"
+            "submitButton": "Submit",
+            "failedMessage": "Please fill in all fields",
+            "successMessage": "You have been successfully subscribed"
         },
         "legend": {
             "title": "Legend",
