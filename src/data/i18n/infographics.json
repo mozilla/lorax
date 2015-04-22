@@ -888,25 +888,29 @@
         }
     },
     "platformIndependence": {
-        "header": "Developers that target Mobile Web vs. Native platform",
-        "subheader": "Percentage per Q3 of 2014",
+        "header": "Developers target walled gardens rather than the Web",
+        "subheader": "Percentage of developers using each mobile platform.",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Vision Mobile, 1st quarter 2015",
+            "src": "http://www.developereconomics.com/the-app-economy-consolidates-before-the-next-gold-rush/"
         },
         "dataPoints": {
             "percentOfUsers": [
                 {
-                    "type": "Mobile",
-                    "value": 15
-                },
-                {
                     "type": "Android",
-                    "value": 30
+                    "value": 0.71
                 },
                 {
                     "type": "iOS",
-                    "value": 49
+                    "value": 0.54
+                },
+                {
+                    "type": "Windows Phone",
+                    "value": 0.30
+                },
+                {
+                    "type": "Web on mobile",
+                    "value": 0.25
                 }
             ]
         }
