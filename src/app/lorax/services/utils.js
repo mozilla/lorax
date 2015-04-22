@@ -26,6 +26,8 @@ define(function () {
         function barChart() {
 
             var yAxisFormat;
+            var xGrid = true;
+            var yGrid = true;
             var margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
             var width = 960;
@@ -57,6 +59,14 @@ define(function () {
                      .append('g')
                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+                    var gridConfig = {
+                        svg: svg,
+                        innerWidth: innerWidth,
+                        innerHeight: innerHeight,
+                        xGrid: xGrid,
+                        yGrid: yGrid
+                    };
+
                     svg.append('g')
                         .attr('class', 'x axis')
                         .attr('transform', 'translate(0,' + innerHeight + ')')
@@ -65,11 +75,28 @@ define(function () {
                     d3.select('.x')
                       .selectAll('.tick text')
                       .attr('y', '5')
-                      .attr('x', '-25');
+                      .attr('x', '-35');
 
                     svg.append('g')
                         .attr('class', 'y axis')
                         .call(yAxis);
+
+                    if (xGrid) {
+                        svg.append('g')
+                            .attr('class', 'grid')
+                            .attr('transform', 'translate(0,' + innerHeight + ')')
+                            .style('opacity', '0.1')
+                            .call(xAxis.tickSize(-innerHeight, 0, 0)
+                                .tickFormat(''));
+                    }
+
+                    if(yGrid) {
+                        svg.append('g')
+                            .attr('class', 'grid')
+                            .style('opacity', '0.1')
+                            .call(yAxis.tickSize(-innerWidth, 0, 0)
+                                .tickFormat(''));
+                    }
 
                     svg.selectAll('.bar')
                         .data(data)
@@ -85,6 +112,18 @@ define(function () {
             chart.yAxisFormat = function(value) {
                 if (!arguments.length) return yAxisFormat;
                 yAxisFormat = value;
+                return chart;
+            }
+
+            chart.yGrid = function(value) {
+                if (!arguments.length) return yGrid;
+                yGrid = value;
+                return chart;
+            }
+
+            chart.xGrid = function(value) {
+                if (!arguments.length) return xGrid;
+                xGrid = value;
                 return chart;
             }
 

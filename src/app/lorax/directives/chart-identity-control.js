@@ -65,10 +65,11 @@ define(['jquery', 'd3'], function ($, d3) {
       var graphData = [];
 
       var chart = controller._utilsService.barChart()
-        .margin({ top: 0, right: 30, bottom: 50, left: 70 })
+        .margin({ top: 0, right: 30, bottom: 70, left: 70 })
         .width(width)
         .height(height)
-        .yAxisFormat(d3.format("%"));
+        .yAxisFormat(d3.format("%"))
+        .yGrid(false);
 
       // transform the raw data into what the below function expects
       for (var i = 0, l = marketShare.length; i < l; i++) {
