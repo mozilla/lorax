@@ -267,40 +267,40 @@
     },
     "digitalIdentities": {
         "header": "Market share of social login providers",
-        "subheader": "Percent per Q3 of 2014",
+        "subheader": "Q3 2014",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Janrain",
+            "src": "http://janrain.com/blog/social-login-trends-q3-2014/"
         },
         "dataPoints": {
             "marketShare": [
                 {
                     "company": "Other",
-                    "value": 5
+                    "value": ".05"
                 },
                 {
                     "company": "LinkedIn",
-                    "value": 3
+                    "value": ".03"
                 },
                 {
                     "company": "Yahoo",
-                    "value": 4
+                    "value": ".04"
                 },
                 {
                     "company": "Microsoft",
-                    "value": 2
+                    "value": ".02"
                 },
                 {
                     "company": "Twitter",
-                    "value": 7
+                    "value": ".07"
                 },
                 {
                     "company": "Google",
-                    "value": 34
+                    "value": ".34"
                 },
                 {
                     "company": "Facebook",
-                    "value": 45
+                    "value": ".46"
                 }
             ]
         }
