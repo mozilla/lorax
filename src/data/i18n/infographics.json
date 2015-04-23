@@ -120,9 +120,9 @@
                 }
             ],
             "labels": {
-                "spokenLanguages": "Internetpopulation",
+                "spokenLanguages": "Internet population",
                 "vs": "vs",
-                "internetLanguages": "Internetcontent"
+                "internetLanguages": "Internet content"
             }
         }
     },
