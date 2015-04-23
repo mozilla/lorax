@@ -1008,53 +1008,61 @@
         }
     },
     "concentrationOfPower": {
-        "header": "Revenue by top internet companies vs. countries",
-        "subheader": "Total reserves in US$ for 2013",
+        "header": "Internet giants, richer than nations?",
+        "subheader": "Cash and international reserves in billion US$, 2014.",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Company securities filings (incl. cash equivalents and marketable securities), IMF (total reserves, minus gold)",
+            "src": "http://data.imf.org/?sk=71A7064C-DC6B-4023-926E-CF2B5E182CD7"
         },
         "dataPoints": {
             "totalRevenue": [
                 {
                     "name": "Apple",
-                    "amount": 155,
-                    "tech": true
+                    "amount": 155
                 },
                 {
-                    "name": "Italy",
-                    "amount": 146,
-                    "tech": false
+                    "name": "United States",
+                    "amount": 119
                 },
                 {
-                    "name": "United Kingdom",
-                    "amount": 104,
-                    "tech": false
+                    "name": "Indonesia",
+                    "amount": 109
                 },
                 {
                     "name": "Microsoft",
-                    "amount": 89,
-                    "tech": true
-                },
-                {
-                    "name": "Philippines",
-                    "amount": 83,
-                    "tech": false
+                    "amount": 89
                 },
                 {
                     "name": "Canada",
-                    "amount": 72,
-                    "tech": false
+                    "amount": 74
+                },
+                {
+                    "name": "Germany",
+                    "amount": 62
                 },
                 {
                     "name": "Google",
-                    "amount": 62,
-                    "tech": true
+                    "amount": 62
                 },
                 {
                     "name": "South Africa",
-                    "amount": 50,
-                    "tech": false
+                    "amount": 44
+                },
+                {
+                    "name": "Argentina",
+                    "amount": 29
+                },
+                {
+                    "name": "Amazon",
+                    "amount": 14
+                },
+                {
+                    "name": "Pakistan",
+                    "amount": 12
+                },
+                {
+                    "name": "Mauritius",
+                    "amount": 4
                 }
             ]
         }

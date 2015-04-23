@@ -14,8 +14,7 @@ define(['jquery', 'd3'], function ($, d3) {
             replace: true,
             scope: true,
             controller: ChartConcentrationPowerController,
-            link: ChartConcentrationPowerLinkFn,
-            templateUrl: '/app/lorax/directives/chart-concentration-power.tpl.html'
+            link: ChartConcentrationPowerLinkFn
         };
     };
 
@@ -26,28 +25,12 @@ define(['jquery', 'd3'], function ($, d3) {
     var ChartConcentrationPowerController = function (
         $scope,
         $timeout,
-        pubSubService,
-        windowService
+        utilsService
         )
     {
         this._$scope = $scope;
         this._$timeout = $timeout;
-        this._pubSubService = pubSubService;
-        this._windowService = windowService;
-
-        var infographic = $scope.modalIssue.issue.getInfographic();
-        this._data = infographic.getDataPoints().totalRevenue;
-
-        $scope.revenue = {
-            data: this._data
-        };
-
-        this._stackMultipliers = {
-            'small': 0.85,
-            'medium': 1.65,
-            'large': 1.65,
-            'xlarge': 1.65
-        };
+        this._utilsService = utilsService;
     };
 
     /**
@@ -57,8 +40,7 @@ define(['jquery', 'd3'], function ($, d3) {
     ChartConcentrationPowerController.$inject = [
         '$scope',
         '$timeout',
-        'pubSubService',
-        'windowService'
+        'utilsService'
     ];
 
     /**
@@ -69,32 +51,34 @@ define(['jquery', 'd3'], function ($, d3) {
      * @param {object} controller Controller reference.
      */
     var ChartConcentrationPowerLinkFn = function (scope, iElem, iAttrs, controller) {
-        var createStacks = function () {
-            var $stacks = $('.concentration-power__stacks');
+        controller._$timeout(function() {
 
-            // clear stacks
-            $stacks.html('');
+          var $modal =  $('#modal-issue');
 
-            $stacks.each(function (idx) {
-                var $this = $(this);
-                var length = controller._data[idx].amount;
-                var numBars = Math.round(length/5) *
-                    controller._stackMultipliers[controller._windowService.breakpoint()];
+          var graphWidth = $('.infographic__wrapper div', $modal).width();
+          var width = Math.round(graphWidth / 1.2);
+          var height = Math.round(graphWidth / 1.5);
 
-                for (var i = 0; i < numBars; i++) {
-                    $this.append('<div class="concentration-power__stacks-item"></div>');
-                }
-            });
-        };
+          var infographic = scope.modalIssue.issue.getInfographic();
+          var totalRevenue = infographic.getDataPoints().totalRevenue;
+          var graphData = [];
 
-        // init stacks
-        controller._$timeout(createStacks);
+          var chart = controller._utilsService.barChart()
+            .margin({ top: 0, right: 30, bottom: 70, left: 70 })
+            .width(width)
+            .height(height)
+            .yGrid(false);
 
-        // reinit on breakpoint change
-        controller._pubSubService.subscribe(
-            'windowService.breakpoint',
-            createStacks
-        );
+          // transform the raw data into what the below function expects
+          for (var i = 0, l = totalRevenue.length; i < l; i++) {
+            graphData.push([totalRevenue[i].name, totalRevenue[i].amount]);
+          }
+
+          var selection = d3.select('.infographic__wrapper div', $modal);
+          // draw the chart
+          var chart = selection.datum(graphData).call(chart);
+
+        }.bind(controller));
     };
 
     return ChartConcentrationPowerDirective;
