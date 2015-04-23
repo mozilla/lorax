@@ -1,6 +1,7 @@
 /**
  * @fileOverview Common Languages Chart directive
  * @author <a href='mailto:chris@work.co'>Chris James</a>
+ * @author <a href='mailto:sneethling@mozilla.com'>Schalk Neethling</a>
  */
 define(['jquery', 'd3'], function ($, d3) {
     'use strict';
@@ -14,8 +15,7 @@ define(['jquery', 'd3'], function ($, d3) {
             replace: true,
             scope: true,
             controller: ChartCommonLanguagesController,
-            link: ChartCommonLanguagesLinkFn,
-            templateUrl: '/app/lorax/directives/chart-common-languages.tpl.html'
+            link: ChartCommonLanguagesLinkFn
         };
     };
 
@@ -25,19 +25,12 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartCommonLanguagesController = function (
         $scope,
-        $timeout
+        $timeout,
+        utilsService
     ) {
         this._$scope = $scope;
         this._$timeout = $timeout;
-
-        var infographic = this._$scope.modalIssue.issue.getInfographic();
-        this._data = infographic.getDataPoints().commonLanguages;
-        this._localeData = infographic.getDataPoints().labels;
-
-        $scope.languages = {
-            data: this._data,
-            localeData: this._localeData
-        };
+        this._utilsService = utilsService;
     };
 
     /**
@@ -46,7 +39,8 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     ChartCommonLanguagesController.$inject = [
         '$scope',
-        '$timeout'
+        '$timeout',
+        'utilsService'
     ];
 
     /**
@@ -59,62 +53,35 @@ define(['jquery', 'd3'], function ($, d3) {
     var ChartCommonLanguagesLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._$timeout(function() {
 
+            var $modal =  $('#modal-issue');
+
+            var margin = { top: 20, right: 20, bottom: 70, left: 40 };
+            var graphWidth = $('.infographic__wrapper div', $modal).width();
+            var width = Math.round(graphWidth / 1.2) - margin.right - margin.left;
+            var height = Math.round(graphWidth / 1.5) - margin.top - margin.bottom;
+
             var infographic = scope.modalIssue.issue.getInfographic();
-            var data = infographic.getDataPoints().commonLanguages;
-            var chart = d3.selectAll('.common-languages-content');
+            var languages = infographic.getDataPoints().commonLanguages;
+            var graphData = [];
 
-            var maxPercent = infographic.getDataPoints().topPercentageOfLanguages;
-            var maxScale = maxPercent + 5;
+            var chart = controller._utilsService.groupedBarChart()
+                .width(width)
+                .height(height)
+                .margin(margin)
+                .colorArray(['#000','#fff'])
+                .yAxisFormat(d3.format('%'));
 
-            var topLanguages = chart.selectAll('div')
-                .data(data)
-                .enter()
-                .append('tr');
+            languages.forEach(function(d) {
+                var lang = {
+                    internet_content: d.data[0],
+                    internet_population: d.data[1],
+                    language: d.language
+                };
+                graphData.push(lang);
+            });
 
-            topLanguages.append('td')
-                .text(function (d) {
-                    return d.spoken.pct + '%';
-                });
-
-            topLanguages.append('td')
-                .append('div')
-                    .attr('class', 'common-languages-bar cf')
-                    .append('div')
-                        .attr('class', 'common-languages-bar__inner common-languages-bar__inner--spoken')
-                        .attr('style', function (d) {
-                            var w = (d.spoken.pct / maxScale) * 100;
-                            return 'width: ' + w + '%';
-                        });
-
-            topLanguages.append('td')
-                .text(function (d) {
-                    return d.spoken.lang;
-                });
-
-            topLanguages.append('td')
-                .text(function (d, i) {
-                    return i + 1;
-                });
-
-            topLanguages.append('td')
-                .text(function (d) {
-                    return d.internet.lang;
-                });
-
-            topLanguages.append('td')
-                .append('div')
-                    .attr('class', 'common-languages-bar')
-                    .append('div')
-                        .attr('class', 'common-languages-bar__inner common-languages-bar__inner--internet')
-                        .attr('style', function (d) {
-                            var w = (d.internet.pct / maxScale) * 100;
-                            return 'width: ' + w + '%';
-                        });
-
-            topLanguages.append('td')
-                .text(function (d) {
-                    return d.internet.pct + '%';
-                });
+            var selection = d3.select('.infographic__wrapper div', $modal);
+            selection.datum(graphData).call(chart);
         });
     };
 
