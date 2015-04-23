@@ -57,8 +57,8 @@ define(['jquery', 'd3'], function ($, d3) {
       var $modal =  $('#modal-issue');
 
       var graphWidth = $('.infographic__wrapper div', $modal).width();
-      var width = graphWidth;
-      var height = graphWidth;
+      var width = Math.round(graphWidth / 1.5);
+      var height = Math.round(graphWidth / 1.5);
 
       var infographic = scope.modalIssue.issue.getInfographic();
       var marketShare = infographic.getDataPoints().marketShare;

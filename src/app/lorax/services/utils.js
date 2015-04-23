@@ -75,7 +75,7 @@ define(function () {
                     d3.select('.x')
                       .selectAll('.tick text')
                       .attr('y', '5')
-                      .attr('x', '-35');
+                      .attr('x', '-60');
 
                     svg.append('g')
                         .attr('class', 'y axis')
