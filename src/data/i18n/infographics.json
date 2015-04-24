@@ -69,120 +69,60 @@
         }
     },
     "localization": {
-        "header": "Languages on the Web",
-        "subheader": "Percent of users",
+        "header": "Top 10 languages on the Internet",
+        "subheader": "Share of Internet content languages respective to Internet population.",
         "source": {
-            "name": "",
-            "src": ""
+            "name": "Internet World Stats",
+            "src": "http: //www.internetworldstats.com/"
         },
         "dataPoints": {
             "topPercentageOfLanguages": 26,
             "commonLanguages": [
                 {
-                    "spoken": {
-                        "lang": "Chinese",
-                        "pct": 26
-                    },
-                    "internet": {
-                        "lang": "English",
-                        "pct": 26
-                    }
+                    "language": "English",
+                    "data": [0.56,0.29]
                 },
                 {
-                    "spoken": {
-                        "lang": "Spanish",
-                        "pct": 20
-                    },
-                    "internet": {
-                        "lang": "Chinese",
-                        "pct": 20
-                    }
+                    "language": "Chinese",
+                    "data": [0.03,0.23]
                 },
                 {
-                    "spoken": {
-                        "lang": "English",
-                        "pct": 16
-                    },
-                    "internet": {
-                        "lang": "Spanish",
-                        "pct": 16
-                    }
+                    "language": "Spanish",
+                    "data": [0.05,0.08]
                 },
                 {
-                    "spoken": {
-                        "lang": "Hindi",
-                        "pct": 14
-                    },
-                    "internet": {
-                        "lang": "Japanese",
-                        "pct": 14
-                    }
+                    "language": "Arabic",
+                    "data": [0.01,0.05]
                 },
                 {
-                    "spoken": {
-                        "lang": "Arabic",
-                        "pct": 12
-                    },
-                    "internet": {
-                        "lang": "Portuguese",
-                        "pct": 12
-                    }
+                    "language": "Portuguese",
+                    "data": [0.02,0.04]
                 },
                 {
-                    "spoken": {
-                        "lang": "Portuguese",
-                        "pct": 10
-                    },
-                    "internet": {
-                        "lang": "German",
-                        "pct": 10
-                    }
+                    "language": "Japanese",
+                    "data": [0.05,0.04]
                 },
                 {
-                    "spoken": {
-                        "lang": "Bengali",
-                        "pct": 9
-                    },
-                    "internet": {
-                        "lang": "Arabic",
-                        "pct": 9
-                    }
+                    "language": "Russian",
+                    "data": [0.06,0.03]
                 },
                 {
-                    "spoken": {
-                        "lang": "Russian",
-                        "pct": 8
-                    },
-                    "internet": {
-                        "lang": "French",
-                        "pct": 8
-                    }
+                    "language": "German",
+                    "data": [0.06,0.03]
                 },
                 {
-                    "spoken": {
-                        "lang": "Japanese",
-                        "pct": 5
-                    },
-                    "internet": {
-                        "lang": "Russian",
-                        "pct": 5
-                    }
+                    "language": "French",
+                    "data": [0.04,0.03]
                 },
                 {
-                    "spoken": {
-                        "lang": "Punjabi",
-                        "pct": 3
-                    },
-                    "internet": {
-                        "lang": "Korean",
-                        "pct": 3
-                    }
+                    "language": "Malay",
+                    "data": [0,0.03]
                 }
             ],
             "labels": {
-                "spokenLanguages": "Spoken Languages",
+                "spokenLanguages": "Internet population",
                 "vs": "vs",
-                "internetLanguages": "Internet Languages"
+                "internetLanguages": "Internet content"
             }
         }
     },
