@@ -169,7 +169,7 @@ define(function () {
                     if(yGrid) {
                         svg.append('g')
                             .attr('class', 'grid')
-                            .style('opacity', '0.3')
+                            .style('opacity', '0.1')
                             .call(yAxisLabels.tickSize(-width, 0, 0)
                                 .tickFormat(''));
                     }
