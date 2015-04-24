@@ -9,18 +9,19 @@
       <form id="enter-email" class="keep-informed__form" method="post" ng-submit="modalEmail.onFormSubmit()">
         <div class="enter-email__user-input cf">
           <div class="enter-email__email">
-            <label for="email" class="is-vishidden">{{::modalEmail.content.label}}</label>
-            <input name="email" type="email" id="email" autocorrect="off" autocapitalize="off" spellcheck="false" required aria-required="true" placeholder="{{::modalEmail.content.label}}" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()">
+            <label for="email" class="vhide">{{::modalEmail.content.label}}</label>
+            <input name="email" type="email" id="email" autocorrect="off" autocapitalize="off" spellcheck="false" required aria-required="true" placeholder="{{::modalEmail.content.label}}" ng-model="modalEmail.email" ng-change="modalEmail.onInputChange()" />
           </div>
           <div class="enter-email__country">
-            <select name="country" ng-model="modalEmail.country">
+            <label for="select_country" class="vhide">{{::modalEmail.content.countrySelect}}</label>
+            <select name="country" id="select_country" ng-model="modalEmail.country">
               <option ng-repeat="country in ::modalEmail.countries" ng-selected="(country.id=='USA') ? 'selected' : ''" value="{{country.id}}">{{country.displayName}}</option>
             </select>
           </div>
         </div>
         <div class="enter-email__terms">
-          <input name="terms" type="checkbox" id="check-terms" ng-model="modalEmail.terms" ng-change="modalEmail.onInputChange()">
-          <p class="keep-informed__body-text">{{::modalEmail.content.terms}}</p>
+          <input name="terms" type="checkbox" id="check-terms" ng-model="modalEmail.terms" ng-change="modalEmail.onInputChange()" />
+          <label for="check-terms" class="keep-informed__body-text">{{::modalEmail.content.terms}}</label>
         </div>
         <input type="submit" class="enter-email__submit btn" value="{{::modalEmail.content.submitButton}}" ng-show="modalEmail.showSubmitBtn">
         <div class="enter-email__failed btn" ng-show="modalEmail.showFailedBtn">{{::modalEmail.content.failedMessage}}</div>
