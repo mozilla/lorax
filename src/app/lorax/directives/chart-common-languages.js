@@ -55,7 +55,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
             var $modal =  $('#modal-issue');
 
-            var margin = { top: 20, right: 20, bottom: 70, left: 40 };
+            var margin = { top: 50, right: 20, bottom: 30, left: 95 };
             var graphWidth = $('.infographic__wrapper div', $modal).width();
             var width = Math.round(graphWidth / 1.2) - margin.right - margin.left;
             var height = Math.round(graphWidth / 1.5) - margin.top - margin.bottom;
@@ -64,12 +64,11 @@ define(['jquery', 'd3'], function ($, d3) {
             var languages = infographic.getDataPoints().commonLanguages;
             var graphData = [];
 
-            var chart = controller._utilsService.groupedBarChart()
+            var chart = controller._utilsService.simpleGroupedBarChart()
                 .width(width)
                 .height(height)
                 .margin(margin)
-                .colorArray(['#000','#fff'])
-                .yAxisFormat(d3.format('%'));
+                .colorArray(['#000', '#fff']);
 
             languages.forEach(function(d) {
                 var lang = {

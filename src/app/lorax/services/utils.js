@@ -39,6 +39,221 @@ define(function () {
             return words.join(' ');
          }
 
+         /**
+          * Draws a legend based on the content of the chart
+          * @param {object} config - Config object with parameters required to draw
+          * the legend. Example:
+          * {
+          *   svg: svg,
+          *   categories: categories,
+          *   width: width,
+          *   color: color
+          * }
+          */
+         function drawLegend(config) {
+             var legend = config.svg.selectAll('.legend')
+                 .data(config.categories.slice().reverse())
+               .enter().append('g')
+                 .attr('class', 'legend')
+                 .attr('transform', function(d, i) { return 'translate(0,' + -((i + 1) * 20) + ')'; });
+
+             legend.append('rect')
+                 .attr('x', config.width - 18)
+                 .attr('width', 18)
+                 .attr('height', 18)
+                 .style('fill', config.color);
+
+             legend.append('text')
+                 .attr('x', config.width - 24)
+                 .attr('y', 9)
+                 .attr('dy', '.35em')
+                 .style('text-anchor', 'end')
+                 .text(function(d) { return titleCase(d,'_'); });
+         }
+
+         /**
+          * Draws a simple bar chart with the values of each bar displayed inside
+          * the individual bars. Bars are also grouped by topic, for example, by
+          * language
+          */
+         function simpleGroupedBarChart() {
+
+            var xGrid = true;
+            var yGrid = true;
+
+            var addLegend = true;
+            var colorArray = ['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00'];
+            var fontColorArray = ['#fff', '#000'];
+
+            var margin = { top: 20, right: 20, bottom: 30, left: 40 };
+            var width = 960 - margin.left - margin.right;
+            var height = 500 - margin.top - margin.bottom;
+            var barHeight = 20;
+
+            /**
+             * The main chart function.
+             * @param {object} selection - A non SVG d3 selection of the element into
+             * which this chart will be rendered.
+             */
+            function chart(selection) {
+
+                var y0 = d3.scale.ordinal()
+                    .rangeRoundBands([0, height], .1);
+
+                var y1 = d3.scale.ordinal();
+
+                var x = d3.scale.linear()
+                    .range([0, width]);
+
+                var color = d3.scale.ordinal()
+                    .range(colorArray);
+
+                var yAxisLabels = d3.svg.axis()
+                    .scale(y0)
+                    .orient('left');
+
+                selection.each(function(data) {
+                    var categories = d3.keys(data[0]).filter(function(key) { return key !== 'language'});
+
+                    data.forEach(function(d) {
+                        d.percentages = categories.map(function(name) { return {name: name, value: +d[name]}; });
+                    });
+
+                    y0.domain(data.map(function(d) { return d.language; }));
+                    y1.domain(categories).rangeRoundBands([0, y0.rangeBand()]);
+                    x.domain([0, d3.max(data, function(d) { return d3.max(d.percentages, function(d) { return d.value; }); })]);
+
+                    var svg = d3.select(this).append('svg')
+                        .attr('width', width + margin.left + margin.right)
+                        .attr('height', height + margin.top + margin.bottom)
+                        .attr('class', 'simple-grouped')
+                      .append('g')
+                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+                    svg.append('g')
+                        .attr('class', 'y axis')
+                        .call(yAxisLabels);
+
+                    var category = svg.selectAll('.category-items')
+                        .data(data)
+                      .enter().append('g')
+                        .attr('class', 'g')
+                        .attr('transform', function(d, i) {
+                            return 'translate(0,' + y0(d.language) + ')';
+                        });
+
+                    category.selectAll('rect')
+                        .data(function(d) { return d.percentages; })
+                      .enter().append('rect')
+                        .attr('width', function(d) { return x(d.value); })
+                        .attr('height', barHeight - 1)
+                        .attr('y', function(d) { return y1(d.name) })
+                        .attr('fill', function(d) { return color(d.name); });
+
+                    category.selectAll('text')
+                        .data(function(d) { return d.percentages; })
+                      .enter().append('text')
+                        .attr('x', function(d) {
+                            // convert the decimal to a percentage value
+                            var percentageValue = Math.round(d.value * 100);
+                            return percentageValue < 2 ? x(d.value) + (barHeight - 2) : x(d.value) - 5; })
+                        .attr('y', function(d) { return y1(d.name) + (barHeight / 2) })
+                        .attr('dy', '.35em')
+                        .style('fill', function(d, i) { return fontColorArray[i % 2]; })
+                        .text(function(d) {
+                            // store the format so we can use it as a function.
+                            var format  = d3.format('%');
+                            return format(d.value);
+                    });
+
+                    if(yGrid) {
+                        svg.append('g')
+                            .attr('class', 'grid')
+                            .style('opacity', '0.3')
+                            .call(yAxisLabels.tickSize(-width, 0, 0)
+                                .tickFormat(''));
+                    }
+
+                    if (addLegend) {
+                        var config = {
+                            svg: svg,
+                            categories: categories,
+                            width: width,
+                            color: color
+                        };
+                        drawLegend(config);
+                    }
+                });
+            }
+
+            /**
+             * By default a legend will be drawn but, the user can
+             * override this be calling addLegend and passing false
+             */
+            chart.addLegend = function(value) {
+                if (!arguments.length) return addLegend
+                addLegend = value;
+                return chart;
+            }
+
+            /**
+             * Allows a user to override the colors used for bars. This is
+             * specified as an array of hex color values.
+             */
+            chart.colorArray = function(value) {
+                if (!arguments.length) return colorArray;
+                colorArray = value;
+                return chart;
+            }
+
+            /**
+             * Allows a user to override the colors used for text labels drawn inside the
+             * bars. This is specified as an array of two hex color values.
+             */
+            chart.fontColorArray = function(value) {
+                if (!arguments.length) return fontColorArray;
+                fontColorArray = value;
+                return chart;
+            }
+
+            /**
+             * Returns the default margins or the margins specified
+             * by the user. This is specified as an object of the form
+             * { top: 20, right: 20, bottom: 30, left: 40 }
+             */
+            chart.margin = function(value) {
+                if (!arguments.length) return margin;
+                margin = value;
+                return chart;
+            }
+
+            /**
+             * Returns the default width or that specified by the user.
+             * It is important to note that the width specified should be calculated
+             * as follows before being passed:
+             * width = fullWidth - margin.left - margin.right;
+             */
+            chart.width = function(value) {
+                if (!arguments.length) return width;
+                width = value;
+                return chart;
+            }
+
+            /**
+             * Returns the default height or that specified by the user.
+             * It is important to note that the height specified should be calculated
+             * as follows before being passed:
+             * height = fullHeight - margin.top - margin.bottom;
+             */
+            chart.height = function(value) {
+                if (!arguments.length) return height;
+                height = value;
+                return chart;
+            }
+
+            return chart;
+        }
+
         /**
          * Based on Mike Bostock's grouped bar chart - http://bl.ocks.org/mbostock/3887051
          * This draws a grouped bar chart where data related to an item in a category are
@@ -150,7 +365,7 @@ define(function () {
                         .attr('class', 'y axis')
                         .call(yAxis);
 
-                    var state = svg.selectAll('.chart-label')
+                    var state = svg.selectAll('.category-items')
                         .data(data)
                       .enter().append('g')
                         .attr('class', 'g')
@@ -375,6 +590,7 @@ define(function () {
         }
 
         return {
+            simpleGroupedBarChart: simpleGroupedBarChart,
             barChart: barChart,
             groupedBarChart: groupedBarChart,
             getURLParameter: getURLParameter
