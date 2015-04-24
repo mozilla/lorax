@@ -88,7 +88,7 @@ define(function () {
             var margin = { top: 20, right: 20, bottom: 30, left: 40 };
             var width = 960 - margin.left - margin.right;
             var height = 500 - margin.top - margin.bottom;
-            var barHeight = 20;
+            var barHeight = 15;
 
             /**
              * The main chart function.
@@ -98,7 +98,7 @@ define(function () {
             function chart(selection) {
 
                 var y0 = d3.scale.ordinal()
-                    .rangeRoundBands([0, height], .1);
+                    .rangeRoundBands([0, height], .25);
 
                 var y1 = d3.scale.ordinal();
 
