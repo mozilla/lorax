@@ -7,4 +7,15 @@
       <a href="{{::section.linkUrl}}" ng-if="section.linkCopy" class="accessible-section-link">{{::section.linkCopy}}</a>
     </div>
   </section>
+  <!-- angular does not have an if..else so, this is the next best thing -->
+  <ul class="source" ng-switch on="{{::accessible.infographic._source}}">
+    <li ng-switch-when="{{::accessible.infographic._source.src}}">
+      <span>{{::accessible.infographic._source.label}}</span>
+      <a href="{{::accessible.infographic._source.src}}">{{::lineGraph.infographic._source.name}}</a>
+    </li>
+    <li ng-switch-default>
+      <span>{{::accessible.infographic._source.label}}</span>
+      {{::accessible.infographic._source.name}}
+    </li>
+  </ul>
 </div>

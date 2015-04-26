@@ -31,6 +31,7 @@ define(function () {
         this._data = infographic.getDataPoints().sections;
 
         $scope.accessible = {
+            infographic: infographic,
             data: this._data
         };
     };

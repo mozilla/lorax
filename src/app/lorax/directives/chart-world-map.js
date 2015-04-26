@@ -26,7 +26,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         $scope,
         $timeout,
         dataService,
-        windowService
+        windowService,
+        utilsService
     )
     {
         this._$scope = $scope;
@@ -34,6 +35,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         this._windowService = windowService;
         this._dataService = dataService;
         this._getMap = this._dataService.getMap();
+        this._utilsService = utilsService;
     };
 
     /**
@@ -372,7 +374,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         '$scope',
         '$timeout',
         'dataService',
-        'windowService'
+        'windowService',
+        'utilsService'
     ];
 
     /**

@@ -3,8 +3,9 @@
         "header": "NEEDS CONTENT PLEASE",
         "subheader": "NEEDS CONTENT PLEASE",
         "source": {
-            "name": "Freedom House",
-            "src": "http://test.com"
+            "label": "source: ",
+            "name": "ITU World Telecommunication / ICT Indicators Database",
+            "src": ""
         },
         "dataPoints": {
             "countryData": {
@@ -39,7 +40,8 @@
         "header": "NEEDS CONTENT",
         "subheader": "NEEDS CONTENT",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "ITU, ILO, analysis by Mozilla",
             "src": ""
         },
         "dataPoints": {
@@ -72,8 +74,9 @@
         "header": "Top 10 languages on the Internet",
         "subheader": "Share of Internet content languages respective to Internet population.",
         "source": {
+            "label": "source: ",
             "name": "Internet World Stats",
-            "src": "http: //www.internetworldstats.com/"
+            "src": "http://www.internetworldstats.com/"
         },
         "dataPoints": {
             "topPercentageOfLanguages": 26,
@@ -130,8 +133,9 @@
         "header": "Making content more accessible",
         "subheader": "Types of impairments and assorted strategies to navigate Web content.",
         "source": {
-            "name": "Wikipedia",
-            "src": "http://en.wikipedia.org/wiki/Computer_accessibility#Visual_impairment"
+            "label": "source: ",
+            "name": "",
+            "src": ""
         },
         "dataPoints": {
             "sections": [
@@ -174,6 +178,7 @@
         "header": "Connection speed by country",
         "subheader": "Average Mbit/s",
         "source": {
+            "label": "source: ",
             "name": "Akamai State of the Internet 2014",
             "src": "http://www.akamai.com/dl/akamai/akamai-soti-q114.pdf?WT.mc_id=soti_Q114"
         },
@@ -209,6 +214,7 @@
         "header": "Market share of social login providers",
         "subheader": "Q3 2014",
         "source": {
+            "label": "source: ",
             "name": "Janrain",
             "src": "http://janrain.com/blog/social-login-trends-q3-2014/"
         },
@@ -249,6 +255,7 @@
         "header": "Do key online services allow data portability?",
         "subheader": "Ability to export user data from a given Internet service or application.",
         "source": {
+            "label": "source: ",
             "name": "Analysis by Mozilla",
             "src": ""
         },
@@ -315,7 +322,8 @@
         "header": "Top 15 Data Trackers",
         "subheader": "Percentage of User History",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "McKinsey, WEF, 2014",
             "src": ""
         },
         "dataPoints": {
@@ -408,8 +416,9 @@
         "header": "NEEDS CONTENT",
         "subheader": "NEEDS CONTENT",
         "source": {
-            "name": "",
-            "src": ""
+            "label": "source: ",
+            "name": "Freedom House",
+            "src": "https://freedomhouse.org/report/freedom-net/freedom-net-2014"
         },
         "dataPoints": {
             "countryData": {
@@ -440,7 +449,8 @@
         "header": "Surveillance as a Business Model",
         "subheader": "Vicious cycle of data collection",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "Mozilla",
             "src": ""
         },
         "dataPoints": {
@@ -484,7 +494,8 @@
         "header": "The Different Types of Cyber-Threats",
         "subheader": "Vulnerabilities, Malware, and Exploits",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "Olejnik, Minh-Dung and Castelluccia, 2013",
             "src": ""
         },
         "dataPoints": {
@@ -561,7 +572,8 @@
         "header": "News headlines post-iCloud leaks",
         "subheader": "International News Sources",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "Mozilla",
             "src": ""
         },
         "dataPoints": {
@@ -613,8 +625,9 @@
         "header": "NEEDS CONTENT",
         "subheader": "Needs more content.",
         "source": {
-            "name": "",
-            "src": ""
+            "label": "source: ",
+            "name": "Pew Research Center",
+            "src": "http://www.pewinternet.org/data-trend/social-media/social-media-use-by-age-group/"
         },
         "dataPoints": {
             "cyberBullyingData": {
@@ -694,7 +707,8 @@
         "header": "Operating system (OS) vs. browser source usage",
         "subheader": "Percent by Year",
         "source": {
-            "name": "",
+            "label": "source: ",
+            "name": "Strategy Analytics, analysis by Mozilla",
             "src": ""
         },
         "dataPoints": {
@@ -795,8 +809,9 @@
         "header": "Top 5 Internet Companies",
         "subheader": "by Revenue",
         "source": {
-            "name": "",
-            "src": ""
+            "label": "source: ",
+            "name": "Net Neutrality Map",
+            "src": "http://netneutralitymap.org/"
         },
         "dataPoints": {
             "countryData": {
@@ -831,8 +846,9 @@
         "header": "Developers target walled gardens rather than the Web",
         "subheader": "Percentage of developers using each mobile platform.",
         "source": {
+            "label": "source: ",
             "name": "Vision Mobile, 1st quarter 2015",
-            "src": "http://www.developereconomics.com/the-app-economy-consolidates-before-the-next-gold-rush/"
+            "src": "http://www.developereconomics.com/the-app-economy-consolidates-before-the-next-gold-rush"
         },
         "dataPoints": {
             "percentOfUsers": [
@@ -859,6 +875,7 @@
         "header": "Patent litigation is going through the roof",
         "subheader": "Number of patent cases filed in U.S. District Courts.",
         "source": {
+            "label": "source: ",
             "name": "United States Courts",
             "src": "http://www.uscourts.gov/Statistics.aspx"
         },
@@ -951,8 +968,9 @@
         "header": "Internet giants, richer than nations?",
         "subheader": "Cash and international reserves in billion US$, 2014.",
         "source": {
-            "name": "Company securities filings (incl. cash equivalents and marketable securities), IMF (total reserves, minus gold)",
-            "src": "http://data.imf.org/?sk=71A7064C-DC6B-4023-926E-CF2B5E182CD7"
+            "label": "source: ",
+            "name": "Company securities filings, IMF",
+            "src": ""
         },
         "dataPoints": {
             "totalRevenue": [

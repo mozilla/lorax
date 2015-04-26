@@ -36,6 +36,7 @@ define(['jquery'], function ($) {
         this._localeData = infographic.getDataPoints().labels;
 
         $scope.tracking = {
+            infographic: infographic,
             data: this._data,
             localeData: this._localeData
         };

@@ -20,6 +20,34 @@ define(function () {
         }
 
         /**
+         * Adds the source link(s) to the infographic container.
+         * @param {object} sourceData - The data for source
+         * @param {object} container - The container to append the source link to.
+         */
+         function addSource(sourceData, container) {
+             var ul = $('<ul />', {
+                 class: 'source'
+             });
+             var li = $('<li />');
+             var span = $('<span />', {
+                 text: sourceData.label
+             });
+             li.append(span);
+
+             // not all sources are linked
+             if (sourceData.src !== '') {
+                 li.append($('<a />', {
+                     href: sourceData.src,
+                     text: sourceData.name
+                 }));
+             } else {
+                 li.append(sourceData.name);
+             }
+             ul.append(li);
+             container.append(ul);
+         }
+
+        /**
          * Takes a string such as internet_population, and returns it in
          * title case, such as: Internet Population
          * @param {string} sentence - The sentence to convert to title case
@@ -590,6 +618,7 @@ define(function () {
         }
 
         return {
+            addSource: addSource,
             simpleGroupedBarChart: simpleGroupedBarChart,
             barChart: barChart,
             groupedBarChart: groupedBarChart,

@@ -13,4 +13,15 @@
 	<ul class="opensource__legend-browser">
 		<li ng-repeat="label in ::lineGraph.dataLabels.browser"><div></div>{{::label}}</li>
 	</ul>
+	<!-- angular does not have an if..else so, this is the next best thing -->
+  <ul class="source" ng-switch on="{{::lineGraph.infographic._source}}">
+    <li ng-switch-when="{{::lineGraph.infographic._source.src}}">
+      <span>{{::lineGraph.infographic._source.label}}</span>
+      <a href="{{::lineGraph.infographic._source.src}}">{{::lineGraph.infographic._source.name}}</a>
+    </li>
+    <li ng-switch-default>
+      <span>{{::lineGraph.infographic._source.label}}</span>
+      {{::lineGraph.infographic._source.name}}
+    </li>
+  </ul>
 </div>

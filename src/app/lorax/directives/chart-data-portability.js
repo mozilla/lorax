@@ -35,6 +35,7 @@ define(function() {
         this._localeData = infographic.getDataPoints().labels;
 
         $scope.dataStandards = {
+            infographic: infographic,
             data: this._data,
             localeData: this._localeData
         };

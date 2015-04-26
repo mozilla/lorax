@@ -56,7 +56,8 @@ define(['jquery', 'd3'], function ($, d3) {
             var $modal =  $('#modal-issue');
 
             var margin = { top: 50, right: 20, bottom: 30, left: 95 };
-            var graphWidth = $('.infographic__wrapper div', $modal).width();
+            var container = $('.infographic__wrapper div', $modal);
+            var graphWidth = container.width();
             var width = Math.round(graphWidth / 1.2) - margin.right - margin.left;
             var height = Math.round(graphWidth / 1.5) - margin.top - margin.bottom;
 
@@ -81,6 +82,11 @@ define(['jquery', 'd3'], function ($, d3) {
 
             var selection = d3.select('.infographic__wrapper div', $modal);
             selection.datum(graphData).call(chart);
+
+            // if there is a source for the infographic, add it.
+            if (infographic._source.name) {
+                controller._utilsService.addSource(infographic._source, container);
+            }
         });
     };
 
