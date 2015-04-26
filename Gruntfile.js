@@ -117,18 +117,20 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: '<%= config.src %>',
                     dest: '<%= config.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'CNAME',
-                        'robots.txt',
-                        'scripts/data/{,*/}*.{js,json}',
-                        'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
-                        'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',
-                        'data/**/*.json',
-                        '**/*.tpl.html',
-                        'index.html'
-                    ]
+                    src: ['**'],
+                    filter: 'isFile'
+                    // src: [
+                    //     '*.{ico,png,txt}',
+                    //     '.htaccess',
+                    //     'CNAME',
+                    //     'robots.txt',
+                    //     'scripts/data/{,*/}*.{js,json}',
+                    //     'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
+                    //     'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',
+                    //     'data/**/*.json',
+                    //     '**/*.tpl.html',
+                    //     'index.html'
+                    // ]
                 }]
             }
         },
@@ -302,6 +304,24 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip',
+                    level: 9
+                },
+                expand: true,
+                cwd: 'dist/',
+                dest: 'dist/',
+                src: [
+                  '**/*.css',
+                  '**/*.js',
+                  '**/*.eot',
+                  '**/*.svg',
+                  '**/*.ttf'
+                ]
+            }
         }
     });
 
@@ -335,7 +355,8 @@ module.exports = function (grunt) {
             'requirejs',
             'concat',
             'uglify:dist',
-            'usemin'
+            'usemin',
+            'compress:main'
         ]);
     });
 

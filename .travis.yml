@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "0.10"
+  - "0.12"
 cache:
   directories:
     - node_modules
@@ -9,10 +9,22 @@ cache:
 install:
   - npm install
   - bower install
-script: grunt build && grunt s3
+script: grunt build
 branches:
   only:
     - master
+deploy:
+    provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    skip_cleanup: true
+    bucket: lorax
+    endpoint: lorax.s3-website-us-west-2.amazonaws.com
+    region: us-west-2
+    local_dir: dist
+    detect_encoding: true
+    cache_control: "max-age=7200"
+    acl: public_read
 notifications:
   irc:
     channels:
