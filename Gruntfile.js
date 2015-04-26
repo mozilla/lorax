@@ -355,8 +355,8 @@ module.exports = function (grunt) {
             'requirejs',
             'concat',
             'uglify:dist',
-            'usemin',
-            'compress:main'
+            'usemin'
+            // 'compress:main'
         ]);
     });
 
