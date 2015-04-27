@@ -1,0 +1,43 @@
+.circle-chart-background {
+    position: relative;
+}
+.circle-chart-circle-container {
+    position: absolute;
+}
+p.circle-chart-details {
+    position: absolute;
+    width: 250px;
+    height: 220px;
+    .font-size(1.4rem);
+}
+.circle-chart-label {
+    position: absolute;
+    display: table;
+    background: rgba(0,0,0,0.7);
+    border-radius: 110px;
+    width: 110px;
+    height: 110px;
+    .transition(all 0.1s ease-in-out);
+    p {
+        display: table-cell;
+        color: #fff;
+        padding: 10px;
+        .font-size(1.2rem);
+        text-align: center;
+        vertical-align: middle;
+        span {
+            display: block;
+            margin-bottom: 3px;
+        }
+    }
+}
+.circle-chart-legend {
+    .reset-list();
+}
+.circle-chart-legend-square {
+    display: inline-block;
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}

@@ -25,6 +25,7 @@ define([
     'lorax/directives/chart-data-portability',
     'lorax/directives/chart-open-source',
     'lorax/directives/chart-surveillance',
+    'lorax/directives/chart-security',
     'lorax/directives/chart-data-tracking',
     'lorax/directives/chart-concentration-power',
     'lorax/directives/chart-public-trust',
@@ -73,6 +74,7 @@ define([
     ChartDataPortabilityDirective,
     ChartOpenSourceDirective,
     ChartSurveillanceDirective,
+    ChartSecurityDirective,
     ChartDataTrackingDirective,
     ChartConcentrationPowerDirective,
     ChartPublicTrustDirective,
@@ -201,6 +203,13 @@ define([
          * @method lorax/loraxApp~directive
          */
         .directive('loraxChartSurveillance', ChartSurveillanceDirective)
+
+        /**
+         * Injects {@link lorax/directives/ChartSecurityDirective}
+         * as 'ChartSecurityDirective'
+         * @method lorax/loraxApp~directive
+         */
+        .directive('loraxChartSecurity', ChartSecurityDirective)
 
         /**
          * Injects {@link lorax/directives/ChartDataTrackingDirective}

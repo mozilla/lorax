@@ -7,6 +7,7 @@ define(['d3'], function (d3) {
         this._header = data.header;
         this._subheader = data.subheader;
         this._dataPoints = data.dataPoints;
+        this._legend = data.legend;
         this._source = data.source;
     };
 
@@ -28,6 +29,10 @@ define(['d3'], function (d3) {
 
     InfographicModel.prototype.getDataPoints = function () {
         return this._dataPoints;
+    };
+
+    InfographicModel.prototype.getLegendLabels = function () {
+        return this._legend;
     };
 
     InfographicModel.prototype.getSourceName = function () {

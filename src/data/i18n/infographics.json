@@ -569,57 +569,82 @@
         }
     },
     "security": {
-        "header": "News headlines post-iCloud leaks",
-        "subheader": "International News Sources",
+        "header": "Understanding online security threats",
+        "subheader": "Classification and glossary of common threats.",
         "source": {
             "label": "source: ",
             "name": "Mozilla",
             "src": ""
         },
         "dataPoints": {
-            "newsSource": [
+            "security": [
                 {
-                    "headline": "Apple says it will add new iCloud security measures after celebrity hack",
-                    "logoUrl": "/images/cloud-security-nytimes.png",
-                    "inverted": false
+                    "name": "Phishing",
+                    "description": "A high-tech scam that frequently uses spam or pop-up messages to deceive people into disclosing sensitive information. Internet scammers use e-mail bait to \"phish\" for passwords and financial information from the sea of internet users.",
+                    "status": 0
                 },
                 {
-                    "headline": "Apple actively investigating iCloud link to celeb photo leak",
-                    "logoUrl": "/images/cloud-security-cnet.png",
-                    "inverted": true
+                    "name": "Spamming",
+                    "description": "Spam is \"junk\" email - unsolicited advertising. Because of the very low cost of sending email, a lot of spam is delivered, from reasonably reputable promotional emails to more malicious and potentially damaging material.",
+                    "status": 0
                 },
                 {
-                    "headline": "Is it safe for you to use the cloud after celebrity hack?",
-                    "logoUrl": "/images/cloud-security-time.png",
-                    "inverted": false
+                    "name": "Weak Passwords",
+                    "description": "More and more Internet services require users choose more complex passwords. That is because weaker passwords (which may seem more memorable to the user) can easily be auto-generated in \"brute force\" methods to crack passwords.",
+                    "status": 0
                 },
                 {
-                    "headline": "iCloud celebrity photo hack: texts, address books and more also accessible",
-                    "logoUrl": "/images/cloud-security-sydney.png",
-                    "inverted": true
+                    "name": "Removable Media",
+                    "description": "It is easily overlooked, but removable media (such as USB drives) may be used to transmit malicious software.",
+                    "status": 0
                 },
                 {
-                    "headline": "Nuove foto di star nude sul web",
-                    "logoUrl": "/images/cloud-security-cds.png",
-                    "inverted": false
+                    "name": "Viruses",
+                    "description": "Viruses are programs that \"infect\" other programs, and when those programs are run, the virus is able to spread. It is possible for a virus to be benign, but they are usually designed maliciously.",
+                    "status": 1
                 },
                 {
-                    "headline": "Continua o vazamento de imagens de famosos enquanto a Apple nega ataque",
-                    "logoUrl": "/images/cloud-security-elpais.png",
-                    "inverted": true
+                    "name": "Worms",
+                    "description": "Worms are similar to viruses, but they are able to reproduce themselves independently of other software programs and propogate themselves across a network of machines.",
+                    "status": 1
                 },
                 {
-                    "headline": "Apple \"indigné\", va revoir la sécurité des comptes iCloud",
-                    "logoUrl": "/images/cloud-security-lemonde.png",
-                    "inverted": false
+                    "name": "Trojan Horses",
+                    "description": "A trojan horse is a program that conceals its true purpose. It may appear to be useful for the user, but have a true purpose to leak data, for example.",
+                    "status": 1
                 },
                 {
-                    "headline": "Apple erklärt Nackfoto-Skandal mit passwortklau",
-                    "logoUrl": "/images/cloud-security-diewelt.png",
-                    "inverted": true
+                    "name": "Spyware",
+                    "description": "Spyware is software that is installed on a user's machine, frequently without their knowledge, which transmits data about the user. Spyware may be a trojan horse, or it may not be visible to the user.",
+                    "status": 1
+                },
+                {
+                    "name": "Zero-day exploit",
+                    "description": "A \"zero-day\" exploit is a technique developed to take advantage of a security vulnerability that was previously unknown.",
+                    "status": 2
+                },
+                {
+                    "name": "Cross-site scripting",
+                    "description": "Cross site scripting (\"XSS\") is an exploit where a trusted website is also hosting a third party's code (often unwittingly) that a user will execute.",
+                    "status": 2
+                },
+                {
+                    "name": "Denial of service attack",
+                    "description": "A Denial of Service attack is a method whereby a sytem is flooded with inbound requests, consuming all its resources and effectively taking the system out of action. A distributed denial of service attack (DDOS) is such an attack where multiple systems are attacking the target.",
+                    "status": 2
+                },
+                {
+                    "name": "Packet Sniffing",
+                    "description": "Packet sniffners are program that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
+                    "status": 2
                 }
             ]
-        }
+        },
+        "legend": [
+            "Socially engineered",
+            "Malicious software",
+            "Exploits"
+        ]
     },
     "civility": {
         "header": "NEEDS CONTENT",
