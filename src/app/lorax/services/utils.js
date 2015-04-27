@@ -23,11 +23,17 @@ define(function () {
          * Adds the source link(s) to the infographic container.
          * @param {object} sourceData - The data for source
          * @param {object} container - The container to append the source link to.
+         * @param {boolean} [absolute] - Whether to add position:absolute to ul
          */
-         function addSource(sourceData, container) {
+         function addSource(sourceData, container, absolute) {
              var ul = $('<ul />', {
                  class: 'source'
              });
+
+             if (absolute) {
+                 ul.css('position', 'absolute');
+             }
+
              var li = $('<li />');
              var span = $('<span />', {
                  text: sourceData.label
