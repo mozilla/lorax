@@ -34,6 +34,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
         var infographic = $scope.modalIssue.issue.getInfographic();
         $scope.lineGraph = {
+          infographic: infographic,
           data: infographic.getDataPoints(),
           dataLabels: infographic.getDataPoints().dataLabels
         };
@@ -64,7 +65,10 @@ define(['jquery', 'd3'], function ($, d3) {
 
       var numDatasets = lineData[0].data.length;
 
-      var graphWidth = $('#modal-issue .infographic__wrapper div').width();
+      var $modal = $('#modal-issue');
+      var container = $('.infographic__wrapper div', $modal);
+      var graphWidth = container.width();
+
       var mobileStyle = graphWidth < 420 ? true : false;
 
       var margin = {top: 20, right: 20, bottom: 50, left: 10};
@@ -247,7 +251,6 @@ define(['jquery', 'd3'], function ($, d3) {
           }
         });
       }
-
 
     }.bind(controller));
   };

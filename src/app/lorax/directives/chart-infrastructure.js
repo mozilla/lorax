@@ -24,11 +24,13 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartInfrastructureController = function (
         $scope,
-        $timeout
+        $timeout,
+        utilsService
         )
     {
         this._$scope = $scope;
         this._$timeout = $timeout;
+        this._utilsService = utilsService;
     };
 
     /**
@@ -37,7 +39,8 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     ChartInfrastructureController.$inject = [
         '$scope',
-        '$timeout'
+        '$timeout',
+        'utilsService'
     ];
 
     /**
@@ -56,7 +59,9 @@ define(['jquery', 'd3'], function ($, d3) {
             var lineGraph = d3.select('#modal-issue .infographic__wrapper div');
             var numDatasets = lineData[0].data.length;
 
-            var graphWidth = $('#modal-issue .infographic__wrapper div').width();
+            var container = $('.infographic__wrapper div', $modal);
+            var graphWidth = container.width();
+
             var mobileStyle = graphWidth < 420 ? true : false;
             var margin = {top: 20, right: 20, bottom: 50, left: 30};
             var width = graphWidth;
@@ -244,6 +249,11 @@ define(['jquery', 'd3'], function ($, d3) {
                     }
                 });
 
+            }
+
+            // if there is a source for the infographic, add it.
+            if (infographic._source.name) {
+                controller._utilsService.addSource(infographic._source, container);
             }
 
         }.bind(controller));

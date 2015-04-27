@@ -24,11 +24,13 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     var ChartIntellectualPropertyController = function (
         $scope,
-        $timeout
+        $timeout,
+        utilsService
         )
     {
         this._$scope = $scope;
         this._$timeout = $timeout;
+        this._utilsService = utilsService
     };
 
     ChartIntellectualPropertyController.prototype.drawLine = function(options) {
@@ -145,7 +147,8 @@ define(['jquery', 'd3'], function ($, d3) {
      */
      ChartIntellectualPropertyController.$inject = [
         '$scope',
-        '$timeout'
+        '$timeout',
+        'utilsService'
     ];
 
     /**
@@ -168,7 +171,8 @@ define(['jquery', 'd3'], function ($, d3) {
             var ipGraph = d3.select('.infographic__wrapper div', modal);
             var margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-            var width = $('.infographic__wrapper div', modal).width();
+            var container = $('.infographic__wrapper div', modal);
+            var width = container.width();
             var height = width;
 
             var innerWidth = width - margin.left - margin.right;
@@ -209,6 +213,11 @@ define(['jquery', 'd3'], function ($, d3) {
                 numDatasets: lineData[0].data.length
             };
             controller.drawLine(options);
+
+            // if there is a source for the infographic, add it.
+            if (infographic._source.name) {
+                controller._utilsService.addSource(infographic._source, container);
+            }
         });
     }
     return ChartIntellectualPropertyDirective;

@@ -24,11 +24,13 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   var ChartSurveillanceController = function (
     $scope,
-    $timeout
+    $timeout,
+    utilsService
     )
   {
     this._$scope = $scope;
     this._$timeout = $timeout;
+    this._utilsService = utilsService;
   };
 
   /**
@@ -37,7 +39,8 @@ define(['jquery', 'd3'], function ($, d3) {
    */
   ChartSurveillanceController.$inject = [
     '$scope',
-    '$timeout'
+    '$timeout',
+    'utilsService'
   ];
 
   /**
@@ -52,6 +55,9 @@ define(['jquery', 'd3'], function ($, d3) {
       var infographic = scope.modalIssue.issue.getInfographic();
       var circleData = infographic.getDataPoints().surveillance;
       var circleChart = d3.select('#modal-issue .infographic__wrapper div');
+
+      var $modal =  $('#modal-issue');
+      var container = $('.infographic__wrapper div', $modal);
 
       var width = 650;
       var height = 650;
@@ -115,6 +121,11 @@ define(['jquery', 'd3'], function ($, d3) {
 
         d3.select(this)
           .style('border', '3px solid #fff');
+      }
+
+      // if there is a source for the infographic, add it.
+      if (infographic._source.name) {
+          controller._utilsService.addSource(infographic._source, container);
       }
 
     }.bind(controller));

@@ -34,6 +34,7 @@ define(['jquery', 'd3'], function ($, d3) {
         this._data = infographic.getDataPoints().newsSource;
 
         $scope.news = {
+            infographic: infographic,
             data: this._data
         };
     };

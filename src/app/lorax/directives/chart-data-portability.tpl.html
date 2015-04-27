@@ -16,5 +16,24 @@
         {{::company.answer}}
       </td>
     </tr>
+    <!-- angular does not have an if..else so, this is the next best thing -->
+    <tr ng-switch on="{{::dataStandards.infographic._source}}">
+      <td colspan="3" ng-switch-when="{{::dataStandards.infographic._source.src}}">
+        <ul class="source">
+          <li>
+            <span>{{::dataStandards.infographic._source.label}}</span>
+            <a href="{{::dataStandards.infographic._source.src}}">{{::dataStandards.infographic._source.name}}</a>
+          </li>
+        </ul>
+      </td>
+      <td colspan="3" ng-switch-default>
+        <ul class="source">
+          <li>
+            <span>{{::dataStandards.infographic._source.label}}</span>
+            {{::dataStandards.infographic._source.name}}
+          </li>
+        </ul>
+      </td>
+    </tr>
   </tbody>
 </table>

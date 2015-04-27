@@ -24,10 +24,12 @@ define(['jquery', 'd3'], function ($, d3) {
     */
     var ChartCyberBullyingController = function (
         $scope,
-        $timeout
+        $timeout,
+        utilsService
     ) {
         this._$scope = $scope;
         this._$timeout = $timeout;
+        this._utilsService = utilsService;
     };
 
     /**
@@ -36,7 +38,8 @@ define(['jquery', 'd3'], function ($, d3) {
      */
     ChartCyberBullyingController.$inject = [
         '$scope',
-        '$timeout'
+        '$timeout',
+        'utilsService'
     ];
 
     /**
@@ -59,7 +62,8 @@ define(['jquery', 'd3'], function ($, d3) {
             var modalIssue = $('#modal-issue');
             var cyberBullyingChart = d3.select('.infographic__wrapper div', modalIssue);
 
-            var graphWidth = $('.infographic__wrapper div', modalIssue).width();
+            var container = $('.infographic__wrapper div', modalIssue);
+            var graphWidth = container.width();
 
             drawLineChart();
             drawImageChart();
@@ -300,8 +304,11 @@ define(['jquery', 'd3'], function ($, d3) {
                 });
             }
 
+            // if there is a source for the infographic, add it.
+            if (infographic._source.name) {
+                controller._utilsService.addSource(infographic._source, container);
+            }
         });
-
     };
 
     return ChartCyberBullyingDirective;

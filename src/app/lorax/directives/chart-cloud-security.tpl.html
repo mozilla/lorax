@@ -1,12 +1,33 @@
 <table class="cloud-security">
-  <tr class="cloud-news" ng-repeat="source in ::news.data">
-    <td class="cloud-news__leftcol">
-    	<img ng-if="source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
-    	<p ng-if="!source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
-    </td>
-    <td class="cloud-news__rightcol">
-    	<img ng-if="!source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
-    	<p ng-if="source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
-    </td>
-  </tr>
+  <tbody>
+    <tr class="cloud-news" ng-repeat="source in ::news.data">
+      <td class="cloud-news__leftcol">
+        <img ng-if="source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
+        <p ng-if="!source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
+      </td>
+      <td class="cloud-news__rightcol">
+        <img ng-if="!source.inverted" class="cloud-news__logo" src="{{::source.logoUrl}}">
+        <p ng-if="source.inverted" class="cloud-news__headline">{{::source.headline}}</p>
+      </td>
+    </tr>
+    <!-- angular does not have an if..else so, this is the next best thing -->
+    <tr ng-switch on="{{::news.infographic._source}}">
+      <td ng-switch-when="{{::news.infographic._source.src}}">
+        <ul class="source">
+          <li>
+            <span>{{::news.infographic._source.label}}</span>
+            <a href="{{::news.infographic._source.src}}">{{::news.infographic._source.name}}</a>
+          </li>
+        </ul>
+      </td>
+      <td ng-switch-default>
+        <ul class="source">
+          <li>
+            <span>{{::news.infographic._source.label}}</span>
+            {{::news.infographic._source.name}}
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>

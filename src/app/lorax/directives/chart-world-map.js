@@ -26,7 +26,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         $scope,
         $timeout,
         dataService,
-        windowService
+        windowService,
+        utilsService
     )
     {
         this._$scope = $scope;
@@ -34,6 +35,7 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         this._windowService = windowService;
         this._dataService = dataService;
         this._getMap = this._dataService.getMap();
+        this._utilsService = utilsService;
     };
 
     /**
@@ -365,6 +367,17 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
     };
 
     /**
+     *
+     */
+    ChartWorldMapController.prototype._addSource = function ($container) {
+        var infographic = this._$scope.infographic;
+        // if there is a source for the infographic, add it.
+        if (infographic._source.name) {
+            this._utilsService.addSource(infographic._source, $container, true);
+        }
+    }
+
+    /**
     * Array of dependencies to be injected into controller
     * @type {Array}
     */
@@ -372,7 +385,8 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
         '$scope',
         '$timeout',
         'dataService',
-        'windowService'
+        'windowService',
+        'utilsService'
     ];
 
     /**
@@ -384,6 +398,10 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
     */
     var ChartWorldMapLinkFn = function (scope, iElem, iAttrs, controller) {
         controller._getMap.then( function (model) {
+
+            var $modal =  $('#modal-issue');
+            var $container = $('.infographic__wrapper div', $modal);
+
             controller._$timeout( function() {
                 controller._init(model.geoData, model.countryData);
                 controller._drawDropdown();
@@ -392,12 +410,15 @@ define(['jquery', 'd3', 'topojson', 'jquery-customselect'], function ($, d3, top
                 controller._drawLegend();
                 controller._resize();
                 controller._demoMode();
+                controller._addSource($container);
 
                 this._selectCountry(this.map.defaultCountry);
-                $('#modal-issue .infographic__wrapper div select').customSelect({
+                $('select', $container).customSelect({
                     customClass: 'worldmap__dropdown-select'
                 });
+
             }.bind(controller));
+
         }.bind(controller));
     };
 
