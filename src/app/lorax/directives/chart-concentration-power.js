@@ -64,11 +64,11 @@ define(['jquery', 'd3'], function ($, d3) {
           var totalRevenue = infographic.getDataPoints().totalRevenue;
           var graphData = [];
 
-          var chart = controller._utilsService.barChart()
-            .margin({ top: 0, right: 30, bottom: 70, left: 70 })
+          var chart = controller._utilsService.columnChart()
+            .margin({ top: 0, right: 30, bottom: 80, left: 40 })
             .width(width)
             .height(height)
-            .yGrid(false);
+            .xGrid(true);
 
           // transform the raw data into what the below function expects
           for (var i = 0, l = totalRevenue.length; i < l; i++) {

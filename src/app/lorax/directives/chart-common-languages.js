@@ -55,7 +55,7 @@ define(['jquery', 'd3'], function ($, d3) {
 
             var $modal =  $('#modal-issue');
 
-            var margin = { top: 50, right: 20, bottom: 30, left: 95 };
+            var margin = { top: 50, right: 30, bottom: 30, left: 75 };
             var container = $('.infographic__wrapper div', $modal);
             var graphWidth = container.width();
             var width = Math.round(graphWidth / 1.2) - margin.right - margin.left;
@@ -69,7 +69,8 @@ define(['jquery', 'd3'], function ($, d3) {
                 .width(width)
                 .height(height)
                 .margin(margin)
-                .colorArray(['#000', '#fff']);
+                .colorArray(['#000', '#fff'])
+                .fontColorArray(['#000', '#fff']);
 
             languages.forEach(function(d) {
                 var lang = {
