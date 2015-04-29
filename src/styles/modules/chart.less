@@ -7,15 +7,42 @@
           shape-rendering: crispEdges;
         }
     }
-    .bar {
-      fill: steelblue;
-    }
-    .g text {
-      text-anchor: end;
+    .g {
+        text {
+          font-size: 1.4rem;
+          text-anchor: end;
+        }
     }
     .y.axis {
         path {
           display: none;
         }
+    }
+    .y {
+        .tick {
+          font-size: .8rem;
+        }
+        line {
+            display: none;
+        }
+        text {
+            fill: @white;
+        }
+    }
+}
+.column-chart {
+    .x {
+        text {
+            fill: @white;
+        }
+    }
+}
+/* grid styles */
+.grid {
+    .tick {
+        stroke: #000;
+    }
+    path {
+        stroke-width: 0;
     }
 }

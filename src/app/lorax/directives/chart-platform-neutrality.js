@@ -65,12 +65,12 @@ define(['jquery', 'd3'], function ($, d3) {
       var percentUsers = infographic.getDataPoints().percentOfUsers;
       var graphData = [];
 
-      var chart = controller._utilsService.barChart()
-        .margin({ top: 0, right: 30, bottom: 100, left: 70 })
+      var chart = controller._utilsService.columnChart()
+        .margin({ top: 0, right: 30, bottom: 100, left: 40 })
         .width(width)
         .height(height)
         .yAxisFormat(d3.format("%"))
-        .yGrid(false);
+        .xGrid(true);
 
       // transform the raw data into what the below function expects
       for (var i = 0, l = percentUsers.length; i < l; i++) {
