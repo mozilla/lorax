@@ -80,6 +80,7 @@ define(function () {
             var circleFromCenter = config.height / 2.8;
             var twoPi = (Math.PI * 2);
             var defaultColor = 'rgba(0,0,0,0.7)';
+            var isNumbered = false;
 
             $.each(config.dataPoints, function(key, data) {
               var id = 'topic-name-' + data.name.toLowerCase().replace(/[^A-Z0-9]/ig, '_');
@@ -117,7 +118,13 @@ define(function () {
                 .style('background', function() { return topicData[this.id].status ? config.colorArray[topicData[this.id].status] : defaultColor; })
                 .on('mouseover', function() { addCircleChartDescription(this, topicData); })
               .append('p')
-                .html( function(d, index) { return '<span>' + (index + 1) + '</span>' + d.name; });
+                .html( function(d, index) {
+                    if (isNumbered) {
+                        return '<span>' + (index + 1) + '</span>' + d.name;
+                    } else {
+                        return d.name;
+                    }
+                });
 
             d3.select('#topic-name-phishing')
               .style('border', '3px solid #fff');

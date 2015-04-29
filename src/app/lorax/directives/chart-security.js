@@ -63,6 +63,7 @@ define(['jquery', 'd3'], function ($, d3) {
       var height = width;
 
       var config = {
+          isNumbered: false,
           colorArray: ['rgba(0,0,0,0.7)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.3)'],
           dataPoints: dataPoints,
           labels: infographic.getLegendLabels(),
