@@ -647,81 +647,90 @@
         ]
     },
     "civility": {
-        "header": "NEEDS CONTENT",
-        "subheader": "Needs more content.",
+        "header": "Online harassment and social media",
+        "subheader": "Usage and survey data collected among online American adults, 2014.",
         "source": {
             "label": "source: ",
             "name": "Pew Research Center",
             "src": "http://www.pewinternet.org/data-trend/social-media/social-media-use-by-age-group/"
         },
         "dataPoints": {
-            "cyberBullyingData": {
+            "civility": {
                 "socialNetwork": {
-                    "title": "Social Network Rise",
-                    "lineData": [
+                    "title": "The rise of social media use among ages 18-29",
+                    "dataLabels": [
+                        "Year",
+                        "Percentage"
+                    ],
+                    "lineGraphData": [
+                        {
+                            "label": "2005",
+                            "value": 0.09
+                        },
+                        {
+                            "label": "2006",
+                            "value": 0.49
+                        },
+                        {
+                            "label": "2008",
+                            "value": 0.67
+                        },
+                        {
+                            "label": "2009",
+                            "value": 0.76
+                        },
                         {
                             "label": "2010",
-                            "data": [
-                                85
-                            ]
+                            "value": 0.86
                         },
                         {
                             "label": "2011",
-                            "data": [
-                                86
-                            ]
+                            "value": 0.87
                         },
                         {
                             "label": "2012",
-                            "data": [
-                                93
-                            ]
+                            "value": 0.92
                         },
                         {
                             "label": "2013",
-                            "data": [
-                                89
-                            ]
+                            "value": 0.89
                         },
                         {
                             "label": "2014",
-                            "data": [
-                                90
-                            ]
+                            "value": 0.89
                         }
                     ]
                 },
                 "cyberStalking": {
-                    "title": "Around 6.5 out of 10 students experienced cyberstalking in 2013.",
-                    "copy": "Cyberstalking is the use of the Internet or other electronic means to stalk or harass an individual, a group, or an organization.",
+                    "title": "65% of Internet users aged 18-29 have experienced online harassment",
                     "imageUrl": "/images/cyber-bullying-stalking.png"
                 },
                 "onlineHarassment": {
-                    "title": "Online Harassment",
-                    "circleData": [
+                    "title": "Venue for most recent incident of online harassment",
+                    "barData": [
                         {
-                            "name": "Online Dating",
-                            "value": 6
+                            "label": "Social Networks",
+                            "value": 0.66
                         },
                         {
-                            "name": "Discussion Site",
-                            "value": 10
+                            "label": "Website Comments",
+                            "value": 0.22
                         },
                         {
-                            "name": "Email",
-                            "value": 16
+                            "label": "Online Gaming",
+                            "value": 0.16
                         },
                         {
-                            "name": "Online Gaming",
-                            "value": 17
+                            "label": "Email",
+                            "value": 0.16
                         },
                         {
-                            "name": "Website Comments Section",
-                            "value": 22
+                            "label": "Discussion Site",
+                            "value": 0.10
                         },
                         {
-                            "name": "Social Networking Site",
-                            "value": 66
+                            "label": "Online Dating",
+                            "value": 0.6
                         }
                     ]
                 }

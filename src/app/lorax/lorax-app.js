@@ -17,6 +17,7 @@ define([
     'lorax/directives/modal-email',
     'lorax/directives/modal-issue',
     'lorax/directives/modal-about',
+    'lorax/directives/chart-civility',
     'lorax/directives/chart-common-languages',
     'lorax/directives/chart-world-map',
     'lorax/directives/chart-accessible',
@@ -33,7 +34,6 @@ define([
     'lorax/directives/chart-intellectual-property',
     'lorax/directives/chart-identity-control',
     'lorax/directives/chart-cloud-security',
-    'lorax/directives/chart-cyber-bullying',
     'lorax/directives/experience',
 
     // services
@@ -66,6 +66,7 @@ define([
     ModalEmailDirective,
     ModalIssueDirective,
     ModalAboutDirective,
+    ChartCivilityDirective,
     ChartCommonLanguagesDirective,
     ChartWorldMapDirective,
     ChartAccessibleDirective,
@@ -82,7 +83,6 @@ define([
     ChartIntellectualPropertyDirective,
     ChartIdentityControlDirective,
     ChartCloudSecurityDirective,
-    ChartCyberBullyingDirective,
     ExperienceDirective,
 
     // services
@@ -261,11 +261,11 @@ define([
         .directive('loraxChartCloudSecurity', ChartCloudSecurityDirective)
 
         /**
-         * Injects {@link lorax/directives/ChartCyberBullyingDirective}
-         * as 'ChartCyberBullyingDirective'
+         * Injects {@link lorax/directives/ChartCivilityDirective}
+         * as 'ChartCivilityDirective'
          * @method lorax/loraxApp~directive
          */
-        .directive('loraxChartCyberBullying', ChartCyberBullyingDirective)
+        .directive('loraxChartCivility', ChartCivilityDirective)
 
         /**
          * Injects {@link lorax/directives/ExperienceDirective}
