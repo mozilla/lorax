@@ -20,6 +20,129 @@ define(function () {
         }
 
         /**
+         * Adds a simple chart legend to the specified container
+         * @param {object} config - Config information for legend, of the form:
+         * {
+         *   container: container,
+         *   labels: labels,
+         *   colors: colors
+         * };
+         */
+        function addCircleChartLegend(config) {
+            var listItems = [];
+            var ul = $('<ul />', {
+                class: 'circle-chart-legend'
+            });
+
+            for (var i = 0, l = config.labels.length; i < l; i++) {
+                var li = $('<li />', {
+                    text: config.labels[i]
+                });
+
+                var square = $('<div />', {
+                    class: 'circle-chart-legend-square'
+                });
+                square.css('background', config.colors[i]);
+
+                square.prependTo(li);
+                listItems.push(li);
+            }
+            ul.append(listItems);
+            config.container.append(ul);
+        }
+
+        /**
+         * Draws a circle chart such as for the security topic.
+         * @param {object} topic - The circle that ws hovered over
+         * @param {object} topicData - Data for the hovered over topic
+         */
+        function addCircleChartDescription(topic, topicData) {
+          d3.select('.circle-chart-details').text(topicData[topic.id].description);
+          d3.selectAll('.circle-chart-label').style('border', 'none');
+          d3.select(topic).style('border', '3px solid #fff');
+        }
+
+        /**
+         * Draws a circle chart such as in use on the security topic.
+         * @param {object} config - Config for the circle chart, of the form:
+         * {
+         *   colorArray: colorArray, // optional
+         *   labels: infographic.legend // optional
+         *   dataPoints: dataPoints,
+         *   circleChart: circleChart,
+         *   width: width,
+         *   height: height
+         * };
+         */
+        function circleChart(config) {
+            var topicData = {};
+            var circleSize = config.width / 5.5;
+            var circleFromCenter = config.height / 2.8;
+            var twoPi = (Math.PI * 2);
+            var defaultColor = 'rgba(0,0,0,0.7)';
+            var isNumbered = false;
+
+            $.each(config.dataPoints, function(key, data) {
+              var id = 'topic-name-' + data.name.toLowerCase().replace(/[^A-Z0-9]/ig, '_');
+              var description = data.description;
+              var status = data.status;
+
+              topicData[id] = {
+                'description': description,
+                'status': status
+              };
+            });
+
+            var background = config.circleChart.append('div')
+              .attr('class','circle-chart-background')
+              .style('width', config.width + 'px')
+              .style('height', config.height + 'px');
+
+            background.append('p')
+              .attr('class', 'circle-chart-details')
+              .style('left', config.width / 2 - (circleFromCenter - circleFromCenter / 5) / 2 - circleSize / 2 + 'px')
+              .style('top', config.height / 2 - circleFromCenter / 2.5 + 'px');
+
+            var circleContainer = background.append('div')
+              .attr('class', 'circle-chart-circle-container')
+              .style('left', config.width / 2 - (circleFromCenter - circleFromCenter / 5) / 2 + 'px')
+              .style('top', config.height / 2 - circleFromCenter / 5 + 'px');
+
+            circleContainer.selectAll('div')
+              .data(config.dataPoints)
+              .enter().append('div')
+                .attr('class', 'circle-chart-label')
+                .attr('id', function(d) { return 'topic-name-' + d.name.toLowerCase().replace(/[^A-Z0-9]/ig, '_'); })
+                .style('left', function(d, i) { return Math.cos(twoPi * i / config.dataPoints.length) * circleFromCenter + 'px'; })
+                .style('top', function(d, i) { return Math.sin(twoPi * i / config.dataPoints.length) * circleFromCenter + 'px'; })
+                .style('background', function() { return topicData[this.id].status ? config.colorArray[topicData[this.id].status] : defaultColor; })
+                .on('mouseover', function() { addCircleChartDescription(this, topicData); })
+              .append('p')
+                .html( function(d, index) {
+                    if (isNumbered) {
+                        return '<span>' + (index + 1) + '</span>' + d.name;
+                    } else {
+                        return d.name;
+                    }
+                });
+
+            d3.select('#topic-name-phishing')
+              .style('border', '3px solid #fff');
+
+            d3.select('.circle-chart-details')
+              .text(topicData['topic-name-phishing'].description);
+
+            // if labels is set, we need to add a legend
+            if (config.labels) {
+                addCircleChartLegend({
+                    container: $('.circle-chart-background'),
+                    labels: config.labels,
+                    colors: config.colorArray
+                });
+            }
+        }
+
+        /**
          * Adds the source link(s) to the infographic container.
          * @param {object} sourceData - The data for source
          * @param {object} container - The container to append the source link to.
@@ -658,6 +781,7 @@ define(function () {
 
         return {
             addSource: addSource,
+            circleChart: circleChart,
             simpleGroupedBarChart: simpleGroupedBarChart,
             columnChart: columnChart,
             groupedBarChart: groupedBarChart,

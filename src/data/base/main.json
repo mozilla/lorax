@@ -89,7 +89,7 @@
                 },
                 "security": {
                     "status": 1,
-                    "infographicType": "data-lorax-chart-cloud-security",
+                    "infographicType": "data-lorax-chart-security",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []
