@@ -41,6 +41,7 @@
     "pointsOfControl": 3,
     "governmentControl": 2,
     "percentBitTorrent": 100,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -86,6 +87,7 @@
     "pointsOfControl": 5,
     "governmentControl": 2,
     "percentBitTorrent": 29,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -116,6 +118,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 35,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "4.3"
@@ -132,6 +135,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 21,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "": "3.2"
@@ -223,6 +227,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 18,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "6"
@@ -239,6 +244,7 @@
     "pointsOfControl": 4,
     "governmentControl": 1,
     "percentBitTorrent": 10,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "9.4"
@@ -285,6 +291,7 @@
     "pointsOfControl": 10,
     "governmentControl": 1,
     "percentBitTorrent": 13,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "10"
@@ -301,6 +308,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 100,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -331,6 +339,7 @@
     "pointsOfControl": 2,
     "governmentControl": 1,
     "percentBitTorrent": null,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -361,6 +370,7 @@
     "pointsOfControl": 32,
     "governmentControl": 2,
     "percentBitTorrent": 17,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -406,6 +416,7 @@
     "pointsOfControl": 6,
     "governmentControl": 1,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -497,6 +508,7 @@
     "pointsOfControl": 8,
     "governmentControl": 1,
     "percentBitTorrent": 14,
+    "dataProtectionRegulation": "Limited",
     "dataRegulationStatus": 0,
     "dataRegulationType": "Light touch / Self-regulation",
     "speed": "2.6"
@@ -603,6 +615,7 @@
     "pointsOfControl": 14,
     "governmentControl": 1,
     "percentBitTorrent": 17,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "9.7"
@@ -634,6 +647,7 @@
     "pointsOfControl": 22,
     "governmentControl": 1,
     "percentBitTorrent": 14,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "12.7"
@@ -650,6 +664,7 @@
     "pointsOfControl": 5,
     "governmentControl": 1,
     "percentBitTorrent": 17,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "3.3"
@@ -666,6 +681,7 @@
     "pointsOfControl": 3,
     "governmentControl": 0,
     "percentBitTorrent": 44,
+    "dataProtectionRegulation": "Limited",
     "dataRegulationStatus": 0,
     "dataRegulationType": "Light touch / Self-regulation",
     "speed": "3.2"
@@ -757,6 +773,7 @@
     "pointsOfControl": 5,
     "governmentControl": 0,
     "percentBitTorrent": 11,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "3"
@@ -803,6 +820,7 @@
     "pointsOfControl": 2,
     "governmentControl": 0,
     "percentBitTorrent": 20,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "2"
@@ -894,6 +912,7 @@
     "pointsOfControl": 31,
     "governmentControl": 2,
     "percentBitTorrent": 16,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "11.2"
@@ -910,6 +929,7 @@
     "pointsOfControl": 19,
     "governmentControl": 0,
     "percentBitTorrent": 10,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "8.1"
@@ -956,6 +976,7 @@
     "pointsOfControl": 16,
     "governmentControl": 1,
     "percentBitTorrent": 4,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "10.5"
@@ -1063,6 +1084,7 @@
     "pointsOfControl": 10,
     "governmentControl": 0,
     "percentBitTorrent": 27,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "7.2"
@@ -1079,6 +1101,7 @@
     "pointsOfControl": 3,
     "governmentControl": 1,
     "percentBitTorrent": 69,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -1109,6 +1132,7 @@
     "pointsOfControl": 6,
     "governmentControl": 0,
     "percentBitTorrent": 20,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "10.7"
@@ -1155,6 +1179,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 22,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "6.6"
@@ -1216,6 +1241,7 @@
     "pointsOfControl": 13,
     "governmentControl": 1,
     "percentBitTorrent": 28,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "9.9"
@@ -1367,6 +1393,7 @@
     "pointsOfControl": 11,
     "governmentControl": 1,
     "percentBitTorrent": 7,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -1518,6 +1545,7 @@
     "pointsOfControl": 6,
     "governmentControl": 2,
     "percentBitTorrent": 18,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -1548,6 +1576,7 @@
     "pointsOfControl": 17,
     "governmentControl": 1,
     "percentBitTorrent": 10,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "7.5"
@@ -1595,6 +1624,7 @@
     "pointsOfControl": 4,
     "governmentControl": 1,
     "percentBitTorrent": 24,
+    "dataProtectionRegulation": "Limited",
     "dataRegulationStatus": 0,
     "dataRegulationType": "Light touch / Self-regulation",
     "speed": "1.7"
@@ -1626,6 +1656,7 @@
     "pointsOfControl": 8,
     "governmentControl": 0,
     "percentBitTorrent": 15,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "10.7"
@@ -1672,6 +1703,7 @@
     "pointsOfControl": 3,
     "governmentControl": 1,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -1687,6 +1719,7 @@
     "pointsOfControl": 4,
     "governmentControl": 1,
     "percentBitTorrent": 11,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "8.9"
@@ -1703,6 +1736,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 22,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "5.2"
@@ -1764,6 +1798,7 @@
     "pointsOfControl": 8,
     "governmentControl": 0,
     "percentBitTorrent": 42,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "14.6"
@@ -1780,6 +1815,7 @@
     "pointsOfControl": 2,
     "governmentControl": 1,
     "percentBitTorrent": null,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -1810,6 +1846,7 @@
     "pointsOfControl": 3,
     "governmentControl": 2,
     "percentBitTorrent": 50,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -1870,6 +1907,7 @@
     "pointsOfControl": 3,
     "governmentControl": 0,
     "percentBitTorrent": 74,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -1915,6 +1953,7 @@
     "pointsOfControl": 7,
     "governmentControl": 2,
     "percentBitTorrent": 45,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -2020,6 +2059,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 29,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -2035,6 +2075,7 @@
     "pointsOfControl": 7,
     "governmentControl": 1,
     "percentBitTorrent": 13,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -2050,6 +2091,7 @@
     "pointsOfControl": 6,
     "governmentControl": 2,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "12"
@@ -2096,6 +2138,7 @@
     "pointsOfControl": 2,
     "governmentControl": 0,
     "percentBitTorrent": 9,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -2126,6 +2169,7 @@
     "pointsOfControl": 4,
     "governmentControl": 1,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -2171,6 +2215,7 @@
     "pointsOfControl": 4,
     "governmentControl": 0,
     "percentBitTorrent": 35,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "4"
@@ -2202,6 +2247,7 @@
     "pointsOfControl": 4,
     "governmentControl": 1,
     "percentBitTorrent": 15,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -2397,6 +2443,7 @@
     "pointsOfControl": 5,
     "governmentControl": 0,
     "percentBitTorrent": 61,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "3.5"
@@ -2503,6 +2550,7 @@
     "pointsOfControl": 5,
     "governmentControl": 1,
     "percentBitTorrent": 62,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -2533,6 +2581,7 @@
     "pointsOfControl": 24,
     "governmentControl": 1,
     "percentBitTorrent": 13,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "12.4"
@@ -2549,6 +2598,7 @@
     "pointsOfControl": 11,
     "governmentControl": 0,
     "percentBitTorrent": 8,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "10.1"
@@ -2595,6 +2645,7 @@
     "pointsOfControl": 8,
     "governmentControl": 1,
     "percentBitTorrent": 24,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "5.6"
@@ -2688,6 +2739,7 @@
     "pointsOfControl": 5,
     "governmentControl": 1,
     "percentBitTorrent": 39,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "2.1"
@@ -2734,6 +2786,7 @@
     "pointsOfControl": 19,
     "governmentControl": 1,
     "percentBitTorrent": 35,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "7.5"
@@ -2765,7 +2818,8 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": null,
-    "dataRegulationStatus": null,
+    "dataProtectionRegulation": "Moderate",
+    "dataRegulationStatus": 1,
     "dataRegulationType": ""
   },
   {
@@ -2780,6 +2834,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 24,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "6.4"
@@ -2796,6 +2851,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 25,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "1.2"
@@ -2872,6 +2928,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 9,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "9.5"
@@ -2888,6 +2945,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 17,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "8.6"
@@ -2949,6 +3007,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 67,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -3115,6 +3174,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": null,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -3175,6 +3235,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 6,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "7.3"
@@ -3191,6 +3252,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements"
   },
@@ -3206,6 +3268,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 13,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "11.6"
@@ -3327,6 +3390,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 38,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "5.2"
@@ -3433,6 +3497,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 26,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -3525,6 +3590,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 12,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting"
   },
@@ -3555,6 +3621,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 0,
+    "dataProtectionRegulation": "Robust",
     "dataRegulationStatus": 2,
     "dataRegulationType": "Strict ex-ante requirements",
     "speed": "4.3"
@@ -3571,6 +3638,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 14,
+    "dataProtectionRegulation": "Limited",
     "dataRegulationStatus": 0,
     "dataRegulationType": "Light touch / Self-regulation",
     "speed": "10.5"
@@ -3753,6 +3821,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 38,
+    "dataProtectionRegulation": "Moderate",
     "dataRegulationStatus": 1,
     "dataRegulationType": "Minimum standard setting",
     "speed": "2.6"
@@ -3784,6 +3853,7 @@
     "pointsOfControl": null,
     "governmentControl": null,
     "percentBitTorrent": 70,
+    "dataProtectionRegulation": "Limited",
     "dataRegulationStatus": 0,
     "dataRegulationType": "Light touch / Self-regulation"
   }
