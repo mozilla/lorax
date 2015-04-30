@@ -1,7 +1,7 @@
 {
     "adoption": {
-        "header": "NEEDS CONTENT PLEASE",
-        "subheader": "NEEDS CONTENT PLEASE",
+        "header": "Where are Internet users?",
+        "subheader": "Internet penetration per country by share of population, in 2013.",
         "source": {
             "label": "source: ",
             "name": "ITU World Telecommunication / ICT Indicators Database",
@@ -12,7 +12,7 @@
                 "findCountry": "Find a country",
                 "shading": {
                     "name": "internetPopPercentage",
-                    "invert": false,
+                    "invert": true,
                     "values": [
                         20,
                         40,
@@ -37,8 +37,8 @@
         }
     },
     "affordable": {
-        "header": "NEEDS CONTENT",
-        "subheader": "NEEDS CONTENT",
+        "header": "How affordable is an Internet connection?",
+        "subheader": "Number of hours worked at average wage to pay for a month's broadband connection, per country.",
         "source": {
             "label": "source: ",
             "name": "ITU, ILO, analysis by Mozilla",
@@ -48,24 +48,24 @@
             "countryData": {
                 "findCountry": "Find a country",
                 "shading": {
-                    "name": "salaryPercentage",
+                    "name": "hoursOfWork",
                     "invert": true,
                     "values": [
-                        50,
-                        70,
-                        100,
-                        99999999
+                        4,
+                        12,
+                        40,
+                        9999
                     ],
                     "legend": [
-                        "Less than 50%",
-                        "50-70%",
-                        "70-100%",
-                        "Greater than 100%"
+                        "Less than 4",
+                        "4 to 12",
+                        "12 to 40",
+                        "Greater than 40"
                     ]
                 },
                 "display": {
                     "name": "hoursOfWork",
-                    "units": ""
+                    "units": "hour(s)"
                 }
             }
         }
@@ -186,26 +186,26 @@
             "countryData": {
                 "findCountry": "Find a country",
                 "shading": {
-                    "name": "salaryPercentage",
+                    "name": "speedAverage",
                     "invert": true,
                     "values": [
-                        25,
-                        50,
-                        70,
-                        100,
-                        99999999
+                        3,
+                        5,
+                        8,
+                        10,
+                        9999
                     ],
                     "legend": [
                         "Less than 3",
                         "3 to 5",
                         "5 to 8",
-                        "8 to 11",
-                        "Greater than 11"
+                        "8 to 10",
+                        "Greater than 10"
                     ]
                 },
                 "display": {
-                    "name": "speed",
-                    "units": ""
+                    "name": "speedAverage",
+                    "units": "Mbit/s"
                 }
             }
         }
@@ -222,31 +222,31 @@
             "marketShare": [
                 {
                     "company": "Other",
-                    "value": ".05"
+                    "value": "0.05"
                 },
                 {
                     "company": "LinkedIn",
-                    "value": ".03"
+                    "value": "0.03"
                 },
                 {
                     "company": "Yahoo",
-                    "value": ".04"
+                    "value": "0.04"
                 },
                 {
                     "company": "Microsoft",
-                    "value": ".02"
+                    "value": "0.02"
                 },
                 {
                     "company": "Twitter",
-                    "value": ".07"
+                    "value": "0.07"
                 },
                 {
                     "company": "Google",
-                    "value": ".34"
+                    "value": "0.34"
                 },
                 {
                     "company": "Facebook",
-                    "value": ".46"
+                    "value": "0.46"
                 }
             ]
         }
@@ -352,8 +352,8 @@
         }
     },
     "governmentCensorship": {
-        "header": "NEEDS CONTENT",
-        "subheader": "NEEDS CONTENT",
+        "header": "Who censors the Internet?",
+        "subheader": "Level of internet and digital media freedom per country. Score ranges from 0 (best) to 100 (worst).",
         "source": {
             "label": "source: ",
             "name": "Freedom House",
@@ -363,21 +363,21 @@
             "countryData": {
                 "findCountry": "Find a country",
                 "shading": {
-                    "name": "dataRegulationStatus",
-                    "invert": false,
+                    "name": "freedomScore",
+                    "invert": true,
                     "values": [
-                        0.01,
-                        1.01,
-                        2.01
+                        30,
+                        60,
+                        100
                     ],
                     "legend": [
-                        "Low",
-                        "Medium",
-                        "High"
+                        "Free (0-30)",
+                        "Partly free (31-60)",
+                        "Not free (61-100)"
                     ]
                 },
                 "display": {
-                    "name": "dataRegulationType",
+                    "name": "freedomScore",
                     "units": "",
                     "reduceSize": true
                 }
@@ -386,7 +386,7 @@
     },
     "governmentSurveillance": {
         "header": "Surveillance as a Business Model",
-        "subheader": "Vicious cycle of data collection",
+        "subheader": "Threats posed by a vicious cycle of data collection and surveillance.",
         "source": {
             "label": "source: ",
             "name": "Mozilla",
@@ -430,80 +430,92 @@
         }
     },
     "adTracking": {
-        "header": "The Different Types of Cyber-Threats",
-        "subheader": "Vulnerabilities, Malware, and Exploits",
+        "header": "On average, Google could know 80.13% of a user's web history.",
+        "subheader": "Owners of top tracking domains by share of user's visited sites known.",
         "source": {
             "label": "source: ",
             "name": "Olejnik, Minh-Dung and Castelluccia, 2013",
             "src": ""
         },
         "dataPoints": {
-            "cyberThreats": [
+              "tracking": [
                 {
-                    "name": "Phishing",
-                    "description": "A high-tech scam that frequently uses spam or pop-up messages to deceive people into disclosing sensitive information. Internet scammers use e-mail bait to \"phish\" for passwords and financial information from the sea of internet users.",
-                    "category": 0
+                    "company": "Google",
+                    "tracker": "google-analytics.com",
+                    "percent": 56
                 },
                 {
-                    "name": "Viruses",
-                    "description": "Viruses are programs that “infect” other programs, and when those programs are run, the virus is able to spread. It is possible for a virus to be benign, but they are usually designed maliciously.",
-                    "category": 1
+                    "company": "Google",
+                    "tracker": "doubleclick.net",
+                    "percent": 50
                 },
                 {
-                    "name": "Zero-day Exploit",
-                    "description": "A \"zero-day\" exploit is a technique developed to take advantage of a security vulnerability that was previously unknown.",
-                    "category": 2
+                    "company": "comScore",
+                    "tracker": "scorecardresearch.com",
+                    "percent": 38
                 },
                 {
-                    "name": "Spamming",
-                    "description": "Spam is \"junk\" email - unsolicited advertising. Because of the very low cost of sending email, a lot of spam is delivered, from reasonably reputable promotional emails to more malicious and potentially damaging material.",
-                    "category": 0
+                    "company": "Facebook",
+                    "tracker": "facebook.com",
+                    "percent": 31
                 },
                 {
-                    "name": "Worms",
-                    "description": "Worms are similar to viruses, but they are able to reproduce themselves independently of other software programs and propogate themselves across a network of machines.",
-                    "category": 1
+                    "company": "Google",
+                    "tracker": "google.com",
+                    "percent": 24
                 },
                 {
-                    "name": "Cross-site Scripting",
-                    "description": "Cross site scripting (\"XSS\") is an exploit where a trusted website is also hosting a third party's code (often unwittingly) that a user will execute.",
-                    "category": 2
+                    "company": "Google",
+                    "tracker": "googleapis.com",
+                    "percent": 23
                 },
                 {
-                    "name": "Weak Passwords",
-                    "description": "More and more Internet services require users choose more complex passwords. That is because weaker passwords (which may seem more memorable to the user) can easily be auto-generated in \"brute force\" methods to crack passwords.",
-                    "category": 0
+                    "company": "Facebook",
+                    "tracker": "facebook.net",
+                    "percent": 23
                 },
                 {
-                    "name": "Trojan Horses",
-                    "description": "A trojan horse is a program that conceals its true purpose. It may appear to be useful for the user, but have a true purpose to leak data, for example.",
-                    "category": 1
+                    "company": "Quantcast",
+                    "tracker": "quantserve.com",
+                    "percent": 23
                 },
                 {
-                    "name": "Denial of Service Attack",
-                    "description": "A Denial of Service attack is a method whereby a sytem is flooded with inbound requests, consuming all its resources and effectively taking the system out of action. A distributed denial of service attack (DDOS) is such an attack where multiple systems are attacking the target.",
-                    "category": 2
+                    "company": "Twitter",
+                    "tracker": "twitter.com",
+                    "percent": 22
                 },
                 {
-                    "name": "Removable Media",
-                    "description": "It is easily overlooked, but removable media (such as USB drives) may be used to transmit malicious software.",
-                    "category": 0
+                    "company": "Google",
+                    "tracker": "googleadservices.com",
+                    "percent": 20
                 },
                 {
-                    "name": "Spyware",
-                    "description": "Spyware is software that is installed on a user's machine, frequently without their knowledge, which transmits data about the user. Spyware may be a trojan horse, or it may not be visible to the user.",
-                    "category": 1
+                    "company": "Google",
+                    "tracker": "googlesyndication.com",
+                    "percent": 20
                 },
                 {
-                    "name": "Packet Sniffing",
-                    "description": "Packet sniffners are program that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
-                    "category": 2
+                    "company": "Google",
+                    "tracker": "2mdn.net",
+                    "percent": 18
+                },
+                {
+                    "company": "Facebook",
+                    "tracker": "fbcdn.net",
+                    "percent": 17
+                },
+                {
+                    "company": "Google",
+                    "tracker": "gstatic.com",
+                    "percent": 17
+                },
+                {
+                    "company": "Ad Nexus",
+                    "tracker": "adnxs.com",
+                    "percent": 17
                 }
             ],
             "labels": {
-                "vulnerabilities": "Vulnerabilities",
-                "malware": "Malware",
-                "exploits": "Exploits"
             }
         }
     },
@@ -677,8 +689,8 @@
         }
     },
     "openSource": {
-        "header": "Operating system (OS) vs. browser source usage",
-        "subheader": "Percent by Year",
+        "header": "Open source is on the rise but heavily controlled",
+        "subheader": "Global smartphone OS market share by level of vendor control.",
         "source": {
             "label": "source: ",
             "name": "Strategy Analytics, analysis by Mozilla",
@@ -686,101 +698,51 @@
         },
         "dataPoints": {
             "dataLabels": {
-                "os": [
-                    "OS Closed Source",
-                    "OS Open Source",
-                    "OS Free and Open Source"
-                ],
-                "browser": [
-                    "Browser Closed Source",
-                    "Browser Open Source",
-                    "Browser Free and Open Source"
+                "OS": [
+                    "Proprietary (iOS, Windows Phone, Blackberry OS, Symbian)",
+                    "Mixed open / closed (Google Android, Sailfish, Bada, Palm OS / Web OS, Tizen)",
+                    "Open source (Android forks, Firefox OS)"
                 ]
             },
             "lineGraphData": [
                 {
-                    "label": "2008",
-                    "data": [
-                        99.1,
-                        0.01,
-                        0.6,
-                        73.1,
-                        1.4,
-                        25.3
-                    ]
-                },
-                {
-                    "label": "2009",
-                    "data": [
-                        99,
-                        0.01,
-                        0.7,
-                        66.2,
-                        3.1,
-                        30.5
-                    ]
-                },
-                {
-                    "label": "2010",
-                    "data": [
-                        97.75,
-                        0.25,
-                        1.65,
-                        59.6,
-                        9.95,
-                        30.5
-                    ]
-                },
-                {
                     "label": "2011",
                     "data": [
-                        94.9,
-                        1.7,
-                        2.8,
-                        50.8,
-                        22.4,
-                        26.35
+                        49.10,
+                        40.00,
+                        10.90
                     ]
                 },
                 {
                     "label": "2012",
                     "data": [
-                        92.7,
-                        3.95,
-                        2.4,
-                        44.4,
-                        33.8,
-                        21.65
+                        30.20,
+                        49.10,
+                        20.70
                     ]
                 },
                 {
                     "label": "2013",
                     "data": [
-                        88.75,
-                        8.15,
-                        2.2,
-                        41.8,
-                        42.05,
-                        17
+                        20.97,
+                        49.77,
+                        29.27
                     ]
                 },
                 {
                     "label": "2014",
                     "data": [
-                        80.3,
-                        16.35,
-                        2,
-                        38.5,
-                        47.5,
-                        13.8
+                        18.60,
+                        51.10,
+                        30.30
                     ]
                 }
             ]
         }
     },
     "netNeutrality": {
-        "header": "Top 5 Internet Companies",
-        "subheader": "by Revenue",
+        "header": "Where is traffic interfered with?",
+        "subheader": "Percentage of BitTorrent traffic tests where bandwidth interference was detected, in 2013.",
         "source": {
             "label": "source: ",
             "name": "Net Neutrality Map",
@@ -939,7 +901,7 @@
     },
     "concentrationOfPower": {
         "header": "Internet giants, richer than nations?",
-        "subheader": "Cash and international reserves in billion US$, 2014.",
+        "subheader": "Cash (incl. cash equivalent and securities) and international reserves (minus gold) in billion US$, 2014.",
         "source": {
             "label": "source: ",
             "name": "Company securities filings, IMF",
@@ -949,51 +911,63 @@
             "totalRevenue": [
                 {
                     "name": "Apple",
-                    "amount": 155
+                    "amount": 155,
+                    "tech": true
                 },
                 {
                     "name": "United States",
-                    "amount": 119
+                    "amount": 119,
+                    "tech": false
                 },
                 {
                     "name": "Indonesia",
-                    "amount": 109
+                    "amount": 108,
+                    "tech": false
                 },
                 {
                     "name": "Microsoft",
-                    "amount": 89
+                    "amount": 89,
+                    "tech": true
                 },
                 {
                     "name": "Canada",
-                    "amount": 74
+                    "amount": 74,
+                    "tech": false
                 },
                 {
                     "name": "Germany",
-                    "amount": 62
+                    "amount": 62,
+                    "tech": false
                 },
                 {
                     "name": "Google",
-                    "amount": 62
+                    "amount": 62,
+                    "tech": true
                 },
                 {
                     "name": "South Africa",
-                    "amount": 44
+                    "amount": 44,
+                    "tech": false
                 },
                 {
                     "name": "Argentina",
-                    "amount": 29
+                    "amount": 29,
+                    "tech": false
                 },
                 {
                     "name": "Amazon",
-                    "amount": 14
+                    "amount": 14,
+                    "tech": true
                 },
                 {
                     "name": "Pakistan",
-                    "amount": 12
+                    "amount": 12,
+                    "tech": false
                 },
                 {
                     "name": "Mauritius",
-                    "amount": 4
+                    "amount": 4,
+                    "tech": false
                 }
             ]
         }
