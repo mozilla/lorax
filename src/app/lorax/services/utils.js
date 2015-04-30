@@ -9,6 +9,23 @@ define(function () {
     var utilsService = function () {
 
         /**
+         * Handles the opening of liks marked as external in a new window/tab.
+         * @param {object} [container] - The container onto which to register the
+         *                 event handler.
+         */
+        function handleExternalLinks(container) {
+
+            var parent = container || $('#modal-issue');
+
+            parent.on('click', 'a', function(event) {
+                if (event.target.rel === 'external') {
+                    event.preventDefault();
+                    window.open(event.target.href, '_blank');
+                }
+            });
+        }
+
+        /**
          * @method core/services/utilsService~getURLParameter
          * @param name {String} name of parameter
          */
@@ -167,7 +184,8 @@ define(function () {
              if (sourceData.src !== '') {
                  li.append($('<a />', {
                      href: sourceData.src,
-                     text: sourceData.name
+                     text: sourceData.name,
+                     rel: 'external'
                  }));
              } else {
                  li.append(sourceData.name);
@@ -925,6 +943,7 @@ define(function () {
         }
 
         return {
+            handleExternalLinks: handleExternalLinks,
             addSource: addSource,
             circleChart: circleChart,
             lineChart: lineChart,

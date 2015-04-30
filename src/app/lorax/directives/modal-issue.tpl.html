@@ -22,11 +22,11 @@
         <p>{{modalIssue.issue.getMozActionCopy()}}</p>
         <ul>
           <li ng-if="modalIssue.issue.getMozActionLink().length === 1">
-            <a href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link-btn">{{modalIssue.issue.getMozActionLink()[0].copy}}</a>
+            <a href="{{modalIssue.issue.getMozActionLink()[0].url}}" class="btn detail-link-btn" rel="external">{{modalIssue.issue.getMozActionLink()[0].copy}}</a>
           </li>
 
           <li ng-if="modalIssue.issue.getMozActionLink().length > 1" ng-repeat="link in modalIssue.issue.getMozActionLink()">
-            <a href="{{link.url}}" class="detail-link-multiple">{{link.copy}}</a>
+            <a href="{{link.url}}" class="detail-link-multiple" rel="external">{{link.copy}}</a>
           </li>
         </ul>
       </div>
@@ -37,11 +37,11 @@
 
         <ul>
           <li ng-if="modalIssue.issue.getYourActionLink().length === 1">
-            <a href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link-btn">{{modalIssue.issue.getYourActionLink()[0].copy}}</a>
+            <a href="{{modalIssue.issue.getYourActionLink()[0].url}}" class="btn detail-link-btn" rel="external">{{modalIssue.issue.getYourActionLink()[0].copy}}</a>
           </li>
 
           <li ng-if="modalIssue.issue.getYourActionLink().length > 1" ng-repeat="link in modalIssue.issue.getYourActionLink()">
-            <a href="{{link.url}}" class="detail-link-multiple">{{link.copy}}</a>
+            <a href="{{link.url}}" class="detail-link-multiple" rel="external">{{link.copy}}</a>
           </li>
         </ul>
       </div>
