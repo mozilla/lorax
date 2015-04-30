@@ -319,96 +319,35 @@
         }
     },
     "dataProtection": {
-        "header": "Top 15 Data Trackers",
-        "subheader": "Percentage of User History",
+        "header": "Data protection laws of the world",
+        "subheader": "Data protection regulation and enforcement per country.",
         "source": {
             "label": "source: ",
             "name": "McKinsey, WEF, 2014",
             "src": ""
         },
         "dataPoints": {
-            "tracking": [
-                {
-                    "company": "Google",
-                    "tracker": "google-analytics.com",
-                    "percent": 56
+            "countryData": {
+                "findCountry": "Find a country",
+                "shading": {
+                    "name": "dataRegulationStatus",
+                    "invert": false,
+                    "values": [
+                        0.01,
+                        1.01,
+                        2.01
+                    ],
+                    "legend": [
+                        "Limited (light touch/self regulation)",
+                        "Moderate (minimum standard setting)",
+                        "Robust (strict requirements and enforcement)"
+                    ]
                 },
-                {
-                    "company": "Google",
-                    "tracker": "doubleclick.net",
-                    "percent": 50
-                },
-                {
-                    "company": "comScore",
-                    "tracker": "scorecardresearch.com",
-                    "percent": 38
-                },
-                {
-                    "company": "Facebook",
-                    "tracker": "facebook.com",
-                    "percent": 31
-                },
-                {
-                    "company": "Google",
-                    "tracker": "google.com",
-                    "percent": 24
-                },
-                {
-                    "company": "Google",
-                    "tracker": "googleapis.com",
-                    "percent": 23
-                },
-                {
-                    "company": "Facebook",
-                    "tracker": "facebook.net",
-                    "percent": 23
-                },
-                {
-                    "company": "Quantcast",
-                    "tracker": "quantserve.com",
-                    "percent": 23
-                },
-                {
-                    "company": "Twitter",
-                    "tracker": "twitter.com",
-                    "percent": 22
-                },
-                {
-                    "company": "Google",
-                    "tracker": "googleadservices.com",
-                    "percent": 20
-                },
-                {
-                    "company": "Google",
-                    "tracker": "googlesyndication.com",
-                    "percent": 20
-                },
-                {
-                    "company": "Google",
-                    "tracker": "2mdn.net",
-                    "percent": 18
-                },
-                {
-                    "company": "Facebook",
-                    "tracker": "fbcdn.net",
-                    "percent": 17
-                },
-                {
-                    "company": "Google",
-                    "tracker": "gstatic.com",
-                    "percent": 17
-                },
-                {
-                    "company": "Ad Nexus",
-                    "tracker": "adnxs.com",
-                    "percent": 17
+                "display": {
+                    "name": "dataProtectionRegulation",
+                    "units": "",
+                    "reduceSize": false
                 }
-            ],
-            "labels": {
-                "copy": [
-                    "Google possesses eight domains belonging to the top trackers, of which they own ten.",
-                    "Google could possibly know 80.13% of a user's visited sites on average."
-                ]
             }
         }
     },

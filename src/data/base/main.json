@@ -57,9 +57,9 @@
                 },
                 "dataProtection": {
                     "status": 2,
-                    "infographicType": "data-lorax-chart-data-tracking",
+                    "infographicType": "data-lorax-chart-world-map",
                     "infographicOverflow": false,
-                    "infographicMap": false,
+                    "infographicMap": true,
                     "tags": []
                 },
                 "governmentCensorship": {
