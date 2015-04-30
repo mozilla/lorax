@@ -96,7 +96,7 @@
                 },
                 "civility": {
                     "status": 1,
-                    "infographicType": "data-lorax-chart-cyber-bullying",
+                    "infographicType": "data-lorax-chart-civility",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []

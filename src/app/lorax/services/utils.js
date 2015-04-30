@@ -779,9 +779,155 @@ define(function () {
             return chart;
         }
 
+        function lineChart() {
+
+            var margin = { top: 20, right: 30, bottom: 70, left: 40 };
+            var width = 960 - margin.left - margin.right;
+            var height = 500 - margin.top - margin.bottom;
+
+            function yAxis(config) {
+                var y = d3.scale.linear()
+                    .domain(d3.extent(config.data, function(d) { return d.value; }))
+                    .range([config.height, 0]);
+
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient('left')
+                    .tickFormat(d3.format("%"));
+
+                if (config.axis) {
+                    config.svg.append('g')
+                        .attr('class', 'y axis')
+                        .call(yAxis);
+                }
+
+                if(config.grid) {
+                    config.svg.append('g')
+                        .attr('class', 'grid')
+                        .style('opacity', '0.1')
+                        .call(yAxis.tickSize(-config.width, 0, 0)
+                            .tickFormat(''));
+                }
+
+                return config.svg;
+            }
+
+            function xAxis(config) {
+                var x = d3.time.scale()
+                    .domain(d3.extent(config.data, function(d) { return d.label; }))
+                    .range([0, config.width]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient('bottom')
+                    .tickFormat(d3.format("d"));
+
+
+                if (config.axis) {
+                    var _x = config.svg.append('g')
+                        .attr('class', 'x axis')
+                        .attr('transform', 'translate(0,' + config.height + ')')
+                        .call(xAxis);
+
+                    _x.selectAll('text')
+                        .attr('dy', '.5em')
+                        .style('text-anchor', 'end');
+                }
+
+                if (config.grid) {
+                    config.svg.append('g')
+                        .attr('class', 'grid')
+                        .attr('transform', 'translate(0,' + config.height + ')')
+                        .style('opacity', '0.1')
+                        .call(xAxis.tickSize(-config.height, 0, 0)
+                            .tickFormat(''));
+                }
+
+                 return config.svg;
+            }
+
+            function drawLine(config) {
+
+                var x = d3.scale.linear()
+                    .domain(d3.extent(config.data, function(d) { return d.label; }))
+                    .range([0, config.width]);
+
+                var y = d3.scale.linear()
+                    .domain(d3.extent(config.data, function(d) { return d.value; }))
+                    .range([config.height, config.margins.top]);
+
+                var line = d3.svg.line()
+                    .x(function(d) { return x(d.label); })
+                    .y(function(d) { return y((d.value)); });
+
+                config.svg.append('path')
+                    .datum(config.data)
+                    .attr('class', 'line')
+                    .attr('d', line);
+
+            }
+
+            function chart(selection) {
+
+                selection.each(function(data) {
+                    var svg = selection.append('svg')
+                        .attr('width', width + margin.right + margin.left)
+                        .attr('height', height + margin.top + margin.bottom)
+                        .attr('class', 'line-chart')
+                      .append('g')
+                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+                    var xAxisConfig = {
+                        grid: true,
+                        axis: true,
+                        svg: svg,
+                        data: data,
+                        width: width,
+                        height: height
+                    };
+                    svg = xAxis(xAxisConfig);
+
+                    var yAxisConfig = {
+                        grid: true,
+                        axis: true,
+                        svg: svg,
+                        data: data,
+                        width: width,
+                        height: height
+                    };
+                    svg = yAxis(yAxisConfig);
+
+                    var config = {
+                        svg: svg,
+                        margins: margin,
+                        width: width,
+                        height: height,
+                        data: data
+                    };
+                    drawLine(config);
+                });
+            }
+
+            chart.width = function(value) {
+                if (!arguments.length) return width;
+                width = value;
+                return chart;
+            }
+
+            chart.height = function(value) {
+                if (!arguments.length) return height;
+                height = value;
+                return chart;
+            }
+
+            return chart;
+
+        }
+
         return {
             addSource: addSource,
             circleChart: circleChart,
+            lineChart: lineChart,
             simpleGroupedBarChart: simpleGroupedBarChart,
             columnChart: columnChart,
             groupedBarChart: groupedBarChart,
