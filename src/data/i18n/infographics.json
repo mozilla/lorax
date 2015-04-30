@@ -331,7 +331,7 @@
                 "findCountry": "Find a country",
                 "shading": {
                     "name": "dataRegulationStatus",
-                    "invert": false,
+                    "invert": true,
                     "values": [
                         0.01,
                         1.01,
