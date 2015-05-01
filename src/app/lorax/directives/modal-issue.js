@@ -27,7 +27,8 @@ define(['angular', 'jquery'], function (angular, $) {
         $timeout,
         routesService,
         windowService,
-        dataService
+        dataService,
+        utilsService
     ) {
 
         this._$scope = $scope;
@@ -37,6 +38,7 @@ define(['angular', 'jquery'], function (angular, $) {
         this._routesService = routesService;
         this._windowService = windowService;
         this._dataService = dataService;
+        this._utilsService = utilsService;
 
         $scope.modalIssue = {
             open: false,
@@ -53,6 +55,8 @@ define(['angular', 'jquery'], function (angular, $) {
             // open the issue modal
             this.openModal();
         }
+
+        this._utilsService.handleExternalLinks();
     };
 
     /**
@@ -66,7 +70,8 @@ define(['angular', 'jquery'], function (angular, $) {
         '$timeout',
         'routesService',
         'windowService',
-        'dataService'
+        'dataService',
+        'utilsService'
     ];
 
     /**
