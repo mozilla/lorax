@@ -143,7 +143,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.src %>/images/icons-source/',
+                    cwd: '<%= config.src %>/images/icons-min/',
                     src: ['*.svg', '*.png'],
                     dest: '<%= config.dist %>/images/icons/'
                 }]
@@ -151,7 +151,7 @@ module.exports = function (grunt) {
             server: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.src %>/images/icons-source/',
+                    cwd: '<%= config.src %>/images/icons-min/',
                     src: ['*.svg', '*.png'],
                     dest: '<%= config.temp %>/images/icons/'
                 }]
@@ -350,7 +350,6 @@ module.exports = function (grunt) {
             'copy:dist',
             'bower:install',
             'less:dist',
-            //'svgmin',
             'grunticon:dist',
             'requirejs',
             'concat',
@@ -364,7 +363,7 @@ module.exports = function (grunt) {
     grunt.registerTask('icons', function () {
         grunt.task.run([
             'clean:grunticon',
-            //'svgmin',
+            'svgmin',
             'grunticon:server',
         ]);
     });
