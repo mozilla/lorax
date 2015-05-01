@@ -136,10 +136,6 @@ module.exports = function (grunt) {
         },
 
         grunticon: {
-            options: {
-                customselectors:
-                    grunt.file.readJSON('src/styles/grunticon/custom-selectors.json')
-            },
             dist: {
                 files: [{
                     expand: true,
