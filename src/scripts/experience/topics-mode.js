@@ -50,22 +50,6 @@ define([
         var issue;
         var topic;
 
-        // show the description text for on desktop view only for now
-        // @see https://bugzilla.mozilla.org/show_bug.cgi?id=1154314
-        if (window.innerWidth > 960) {
-            // add the vitals main description
-            this._vitalsDescription = new PIXI.Text(this._topicsData.description, {
-                font: '300 20px "Fira Sans", sans-serif',
-                fill: '#222222',
-                wordWrap: true,
-                wordWrapWidth: 550,
-                align: 'center'
-            });
-            this._canvas.addChild(this._vitalsDescription);
-            this._vitalsDescription.x = Math.round(this._canvas.canvasSize.x / 3);
-            this._vitalsDescription.y = Math.round(this._canvas.canvasSize.y / 5);
-        }
-
         for(i = 0; i < this._topicsData.length; i ++) {
             // get all issues for this topic
             var issues = [];
@@ -109,14 +93,6 @@ define([
         TopicsMode.DISTANCE_BETWEEN_TOPICS = this._canvas.canvasSize.x * 0.6;
         if (Responsive.IS_MEDIUM()) {
             TopicsMode.DISTANCE_BETWEEN_TOPICS /= 2;
-        }
-
-        if (this._vitalsDescription) {
-            // keep adjusting the distance from left until...
-            this._vitalsDescription.x = Math.round(this._canvas.canvasSize.x / 3);
-            // we remove the description text for now
-            // @see https://bugzilla.mozilla.org/show_bug.cgi?id=1154314
-            this._vitalsDescription.visible = window.innerWidth < 960 ? false : true;
         }
 
         for (var k = 0; k < this._topics.length; k++) {
@@ -200,10 +176,6 @@ define([
     TopicsMode.prototype._onStartShow = function () {
         this._canvas.addChild(this._topicsContainer, this._canvas._stage.getChildIndex(this._canvas._particlesContainer));
 
-        if (this._vitalsDescription) {
-            this._canvas.addChild(this._vitalsDescription);
-        }
-
         var i, k;
 
         for (i = 0; i < this._canvas.fakes.length; i ++) {
@@ -250,7 +222,6 @@ define([
 
     TopicsMode.prototype._onStartHide = function () {
         this._canvas.removeChild(this._topicsContainer);
-        this._canvas.removeChild(this._vitalsDescription);
 
         var i, k;
         for (i = 0; i < this._topics.length; i ++) {
