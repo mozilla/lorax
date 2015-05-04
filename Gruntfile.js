@@ -76,13 +76,6 @@ module.exports = function (grunt) {
                         '<%= config.temp %>'
                     ]
                 }]
-            },
-            grunticon: {
-                files: [{
-                    src: [
-                        '<%= config.src %>/images/icons-min/'
-                    ]
-                }]
             }
         },
 
@@ -119,18 +112,6 @@ module.exports = function (grunt) {
                     dest: '<%= config.dist %>',
                     src: ['**'],
                     filter: 'isFile'
-                    // src: [
-                    //     '*.{ico,png,txt}',
-                    //     '.htaccess',
-                    //     'CNAME',
-                    //     'robots.txt',
-                    //     'scripts/data/{,*/}*.{js,json}',
-                    //     'images/{,*/}*.{ico,gif,png,jpg,pdf,html}',
-                    //     'fonts/{,*/}*.{otf,ttf,eot,woff,svg}',
-                    //     'data/**/*.json',
-                    //     '**/*.tpl.html',
-                    //     'index.html'
-                    // ]
                 }]
             }
         },
@@ -207,17 +188,6 @@ module.exports = function (grunt) {
             }
         },
 
-        svgmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.src %>/images/icons-source',
-                    src: ['*.svg'],
-                    dest: '<%= config.src %>/images/icons-min'
-                }]
-            }
-        },
-
         uglify: {
             options: {
                 compress: {
@@ -262,8 +232,6 @@ module.exports = function (grunt) {
                     '<%= config.src %>/styles/grunticon/custom-selectors.json'
                 ],
                 tasks: [
-                    'clean:grunticon',
-                    //'svgmin',
                     'grunticon:server'
                 ]
             },
@@ -331,8 +299,6 @@ module.exports = function (grunt) {
     grunt.registerTask('server', function () {
         grunt.task.run([
             'clean:server',
-            'clean:grunticon',
-            //'svgmin',
             'grunticon:server',
             'bower:install',
             'less:server',
@@ -345,7 +311,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', function () {
         grunt.task.run([
             'clean:dist',
-            'clean:grunticon',
             'useminPrepare',
             'copy:dist',
             'bower:install',
@@ -362,8 +327,6 @@ module.exports = function (grunt) {
     // Dev
     grunt.registerTask('icons', function () {
         grunt.task.run([
-            'clean:grunticon',
-            'svgmin',
             'grunticon:server',
         ]);
     });
