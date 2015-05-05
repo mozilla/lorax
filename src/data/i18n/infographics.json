@@ -221,32 +221,32 @@
         "dataPoints": {
             "marketShare": [
                 {
-                    "company": "Other",
-                    "value": "0.05"
-                },
-                {
-                    "company": "Microsoft",
-                    "value": "0.02"
-                },
-                {
-                    "company": "LinkedIn",
-                    "value": "0.03"
-                },
-                {
-                    "company": "Yahoo",
-                    "value": "0.04"
-                },
-                {
-                    "company": "Twitter",
-                    "value": "0.07"
+                    "company": "Facebook",
+                    "value": 0.46
                 },
                 {
                     "company": "Google",
-                    "value": "0.34"
+                    "value": 0.34
                 },
                 {
-                    "company": "Facebook",
-                    "value": "0.46"
+                    "company": "Twitter",
+                    "value": 0.07
+                },
+                {
+                    "company": "Yahoo",
+                    "value": 0.04
+                },
+                {
+                    "company": "LinkedIn",
+                    "value": 0.03
+                },
+                {
+                    "company": "Microsoft",
+                    "value": 0.02
+                },
+                {
+                    "company": "Other",
+                    "value": 0.05
                 }
             ]
         }
@@ -353,7 +353,7 @@
     },
     "governmentCensorship": {
         "header": "Who censors the Internet?",
-        "subheader": "Level of internet and digital media freedom per country. Score ranges from 0 (best) to 100 (worst).",
+        "subheader": "Level of internet and digital media censorship per country. Score ranges from 0 (best) to 100 (worst).",
         "source": {
             "label": "source: ",
             "name": "Freedom House",
@@ -586,7 +586,7 @@
                 },
                 {
                     "name": "Packet Sniffing",
-                    "description": "Packet sniffners are program that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
+                    "description": "Packet sniffers are programs that intercept and inspect data packets frequently looking for sensitive information, such as unencrypted passwords.",
                     "status": 2
                 }
             ]
