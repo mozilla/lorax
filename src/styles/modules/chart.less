@@ -37,15 +37,37 @@
         }
     }
 }
-.line-chart {
+.line-chart,
+.multi-series-line-chart {
     .line {
         fill: none;
         stroke: @black;
         stroke-width: 1.5px;
     }
+}
+.line-chart {
     .x {
         text {
             fill: @white;
+        }
+    }
+}
+.multi-series-line-chart {
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+    .y text,
+    .legend-label {
+        fill: #fff;
+    }
+    .x {
+        .tick {
+            text {
+                transform: none;
+            }
         }
     }
 }

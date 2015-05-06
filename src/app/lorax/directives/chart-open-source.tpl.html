@@ -1,19 +1,11 @@
 <div class="opensource__legend">
-	<div class="opensource__label opensource__label-os">
-		<h3>{{::lineGraph.data.lineGraphData[0].data[0]}}%</h3>
-		<p>{{::lineGraph.dataLabels.os[0]}}
-	</div>
-	<div class="opensource__label opensource__label-browser">
-		<h3>{{::lineGraph.data.lineGraphData[5].data[4]}}%</h3>
-		<p>{{::lineGraph.dataLabels.browser[1]}}
-	</div>
-	<ul class="opensource__legend-os">
-		<li ng-repeat="label in ::lineGraph.dataLabels.os"><div></div>{{::label}}</li>
-	</ul>
-	<ul class="opensource__legend-browser">
-		<li ng-repeat="label in ::lineGraph.dataLabels.browser"><div></div>{{::label}}</li>
-	</ul>
-	<!-- angular does not have an if..else so, this is the next best thing -->
+  <ul class="opensource__legend-os">
+    <li ng-repeat="label in ::lineGraph.dataLabels.os">{{::label}}</li>
+  </ul>
+
+  <div class="chart"></div>
+
+  <!-- angular does not have an if..else so, this is the next best thing -->
   <ul class="source" ng-switch on="{{::lineGraph.infographic._source}}">
     <li ng-switch-when="{{::lineGraph.infographic._source.src}}">
       <span>{{::lineGraph.infographic._source.label}}</span>

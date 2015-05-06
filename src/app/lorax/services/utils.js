@@ -797,6 +797,204 @@ define(function () {
             return chart;
         }
 
+        /**
+         * Draws a multi series line chart
+         */
+        function multiSeriesLineChart() {
+            var margin = { top: 20, right: 30, bottom: 70, left: 40 };
+            var width = 960 - margin.left - margin.right;
+            var height = 500 - margin.top - margin.bottom;
+
+            var color = d3.scale.category10();
+
+            function xAxis(config) {
+                var x = d3.time.scale()
+                    .domain(d3.extent(config.data, function(d) { return d.label; }))
+                    .range([0, config.width]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient('bottom')
+                    .tickFormat(d3.format("d"));
+
+                if (config.axis) {
+                    config.svg.append('g')
+                        .attr('class', 'x axis')
+                        .attr('transform', 'translate(0,' + config.height + ')')
+                        .call(xAxis);
+                }
+
+                if (config.grid) {
+                    config.svg.append('g')
+                        .attr('class', 'grid')
+                        .attr('transform', 'translate(0,' + config.height + ')')
+                        .style('opacity', '0.1')
+                        .call(xAxis.tickSize(-config.height, 0, 0)
+                            .tickFormat(''));
+                }
+
+                 return config.svg;
+            }
+
+            function yAxis(config) {
+                var y = d3.scale.linear()
+                    .domain([d3.min(config.segments, function(c) {
+                            return d3.min(c.values, function(v) { return v.segment; });
+                        }),
+                        d3.max(config.segments, function(c) {
+                            return d3.max(c.values, function(v) { return v.segment; });
+                        })
+                    ])
+                    .range([config.height, 0]);
+
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient('left')
+                    .tickFormat(function(d) {
+                        return d + '%';
+                    });
+
+                if (config.axis) {
+                    config.svg.append('g')
+                        .attr('class', 'y axis')
+                        .call(yAxis);
+                }
+
+                if(config.grid) {
+                    config.svg.append('g')
+                        .attr('class', 'grid')
+                        .style('opacity', '0.1')
+                        .call(yAxis.tickSize(-config.width, 0, 0)
+                            .tickFormat(''));
+                }
+
+                return config.svg;
+            }
+
+            function drawLineSeries(config) {
+                var x = d3.time.scale()
+                    .domain(d3.extent(config.data, function(d) { return d.label; }))
+                    .range([0, config.width]);
+
+                var y = d3.scale.linear()
+                    .domain([d3.min(config.segments, function(c) {
+                            return d3.min(c.values, function(v) { return v.segment; });
+                        }),
+                        d3.max(config.segments, function(c) {
+                            return d3.max(c.values, function(v) { return v.segment; });
+                        })
+                    ])
+                    .range([config.height, 0]);
+
+                var line = d3.svg.line()
+                    .x(function(d) { return x(d.date); })
+                    .y(function(d) { return y(d.segment); });
+
+                var segment = config.svg.selectAll('.segment')
+                    .data(config.segments)
+                  .enter().append('g')
+                    .attr('class', 'segment');
+
+                segment.append('path')
+                    .attr('class', 'line')
+                    .attr('d', function(d) { return line(d.values); })
+                    .style('stroke', '#000');
+
+                segment.append('text')
+                    .datum(function(d) {
+                        return {
+                            name: d.name,
+                            value: d.values[d.values.length - 1]};
+                    })
+                    .attr('transform', function(d) {
+                        return 'translate(' + x(d.value.date) + ',' + y(d.value.segment) + ')';
+                    })
+                    .attr('class', 'legend-label')
+                    .attr('x', 10)
+                    .attr('dy', '.35em')
+                    .text(function(d) { return titleCase(d.name, '_'); });
+            }
+
+            function chart(selection) {
+
+                selection.each(function(data) {
+
+                    color.domain(d3.keys(data[0]).filter(function(key) { return key !== 'label'; }));
+                    data.forEach(function(d) { d.label = +d.label; });
+
+                    var segments = color.domain().map(function(name) {
+                        return {
+                            name: name,
+                            values: data.map(function(d) {
+                                return {
+                                    date: d.label,
+                                    segment: d[name]
+                                };
+                            })
+                        };
+                    });
+
+                    var svg = selection.append('svg')
+                        .attr('width', width + margin.right + margin.left)
+                        .attr('height', height + margin.top + margin.bottom)
+                        .attr('class', 'multi-series-line-chart')
+                      .append('g')
+                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+                    var xAxisConfig = {
+                        grid: true,
+                        axis: true,
+                        svg: svg,
+                        data: data,
+                        width: width,
+                        height: height
+                    };
+                    svg = xAxis(xAxisConfig);
+
+                    var yAxisConfig = {
+                        grid: true,
+                        axis: true,
+                        svg: svg,
+                        data: data,
+                        segments: segments,
+                        width: width,
+                        height: height
+                    };
+                    svg = yAxis(yAxisConfig);
+
+                    var config = {
+                        svg: svg,
+                        margins: margin,
+                        width: width,
+                        height: height,
+                        data: data,
+                        segments: segments
+                    };
+                    drawLineSeries(config);
+                });
+            }
+
+            chart.margin = function(value) {
+                if (!arguments.length) return value;
+                margin = value;
+                return chart;
+            };
+
+            chart.width = function(value) {
+                if (!arguments.length) return value;
+                width = value;
+                return chart;
+            };
+
+            chart.height = function(value) {
+                if (!arguments.length) return value;
+                height = value;
+                return chart;
+            };
+
+            return chart;
+        }
+
         function lineChart() {
 
             var margin = { top: 20, right: 30, bottom: 70, left: 40 };
@@ -946,6 +1144,7 @@ define(function () {
             handleExternalLinks: handleExternalLinks,
             addSource: addSource,
             circleChart: circleChart,
+            multiSeriesLineChart: multiSeriesLineChart,
             lineChart: lineChart,
             simpleGroupedBarChart: simpleGroupedBarChart,
             columnChart: columnChart,

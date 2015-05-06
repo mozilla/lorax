@@ -698,7 +698,7 @@
         },
         "dataPoints": {
             "dataLabels": {
-                "OS": [
+                "os": [
                     "Proprietary (iOS, Windows Phone, Blackberry OS, Symbian)",
                     "Mixed open / closed (Google Android, Sailfish, Bada, Palm OS / Web OS, Tizen)",
                     "Open source (Android forks, Firefox OS)"
@@ -707,35 +707,27 @@
             "lineGraphData": [
                 {
                     "label": "2011",
-                    "data": [
-                        49.10,
-                        40.00,
-                        10.90
-                    ]
+                    "proprietary": 49.1,
+                    "mixed": 40,
+                    "open_source": 10.9
                 },
                 {
                     "label": "2012",
-                    "data": [
-                        30.20,
-                        49.10,
-                        20.70
-                    ]
+                    "proprietary": 30.2,
+                    "mixed": 49.1,
+                    "open_source": 20.7
                 },
                 {
                     "label": "2013",
-                    "data": [
-                        20.97,
-                        49.77,
-                        29.27
-                    ]
+                    "proprietary": 20.97,
+                    "mixed": 49.77,
+                    "open_source": 29.27
                 },
                 {
                     "label": "2014",
-                    "data": [
-                        18.60,
-                        51.10,
-                        30.30
-                    ]
+                    "proprietary": 18.6,
+                    "mixed": 51.1,
+                    "open_source": 30.3
                 }
             ]
         }
