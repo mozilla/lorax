@@ -395,36 +395,36 @@
         "dataPoints": {
             "surveillance": [
                 {
-                    "name": "3<br>Further Entrenched",
-                    "description": "With little pressure from government, or for users addicted to \"free\", web advertising becomes further entrenched."
-                },
-                {
-                    "name": "4<br>Lack of Regulation",
-                    "description": "Governments have no incentives to regulate data collection and usage."
-                },
-                {
-                    "name": "5<br>Surveillance",
-                    "description": "Government agencies tap into it with (or without) companies cooperation with little to no oversight."
-                },
-                {
-                    "name": "6<br>Government Access",
-                    "description": "There is little courts can do to block government from accessing this data for security purposes when private companies already do so for commerical purposes."
-                },
-                {
-                    "name": "7<br>Data Storage",
-                    "description": "Massive amounts of data on individuals are collected, stored, and exchanged by web companies."
-                },
-                {
-                    "name": "8<br>Data Collection",
+                    "name": "3<br>Data Collection",
                     "description": "Web advertising competes with offline advertising by promising advertisers that they can perfectly target messages to individuals. This requires that advertising companies collect data useful for identifying individuals and their interests."
                 },
                 {
-                    "name": "1<br>No Scarcity",
-                    "description": "In the offline world, inventory of a space is constrained. In the online world, inventory is theoretically infinite. Web companies make money by selling more and more page views, in turn making online advertising cheaper."
+                    "name": "4<br>Data Storage",
+                    "description": "Massive amounts of data on individuals are collected, stored, and exchanged by web companies."
                 },
                 {
-                    "name": "2<br>Advertising",
+                    "name": "5<br>Government Access",
+                    "description": "There is little courts can do to block government from accessing this data for security purposes when private companies already do so for commerical purposes."
+                },
+                {
+                    "name": "6<br>Surveillance",
+                    "description": "Government agencies tap into it with (or without) companies cooperation with little to no oversight."
+                },
+                {
+                    "name": "7<br>Lack of Regulation",
+                    "description": "Governments have no incentives to regulate data collection and usage."
+                },
+                {
+                    "name": "8<br>Further Entrenched",
+                    "description": "With little pressure from government, or for users addicted to \"free\", web advertising becomes further entrenched."
+                },
+                {
+                    "name": "1<br>Advertising",
                     "description": "For most web companies, advertising is the sole viable business model as they are competing with \"free\" alternatives."
+                },
+                {
+                    "name": "2<br>No Scarcity",
+                    "description": "In the offline world, inventory of a space is constrained. In the online world, inventory is theoretically infinite. Web companies make money by selling more and more page views, in turn making online advertising cheaper."
                 }
             ]
         }
