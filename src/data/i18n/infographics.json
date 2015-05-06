@@ -438,81 +438,81 @@
             "src": ""
         },
         "dataPoints": {
-              "tracking": [
+              "trackers": [
                 {
                     "company": "Google",
                     "tracker": "google-analytics.com",
-                    "percent": 56
+                    "percent": 0.56
                 },
                 {
                     "company": "Google",
                     "tracker": "doubleclick.net",
-                    "percent": 50
+                    "percent": 0.50
                 },
                 {
                     "company": "comScore",
                     "tracker": "scorecardresearch.com",
-                    "percent": 38
+                    "percent": 0.38
                 },
                 {
                     "company": "Facebook",
                     "tracker": "facebook.com",
-                    "percent": 31
+                    "percent": 0.31
                 },
                 {
                     "company": "Google",
                     "tracker": "google.com",
-                    "percent": 24
+                    "percent": 0.24
                 },
                 {
                     "company": "Google",
                     "tracker": "googleapis.com",
-                    "percent": 23
+                    "percent": 0.23
                 },
                 {
                     "company": "Facebook",
                     "tracker": "facebook.net",
-                    "percent": 23
+                    "percent": 0.23
                 },
                 {
                     "company": "Quantcast",
                     "tracker": "quantserve.com",
-                    "percent": 23
+                    "percent": 0.23
                 },
                 {
                     "company": "Twitter",
                     "tracker": "twitter.com",
-                    "percent": 22
+                    "percent": 0.22
                 },
                 {
                     "company": "Google",
                     "tracker": "googleadservices.com",
-                    "percent": 20
+                    "percent": 0.20
                 },
                 {
                     "company": "Google",
                     "tracker": "googlesyndication.com",
-                    "percent": 20
+                    "percent": 0.20
                 },
                 {
                     "company": "Google",
                     "tracker": "2mdn.net",
-                    "percent": 18
+                    "percent": 0.18
                 },
                 {
                     "company": "Facebook",
                     "tracker": "fbcdn.net",
-                    "percent": 17
+                    "percent": 0.17
                 },
                 {
                     "company": "Google",
                     "tracker": "gstatic.com",
-                    "percent": 17
+                    "percent": 0.17
                 },
                 {
                     "company": "App Nexus",
                     "tracker": "adnxs.com",
-                    "percent": 17
+                    "percent": 0.17
                 }
             ],
             "labels": {
