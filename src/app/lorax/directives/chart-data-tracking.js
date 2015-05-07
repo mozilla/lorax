@@ -76,7 +76,7 @@ define(['jquery'], function ($) {
 
             // transform the raw data into what the below function expects
             for (var i = 0, l = trackers.length; i < l; i++) {
-                var trackerData = trackers[i].company + ' - ' + trackers[i].tracker;
+                var trackerData = trackers[i].tracker + ' - ' + trackers[i].company;
                 graphData.push([trackerData, trackers[i].percent]);
             }
 
