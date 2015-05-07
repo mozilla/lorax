@@ -82,7 +82,7 @@
                 },
                 "adTracking": {
                     "status": 2,
-                    "infographicType": "data-lorax-chart-concentration-power",
+                    "infographicType": "data-lorax-chart-data-tracking",
                     "infographicOverflow": false,
                     "infographicMap": false,
                     "tags": []

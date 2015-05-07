@@ -14,8 +14,7 @@ define(['jquery'], function ($) {
             replace: true,
             scope: true,
             controller: ChartDataTrackingController,
-            link: ChartDataTrackingLinkFn,
-            templateUrl: '/app/lorax/directives/chart-data-tracking.tpl.html'
+            link: ChartDataTrackingLinkFn
         };
     };
 
@@ -25,21 +24,13 @@ define(['jquery'], function ($) {
      */
     var ChartDataTrackingController = function (
         $scope,
-        $timeout
+        $timeout,
+        utilsService
         )
     {
         this._$scope = $scope;
         this._$timeout = $timeout;
-
-        var infographic = $scope.modalIssue.issue.getInfographic();
-        this._data = infographic.getDataPoints().tracking;
-        this._localeData = infographic.getDataPoints().labels;
-
-        $scope.tracking = {
-            infographic: infographic,
-            data: this._data,
-            localeData: this._localeData
-        };
+        this._utilsService = utilsService;
     };
 
     /**
@@ -48,7 +39,8 @@ define(['jquery'], function ($) {
      */
     ChartDataTrackingController.$inject = [
         '$scope',
-        '$timeout'
+        '$timeout',
+        'utilsService'
     ];
 
     /**
@@ -59,22 +51,44 @@ define(['jquery'], function ($) {
      * @param {object} controller Controller reference.
      */
     var ChartDataTrackingLinkFn = function (scope, iElem, iAttrs, controller) {
-        var createBars = function () {
-            var $bars = $('.data-tracking__tracker-bar');
-            var maxHeight = 200;
+        controller._$timeout(function() {
 
-            $bars.each(function(idx) {
-                var $this = $(this);
-                var length = controller._data[idx].percent;
-                var percentBar = document.createElement('div');
-                percentBar.style.height = ((length * maxHeight)/100) + 'px';
-                percentBar.classList.add('data-tracking__tracker-bar-percent');
+            var $modal =  $('#modal-issue');
 
-                $this.append(percentBar);
-            });
-        };
+            var container = $('.infographic__wrapper div', $modal);
+            var graphWidth = container.width();
 
-        controller._$timeout(createBars);
+            var width = Math.round(graphWidth);
+            var height = Math.round(graphWidth / 1.5);
+
+            var infographic = scope.modalIssue.issue.getInfographic();
+            var trackers = infographic.getDataPoints().trackers;
+            var graphData = [];
+
+            var margin = { top: 0, right: 30, bottom: 150, left: 40 };
+            var chart = controller._utilsService.columnChart()
+              .margin(margin)
+              .width(width)
+              .height(height)
+              .yAxisFormat(d3.format("%"))
+              .formatX(true)
+              .xGrid(true);
+
+            // transform the raw data into what the below function expects
+            for (var i = 0, l = trackers.length; i < l; i++) {
+                var trackerData = trackers[i].company + ' - ' + trackers[i].tracker;
+                graphData.push([trackerData, trackers[i].percent]);
+            }
+
+            var selection = d3.select('.infographic__wrapper div', $modal);
+            selection.datum(graphData).call(chart);
+
+            // if there is a source for the infographic, add it.
+            if (infographic._source.name) {
+                controller._utilsService.addSource(infographic._source, container);
+            }
+
+        }.bind(controller));
     };
 
     return ChartDataTrackingDirective;
