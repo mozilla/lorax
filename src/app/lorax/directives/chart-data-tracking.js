@@ -71,13 +71,11 @@ define(['jquery'], function ($) {
               .width(width)
               .height(height)
               .yAxisFormat(d3.format("%"))
-              .formatX(true)
               .xGrid(true);
 
             // transform the raw data into what the below function expects
             for (var i = 0, l = trackers.length; i < l; i++) {
-                var trackerData = trackers[i].tracker + ' - ' + trackers[i].company;
-                graphData.push([trackerData, trackers[i].percent]);
+                graphData.push([trackers[i].tracker, trackers[i].percent]);
             }
 
             var selection = d3.select('.infographic__wrapper div', $modal);

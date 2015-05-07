@@ -430,7 +430,7 @@
         }
     },
     "adTracking": {
-        "header": "On average, Google could know 80.13% of a user's web history.",
+        "header": "On average, Google could know 80% of a user's web history.",
         "subheader": "Owners of top tracking domains by share of user's visited sites known.",
         "source": {
             "label": "source: ",
@@ -441,7 +441,7 @@
               "trackers": [
                 {
                     "company": "Google",
-                    "tracker": "google-analytics.com",
+                    "tracker": "g-a.com",
                     "percent": 0.56
                 },
                 {
