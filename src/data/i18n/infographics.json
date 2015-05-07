@@ -441,7 +441,7 @@
               "trackers": [
                 {
                     "company": "Google",
-                    "tracker": "google-analytics.com",
+                    "tracker": "g-a.com",
                     "percent": 0.56
                 },
                 {

@@ -690,8 +690,6 @@ define(function () {
             var xGrid = false;
             var yGrid = false;
 
-            var formatX = false;
-
             var margin = { top: 20, right: 30, bottom: 30, left: 40 };
             var width = 960;
             var height = 500;
@@ -707,12 +705,6 @@ define(function () {
 
                 var xAxis = d3.svg.axis().scale(x).orient('bottom');
                 var yAxis = d3.svg.axis().scale(y).orient('left');
-
-                if (formatX) {
-                    xAxis.tickFormat(function(d) {
-                        return d.substring(0, d.indexOf('-'));
-                    });
-                }
 
                 // if a format was specified, apply
                 if (yAxisFormat) {
@@ -781,17 +773,6 @@ define(function () {
             chart.xGrid = function(value) {
                 if (!arguments.length) return xGrid;
                 xGrid = value;
-                return chart;
-            }
-
-            // This is currently specifically used by the ad tracking infographic
-            // but can be used by any other infographics in future that has
-            // duplicate labels. If formatX is true, it will format the string
-            // used for the x axis by return a substring of the full string,
-            // starting at 0 to indexOf '-'
-            chart.formatX = function(value) {
-                if (!arguments.length) return formatX;
-                formatX = value;
                 return chart;
             }
 
