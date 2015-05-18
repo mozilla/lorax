@@ -1,6 +1,6 @@
 <div class="opensource__legend">
   <ul class="opensource__legend-os">
-    <li ng-repeat="label in ::lineGraph.dataLabels.os">{{::label}}</li>
+    <li ng-repeat="(key, label) in ::lineGraph.dataLabels.os" class="{{ lineGraph.icons[key] }}">{{::label}}</li>
   </ul>
 
   <div class="chart"></div>

@@ -38,7 +38,8 @@ define(['jquery', 'd3'], function ($, d3) {
         $scope.lineGraph = {
           infographic: infographic,
           data: infographic.getDataPoints(),
-          dataLabels: infographic.getDataPoints().dataLabels
+          dataLabels: infographic.getDataPoints().dataLabels,
+          icons: ['circle', 'rect', 'circle-white']
         };
     };
 
@@ -74,7 +75,11 @@ define(['jquery', 'd3'], function ($, d3) {
       var chart = this._utilsService.multiSeriesLineChart()
           .margin(margin)
           .width(graphDimension - margin.left - margin.right)
-          .height((graphDimension / 1.6) - margin.top - margin.bottom);
+          .height((graphDimension / 1.6) - margin.top - margin.bottom)
+          .colors(['#000', '#725710', '#fff'])
+          .customClass('open-source-chart')
+          .addPoints(true)
+          .pointShapes(['circle', 'rect', 'circle']);
 
       d3.select('.chart', $modal)
           .datum(lineData)
