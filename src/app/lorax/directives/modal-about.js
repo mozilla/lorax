@@ -2,6 +2,7 @@
  * @fileOverview About Modal directive
  * @author <a href="mailto:owen@work.co">Owen Herterich</a>
  * @author <a href="mailto:chris@work.co">Chris James</a>
+ * @author <a href="mailto:sneethling@mozilla.com">Schalk Neethling</a>
  */
 define(function () {
     'use strict';
@@ -27,11 +28,13 @@ define(function () {
         $scope,
         dataService,
         experienceService,
+        utilsService,
         windowService
     ) {
         this._$scope = $scope;
         this._dataService = dataService;
         this._experienceService = experienceService;
+        this._utilsService = utilsService;
         this._windowService = windowService;
 
         $scope.modalLegend = {};
@@ -40,9 +43,13 @@ define(function () {
             closeModal: this.closeModal.bind(this)
         };
 
+        // list of views for which we should open the about modal.
+        var views = ['ecosystem', 'vitals'];
+        var currentView = this._experienceService._view;
+
         // only set the about modal to open if the current view
-        // is the ecosystem view.
-        if (this._experienceService._view === 'ecosystem') {
+        // is the array of views above.
+        if (this._utilsService.inArray(currentView, views)) {
             $scope.modalAbout.open = true;
         }
 
@@ -63,6 +70,7 @@ define(function () {
         '$scope',
         'dataService',
         'experienceService',
+        'utilsService',
         'windowService'
     ];
 

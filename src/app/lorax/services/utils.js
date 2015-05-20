@@ -9,6 +9,21 @@ define(function () {
     var utilsService = function () {
 
         /**
+         * Loops over the array and returns true if the specified 'needle' is found.
+         * @param {string|number} needle - The item to search for in the array
+         * @param {object} haystack - The array to search through.
+         * @returns True if a match is found, else false.
+         */
+        function inArray(needle, haystack) {
+            for (var i = 0, l = haystack.length; i < l; i++) {
+                if (needle === haystack[i]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
          * Handles the opening of liks marked as external in a new window/tab.
          * @param {object} [container] - The container onto which to register the
          *                 event handler.
@@ -1141,6 +1156,7 @@ define(function () {
         }
 
         return {
+            inArray: inArray,
             handleExternalLinks: handleExternalLinks,
             addSource: addSource,
             circleChart: circleChart,
