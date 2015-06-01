@@ -40,9 +40,13 @@ define(['angular', 'jquery'], function (angular, $) {
         this._dataService = dataService;
         this._utilsService = utilsService;
 
+        // store the issueList for use in closeModal
+        $scope.$issueList = $('.issues', '#experience-canvas');
+
         $scope.modalIssue = {
             open: false,
-            closeModal: this.closeModal.bind(this)
+            closeModal: this.closeModal.bind(this),
+            $modalContent: $('.content-container', '#modal-issue')
         };
 
         // listen for $broadcast of 'openIssueModal'
@@ -126,6 +130,11 @@ define(['angular', 'jquery'], function (angular, $) {
             this._windowService.setIssueMode(true);
             this._windowService.setModalOpen(true);
 
+            this._$timeout(function() {
+                // move focus to the modal
+                this._$scope.modalIssue.$modalContent.focus();
+            }.bind(this));
+
         }.bind(this));
     };
 
@@ -147,6 +156,8 @@ define(['angular', 'jquery'], function (angular, $) {
 
         this._$timeout(function () {
             this._$location.url(referrer);
+            // move focus back to the main canvas
+            this._$scope.$issueList.focus();
         }.bind(this));
     };
 

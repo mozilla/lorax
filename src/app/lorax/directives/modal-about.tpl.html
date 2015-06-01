@@ -1,4 +1,4 @@
-<section class="modal modal--side-panel" ng-if="modalAbout.open">
+<section id="about-modal" class="modal modal--side-panel" ng-if="modalAbout.open" aria-visible="modalAbout.open">
   <div class="side-panel-overlay" ng-click="modalAbout.closeModal()"></div>
   <div class="side-panel side-panel--about">
     <a href="#" class="modal__close modal__close-absolute icon-close-inv" data-lorax-prevent-default ng-click="modalAbout.closeModal()" role="button">Close</a>

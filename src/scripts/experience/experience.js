@@ -31,6 +31,22 @@ define([
             this._showStats();
         }
 
+        var $modalIssue = $('#modal-issue');
+        $modalIssue.on('keyup', function(event) {
+            // Firefox and IE has good support for .key and we fallback to
+            // keyIdentifier for Webkit based browsers.
+            // @see more: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode [para#3]
+            var key = event.key ? event.key : event.originalEvent.keyIdentifier;
+
+            // handle the escape key event
+            if (key === 'Escape' || key === 'U+001B') {
+                // trigger a click event on the close button for the modal,
+                // that way we do not have to be conerned about communicating
+                // through all of the various layers manually.
+                $('.modal__close', $modalIssue).click();
+            }
+        });
+
         var $colophon = $('.colophon');
         $colophon.on('click', 'a', function(event) {
             // only handle clicks triggered from the colophon trigger
