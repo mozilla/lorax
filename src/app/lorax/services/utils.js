@@ -804,13 +804,45 @@ define(function () {
             var margin = { top: 20, right: 30, bottom: 70, left: 40 };
             var width = 960 - margin.left - margin.right;
             var height = 500 - margin.top - margin.bottom;
-
             var color = d3.scale.category10();
+            var addPoints = false;
+            var showRightXLabels = false;
+
+            var colors;
+            var customClass;
+            var pointShapes;
+            var x;
+            var y;
+
+            /**
+             * Adds points to each line based on the colors and shapes provided
+             * or else, it falls back to defaults.
+             * TODO: This can be more generic
+             */
+             function points(svg, values, line) {
+                 var points = svg.selectAll('points').data(values);
+
+                 var shape = pointShapes ? pointShapes[line] : 'circle';
+                 var shapeColor = colors ? colors[line] : '#000';
+
+                 if (shape === 'circle') {
+                     points.enter().append(shape)
+                         .attr('cx', function(d, i) { return x(d.date); })
+                         .attr('cy', function(d, i) { return y(d.segment); })
+                         .attr('fill', shapeColor)
+                         .attr('r', 5);
+                 } else if (shape === 'rect') {
+                     points.enter().append(shape)
+                         .attr('x', function(d, i) { return x(d.date) - 5; })
+                         .attr('y', function(d, i) { return y(d.segment) - 5; })
+                         .attr('width', '10px')
+                         .attr('height', '10px')
+                         .attr('fill', shapeColor);
+                 }
+
+             }
 
             function xAxis(config) {
-                var x = d3.time.scale()
-                    .domain(d3.extent(config.data, function(d) { return d.label; }))
-                    .range([0, config.width]);
 
                 var xAxis = d3.svg.axis()
                     .scale(x)
@@ -837,15 +869,6 @@ define(function () {
             }
 
             function yAxis(config) {
-                var y = d3.scale.linear()
-                    .domain([d3.min(config.segments, function(c) {
-                            return d3.min(c.values, function(v) { return v.segment; });
-                        }),
-                        d3.max(config.segments, function(c) {
-                            return d3.max(c.values, function(v) { return v.segment; });
-                        })
-                    ])
-                    .range([config.height, 0]);
 
                 var yAxis = d3.svg.axis()
                     .scale(y)
@@ -872,19 +895,6 @@ define(function () {
             }
 
             function drawLineSeries(config) {
-                var x = d3.time.scale()
-                    .domain(d3.extent(config.data, function(d) { return d.label; }))
-                    .range([0, config.width]);
-
-                var y = d3.scale.linear()
-                    .domain([d3.min(config.segments, function(c) {
-                            return d3.min(c.values, function(v) { return v.segment; });
-                        }),
-                        d3.max(config.segments, function(c) {
-                            return d3.max(c.values, function(v) { return v.segment; });
-                        })
-                    ])
-                    .range([config.height, 0]);
 
                 var line = d3.svg.line()
                     .x(function(d) { return x(d.date); })
@@ -897,22 +907,33 @@ define(function () {
 
                 segment.append('path')
                     .attr('class', 'line')
-                    .attr('d', function(d) { return line(d.values); })
-                    .style('stroke', '#000');
+                    .attr('d', function(d,i) {
+                        if (addPoints) {
+                            points(config.svg, d.values, i);
+                        }
 
-                segment.append('text')
-                    .datum(function(d) {
-                        return {
-                            name: d.name,
-                            value: d.values[d.values.length - 1]};
-                    })
-                    .attr('transform', function(d) {
-                        return 'translate(' + x(d.value.date) + ',' + y(d.value.segment) + ')';
-                    })
-                    .attr('class', 'legend-label')
-                    .attr('x', 10)
-                    .attr('dy', '.35em')
-                    .text(function(d) { return titleCase(d.name, '_'); });
+                        return line(d.values); })
+                    .style('stroke', function(d, i) {
+                        // if colors is undefined, simply return black.
+                        if (!colors) return '#000';
+                        return colors[i];
+                    });
+
+                    if (showRightXLabels) {
+                        segment.append('text')
+                            .datum(function(d) {
+                                return {
+                                    name: d.name,
+                                    value: d.values[d.values.length - 1]};
+                                })
+                        .attr('transform', function(d) {
+                            return 'translate(' + x(d.value.date) + ',' + y(d.value.segment) + ')';
+                        })
+                        .attr('class', 'legend-label')
+                        .attr('x', 10)
+                        .attr('dy', '.35em')
+                        .text(function(d) { return titleCase(d.name, '_'); });
+                    }
             }
 
             function chart(selection) {
@@ -934,10 +955,24 @@ define(function () {
                         };
                     });
 
+                    x = d3.time.scale()
+                        .domain(d3.extent(data, function(d) { return d.label; }))
+                        .range([0, width]);
+
+                    y = d3.scale.linear()
+                        .domain([d3.min(segments, function(c) {
+                                return d3.min(c.values, function(v) { return v.segment; });
+                            }),
+                            d3.max(segments, function(c) {
+                                return d3.max(c.values, function(v) { return v.segment; });
+                            })
+                        ])
+                        .range([height, 0]);
+
                     var svg = selection.append('svg')
                         .attr('width', width + margin.right + margin.left)
                         .attr('height', height + margin.top + margin.bottom)
-                        .attr('class', 'multi-series-line-chart')
+                        .attr('class', 'multi-series-line-chart' + ' ' + customClass)
                       .append('g')
                         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -991,6 +1026,56 @@ define(function () {
                 height = value;
                 return chart;
             };
+
+            /**
+             * Boolean value that determined whether labels on the right x axis
+             * will be shown. The default is false;
+             */
+            chart.showRightXLabels = function(value) {
+                if (!arguments.length) return value;
+                showRightXLabels = value;
+                return chart;
+            }
+
+            /**
+             * Specify an optional array of colors to use for the lines. If none
+             * is passed, it will default to black;
+             */
+            chart.colors = function(value) {
+                if (!arguments.length) return value;
+                colors = value;
+                return chart;
+            }
+
+            /**
+             * You can pass a custom class to be appended to the root SVG element.
+             * this allows you to specify custom styling using CSS, for example,
+             * overriding the default 1.5px stroke width of the lines.
+             */
+            chart.customClass = function(value) {
+                if (!arguments.length) return value;
+                customClass = value;
+                return chart;
+            }
+
+            /**
+             * A boolean inidcating whether to add points to the lines.
+             */
+            chart.addPoints = function(value) {
+                if (!arguments.length) return value;
+                addPoints = value;
+                return chart;
+            }
+
+            /**
+             * An array of simple SVG shapes to use for the points on each line
+             * If this value is specified, addPoints needs to be true.
+             */
+            chart.pointShapes = function(value) {
+                if (!arguments.length) return value;
+                pointShapes = value;
+                return chart;
+            }
 
             return chart;
         }

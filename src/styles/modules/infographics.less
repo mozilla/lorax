@@ -645,6 +645,39 @@
         border-color: transparent transparent @extra-dark-grey transparent;
       }
     }
+
+    li.circle {
+        &:before {
+            display: inline-block;
+            content: '';
+            background-color: #000;
+            margin-right: 10px;
+            border-radius: 20px;
+            width: 10px;
+            height: 10px;
+        }
+    }
+    li.rect {
+        &:before {
+            display: inline-block;
+            content: '';
+            background-color: #725710;
+            margin-right: 10px;
+            width: 10px;
+            height: 10px;
+        }
+    }
+    li.circle-white {
+        &:before {
+            display: inline-block;
+            content: '';
+            background-color: #fff;
+            margin-right: 10px;
+            border-radius: 20px;
+            width: 10px;
+            height: 10px;
+        }
+    }
 }
 
 .opensource__legend-browser {
