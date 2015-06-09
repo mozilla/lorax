@@ -14,6 +14,10 @@
     }
     .content-container {
         position: relative;
+        /* don't show the outline of this element when focused */
+        &:focus {
+            outline: none;
+        }
     }
     h1 {
         margin-left: .3rem;
