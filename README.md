@@ -4,7 +4,7 @@ Shape of the Web (codenamed "Lorax") was a micro-site encouraging the Mozilla
 audience to educate themselves about the state of the Web, learn more about
 Mozilla and show their support.
 
-This site has been decomissioned and is no longer live.
+This site has been decommissioned and is no longer live.
 
 - [Project Lorax on wiki.mozilla.org](https://wiki.mozilla.org/Engagement/Campaigns/Project_Lorax)
 
